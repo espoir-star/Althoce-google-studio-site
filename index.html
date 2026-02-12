@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth scroll-pt-28">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Althoce | Agence d'Automatisation IA</title>
+    <meta name="description" content="Libérez les entreprises des tâches répétitives pour leur redonner du temps stratégique grâce à l'IA." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Satoshi', 'sans-serif'],
+            },
+            colors: {
+              midnight: '#f8fafc', /* Re-mapped to very light gray for this theme */
+              darkbase: '#0f172a',
+              electric: '#7c3aed',
+              amber: '#f59e0b',
+              surface: '#ffffff',
+            },
+            animation: {
+              'orbit-slow': 'orbit 20s linear infinite',
+              'orbit-medium': 'orbit 15s linear infinite',
+              'orbit-fast': 'orbit 10s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 3s infinite',
+              'pulse-glow': 'pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shimmer': 'shimmer 2s linear infinite',
+              'text-reveal': 'text-reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s',
+              'scroll': 'scroll 20s linear infinite',
+            },
+            keyframes: {
+              orbit: {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              'pulse-glow': {
+                '0%, 100%': { opacity: 0.4 },
+                '50%': { opacity: 0.8 },
+              },
+              shimmer: {
+                from: { backgroundPosition: '0 0' },
+                to: { backgroundPosition: '-200% 0' }
+              },
+              scroll: {
+                from: { transform: 'translateX(0)' },
+                to: { transform: 'translateX(-100%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #f8fafc; /* Slate-50 */
+        color: #0f172a; /* Slate-900 */
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(226, 232, 240, 0.8); /* Slate-200 */
+        box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+      }
+      .glass-card-strong {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(226, 232, 240, 1);
+        box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1);
+      }
+      .shimmer-btn {
+        background: linear-gradient(110deg, #7c3aed 45%, #9f67ff 50%, #7c3aed 55%);
+        background-size: 200% 100%;
+      }
+      /* Hide scrollbar for chrome/safari/opera */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.29.2"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
