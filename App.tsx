@@ -16,12 +16,10 @@ import {
   Database,
   Lock,
   Workflow,
-  Sparkles,
   Briefcase,
   MessageSquare,
   Settings2,
   UserCheck,
-  MousePointer2,
   ScanLine,
   Blocks,
   Quote,
@@ -184,7 +182,6 @@ const faqs: FAQItem[] = [
   }
 ];
 
-// Updated with new PNG image links provided
 const PartnerLogos = [
   { name: "Partner 1", src: "https://i.ibb.co/8DgmnnLp/1.png" },
   { name: "Partner 2", src: "https://i.ibb.co/LdGWJpBw/2.png" },
@@ -193,7 +190,6 @@ const PartnerLogos = [
   { name: "Partner 5", src: "https://i.ibb.co/HfxvFHYm/5.png" }
 ];
 
-// New Tech Logos for Hero Section
 const HeroLogos = [
   "https://i.ibb.co/QvCn9FsK/1-1.png",
   "https://i.ibb.co/9khZ8TVL/2-1.png",
@@ -224,10 +220,6 @@ const staggerContainer: Variants = {
       staggerChildren: 0.2
     }
   }
-};
-
-const scaleOnHover: Variants = {
-  hover: { scale: 1.02, transition: { duration: 0.3 } }
 };
 
 // --- COMPONENTS ---
@@ -321,7 +313,7 @@ const ContactPage = () => {
           </p>
         </motion.div>
 
-        {/* Calendar Embed */}
+        {/* Calendar Embed - Secured and Cleaned */}
         <motion.div 
            initial={{ opacity: 0, scale: 0.95 }}
            animate={{ opacity: 1, scale: 1 }}
@@ -333,8 +325,10 @@ const ContactPage = () => {
               src="https://www.cal.eu/espoir-mwami-zwttsc/30min?embed=true&theme=light" 
               width="100%" 
               height="100%" 
-              frameBorder="0"
+              className="border-0"
               title="Réserver un appel avec Althoce"
+              sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+              loading="lazy"
               style={{ display: 'block' }}
             ></iframe>
           </div>
@@ -581,7 +575,7 @@ const Hero = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
                <div className="flex animate-scroll whitespace-nowrap items-center min-w-full shrink-0 justify-around">
                   {HeroLogos.map((src, i) => (
                     <div key={i} className="mx-8 md:mx-12 shrink-0 flex items-center justify-center">
-                      <img src={src} alt="Tech Partner" className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                      <img src={src} alt="Tech Partner" loading="lazy" className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
                     </div>
                   ))}
                </div>
@@ -590,7 +584,7 @@ const Hero = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
                <div className="flex animate-scroll whitespace-nowrap items-center min-w-full shrink-0 justify-around">
                   {HeroLogos.map((src, i) => (
                     <div key={`dup-${i}`} className="mx-8 md:mx-12 shrink-0 flex items-center justify-center">
-                      <img src={src} alt="Tech Partner" className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                      <img src={src} alt="Tech Partner" loading="lazy" className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
                     </div>
                   ))}
                </div>
@@ -1047,7 +1041,7 @@ const Values = () => {
                         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64"
                       ].map((src, i) => (
                         <div key={i} className={`w-10 h-10 rounded-full border-2 border-white overflow-hidden z-${30-i*10} shadow-sm`}>
-                           <img src={src} alt="Team Member" className="w-full h-full object-cover" />
+                           <img src={src} alt="Team Member" loading="lazy" className="w-full h-full object-cover" />
                         </div>
                       ))}
                       <div className="w-10 h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500 z-0">
@@ -1197,6 +1191,7 @@ const Testimonials = () => {
                                 <img 
                                     src={testimonials[currentIndex].image} 
                                     alt={testimonials[currentIndex].author} 
+                                    loading="lazy"
                                     className="w-full h-full rounded-full object-cover border-2 border-white"
                                 />
                             </div>
@@ -1293,7 +1288,7 @@ const Partners = () => {
               key={i}
               className="mx-8 md:mx-16 flex items-center justify-center transition-all duration-500 cursor-default hover:scale-105 opacity-90 hover:opacity-100"
             >
-              <img src={partner.src} alt={partner.name} className="h-10 md:h-14 w-auto object-contain" />
+              <img src={partner.src} alt={partner.name} loading="lazy" className="h-10 md:h-14 w-auto object-contain" />
             </div>
           ))}
         </div>
@@ -1304,7 +1299,7 @@ const Partners = () => {
               key={`dup-${i}`}
               className="mx-8 md:mx-16 flex items-center justify-center transition-all duration-500 cursor-default hover:scale-105 opacity-90 hover:opacity-100"
             >
-              <img src={partner.src} alt={partner.name} className="h-10 md:h-14 w-auto object-contain" />
+              <img src={partner.src} alt={partner.name} loading="lazy" className="h-10 md:h-14 w-auto object-contain" />
             </div>
           ))}
         </div>
@@ -1501,10 +1496,10 @@ const Footer = ({ onChangeView, showCta = true }: { onChangeView: (view: string,
                 </p>
                 <div className="flex gap-4 mt-2">
                   {/* Social Placeholders */}
-                  <a href="#" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
                       <Linkedin className="w-5 h-5" />
                   </a>
-                  <a href="#" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
                       <Twitter className="w-5 h-5" />
                   </a>
                   <a href="mailto:contact@althoce.com" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
