@@ -722,4 +722,922 @@ const StatCard: React.FC<{ stat: StatItem; index: number }> = ({ stat, index }) 
   useEffect(() => {
     if (isInView) {
       const match = stat.value.match(/([\d\.,]+)/);
-      if (match
+      if (match) {
+        const numericValue = parseFloat(match[0].replace(',', '.'));
+        
+        // Reduced duration for better performance feel
+        const controls = animate(0, numericValue, {
+          duration: 1.5, // Faster animation
+          ease: "easeOut",
+          onUpdate: (latest) => {
+             const formatted = Number.isInteger(numericValue) 
+                ? Math.round(latest).toString() 
+                : latest.toFixed(1).replace('.', ',');
+             
+             setDisplayValue(stat.value.replace(match[0], formatted));
+          }
+        });
+        return () => controls.stop();
+      } else {
+        setDisplayValue(stat.value);
+      }
+    }
+  }, [isInView, stat.value]);
+
+  return (
+    <motion.div 
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+      className="relative text-center group p-2 md:p-6 rounded-3xl hover:bg-slate-50 transition-colors duration-500"
+    >
+      {/* Removed heavy blur background for mobile performance */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-electric/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+      <div className="relative z-10 flex flex-col justify-between h-full">
+        <motion.div 
+          className="text-2xl sm:text-4xl md:text-7xl font-bold font-display mb-1 md:mb-2 inline-block bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-600"
+          initial={{ scale: 0.9 }}
+          animate={isInView ? { scale: 1 } : { scale: 0.9 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          {displayValue}
+        </motion.div>
+        
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+        >
+            <div className="text-electric font-bold mb-1 md:mb-3 uppercase tracking-widest text-[9px] md:text-xs font-display">
+                {stat.label}
+            </div>
+            <p className="text-slate-500 text-[10px] md:text-sm max-w-[250px] mx-auto leading-tight md:leading-relaxed hidden sm:block">
+                {stat.description}
+            </p>
+             <p className="text-slate-500 text-[9px] mx-auto leading-tight sm:hidden block line-clamp-3">
+                 {stat.description}
+             </p>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+const StatsSection = () => {
+  return (
+    <section className="py-12 md:py-24 bg-white relative z-10 border-y border-slate-100 overflow-hidden">
+      {/* Reduced blur radius for background blobs */}
+      <div className="hidden md:block absolute -left-20 top-0 w-96 h-96 bg-purple-100/30 rounded-full blur-3xl mix-blend-multiply pointer-events-none"></div>
+      <div className="hidden md:block absolute -right-20 bottom-0 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl mix-blend-multiply pointer-events-none"></div>
+
+      <div className="container mx-auto px-2 md:px-6 relative z-10">
+        <div className="grid grid-cols-3 gap-2 md:gap-12 divide-x divide-slate-100">
+          {stats.map((stat, index) => (
+            <StatCard key={index} stat={stat} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProblemSolution = () => {
+  return (
+    <section className="py-16 md:py-32 bg-slate-50 relative overflow-hidden">
+      {/* Reduced blur */}
+      <div className="hidden md:block absolute right-0 top-1/2 w-[600px] h-[600px] bg-electric/5 blur-[80px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2 mix-blend-multiply"></div>
+      
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-20 items-center">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-600 text-xs font-bold uppercase tracking-wider mb-6 border border-amber-100">
+              <Zap className="w-3 h-3" />
+              Le Constat
+            </motion.div>
+            <motion.h2 variants={fadeInUp} className="text-4xl md:text-6xl font-display font-bold mb-8 leading-tight text-slate-900">
+              L'IA n'est pas un gadget, c'est votre <span className="text-electric">moteur de croissance</span>.
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="text-slate-600 text-lg leading-relaxed mb-8">
+              Aujourd'hui, beaucoup d'entreprises voient l'IA comme un labyrinthe complexe. 
+              Résultat ? Elles perdent des heures sur des processus manuels qui pourraient être délégués à une machine en quelques secondes.
+            </motion.p>
+            
+            <motion.div 
+              variants={fadeInUp} 
+              className="flex flex-col sm:flex-row items-start gap-6 p-8 rounded-[2.5rem] bg-[#0b0f19] relative overflow-hidden group shadow-2xl shadow-slate-900/10"
+            >
+               <div className="absolute inset-0 bg-gradient-to-br from-[#1e293b]/50 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+               
+              <div className="relative z-10 shrink-0 w-16 h-16 rounded-2xl bg-[#1e293b] border border-white/5 flex items-center justify-center text-white shadow-inner">
+                <Workflow className="w-8 h-8 opacity-90" />
+              </div>
+              <div className="relative z-10 pt-1">
+                <h4 className="font-bold text-white text-2xl mb-3 font-display tracking-tight">La Solution Althoce</h4>
+                <p className="text-base text-slate-400 leading-relaxed font-light">Nous ne remplaçons pas vos équipes, nous les équipons pour qu'elles reprennent le contrôle sur leur temps et leur créativité.</p>
+              </div>
+            </motion.div>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }} // Removed rotation for simpler paint
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "backOut" }}
+            className="relative"
+          >
+             <div className="glass-card-strong p-10 rounded-3xl relative z-10 md:animate-float bg-white">
+                <div className="space-y-8">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between opacity-50">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_10px_red]"></div>
+                        <span className="text-slate-500 font-medium">Sans IA</span>
+                      </div>
+                      <span className="text-xs text-red-500 font-bold">-15h/semaine</span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <div className="h-full w-1/3 bg-red-400"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-electric shadow-[0_0_10px_#7c3aed]"></div>
+                        <span className="text-slate-900 font-bold">Avec Althoce</span>
+                      </div>
+                      <span className="text-xs text-electric font-bold">+40h/semaine</span>
+                    </div>
+                    <div className="h-3 w-full bg-slate-100 rounded-full overflow-hidden relative">
+                       <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
+                        className="h-full bg-gradient-to-r from-electric to-purple-400 absolute top-0 left-0"
+                      ></motion.div>
+                      {/* Removed complex blur shimmer overlay for mobile performance */}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-10 pt-8 border-t border-slate-100 grid grid-cols-2 gap-6">
+                  <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 text-center">
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Marge</p>
+                    <p className="text-3xl font-bold text-emerald-500">+25%</p>
+                  </div>
+                  <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 text-center">
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Erreurs</p>
+                    <p className="text-3xl font-bold text-electric">0%</p>
+                  </div>
+                </div>
+             </div>
+             
+             <div className="absolute -inset-6 border border-slate-200/50 rounded-[40px] -z-10 animate-pulse-glow bg-white/40"></div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Methodology = () => {
+  return (
+    <section id="methodology" className="py-16 md:py-32 bg-white relative overflow-hidden">
+      {/* OPTIMISATION: Remplacement de l'image externe par une classe bg-noise en DataURI */}
+      <div className="absolute inset-0 bg-noise opacity-10 mix-blend-multiply"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white opacity-80"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="text-center mb-24"
+        >
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-6 text-slate-900 tracking-tight">Comment ça marche&nbsp;?</motion.h2>
+          <motion.p variants={fadeInUp} className="text-slate-500 max-w-xl mx-auto">Une méthodologie éprouvée pour transformer votre entreprise en machine de guerre, étape par étape.</motion.p>
+        </motion.div>
+
+        <div className="relative">
+          <div className="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-slate-100 -translate-y-1/2 z-0">
+            <motion.div 
+              initial={{ scaleX: 0, originX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              className="w-full h-full bg-gradient-to-r from-transparent via-electric/30 to-transparent"
+            ></motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {methodologySteps.map((step, index) => (
+              <motion.div 
+                key={step.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className={`relative group ${index % 2 === 0 ? 'md:translate-y-[-20px]' : 'md:translate-y-[20px]'}`}
+              >
+                <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-electric rounded-full z-10 group-hover:scale-150 group-hover:bg-electric transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)]"></div>
+
+                <div className={`glass-card p-8 rounded-3xl h-full relative z-20 hover:border-electric/40 transition-all duration-500 group-hover:-translate-y-2 bg-white ${index % 2 === 0 ? 'md:animate-float' : 'md:animate-float-delayed'}`}>
+                  <div className="absolute -right-2 -top-4 text-8xl font-display font-bold text-slate-100 select-none pointer-events-none group-hover:text-electric/5 transition-colors">
+                    {step.id}
+                  </div>
+                  
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 text-slate-700 group-hover:text-electric group-hover:scale-110 transition-all duration-300 shadow-sm">
+                    <step.icon className="w-7 h-7" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 font-display text-slate-900">{step.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const UseCases = () => {
+  const detailedUseCases = [
+    {
+      ...useCases[0],
+      icon: Briefcase,
+      stat: "+30% Leads"
+    },
+    {
+      ...useCases[1],
+      icon: MessageSquare,
+      stat: "-80% Latence"
+    },
+    {
+      ...useCases[2],
+      icon: Settings2,
+      stat: "0 Erreur"
+    },
+    {
+      ...useCases[3],
+      icon: UserCheck,
+      stat: "x2 Vitesse"
+    }
+  ];
+
+  return (
+    <section className="py-16 md:py-32 bg-slate-50 relative overflow-hidden">
+      {/* Reduced blur */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[80px] pointer-events-none mix-blend-multiply"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="mb-20 max-w-3xl"
+        >
+          <motion.h2 variants={fadeInUp} className="text-3xl md:text-5xl font-bold font-display mb-6 leading-tight text-slate-900">
+            Ce que nous pouvons <br /><span className="text-electric">libérer pour vous</span>.
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-slate-600 text-lg">Exemples concrets de métiers transformés par nos solutions.</motion.p>
+        </motion.div>
+
+        <motion.div 
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}
+           variants={staggerContainer}
+           className="grid md:grid-cols-2 gap-8"
+        >
+          {detailedUseCases.map((useCase, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              whileHover={{ y: -5 }}
+              className="group relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-electric/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl -z-10 blur-xl"></div>
+              
+              <div className="glass-card p-8 rounded-3xl h-full border border-slate-200 group-hover:border-electric/30 transition-all duration-500 bg-white/80 hover:bg-white shadow-sm hover:shadow-xl">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 group-hover:bg-electric group-hover:text-white group-hover:scale-110 transition-all duration-300 border border-slate-100 group-hover:border-transparent">
+                    <useCase.icon className="w-6 h-6" />
+                  </div>
+                  <div className="px-3 py-1 rounded-full bg-electric/5 border border-electric/10 text-electric text-xs font-bold uppercase tracking-wider group-hover:bg-electric group-hover:text-white transition-colors duration-300">
+                    {useCase.stat}
+                  </div>
+                </div>
+
+                <h3 className="text-2xl font-bold font-display text-slate-900 mb-4 group-hover:text-electric transition-colors">{useCase.title}</h3>
+                
+                <div className="bg-slate-50 rounded-lg p-4 mb-6 border-l-2 border-electric/50 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-electric/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <p className="text-sm text-slate-600 italic relative z-10 font-mono">"{useCase.quote}"</p>
+                </div>
+
+                <p className="text-slate-500 text-sm leading-relaxed">{useCase.description}</p>
+                
+                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-electric/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const Values = () => {
+  return (
+    <section className="py-16 md:py-24 bg-white relative overflow-hidden border-t border-slate-100">
+      {/* Background Grid Pattern - bg-noise replacement */}
+      <div className="absolute inset-0 bg-noise opacity-20 mix-blend-multiply pointer-events-none"></div>
+      <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #e2e8f0 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center"
+        >
+          
+          {/* Left Column: Manifesto */}
+          <motion.div variants={fadeInUp}>
+             <motion.div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-electric/10 text-electric text-xs font-bold uppercase tracking-wider mb-8">
+                <ShieldCheck className="w-4 h-4" />
+                Éthique & Sécurité
+              </motion.div>
+              
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 text-slate-900 leading-tight">
+                La sécurité n'est pas une option, <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-purple-600">c'est notre fondation.</span>
+              </h2>
+              
+              <p className="text-slate-600 text-lg leading-relaxed mb-8 border-l-4 border-electric/20 pl-6">
+                 Nous construisons des forteresses numériques. Vos données ne quittent jamais l'Europe, vos processus sont cloisonnés, et l'humain reste le pilote final. Automatiser ne veut pas dire déshumaniser.
+              </p>
+              
+              <div className="flex flex-col gap-4">
+                 <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                       <Fingerprint className="w-5 h-5" />
+                    </div>
+                    <div>
+                       <h4 className="font-bold text-slate-900">100% GDPR Compliant</h4>
+                       <p className="text-sm text-slate-500">Données cryptées et hébergées en UE.</p>
+                    </div>
+                 </div>
+                 <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                       <Server className="w-5 h-5" />
+                    </div>
+                    <div>
+                       <h4 className="font-bold text-slate-900">Instance Privée</h4>
+                       <p className="text-sm text-slate-500">Pas de mutualisation. Votre propre environnement.</p>
+                    </div>
+                 </div>
+              </div>
+          </motion.div>
+
+          {/* Right Column: Visual Bento Grid */}
+          <div className="grid gap-6">
+             
+             {/* Security Card - Dark & Techy */}
+             <motion.div 
+               variants={fadeInUp}
+               className="bg-slate-900 rounded-[2rem] p-8 text-white relative overflow-hidden group shadow-2xl shadow-slate-900/20"
+             >
+                {/* Scanning Laser Effect */}
+                <motion.div 
+                  animate={{ top: ['0%', '100%', '0%'] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  className="hidden md:block absolute left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-50 z-10 blur-sm"
+                ></motion.div>
+                {/* bg-noise replacement */}
+                <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay"></div>
+                
+                <div className="relative z-20 flex justify-between items-start mb-8">
+                   <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10">
+                      <Lock className="w-6 h-6 text-emerald-400" />
+                   </div>
+                   <div className="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono uppercase tracking-widest animate-pulse">
+                      Système Sécurisé
+                   </div>
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-2 font-display">Données Sanctuarisées</h3>
+                <p className="text-slate-400 text-sm">Chiffrement de bout en bout. Vos secrets industriels restent secrets.</p>
+             </motion.div>
+
+             {/* Human Centric Card - Light & Organic */}
+             <motion.div 
+               variants={fadeInUp}
+               className="bg-white rounded-[2rem] p-8 border border-slate-200 relative overflow-hidden group shadow-xl shadow-slate-200/50"
+             >
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-100 to-pink-100 rounded-bl-[100px] -z-10 opacity-50 group-hover:scale-110 transition-transform duration-700"></div>
+                
+                <div className="relative z-20 flex justify-between items-start mb-8">
+                   <div className="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center border border-purple-100">
+                      <Users className="w-6 h-6 text-purple-600" />
+                   </div>
+                   <div className="flex -space-x-3">
+                      {[
+                        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64",
+                        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64",
+                        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64"
+                      ].map((src, i) => (
+                        <div key={i} className={`w-10 h-10 rounded-full border-2 border-white overflow-hidden z-${30-i*10} shadow-sm`}>
+                           <img width={40} height={40} src={getOptimizedImage(src, 64)} alt="Team Member" loading="lazy" className="w-full h-full object-cover" />
+                        </div>
+                      ))}
+                      <div className="w-10 h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500 z-0">
+                           +
+                      </div>
+                   </div>
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-2 font-display text-slate-900">L'Humain Augmenté</h3>
+                <p className="text-slate-500 text-sm">L'IA gère la répétition, vos talents gèrent la stratégie. Une symbiose parfaite.</p>
+             </motion.div>
+
+          </div>
+
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const Services = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
+  return (
+    <section id="services" className="py-16 md:py-32 relative overflow-hidden bg-slate-50/50">
+       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+       
+       <div className="container mx-auto px-6 relative z-10">
+         <motion.div 
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}
+           variants={staggerContainer}
+           className="text-center mb-24 max-w-3xl mx-auto"
+         >
+           <motion.h2 variants={fadeInUp} className="text-4xl md:text-6xl font-display font-bold mb-6 text-slate-900">
+             Nos Services
+           </motion.h2>
+           <motion.p variants={fadeInUp} className="text-slate-600 text-lg">
+             Une suite complète d'interventions pour faire passer votre entreprise à l'ère de l'intelligence artificielle.
+           </motion.p>
+         </motion.div>
+
+         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+           {services.map((service, index) => (
+             <motion.div
+               key={index}
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: index * 0.1 }}
+               className="group relative h-full"
+             >
+               <div className="absolute -inset-[1px] bg-gradient-to-r from-electric via-purple-300 to-electric rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+               
+               <div className="relative h-full bg-white border border-slate-200 rounded-3xl p-8 overflow-hidden transition-all duration-500 group-hover:shadow-2xl shadow-lg shadow-slate-200/50">
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-electric/5 blur-[50px] rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-electric/10 transition-colors duration-500"></div>
+                 
+                 <div className="relative w-14 h-14 mb-8">
+                    <div className="absolute inset-0 bg-electric/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="relative w-full h-full bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-slate-600 group-hover:text-electric transition-colors duration-300">
+                        <service.icon className="w-7 h-7" />
+                    </div>
+                 </div>
+
+                 <h3 className="text-xl font-bold mb-4 font-display text-slate-900 group-hover:text-electric transition-colors duration-300">{service.title}</h3>
+                 <p className="text-slate-600 text-base leading-relaxed font-medium">{service.description}</p>
+                 
+               </div>
+             </motion.div>
+           ))}
+         </div>
+
+         <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-16 text-center"
+         >
+           <button 
+             onClick={() => onChangeView('contact')}
+             className="px-8 py-4 bg-slate-900 text-white font-bold rounded-full transition-all shadow-lg hover:shadow-slate-900/20 hover:scale-105 flex items-center gap-2 mx-auto border border-slate-800"
+           >
+             Prendre RDV
+             <ArrowRight className="w-5 h-5" />
+           </button>
+         </motion.div>
+       </div>
+    </section>
+  );
+};
+
+const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const next = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prev = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  return (
+    <section id="testimonials" className="py-16 md:py-32 bg-slate-50 relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="text-center mb-16"
+        >
+          <motion.h2 variants={fadeInUp} className="text-3xl md:text-5xl font-display font-bold mb-4 text-slate-900">
+            Avis Clients
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-slate-500 text-lg">
+            Retours d'expérience de ceux qui ont franchi le pas.
+          </motion.p>
+        </motion.div>
+        
+        <div className="max-w-4xl mx-auto relative">
+          <div className="relative bg-white rounded-[2.5rem] p-8 md:p-16 shadow-2xl shadow-slate-200/50 border border-slate-100 min-h-[400px] flex flex-col justify-center items-center text-center overflow-hidden">
+             
+             <div className="absolute top-8 left-8 text-electric/10">
+               <Quote className="w-20 h-20 md:w-32 md:h-32 transform -scale-x-100" />
+             </div>
+
+             <AnimatePresence mode="wait">
+               <motion.div
+                 key={currentIndex}
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 exit={{ opacity: 0, y: -20 }}
+                 transition={{ duration: 0.5, ease: "easeInOut" }}
+                 className="relative z-10 flex flex-col items-center"
+               >
+                 <p className="text-2xl md:text-3xl lg:text-4xl font-display font-medium text-slate-900 leading-tight mb-10 max-w-3xl">
+                   "{testimonials[currentIndex].quote}"
+                 </p>
+                 
+                 <div className="flex flex-col items-center gap-4">
+                    
+                    <div className="relative">
+                        {testimonials[currentIndex].image ? (
+                            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full p-1 bg-gradient-to-br from-electric via-purple-400 to-indigo-500 shadow-xl shadow-electric/20">
+                                <img 
+                                    width={96}
+                                    height={96}
+                                    src={getOptimizedImage(testimonials[currentIndex].image!, 200)} 
+                                    alt={testimonials[currentIndex].author} 
+                                    loading="lazy"
+                                    className="w-full h-full rounded-full object-cover border-2 border-white"
+                                />
+                            </div>
+                        ) : (
+                            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-electric to-purple-400 flex items-center justify-center text-white text-3xl font-bold shadow-xl shadow-electric/30 border-4 border-white">
+                                {testimonials[currentIndex].author.charAt(0)}
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="text-center">
+                        <div className="font-bold text-slate-900 text-lg md:text-xl mb-1">{testimonials[currentIndex].author}</div>
+                        <div className="text-electric font-bold text-xs uppercase tracking-widest bg-electric/5 px-3 py-1 rounded-full inline-block">{testimonials[currentIndex].role}</div>
+                    </div>
+
+                 </div>
+               </motion.div>
+             </AnimatePresence>
+
+             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+               {testimonials.map((_, idx) => (
+                 <button 
+                   key={idx}
+                   onClick={() => setCurrentIndex(idx)}
+                   className={`h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-8 bg-electric' : 'w-2 bg-slate-200 hover:bg-slate-300'}`}
+                   aria-label={`Aller au témoignage ${idx + 1}`}
+                 />
+               ))}
+             </div>
+          </div>
+
+          <div className="hidden md:flex absolute top-1/2 -left-20 -translate-y-1/2">
+             <button 
+               onClick={prev}
+               className="p-4 rounded-full bg-white border border-slate-100 shadow-lg text-slate-600 hover:text-electric hover:scale-110 transition-all duration-300 group"
+               aria-label="Témoignage précédent"
+             >
+                <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+             </button>
+          </div>
+          <div className="hidden md:flex absolute top-1/2 -right-20 -translate-y-1/2">
+             <button 
+               onClick={next}
+               className="p-4 rounded-full bg-white border border-slate-100 shadow-lg text-slate-600 hover:text-electric hover:scale-110 transition-all duration-300 group"
+               aria-label="Témoignage suivant"
+             >
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+             </button>
+          </div>
+
+          <div className="flex md:hidden justify-center gap-6 mt-8">
+             <button 
+               onClick={prev}
+               className="p-4 rounded-full bg-white border border-slate-100 shadow-lg text-slate-600 hover:text-electric transition-colors"
+               aria-label="Témoignage précédent"
+             >
+                <ArrowLeft className="w-6 h-6" />
+             </button>
+             <button 
+               onClick={next}
+               className="p-4 rounded-full bg-white border border-slate-100 shadow-lg text-slate-600 hover:text-electric transition-colors"
+               aria-label="Témoignage suivant"
+             >
+                <ArrowRight className="w-6 h-6" />
+             </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Footer = ({ onChangeView, showCta = true }: { onChangeView: (view: string, id?: string) => void, showCta?: boolean }) => {
+  const floatingIcons = [
+    { icon: Zap, color: "text-amber-300", bg: "bg-amber-500/10", border: "border-amber-500/20", pos: "top-[10%] left-[5%] md:left-[10%]", delay: 0 },
+    { icon: Lock, color: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20", pos: "top-[5%] left-1/2 -translate-x-1/2", delay: 1 },
+    { icon: Mail, color: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/20", pos: "top-[30%] right-[5%] md:right-[10%]", delay: 2 },
+    { icon: BrainCircuit, color: "text-purple-400", bg: "bg-purple-500/10", border: "border-purple-500/20", pos: "bottom-[10%] left-[5%] md:left-[15%]", delay: 1.5 },
+    { icon: Database, color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", pos: "bottom-[15%] right-[5%] md:right-[20%]", delay: 0.5 },
+  ];
+
+  const navLinks = [
+    { name: 'Accueil', action: () => onChangeView('home') },
+    { name: 'Notre Méthode', action: () => onChangeView('home', 'methodology') },
+    { name: 'Services', action: () => onChangeView('home', 'services') },
+    { name: 'Témoignages', action: () => onChangeView('home', 'testimonials') },
+    { name: 'FAQ', action: () => onChangeView('home', 'faq') },
+  ];
+
+  const legalLinks = [
+    { name: 'Mentions Légales', action: () => onChangeView('legal') },
+    { name: 'Confidentialité', action: () => onChangeView('privacy') },
+  ];
+
+  // OPTIMISATION: Hook pour respecter les préférences de mouvement réduit
+  const shouldReduceMotion = useReducedMotion();
+  
+  // OPTIMISATION MOBILE: Désactiver l'animation des icônes flottantes
+  const [isMobileFooter, setIsMobileFooter] = useState(true);
+  useEffect(() => {
+    const check = () => setIsMobileFooter(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check, { passive: true });
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  return (
+    <footer id="contact" className="pt-0"> {/* Removed padding/bg from main wrapper to allow split backgrounds */}
+      
+      {/* 1. CTA Section - White Background */}
+      {showCta && (
+        <div className="bg-white pt-16 md:pt-32 pb-24 relative overflow-hidden">
+          {/* Background Ambience from previous design */}
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent opacity-50"></div>
+          <div className="hidden md:block absolute bottom-0 right-0 w-[500px] h-[500px] bg-electric/5 rounded-full blur-[120px] pointer-events-none"></div>
+          <div className="hidden md:block absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="relative rounded-[3rem] bg-[#0A0A1B] border border-white/5 overflow-hidden px-6 py-16 md:py-24 text-center max-w-6xl mx-auto shadow-2xl shadow-indigo-900/10 group"
+            >
+              {/* Subtle Background Gradients to match the deep space look */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-600/10 blur-[100px] rounded-full mix-blend-screen"></div>
+                <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-600/10 blur-[100px] rounded-full mix-blend-screen"></div>
+              </div>
+
+              <div className="relative z-20 max-w-3xl mx-auto">
+                <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight text-white leading-tight">
+                  Prêt à libérer votre <br/> potentiel ?
+                </h2>
+                <p className="text-slate-400 mb-10 text-lg md:text-xl leading-relaxed font-light max-w-2xl mx-auto">
+                  Ne laissez pas la complexité vous ralentir. Discutons de votre premier agent IA dès aujourd'hui.
+                </p>
+                
+                <motion.button 
+                  onClick={() => onChangeView('contact')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-slate-900 rounded-full font-bold text-lg transition-all hover:bg-slate-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                >
+                  <span className="relative z-10">Prendre un appel</span>
+                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </div>
+
+              {/* Floating Icons - OPTIMISATION: Arrêt de l'animation hors viewport et reduced motion */}
+              <div className="absolute inset-0 pointer-events-none">
+                {floatingIcons.map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: false, amount: 0.1 }}
+                    animate={(shouldReduceMotion || isMobileFooter) ? {} : { 
+                        y: [0, -10, 0],
+                    }}
+                    transition={{ 
+                      duration: 3 + idx, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      repeatType: "mirror" 
+                    }}
+                    className={`absolute p-4 rounded-2xl border border-white/10 bg-white/10 ${item.pos}`}
+                  >
+                    <item.icon className={`w-6 h-6 ${item.color}`} />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      )}
+
+      {/* 2. Main Footer Content - Black Background */}
+      <div className="bg-[#050511] text-slate-400 pt-16 pb-12 border-t border-slate-900 relative overflow-hidden">
+        
+        {/* Dark Background Ambience */}
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-800 to-transparent opacity-50"></div>
+        <div className="hidden md:block absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-900/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="hidden md:block absolute top-0 left-0 w-[500px] h-[500px] bg-blue-900/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+            
+            {/* Brand Column */}
+            <div className="md:col-span-5 flex flex-col items-start gap-6">
+                <div className="text-3xl font-bold font-display tracking-tighter text-white">
+                  ALTHOCE<span className="text-electric">.</span>
+                </div>
+                <p className="text-slate-400 text-base leading-relaxed max-w-sm">
+                  L'automatisation n'est plus facultative, elle est essentielle.
+                </p>
+                <div className="flex gap-4 mt-2">
+                  {/* Social Placeholders */}
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
+                      <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
+                      <Twitter className="w-5 h-5" />
+                  </a>
+                  <a href="mailto:contact@althoce.com" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
+                      <Mail className="w-5 h-5" />
+                  </a>
+                </div>
+            </div>
+
+            {/* Navigation Column */}
+            <div className="md:col-span-3 md:col-start-7">
+                <h4 className="text-white font-bold mb-6 font-display text-lg">Entreprise</h4>
+                <ul className="space-y-4">
+                  {navLinks.map((link, idx) => (
+                      <li key={idx}>
+                        <button 
+                          onClick={link.action} 
+                          className="text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center gap-2 group"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-electric transition-all"></span>
+                          {link.name}
+                        </button>
+                      </li>
+                  ))}
+                </ul>
+            </div>
+
+            {/* Legal Column */}
+            <div className="md:col-span-3">
+                <h4 className="text-white font-bold mb-6 font-display text-lg">Politiques</h4>
+                <ul className="space-y-4">
+                  {legalLinks.map((link, idx) => (
+                      <li key={idx}>
+                        <button 
+                          onClick={link.action} 
+                          className="text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center gap-2 group"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-electric transition-all"></span>
+                          {link.name}
+                        </button>
+                      </li>
+                  ))}
+                </ul>
+            </div>
+
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-slate-800/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+            <div>
+              © 2024 Althoce. Tous droits réservés.
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/5">
+              <span>Made with <span className="text-red-500 animate-pulse">❤️</span> in Bordeaux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+const App = () => {
+  const [currentView, setCurrentView] = useState('home');
+
+  const handleChangeView = (view: string, id?: string) => {
+    setCurrentView(view);
+    
+    // Handle scrolling logic
+    if (view === 'home' && id) {
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 100); // Small delay to allow react to render the home view
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="bg-slate-50 text-slate-900 font-sans min-h-screen selection:bg-electric/20 selection:text-electric">
+      <Navbar currentView={currentView} onChangeView={handleChangeView} />
+      
+      {currentView === 'home' ? (
+        <>
+          <Hero onChangeView={handleChangeView} />
+          <StatsSection />
+          <ProblemSolution />
+          <Methodology />
+          <UseCases />
+          <Values />
+          <Services onChangeView={handleChangeView} />
+          <Testimonials />
+          <Partners />
+          <FAQ />
+          <Footer onChangeView={handleChangeView} />
+        </>
+      ) : currentView === 'contact' ? (
+        <>
+          <ContactPage />
+          <Footer onChangeView={handleChangeView} showCta={false} />
+        </>
+      ) : currentView === 'legal' ? (
+        <>
+          <LegalPage />
+          <Footer onChangeView={handleChangeView} showCta={false} />
+        </>
+      ) : (
+        <>
+          <PrivacyPage />
+          <Footer onChangeView={handleChangeView} showCta={false} />
+        </>
+      )}
+    </div>
+  );
+};
+
+export default App;
