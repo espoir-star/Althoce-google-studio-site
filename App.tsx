@@ -312,18 +312,40 @@ const Navbar = ({ currentView, onChangeView }: { currentView: string, onChangeVi
 
 const Partners = () => {
   return (
-    <section className="py-12 bg-white border-y border-slate-100 overflow-hidden">
-      <div className="container mx-auto px-6 text-center">
-        <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">Ils nous font confiance</p>
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-          {PartnerLogos.map((logo, index) => (
-             <div key={index} className="flex items-center justify-center p-4">
-                <img 
-                  src={logo.src} 
-                  alt={logo.name} 
-                  className="h-8 md:h-10 w-auto object-contain hover:scale-110 transition-transform duration-300" 
-                />
-             </div>
+    <section className="py-16 md:py-24 border-y border-slate-100 bg-slate-50 relative overflow-hidden">
+      <div className="absolute inset-y-0 left-0 w-20 md:w-40 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute inset-y-0 right-0 w-20 md:w-40 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 mb-16 text-center relative z-10">
+         <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-slate-200 shadow-lg shadow-slate-200/40">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-slate-800 text-xs font-bold font-display tracking-widest uppercase">Notre écosystème connecté</span>
+         </div>
+      </div>
+
+      <div className="flex overflow-hidden">
+        <div className="flex animate-scroll whitespace-nowrap items-center min-w-full shrink-0">
+          {PartnerLogos.map((partner, i) => (
+            <div 
+              key={i}
+              className="mx-8 md:mx-16 flex items-center justify-center transition-all duration-500 cursor-default hover:scale-105 opacity-90 hover:opacity-100"
+            >
+              <img width={140} height={56} src={partner.src} alt={partner.name} loading="lazy" className="h-10 md:h-14 w-auto object-contain" />
+            </div>
+          ))}
+        </div>
+        
+        <div className="flex animate-scroll whitespace-nowrap items-center min-w-full shrink-0">
+          {PartnerLogos.map((partner, i) => (
+            <div 
+              key={`dup-${i}`}
+              className="mx-8 md:mx-16 flex items-center justify-center transition-all duration-500 cursor-default hover:scale-105 opacity-90 hover:opacity-100"
+            >
+              <img width={140} height={56} src={partner.src} alt={partner.name} loading="lazy" className="h-10 md:h-14 w-auto object-contain" />
+            </div>
           ))}
         </div>
       </div>
