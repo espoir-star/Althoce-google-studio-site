@@ -65,20 +65,36 @@
       body {
         background-color: #f8fafc; /* Slate-50 */
         color: #0f172a; /* Slate-900 */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
+      /* Optimized Glassmorphism for Mobile Performance */
       .glass-card {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(226, 232, 240, 0.8); /* Slate-200 */
+        background: rgba(255, 255, 255, 0.85); /* More opaque */
+        border: 1px solid rgba(226, 232, 240, 0.8);
         box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
       }
+      
       .glass-card-strong {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.95);
         border: 1px solid rgba(226, 232, 240, 1);
         box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1);
       }
+
+      /* Only apply heavy blur on larger screens */
+      @media (min-width: 768px) {
+        .glass-card {
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-card-strong {
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+        }
+      }
+
       .shimmer-btn {
         background: linear-gradient(110deg, #7c3aed 45%, #9f67ff 50%, #7c3aed 55%);
         background-size: 200% 100%;
@@ -91,6 +107,12 @@
       .no-scrollbar {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
+      }
+      
+      /* Hardware Acceleration Hints */
+      .animate-float, .animate-scroll {
+        will-change: transform;
+        transform: translateZ(0);
       }
     </style>
   <script type="importmap">
@@ -105,7 +127,7 @@
 }
 </script>
 </head>
-<body>
+  <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script> </body>
+  </body>
 </html>
