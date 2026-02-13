@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Althoce | Agence d'Automatisation IA</title>
     <meta name="description" content="Libérez les entreprises des tâches répétitives pour leur redonner du temps stratégique grâce à l'IA." />
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Polices optimisées : Inter (Google) + Satoshi (Fontshare) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN avec config personnalisée -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -18,11 +23,14 @@
               display: ['Satoshi', 'sans-serif'],
             },
             colors: {
-              midnight: '#f8fafc', /* Re-mapped to very light gray for this theme */
+              midnight: '#f8fafc',
               darkbase: '#0f172a',
               electric: '#7c3aed',
               amber: '#f59e0b',
               surface: '#ffffff',
+            },
+            backgroundImage: {
+              'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
             },
             animation: {
               'orbit-slow': 'orbit 20s linear infinite',
@@ -45,8 +53,8 @@
                 '50%': { transform: 'translateY(-20px)' },
               },
               'pulse-glow': {
-                '0%, 100%': { opacity: 0.4 },
-                '50%': { opacity: 0.8 },
+                '0%, 100%': { opacity: '0.4' },
+                '50%': { opacity: '0.8' },
               },
               shimmer: {
                 from: { backgroundPosition: '0 0' },
@@ -61,27 +69,27 @@
         }
       }
     </script>
+
+    <!-- Styles personnalisés -->
     <style>
       body {
-        background-color: #f8fafc; /* Slate-50 */
-        color: #0f172a; /* Slate-900 */
+        background-color: #f8fafc;
+        color: #0f172a;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
-      /* Optimized Glassmorphism for Mobile Performance */
+
       .glass-card {
-        background: rgba(255, 255, 255, 0.85); /* More opaque */
+        background: rgba(255, 255, 255, 0.85);
         border: 1px solid rgba(226, 232, 240, 0.8);
         box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
       }
-      
       .glass-card-strong {
         background: rgba(255, 255, 255, 0.95);
         border: 1px solid rgba(226, 232, 240, 1);
         box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1);
       }
 
-      /* Only apply heavy blur on larger screens */
       @media (min-width: 768px) {
         .glass-card {
           background: rgba(255, 255, 255, 0.7);
@@ -99,35 +107,34 @@
         background: linear-gradient(110deg, #7c3aed 45%, #9f67ff 50%, #7c3aed 55%);
         background-size: 200% 100%;
       }
-      /* Hide scrollbar for chrome/safari/opera */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      /* Hide scrollbar for IE, Edge and Firefox */
-      .no-scrollbar {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-      }
-      
-      /* Hardware Acceleration Hints */
-      .animate-float, .animate-scroll {
-        will-change: transform;
-        transform: translateZ(0);
+
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* Hardware acceleration uniquement sur desktop */
+      @media (min-width: 768px) {
+        .animate-float, .animate-scroll {
+          will-change: transform;
+          transform: translateZ(0);
+        }
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "framer-motion": "https://esm.sh/framer-motion@^12.29.2"
-  }
-}
-</script>
-</head>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+        "framer-motion": "https://esm.sh/framer-motion@^12.29.2"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="/index.css">
+  </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

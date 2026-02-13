@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './index.css'; 
 import { 
   Zap, 
   BarChart3, 
@@ -32,7 +33,16 @@ import {
   Linkedin,
   Twitter
 } from 'lucide-react';
-import { motion, AnimatePresence, useScroll, useTransform, useInView, animate, Variants } from 'framer-motion';
+import { 
+  motion, 
+  AnimatePresence, 
+  useScroll, 
+  useTransform, 
+  useInView, 
+  animate, 
+  Variants,
+  useReducedMotion 
+} from 'framer-motion';
 import { 
   ServiceItem, 
   TestimonialItem, 
@@ -213,11 +223,11 @@ const HeroLogos = [
 // --- ANIMATION VARIANTS ---
 
 const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 20 }, // Reduced distance for faster feel
+  hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" } // Faster duration
+    transition: { duration: 0.5, ease: "easeOut" }
   }
 };
 
@@ -226,7 +236,7 @@ const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1 // Faster stagger
+      staggerChildren: 0.1
     }
   }
 };
@@ -239,7 +249,7 @@ const Navbar = ({ currentView, onChangeView }: { currentView: string, onChangeVi
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true }); // Passive listener for performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -336,7 +346,7 @@ const ContactPage = () => {
               height="100%" 
               className="border-0"
               title="Réserver un appel avec Althoce"
-              sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+              sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
               loading="lazy"
               style={{ display: 'block' }}
             ></iframe>
@@ -486,18 +496,19 @@ const PrivacyPage = () => {
 
 const Hero = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
   const { scrollY } = useScroll();
+  
+  // OPTIMISATION MOBILE: Désactiver useScroll si < 768px pour éviter les recalculs coûteux
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
-    // Only enable parallax on larger screens to save CPU on mobile
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener('resize', checkMobile, { passive: true });
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const y1 = useTransform(scrollY, [0, 500], [0, isMobile ? 0 : 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, isMobile ? 0 : -150]);
 
   const titleWords = ["Conception", "des", "automatisations", "qui", "génèrent", "(vraiment)", "du", "ROI."];
 
@@ -506,11 +517,11 @@ const Hero = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
       
       {/* Parallax Orbs - STATIC on Mobile for Performance */}
       <motion.div 
-        style={{ y: isMobile ? 0 : y1 }} 
+        style={{ y: y1 }} 
         className="absolute top-1/4 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-200/40 rounded-full blur-[80px] md:blur-[100px] pointer-events-none mix-blend-multiply"
       ></motion.div>
       <motion.div 
-        style={{ y: isMobile ? 0 : y2 }} 
+        style={{ y: y2 }} 
         className="absolute bottom-1/4 right-1/4 w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-blue-100/60 rounded-full blur-[80px] md:blur-[100px] pointer-events-none mix-blend-multiply"
       ></motion.div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-white/40 blur-[80px] rounded-full z-0"></div>
@@ -573,9 +584,9 @@ const Hero = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
           <motion.div variants={fadeInUp} className="mt-8 md:mt-12 flex justify-center">
              <div className="group flex items-center gap-3 md:gap-4 px-4 py-2 md:px-6 md:py-3 bg-white/80 backdrop-blur-sm rounded-full border border-dashed border-slate-300 shadow-sm hover:border-electric/40 transition-all duration-300 hover:shadow-md cursor-default">
                 <div className="flex -space-x-3">
-                  <img className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover shadow-sm" src={getOptimizedImage("https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64", 64)} alt="Client 1" />
-                  <img className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover shadow-sm" src={getOptimizedImage("https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64", 64)} alt="Client 2" />
-                  <img className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover shadow-sm" src={getOptimizedImage("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64", 64)} alt="Client 3" />
+                  <img width={40} height={40} className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover shadow-sm" src={getOptimizedImage("https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64", 64)} alt="Client 1" />
+                  <img width={40} height={40} className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover shadow-sm" src={getOptimizedImage("https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64", 64)} alt="Client 2" />
+                  <img width={40} height={40} className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover shadow-sm" src={getOptimizedImage("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64", 64)} alt="Client 3" />
                 </div>
                 <div className="text-left">
                   <p className="text-xs md:text-sm font-medium text-slate-600">
@@ -600,7 +611,7 @@ const Hero = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
                <div className="flex animate-scroll whitespace-nowrap items-center min-w-full shrink-0 justify-around">
                   {HeroLogos.map((src, i) => (
                     <div key={i} className="mx-8 md:mx-12 shrink-0 flex items-center justify-center">
-                      <img src={src} alt="Tech Partner" loading="lazy" className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                      <img width={150} height={64} src={src} alt="Tech Partner" loading="lazy" className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
                     </div>
                   ))}
                </div>
@@ -609,7 +620,7 @@ const Hero = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
                <div className="flex animate-scroll whitespace-nowrap items-center min-w-full shrink-0 justify-around">
                   {HeroLogos.map((src, i) => (
                     <div key={`dup-${i}`} className="mx-8 md:mx-12 shrink-0 flex items-center justify-center">
-                      <img src={src} alt="Tech Partner" loading="lazy" className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                      <img width={150} height={64} src={src} alt="Tech Partner" loading="lazy" className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
                     </div>
                   ))}
                </div>
@@ -820,7 +831,8 @@ const ProblemSolution = () => {
 const Methodology = () => {
   return (
     <section id="methodology" className="py-16 md:py-32 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-multiply"></div>
+      {/* OPTIMISATION: Remplacement de l'image externe par une classe bg-noise en DataURI */}
+      <div className="absolute inset-0 bg-noise opacity-10 mix-blend-multiply"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white opacity-80"></div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -969,8 +981,8 @@ const UseCases = () => {
 const Values = () => {
   return (
     <section className="py-16 md:py-24 bg-white relative overflow-hidden border-t border-slate-100">
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-multiply pointer-events-none"></div>
+      {/* Background Grid Pattern - bg-noise replacement */}
+      <div className="absolute inset-0 bg-noise opacity-20 mix-blend-multiply pointer-events-none"></div>
       <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #e2e8f0 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -1033,7 +1045,8 @@ const Values = () => {
                   transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                   className="absolute left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-50 z-10 blur-sm"
                 ></motion.div>
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
+                {/* bg-noise replacement */}
+                <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay"></div>
                 
                 <div className="relative z-20 flex justify-between items-start mb-8">
                    <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10">
@@ -1066,7 +1079,7 @@ const Values = () => {
                         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64"
                       ].map((src, i) => (
                         <div key={i} className={`w-10 h-10 rounded-full border-2 border-white overflow-hidden z-${30-i*10} shadow-sm`}>
-                           <img src={getOptimizedImage(src, 64)} alt="Team Member" loading="lazy" className="w-full h-full object-cover" />
+                           <img width={40} height={40} src={getOptimizedImage(src, 64)} alt="Team Member" loading="lazy" className="w-full h-full object-cover" />
                         </div>
                       ))}
                       <div className="w-10 h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500 z-0">
@@ -1214,6 +1227,8 @@ const Testimonials = () => {
                         {testimonials[currentIndex].image ? (
                             <div className="w-20 h-20 md:w-24 md:h-24 rounded-full p-1 bg-gradient-to-br from-electric via-purple-400 to-indigo-500 shadow-xl shadow-electric/20">
                                 <img 
+                                    width={96}
+                                    height={96}
                                     src={getOptimizedImage(testimonials[currentIndex].image!, 200)} 
                                     alt={testimonials[currentIndex].author} 
                                     loading="lazy"
@@ -1313,7 +1328,7 @@ const Partners = () => {
               key={i}
               className="mx-8 md:mx-16 flex items-center justify-center transition-all duration-500 cursor-default hover:scale-105 opacity-90 hover:opacity-100"
             >
-              <img src={partner.src} alt={partner.name} loading="lazy" className="h-10 md:h-14 w-auto object-contain" />
+              <img width={140} height={56} src={partner.src} alt={partner.name} loading="lazy" className="h-10 md:h-14 w-auto object-contain" />
             </div>
           ))}
         </div>
@@ -1324,7 +1339,7 @@ const Partners = () => {
               key={`dup-${i}`}
               className="mx-8 md:mx-16 flex items-center justify-center transition-all duration-500 cursor-default hover:scale-105 opacity-90 hover:opacity-100"
             >
-              <img src={partner.src} alt={partner.name} loading="lazy" className="h-10 md:h-14 w-auto object-contain" />
+              <img width={140} height={56} src={partner.src} alt={partner.name} loading="lazy" className="h-10 md:h-14 w-auto object-contain" />
             </div>
           ))}
         </div>
@@ -1430,6 +1445,9 @@ const Footer = ({ onChangeView, showCta = true }: { onChangeView: (view: string,
     { name: 'Confidentialité', action: () => onChangeView('privacy') },
   ];
 
+  // OPTIMISATION: Hook pour respecter les préférences de mouvement réduit
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <footer id="contact" className="pt-0"> {/* Removed padding/bg from main wrapper to allow split backgrounds */}
       
@@ -1474,20 +1492,22 @@ const Footer = ({ onChangeView, showCta = true }: { onChangeView: (view: string,
                 </motion.button>
               </div>
 
-              {/* Floating Icons */}
+              {/* Floating Icons - OPTIMISATION: Arrêt de l'animation hors viewport et reduced motion */}
               <div className="absolute inset-0 pointer-events-none">
                 {floatingIcons.map((item, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    animate={{ 
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: false, amount: 0.1 }}
+                    animate={shouldReduceMotion ? {} : { 
                         y: [0, -10, 0],
                     }}
                     transition={{ 
                       duration: 3 + idx, 
                       repeat: Infinity, 
-                      ease: "easeInOut" 
+                      ease: "easeInOut",
+                      repeatType: "mirror" 
                     }}
                     className={`absolute p-4 rounded-2xl backdrop-blur-md border border-white/5 bg-white/5 ${item.pos}`}
                   >
