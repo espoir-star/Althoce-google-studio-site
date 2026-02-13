@@ -48,7 +48,7 @@
               'pulse-glow': 'pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'shimmer': 'shimmer 2s linear infinite',
               'text-reveal': 'text-reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s',
-              'scroll': 'scroll 20s linear infinite',
+              'scroll': 'scroll 30s linear infinite',
             },
             keyframes: {
               orbit: {
@@ -118,9 +118,20 @@
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-      /* Hardware acceleration uniquement sur desktop */
+      /* Hardware acceleration pour l'animation de scroll (mobile et desktop) */
+      .animate-scroll {
+        will-change: transform;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
+      }
+
+      /* Hardware acceleration uniquement sur desktop pour float pour économiser la batterie sur mobile */
       @media (min-width: 768px) {
-        .animate-float, .animate-scroll {
+        .animate-float {
           will-change: transform;
           transform: translateZ(0);
         }
