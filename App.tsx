@@ -1605,8 +1605,8 @@ const App = () => {
   const handleChangeView = (view: string, id?: string) => {
     setCurrentView(view);
     
-    // Handle scrolling logic
     if (view === 'home' && id) {
+      // Scroll vers une section spécifique de la home
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
@@ -1618,9 +1618,17 @@ const App = () => {
             behavior: "smooth"
           });
         }
-      }, 100); // Small delay to allow react to render the home view
+      }, 150);
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Scroll en haut — délai pour laisser React finir le re-render
+      // Méthode robuste compatible iOS Safari et Android
+      setTimeout(() => {
+        // Méthode 1 : scrollTo standard
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        // Méthode 2 : fallback direct sur document (compatibilité iOS)
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 50);
     }
   };
 
