@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './index.css'; 
-import { 
-  Zap, 
-  BarChart3, 
-  Users, 
-  ShieldCheck, 
-  Cpu, 
-  Layers, 
-  ArrowRight, 
-  ArrowLeft, 
-  Menu, 
+import './index.css';
+import {
+  Zap,
+  BarChart3,
+  Users,
+  ShieldCheck,
+  Cpu,
+  Layers,
+  ArrowRight,
+  ArrowLeft,
+  Menu,
   X,
   CheckCircle2,
   ChevronDown,
@@ -31,8 +31,10 @@ import {
   FileText,
   Scale,
   Linkedin,
-  Twitter
+  Twitter,
+  BookOpen
 } from 'lucide-react';
+import { BlogPost, getAllPosts, getPostBySlug } from './lib/blog';
 import { 
   motion, 
   AnimatePresence, 
@@ -273,6 +275,7 @@ const Navbar = ({ currentView, onChangeView }: { currentView: string, onChangeVi
           <button onClick={() => handleNavClick('home', 'services')} className="hover:text-electric transition-colors">Services</button>
           <button onClick={() => handleNavClick('home', 'testimonials')} className="hover:text-electric transition-colors">Témoignages</button>
           <button onClick={() => handleNavClick('home', 'faq')} className="hover:text-electric transition-colors">FAQ</button>
+          <button onClick={() => handleNavClick('blog')} className="hover:text-electric transition-colors">Blog</button>
           <button onClick={() => handleNavClick('contact')} className="bg-slate-900 text-white px-5 py-2 rounded-full border border-slate-900 transition-all hover:bg-slate-800 hover:shadow-lg">
             Contact
           </button>
@@ -300,6 +303,7 @@ const Navbar = ({ currentView, onChangeView }: { currentView: string, onChangeVi
             <button onClick={() => handleNavClick('home', 'services')} className="block w-full text-left text-slate-600 hover:text-electric py-2">Services</button>
             <button onClick={() => handleNavClick('home', 'testimonials')} className="block w-full text-left text-slate-600 hover:text-electric py-2">Témoignages</button>
             <button onClick={() => handleNavClick('home', 'faq')} className="block w-full text-left text-slate-600 hover:text-electric py-2">FAQ</button>
+            <button onClick={() => handleNavClick('blog')} className="block w-full text-left text-slate-600 hover:text-electric py-2">Blog</button>
             <button onClick={() => handleNavClick('contact')} className="block w-full text-center bg-slate-900 text-white px-5 py-3 rounded-lg font-medium shadow-lg shadow-slate-900/20">
               Contact
             </button>
@@ -1422,6 +1426,7 @@ const Footer = ({ onChangeView, showCta = true }: { onChangeView: (view: string,
     { name: 'Services', action: () => onChangeView('home', 'services') },
     { name: 'Témoignages', action: () => onChangeView('home', 'testimonials') },
     { name: 'FAQ', action: () => onChangeView('home', 'faq') },
+    { name: 'Blog', action: () => onChangeView('blog') },
   ];
 
   const legalLinks = [
@@ -1599,33 +1604,229 @@ const Footer = ({ onChangeView, showCta = true }: { onChangeView: (view: string,
   );
 };
 
+// ── Blog ────────────────────────────────────────────────────
+
+const CATEGORY_STYLES: Record<string, string> = {
+  "Cas d'usage":   "bg-electric/10 text-electric border-electric/20",
+  "Guide pratique":"bg-blue-50 text-blue-600 border-blue-100",
+  "Décryptage":    "bg-amber-50 text-amber-700 border-amber-100",
+  "Coulisses":     "bg-emerald-50 text-emerald-700 border-emerald-100",
+};
+
+const ALL_CATEGORIES = ["Tous", "Cas d'usage", "Guide pratique", "Décryptage", "Coulisses"];
+
+const BlogIndexPage = ({ onChangeView }: { onChangeView: (view: string, slug?: string) => void }) => {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [activeCategory, setActiveCategory] = useState('Tous');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getAllPosts().then(p => { setPosts(p); setLoading(false); });
+  }, []);
+
+  const filtered = activeCategory === 'Tous' ? posts : posts.filter(p => p.category === activeCategory);
+
+  return (
+    <div className="pt-24 pb-12 md:pt-32 md:pb-20 min-h-screen bg-slate-50">
+      <div className="container mx-auto px-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-bold font-display tracking-widest uppercase text-slate-900 shadow-sm mb-6">
+            <BookOpen className="w-3 h-3 text-electric" />
+            Blog
+          </div>
+          <h1 className="text-4xl md:text-5xl font-display font-bold text-slate-900 mb-4">
+            Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-purple-500">Insights</span>
+          </h1>
+          <p className="text-slate-500 text-lg max-w-xl mx-auto">
+            Cas d'usage, guides pratiques et décryptages sur l'IA pour les PME françaises.
+          </p>
+        </motion.div>
+
+        {/* Filtres par catégorie */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {ALL_CATEGORIES.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${
+                activeCategory === cat
+                  ? 'bg-slate-900 text-white border-slate-900'
+                  : 'bg-white text-slate-600 border-slate-200 hover:border-slate-400'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Grille d'articles */}
+        {loading ? (
+          <div className="text-center py-20 text-slate-400">Chargement…</div>
+        ) : filtered.length === 0 ? (
+          <div className="text-center py-20">
+            <p className="text-slate-400 text-lg">Aucun article publié pour l'instant.</p>
+          </div>
+        ) : (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {filtered.map((post) => (
+              <motion.article
+                key={post.slug}
+                variants={fadeInUp}
+                className="bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-electric/30 transition-all duration-300 p-6 flex flex-col cursor-pointer group"
+                onClick={() => onChangeView('blog-post', post.slug)}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold border ${CATEGORY_STYLES[post.category]}`}>
+                    {post.category}
+                  </span>
+                  <span className="text-xs text-slate-400">{post.readingTime}</span>
+                </div>
+                <h2 className="text-xl font-bold font-display text-slate-900 mb-3 group-hover:text-electric transition-colors leading-snug">
+                  {post.title}
+                </h2>
+                <p className="text-slate-500 text-sm leading-relaxed flex-1 mb-4">{post.excerpt}</p>
+                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                  <span className="text-xs text-slate-400">
+                    {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </span>
+                  <span className="text-electric text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                    Lire <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const BlogPostPage = ({ slug, onChangeView }: { slug: string; onChangeView: (view: string, id?: string) => void }) => {
+  const [post, setPost] = useState<BlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    getPostBySlug(slug).then(p => { setPost(p); setLoading(false); });
+  }, [slug]);
+
+  if (loading) {
+    return <div className="min-h-screen bg-slate-50 flex items-center justify-center text-slate-400">Chargement…</div>;
+  }
+
+  if (!post) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center gap-4">
+        <p className="text-slate-400 text-lg">Article introuvable.</p>
+        <button onClick={() => onChangeView('blog')} className="text-electric font-medium hover:underline flex items-center gap-1">
+          <ArrowLeft className="w-4 h-4" /> Retour au blog
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="pt-24 pb-12 md:pt-32 md:pb-20 min-h-screen bg-slate-50">
+      <div className="container mx-auto px-6 max-w-3xl">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+
+          {/* Retour */}
+          <button
+            onClick={() => onChangeView('blog')}
+            className="flex items-center gap-2 text-slate-500 hover:text-electric transition-colors mb-8 text-sm font-medium"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Retour au blog
+          </button>
+
+          {/* En-tête */}
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12 mb-6">
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className={`px-3 py-1 rounded-full text-xs font-bold border ${CATEGORY_STYLES[post.category]}`}>
+                {post.category}
+              </span>
+              <span className="text-slate-300">·</span>
+              <span className="text-slate-400 text-xs">{post.readingTime}</span>
+              <span className="text-slate-300">·</span>
+              <span className="text-slate-400 text-xs">
+                {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4 leading-tight">
+              {post.title}
+            </h1>
+            <p className="text-slate-500 text-lg leading-relaxed border-l-4 border-electric/30 pl-4">
+              {post.excerpt}
+            </p>
+          </div>
+
+          {/* Contenu */}
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12 mb-8">
+            <div className="blog-prose" dangerouslySetInnerHTML={{ __html: post.content }} />
+          </div>
+
+          {/* CTA */}
+          <div className="bg-slate-900 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute -top-16 -left-16 w-64 h-64 bg-electric/10 blur-[80px] rounded-full"></div>
+              <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-purple-600/10 blur-[80px] rounded-full"></div>
+            </div>
+            <div className="relative z-10">
+              <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3">
+                Prêt à passer à l'action ?
+              </h3>
+              <p className="text-slate-400 mb-6 text-lg">
+                Discutons de votre premier agent IA lors d'un audit gratuit.
+              </p>
+              <button
+                onClick={() => onChangeView('contact')}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 rounded-full font-bold hover:bg-slate-100 transition-colors"
+              >
+                Réserver un audit gratuit
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+// ── App ─────────────────────────────────────────────────────
+
 const App = () => {
   const [currentView, setCurrentView] = useState('home');
+  const [currentSlug, setCurrentSlug] = useState('');
 
-  const handleChangeView = (view: string, id?: string) => {
+  const handleChangeView = (view: string, idOrSlug?: string) => {
+    if (view === 'blog-post' && idOrSlug) {
+      setCurrentSlug(idOrSlug);
+    }
     setCurrentView(view);
-    
-    if (view === 'home' && id) {
+
+    if (view === 'home' && idOrSlug) {
       // Scroll vers une section spécifique de la home
       setTimeout(() => {
-        const element = document.getElementById(id);
+        const element = document.getElementById(idOrSlug);
         if (element) {
           const headerOffset = 100;
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
       }, 150);
     } else {
-      // Scroll en haut — délai pour laisser React finir le re-render
-      // Méthode robuste compatible iOS Safari et Android
+      // Scroll en haut — méthode robuste compatible iOS Safari et Android
       setTimeout(() => {
-        // Méthode 1 : scrollTo standard
         window.scrollTo({ top: 0, behavior: 'instant' });
-        // Méthode 2 : fallback direct sur document (compatibilité iOS)
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
       }, 50);
@@ -1635,7 +1836,7 @@ const App = () => {
   return (
     <div className="bg-slate-50 text-slate-900 font-sans min-h-screen selection:bg-electric/20 selection:text-electric">
       <Navbar currentView={currentView} onChangeView={handleChangeView} />
-      
+
       {currentView === 'home' ? (
         <>
           <Hero onChangeView={handleChangeView} />
@@ -1649,6 +1850,16 @@ const App = () => {
           <Partners />
           <FAQ />
           <Footer onChangeView={handleChangeView} />
+        </>
+      ) : currentView === 'blog' ? (
+        <>
+          <BlogIndexPage onChangeView={handleChangeView} />
+          <Footer onChangeView={handleChangeView} showCta={false} />
+        </>
+      ) : currentView === 'blog-post' ? (
+        <>
+          <BlogPostPage slug={currentSlug} onChangeView={handleChangeView} />
+          <Footer onChangeView={handleChangeView} showCta={false} />
         </>
       ) : currentView === 'contact' ? (
         <>

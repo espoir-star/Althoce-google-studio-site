@@ -1,1 +1,121 @@
 /* Styles gérés via Tailwind CDN dans index.html */
+
+/* ── Blog prose styles ─────────────────────────────────────── */
+.blog-prose {
+  color: #475569; /* slate-600 */
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.blog-prose h1,
+.blog-prose h2,
+.blog-prose h3,
+.blog-prose h4 {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  color: #0f172a; /* slate-900 */
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.blog-prose h1 { font-size: 1.875rem; }
+.blog-prose h2 { font-size: 1.5rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem; }
+.blog-prose h3 { font-size: 1.25rem; }
+.blog-prose h4 { font-size: 1.1rem; }
+
+.blog-prose p {
+  margin-bottom: 1.25rem;
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.blog-prose ul { list-style-type: disc; }
+.blog-prose ol { list-style-type: decimal; }
+
+.blog-prose li {
+  margin-bottom: 0.4rem;
+}
+
+.blog-prose strong {
+  font-weight: 700;
+  color: #1e293b; /* slate-800 */
+}
+
+.blog-prose em {
+  font-style: italic;
+}
+
+.blog-prose a {
+  color: #7c3aed; /* electric */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.blog-prose a:hover {
+  color: #6d28d9;
+}
+
+.blog-prose code {
+  background: #f1f5f9; /* slate-100 */
+  color: #1e293b;
+  padding: 0.15em 0.4em;
+  border-radius: 0.35rem;
+  font-size: 0.875em;
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+.blog-prose pre {
+  background: #0f172a; /* slate-900 */
+  color: #e2e8f0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.blog-prose pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.blog-prose blockquote {
+  border-left: 4px solid #7c3aed40;
+  padding-left: 1.25rem;
+  color: #64748b; /* slate-500 */
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+
+.blog-prose hr {
+  border: none;
+  border-top: 1px solid #e2e8f0; /* slate-200 */
+  margin: 2rem 0;
+}
+
+.blog-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.blog-prose th,
+.blog-prose td {
+  border: 1px solid #e2e8f0;
+  padding: 0.6rem 1rem;
+  text-align: left;
+}
+
+.blog-prose th {
+  background: #f8fafc;
+  font-weight: 700;
+  color: #0f172a;
+}
