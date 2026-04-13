@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, createContext, useContext, useCallback } from 'react';
+import { Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import './index.css';
 import {
   Zap,
@@ -35,6 +37,11 @@ import {
   BookOpen
 } from 'lucide-react';
 import { BlogPost, getAllPosts, getPostBySlug } from './lib/blog';
+
+// ── Navigation Context ───────────────────────────────────────
+type NavHandler = (view: string, idOrSlug?: string) => void;
+const NavigationContext = createContext<NavHandler>(() => {});
+const useAppNav = () => useContext(NavigationContext);
 import { 
   motion, 
   AnimatePresence, 
@@ -245,7 +252,9 @@ const staggerContainer: Variants = {
 
 // --- COMPONENTS ---
 
-const Navbar = ({ currentView, onChangeView }: { currentView: string, onChangeView: (view: string, id?: string) => void }) => {
+const Navbar = () => {
+  const onChangeView = useAppNav();
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -601,7 +610,8 @@ const PrivacyPage = () => {
   );
 };
 
-const Hero = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
+const Hero = () => {
+  const onChangeView = useAppNav();
   const { scrollY } = useScroll();
   
   // OPTIMISATION MOBILE: Désactiver useScroll si < 768px pour éviter les recalculs coûteux
@@ -1206,7 +1216,8 @@ const Values = () => {
   );
 };
 
-const Services = ({ onChangeView }: { onChangeView: (view: string) => void }) => {
+const Services = () => {
+  const onChangeView = useAppNav();
   return (
     <section id="services" className="py-16 md:py-32 relative overflow-hidden bg-slate-50/50">
        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
@@ -1411,7 +1422,8 @@ const Testimonials = () => {
   );
 };
 
-const Footer = ({ onChangeView, showCta = true }: { onChangeView: (view: string, id?: string) => void, showCta?: boolean }) => {
+const Footer = ({ showCta = true }: { showCta?: boolean }) => {
+  const onChangeView = useAppNav();
   const floatingIcons = [
     { icon: Zap, color: "text-amber-300", bg: "bg-amber-500/10", border: "border-amber-500/20", pos: "top-[10%] left-[5%] md:left-[10%]", delay: 0 },
     { icon: Lock, color: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20", pos: "top-[5%] left-1/2 -translate-x-1/2", delay: 1 },
@@ -1615,7 +1627,8 @@ const CATEGORY_STYLES: Record<string, string> = {
 
 const ALL_CATEGORIES = ["Tous", "Cas d'usage", "Guide pratique", "Décryptage", "Coulisses"];
 
-const BlogIndexPage = ({ onChangeView }: { onChangeView: (view: string, slug?: string) => void }) => {
+const BlogIndexPage = () => {
+  const onChangeView = useAppNav();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [activeCategory, setActiveCategory] = useState('Tous');
   const [loading, setLoading] = useState(true);
@@ -1707,7 +1720,9 @@ const BlogIndexPage = ({ onChangeView }: { onChangeView: (view: string, slug?: s
   );
 };
 
-const BlogPostPage = ({ slug, onChangeView }: { slug: string; onChangeView: (view: string, id?: string) => void }) => {
+const BlogPostPage = () => {
+  const { slug = '' } = useParams<{ slug: string }>();
+  const onChangeView = useAppNav();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -1800,85 +1815,137 @@ const BlogPostPage = ({ slug, onChangeView }: { slug: string; onChangeView: (vie
   );
 };
 
-// ── App ─────────────────────────────────────────────────────
+// ── AppShell (layout + routing) ─────────────────────────────
 
-const App = () => {
-  const [currentView, setCurrentView] = useState('home');
-  const [currentSlug, setCurrentSlug] = useState('');
+const AppShell = () => {
+  const navigate = useNavigate();
 
-  const handleChangeView = (view: string, idOrSlug?: string) => {
-    if (view === 'blog-post' && idOrSlug) {
-      setCurrentSlug(idOrSlug);
-    }
-    setCurrentView(view);
+  const handleChangeView = useCallback((view: string, idOrSlug?: string) => {
+    const viewPaths: Record<string, string> = {
+      home: '/',
+      blog: '/blog',
+      contact: '/contact',
+      legal: '/mentions-legales',
+      privacy: '/confidentialite',
+    };
 
     if (view === 'home' && idOrSlug) {
-      // Scroll vers une section spécifique de la home
+      navigate('/');
       setTimeout(() => {
         const element = document.getElementById(idOrSlug);
         if (element) {
           const headerOffset = 100;
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
       }, 150);
+    } else if (view === 'blog-post' && idOrSlug) {
+      navigate(`/blog/${idOrSlug}`);
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 50);
     } else {
-      // Scroll en haut — méthode robuste compatible iOS Safari et Android
+      navigate(viewPaths[view] || '/');
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'instant' });
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
       }, 50);
     }
-  };
+  }, [navigate]);
 
   return (
-    <div className="bg-slate-50 text-slate-900 font-sans min-h-screen selection:bg-electric/20 selection:text-electric">
-      <Navbar currentView={currentView} onChangeView={handleChangeView} />
-
-      {currentView === 'home' ? (
-        <>
-          <Hero onChangeView={handleChangeView} />
-          <StatsSection />
-          <ProblemSolution />
-          <Methodology />
-          <UseCases />
-          <Values />
-          <Services onChangeView={handleChangeView} />
-          <Testimonials />
-          <Partners />
-          <FAQ />
-          <Footer onChangeView={handleChangeView} />
-        </>
-      ) : currentView === 'blog' ? (
-        <>
-          <BlogIndexPage onChangeView={handleChangeView} />
-          <Footer onChangeView={handleChangeView} showCta={false} />
-        </>
-      ) : currentView === 'blog-post' ? (
-        <>
-          <BlogPostPage slug={currentSlug} onChangeView={handleChangeView} />
-          <Footer onChangeView={handleChangeView} showCta={false} />
-        </>
-      ) : currentView === 'contact' ? (
-        <>
-          <ContactPage />
-          <Footer onChangeView={handleChangeView} showCta={false} />
-        </>
-      ) : currentView === 'legal' ? (
-        <>
-          <LegalPage />
-          <Footer onChangeView={handleChangeView} showCta={false} />
-        </>
-      ) : (
-        <>
-          <PrivacyPage />
-          <Footer onChangeView={handleChangeView} showCta={false} />
-        </>
-      )}
-    </div>
+    <NavigationContext.Provider value={handleChangeView}>
+      <div className="bg-slate-50 text-slate-900 font-sans min-h-screen selection:bg-electric/20 selection:text-electric">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Helmet>
+                <title>Althoce | Agents IA & Automatisation pour PME françaises</title>
+                <meta name="description" content="Althoce conçoit des agents IA et automatisations sur-mesure pour libérer vos équipes des tâches répétitives. +5M€ économisés, +758 flows créés, -70% de temps administratif." />
+                <meta property="og:title" content="Althoce | Agents IA & Automatisation pour PME" />
+                <meta property="og:description" content="Conception des automatisations qui génèrent (vraiment) du ROI. Libérez vos talents des tâches répétitives." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://althoce.com" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Althoce | Agents IA & Automatisation pour PME" />
+                <meta name="twitter:description" content="Conception des automatisations qui génèrent (vraiment) du ROI." />
+                <link rel="canonical" href="https://althoce.com" />
+              </Helmet>
+              <Hero />
+              <StatsSection />
+              <ProblemSolution />
+              <Methodology />
+              <UseCases />
+              <Values />
+              <Services />
+              <Testimonials />
+              <Partners />
+              <FAQ />
+              <Footer />
+            </>
+          } />
+          <Route path="/blog" element={
+            <>
+              <Helmet>
+                <title>Blog | Althoce — IA & Automatisation pour PME</title>
+                <meta name="description" content="Cas d'usage concrets, guides pratiques et décryptages sur l'IA et l'automatisation pour les PME et agences françaises." />
+                <meta property="og:title" content="Blog Althoce — Insights IA & Automatisation" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://althoce.com/blog" />
+                <link rel="canonical" href="https://althoce.com/blog" />
+              </Helmet>
+              <BlogIndexPage />
+              <Footer showCta={false} />
+            </>
+          } />
+          <Route path="/blog/:slug" element={
+            <>
+              <BlogPostPage />
+              <Footer showCta={false} />
+            </>
+          } />
+          <Route path="/contact" element={
+            <>
+              <Helmet>
+                <title>Réserver un Audit Gratuit | Althoce</title>
+                <meta name="description" content="Réservez un appel gratuit de 30 minutes avec Althoce. Nous analyserons vos besoins et déterminerons comment l'IA peut transformer votre activité." />
+                <meta property="og:title" content="Réserver un Audit Gratuit | Althoce" />
+                <meta property="og:url" content="https://althoce.com/contact" />
+                <link rel="canonical" href="https://althoce.com/contact" />
+              </Helmet>
+              <ContactPage />
+              <Footer showCta={false} />
+            </>
+          } />
+          <Route path="/mentions-legales" element={
+            <>
+              <Helmet>
+                <title>Mentions Légales | Althoce</title>
+                <meta name="robots" content="noindex, nofollow" />
+              </Helmet>
+              <LegalPage />
+              <Footer showCta={false} />
+            </>
+          } />
+          <Route path="/confidentialite" element={
+            <>
+              <Helmet>
+                <title>Politique de Confidentialité | Althoce</title>
+                <meta name="robots" content="noindex, nofollow" />
+              </Helmet>
+              <PrivacyPage />
+              <Footer showCta={false} />
+            </>
+          } />
+        </Routes>
+      </div>
+    </NavigationContext.Provider>
   );
 };
 
-export default App;
+export default AppShell;
