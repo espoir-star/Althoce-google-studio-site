@@ -1,4 +1,9 @@
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 import { marked } from 'marked';
+
+const BLOG_DIR = path.join(process.cwd(), 'content/blog');
 
 export type BlogCategory = "Cas d'usage" | 'Guide pratique' | 'Décryptage' | 'Coulisses';
 
@@ -13,32 +18,15 @@ export interface BlogPost {
   content: string;
 }
 
-function parseFrontmatter(raw: string): { data: Record<string, string>; body: string } {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
-  if (!match) return { data: {}, body: raw };
-
-  const data: Record<string, string> = {};
-  for (const line of match[1].split('\n')) {
-    const colonIdx = line.indexOf(':');
-    if (colonIdx === -1) continue;
-    const key = line.slice(0, colonIdx).trim();
-    const val = line.slice(colonIdx + 1).trim().replace(/^["']|["']$/g, '');
-    data[key] = val;
-  }
-
-  return { data, body: match[2] };
-}
-
-const mdModules = import.meta.glob('../content/blog/*.md', { query: '?raw', import: 'default', eager: false });
-
-export async function getAllPosts(): Promise<BlogPost[]> {
+export function getAllPosts(): BlogPost[] {
+  const files = fs.readdirSync(BLOG_DIR);
   const posts: BlogPost[] = [];
 
-  for (const [filePath, loader] of Object.entries(mdModules)) {
-    if (filePath.includes('_template')) continue;
-    const raw = (await loader()) as string;
-    const { data, body } = parseFrontmatter(raw);
-    if (data.published !== 'true') continue;
+  for (const file of files) {
+    if (!file.endsWith('.md') || file.startsWith('_')) continue;
+    const raw = fs.readFileSync(path.join(BLOG_DIR, file), 'utf-8');
+    const { data, content } = matter(raw);
+    if (!data.published) continue;
 
     posts.push({
       title: data.title ?? '',
@@ -48,14 +36,13 @@ export async function getAllPosts(): Promise<BlogPost[]> {
       readingTime: data.readingTime ?? '5 min',
       slug: data.slug ?? '',
       published: true,
-      content: marked(body) as string,
+      content: marked(content) as string,
     });
   }
 
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  const posts = await getAllPosts();
-  return posts.find(p => p.slug === slug) ?? null;
+export function getPostBySlug(slug: string): BlogPost | null {
+  return getAllPosts().find(p => p.slug === slug) ?? null;
 }
