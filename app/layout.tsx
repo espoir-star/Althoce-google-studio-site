@@ -31,15 +31,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+        {/* Organization — présent sur toutes les pages */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
+              "@id": "https://althoce.com/#organization",
               "name": "Althoce",
               "url": "https://althoce.com",
               "description": "Agence spécialisée en agents IA et automatisation pour PME françaises",
+              "foundingDate": "2024",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "5 RUE FENELON",
@@ -50,8 +53,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "contactPoint": {
                 "@type": "ContactPoint",
                 "email": "contact@althoce.com",
-                "contactType": "customer service"
-              }
+                "contactType": "customer service",
+                "availableLanguage": "French"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "France"
+              },
+              "sameAs": []
             })
           }}
         />

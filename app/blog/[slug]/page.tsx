@@ -32,6 +32,7 @@ export async function generateMetadata(
       description: post.excerpt,
       type: 'article',
       url: `https://althoce.com/blog/${post.slug}`,
+      publishedTime: post.date,
     },
     twitter: {
       title: post.title,
@@ -48,8 +49,39 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `https://althoce.com/blog/${post.slug}#article`,
+    "headline": post.title,
+    "description": post.excerpt,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "url": `https://althoce.com/blog/${post.slug}`,
+    "inLanguage": "fr-FR",
+    "author": {
+      "@id": "https://althoce.com/#organization",
+    },
+    "publisher": {
+      "@id": "https://althoce.com/#organization",
+    },
+    "isPartOf": {
+      "@id": "https://althoce.com/blog#blog",
+    },
+    "articleSection": post.category,
+    "keywords": post.category,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://althoce.com/blog/${post.slug}`,
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <div className="pt-24 pb-12 md:pt-32 md:pb-20 min-h-screen bg-slate-50">
         <div className="container mx-auto px-6 max-w-3xl">
           <Link
