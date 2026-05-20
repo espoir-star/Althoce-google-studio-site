@@ -276,7 +276,7 @@ export const faqsV2: FAQv2Item[] = [
 
 export const cities = {
   main: ['Paris', 'Lyon', 'Bordeaux', 'Toulouse', 'Marseille'],
-  secondary: ['Nantes', 'Lille', 'Strasbourg', 'Nice', 'Rennes', 'Montpellier', 'Grenoble', 'Dijon', 'Reims', 'Angers', 'Le Havre', 'Brest', 'Saint-Étienne', 'Toulon', 'Nîmes'],
+  secondary: ['Nantes', 'Lille', 'Strasbourg', 'Nice', 'Rennes', 'Montpellier', 'Grenoble', 'Dijon', 'Reims', 'Angers', 'Le Havre', 'Saint-Étienne', 'Toulon', 'Nîmes'],
 };
 
 export const heroLogos = [

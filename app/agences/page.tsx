@@ -69,8 +69,7 @@ const jsonLd = {
         { "@type": "ListItem", "position": 16, "url": "https://althoce.com/agence-ia-grenoble/", "name": "Grenoble" },
         { "@type": "ListItem", "position": 17, "url": "https://althoce.com/agence-ia-dijon/", "name": "Dijon" },
         { "@type": "ListItem", "position": 18, "url": "https://althoce.com/agence-ia-angers/", "name": "Angers" },
-        { "@type": "ListItem", "position": 19, "url": "https://althoce.com/agence-ia-nimes/", "name": "Nîmes" },
-        { "@type": "ListItem", "position": 20, "url": "https://althoce.com/agence-ia-brest/", "name": "Brest" }
+        { "@type": "ListItem", "position": 19, "url": "https://althoce.com/agence-ia-nimes/", "name": "Nîmes" }
       ]
     },
     {
