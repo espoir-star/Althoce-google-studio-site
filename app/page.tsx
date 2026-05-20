@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 import HomePageClient from '@/components/HomePageClient';
 import Footer from '@/components/Footer';
-import { faqs, services } from '@/lib/data';
+import { faqsV2, servicesV2 } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Althoce | Agents IA & Automatisation pour PME françaises',
-  description: 'Althoce conçoit des agents IA et automatisations sur-mesure pour libérer vos équipes des tâches répétitives. +5M€ économisés, +758 flows créés, -70% de temps administratif.',
+  title: 'Althoce | Agence IA & Automatisation — Agents 100% Autonomes pour PME',
+  description: 'Althoce déploie des agents IA 100% autonomes pour PME et ETI françaises. +150 PME accompagnées, 9M€ économisés, -95% de saisie manuelle. Bordeaux.',
   openGraph: {
-    title: 'Althoce | Agents IA & Automatisation pour PME',
-    description: 'Conception des automatisations qui génèrent (vraiment) du ROI. Libérez vos talents des tâches répétitives.',
+    title: 'Althoce | Agence IA & Automatisation — Agents 100% Autonomes',
+    description: 'Des agents IA qui travaillent à votre place, 24h/24, sans supervision. +150 PME accompagnées, 9M€ économisés.',
     url: 'https://althoce.com',
   },
   twitter: {
-    title: 'Althoce | Agents IA & Automatisation pour PME',
-    description: 'Conception des automatisations qui génèrent (vraiment) du ROI.',
+    title: 'Althoce | Agence IA & Automatisation pour PME',
+    description: 'Des agents IA 100% autonomes pour PME françaises. +150 clients, 9M€ économisés.',
   },
   alternates: {
     canonical: 'https://althoce.com',
@@ -62,11 +62,11 @@ const professionalServiceSchema = {
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Services IA & Automatisation",
-    "itemListElement": services.map((s, i) => ({
+    "itemListElement": servicesV2.map((s, i) => ({
       "@type": "Offer",
       "position": i + 1,
       "name": s.title,
-      "description": s.description,
+      "description": s.desc,
       "seller": { "@id": "https://althoce.com/#organization" },
     })),
   },
@@ -82,12 +82,12 @@ const professionalServiceSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
+  "mainEntity": faqsV2.map(faq => ({
     "@type": "Question",
-    "name": faq.question,
+    "name": faq.q,
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": faq.answer,
+      "text": faq.a,
     },
   })),
 };

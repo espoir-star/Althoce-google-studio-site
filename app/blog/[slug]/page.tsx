@@ -6,11 +6,11 @@ import BlogPostCTA from '@/components/BlogPostCTA';
 import Footer from '@/components/Footer';
 import { ArrowLeft } from 'lucide-react';
 
-const CATEGORY_STYLES: Record<string, string> = {
-  "Cas d'usage":    "bg-electric/10 text-electric border-electric/20",
-  "Guide pratique": "bg-blue-50 text-blue-600 border-blue-100",
-  "Décryptage":     "bg-amber-50 text-amber-700 border-amber-100",
-  "Coulisses":      "bg-emerald-50 text-emerald-700 border-emerald-100",
+const CATEGORY_STYLES: Record<string, { bg: string; color: string; border: string }> = {
+  "Cas d'usage":    { bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
+  "Guide pratique": { bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
+  "Décryptage":     { bg: '#fefce8', color: '#a16207', border: '#fef08a' },
+  "Coulisses":      { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
 };
 
 export async function generateStaticParams() {
@@ -82,37 +82,42 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <div className="pt-24 pb-12 md:pt-32 md:pb-20 min-h-screen bg-slate-50">
-        <div className="container mx-auto px-6 max-w-3xl">
+      <div style={{ paddingTop: 96, paddingBottom: 80, minHeight: '100vh', background: '#fafafa' }}>
+        <div style={{ maxWidth: 768, margin: '0 auto', padding: '0 24px' }}>
           <Link
             href="/blog"
-            className="flex items-center gap-2 text-slate-500 hover:text-electric transition-colors mb-8 text-sm font-medium w-fit"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#52525b', fontSize: 14, fontWeight: 600, textDecoration: 'none', marginBottom: 32 }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft style={{ width: 16, height: 16 }} />
             Retour au blog
           </Link>
 
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12 mb-6">
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className={`px-3 py-1 rounded-full text-xs font-bold border ${CATEGORY_STYLES[post.category] || ''}`}>
-                {post.category}
-              </span>
-              <span className="text-slate-300">·</span>
-              <span className="text-slate-400 text-xs">{post.readingTime}</span>
-              <span className="text-slate-300">·</span>
-              <span className="text-slate-400 text-xs">
-                {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
-              </span>
-            </div>
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4 leading-tight">
+          <div style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', padding: '40px 48px', marginBottom: 20 }}>
+            {(() => {
+              const cs = CATEGORY_STYLES[post.category] ?? { bg: '#f4f4f5', color: '#52525b', border: '#e4e4e7' };
+              return (
+                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10, marginBottom: 24 }}>
+                  <span style={{ padding: '4px 12px', borderRadius: 9999, fontSize: 12, fontWeight: 700, background: cs.bg, color: cs.color, border: `1px solid ${cs.border}` }}>
+                    {post.category}
+                  </span>
+                  <span style={{ color: '#d4d4d8' }}>·</span>
+                  <span style={{ fontSize: 13, color: '#a1a1aa' }}>{post.readingTime}</span>
+                  <span style={{ color: '#d4d4d8' }}>·</span>
+                  <span style={{ fontSize: 13, color: '#a1a1aa' }}>
+                    {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </span>
+                </div>
+              );
+            })()}
+            <h1 style={{ fontSize: 'clamp(24px,3vw,36px)', fontWeight: 800, letterSpacing: '-.03em', color: '#09090b', marginBottom: 16, lineHeight: 1.2 }}>
               {post.title}
             </h1>
-            <p className="text-slate-500 text-lg leading-relaxed border-l-4 border-electric/30 pl-4">
+            <p style={{ fontSize: 17, color: '#52525b', lineHeight: 1.7, borderLeft: '3px solid #2563eb', paddingLeft: 16 }}>
               {post.excerpt}
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12 mb-8">
+          <div style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', padding: '40px 48px', marginBottom: 32 }}>
             <div className="blog-prose" dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
 

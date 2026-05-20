@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: 'Althoce | Agents IA & Automatisation pour PME françaises',
     template: '%s | Althoce',
   },
-  description: 'Althoce conçoit des agents IA et automatisations sur-mesure pour libérer vos équipes des tâches répétitives. +5M€ économisés, +758 flows créés, -70% de temps administratif.',
+  description: 'Althoce conçoit des agents IA 100% autonomes et des automatisations métier pour les PME et ETI françaises. Premier agent opérationnel en 1 semaine, à partir de 1 400€.',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
@@ -26,11 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className="scroll-smooth scroll-pt-28">
       <head>
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://api.fontshare.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         {/* Organization — présent sur toutes les pages */}
         <script
           type="application/ld+json"
@@ -65,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="bg-slate-50 text-slate-900 font-sans min-h-screen selection:bg-electric/20 selection:text-electric">
+      <body className="bg-white text-ink font-sans min-h-screen selection:bg-accent/20 selection:text-accent">
         <NavigationProvider>
           <Navbar />
           {children}

@@ -26,3 +26,11 @@ next-env.d.ts
 *.njsproj
 *.sln
 *.sw?
+
+# Claude / MCP
+.claude/
+.mcp.json
+PROMPT_*.md
+CLAUDE.md
+tsconfig.tsbuildinfo
+graphify-out/

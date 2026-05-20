@@ -1,180 +1,175 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, type Variants, useReducedMotion } from 'framer-motion';
-import { Zap, Lock, Mail, BrainCircuit, Database, ArrowRight, Linkedin, Twitter } from 'lucide-react';
-import { useAppNav } from './NavigationProvider';
+import React from 'react';
+import { Logo } from '@/components/ui/brand/Logo';
+import { cities } from '@/lib/data';
 
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
-};
+const AC = '#2563eb';
 
-const Footer = ({ showCta = true }: { showCta?: boolean }) => {
-  const onChangeView = useAppNav();
-  const shouldReduceMotion = useReducedMotion();
-  const [isMobileFooter, setIsMobileFooter] = useState(true);
+const footerCols = [
+  {
+    h: 'Services',
+    links: [
+      { l: 'Agents IA', href: '/services/agents-ia/' },
+      { l: 'Chatbot IA', href: '/services/chatbot-ia/' },
+      { l: 'Développement IA', href: '/services/developpement-ia/' },
+      { l: 'Automatisation IA', href: '/services/automatisation-ia/' },
+      { l: 'Employé IA', href: '/services/employe-ia/' },
+    ],
+  },
+  {
+    h: 'Agents métiers',
+    links: [
+      { l: 'Agent Marketing', href: '/agent-ia/marketing/' },
+      { l: 'Agent Commercial', href: '/agent-ia/commercial/' },
+      { l: 'Agent Support', href: '/agent-ia/service-client/' },
+      { l: 'Agent Finance', href: '/agent-ia/finance/' },
+      { l: 'Agent RH', href: '/agent-ia/rh/' },
+      { l: 'Agent Téléphonique', href: '/agent-ia/telephonique/' },
+    ],
+  },
+  {
+    h: 'Ressources',
+    links: [
+      { l: 'Blog', href: '/blog/' },
+      { l: 'Cas clients', href: '/cas-clients/' },
+      { l: 'Calculateur ROI', href: '/calculateur-roi/' },
+    ],
+  },
+  {
+    h: 'Entreprise',
+    links: [
+      { l: 'À propos', href: '/a-propos/' },
+      { l: 'Contact', href: '/contact/' },
+    ],
+  },
+  {
+    h: 'Légal',
+    links: [
+      { l: 'Mentions légales', href: '/mentions-legales/' },
+      { l: 'Confidentialité', href: '/confidentialite/' },
+    ],
+  },
+];
 
-  useEffect(() => {
-    const check = () => setIsMobileFooter(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check, { passive: true });
-    return () => window.removeEventListener('resize', check);
-  }, []);
+const FooterLink = ({ href, label, dim = false }: { href: string; label: string; dim?: boolean }) => (
+  <a
+    href={href}
+    style={{ fontSize: 14, color: dim ? '#71717a' : '#8a8a95', textDecoration: 'none', transition: 'color .15s', display: 'block', marginBottom: 10, lineHeight: 1.5 }}
+    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#fff'; }}
+    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = dim ? '#71717a' : '#8a8a95'; }}
+  >
+    {label}
+  </a>
+);
 
-  const floatingIcons = [
-    { icon: Zap, color: "text-amber-300", pos: "top-[10%] left-[5%] md:left-[10%]" },
-    { icon: Lock, color: "text-rose-400", pos: "top-[5%] left-1/2 -translate-x-1/2" },
-    { icon: Mail, color: "text-blue-400", pos: "top-[30%] right-[5%] md:right-[10%]" },
-    { icon: BrainCircuit, color: "text-purple-400", pos: "bottom-[10%] left-[5%] md:left-[15%]" },
-    { icon: Database, color: "text-emerald-400", pos: "bottom-[15%] right-[5%] md:right-[20%]" },
-  ];
-
-  const navLinks = [
-    { name: 'Accueil', action: () => onChangeView('home') },
-    { name: 'Notre Méthode', action: () => onChangeView('home', 'methodology') },
-    { name: 'Services', action: () => onChangeView('home', 'services') },
-    { name: 'Témoignages', action: () => onChangeView('home', 'testimonials') },
-    { name: 'FAQ', action: () => onChangeView('home', 'faq') },
-    { name: 'Blog', action: () => onChangeView('blog') },
-  ];
-
-  const legalLinks = [
-    { name: 'Mentions Légales', action: () => onChangeView('legal') },
-    { name: 'Confidentialité', action: () => onChangeView('privacy') },
-  ];
-
+export default function Footer({ showCta = true }: { showCta?: boolean }) {
   return (
-    <footer id="contact" className="pt-0">
+    <footer>
+      <style>{`
+        .footer-cta-section { padding: 80px 24px; }
+        .footer-cta-card { border-radius: 32px; padding: 80px 48px; }
+        .footer-cta-desc { display: block; }
+        .footer-cities { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 640px) {
+          .footer-cta-section { padding: 40px 16px; }
+          .footer-cta-card { border-radius: 20px; padding: 40px 24px; }
+          .footer-cta-desc { display: none; }
+          .footer-cities { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+      `}</style>
+
+      {/* CTA banner */}
       {showCta && (
-        <div className="bg-white pt-16 md:pt-32 pb-24 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent opacity-50"></div>
-          <div className="hidden md:block absolute bottom-0 right-0 w-[500px] h-[500px] bg-electric/5 rounded-full blur-[120px] pointer-events-none"></div>
-          <div className="hidden md:block absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100/20 rounded-full blur-[120px] pointer-events-none"></div>
-
-          <div className="container mx-auto px-6 relative z-10">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-              className="relative rounded-[3rem] bg-[#0A0A1B] border border-white/5 overflow-hidden px-6 py-16 md:py-24 text-center max-w-6xl mx-auto shadow-2xl shadow-indigo-900/10 group"
-            >
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-600/10 blur-[100px] rounded-full mix-blend-screen"></div>
-                <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-600/10 blur-[100px] rounded-full mix-blend-screen"></div>
-              </div>
-
-              <div className="relative z-20 max-w-3xl mx-auto">
-                <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight text-white leading-tight">
-                  Prêt à libérer votre <br /> potentiel ?
+        <section className="footer-cta-section" style={{ background: '#fff', borderTop: '1px solid #e4e4e7' }}>
+          <div style={{ maxWidth: 1160, margin: '0 auto' }}>
+            <div className="footer-cta-card" style={{ background: '#09090b', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: -80, left: -80, width: 320, height: 320, background: `radial-gradient(circle,${AC}35,transparent)`, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', bottom: -80, right: -80, width: 320, height: 320, background: 'radial-gradient(circle,#3b82f625,transparent)', pointerEvents: 'none' }} />
+              <div style={{ position: 'relative', zIndex: 1, maxWidth: 600, margin: '0 auto' }}>
+                <h2 style={{ fontSize: 'clamp(22px,4vw,48px)', fontWeight: 800, letterSpacing: '-.04em', color: '#fff', lineHeight: 1.1, marginBottom: 16 }}>
+                  Prêt à déployer votre premier agent IA ?
                 </h2>
-                <p className="text-slate-400 mb-10 text-lg md:text-xl leading-relaxed font-light max-w-2xl mx-auto">
-                  Ne laissez pas la complexité vous ralentir. Discutons de votre premier agent IA dès aujourd'hui.
+                <p className="footer-cta-desc" style={{ fontSize: 16, color: '#a1a1aa', marginBottom: 32, lineHeight: 1.7 }}>
+                  30 minutes d'échange, trois idées concrètes d'automatisation — même si on ne travaille pas ensemble.
                 </p>
-                <motion.button
-                  onClick={() => onChangeView('contact')}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-slate-900 rounded-full font-bold text-lg transition-all hover:bg-slate-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                <a
+                  href="/contact"
+                  style={{ padding: '14px 28px', borderRadius: 9999, background: '#fff', color: '#09090b', border: 'none', cursor: 'pointer', fontSize: 14, fontWeight: 700, fontFamily: 'inherit', display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 16, textDecoration: 'none', transition: 'transform .15s, box-shadow .15s' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 8px 30px rgba(255,255,255,.2)'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}
                 >
-                  <span className="relative z-10">Prendre un appel</span>
-                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
+                  Discutons de votre projet →
+                </a>
+                <p style={{ fontSize: 13, color: '#71717a' }}>Sans engagement · 30 min offertes · Réponse sous 24h</p>
               </div>
-
-              <div className="absolute inset-0 pointer-events-none">
-                {floatingIcons.map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: false, amount: 0.1 }}
-                    animate={(shouldReduceMotion || isMobileFooter) ? {} : { y: [0, -10, 0] }}
-                    transition={{ duration: 3 + idx, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
-                    className={`absolute p-4 rounded-2xl border border-white/10 bg-white/10 ${item.pos}`}
-                  >
-                    <item.icon className={`w-6 h-6 ${item.color}`} />
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            </div>
           </div>
-        </div>
+        </section>
       )}
 
-      <div className="bg-[#050511] text-slate-400 pt-16 pb-12 border-t border-slate-900 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-800 to-transparent opacity-50"></div>
-        <div className="hidden md:block absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-900/5 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="hidden md:block absolute top-0 left-0 w-[500px] h-[500px] bg-blue-900/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div className="md:col-span-5 flex flex-col items-start gap-6">
-              <div className="text-3xl font-bold font-display tracking-tighter text-white">
-                ALTHOCE<span className="text-electric">.</span>
+      {/* Footer body */}
+      <div style={{ background: '#09090b', color: '#71717a', padding: '64px 24px 36px', borderTop: '1px solid #1a1a1a' }}>
+        <div style={{ maxWidth: 1160, margin: '0 auto' }}>
+          {/* Top grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 48 }} className="v2-grid-hero footer-top-grid">
+            <div className="footer-logo-col">
+              <div style={{ marginBottom: 16 }}>
+                <Logo variant="white" size={40} />
               </div>
-              <p className="text-slate-400 text-base leading-relaxed max-w-sm">
-                L'automatisation n'est plus facultative, elle est essentielle.
+              <p style={{ fontSize: 15, lineHeight: 1.72, maxWidth: 260, marginBottom: 16 }}>
+                Agence IA &amp; Automatisation pour les PME et ETI françaises. On déploie des agents IA 100% autonomes.
               </p>
-              <div className="flex gap-4 mt-2">
-                <a href="#" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a href="mailto:contact@althoce.com" className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-electric/50 hover:text-electric transition-all text-slate-400">
-                  <Mail className="w-5 h-5" />
-                </a>
+              <p style={{ fontSize: 13, color: '#52525b' }}>📍 Bordeaux, France</p>
+            </div>
+
+            {footerCols.map((col) => (
+              <div key={col.h}>
+                <div style={{ fontSize: 12, fontWeight: 800, color: '#fff', textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 18 }}>
+                  {col.h}
+                </div>
+                {col.links.map((link) => (
+                  <FooterLink key={link.l} href={link.href} label={link.l} />
+                ))}
               </div>
-            </div>
+            ))}
+          </div>
 
-            <div className="md:col-span-3 md:col-start-7">
-              <h4 className="text-white font-bold mb-6 font-display text-lg">Entreprise</h4>
-              <ul className="space-y-4">
-                {navLinks.map((link, idx) => (
-                  <li key={idx}>
-                    <button
-                      onClick={link.action}
-                      className="text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center gap-2 group"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-electric transition-all"></span>
-                      {link.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+          {/* Geo section */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,.06)', paddingTop: 32, marginBottom: 32 }}>
+            <div style={{ fontSize: 12, fontWeight: 800, color: '#fff', textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 20 }}>
+              Partout en France
             </div>
-
-            <div className="md:col-span-3">
-              <h4 className="text-white font-bold mb-6 font-display text-lg">Politiques</h4>
-              <ul className="space-y-4">
-                {legalLinks.map((link, idx) => (
-                  <li key={idx}>
-                    <button
-                      onClick={link.action}
-                      className="text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center gap-2 group"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-electric transition-all"></span>
-                      {link.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+            <div style={{ display: 'grid', gap: '12px 32px' }} className="v2-grid4 footer-cities">
+              {cities.main.map((c) => (
+                <FooterLink key={c} href={`/agence-ia-${c.toLowerCase()}/`} label={c} />
+              ))}
+              {cities.secondary.map((c) => (
+                <FooterLink key={c} href={`/agence-ia-${c.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ /g, '-')}/`} label={c} dim />
+              ))}
             </div>
           </div>
 
-          <div className="border-t border-slate-800/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-            <div>© 2024 Althoce. Tous droits réservés.</div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/5">
-              <span>Made with <span className="text-red-500 animate-pulse">❤️</span> in Bordeaux</span>
+          {/* Bottom bar */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,.06)', paddingTop: 28 }}>
+            {/* Logo certification centré */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+              <div style={{ background: '#fff', borderRadius: 16, padding: '14px 20px', display: 'inline-flex', alignItems: 'center' }}>
+                <img
+                  src="/logos/French tech.png"
+                  alt="La French Tech Bordeaux"
+                  style={{ height: 72, width: 'auto', objectFit: 'contain', display: 'block' }}
+                />
+              </div>
+            </div>
+            {/* Copyright row */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10, borderTop: '1px solid rgba(255,255,255,.04)', paddingTop: 20 }}>
+              <span style={{ fontSize: 13 }}>© 2025 Althoce. Tous droits réservés.</span>
+              <span style={{ fontSize: 13 }}>Made with ❤️ in Bordeaux</span>
             </div>
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
