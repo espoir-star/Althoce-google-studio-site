@@ -112,7 +112,7 @@ export default function Footer({ showCta = true }: { showCta?: boolean }) {
       <div style={{ background: '#09090b', color: '#71717a', padding: '64px 24px 36px', borderTop: '1px solid #1a1a1a' }}>
         <div style={{ maxWidth: 1160, margin: '0 auto' }}>
           {/* Top grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 48 }} className="v2-grid-hero footer-top-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr 1fr', gap: '40px', marginBottom: 48 }} className="footer-top-grid">
             <div className="footer-logo-col">
               <div style={{ marginBottom: 16 }}>
                 <Logo variant="white" size={40} />

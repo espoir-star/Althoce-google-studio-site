@@ -316,10 +316,23 @@ body {
 }
 
 /* ── Footer ─────────────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .footer-cities { grid-template-columns: repeat(2, 1fr) !important; gap: 8px 24px !important; }
-  .footer-top-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 28px 20px !important; }
+
+/* Tablette (≤ 900px) : logo + 3 colonnes */
+@media (max-width: 900px) {
+  .footer-top-grid { grid-template-columns: 2fr 1fr 1fr 1fr !important; gap: 32px 24px !important; }
   .footer-logo-col { grid-column: 1 / -1 !important; }
+}
+
+/* Mobile (≤ 600px) : 2 colonnes, logo pleine largeur */
+@media (max-width: 600px) {
+  .footer-top-grid { grid-template-columns: 1fr 1fr !important; gap: 28px 20px !important; }
+  .footer-logo-col { grid-column: 1 / -1 !important; }
+  .footer-cities   { grid-template-columns: repeat(2, 1fr) !important; gap: 8px 24px !important; }
+}
+
+/* Très petit (≤ 400px) : 1 colonne */
+@media (max-width: 400px) {
+  .footer-top-grid { grid-template-columns: 1fr !important; }
 }
 
 /* ── Stats section ──────────────────────────────────────────── */
