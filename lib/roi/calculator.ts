@@ -175,23 +175,14 @@ export function computeTotalROI(agents: Agent[], profil: Profile): ROITotal {
   return computeTotalROIByPole(byPole, profil);
 }
 
-const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbygdFNsf4qUIrLeE1anb00ZbDYf0-aIFm9zQZCXhQRBwgoJOVSA7KgLrXWLZ8rwhO_F/exec';
-
 export async function submitLead(payload: Record<string, unknown>): Promise<{ ok: boolean; score?: number; error?: string; dev?: boolean }> {
   try {
-    const response = await fetch(WEBHOOK_URL, {
+    const response = await fetch('/api/roi-lead', {
       method: 'POST',
-      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      redirect: 'follow',
     });
-    const text = await response.text();
-    try {
-      return JSON.parse(text);
-    } catch {
-      console.error('[submitLead] Réponse non-JSON :', text.slice(0, 300));
-      return { ok: false, error: 'Réponse webhook invalide' };
-    }
+    return await response.json();
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error('[submitLead] Erreur réseau :', msg);

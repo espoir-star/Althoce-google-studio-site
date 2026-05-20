@@ -27,6 +27,11 @@ next-env.d.ts
 *.sln
 *.sw?
 
+# Env — ne jamais committer
+.env
+.env.production
+.env.staging
+
 # Claude / MCP
 .claude/
 .mcp.json

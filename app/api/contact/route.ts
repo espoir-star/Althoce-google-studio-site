@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const N8N_WEBHOOK_URL =
-  process.env.N8N_LEAD_WEBHOOK_URL ??
-  'https://n8n.srv1242605.hstgr.cloud/webhook/althoce-contact';
+const N8N_WEBHOOK_URL = process.env.N8N_LEAD_WEBHOOK_URL;
 
 export async function POST(req: NextRequest) {
+  if (!N8N_WEBHOOK_URL) {
+    console.error('[CONTACT FORM] N8N_LEAD_WEBHOOK_URL non configuré');
+    return NextResponse.json({ error: 'Service non configuré.' }, { status: 503 });
+  }
+
   try {
     const body = await req.json();
     const { nom, entreprise, email, telephone, taille, budget, description } = body;
