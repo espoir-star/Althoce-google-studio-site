@@ -330,10 +330,6 @@ body {
   .footer-cities   { grid-template-columns: repeat(2, 1fr) !important; gap: 8px 24px !important; }
 }
 
-/* Très petit (≤ 400px) : 1 colonne */
-@media (max-width: 400px) {
-  .footer-top-grid { grid-template-columns: 1fr !important; }
-}
 
 /* ── Stats section ──────────────────────────────────────────── */
 @media (max-width: 600px) {
