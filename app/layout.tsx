@@ -10,6 +10,17 @@ export const metadata: Metadata = {
     template: '%s | Althoce',
   },
   description: 'Althoce conçoit des agents IA 100% autonomes et des automatisations métier pour les PME et ETI françaises. Premier agent opérationnel en 1 semaine, à partir de 1 400€.',
+  icons: {
+    icon: [
+      { url: '/favicons/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: { url: '/favicons/apple-touch-icon.png', sizes: '180x180' },
+    other: [
+      { rel: 'manifest', url: '/favicons/site.webmanifest' },
+    ],
+  },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
