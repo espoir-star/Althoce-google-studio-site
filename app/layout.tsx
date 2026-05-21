@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   description: 'Althoce conçoit des agents IA 100% autonomes et des automatisations métier pour les PME et ETI françaises. Premier agent opérationnel en 1 semaine, à partir de 1 400€.',
   verification: {
-    google: '3cd5557f99d9b9d7',
+    google: '9Qf-1u09GFSH-eIAUjUfI4QqGX5EimnL_eFmodZ8E74',
   },
   icons: {
     icon: [
