@@ -65,12 +65,20 @@ function scanAppRoutes(dir: string, base = ''): string[] {
   return routes;
 }
 
+// Construit une URL canonique avec trailing slash (sauf pour la home, qui
+// reste https://althoce.com/). Aligné sur next.config.ts (trailingSlash:
+// true) et sur les `metadata.alternates.canonical` de chaque page.
+function buildCanonicalUrl(route: string): string {
+  if (route === '') return `${BASE_URL}/`;
+  return `${BASE_URL}/${route}/`;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
 
   // 1. Routes statiques scannées automatiquement depuis app/
   const staticRoutes = scanAppRoutes(APP_DIR).map(route => ({
-    url: `${BASE_URL}/${route}`,
+    url: buildCanonicalUrl(route),
     lastModified: now,
     changeFrequency: getChangeFreq(route),
     priority: getPriority(route),
@@ -78,7 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 2. Articles de blog (published uniquement)
   const blogRoutes = getAllPosts().map(post => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
+    url: `${BASE_URL}/blog/${post.slug}/`,
     lastModified: post.date ? new Date(post.date).toISOString() : now,
     changeFrequency: 'monthly' as const,
     priority: 0.7,

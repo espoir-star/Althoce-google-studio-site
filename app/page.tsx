@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Althoce | Agence IA & Automatisation — Agents 100% Autonomes',
     description: 'Des agents IA qui travaillent à votre place, 24h/24, sans supervision. +150 PME accompagnées, 9M€ économisés.',
-    url: 'https://althoce.com',
+    url: 'https://althoce.com/',
   },
   twitter: {
     title: 'Althoce | Agence IA & Automatisation pour PME',
     description: 'Des agents IA 100% autonomes pour PME françaises. +150 clients, 9M€ économisés.',
   },
   alternates: {
-    canonical: 'https://althoce.com',
+    canonical: 'https://althoce.com/',
   },
 };
 
