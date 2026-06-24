@@ -154,7 +154,7 @@ function Hero() {
             </div>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact"
+              <a href="/contact/"
                 style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
@@ -456,7 +456,7 @@ function Formats() {
                           Tarif : sur devis selon scope
                           {f.note && <> · <a href={f.note.link} style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>{f.note.linkText}</a> pour une analyse plus large</>}
                         </span>
-                        <a href="/contact" style={{ padding: '10px 20px', borderRadius: 9999, background: f.color, color: '#fff', textDecoration: 'none', fontSize: 14, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s' }}
+                        <a href="/contact/" style={{ padding: '10px 20px', borderRadius: 9999, background: f.color, color: '#fff', textDecoration: 'none', fontSize: 14, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s' }}
                           onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; }}
                           onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; }}>
                           Demander un devis →
@@ -479,7 +479,7 @@ function Formats() {
           <p style={{ fontSize: 15, color: '#8a8a95', lineHeight: 1.7, marginBottom: 24, maxWidth: 580, margin: '0 auto 24px' }}>
             Chaque entreprise a un contexte différent : taille des équipes, maturité IA, outils déjà déployés, métiers ciblés. Les tarifs et les programmes sont entièrement adaptés à votre cas.
           </p>
-          <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 28px', borderRadius: 9999, background: AC, color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'transform .15s,box-shadow .15s' }}
+          <a href="/contact/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 28px', borderRadius: 9999, background: AC, color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'transform .15s,box-shadow .15s' }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 8px 28px ${AC}40`; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
             Réserver 30 minutes offertes avec un expert →

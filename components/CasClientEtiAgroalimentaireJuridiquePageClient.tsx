@@ -89,7 +89,7 @@ function Hero() {
               280 collaborateurs, un seul juriste interne pour gérer 600 contrats annuels. Un agent IA d'analyse contractuelle en mode pré-décision déployé en 5 semaines avec Mistral hébergé en France pour souveraineté absolue. Voici comment le juriste a retrouvé du temps pour la négociation stratégique.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact" style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
+              <a href="/contact/" style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
                 Discuter de votre projet →
@@ -639,7 +639,7 @@ function VotreCas() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; }}>
             Découvrir Agent IA pour le juridique →
           </a>
-          <a href="/contact" style={{ padding: '14px 28px', borderRadius: 9999, border: `1.5px solid ${AZURE}40`, color: AZURE, textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, background: `${AZURE}08`, transition: 'border-color .15s,background .15s' }}
+          <a href="/contact/" style={{ padding: '14px 28px', borderRadius: 9999, border: `1.5px solid ${AZURE}40`, color: AZURE, textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, background: `${AZURE}08`, transition: 'border-color .15s,background .15s' }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = `${AZURE}80`; (e.currentTarget as HTMLAnchorElement).style.background = `${AZURE}14`; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = `${AZURE}40`; (e.currentTarget as HTMLAnchorElement).style.background = `${AZURE}08`; }}>
             Discuter de votre projet (30 min offertes) →

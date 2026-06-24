@@ -93,7 +93,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
       <div style={{ paddingTop: 96, paddingBottom: 80, minHeight: '100vh', background: '#fafafa' }}>
         <div style={{ maxWidth: 768, margin: '0 auto', padding: '0 24px' }}>
           <Link
-            href="/blog"
+            href="/blog/"
             style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#52525b', fontSize: 14, fontWeight: 600, textDecoration: 'none', marginBottom: 32 }}
           >
             <ArrowLeft style={{ width: 16, height: 16 }} />

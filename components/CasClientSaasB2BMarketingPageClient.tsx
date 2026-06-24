@@ -85,7 +85,7 @@ function Hero() {
               90 collaborateurs, 1 500 clients PME, une équipe marketing 3 personnes étranglée par l'ambition content de la direction. Un agent IA marketing déployé en 3 semaines avec cadrage strict du ton de marque. Voici comment l'équipe a multiplié sa production par 4 sans embaucher de content manager.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact" style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
+              <a href="/contact/" style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
                 Discuter de votre projet →
@@ -630,7 +630,7 @@ function VotreCas() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; }}>
             Découvrir Agent IA pour le marketing →
           </a>
-          <a href="/contact" style={{ padding: '14px 28px', borderRadius: 9999, border: `1.5px solid ${ORANGE}40`, color: ORANGE, textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, background: `${ORANGE}08`, transition: 'border-color .15s,background .15s' }}
+          <a href="/contact/" style={{ padding: '14px 28px', borderRadius: 9999, border: `1.5px solid ${ORANGE}40`, color: ORANGE, textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, background: `${ORANGE}08`, transition: 'border-color .15s,background .15s' }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = `${ORANGE}80`; (e.currentTarget as HTMLAnchorElement).style.background = `${ORANGE}14`; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = `${ORANGE}40`; (e.currentTarget as HTMLAnchorElement).style.background = `${ORANGE}08`; }}>
             Discuter de votre projet (30 min offertes) →

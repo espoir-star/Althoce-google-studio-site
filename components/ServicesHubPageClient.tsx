@@ -161,7 +161,7 @@ function Hero() {
             </div>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact"
+              <a href="/contact/"
                 style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
@@ -349,7 +349,7 @@ function ServiceWizard() {
         {/* Note */}
         <div style={{ marginTop: 40, padding: '16px 22px', borderRadius: 14, background: `${AC}08`, border: `1px solid ${AC}20`, fontSize: 14, color: '#374151', lineHeight: 1.7 }}>
           Le quizz vous oriente, il ne décide pas. Vous pouvez à tout moment réserver les{' '}
-          <a href="/contact" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>30 minutes offertes avec un expert</a>{' '}
+          <a href="/contact/" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>30 minutes offertes avec un expert</a>{' '}
           pour valider votre orientation et obtenir un devis ferme.
         </div>
       </div>

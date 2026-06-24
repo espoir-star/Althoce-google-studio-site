@@ -89,7 +89,7 @@ function Hero() {
               120 collaborateurs, 200 tickets par jour, une équipe support 12 personnes saturée par 70 % de questions répétitives. Un agent IA intégré à Zendesk déployé en 4 semaines. Voici comment le SaaS a transformé son support sans supprimer un seul poste.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact"
+              <a href="/contact/"
                 style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
@@ -623,7 +623,7 @@ function VotreCas() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; }}>
             Découvrir Agent IA pour le service client →
           </a>
-          <a href="/contact"
+          <a href="/contact/"
             style={{ padding: '14px 28px', borderRadius: 9999, border: `1.5px solid ${TEAL}40`, color: TEAL, textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, background: `${TEAL}08`, transition: 'border-color .15s,background .15s' }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = `${TEAL}80`; (e.currentTarget as HTMLAnchorElement).style.background = `${TEAL}14`; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = `${TEAL}40`; (e.currentTarget as HTMLAnchorElement).style.background = `${TEAL}08`; }}>

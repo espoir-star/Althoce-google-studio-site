@@ -31,7 +31,7 @@ export default function BlogPostCTA() {
             Discutons de votre premier agent IA lors d'un audit gratuit.
           </p>
           <a
-            href="/contact"
+            href="/contact/"
             style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', background: '#fff', color: '#09090b', borderRadius: 9999, fontWeight: 700, fontSize: 15, textDecoration: 'none', transition: 'transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s ease', marginTop: 4, boxShadow: '0 2px 8px rgba(0,0,0,.16)' }}
             onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 28px rgba(255,255,255,.18)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,.16)'; }}
