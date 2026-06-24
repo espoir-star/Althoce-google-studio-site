@@ -18,7 +18,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/eti-agroalimentaire-agent-ia-juridique/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '3h → 30 min · 4j libérés/mois · 97,3 % concordance : ETI agro × agent IA juridique France | Althoce',

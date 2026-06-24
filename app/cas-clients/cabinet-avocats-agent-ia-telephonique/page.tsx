@@ -19,7 +19,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/cabinet-avocats-agent-ia-telephonique/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '0 appel raté · +130 % RDV : cabinet avocats × agent IA téléphonique | Althoce',

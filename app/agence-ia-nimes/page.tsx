@@ -23,7 +23,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-nimes/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Nîmes · Agents IA & Automatisation vins Costières et tourisme patrimonial | Althoce",

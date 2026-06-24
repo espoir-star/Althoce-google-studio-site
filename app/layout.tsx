@@ -23,11 +23,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://althoce.com',
+    url: 'https://althoce.com/',
     siteName: 'Althoce',
+    title: 'Althoce | Agents IA & Automatisation pour PME françaises',
+    description: 'Althoce conçoit des agents IA sur mesure pour les PME et ETI françaises. Hébergement souverain en France, premier agent opérationnel en une semaine.',
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@althoce',
+    title: 'Althoce | Agents IA & Automatisation pour PME françaises',
+    description: 'Althoce conçoit des agents IA sur mesure pour les PME et ETI françaises. Hébergement souverain en France.',
+    images: ['/og-default.png'],
   },
 };
 

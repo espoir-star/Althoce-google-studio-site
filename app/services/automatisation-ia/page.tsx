@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/automatisation-ia/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Automatisation IA sur-mesure — Althoce',

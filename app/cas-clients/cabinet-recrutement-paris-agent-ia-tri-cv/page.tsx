@@ -18,7 +18,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/cabinet-recrutement-paris-agent-ia-tri-cv/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '×3,5 CV triés · ×2 placements : cabinet recrutement Paris × agent IA anti-biais | Althoce',

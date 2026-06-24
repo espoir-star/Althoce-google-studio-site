@@ -18,7 +18,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/eti-industrielle-agent-ia-achats/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '-18 % achats · ×4 RFQ · 340 k€ · 3j → 4h comparatif : ETI industrielle × agent IA achats | Althoce',

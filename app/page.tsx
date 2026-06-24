@@ -10,7 +10,15 @@ export const metadata: Metadata = {
     title: 'Althoce | Agence IA & Automatisation — Agents 100% Autonomes',
     description: 'Des agents IA qui travaillent à votre place, 24h/24, sans supervision. +150 PME accompagnées, 9M€ économisés.',
     url: 'https://althoce.com/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     title: 'Althoce | Agence IA & Automatisation pour PME',
     description: 'Des agents IA 100% autonomes pour PME françaises. +150 clients, 9M€ économisés.',
