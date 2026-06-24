@@ -633,7 +633,7 @@ export default function AgencesHubPageClient() {
               <span className="agc-hero-pill">20 villes</span>
             </div>
             <div className="agc-hero-ctas">
-              <a href="https://cal.com/althoce/30min" target="_blank" rel="noopener noreferrer" className="agc-hero-btn-dark">
+              <a href="/contact/" className="agc-hero-btn-dark">
                 Discuter de votre projet →
               </a>
               <a href="#mission" className="agc-hero-btn-ghost">
@@ -935,9 +935,7 @@ export default function AgencesHubPageClient() {
                 30 minutes offertes avec un expert Althoce. On part de votre cas concret, pas d&apos;un deck générique.
               </p>
               <a
-                href="https://cal.com/althoce/30min"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact/"
                 className="agc-cta-btn"
               >
                 Réserver 30 min offertes →

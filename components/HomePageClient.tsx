@@ -865,7 +865,7 @@ function Security() {
             <p style={{ fontSize: 16, color: '#8a8a95', lineHeight: 1.78, marginBottom: 32 }}>
               La plupart des outils IA envoient vos données chez des prestataires américains. Chez Althoce, on fait l'inverse : hébergement en Union Européenne, instance dédiée, chiffrement de bout en bout, et un humain toujours dans la boucle.
             </p>
-            <a href="/conseil/" className="btn-ghost" style={{ fontSize: 14 }}>
+            <a href="/services/audit-ia/" className="btn-ghost" style={{ fontSize: 14 }}>
               Notre approche conseil
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 6.5H11M7 3L11 6.5L7 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </a>

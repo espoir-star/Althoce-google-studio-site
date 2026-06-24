@@ -549,7 +549,7 @@ function Security() {
             </p>
             <p style={{ fontSize: 16, color: '#52525b', lineHeight: 1.75 }}>
               Code source, accès, logs, workflows : <strong style={{ color: '#a1a1aa' }}>tout vous appartient à 100 %</strong> à la fin de la mission. Pas de rétention technique, pas d'abonnement obligatoire au-delà du support que vous choisissez. Voir{' '}
-              <a href="/conseil/" style={{ color: AC, textDecoration: 'none' }}>Conseil IA</a>{' '}pour un accompagnement stratégique.
+              <a href="/services/audit-ia/" style={{ color: AC, textDecoration: 'none' }}>Conseil IA</a>{' '}pour un accompagnement stratégique.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>

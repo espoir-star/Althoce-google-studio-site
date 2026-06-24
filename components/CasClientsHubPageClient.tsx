@@ -616,7 +616,7 @@ function Security() {
               Tous nos déploiements sont documentés et auditables. Chaque recommandation de l'agent est journalisée, tracée, contrôlable. Pour les clients qui exigent la souveraineté totale : <strong style={{ color: '#a1a1aa' }}>Mistral hébergé en France</strong> et auto-hébergement infra possible.
             </p>
             <p style={{ fontSize: 16, color: '#52525b', lineHeight: 1.75 }}>
-              Code source, accès, logs, workflows : <strong style={{ color: '#a1a1aa' }}>tout vous appartient à 100 %</strong> à la fin de la mission. Voir <a href="/conseil/" style={{ color: AC, textDecoration: 'none' }}>Conseil IA</a> pour un accompagnement stratégique ou <a href="/services/audit-ia/" style={{ color: AC, textDecoration: 'none' }}>Audit IA</a> pour démarrer.
+              Code source, accès, logs, workflows : <strong style={{ color: '#a1a1aa' }}>tout vous appartient à 100 %</strong> à la fin de la mission. Voir <a href="/services/audit-ia/" style={{ color: AC, textDecoration: 'none' }}>Conseil IA</a> pour un accompagnement stratégique ou <a href="/services/audit-ia/" style={{ color: AC, textDecoration: 'none' }}>Audit IA</a> pour démarrer.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
