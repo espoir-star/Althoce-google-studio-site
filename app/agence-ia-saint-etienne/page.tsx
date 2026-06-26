@@ -51,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Saint-Étienne",
       "description": "Agence IA française qui accompagne les PME et ETI ligériennes. Expertise sous-traitance mécanique (IATF, AS9100), design (Cité du Design, Manufacture Plaine Achille), scale-up French Tech Saint-Étienne, pharma régionale. Présentiel à Saint-Étienne, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-saint-etienne/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Saint-Étienne",

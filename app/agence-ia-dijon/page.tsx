@@ -51,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Dijon",
       "description": "Agence IA française qui accompagne les PME, ETI et négoces de vins de Bourgogne. Expertise agroalimentaire premium (moutarde, vins de Bourgogne), pharma régionale, services aux entreprises dijonnaises. Souveraineté France par défaut.",
       "url": "https://althoce.com/agence-ia-dijon/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dijon",

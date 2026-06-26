@@ -47,6 +47,7 @@ const jsonLd = {
       "description": "Cas client Althoce : éditeur SaaS B2B 90 collaborateurs, 1 500 clients PME. Production multipliée par 4 en 6 mois, trafic organique +140 %, recrutement content manager annulé (60 k€/an redéployé).",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -57,7 +58,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -66,7 +71,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA marketing content pour SaaS B2B",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA marketing, automatisation content marketing, SEO IA SaaS B2B, agent IA LinkedIn, nurture email IA segmenté"
     },

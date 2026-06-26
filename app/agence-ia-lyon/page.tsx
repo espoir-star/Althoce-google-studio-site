@@ -49,6 +49,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Lyon",
       "description": "Agence IA française qui accompagne les PME et ETI à Lyon et en Auvergne-Rhône-Alpes. Cas signature cabinet comptable lyonnais ×2 capacité. Présentiel à Lyon, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-lyon/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Lyon",

@@ -47,6 +47,7 @@ const jsonLd = {
       "description": "Cas client Althoce : distributeur B2B industriel 45 collaborateurs. 3 agents IA ops déployés en 6 semaines. Mails ×3, commandes ERP ×3, turnover 80 % vers 0 % sur 14 mois. Coût caché 40 k€/an éliminé.",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -57,7 +58,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -66,7 +71,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agents IA ops pour distributeur B2B (mails, ADV, GED)",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA ops, automatisation back-office, agent IA ADV Sage, agent IA mails entrants, agent IA GED SharePoint, turnover assistant ops"
     },

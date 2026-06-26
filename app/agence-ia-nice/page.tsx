@@ -50,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Nice",
       "description": "Agence IA française qui accompagne les PME et ETI azuréennes. Expertise hôtellerie haut de gamme, biotech Sophia Antipolis, finance privée, immobilier de prestige. Présentiel à Nice, Cannes, Sophia Antipolis, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-nice/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Nice",

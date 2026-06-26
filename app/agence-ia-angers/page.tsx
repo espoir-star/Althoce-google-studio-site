@@ -51,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Angers",
       "description": "Agence IA française qui accompagne les PME et ETI angevines. Expertise cluster végétal Végépolys (semences, biotech végétale), FrenchTech Angers, agroalimentaire Loire, viticulture Saumur-Anjou. Souveraineté France par défaut.",
       "url": "https://althoce.com/agence-ia-angers/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Angers",

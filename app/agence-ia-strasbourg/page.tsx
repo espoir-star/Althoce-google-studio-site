@@ -50,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Strasbourg",
       "description": "Agence IA française qui accompagne les PME et ETI à Strasbourg et en Grand Est. Expertise pharma alsacienne, marchés transfrontaliers FR/DE, services européens et institutions. Présentiel à Strasbourg, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-strasbourg/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Strasbourg",

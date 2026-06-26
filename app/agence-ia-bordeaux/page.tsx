@@ -52,6 +52,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Bordeaux",
       "description": "Agence IA française qui accompagne les PME et ETI bordelaises. Expertise viticulture et négoce bordelais (export FR/EN/ZH/JA), aéronautique et sous-traitance Airbus (EN 9100, Mérignac, Bordeaux Aéroparc), agroalimentaire premium Gironde. Présentiel à Bordeaux, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-bordeaux/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Bordeaux",

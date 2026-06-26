@@ -47,6 +47,7 @@ const jsonLd = {
       "description": "Cas client Althoce : éditeur SaaS B2B 120 collaborateurs, 8 000 clients PME. Temps de réponse 18h vers 4 min, CSAT +12 points, 0 départ équipe support en 12 mois post-déploiement.",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -57,7 +58,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -66,7 +71,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA service client pour SaaS B2B",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA service client, automatisation tickets Zendesk, support SaaS automatisé, CSAT amélioration IA, agent IA support PME"
     },

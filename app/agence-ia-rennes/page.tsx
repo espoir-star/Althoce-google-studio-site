@@ -50,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Rennes",
       "description": "Agence IA française qui accompagne les PME et ETI bretonnes. Expertise numérique FrenchTech Rennes Saint-Malo (IRT b-com, Atalante Champeaux), agroalimentaire (Lactalis, Bridor, Brocéliande — conformité IFS/BRC), sous-traitance automobile (La Janais). Présentiel à Rennes, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-rennes/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Rennes",

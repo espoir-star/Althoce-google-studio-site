@@ -60,27 +60,38 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "@id": `https://althoce.com/blog/${post.slug}#article`,
+    "@id": `https://althoce.com/blog/${post.slug}/#article`,
     "headline": post.title,
     "description": post.excerpt,
     "datePublished": post.date,
     "dateModified": post.date,
-    "url": `https://althoce.com/blog/${post.slug}`,
+    "url": `https://althoce.com/blog/${post.slug}/`,
+    "image": "https://althoce.com/og-default.png",
     "inLanguage": "fr-FR",
     "author": {
+      "@type": "Organization",
       "@id": "https://althoce.com/#organization",
+      "name": "Althoce",
+      "url": "https://althoce.com/",
     },
     "publisher": {
+      "@type": "Organization",
       "@id": "https://althoce.com/#organization",
+      "name": "Althoce",
+      "url": "https://althoce.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://althoce.com/favicons/apple-touch-icon.png",
+      },
     },
     "isPartOf": {
-      "@id": "https://althoce.com/blog#blog",
+      "@id": "https://althoce.com/blog/#blog",
     },
     "articleSection": post.category,
     "keywords": post.category,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://althoce.com/blog/${post.slug}`,
+      "@id": `https://althoce.com/blog/${post.slug}/`,
     },
   };
 

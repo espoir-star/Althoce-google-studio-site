@@ -51,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Grenoble",
       "description": "Agence IA française qui accompagne les PME et ETI grenobloises. Expertise scale-up deep tech Inovallée, micro-électronique (STMicroelectronics Crolles, Soitec), recherche CEA-Leti et CNRS, énergie Schneider Electric. Souveraineté France par défaut.",
       "url": "https://althoce.com/agence-ia-grenoble/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Grenoble",

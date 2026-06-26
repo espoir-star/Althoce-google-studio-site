@@ -50,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Marseille",
       "description": "Agence IA française qui accompagne les PME et ETI provençales. Expertise logistique portuaire GPMM, agroalimentaire méditerranéen, tourisme Côte d'Azur. Présentiel à Marseille, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-marseille/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Marseille",

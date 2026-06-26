@@ -51,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Nîmes",
       "description": "Agence IA française qui accompagne les PME et ETI nîmoises et gardoises. Expertise vins Costières de Nîmes, agroalimentaire méditerranéen, tourisme patrimonial romain. Souveraineté France par défaut.",
       "url": "https://althoce.com/agence-ia-nimes/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Nîmes",

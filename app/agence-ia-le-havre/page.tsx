@@ -51,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA au Havre",
       "description": "Agence IA française qui accompagne les PME, ETI et opérateurs portuaires au Havre et en Normandie. Expertise ops/back-office transitaires HAROPA (manifestes DAU, BL maritimes), achats sous-traitance portuaire et raffineries, service client multilingue, droit maritime. Présentiel au Havre, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-le-havre/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Le Havre",

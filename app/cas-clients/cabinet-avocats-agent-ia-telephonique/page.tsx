@@ -48,6 +48,7 @@ const jsonLd = {
       "description": "Cas client Althoce : comment un cabinet d'avocats lyonnais de 18 collaborateurs a éliminé les appels perdus, doublé ses prises de RDV et libéré 12 heures par semaine avec un agent IA téléphonique voix naturelle conforme secret professionnel.",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -58,7 +59,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -67,7 +72,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA téléphonique pour cabinet d'avocats",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA téléphonique cabinet avocats, agent IA voix naturelle, accueil téléphonique IA, RDV automatisé cabinet avocats, agent IA secret professionnel"
     },

@@ -51,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Montpellier",
       "description": "Agence IA française qui accompagne les PME et ETI montpelliéraines. Expertise santé et biotech (CHU Montpellier, Institut Méditerranéen de Cancérologie), FrenchTech Méditerranée (Cap Alpha), viticulture Languedoc premium. Présentiel à Montpellier, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-montpellier/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Montpellier",

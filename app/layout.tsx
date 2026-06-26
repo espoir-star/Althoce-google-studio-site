@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@type": "Organization",
               "@id": "https://althoce.com/#organization",
               "name": "Althoce",
-              "url": "https://althoce.com",
+              "url": "https://althoce.com/",
               "description": "Agence spécialisée en agents IA et automatisation pour PME françaises",
               "foundingDate": "2024",
               "address": {

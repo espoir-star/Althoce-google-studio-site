@@ -47,6 +47,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Paris",
       "description": "Agence IA Althoce, agents IA et automatisation pour PME et ETI franciliennes. Présence parisienne, intervention présentielle possible.",
       "url": "https://althoce.com/agence-ia-paris/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Paris",

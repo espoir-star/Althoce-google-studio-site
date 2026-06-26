@@ -50,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Lille",
       "description": "Agence IA française qui accompagne les PME et ETI à Lille et dans les Hauts-de-France. Expertise retail historique, e-commerce nordiste, logistique transfrontalière. Présentiel à Lille, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-lille/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Lille",

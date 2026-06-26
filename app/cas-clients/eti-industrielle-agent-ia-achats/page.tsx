@@ -57,7 +57,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -66,7 +70,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA achats pour ETI industrielle (scoring fournisseur, fiche négociation, alertes contrats)",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA achats, automatisation RFQ, scoring fournisseur IA, comparatif devis automatique, fiche négociation IA, alertes contrats fournisseurs"
     },

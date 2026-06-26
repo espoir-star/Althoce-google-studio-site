@@ -47,6 +47,7 @@ const jsonLd = {
       "description": "Cas client Althoce : cabinet de recrutement cadres Paris, 6 consultants, 700 CV/semaine. Agent IA tri CV anti-biais documenté, conforme RGPD opposable, déployé en 3 semaines. 0 retour défavorable sur 6 mois.",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -57,7 +58,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -66,7 +71,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA tri CV anti-biais pour cabinet de recrutement",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA tri CV, automatisation recrutement, tri CV anti-biais, conformité RGPD recrutement, agent IA RH cabinet recrutement"
     },

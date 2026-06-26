@@ -51,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Toulon",
       "description": "Agence IA française qui accompagne les PME et ETI varoises. Expertise sous-traitance défense Marine Nationale (Naval Group La Seyne-sur-Mer), Pôle Mer Méditerranée, tourisme Côte d'Azur ouest. Souveraineté France obligatoire pour le secteur défense.",
       "url": "https://althoce.com/agence-ia-toulon/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Toulon",

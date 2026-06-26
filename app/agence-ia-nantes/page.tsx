@@ -50,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Nantes",
       "description": "Agence IA française qui accompagne les PME et ETI à Nantes et en Pays de la Loire. Expertise numérique Île de Nantes, biotech Atlanpole, agroalimentaire régional. Présentiel à Nantes, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-nantes/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Nantes",

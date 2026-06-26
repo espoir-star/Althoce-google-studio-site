@@ -50,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Toulouse",
       "description": "Agence IA française qui accompagne les PME et ETI toulousaines et occitanes. Expertise sous-traitance aéronautique Airbus Blagnac, spatial, SaaS Labège, cabinets toulousains. Présentiel à Toulouse, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-toulouse/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Toulouse",

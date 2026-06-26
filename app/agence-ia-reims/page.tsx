@@ -50,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Reims",
       "description": "Agence IA française qui accompagne les PME, ETI et maisons de champagne rémoises. Expertise commercial export multilingue (FR/EN/ZH/JA), agroalimentaire premium Marne, pharma régionale. Présentiel à Reims et Épernay, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-reims/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Reims",
