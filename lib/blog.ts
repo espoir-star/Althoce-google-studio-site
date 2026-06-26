@@ -5,20 +5,24 @@ import { marked } from 'marked';
 
 const BLOG_DIR = path.join(process.cwd(), 'content/blog');
 
-export type BlogCategory = "Cas d'usage" | 'Guide pratique' | 'Décryptage' | 'Coulisses';
+export type BlogCategory = "Cas d'usage" | 'Guide pratique' | 'Décryptage' | 'Coulisses' | 'Finance' | 'Local';
 
 export interface BlogPost {
   title: string;
   date: string;
-  category: BlogCategory;
+  publishedAt?: string;
+  category: BlogCategory | string;
   excerpt: string;
   readingTime: string;
   slug: string;
   published: boolean;
+  image?: string;
+  imageAlt?: string;
   content: string;
 }
 
 export function getAllPosts(): BlogPost[] {
+  const now = new Date();
   const files = fs.readdirSync(BLOG_DIR);
   const posts: BlogPost[] = [];
 
@@ -26,23 +30,42 @@ export function getAllPosts(): BlogPost[] {
     if (!file.endsWith('.md') || file.startsWith('_')) continue;
     const raw = fs.readFileSync(path.join(BLOG_DIR, file), 'utf-8');
     const { data, content } = matter(raw);
-    if (!data.published) continue;
+
+    // Articles explicitement cachés (rétrocompatibilité field `published`)
+    if (data.published === false) continue;
+
+    // Articles avec date de publication future
+    if (data.publishedAt && new Date(data.publishedAt) > now) continue;
+
+    const readingTimeRaw = data.readingTime;
+    const readingTime =
+      typeof readingTimeRaw === 'number'
+        ? `${readingTimeRaw} min`
+        : (readingTimeRaw ?? '5 min');
 
     posts.push({
       title: data.title ?? '',
-      date: data.date ?? '',
+      date: data.date ?? data.publishedAt ?? '',
+      publishedAt: data.publishedAt ?? data.date ?? undefined,
       category: (data.category as BlogCategory) ?? "Cas d'usage",
-      excerpt: data.excerpt ?? '',
-      readingTime: data.readingTime ?? '5 min',
+      excerpt: data.excerpt ?? data.description ?? '',
+      readingTime,
       slug: data.slug ?? '',
       published: true,
+      image: data.image ?? undefined,
+      imageAlt: data.imageAlt ?? undefined,
       content: marked(content) as string,
     });
   }
 
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return posts.sort((a, b) => {
+    const dateA = new Date(a.publishedAt ?? a.date ?? 0).getTime();
+    const dateB = new Date(b.publishedAt ?? b.date ?? 0).getTime();
+    return dateB - dateA;
+  });
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
+  // getAllPosts() filtre déjà les articles futurs et cachés
   return getAllPosts().find(p => p.slug === slug) ?? null;
 }

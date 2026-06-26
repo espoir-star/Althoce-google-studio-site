@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import BlogPostCTA from '@/components/BlogPostCTA';
 import Footer from '@/components/Footer';
@@ -12,6 +13,8 @@ const CATEGORY_STYLES: Record<string, { bg: string; color: string; border: strin
   "Décryptage":     { bg: '#fefce8', color: '#a16207', border: '#fef08a' },
   "Coulisses":      { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
 };
+
+export const revalidate = 3600; // Revalide toutes les heures pour la publication différée
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -31,23 +34,24 @@ export async function generateMetadata(
       title: post.title,
       description: post.excerpt,
       type: 'article',
-      url: `https://althoce.com/blog/${post.slug}`,
-      publishedTime: post.date,
-    images: [
-      {
-        url: '/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
-      },
-    ],
-},
+      url: `https://althoce.com/blog/${post.slug}/`,
+      publishedTime: post.publishedAt ?? post.date,
+      images: [
+        {
+          url: post.image ? `https://althoce.com${post.image}` : '/og-default.png',
+          width: 1200,
+          height: 630,
+          alt: post.imageAlt ?? post.title,
+        },
+      ],
+    },
     twitter: {
       title: post.title,
       description: post.excerpt,
+      images: post.image ? [`https://althoce.com${post.image}`] : ['/og-default.png'],
     },
     alternates: {
-      canonical: `https://althoce.com/blog/${post.slug}`,
+      canonical: `https://althoce.com/blog/${post.slug}/`,
     },
   };
 }
@@ -63,10 +67,10 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
     "@id": `https://althoce.com/blog/${post.slug}/#article`,
     "headline": post.title,
     "description": post.excerpt,
-    "datePublished": post.date,
-    "dateModified": post.date,
+    "datePublished": post.publishedAt ?? post.date,
+    "dateModified": post.publishedAt ?? post.date,
     "url": `https://althoce.com/blog/${post.slug}/`,
-    "image": "https://althoce.com/og-default.png",
+    "image": post.image ? `https://althoce.com${post.image}` : "https://althoce.com/og-default.png",
     "inLanguage": "fr-FR",
     "author": {
       "@type": "Organization",
@@ -123,7 +127,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
                   <span style={{ fontSize: 13, color: '#a1a1aa' }}>{post.readingTime}</span>
                   <span style={{ color: '#d4d4d8' }}>·</span>
                   <span style={{ fontSize: 13, color: '#a1a1aa' }}>
-                    {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    {new Date(post.publishedAt ?? post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </span>
                 </div>
               );
@@ -135,6 +139,19 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
               {post.excerpt}
             </p>
           </div>
+
+          {post.image && (
+            <div style={{ borderRadius: 16, overflow: 'hidden', marginBottom: 20, border: '1px solid #e4e4e7' }}>
+              <Image
+                src={post.image}
+                alt={post.imageAlt ?? post.title}
+                width={768}
+                height={403}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                priority
+              />
+            </div>
+          )}
 
           <div style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', padding: '40px 48px', marginBottom: 32 }}>
             <div className="blog-prose" dangerouslySetInnerHTML={{ __html: post.content }} />
