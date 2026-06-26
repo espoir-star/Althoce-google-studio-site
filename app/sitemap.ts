@@ -85,9 +85,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // 2. Articles de blog (published uniquement)
+  // getAllPosts() filtre déjà les articles futurs — aucun article non publié n'apparaît ici
   const blogRoutes = getAllPosts().map(post => ({
     url: `${BASE_URL}/blog/${post.slug}/`,
-    lastModified: post.date ? new Date(post.date).toISOString() : now,
+    lastModified: post.publishedAt
+      ? new Date(post.publishedAt).toISOString()
+      : (post.date ? new Date(post.date).toISOString() : now),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
