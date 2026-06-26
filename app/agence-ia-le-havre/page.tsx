@@ -3,7 +3,7 @@ import AgenceIALeHavrePageClient from '@/components/AgenceIALeHavrePageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA au Havre : agents IA, automatisation et formation pour PME et ETI havraises | Althoce",
+  title: "Agence IA au Havre : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI au Havre et en Normandie. Expertise logistique portuaire HAROPA, transitaires maritimes, raffineries, droit maritime. Présentiel au Havre, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
   keywords: [
     'agence IA Le Havre',

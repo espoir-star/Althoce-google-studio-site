@@ -3,7 +3,7 @@ import AgenceIANantesPageClient from '@/components/AgenceIANantesPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Nantes : agents IA, automatisation et formation pour PME et ETI nantaises | Althoce",
+  title: "Agence IA à Nantes : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI à Nantes et en Pays de la Loire. Expertise numérique, biotech, agroalimentaire. Présentiel à Nantes, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
   keywords: [
     'agence IA Nantes',

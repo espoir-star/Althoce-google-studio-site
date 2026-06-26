@@ -3,7 +3,7 @@ import AgenceIABordeauxPageClient from '@/components/AgenceIABordeauxPageClient'
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Bordeaux : agents IA, automatisation et formation pour PME et ETI girondines | Althoce",
+  title: "Agence IA à Bordeaux : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI à Bordeaux et en Gironde. Expertise viticulture et négoce bordelais, aéronautique sous-traitance Airbus, agroalimentaire premium. Présentiel à Bordeaux, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
   keywords: [
     'agence IA Bordeaux',

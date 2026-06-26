@@ -3,7 +3,7 @@ import AgenceIAMontpellierPageClient from '@/components/AgenceIAMontpellierPageC
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Montpellier : agents IA, automatisation et formation pour PME et ETI montpelliéraines | Althoce",
+  title: "Agence IA à Montpellier : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI à Montpellier et en Occitanie. Expertise santé / biotech (CHU, Institut Méditerranéen de Cancérologie), numérique FrenchTech, viticulture Languedoc. Présentiel à Montpellier, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
   keywords: [
     'agence IA Montpellier',

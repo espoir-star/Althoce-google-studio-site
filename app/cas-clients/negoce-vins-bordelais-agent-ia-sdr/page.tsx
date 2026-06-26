@@ -3,7 +3,7 @@ import CasClientNegoceVinsBordelaisPageClient from '@/components/CasClientNegoce
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Négoce de vins bordelais : +200 % RDV qualifiés en 4 mois avec un agent SDR multilingue | Cas client Althoce",
+  title: "Négoce de vins bordelais : agent IA SDR",
   description: "Comment un négoce de vins bordelais de 28 collaborateurs a triplé son volume de RDV qualifiés export en 4 mois avec un agent IA SDR multilingue (français, anglais, mandarin, japonais), sans embaucher.",
   keywords: [
     'cas client agent IA SDR',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'Althoce négoce vins Bordeaux',
   ],
   openGraph: {
-    title: '+200 % RDV qualifiés en 4 mois : cas client négoce de vins bordelais | Althoce',
+    title: 'Négoce de vins bordelais : agent IA SDR | Althoce',
     description: "Agent IA SDR multilingue (4 langues), prospection 24/7, time-to-first-touch lead 18h → 4 min. Comment un négoce bordelais a triplé son volume de RDV export sans embaucher.",
     type: 'article',
     locale: 'fr_FR',

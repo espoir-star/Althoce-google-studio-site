@@ -3,7 +3,7 @@ import AgentIASupportPageClient from '@/components/AgentIASupportPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agent IA pour le service client : N1 absorbé en 24/7, équipe humaine sur les cas complexes | Althoce',
+  title: 'Agent IA service client : tickets N1 et N2',
   description: "Un agent IA Althoce absorbe 70 % des tickets support niveau 1, répond en 4 langues, escalade avec contexte enrichi quand c'est complexe. Temps de réponse divisé par 100, CSAT en hausse de 12 points. Tarification sur devis, 30 min offertes avec un expert.",
   keywords: ['agent IA support', 'agent IA tickets', 'automatisation support client', 'IA pour service client', 'agent IA Zendesk', 'agent IA Intercom', 'IA support multilingue'],
   openGraph: {

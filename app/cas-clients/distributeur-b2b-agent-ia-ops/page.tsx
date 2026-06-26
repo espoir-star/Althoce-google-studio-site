@@ -3,7 +3,7 @@ import CasClientDistributeurB2BOpsPageClient from '@/components/CasClientDistrib
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Distributeur B2B industriel : volume traité ×3 et fin du turnover assistant ops grâce aux agents IA Althoce | Cas client",
+  title: "Distributeur B2B : agent IA opérations",
   description: "Comment un distributeur B2B industriel de 45 collaborateurs a triplé son volume de mails et commandes traités sans embaucher, et a éliminé son turnover récurrent sur le poste d'assistant ops (80 % vers 0 %) grâce à 3 agents IA déployés en 6 semaines.",
   keywords: [
     'cas client agent IA ops',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'témoignage agent IA fin du burn-out ops',
   ],
   openGraph: {
-    title: 'Volume ×3 et turnover 80 % vers 0 % : cas client distributeur B2B ops | Althoce',
+    title: 'Distributeur B2B : agent IA opérations | Althoce',
     description: "Le projet IT le plus rentable du distributeur. 3 agents IA ops déployés en 6 semaines. Fin du burn-out cyclique sur le poste assistant administratif.",
     type: 'article',
     locale: 'fr_FR',

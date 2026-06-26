@@ -3,7 +3,7 @@ import ChatbotIAPageClient from '@/components/ChatbotIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Chatbot IA RAG sur-mesure pour site et intranet : ancré sur votre base de connaissances | Althoce',
+  title: 'Chatbot IA RAG sur mesure',
   description: "Pas un chatbot scripté qui frustre vos visiteurs. Un chatbot RAG ancré sur votre base de connaissances, vos FAQ, vos docs internes. Souverain, français, à partir de 1 400 € HT. 30 min offertes avec un expert.",
   keywords: ['chatbot IA', 'chatbot RAG', 'chatbot intelligent', 'agent conversationnel', 'chatbot site internet', 'chatbot français', 'chatbot PME', 'assistant IA conversationnel'],
   openGraph: {

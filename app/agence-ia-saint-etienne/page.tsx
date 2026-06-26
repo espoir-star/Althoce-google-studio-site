@@ -3,7 +3,7 @@ import AgenceIASaintEtiennePageClient from '@/components/AgenceIASaintEtiennePag
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Saint-Étienne : agents IA, automatisation et formation pour PME et ETI ligériennes | Althoce",
+  title: "Agence IA à Saint-Étienne : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI à Saint-Étienne et dans la Loire. Expertise sous-traitance mécanique, design (Cité du Design), Saint-Étienne French Tech, pharma régionale. Présentiel à Saint-Étienne, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
   keywords: [
     'agence IA Saint-Étienne',

@@ -3,7 +3,7 @@ import AgenceIALyonPageClient from '@/components/AgenceIALyonPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Lyon : agents IA, automatisation et formation pour PME et ETI lyonnaises | Althoce",
+  title: "Agence IA à Lyon : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI à Lyon et en région Auvergne-Rhône-Alpes. Cas client cabinet comptable lyonnais : ×2 capacité en 4 mois. Présentiel à Lyon, distanciel sans contrainte, formation IA pour vos équipes, souveraineté France garantie. 30 min offertes avec un expert.",
   keywords: [
     'agence IA Lyon',

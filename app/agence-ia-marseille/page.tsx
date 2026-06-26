@@ -3,7 +3,7 @@ import AgenceIAMarseillePageClient from '@/components/AgenceIAMarseillePageClien
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Marseille : agents IA, automatisation et formation pour PME et ETI provençales | Althoce",
+  title: "Agence IA à Marseille : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI de la métropole Aix-Marseille-Provence et de la région PACA. Expertise logistique portuaire, agroalimentaire méditerranéen, tourisme Côte d'Azur. Présentiel à Marseille, distanciel sans contrainte, formation IA, souveraineté France. 30 min offertes avec un expert.",
   keywords: [
     'agence IA Marseille',

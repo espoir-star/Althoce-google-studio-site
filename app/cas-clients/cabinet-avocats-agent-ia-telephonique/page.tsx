@@ -3,7 +3,7 @@ import CasClientCabinetAvocatsPageClient from '@/components/CasClientCabinetAvoc
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Cabinet d'avocats lyonnais : 0 appel raté et +130 % RDV qualifiés avec un agent IA téléphonique | Cas client Althoce",
+  title: "Cabinet d'avocats : agent IA téléphonique",
   description: "Comment un cabinet d'avocats lyonnais de 18 collaborateurs a éliminé les appels perdus, doublé ses prises de RDV et libéré 12 heures par semaine avec un agent IA téléphonique voix naturelle conforme secret professionnel.",
   keywords: [
     'cas client agent IA téléphonique cabinet avocats',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'Althoce cabinet avocats Lyon',
   ],
   openGraph: {
-    title: '0 appel raté et +130 % RDV qualifiés : cas client cabinet d\'avocats lyonnais | Althoce',
+    title: "Cabinet d'avocats : agent IA téléphonique | Althoce",
     description: "Agent IA téléphonique voix naturelle, 12h libérées/semaine, 0 heure sup. Comment un cabinet d'avocats lyonnais a éliminé les appels perdus et doublé ses prises de RDV.",
     type: 'article',
     locale: 'fr_FR',

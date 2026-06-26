@@ -3,7 +3,7 @@ import AgentIAFinancePageClient from '@/components/AgentIAFinancePageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agent IA pour la finance et la comptabilité : saisie, factures, rapprochement, reporting | Althoce',
+  title: 'Agent IA finance : notes de frais et compta',
   description: "Un agent IA Althoce absorbe 80 % de la saisie comptable et du reporting financier : factures fournisseurs, rapprochement bancaire, écritures, indicateurs de pilotage. ROI inférieur à 6 mois, capacité doublée sans recruter. Tarification sur devis, 30 min offertes avec un expert.",
   keywords: ['agent IA finance', 'agent IA comptabilité', 'IA reporting financier', 'automatisation comptabilité', 'IA DAF', 'automatisation factures fournisseurs', 'IA expert-comptable', 'agent IA comptable', 'IA contrôle de gestion'],
   openGraph: {

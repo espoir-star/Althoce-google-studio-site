@@ -3,7 +3,7 @@ import AutomatisationIAPageClient from '@/components/AutomatisationIAPageClient'
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Automatisation IA pour PME & ETI — Cadrage, chiffrage, mise en production | Althoce',
+  title: 'Automatisation IA des processus métier',
   description: "Agence d'automatisation IA française. On identifie, chiffre et déploie les automatisations qui libèrent vos équipes : mails, documents, CRM, reporting. 30 min offertes avec un expert. Premier livrable sous 7 jours.",
   keywords: ['automatisation IA', 'automatisation intelligente', 'agence automatisation IA', 'automatisation entreprise', 'automatiser avec l\'IA', 'automatisation processus', 'automatisation agentique', 'automatisation PME'],
   openGraph: {

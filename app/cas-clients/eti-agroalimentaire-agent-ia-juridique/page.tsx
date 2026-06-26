@@ -3,7 +3,7 @@ import CasClientEtiAgroalimentaireJuridiquePageClient from '@/components/CasClie
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "ETI agroalimentaire : 600 contrats/an pré-analysés et 4 jours libérés/mois pour le juriste interne avec Mistral hébergé France | Cas client Althoce",
+  title: "ETI agroalimentaire : agent IA juridique",
   description: "Comment une ETI agroalimentaire de 280 collaborateurs a libéré son juriste interne de 4 jours par mois pour la stratégie grâce à un agent IA d'analyse contractuelle de pré-décision, déployé en 5 semaines avec Mistral hébergé en France (OVH Bordeaux) et zéro transfert de données hors territoire.",
   keywords: [
     'cas client agent IA juridique',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'témoignage agent IA Mistral France RGPD',
   ],
   openGraph: {
-    title: 'ETI agroalimentaire : 3h → 30 min par contrat · 4 jours libérés/mois · Mistral France | Althoce',
+    title: 'ETI agroalimentaire : agent IA juridique | Althoce',
     description: "600 contrats/an pré-analysés par un agent IA 100 % France. Le juriste interne passe de 3h à 30 min par contrat — et retrouve 4 jours/mois pour la stratégie.",
     type: 'article',
     locale: 'fr_FR',

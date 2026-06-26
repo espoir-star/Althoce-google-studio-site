@@ -3,7 +3,7 @@ import CasClientCabinetRecrutementParisTRiCVPageClient from '@/components/CasCli
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Cabinet de recrutement parisien : ×3,5 volume CV triés avec un agent IA anti-biais documenté | Cas client Althoce",
+  title: "Cabinet recrutement : tri CV par IA",
   description: "Comment un cabinet de recrutement parisien de 6 consultants a multiplié par 3,5 son volume de CV triés sérieusement (200 vers 700 par semaine) et doublé son volume placé en 4 mois grâce à un agent IA tri CV anti-biais documenté, conforme RGPD opposable.",
   keywords: [
     'cas client agent IA tri CV',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'témoignage agent IA RGPD recrutement',
   ],
   openGraph: {
-    title: '×3,5 volume CV triés et ×2 placements : cas client cabinet de recrutement parisien | Althoce',
+    title: 'Cabinet recrutement : tri CV par IA | Althoce',
     description: "Tri CV anti-biais documenté, conformité RGPD opposable, 0 retour défavorable depuis 6 mois. Comment un cabinet parisien a doublé son volume placé sans recruter.",
     type: 'article',
     locale: 'fr_FR',

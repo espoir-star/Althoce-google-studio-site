@@ -3,7 +3,7 @@ import AgenceIAGrenoblePageClient from '@/components/AgenceIAGrenoblePageClient'
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Grenoble : agents IA, automatisation et formation pour PME et ETI grenobloises | Althoce",
+  title: "Agence IA à Grenoble : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI à Grenoble et en Isère. Expertise scale-up Inovallée, deep tech, micro-électronique (STMicroelectronics, Soitec), recherche (CEA, CNRS). Présentiel à Grenoble, distanciel, formation IA, souveraineté France. 30 min offertes.",
   keywords: [
     'agence IA Grenoble',

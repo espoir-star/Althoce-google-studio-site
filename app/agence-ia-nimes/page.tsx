@@ -3,7 +3,7 @@ import AgenceIANimesPageClient from '@/components/AgenceIANimesPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Nîmes : agents IA, automatisation et formation pour PME et ETI nîmoises | Althoce",
+  title: "Agence IA à Nîmes : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI à Nîmes et dans le Gard. Expertise vins Costières de Nîmes, agroalimentaire, tourisme patrimonial romain, services régionaux. Présentiel à Nîmes, distanciel, formation IA, souveraineté France. 30 min offertes.",
   keywords: [
     'agence IA Nîmes',

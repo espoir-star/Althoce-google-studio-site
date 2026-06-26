@@ -3,7 +3,7 @@ import CasClientCabinetComptableLyonPageClient from '@/components/CasClientCabin
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Cabinet d'expertise comptable Lyon : ×2 capacité grâce aux agents IA Althoce | Cas client",
+  title: "Cabinet comptable Lyon : agent IA finance",
   description: "Comment un cabinet d'expertise comptable lyonnais de 12 collaborateurs a doublé sa capacité de production en 4 mois avec 2 agents IA Althoce : automatisation de la saisie comptable et du rapprochement bancaire. Chiffres réels, architecture détaillée, témoignage.",
   keywords: [
     'cas client agent IA comptable',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'doublement capacité cabinet comptable',
   ],
   openGraph: {
-    title: "Cabinet d'expertise comptable Lyon : ×2 capacité en 4 mois avec 2 agents IA",
+    title: "Cabinet comptable Lyon : agent IA finance | Althoce",
     description: "12 collaborateurs, 2 agents IA, 4 mois : saisie comptable automatisée à 80 %, rapprochement bancaire sans intervention humaine, +80 clients sans recrutement.",
     type: 'article',
     locale: 'fr_FR',

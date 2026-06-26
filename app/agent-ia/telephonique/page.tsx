@@ -3,11 +3,11 @@ import AgentIATelephoniquePageClient from '@/components/AgentIATelephoniquePageC
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agent IA téléphonique : réception et émission d\'appels en pilote automatique, voix naturelle | Althoce',
+  title: "Agent IA téléphonique : réception d'appels",
   description: "Un agent IA Althoce répond aux appels entrants 24/7 en voix naturelle, qualifie les appelants, prend les RDV, passe les rappels sortants automatisés. Pas un IVR à touches. Une vraie conversation. Intégration CRM native. Tarification sur devis, 30 min offertes avec un expert.",
   keywords: ['agent IA téléphonique', 'agent IA vocal', 'IA standard téléphonique', 'répondeur IA intelligent', 'voicebot français', 'automatisation appels', 'agent vocal IA', 'IA rappels automatiques'],
   openGraph: {
-    title: 'Agent IA téléphonique : réception et émission d\'appels, voix naturelle | Althoce',
+    title: "Agent IA téléphonique : réception d'appels | Althoce",
     description: "Votre standard téléphonique sature. Votre SAV vocal frustre. Un agent IA Althoce répond en voix naturelle, qualifie, transfère ou résout. Pas un IVR à touches.",
     type: 'article',
     locale: 'fr_FR',

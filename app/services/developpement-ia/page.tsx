@@ -3,7 +3,7 @@ import DeveloppementIAPageClient from '@/components/DeveloppementIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Développement IA sur-mesure pour PME & ETI : code de production, MLOps, monitoring | Althoce',
+  title: 'Développement IA sur mesure',
   description: "Althoce développe vos solutions IA en code de production : agents, employés IA, intégrations API LLM, monitoring continu. Stack maîtrisée (Python, TypeScript, n8n, LangGraph). 30 min offertes avec un expert.",
   keywords: ['développement IA', 'agence développement IA', 'développeur IA', 'IA sur-mesure', 'MLOps', 'intégration LLM', 'agent IA custom', 'IA Python', 'IA TypeScript'],
   openGraph: {

@@ -3,7 +3,7 @@ import FormationIAPageClient from '@/components/FormationIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Formation IA en entreprise : ateliers, conseil et accompagnement sur-mesure | Althoce',
+  title: 'Formation IA pour vos équipes',
   description: "Quatre formats pour faire monter votre équipe en compétences IA : ateliers pratiques, onboarding outils IA (Claude, ChatGPT, Copilot), missions conseil, accompagnement long. Sur-mesure, contextualisé sur votre métier, sans jargon. 30 min offertes avec un expert.",
   keywords: ['formation IA entreprise', 'formation intelligence artificielle', 'atelier IA PME', 'onboarding outils IA', 'formation ChatGPT entreprise', 'formation Claude IA', 'accompagnement IA équipe'],
   openGraph: {

@@ -3,7 +3,7 @@ import AgenceIAReimsPageClient from '@/components/AgenceIAReimsPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Reims : agents IA, automatisation et formation pour PME et ETI rémoises | Althoce",
+  title: "Agence IA à Reims : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI à Reims et dans la Marne. Expertise champagne (LVMH Moët, Veuve Clicquot, Pommery), agroalimentaire premium, pharma. Présentiel à Reims, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
   keywords: [
     'agence IA Reims',

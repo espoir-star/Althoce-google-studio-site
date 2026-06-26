@@ -3,7 +3,7 @@ import AgentIAMarketingPageClient from '@/components/AgentIAMarketingPageClient'
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agent IA pour le marketing : contenu, SEO, social, email en pilote automatique | Althoce',
+  title: 'Agent IA marketing : contenu et SEO en pilote',
   description: "Un agent IA Althoce produit votre contenu multi-canal (articles SEO, posts LinkedIn, newsletters, séquences email) à votre ton de marque, fait votre veille concurrentielle, et libère votre équipe marketing pour la stratégie. Cohérence marque garantie. Tarification sur devis, 30 min offertes avec un expert.",
   keywords: ['agent IA marketing', 'IA pour marketing', 'IA création contenu', 'agent IA SEO', 'agent IA email marketing', 'automatisation marketing IA', 'IA pour CMO', 'génération contenu IA entreprise'],
   openGraph: {

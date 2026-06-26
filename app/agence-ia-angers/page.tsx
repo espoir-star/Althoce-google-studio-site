@@ -3,7 +3,7 @@ import AgenceIAAngersPageClient from '@/components/AgenceIAAngersPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Angers : agents IA, automatisation et formation pour PME et ETI angevines | Althoce",
+  title: "Agence IA à Angers : automatisation PME",
   description: "Althoce, agence IA française qui accompagne les PME et ETI à Angers et en Pays de la Loire. Expertise Végépolys (végétal), FrenchTech Angers, agroalimentaire, viticulture Loire (Saumur, Anjou). Présentiel à Angers, distanciel, formation IA, souveraineté France. 30 min offertes.",
   keywords: [
     'agence IA Angers',
