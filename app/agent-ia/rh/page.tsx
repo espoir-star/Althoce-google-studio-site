@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Agent IA RH : tri CV et onboarding',
-  description: "Un agent IA Althoce trie les CV avec rigueur RGPD, qualifie les candidats au téléphone, répond aux questions paie et congés des collaborateurs 24/7. Conformité native, anti-biais documenté. Vos équipes RH se recentrent sur l'humain. Tarification sur devis, 30 min offertes avec un expert.",
+  description: "Agent IA RH Althoce : tri CV anti-biais, qualification téléphonique des candidats, onboarding automatisé. Souverain, France. 30 min offertes.",
   keywords: ['agent IA RH', 'agent IA recrutement', 'tri CV IA', 'IA pour DRH', 'automatisation RH', 'chatbot RH interne', 'agent IA paie', 'assistant RH IA', 'agent IA onboarding'],
   openGraph: {
     title: 'Agent IA pour les RH : tri CV, qualification, assistance 24/7 | Althoce',

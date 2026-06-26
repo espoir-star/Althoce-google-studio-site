@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "ETI industrielle : agent IA achats",
-  description: "Comment une ETI industrielle de 180 collaborateurs avec 22 M€ d'achats/an a réduit son coût moyen d'achat de 18 % sur les catégories négociées et multiplié par 4 le volume de devis traités par acheteur grâce à un agent IA achats déployé en 7 semaines (ERP SAP, extraction multi-formats, scoring 5 critères, fiche négociation automatique).",
+  description: "ETI industrielle : -18 % sur les achats négociés et volume de devis ×4 en 8 mois avec un agent IA Althoce. Cas client détaillé.",
   keywords: [
     'cas client agent IA achats',
     'ROI agent IA achats ETI industrielle',

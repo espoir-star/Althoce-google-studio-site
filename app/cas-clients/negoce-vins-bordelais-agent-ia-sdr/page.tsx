@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Négoce de vins bordelais : agent IA SDR",
-  description: "Comment un négoce de vins bordelais de 28 collaborateurs a triplé son volume de RDV qualifiés export en 4 mois avec un agent IA SDR multilingue (français, anglais, mandarin, japonais), sans embaucher.",
+  description: "+200 % RDV qualifiés export en 4 mois pour un négoce de vins bordelais avec un agent IA SDR Althoce. Multilingue FR/EN/ZH. Cas client.",
   keywords: [
     'cas client agent IA SDR',
     'ROI agent IA prospection',

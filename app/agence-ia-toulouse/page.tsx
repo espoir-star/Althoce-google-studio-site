@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA à Toulouse : automatisation PME",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI de la métropole toulousaine et d'Occitanie. Expertise aéronautique Airbus Blagnac, spatial, SaaS Labège, cabinets toulousains. Présentiel à Toulouse, distanciel sans contrainte, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  description: "Althoce, agence IA à Toulouse : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Toulouse',
     'agence IA Occitanie',

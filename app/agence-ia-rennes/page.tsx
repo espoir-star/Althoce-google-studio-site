@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA à Rennes : automatisation PME",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Rennes et en Bretagne. Expertise numérique (FrenchTech Rennes Saint-Malo, IRT b-com), agroalimentaire (Lactalis, Bridor), industrie automobile. Présentiel à Rennes, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  description: "Althoce, agence IA à Rennes : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Rennes',
     'agence IA Bretagne',

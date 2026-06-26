@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA à Lille : automatisation PME",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Lille et dans les Hauts-de-France. Expertise retail, e-commerce, logistique transfrontalière. Présentiel à Lille, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  description: "Althoce, agence IA à Lille : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Lille',
     'agence IA Hauts-de-France',

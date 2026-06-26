@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Agent IA juridique : analyse de contrats',
-  description: "Un agent IA Althoce analyse vos contrats entrants, fait votre veille réglementaire en temps réel, pré-rédige les documents juridiques standards. Sous strict contrôle humain, dans le respect du secret professionnel. Souveraineté France garantie. Tarification sur devis, 30 min offertes avec un expert.",
+  description: "Agent IA juridique Althoce : analyse de contrats, veille réglementaire, pré-rédaction de documents. Souverain, France. 30 min offertes.",
   keywords: ['agent IA juridique', 'IA pour juriste', 'analyse contrat IA', 'veille réglementaire IA', 'IA pour cabinet d\'avocats', 'IA pour direction juridique', 'rédaction documents juridiques IA'],
   openGraph: {
     title: 'Agent IA pour le juridique : analyse contrats, veille, rédaction courante | Althoce',

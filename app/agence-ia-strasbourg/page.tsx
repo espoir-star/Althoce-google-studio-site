@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA à Strasbourg : automatisation PME",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Strasbourg et en Grand Est. Expertise pharma, transfrontalier, services européens. Présentiel à Strasbourg, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  description: "Althoce, agence IA à Strasbourg : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Strasbourg',
     'agence IA Grand Est',

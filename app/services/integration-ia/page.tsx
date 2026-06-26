@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Intégration IA dans vos outils',
-  description: "Vos agents IA méritent mieux qu'un POC oublié. SSO, RBAC, audit log, monitoring, fallback humain, kill switch. Intégration au CRM, ERP, intranet en mode production. 30 min offertes avec un expert.",
+  description: "SSO, RBAC, audit log, monitoring, fallback humain, kill switch. Vos agents IA intégrés à votre SI pour durer en production. Devis gratuit.",
   keywords: ['intégration IA', 'intégration LLM', 'connecteur IA CRM', 'IA Salesforce', 'IA HubSpot', 'IA Sage', 'gouvernance IA', 'IA RGPD'],
   openGraph: {
     title: 'Intégration IA dans votre SI : sécurisée, monitorée, gouvernée | Althoce',

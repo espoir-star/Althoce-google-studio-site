@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Agents IA sur mesure pour PME',
-  description: "Althoce conçoit des agents IA 100% autonomes pour les PME et ETI françaises. Commerciaux, opérationnels, support : des employés virtuels qui lisent, décident et agissent. Premier agent en 1 semaine, à partir de 1 400 €.",
+  description: "Althoce conçoit des agents IA 100 % autonomes pour les PME françaises. Commercial, RH, finance, support. Premier agent en 1 semaine. Devis.",
   keywords: ['agents IA', 'agent IA', 'création agent IA', 'développement agent IA', 'agence agent IA', 'agent IA entreprise', 'agent IA autonome', 'automatisation agentique', 'employé IA'],
   openGraph: {
     title: 'Agents IA sur-mesure pour PME et ETI — Althoce',

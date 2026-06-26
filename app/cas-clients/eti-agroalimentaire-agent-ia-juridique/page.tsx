@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "ETI agroalimentaire : agent IA juridique",
-  description: "Comment une ETI agroalimentaire de 280 collaborateurs a libéré son juriste interne de 4 jours par mois pour la stratégie grâce à un agent IA d'analyse contractuelle de pré-décision, déployé en 5 semaines avec Mistral hébergé en France (OVH Bordeaux) et zéro transfert de données hors territoire.",
+  description: "600 contrats fournisseurs analysés par an grâce à un agent IA juridique Althoce. ETI agroalimentaire française. Cas client détaillé.",
   keywords: [
     'cas client agent IA juridique',
     'ROI agent IA analyse contractuelle ETI',

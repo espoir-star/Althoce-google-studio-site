@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Chatbot IA RAG sur mesure',
-  description: "Pas un chatbot scripté qui frustre vos visiteurs. Un chatbot RAG ancré sur votre base de connaissances, vos FAQ, vos docs internes. Souverain, français, à partir de 1 400 € HT. 30 min offertes avec un expert.",
+  description: "Chatbot RAG ancré sur votre base de connaissances. Pas un IVR scripté — une vraie conversation, en français, souverain. 30 min offertes.",
   keywords: ['chatbot IA', 'chatbot RAG', 'chatbot intelligent', 'agent conversationnel', 'chatbot site internet', 'chatbot français', 'chatbot PME', 'assistant IA conversationnel'],
   openGraph: {
     title: 'Chatbot IA RAG sur-mesure : ancré sur votre base de connaissances | Althoce',

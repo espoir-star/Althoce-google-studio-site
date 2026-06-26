@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Cabinet comptable Lyon : agent IA finance",
-  description: "Comment un cabinet d'expertise comptable lyonnais de 12 collaborateurs a doublé sa capacité de production en 4 mois avec 2 agents IA Althoce : automatisation de la saisie comptable et du rapprochement bancaire. Chiffres réels, architecture détaillée, témoignage.",
+  description: "Cabinet comptable Lyon : capacité ×2 en 4 mois avec un agent IA finance Althoce. Zéro embauche supplémentaire. Cas client chiffré.",
   keywords: [
     'cas client agent IA comptable',
     'ROI agent IA cabinet comptable',

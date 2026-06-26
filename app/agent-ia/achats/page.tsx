@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Agent IA achats : sourcing et fournisseurs',
-  description: "Un agent IA Althoce source les fournisseurs candidats, compare les devis selon vos critères pondérés, suit les contrats et alerte sur les renouvellements, surveille la vigilance financière de votre panel. Vos acheteurs se concentrent sur la négociation et la relation stratégique. Tarification sur devis, 30 min offertes avec un expert.",
+  description: "Agent IA achats Althoce : sourcing fournisseurs automatisé, analyse comparative, alertes renouvellements. Souverain, France. 30 min offertes.",
   keywords: ['agent IA achats', 'IA sourcing fournisseurs', 'analyse devis IA', 'agent IA suivi contrats fournisseurs', 'IA pour direction achats', 'vigilance fournisseurs IA', 'automatisation achats PME'],
   openGraph: {
     title: 'Agent IA pour les achats : sourcing, devis, contrats en pilote automatique | Althoce',

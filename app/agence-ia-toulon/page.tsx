@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA à Toulon : automatisation PME",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Toulon et dans le Var. Expertise sous-traitance défense Marine Nationale, Pôle Mer Méditerranée, tourisme Côte d'Azur ouest. Souveraineté France obligatoire. 30 min offertes avec un expert.",
+  description: "Althoce, agence IA à Toulon : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Toulon',
     'agence IA Var',

@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agent IA téléphonique : réception d'appels",
-  description: "Un agent IA Althoce répond aux appels entrants 24/7 en voix naturelle, qualifie les appelants, prend les RDV, passe les rappels sortants automatisés. Pas un IVR à touches. Une vraie conversation. Intégration CRM native. Tarification sur devis, 30 min offertes avec un expert.",
+  description: "Agent IA téléphonique Althoce : réception 24/7, qualification, prise de RDV, rappels sortants. Voix naturelle française. 30 min offertes.",
   keywords: ['agent IA téléphonique', 'agent IA vocal', 'IA standard téléphonique', 'répondeur IA intelligent', 'voicebot français', 'automatisation appels', 'agent vocal IA', 'IA rappels automatiques'],
   openGraph: {
     title: "Agent IA téléphonique : réception d'appels | Althoce",

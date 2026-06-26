@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA à Reims : automatisation PME",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Reims et dans la Marne. Expertise champagne (LVMH Moët, Veuve Clicquot, Pommery), agroalimentaire premium, pharma. Présentiel à Reims, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  description: "Althoce, agence IA à Reims : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Reims',
     'agence IA Champagne-Ardenne',

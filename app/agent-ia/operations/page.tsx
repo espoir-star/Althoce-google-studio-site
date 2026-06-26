@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Agent IA opérations : back-office et ADV',
-  description: "Un agent IA Althoce absorbe les tâches répétitives transversales du back-office : tri et réponse aux mails entrants, gestion documentaire, suivi ADV, mise à jour fournisseurs. Votre équipe ops sort du burn-out cyclique. Tarification sur devis, 30 min offertes avec un expert.",
+  description: "Agent IA opérations Althoce : back-office, ADV, gestion mails et commandes. Libérez vos équipes des tâches répétitives. 30 min offertes.",
   keywords: ['agent IA ops', 'agent IA back-office', 'automatisation ADV', 'IA pour assistant administratif', 'agent IA traitement mails', 'IA gestion documentaire', 'automatisation suivi fournisseurs'],
   openGraph: {
     title: 'Agent IA pour les ops : mails, documents, ADV en pilote automatique | Althoce',

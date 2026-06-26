@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA à Dijon : automatisation PME",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Dijon et en Bourgogne-Franche-Comté. Expertise agroalimentaire premium (moutarde, vins de Bourgogne), pharma régionale, services aux entreprises. Présentiel à Dijon, distanciel, formation IA, souveraineté France. 30 min offertes.",
+  description: "Althoce, agence IA à Dijon : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Dijon',
     'agence IA Bourgogne-Franche-Comté',

@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Cabinet d'avocats : agent IA téléphonique",
-  description: "Comment un cabinet d'avocats lyonnais de 18 collaborateurs a éliminé les appels perdus, doublé ses prises de RDV et libéré 12 heures par semaine avec un agent IA téléphonique voix naturelle conforme secret professionnel.",
+  description: "Cabinet d'avocats : 0 appel raté, +130 % RDV qualifiés et 12 h/semaine libérées avec un agent IA téléphonique Althoce. Cas client.",
   keywords: [
     'cas client agent IA téléphonique cabinet avocats',
     'ROI agent IA accueil téléphonique',

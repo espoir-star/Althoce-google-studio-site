@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Cabinet recrutement : tri CV par IA",
-  description: "Comment un cabinet de recrutement parisien de 6 consultants a multiplié par 3,5 son volume de CV triés sérieusement (200 vers 700 par semaine) et doublé son volume placé en 4 mois grâce à un agent IA tri CV anti-biais documenté, conforme RGPD opposable.",
+  description: "Cabinet de recrutement parisien : volume CV triés ×3,5 et placements doublés avec un agent IA anti-biais Althoce. Cas client.",
   keywords: [
     'cas client agent IA tri CV',
     'ROI agent IA recrutement cadres',

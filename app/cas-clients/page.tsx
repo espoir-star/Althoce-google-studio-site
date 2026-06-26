@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Cas clients : ce que nos agents IA ont changé concrètement chez des PME et ETI françaises | Althoce',
-  description: "9 cas clients chiffrés Althoce : cabinet comptable Lyon (×2 capacité), négoce vins Bordeaux (+200 % RDV), SaaS B2B (70 % N1 absorbé), cabinet recrutement Paris (×2 placements), ETI industrielle (4 % économies achats = 1,2 M€). Lisez les transformations réelles, contactez un expert.",
+  description: "9 cas clients chiffrés Althoce : cabinet comptable (×2), négoce vins (+200 % RDV), SaaS B2B (70 % tickets N1). ROI mesurable.",
   keywords: ['cas clients Althoce', 'cas client agent IA', 'retour expérience agent IA', 'ROI agent IA exemple', 'cas concret automatisation IA PME', 'témoignage agent IA', 'preuve sociale IA entreprise'],
   openGraph: {
     title: 'Cas clients Althoce : 9 transformations chiffrées chez des PME et ETI françaises',

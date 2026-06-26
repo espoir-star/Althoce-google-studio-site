@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Audit IA pour PME : 30 min offertes',
-  description: "Audit IA Althoce : cartographie de vos opportunités, calcul de ROI projet par projet, feuille de route chiffrée, gouvernance, conformité. Pas un PowerPoint de cabinet de conseil. Sur devis. 30 min offertes avec un expert.",
+  description: "Audit IA Althoce : cartographie de vos opportunités, calcul de ROI projet par projet, feuille de route chiffrée. 30 min offertes. Sans engagement.",
   keywords: ['audit IA', 'audit IA entreprise', 'cartographie IA', 'stratégie IA PME', 'feuille de route IA', 'diagnostic IA', 'maturité IA', 'roadmap IA'],
   openGraph: {
     title: 'Audit IA pour PME et ETI : cartographie chiffrée des opportunités | Althoce',

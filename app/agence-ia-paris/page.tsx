@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA à Paris : automatisation PME",
-  description: "Althoce, agence IA à Paris, accompagne les PME et ETI franciliennes dans leurs projets d'agents IA et d'automatisation. Présence parisienne, intervention en présentiel possible. Souveraineté France garantie. 30 min offertes avec un expert.",
+  description: "Althoce, agence IA à Paris : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Paris',
     'agence IA Île-de-France',

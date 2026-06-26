@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "SaaS B2B : agent IA marketing",
-  description: "Comment un éditeur SaaS B2B de 90 collaborateurs et 1 500 clients a multiplié sa production de contenu par 4 (1 vers 4 articles SEO/mois, 4 vers 12 posts LinkedIn/mois, 60 emails segmentés/mois) et boosté son trafic organique de 140 % en 6 mois grâce à un agent IA marketing au ton de marque.",
+  description: "Éditeur SaaS B2B : production de contenu ×4 et trafic organique +140 % avec un agent IA marketing Althoce. Cas client chiffré.",
   keywords: [
     'cas client agent IA marketing',
     'ROI agent IA content marketing PME',

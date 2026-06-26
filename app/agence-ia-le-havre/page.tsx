@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA au Havre : automatisation PME",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI au Havre et en Normandie. Expertise logistique portuaire HAROPA, transitaires maritimes, raffineries, droit maritime. Présentiel au Havre, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  description: "Althoce, agence IA au Havre : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Le Havre',
     'agence IA Normandie',

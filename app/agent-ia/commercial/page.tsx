@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Agent IA commercial : prospection automatisée',
-  description: "Un agent IA Althoce absorbe la prospection, la qualification de leads, les relances pipeline et la prise de RDV. Vos commerciaux se concentrent sur le closing. ROI inférieur à 6 mois, +80 RDV qualifiés/mois en moyenne. Tarification sur devis, 30 min offertes avec un expert.",
+  description: "Agent IA commercial Althoce : prospection automatisée, qualification leads, relances pipeline et prise de RDV. Souverain, France. 30 min offertes.",
   keywords: ['agent IA commercial', 'agent IA SDR', 'agent IA prospection', 'automatisation commerciale', 'IA pour commerciaux', 'agent IA HubSpot', 'agent IA Salesforce', 'IA prise de RDV'],
   openGraph: {
     title: 'Agent IA pour le commercial : prospection et qualification en pilote automatique | Althoce',

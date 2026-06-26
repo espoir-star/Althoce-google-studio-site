@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Distributeur B2B : agent IA opérations",
-  description: "Comment un distributeur B2B industriel de 45 collaborateurs a triplé son volume de mails et commandes traités sans embaucher, et a éliminé son turnover récurrent sur le poste d'assistant ops (80 % vers 0 %) grâce à 3 agents IA déployés en 6 semaines.",
+  description: "Distributeur B2B industriel : volume traité ×3 et turnover opérationnel à 0 % avec 3 agents IA Althoce. Cas client détaillé.",
   keywords: [
     'cas client agent IA ops',
     'ROI agent IA back-office',

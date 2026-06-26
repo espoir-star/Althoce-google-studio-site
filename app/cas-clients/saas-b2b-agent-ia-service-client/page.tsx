@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "SaaS B2B : agent IA service client",
-  description: "Comment un éditeur SaaS B2B de 120 collaborateurs et 8 000 clients PME a réduit son temps de première réponse de 18 heures à 4 minutes et fait monter sa CSAT de 12 points en 3 mois avec un agent IA service client intégré à Zendesk.",
+  description: "SaaS B2B : 70 % des tickets N1 résolus en autonomie et temps de première réponse ÷5 avec un agent IA Althoce. Cas client chiffré.",
   keywords: [
     'cas client agent IA service client',
     'ROI agent IA support SaaS',

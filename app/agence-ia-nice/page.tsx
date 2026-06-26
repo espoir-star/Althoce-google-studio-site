@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Agence IA à Nice : automatisation PME",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Nice et sur la Côte d'Azur. Expertise hôtellerie luxe, biotech Sophia Antipolis, finance privée, immobilier. Présentiel à Nice, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  description: "Althoce, agence IA à Nice : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Nice',
     "agence IA Côte d'Azur",
