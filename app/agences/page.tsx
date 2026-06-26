@@ -3,7 +3,7 @@ import AgencesHubPageClient from '@/components/AgencesHubPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Une IA souveraine, responsable, accessible à toutes les PME françaises | Althoce',
+  title: 'Une IA souveraine, responsable, accessible à toutes les PME françaises',
   description: "Althoce, agence IA française, accompagne les PME et ETI partout en France. Mission : IA souveraine, responsable, accessible. 30 min offertes.",
   keywords: ['agence IA France', 'partenaire IA PME', 'IA souveraine PME', 'agence IA responsable', 'IA éthique entreprise', 'agence IA souveraine France', 'partenaire de confiance IA'],
   alternates: { canonical: 'https://althoce.com/agences/' },

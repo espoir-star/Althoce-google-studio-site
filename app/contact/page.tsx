@@ -3,7 +3,7 @@ import ContactPageClient from '@/components/ContactPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Discutons de votre projet — 30 minutes offertes | Althoce',
+  title: 'Discutons de votre projet — 30 minutes offertes',
   description: "30 minutes pour identifier vos automatisations à fort ROI. Sans engagement, sans pitch commercial. Expert disponible. Réponse sous 24h ouvrées.",
   keywords: 'contact Althoce, contacter Althoce, prendre RDV Althoce, 30 minutes Althoce, rendez-vous expert IA Althoce',
   robots: { index: true, follow: true },

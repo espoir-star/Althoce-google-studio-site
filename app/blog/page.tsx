@@ -4,7 +4,7 @@ import BlogIndexClient from '@/components/BlogIndexClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Blog | Althoce — IA & Automatisation pour PME',
+  title: 'Blog',
   description: "Cas d'usage concrets, guides pratiques et décryptages sur l'IA et l'automatisation pour les PME et agences françaises.",
   openGraph: {
     title: 'Blog Althoce — Insights IA & Automatisation',

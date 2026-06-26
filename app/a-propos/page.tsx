@@ -3,7 +3,7 @@ import AProposPageClient from '@/components/AProposPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "L'histoire et la culture d'Althoce | Althoce",
+  title: "L'histoire et la culture d'Althoce",
   description: "Althoce, agence IA française d'origine bordelaise. Mission : démocratiser l'IA responsable pour les PME. Souveraineté France, anti-biais documenté.",
   keywords: "qui est Althoce, équipe Althoce, histoire Althoce, culture Althoce, agence IA Bordeaux histoire, Althoce origine",
   robots: { index: true, follow: true },
