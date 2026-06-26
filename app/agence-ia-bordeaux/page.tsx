@@ -3,8 +3,8 @@ import AgenceIABordeauxPageClient from '@/components/AgenceIABordeauxPageClient'
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Bordeaux : agents IA, automatisation et formation pour PME et ETI girondines | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Bordeaux et en Gironde. Expertise viticulture et négoce bordelais, aéronautique sous-traitance Airbus, agroalimentaire premium. Présentiel à Bordeaux, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  title: "Agence IA à Bordeaux : automatisation PME",
+  description: "Althoce, agence IA à Bordeaux : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Bordeaux',
     'agence IA Gironde',
@@ -24,7 +24,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-bordeaux/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Bordeaux · Agents IA & Automatisation PME girondines | Althoce",
@@ -44,6 +52,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Bordeaux",
       "description": "Agence IA française qui accompagne les PME et ETI bordelaises. Expertise viticulture et négoce bordelais (export FR/EN/ZH/JA), aéronautique et sous-traitance Airbus (EN 9100, Mérignac, Bordeaux Aéroparc), agroalimentaire premium Gironde. Présentiel à Bordeaux, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-bordeaux/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Bordeaux",

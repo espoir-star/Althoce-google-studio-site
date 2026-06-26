@@ -3,8 +3,8 @@ import AgenceIAStrasbourgPageClient from '@/components/AgenceIAStrasbourgPageCli
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Strasbourg : agents IA, automatisation et formation pour PME et ETI alsaciennes | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Strasbourg et en Grand Est. Expertise pharma, transfrontalier, services européens. Présentiel à Strasbourg, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  title: "Agence IA à Strasbourg : automatisation PME",
+  description: "Althoce, agence IA à Strasbourg : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Strasbourg',
     'agence IA Grand Est',
@@ -22,7 +22,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-strasbourg/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Strasbourg · Agents IA & Automatisation PME alsaciennes | Althoce",
@@ -42,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Strasbourg",
       "description": "Agence IA française qui accompagne les PME et ETI à Strasbourg et en Grand Est. Expertise pharma alsacienne, marchés transfrontaliers FR/DE, services européens et institutions. Présentiel à Strasbourg, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-strasbourg/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Strasbourg",

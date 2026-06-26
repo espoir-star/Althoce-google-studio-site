@@ -3,8 +3,8 @@ import AgenceIALeHavrePageClient from '@/components/AgenceIALeHavrePageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA au Havre : agents IA, automatisation et formation pour PME et ETI havraises | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI au Havre et en Normandie. Expertise logistique portuaire HAROPA, transitaires maritimes, raffineries, droit maritime. Présentiel au Havre, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  title: "Agence IA au Havre : automatisation PME",
+  description: "Althoce, agence IA au Havre : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Le Havre',
     'agence IA Normandie',
@@ -23,7 +23,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-le-havre/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Le Havre · Agents IA & Automatisation logistique portuaire | Althoce",
@@ -43,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA au Havre",
       "description": "Agence IA française qui accompagne les PME, ETI et opérateurs portuaires au Havre et en Normandie. Expertise ops/back-office transitaires HAROPA (manifestes DAU, BL maritimes), achats sous-traitance portuaire et raffineries, service client multilingue, droit maritime. Présentiel au Havre, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-le-havre/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Le Havre",

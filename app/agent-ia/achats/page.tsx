@@ -3,8 +3,8 @@ import AgentIAachatsPageClient from '@/components/AgentIAachatsPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agent IA pour les achats : sourcing fournisseurs, analyse devis, suivi contrats | Althoce',
-  description: "Un agent IA Althoce source les fournisseurs candidats, compare les devis selon vos critères pondérés, suit les contrats et alerte sur les renouvellements, surveille la vigilance financière de votre panel. Vos acheteurs se concentrent sur la négociation et la relation stratégique. Tarification sur devis, 30 min offertes avec un expert.",
+  title: 'Agent IA achats : sourcing et fournisseurs',
+  description: "Agent IA achats Althoce : sourcing fournisseurs automatisé, analyse comparative, alertes renouvellements. Souverain, France. 30 min offertes.",
   keywords: ['agent IA achats', 'IA sourcing fournisseurs', 'analyse devis IA', 'agent IA suivi contrats fournisseurs', 'IA pour direction achats', 'vigilance fournisseurs IA', 'automatisation achats PME'],
   openGraph: {
     title: 'Agent IA pour les achats : sourcing, devis, contrats en pilote automatique | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/agent-ia/achats/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Agent IA achats : sourcing 4h, 0 contrat raté, 3-7% économies | Althoce',

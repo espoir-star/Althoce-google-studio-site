@@ -100,7 +100,7 @@ export function Report({ profile, lead, agents, total, onBackToCalc }: {
             color: T.text, padding: isMobile ? '8px 14px' : '10px 16px', borderRadius: 99,
             fontSize: isMobile ? 12 : 13, cursor: 'pointer', fontWeight: 600, fontFamily: T.font,
           }}>Télécharger PDF</button>
-          <CTA size="sm" href="/contact">Réserver mon audit 30 min</CTA>
+          <CTA size="sm" href="/contact/">Réserver mon audit 30 min</CTA>
         </div>
       </header>
 
@@ -987,7 +987,7 @@ function FinalCTA({ lead, total }: { lead: LeadData; total: ROITotal }) {
           si l&apos;IA peut vous faire gagner les <strong style={{ color: T.text }}>{fmtEur(total.gainAnnuel, { short: true })}</strong> annoncés. Pas de slides, pas de relance commerciale.
         </p>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
-          <CTA size={isMobile ? 'md' : 'lg'} href="/contact">Réserver mon audit gratuit 30 min</CTA>
+          <CTA size={isMobile ? 'md' : 'lg'} href="/contact/">Réserver mon audit gratuit 30 min</CTA>
         </div>
       </div>
     </section>

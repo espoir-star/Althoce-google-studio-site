@@ -3,8 +3,8 @@ import AgenceIADijonPageClient from '@/components/AgenceIADijonPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Dijon : agents IA, automatisation et formation pour PME et ETI bourguignonnes | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Dijon et en Bourgogne-Franche-Comté. Expertise agroalimentaire premium (moutarde, vins de Bourgogne), pharma régionale, services aux entreprises. Présentiel à Dijon, distanciel, formation IA, souveraineté France. 30 min offertes.",
+  title: "Agence IA à Dijon : automatisation PME",
+  description: "Althoce, agence IA à Dijon : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Dijon',
     'agence IA Bourgogne-Franche-Comté',
@@ -23,7 +23,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-dijon/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Dijon · Agents IA & Automatisation négoces vins et agroalimentaire Bourgogne | Althoce",
@@ -43,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Dijon",
       "description": "Agence IA française qui accompagne les PME, ETI et négoces de vins de Bourgogne. Expertise agroalimentaire premium (moutarde, vins de Bourgogne), pharma régionale, services aux entreprises dijonnaises. Souveraineté France par défaut.",
       "url": "https://althoce.com/agence-ia-dijon/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dijon",

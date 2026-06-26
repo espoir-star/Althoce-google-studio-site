@@ -3,8 +3,8 @@ import AgentIASupportPageClient from '@/components/AgentIASupportPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agent IA pour le service client : N1 absorbé en 24/7, équipe humaine sur les cas complexes | Althoce',
-  description: "Un agent IA Althoce absorbe 70 % des tickets support niveau 1, répond en 4 langues, escalade avec contexte enrichi quand c'est complexe. Temps de réponse divisé par 100, CSAT en hausse de 12 points. Tarification sur devis, 30 min offertes avec un expert.",
+  title: 'Agent IA service client : tickets N1 et N2',
+  description: "Agent IA service client Althoce : 70 % des tickets N1 résolus, réponse en 4 langues, escalade avec contexte. Souverain, France. 30 min offertes.",
   keywords: ['agent IA support', 'agent IA tickets', 'automatisation support client', 'IA pour service client', 'agent IA Zendesk', 'agent IA Intercom', 'IA support multilingue'],
   openGraph: {
     title: 'Agent IA pour le support client : N1 absorbé en 24/7 | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/agent-ia/service-client/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Agent IA service client | Althoce',

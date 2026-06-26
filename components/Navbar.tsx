@@ -337,7 +337,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
 
       {/* CTA sticky en bas */}
       <div className="nb-mob-footer">
-        <a href="/contact" onClick={onClose} className="nb-mob-cta">
+        <a href="/contact/" onClick={onClose} className="nb-mob-cta">
           Parlons de votre projet <ArrowIcon />
         </a>
         <p className="nb-mob-note">Sans engagement · Réponse sous 24 h</p>
@@ -490,7 +490,7 @@ export default function Navbar() {
           </div>
 
           {/* CTA */}
-          <a href="/contact" className="nb-cta" style={{ marginLeft: 10 }}>
+          <a href="/contact/" className="nb-cta" style={{ marginLeft: 10 }}>
             Parlons de votre projet <ArrowIcon />
           </a>
         </div>

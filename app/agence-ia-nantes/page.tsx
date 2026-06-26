@@ -3,8 +3,8 @@ import AgenceIANantesPageClient from '@/components/AgenceIANantesPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Nantes : agents IA, automatisation et formation pour PME et ETI nantaises | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Nantes et en Pays de la Loire. Expertise numérique, biotech, agroalimentaire. Présentiel à Nantes, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  title: "Agence IA à Nantes : automatisation PME",
+  description: "Althoce, agence IA à Nantes : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Nantes',
     'agence IA Pays de la Loire',
@@ -22,7 +22,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-nantes/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Nantes · Agents IA & Automatisation PME nantaises | Althoce",
@@ -42,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Nantes",
       "description": "Agence IA française qui accompagne les PME et ETI à Nantes et en Pays de la Loire. Expertise numérique Île de Nantes, biotech Atlanpole, agroalimentaire régional. Présentiel à Nantes, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-nantes/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Nantes",

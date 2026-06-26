@@ -3,8 +3,8 @@ import AgenceIAGrenoblePageClient from '@/components/AgenceIAGrenoblePageClient'
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Grenoble : agents IA, automatisation et formation pour PME et ETI grenobloises | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Grenoble et en Isère. Expertise scale-up Inovallée, deep tech, micro-électronique (STMicroelectronics, Soitec), recherche (CEA, CNRS). Présentiel à Grenoble, distanciel, formation IA, souveraineté France. 30 min offertes.",
+  title: "Agence IA à Grenoble : automatisation PME",
+  description: "Althoce, agence IA à Grenoble : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Grenoble',
     'agence IA Isère',
@@ -23,7 +23,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-grenoble/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Grenoble · Agents IA & Automatisation deep tech et micro-électronique | Althoce",
@@ -43,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Grenoble",
       "description": "Agence IA française qui accompagne les PME et ETI grenobloises. Expertise scale-up deep tech Inovallée, micro-électronique (STMicroelectronics Crolles, Soitec), recherche CEA-Leti et CNRS, énergie Schneider Electric. Souveraineté France par défaut.",
       "url": "https://althoce.com/agence-ia-grenoble/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Grenoble",

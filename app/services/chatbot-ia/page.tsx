@@ -3,8 +3,8 @@ import ChatbotIAPageClient from '@/components/ChatbotIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Chatbot IA RAG sur-mesure pour site et intranet : ancré sur votre base de connaissances | Althoce',
-  description: "Pas un chatbot scripté qui frustre vos visiteurs. Un chatbot RAG ancré sur votre base de connaissances, vos FAQ, vos docs internes. Souverain, français, à partir de 1 400 € HT. 30 min offertes avec un expert.",
+  title: 'Chatbot IA RAG sur mesure',
+  description: "Chatbot RAG ancré sur votre base de connaissances. Pas un IVR scripté — une vraie conversation, en français, souverain. 30 min offertes.",
   keywords: ['chatbot IA', 'chatbot RAG', 'chatbot intelligent', 'agent conversationnel', 'chatbot site internet', 'chatbot français', 'chatbot PME', 'assistant IA conversationnel'],
   openGraph: {
     title: 'Chatbot IA RAG sur-mesure : ancré sur votre base de connaissances | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/chatbot-ia/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Chatbot IA RAG sur-mesure | Althoce',

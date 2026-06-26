@@ -94,7 +94,7 @@ export default function Footer({ showCta = true }: { showCta?: boolean }) {
                   30 minutes d'échange, trois idées concrètes d'automatisation — même si on ne travaille pas ensemble.
                 </p>
                 <a
-                  href="/contact"
+                  href="/contact/"
                   style={{ padding: '14px 28px', borderRadius: 9999, background: '#fff', color: '#09090b', border: 'none', cursor: 'pointer', fontSize: 14, fontWeight: 700, fontFamily: 'inherit', display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 16, textDecoration: 'none', transition: 'transform .15s, box-shadow .15s' }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 8px 30px rgba(255,255,255,.2)'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}

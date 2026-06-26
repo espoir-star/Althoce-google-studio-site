@@ -3,8 +3,8 @@ import AgenceIAMontpellierPageClient from '@/components/AgenceIAMontpellierPageC
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Montpellier : agents IA, automatisation et formation pour PME et ETI montpelliéraines | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Montpellier et en Occitanie. Expertise santé / biotech (CHU, Institut Méditerranéen de Cancérologie), numérique FrenchTech, viticulture Languedoc. Présentiel à Montpellier, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  title: "Agence IA à Montpellier : automatisation PME",
+  description: "Althoce, agence IA à Montpellier : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Montpellier',
     'agence IA Occitanie',
@@ -23,7 +23,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-montpellier/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Montpellier · Agents IA & Automatisation PME montpelliéraines | Althoce",
@@ -43,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Montpellier",
       "description": "Agence IA française qui accompagne les PME et ETI montpelliéraines. Expertise santé et biotech (CHU Montpellier, Institut Méditerranéen de Cancérologie), FrenchTech Méditerranée (Cap Alpha), viticulture Languedoc premium. Présentiel à Montpellier, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-montpellier/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Montpellier",

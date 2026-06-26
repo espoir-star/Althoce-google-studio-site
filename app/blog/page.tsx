@@ -9,7 +9,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Blog Althoce — Insights IA & Automatisation',
     url: 'https://althoce.com/blog',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   alternates: {
     canonical: 'https://althoce.com/blog',
   },

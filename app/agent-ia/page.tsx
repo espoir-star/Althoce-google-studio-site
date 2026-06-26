@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Agents IA sur-mesure par métier — Commercial, Finance, RH, Juridique, Achats | Althoce',
-  description: "Althoce déploie des agents IA spécialisés par métier : commercial, service client, finance, RH, juridique, achats, opérations, marketing, téléphonique. Un collaborateur virtuel autonome pour chaque fonction. À partir de 1 400 € HT, premier agent en 1 semaine.",
+  description: "Althoce déploie des agents IA spécialisés par métier : commercial, RH, finance, juridique, opérations. Souverain, France. 30 min offertes.",
   keywords: ['agents IA métier', 'agent IA entreprise', 'agent IA commercial', 'agent IA finance', 'agent IA RH', 'agent IA juridique', 'agent IA achats', 'automatisation agentique', 'employé IA PME'],
   openGraph: {
     title: 'Agents IA sur-mesure par métier — Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/agent-ia/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Agents IA par métier : commercial, finance, RH, juridique, achats | Althoce',

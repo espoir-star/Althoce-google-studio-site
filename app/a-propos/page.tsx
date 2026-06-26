@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "L'histoire et la culture d'Althoce | Althoce",
-  description: "Althoce, agence IA française d'origine bordelaise. Histoire, culture d'équipe et valeurs : démocratiser l'IA responsable dans les PME françaises. +150 PME équipées.",
+  description: "Althoce, agence IA française d'origine bordelaise. Mission : démocratiser l'IA responsable pour les PME. Souveraineté France, anti-biais documenté.",
   keywords: "qui est Althoce, équipe Althoce, histoire Althoce, culture Althoce, agence IA Bordeaux histoire, Althoce origine",
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://althoce.com/a-propos/' },
@@ -14,7 +14,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/a-propos/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
 };
 
 const jsonLd = {

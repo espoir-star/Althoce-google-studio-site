@@ -3,8 +3,8 @@ import CasClientEtiIndustrielleAchatsPageClient from '@/components/CasClientEtiI
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "ETI industrielle : -18 % sur les achats négociés et volume de devis ×4 pour 3 acheteurs grâce à un agent IA achats | Cas client Althoce",
-  description: "Comment une ETI industrielle de 180 collaborateurs avec 22 M€ d'achats/an a réduit son coût moyen d'achat de 18 % sur les catégories négociées et multiplié par 4 le volume de devis traités par acheteur grâce à un agent IA achats déployé en 7 semaines (ERP SAP, extraction multi-formats, scoring 5 critères, fiche négociation automatique).",
+  title: "ETI industrielle : agent IA achats",
+  description: "ETI industrielle : -18 % sur les achats négociés et volume de devis ×4 en 8 mois avec un agent IA Althoce. Cas client détaillé.",
   keywords: [
     'cas client agent IA achats',
     'ROI agent IA achats ETI industrielle',
@@ -13,12 +13,20 @@ export const metadata: Metadata = {
     'témoignage agent IA négociation achats',
   ],
   openGraph: {
-    title: 'ETI industrielle : -18 % achats négociés · ×4 RFQ / acheteur · 340 k€ économisés | Althoce',
+    title: 'ETI industrielle : agent IA achats | Althoce',
     description: "22 M€ d'achats/an, 350 fournisseurs, 3 acheteurs saturés. Un agent IA déployé en 7 semaines : de la RFQ à la fiche de négociation automatique. -18 % sur les catégories négociées en 8 mois.",
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/eti-industrielle-agent-ia-achats/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '-18 % achats · ×4 RFQ · 340 k€ · 3j → 4h comparatif : ETI industrielle × agent IA achats | Althoce',
@@ -49,7 +57,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -58,7 +70,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA achats pour ETI industrielle (scoring fournisseur, fiche négociation, alertes contrats)",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA achats, automatisation RFQ, scoring fournisseur IA, comparatif devis automatique, fiche négociation IA, alertes contrats fournisseurs"
     },

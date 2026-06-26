@@ -3,8 +3,8 @@ import AgenceIAToulonPageClient from '@/components/AgenceIAToulonPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Toulon : agents IA, automatisation et formation pour PME et ETI varoises | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Toulon et dans le Var. Expertise sous-traitance défense Marine Nationale, Pôle Mer Méditerranée, tourisme Côte d'Azur ouest. Souveraineté France obligatoire. 30 min offertes avec un expert.",
+  title: "Agence IA à Toulon : automatisation PME",
+  description: "Althoce, agence IA à Toulon : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Toulon',
     'agence IA Var',
@@ -23,7 +23,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-toulon/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Toulon · Agents IA & Automatisation défense et tourisme Var | Althoce",
@@ -43,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Toulon",
       "description": "Agence IA française qui accompagne les PME et ETI varoises. Expertise sous-traitance défense Marine Nationale (Naval Group La Seyne-sur-Mer), Pôle Mer Méditerranée, tourisme Côte d'Azur ouest. Souveraineté France obligatoire pour le secteur défense.",
       "url": "https://althoce.com/agence-ia-toulon/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Toulon",

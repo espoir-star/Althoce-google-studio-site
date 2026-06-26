@@ -164,7 +164,7 @@ function Hero() {
             </div>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact"
+              <a href="/contact/"
                 style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
@@ -549,7 +549,7 @@ function Security() {
             </p>
             <p style={{ fontSize: 16, color: '#52525b', lineHeight: 1.75 }}>
               Code source, accès, logs, workflows : <strong style={{ color: '#a1a1aa' }}>tout vous appartient à 100 %</strong> à la fin de la mission. Pas de rétention technique, pas d'abonnement obligatoire au-delà du support que vous choisissez. Voir{' '}
-              <a href="/conseil/" style={{ color: AC, textDecoration: 'none' }}>Conseil IA</a>{' '}pour un accompagnement stratégique.
+              <a href="/services/audit-ia/" style={{ color: AC, textDecoration: 'none' }}>Conseil IA</a>{' '}pour un accompagnement stratégique.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>

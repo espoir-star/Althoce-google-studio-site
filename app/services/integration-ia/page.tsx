@@ -3,8 +3,8 @@ import IntegrationIAPageClient from '@/components/IntegrationIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Intégration IA dans votre SI : sécurisée, monitorée, gouvernée | Althoce',
-  description: "Vos agents IA méritent mieux qu'un POC oublié. SSO, RBAC, audit log, monitoring, fallback humain, kill switch. Intégration au CRM, ERP, intranet en mode production. 30 min offertes avec un expert.",
+  title: 'Intégration IA dans vos outils',
+  description: "SSO, RBAC, audit log, monitoring, fallback humain, kill switch. Vos agents IA intégrés à votre SI pour durer en production. Devis gratuit.",
   keywords: ['intégration IA', 'intégration LLM', 'connecteur IA CRM', 'IA Salesforce', 'IA HubSpot', 'IA Sage', 'gouvernance IA', 'IA RGPD'],
   openGraph: {
     title: 'Intégration IA dans votre SI : sécurisée, monitorée, gouvernée | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/integration-ia/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Intégration IA dans votre SI — Althoce',

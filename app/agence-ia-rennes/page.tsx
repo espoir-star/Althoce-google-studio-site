@@ -3,8 +3,8 @@ import AgenceIARennesPageClient from '@/components/AgenceIARennesPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Rennes : agents IA, automatisation et formation pour PME et ETI bretonnes | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Rennes et en Bretagne. Expertise numérique (FrenchTech Rennes Saint-Malo, IRT b-com), agroalimentaire (Lactalis, Bridor), industrie automobile. Présentiel à Rennes, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  title: "Agence IA à Rennes : automatisation PME",
+  description: "Althoce, agence IA à Rennes : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Rennes',
     'agence IA Bretagne',
@@ -22,7 +22,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-rennes/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Rennes · Agents IA & Automatisation PME bretonnes | Althoce",
@@ -42,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Rennes",
       "description": "Agence IA française qui accompagne les PME et ETI bretonnes. Expertise numérique FrenchTech Rennes Saint-Malo (IRT b-com, Atalante Champeaux), agroalimentaire (Lactalis, Bridor, Brocéliande — conformité IFS/BRC), sous-traitance automobile (La Janais). Présentiel à Rennes, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-rennes/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Rennes",

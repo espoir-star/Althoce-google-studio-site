@@ -3,8 +3,8 @@ import EmployeIAPageClient from '@/components/EmployeIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Employé IA — Un poste à temps plein automatisé, intégré à votre équipe | Althoce',
-  description: "Un employé IA Althoce couvre un rôle entier (SDR, support, comptable, ops, RH) : disponible 24/7, intégré à votre SI et à vos rituels d'équipe. Souverain, français, sur devis. 30 min offertes avec un expert.",
+  title: 'Employé IA : collaborateur virtuel',
+  description: "Un employé IA Althoce couvre un rôle entier (SDR, support, comptable, ops) 24/7, intégré à votre SI. Souverain, France. Devis sur mesure.",
   keywords: ['employé IA', 'salarié IA', 'agent IA temps plein', 'collaborateur virtuel IA', 'assistant IA dédié', 'employé IA SDR', 'employé IA comptable', 'employé IA RH', 'créer un employé IA', 'employé IA PME'],
   openGraph: {
     title: 'Employé IA Althoce — Un poste à temps plein automatisé',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/employe-ia/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Employé IA Althoce — Un poste à temps plein automatisé',

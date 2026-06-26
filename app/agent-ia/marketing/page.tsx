@@ -3,8 +3,8 @@ import AgentIAMarketingPageClient from '@/components/AgentIAMarketingPageClient'
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agent IA pour le marketing : contenu, SEO, social, email en pilote automatique | Althoce',
-  description: "Un agent IA Althoce produit votre contenu multi-canal (articles SEO, posts LinkedIn, newsletters, séquences email) à votre ton de marque, fait votre veille concurrentielle, et libère votre équipe marketing pour la stratégie. Cohérence marque garantie. Tarification sur devis, 30 min offertes avec un expert.",
+  title: 'Agent IA marketing : contenu et SEO en pilote',
+  description: "Agent IA marketing Althoce : contenu multi-canal, SEO, newsletters, veille à votre ton de marque. Souverain, France. 30 min offertes.",
   keywords: ['agent IA marketing', 'IA pour marketing', 'IA création contenu', 'agent IA SEO', 'agent IA email marketing', 'automatisation marketing IA', 'IA pour CMO', 'génération contenu IA entreprise'],
   openGraph: {
     title: 'Agent IA pour le marketing : contenu, SEO, social, email en pilote automatique | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/agent-ia/marketing/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Agent IA marketing : contenu, SEO, email en pilote automatique | Althoce',

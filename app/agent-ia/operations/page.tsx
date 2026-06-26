@@ -3,8 +3,8 @@ import AgentIAOpsPageClient from '@/components/AgentIAOpsPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agent IA pour les opérations et le back-office : mails, documents, ADV en pilote automatique | Althoce',
-  description: "Un agent IA Althoce absorbe les tâches répétitives transversales du back-office : tri et réponse aux mails entrants, gestion documentaire, suivi ADV, mise à jour fournisseurs. Votre équipe ops sort du burn-out cyclique. Tarification sur devis, 30 min offertes avec un expert.",
+  title: 'Agent IA opérations : back-office et ADV',
+  description: "Agent IA opérations Althoce : back-office, ADV, gestion mails et commandes. Libérez vos équipes des tâches répétitives. 30 min offertes.",
   keywords: ['agent IA ops', 'agent IA back-office', 'automatisation ADV', 'IA pour assistant administratif', 'agent IA traitement mails', 'IA gestion documentaire', 'automatisation suivi fournisseurs'],
   openGraph: {
     title: 'Agent IA pour les ops : mails, documents, ADV en pilote automatique | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/agent-ia/operations/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Agent IA ops : mails, ADV, documents en pilote automatique | Althoce',

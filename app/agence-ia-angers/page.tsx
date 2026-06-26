@@ -3,8 +3,8 @@ import AgenceIAAngersPageClient from '@/components/AgenceIAAngersPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Angers : agents IA, automatisation et formation pour PME et ETI angevines | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Angers et en Pays de la Loire. Expertise Végépolys (végétal), FrenchTech Angers, agroalimentaire, viticulture Loire (Saumur, Anjou). Présentiel à Angers, distanciel, formation IA, souveraineté France. 30 min offertes.",
+  title: "Agence IA à Angers : automatisation PME",
+  description: "Althoce, agence IA à Angers : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Angers',
     'agence IA Maine-et-Loire',
@@ -23,7 +23,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-angers/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Angers · Agents IA & Automatisation Végépolys et FrenchTech Loire | Althoce",
@@ -43,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Angers",
       "description": "Agence IA française qui accompagne les PME et ETI angevines. Expertise cluster végétal Végépolys (semences, biotech végétale), FrenchTech Angers, agroalimentaire Loire, viticulture Saumur-Anjou. Souveraineté France par défaut.",
       "url": "https://althoce.com/agence-ia-angers/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Angers",

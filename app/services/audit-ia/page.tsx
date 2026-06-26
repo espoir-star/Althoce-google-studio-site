@@ -3,8 +3,8 @@ import AuditIAPageClient from '@/components/AuditIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Audit IA pour PME et ETI : cartographie chiffrée des opportunités IA | Althoce',
-  description: "Audit IA Althoce : cartographie de vos opportunités, calcul de ROI projet par projet, feuille de route chiffrée, gouvernance, conformité. Pas un PowerPoint de cabinet de conseil. Sur devis. 30 min offertes avec un expert.",
+  title: 'Audit IA pour PME : 30 min offertes',
+  description: "Audit IA Althoce : cartographie de vos opportunités, calcul de ROI projet par projet, feuille de route chiffrée. 30 min offertes. Sans engagement.",
   keywords: ['audit IA', 'audit IA entreprise', 'cartographie IA', 'stratégie IA PME', 'feuille de route IA', 'diagnostic IA', 'maturité IA', 'roadmap IA'],
   openGraph: {
     title: 'Audit IA pour PME et ETI : cartographie chiffrée des opportunités | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/audit-ia/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Audit IA stratégique — Althoce',

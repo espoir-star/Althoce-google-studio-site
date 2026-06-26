@@ -3,8 +3,8 @@ import AutomatisationIAPageClient from '@/components/AutomatisationIAPageClient'
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Automatisation IA pour PME & ETI — Cadrage, chiffrage, mise en production | Althoce',
-  description: "Agence d'automatisation IA française. On identifie, chiffre et déploie les automatisations qui libèrent vos équipes : mails, documents, CRM, reporting. 30 min offertes avec un expert. Premier livrable sous 7 jours.",
+  title: 'Automatisation IA des processus métier',
+  description: "Agence d'automatisation IA française. Identifie, chiffre et déploie les automatisations métier. Premier résultat en 4 à 8 semaines. Devis.",
   keywords: ['automatisation IA', 'automatisation intelligente', 'agence automatisation IA', 'automatisation entreprise', 'automatiser avec l\'IA', 'automatisation processus', 'automatisation agentique', 'automatisation PME'],
   openGraph: {
     title: 'Automatisation IA sur-mesure pour PME & ETI — Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/automatisation-ia/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Automatisation IA sur-mesure — Althoce',

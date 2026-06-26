@@ -3,8 +3,8 @@ import CasClientSaasB2BMarketingPageClient from '@/components/CasClientSaasB2BMa
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Éditeur SaaS B2B : content marketing multiplié par 4 et trafic organique +140 % avec un agent IA marketing | Cas client Althoce",
-  description: "Comment un éditeur SaaS B2B de 90 collaborateurs et 1 500 clients a multiplié sa production de contenu par 4 (1 vers 4 articles SEO/mois, 4 vers 12 posts LinkedIn/mois, 60 emails segmentés/mois) et boosté son trafic organique de 140 % en 6 mois grâce à un agent IA marketing au ton de marque.",
+  title: "SaaS B2B : agent IA marketing",
+  description: "Éditeur SaaS B2B : production de contenu ×4 et trafic organique +140 % avec un agent IA marketing Althoce. Cas client chiffré.",
   keywords: [
     'cas client agent IA marketing',
     'ROI agent IA content marketing PME',
@@ -13,12 +13,20 @@ export const metadata: Metadata = {
     'témoignage agent IA marketing ton de marque',
   ],
   openGraph: {
-    title: 'Content ×4 et trafic organique +140 % : cas client SaaS B2B marketing | Althoce',
+    title: 'SaaS B2B : agent IA marketing | Althoce',
     description: "Production contenu multipliée par 4 sans embauche, ton de marque respecté à 90 %, équipe enfin libérée pour la stratégie. Le cas d'un SaaS B2B 1 500 clients.",
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/saas-b2b-agent-ia-marketing/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '×4 production content · +140 % trafic organique : SaaS B2B × agent IA marketing | Althoce',
@@ -39,6 +47,7 @@ const jsonLd = {
       "description": "Cas client Althoce : éditeur SaaS B2B 90 collaborateurs, 1 500 clients PME. Production multipliée par 4 en 6 mois, trafic organique +140 %, recrutement content manager annulé (60 k€/an redéployé).",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -49,7 +58,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -58,7 +71,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA marketing content pour SaaS B2B",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA marketing, automatisation content marketing, SEO IA SaaS B2B, agent IA LinkedIn, nurture email IA segmenté"
     },

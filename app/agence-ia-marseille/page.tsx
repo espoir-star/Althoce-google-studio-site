@@ -3,8 +3,8 @@ import AgenceIAMarseillePageClient from '@/components/AgenceIAMarseillePageClien
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Marseille : agents IA, automatisation et formation pour PME et ETI provençales | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI de la métropole Aix-Marseille-Provence et de la région PACA. Expertise logistique portuaire, agroalimentaire méditerranéen, tourisme Côte d'Azur. Présentiel à Marseille, distanciel sans contrainte, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  title: "Agence IA à Marseille : automatisation PME",
+  description: "Althoce, agence IA à Marseille : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Marseille',
     'agence IA Provence',
@@ -22,7 +22,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-marseille/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Marseille · Agents IA & Automatisation PME provençales | Althoce",
@@ -42,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Marseille",
       "description": "Agence IA française qui accompagne les PME et ETI provençales. Expertise logistique portuaire GPMM, agroalimentaire méditerranéen, tourisme Côte d'Azur. Présentiel à Marseille, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-marseille/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Marseille",

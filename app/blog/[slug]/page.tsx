@@ -33,7 +33,15 @@ export async function generateMetadata(
       type: 'article',
       url: `https://althoce.com/blog/${post.slug}`,
       publishedTime: post.date,
-    },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
     twitter: {
       title: post.title,
       description: post.excerpt,
@@ -52,27 +60,38 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "@id": `https://althoce.com/blog/${post.slug}#article`,
+    "@id": `https://althoce.com/blog/${post.slug}/#article`,
     "headline": post.title,
     "description": post.excerpt,
     "datePublished": post.date,
     "dateModified": post.date,
-    "url": `https://althoce.com/blog/${post.slug}`,
+    "url": `https://althoce.com/blog/${post.slug}/`,
+    "image": "https://althoce.com/og-default.png",
     "inLanguage": "fr-FR",
     "author": {
+      "@type": "Organization",
       "@id": "https://althoce.com/#organization",
+      "name": "Althoce",
+      "url": "https://althoce.com/",
     },
     "publisher": {
+      "@type": "Organization",
       "@id": "https://althoce.com/#organization",
+      "name": "Althoce",
+      "url": "https://althoce.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://althoce.com/favicons/apple-touch-icon.png",
+      },
     },
     "isPartOf": {
-      "@id": "https://althoce.com/blog#blog",
+      "@id": "https://althoce.com/blog/#blog",
     },
     "articleSection": post.category,
     "keywords": post.category,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://althoce.com/blog/${post.slug}`,
+      "@id": `https://althoce.com/blog/${post.slug}/`,
     },
   };
 
@@ -85,7 +104,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
       <div style={{ paddingTop: 96, paddingBottom: 80, minHeight: '100vh', background: '#fafafa' }}>
         <div style={{ maxWidth: 768, margin: '0 auto', padding: '0 24px' }}>
           <Link
-            href="/blog"
+            href="/blog/"
             style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#52525b', fontSize: 14, fontWeight: 600, textDecoration: 'none', marginBottom: 32 }}
           >
             <ArrowLeft style={{ width: 16, height: 16 }} />

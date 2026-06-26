@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Discutons de votre projet — 30 minutes offertes | Althoce',
-  description: "30 minutes pour comprendre vos enjeux et identifier les automatisations qui vont libérer votre équipe. Sans engagement, sans discours commercial. Réponse sous 24 h. Données hébergées en UE.",
+  description: "30 minutes pour identifier vos automatisations à fort ROI. Sans engagement, sans pitch commercial. Expert disponible. Réponse sous 24h ouvrées.",
   keywords: 'contact Althoce, contacter Althoce, prendre RDV Althoce, 30 minutes Althoce, rendez-vous expert IA Althoce',
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://althoce.com/contact/' },
@@ -14,7 +14,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/contact/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
 };
 
 const jsonLd = {

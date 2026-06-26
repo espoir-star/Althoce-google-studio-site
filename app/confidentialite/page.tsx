@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Politique de confidentialité | Althoce',
-  description: 'Politique de confidentialité Althoce conforme RGPD. Données collectées, finalités, durées de conservation, droits utilisateurs, cookies, hébergement Vercel et transferts hors UE.',
+  description: "Politique de confidentialité Althoce conforme RGPD. Données collectées, finalités, durées de conservation, droits utilisateurs (accès, suppression).",
   robots: { index: false, follow: true },
   alternates: { canonical: 'https://althoce.com/confidentialite/' },
 };

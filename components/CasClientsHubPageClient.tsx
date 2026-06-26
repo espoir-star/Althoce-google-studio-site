@@ -112,7 +112,7 @@ function Hero() {
             </div>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact"
+              <a href="/contact/"
                 style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
@@ -616,7 +616,7 @@ function Security() {
               Tous nos déploiements sont documentés et auditables. Chaque recommandation de l'agent est journalisée, tracée, contrôlable. Pour les clients qui exigent la souveraineté totale : <strong style={{ color: '#a1a1aa' }}>Mistral hébergé en France</strong> et auto-hébergement infra possible.
             </p>
             <p style={{ fontSize: 16, color: '#52525b', lineHeight: 1.75 }}>
-              Code source, accès, logs, workflows : <strong style={{ color: '#a1a1aa' }}>tout vous appartient à 100 %</strong> à la fin de la mission. Voir <a href="/conseil/" style={{ color: AC, textDecoration: 'none' }}>Conseil IA</a> pour un accompagnement stratégique ou <a href="/services/audit-ia/" style={{ color: AC, textDecoration: 'none' }}>Audit IA</a> pour démarrer.
+              Code source, accès, logs, workflows : <strong style={{ color: '#a1a1aa' }}>tout vous appartient à 100 %</strong> à la fin de la mission. Voir <a href="/services/audit-ia/" style={{ color: AC, textDecoration: 'none' }}>Conseil IA</a> pour un accompagnement stratégique ou <a href="/services/audit-ia/" style={{ color: AC, textDecoration: 'none' }}>Audit IA</a> pour démarrer.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>

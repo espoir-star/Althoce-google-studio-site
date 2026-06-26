@@ -172,7 +172,7 @@ function Hero() {
             </div>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact" style={{ padding: '13px 26px', borderRadius: 9999, background: '#09090b', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
+              <a href="/contact/" style={{ padding: '13px 26px', borderRadius: 9999, background: '#09090b', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = 'scale(1.03)'; el.style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = 'scale(1)'; el.style.boxShadow = 'none'; }}>
                 Discuter de votre projet →
@@ -478,7 +478,7 @@ function Typologies() {
         </div>
 
         <p style={{ fontSize: 14, color: '#8a8a95', textAlign: 'center', marginTop: 24 }}>
-          Vous hésitez entre les 4 formats ? Les <strong style={{ color: '#09090b' }}>30 minutes offertes</strong> servent précisément à cadrer le format adapté avant tout devis. <a href="/contact" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>Prendre rendez-vous →</a>
+          Vous hésitez entre les 4 formats ? Les <strong style={{ color: '#09090b' }}>30 minutes offertes</strong> servent précisément à cadrer le format adapté avant tout devis. <a href="/contact/" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>Prendre rendez-vous →</a>
         </p>
       </div>
     </section>
@@ -572,7 +572,7 @@ function CTAFinal() {
         <p style={{ fontSize: 16, color: '#94a3b8', lineHeight: 1.7, marginBottom: 36 }}>
           30 minutes avec un expert Althoce. Vous repartez avec une direction claire : format d'audit adapté, scope, estimation. Ou avec le chiffrage d'un projet simple si c'est ce dont vous avez besoin.
         </p>
-        <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 32px', borderRadius: 9999, background: AC, color: '#fff', fontSize: 16, fontWeight: 700, textDecoration: 'none', transition: 'transform .15s,box-shadow .15s' }}
+        <a href="/contact/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 32px', borderRadius: 9999, background: AC, color: '#fff', fontSize: 16, fontWeight: 700, textDecoration: 'none', transition: 'transform .15s,box-shadow .15s' }}
           onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = 'scale(1.03)'; el.style.boxShadow = `0 8px 32px ${AC}50`; }}
           onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = 'scale(1)'; el.style.boxShadow = 'none'; }}>
           Discuter de votre projet →

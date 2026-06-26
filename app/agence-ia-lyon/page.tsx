@@ -3,8 +3,8 @@ import AgenceIALyonPageClient from '@/components/AgenceIALyonPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Lyon : agents IA, automatisation et formation pour PME et ETI lyonnaises | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Lyon et en région Auvergne-Rhône-Alpes. Cas client cabinet comptable lyonnais : ×2 capacité en 4 mois. Présentiel à Lyon, distanciel sans contrainte, formation IA pour vos équipes, souveraineté France garantie. 30 min offertes avec un expert.",
+  title: "Agence IA à Lyon : automatisation PME",
+  description: "Althoce, agence IA à Lyon : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Lyon',
     'agence IA Auvergne-Rhône-Alpes',
@@ -21,7 +21,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-lyon/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Agence IA Lyon · Agents IA & Automatisation PME lyonnaises | Althoce',
@@ -41,6 +49,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Lyon",
       "description": "Agence IA française qui accompagne les PME et ETI à Lyon et en Auvergne-Rhône-Alpes. Cas signature cabinet comptable lyonnais ×2 capacité. Présentiel à Lyon, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-lyon/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Lyon",

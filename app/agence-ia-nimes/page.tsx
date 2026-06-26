@@ -3,8 +3,8 @@ import AgenceIANimesPageClient from '@/components/AgenceIANimesPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Nîmes : agents IA, automatisation et formation pour PME et ETI nîmoises | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Nîmes et dans le Gard. Expertise vins Costières de Nîmes, agroalimentaire, tourisme patrimonial romain, services régionaux. Présentiel à Nîmes, distanciel, formation IA, souveraineté France. 30 min offertes.",
+  title: "Agence IA à Nîmes : automatisation PME",
+  description: "Althoce, agence IA à Nîmes : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Nîmes',
     'agence IA Gard',
@@ -23,7 +23,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-nimes/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Nîmes · Agents IA & Automatisation vins Costières et tourisme patrimonial | Althoce",
@@ -43,6 +51,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Nîmes",
       "description": "Agence IA française qui accompagne les PME et ETI nîmoises et gardoises. Expertise vins Costières de Nîmes, agroalimentaire méditerranéen, tourisme patrimonial romain. Souveraineté France par défaut.",
       "url": "https://althoce.com/agence-ia-nimes/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Nîmes",

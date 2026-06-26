@@ -3,8 +3,8 @@ import AgentIARHPageClient from '@/components/AgentIARHPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agent IA pour les RH : tri CV, qualification candidats, assistance interne 24/7 | Althoce',
-  description: "Un agent IA Althoce trie les CV avec rigueur RGPD, qualifie les candidats au téléphone, répond aux questions paie et congés des collaborateurs 24/7. Conformité native, anti-biais documenté. Vos équipes RH se recentrent sur l'humain. Tarification sur devis, 30 min offertes avec un expert.",
+  title: 'Agent IA RH : tri CV et onboarding',
+  description: "Agent IA RH Althoce : tri CV anti-biais, qualification téléphonique des candidats, onboarding automatisé. Souverain, France. 30 min offertes.",
   keywords: ['agent IA RH', 'agent IA recrutement', 'tri CV IA', 'IA pour DRH', 'automatisation RH', 'chatbot RH interne', 'agent IA paie', 'assistant RH IA', 'agent IA onboarding'],
   openGraph: {
     title: 'Agent IA pour les RH : tri CV, qualification, assistance 24/7 | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/agent-ia/rh/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Agent IA RH : tri CV, qualification candidats, assistance 24/7 | Althoce',

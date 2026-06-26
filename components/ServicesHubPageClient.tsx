@@ -161,7 +161,7 @@ function Hero() {
             </div>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact"
+              <a href="/contact/"
                 style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
@@ -349,7 +349,7 @@ function ServiceWizard() {
         {/* Note */}
         <div style={{ marginTop: 40, padding: '16px 22px', borderRadius: 14, background: `${AC}08`, border: `1px solid ${AC}20`, fontSize: 14, color: '#374151', lineHeight: 1.7 }}>
           Le quizz vous oriente, il ne décide pas. Vous pouvez à tout moment réserver les{' '}
-          <a href="/contact" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>30 minutes offertes avec un expert</a>{' '}
+          <a href="/contact/" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>30 minutes offertes avec un expert</a>{' '}
           pour valider votre orientation et obtenir un devis ferme.
         </div>
       </div>
@@ -640,7 +640,7 @@ function AgentByJob() {
         </div>
 
         <div style={{ textAlign: 'center' }}>
-          <a href="/automatisation/" style={{ fontSize: 15, fontWeight: 700, color: AC, textDecoration: 'none' }}
+          <a href="/services/automatisation-ia/" style={{ fontSize: 15, fontWeight: 700, color: AC, textDecoration: 'none' }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'underline'; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'none'; }}>
             Voir toutes les automatisations métier →
@@ -768,7 +768,7 @@ function Security() {
             <p style={{ fontSize: 16, color: '#52525b', lineHeight: 1.75, marginBottom: 32 }}>
               La plupart des outils IA envoient vos données chez des prestataires américains. Chez Althoce, on fait l&apos;inverse : hébergement en Union Européenne, instance dédiée, chiffrement de bout en bout, et un humain toujours dans la boucle.
             </p>
-            <a href="/conseil/" style={{ fontSize: 15, fontWeight: 700, color: AC, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '11px 22px', border: `1px solid ${AC}40`, borderRadius: 9999, transition: 'all .15s' }}
+            <a href="/services/audit-ia/" style={{ fontSize: 15, fontWeight: 700, color: AC, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '11px 22px', border: `1px solid ${AC}40`, borderRadius: 9999, transition: 'all .15s' }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = AC; (e.currentTarget as HTMLAnchorElement).style.color = '#fff'; (e.currentTarget as HTMLAnchorElement).style.borderColor = AC; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; (e.currentTarget as HTMLAnchorElement).style.color = AC; (e.currentTarget as HTMLAnchorElement).style.borderColor = `${AC}40`; }}>
               Notre approche conseil →

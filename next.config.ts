@@ -59,6 +59,27 @@ const nextConfig: NextConfig = {
         destination: '/agent-ia/achats/:path*',
         permanent: true,
       },
+
+      // ─────────────────────────────────────────────────────────────
+      // Redirections 404 → cibles canoniques (audit Ahrefs juin 2026)
+      // ─────────────────────────────────────────────────────────────
+
+      { source: '/conseil', destination: '/services/audit-ia/', permanent: true },
+      { source: '/conseil/:path*', destination: '/services/audit-ia/', permanent: true },
+
+      { source: '/automatisation', destination: '/services/automatisation-ia/', permanent: true },
+      { source: '/automatisation/:path*', destination: '/services/automatisation-ia/', permanent: true },
+
+      { source: '/agent-ia/comptabilite', destination: '/agent-ia/finance/', permanent: true },
+      { source: '/agent-ia/comptabilite/:path*', destination: '/agent-ia/finance/', permanent: true },
+
+      { source: '/agence-ia-brest', destination: '/agences/', permanent: true },
+
+      { source: '/solutions/pme', destination: '/', permanent: true },
+      { source: '/solutions/eti', destination: '/', permanent: true },
+      { source: '/solutions/:path*', destination: '/', permanent: true },
+
+      { source: '/cas-clients/negoce-vins-bordelais', destination: '/cas-clients/negoce-vins-bordelais-agent-ia-sdr/', permanent: true },
     ];
   },
 }

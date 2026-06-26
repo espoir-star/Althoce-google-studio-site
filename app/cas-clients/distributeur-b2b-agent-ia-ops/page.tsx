@@ -3,8 +3,8 @@ import CasClientDistributeurB2BOpsPageClient from '@/components/CasClientDistrib
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Distributeur B2B industriel : volume traité ×3 et fin du turnover assistant ops grâce aux agents IA Althoce | Cas client",
-  description: "Comment un distributeur B2B industriel de 45 collaborateurs a triplé son volume de mails et commandes traités sans embaucher, et a éliminé son turnover récurrent sur le poste d'assistant ops (80 % vers 0 %) grâce à 3 agents IA déployés en 6 semaines.",
+  title: "Distributeur B2B : agent IA opérations",
+  description: "Distributeur B2B industriel : volume traité ×3 et turnover opérationnel à 0 % avec 3 agents IA Althoce. Cas client détaillé.",
   keywords: [
     'cas client agent IA ops',
     'ROI agent IA back-office',
@@ -13,12 +13,20 @@ export const metadata: Metadata = {
     'témoignage agent IA fin du burn-out ops',
   ],
   openGraph: {
-    title: 'Volume ×3 et turnover 80 % vers 0 % : cas client distributeur B2B ops | Althoce',
+    title: 'Distributeur B2B : agent IA opérations | Althoce',
     description: "Le projet IT le plus rentable du distributeur. 3 agents IA ops déployés en 6 semaines. Fin du burn-out cyclique sur le poste assistant administratif.",
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/distributeur-b2b-agent-ia-ops/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Volume ×3 · turnover 0 % : distributeur B2B × 3 agents IA ops | Althoce',
@@ -39,6 +47,7 @@ const jsonLd = {
       "description": "Cas client Althoce : distributeur B2B industriel 45 collaborateurs. 3 agents IA ops déployés en 6 semaines. Mails ×3, commandes ERP ×3, turnover 80 % vers 0 % sur 14 mois. Coût caché 40 k€/an éliminé.",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -49,7 +58,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -58,7 +71,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agents IA ops pour distributeur B2B (mails, ADV, GED)",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA ops, automatisation back-office, agent IA ADV Sage, agent IA mails entrants, agent IA GED SharePoint, turnover assistant ops"
     },

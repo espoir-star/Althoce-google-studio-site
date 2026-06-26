@@ -3,8 +3,8 @@ import CasClientEtiAgroalimentaireJuridiquePageClient from '@/components/CasClie
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "ETI agroalimentaire : 600 contrats/an pré-analysés et 4 jours libérés/mois pour le juriste interne avec Mistral hébergé France | Cas client Althoce",
-  description: "Comment une ETI agroalimentaire de 280 collaborateurs a libéré son juriste interne de 4 jours par mois pour la stratégie grâce à un agent IA d'analyse contractuelle de pré-décision, déployé en 5 semaines avec Mistral hébergé en France (OVH Bordeaux) et zéro transfert de données hors territoire.",
+  title: "ETI agroalimentaire : agent IA juridique",
+  description: "600 contrats fournisseurs analysés par an grâce à un agent IA juridique Althoce. ETI agroalimentaire française. Cas client détaillé.",
   keywords: [
     'cas client agent IA juridique',
     'ROI agent IA analyse contractuelle ETI',
@@ -13,12 +13,20 @@ export const metadata: Metadata = {
     'témoignage agent IA Mistral France RGPD',
   ],
   openGraph: {
-    title: 'ETI agroalimentaire : 3h → 30 min par contrat · 4 jours libérés/mois · Mistral France | Althoce',
+    title: 'ETI agroalimentaire : agent IA juridique | Althoce',
     description: "600 contrats/an pré-analysés par un agent IA 100 % France. Le juriste interne passe de 3h à 30 min par contrat — et retrouve 4 jours/mois pour la stratégie.",
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/eti-agroalimentaire-agent-ia-juridique/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '3h → 30 min · 4j libérés/mois · 97,3 % concordance : ETI agro × agent IA juridique France | Althoce',
@@ -39,6 +47,7 @@ const jsonLd = {
       "description": "Cas client Althoce : ETI agroalimentaire 280 collaborateurs. Agent IA pré-analyse contractuelle déployé en 5 semaines avec Mistral hébergé OVH Bordeaux. 3h → 30 min par contrat, 4 jours/mois libérés, 97,3 % concordance POC, zéro transfert hors territoire France.",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -49,7 +58,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -58,7 +71,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA analyse contractuelle souverain France pour ETI agroalimentaire",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA juridique, analyse contractuelle IA, souveraineté données France, Mistral OVH France, pré-analyse contrats ETI, RGPD agent IA"
     },

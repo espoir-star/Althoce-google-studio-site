@@ -85,7 +85,7 @@ function Hero() {
               18 collaborateurs, droit des affaires, une assistante de direction qui jonglait entre 80 appels par semaine, les plannings et la facturation. Un agent IA téléphonique en voix naturelle française déployé en 3 semaines. Voici comment le cabinet a éliminé tous les appels perdus sans recruter.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="/contact" style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
+              <a href="/contact/" style={{ padding: '14px 28px', borderRadius: 9999, background: '#09090b', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, transition: 'transform .15s,box-shadow .15s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.03)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 24px rgba(0,0,0,.25)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
                 Discuter de votre projet →
@@ -603,7 +603,7 @@ function VotreCas() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'; }}>
             Découvrir Agent IA téléphonique →
           </a>
-          <a href="/contact" style={{ padding: '14px 28px', borderRadius: 9999, border: `1.5px solid ${INDIGO}40`, color: INDIGO, textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, background: `${INDIGO}08`, transition: 'border-color .15s,background .15s' }}
+          <a href="/contact/" style={{ padding: '14px 28px', borderRadius: 9999, border: `1.5px solid ${INDIGO}40`, color: INDIGO, textDecoration: 'none', fontSize: 15, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 6, background: `${INDIGO}08`, transition: 'border-color .15s,background .15s' }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = `${INDIGO}80`; (e.currentTarget as HTMLAnchorElement).style.background = `${INDIGO}14`; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = `${INDIGO}40`; (e.currentTarget as HTMLAnchorElement).style.background = `${INDIGO}08`; }}>
             Discuter de votre projet (30 min offertes) →

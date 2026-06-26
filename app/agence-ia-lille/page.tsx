@@ -3,8 +3,8 @@ import AgenceIALillePageClient from '@/components/AgenceIALillePageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Lille : agents IA, automatisation et formation pour PME et ETI nordistes | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Lille et dans les Hauts-de-France. Expertise retail, e-commerce, logistique transfrontalière. Présentiel à Lille, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  title: "Agence IA à Lille : automatisation PME",
+  description: "Althoce, agence IA à Lille : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Lille',
     'agence IA Hauts-de-France',
@@ -22,7 +22,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-lille/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Lille · Agents IA & Automatisation PME nordistes | Althoce",
@@ -42,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Lille",
       "description": "Agence IA française qui accompagne les PME et ETI à Lille et dans les Hauts-de-France. Expertise retail historique, e-commerce nordiste, logistique transfrontalière. Présentiel à Lille, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-lille/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Lille",

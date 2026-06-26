@@ -3,8 +3,8 @@ import CasClientNegoceVinsBordelaisPageClient from '@/components/CasClientNegoce
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Négoce de vins bordelais : +200 % RDV qualifiés en 4 mois avec un agent SDR multilingue | Cas client Althoce",
-  description: "Comment un négoce de vins bordelais de 28 collaborateurs a triplé son volume de RDV qualifiés export en 4 mois avec un agent IA SDR multilingue (français, anglais, mandarin, japonais), sans embaucher.",
+  title: "Négoce de vins bordelais : agent IA SDR",
+  description: "+200 % RDV qualifiés export en 4 mois pour un négoce de vins bordelais avec un agent IA SDR Althoce. Multilingue FR/EN/ZH. Cas client.",
   keywords: [
     'cas client agent IA SDR',
     'ROI agent IA prospection',
@@ -14,12 +14,20 @@ export const metadata: Metadata = {
     'Althoce négoce vins Bordeaux',
   ],
   openGraph: {
-    title: '+200 % RDV qualifiés en 4 mois : cas client négoce de vins bordelais | Althoce',
+    title: 'Négoce de vins bordelais : agent IA SDR | Althoce',
     description: "Agent IA SDR multilingue (4 langues), prospection 24/7, time-to-first-touch lead 18h → 4 min. Comment un négoce bordelais a triplé son volume de RDV export sans embaucher.",
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/negoce-vins-bordelais-agent-ia-sdr/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '+200 % RDV qualifiés : négoce vins bordelais × agent IA SDR multilingue | Althoce',
@@ -40,6 +48,7 @@ const jsonLd = {
       "description": "Cas client Althoce : comment un négoce de vins bordelais de 28 collaborateurs a triplé son volume de RDV qualifiés export en 4 mois avec un agent IA SDR multilingue (français, anglais, mandarin, japonais).",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -50,7 +59,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -59,7 +72,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA SDR multilingue pour PME export",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA SDR, prospection multilingue, agent IA commercial export, ROI agent IA prospection, automatisation commerciale"
     },

@@ -3,8 +3,8 @@ import DeveloppementIAPageClient from '@/components/DeveloppementIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Développement IA sur-mesure pour PME & ETI : code de production, MLOps, monitoring | Althoce',
-  description: "Althoce développe vos solutions IA en code de production : agents, employés IA, intégrations API LLM, monitoring continu. Stack maîtrisée (Python, TypeScript, n8n, LangGraph). 30 min offertes avec un expert.",
+  title: 'Développement IA sur mesure',
+  description: "Althoce développe vos solutions IA en code de production : agents, intégrations API LLM, monitoring. Livraison avec documentation. Devis.",
   keywords: ['développement IA', 'agence développement IA', 'développeur IA', 'IA sur-mesure', 'MLOps', 'intégration LLM', 'agent IA custom', 'IA Python', 'IA TypeScript'],
   openGraph: {
     title: 'Développement IA sur-mesure : code de production, MLOps, monitoring | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/developpement-ia/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Développement IA sur-mesure | Althoce',

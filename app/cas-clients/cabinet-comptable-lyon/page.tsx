@@ -3,8 +3,8 @@ import CasClientCabinetComptableLyonPageClient from '@/components/CasClientCabin
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Cabinet d'expertise comptable Lyon : ×2 capacité grâce aux agents IA Althoce | Cas client",
-  description: "Comment un cabinet d'expertise comptable lyonnais de 12 collaborateurs a doublé sa capacité de production en 4 mois avec 2 agents IA Althoce : automatisation de la saisie comptable et du rapprochement bancaire. Chiffres réels, architecture détaillée, témoignage.",
+  title: "Cabinet comptable Lyon : agent IA finance",
+  description: "Cabinet comptable Lyon : capacité ×2 en 4 mois avec un agent IA finance Althoce. Zéro embauche supplémentaire. Cas client chiffré.",
   keywords: [
     'cas client agent IA comptable',
     'ROI agent IA cabinet comptable',
@@ -15,12 +15,20 @@ export const metadata: Metadata = {
     'doublement capacité cabinet comptable',
   ],
   openGraph: {
-    title: "Cabinet d'expertise comptable Lyon : ×2 capacité en 4 mois avec 2 agents IA",
+    title: "Cabinet comptable Lyon : agent IA finance | Althoce",
     description: "12 collaborateurs, 2 agents IA, 4 mois : saisie comptable automatisée à 80 %, rapprochement bancaire sans intervention humaine, +80 clients sans recrutement.",
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/cabinet-comptable-lyon/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Cabinet comptable Lyon : ×2 capacité avec agents IA Althoce",
@@ -41,6 +49,7 @@ const jsonLd = {
       "description": "Comment un cabinet d'expertise comptable lyonnais de 12 collaborateurs a doublé sa capacité de production en 4 mois avec 2 agents IA Althoce, sans recrutement ni départ.",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -51,7 +60,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -61,9 +74,11 @@ const jsonLd = {
         "@type": "Service",
         "name": "Agents IA pour cabinet d'expertise comptable",
         "provider": {
-          "@type": "Organization",
-          "name": "Althoce"
-        }
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA comptabilité, automatisation saisie comptable, rapprochement bancaire automatique, cabinet expertise comptable Lyon, ROI agent IA"
     },

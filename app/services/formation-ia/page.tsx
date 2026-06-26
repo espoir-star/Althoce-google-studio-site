@@ -3,8 +3,8 @@ import FormationIAPageClient from '@/components/FormationIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Formation IA en entreprise : ateliers, conseil et accompagnement sur-mesure | Althoce',
-  description: "Quatre formats pour faire monter votre équipe en compétences IA : ateliers pratiques, onboarding outils IA (Claude, ChatGPT, Copilot), missions conseil, accompagnement long. Sur-mesure, contextualisé sur votre métier, sans jargon. 30 min offertes avec un expert.",
+  title: 'Formation IA pour vos équipes',
+  description: "Quatre formats pour monter en compétences IA : ateliers pratiques, onboarding outils, programmes sur mesure, coaching manager. Devis gratuit.",
   keywords: ['formation IA entreprise', 'formation intelligence artificielle', 'atelier IA PME', 'onboarding outils IA', 'formation ChatGPT entreprise', 'formation Claude IA', 'accompagnement IA équipe'],
   openGraph: {
     title: 'Formation IA en entreprise — Ateliers, conseil, accompagnement | Althoce',
@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/formation-ia/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: 'Formation IA en entreprise | Althoce',

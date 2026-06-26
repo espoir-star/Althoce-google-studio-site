@@ -3,8 +3,8 @@ import AgenceIANicePageClient from '@/components/AgenceIANicePageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Agence IA à Nice : agents IA, automatisation et formation pour PME et ETI azuréennes | Althoce",
-  description: "Althoce, agence IA française qui accompagne les PME et ETI à Nice et sur la Côte d'Azur. Expertise hôtellerie luxe, biotech Sophia Antipolis, finance privée, immobilier. Présentiel à Nice, distanciel, formation IA, souveraineté France. 30 min offertes avec un expert.",
+  title: "Agence IA à Nice : automatisation PME",
+  description: "Althoce, agence IA à Nice : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
   keywords: [
     'agence IA Nice',
     "agence IA Côte d'Azur",
@@ -22,7 +22,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/agence-ia-nice/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: "Agence IA Nice · Agents IA & Automatisation PME azuréennes | Althoce",
@@ -42,6 +50,7 @@ const jsonLd = {
       "name": "Althoce — Agence IA à Nice",
       "description": "Agence IA française qui accompagne les PME et ETI azuréennes. Expertise hôtellerie haut de gamme, biotech Sophia Antipolis, finance privée, immobilier de prestige. Présentiel à Nice, Cannes, Sophia Antipolis, distanciel, formation IA, souveraineté France.",
       "url": "https://althoce.com/agence-ia-nice/",
+      "image": "https://althoce.com/og-default.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Nice",

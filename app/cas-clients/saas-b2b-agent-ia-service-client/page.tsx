@@ -3,8 +3,8 @@ import CasClientSaasB2BServiceClientPageClient from '@/components/CasClientSaasB
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Éditeur SaaS B2B : 70 % des tickets N1 résolus en autonomie avec un agent IA service client | Cas client Althoce",
-  description: "Comment un éditeur SaaS B2B de 120 collaborateurs et 8 000 clients PME a réduit son temps de première réponse de 18 heures à 4 minutes et fait monter sa CSAT de 12 points en 3 mois avec un agent IA service client intégré à Zendesk.",
+  title: "SaaS B2B : agent IA service client",
+  description: "SaaS B2B : 70 % des tickets N1 résolus en autonomie et temps de première réponse ÷5 avec un agent IA Althoce. Cas client chiffré.",
   keywords: [
     'cas client agent IA service client',
     'ROI agent IA support SaaS',
@@ -13,12 +13,20 @@ export const metadata: Metadata = {
     'témoignage agent IA support B2B',
   ],
   openGraph: {
-    title: '70 % des tickets N1 absorbés : cas client SaaS B2B service client | Althoce',
+    title: 'SaaS B2B : agent IA service client | Althoce',
     description: "Temps de première réponse 18h vers 4 min, CSAT +12 points, 0 départ équipe support. Comment un SaaS B2B 8 000 clients PME a transformé son support en 4 semaines.",
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/saas-b2b-agent-ia-service-client/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '70 % tickets N1 absorbés : SaaS B2B × agent IA Zendesk | Althoce',
@@ -39,6 +47,7 @@ const jsonLd = {
       "description": "Cas client Althoce : éditeur SaaS B2B 120 collaborateurs, 8 000 clients PME. Temps de réponse 18h vers 4 min, CSAT +12 points, 0 départ équipe support en 12 mois post-déploiement.",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -49,7 +58,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -58,7 +71,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA service client pour SaaS B2B",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA service client, automatisation tickets Zendesk, support SaaS automatisé, CSAT amélioration IA, agent IA support PME"
     },

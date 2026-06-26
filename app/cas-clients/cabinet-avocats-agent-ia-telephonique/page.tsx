@@ -3,8 +3,8 @@ import CasClientCabinetAvocatsPageClient from '@/components/CasClientCabinetAvoc
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Cabinet d'avocats lyonnais : 0 appel raté et +130 % RDV qualifiés avec un agent IA téléphonique | Cas client Althoce",
-  description: "Comment un cabinet d'avocats lyonnais de 18 collaborateurs a éliminé les appels perdus, doublé ses prises de RDV et libéré 12 heures par semaine avec un agent IA téléphonique voix naturelle conforme secret professionnel.",
+  title: "Cabinet d'avocats : agent IA téléphonique",
+  description: "Cabinet d'avocats : 0 appel raté, +130 % RDV qualifiés et 12 h/semaine libérées avec un agent IA téléphonique Althoce. Cas client.",
   keywords: [
     'cas client agent IA téléphonique cabinet avocats',
     'ROI agent IA accueil téléphonique',
@@ -14,12 +14,20 @@ export const metadata: Metadata = {
     'Althoce cabinet avocats Lyon',
   ],
   openGraph: {
-    title: '0 appel raté et +130 % RDV qualifiés : cas client cabinet d\'avocats lyonnais | Althoce',
+    title: "Cabinet d'avocats : agent IA téléphonique | Althoce",
     description: "Agent IA téléphonique voix naturelle, 12h libérées/semaine, 0 heure sup. Comment un cabinet d'avocats lyonnais a éliminé les appels perdus et doublé ses prises de RDV.",
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/cas-clients/cabinet-avocats-agent-ia-telephonique/',
-  },
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+      },
+    ],
+},
   twitter: {
     card: 'summary_large_image',
     title: '0 appel raté · +130 % RDV : cabinet avocats × agent IA téléphonique | Althoce',
@@ -40,6 +48,7 @@ const jsonLd = {
       "description": "Cas client Althoce : comment un cabinet d'avocats lyonnais de 18 collaborateurs a éliminé les appels perdus, doublé ses prises de RDV et libéré 12 heures par semaine avec un agent IA téléphonique voix naturelle conforme secret professionnel.",
       "datePublished": "2026-05-08",
       "dateModified": "2026-05-08",
+      "image": "https://althoce.com/og-default.png",
       "author": {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
@@ -50,7 +59,11 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://althoce.com/#organization",
         "name": "Althoce",
-        "url": "https://althoce.com/"
+        "url": "https://althoce.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://althoce.com/favicons/apple-touch-icon.png"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -59,7 +72,12 @@ const jsonLd = {
       "about": {
         "@type": "Service",
         "name": "Agent IA téléphonique pour cabinet d'avocats",
-        "provider": { "@type": "Organization", "name": "Althoce" }
+        "provider": {
+        "@type": "Organization",
+        "@id": "https://althoce.com/#organization",
+        "name": "Althoce",
+        "url": "https://althoce.com/"
+      }
       },
       "keywords": "agent IA téléphonique cabinet avocats, agent IA voix naturelle, accueil téléphonique IA, RDV automatisé cabinet avocats, agent IA secret professionnel"
     },
