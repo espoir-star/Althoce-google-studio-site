@@ -3,7 +3,7 @@ import CasClientsHubPageClient from '@/components/CasClientsHubPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Cas clients : ce que nos agents IA ont changé concrètement chez des PME et ETI françaises | Althoce',
+  title: 'Cas clients : ce que nos agents IA ont changé concrètement chez des PME et ETI françaises',
   description: "9 cas clients chiffrés Althoce : cabinet comptable (×2), négoce vins (+200 % RDV), SaaS B2B (70 % tickets N1). ROI mesurable.",
   keywords: ['cas clients Althoce', 'cas client agent IA', 'retour expérience agent IA', 'ROI agent IA exemple', 'cas concret automatisation IA PME', 'témoignage agent IA', 'preuve sociale IA entreprise'],
   openGraph: {

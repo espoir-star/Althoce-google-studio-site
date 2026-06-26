@@ -3,7 +3,7 @@ import AgentIAHubPageClient from '@/components/AgentIAHubPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Agents IA sur-mesure par métier — Commercial, Finance, RH, Juridique, Achats | Althoce',
+  title: 'Agents IA sur-mesure par métier — Commercial, Finance, RH, Juridique, Achats',
   description: "Althoce déploie des agents IA spécialisés par métier : commercial, RH, finance, juridique, opérations. Souverain, France. 30 min offertes.",
   keywords: ['agents IA métier', 'agent IA entreprise', 'agent IA commercial', 'agent IA finance', 'agent IA RH', 'agent IA juridique', 'agent IA achats', 'automatisation agentique', 'employé IA PME'],
   openGraph: {

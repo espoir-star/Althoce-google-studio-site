@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import CalculateurROIPageClient from '@/components/CalculateurROIPageClient';
 
 export const metadata: Metadata = {
-  title: 'Calculateur ROI Agents IA | Althoce',
+  title: 'Calculateur ROI Agents IA',
   description: "Calculez en 3 minutes les économies qu'un agent IA Althoce ferait à votre entreprise. Méthodologie transparente, hypothèses visibles.",
 };
 

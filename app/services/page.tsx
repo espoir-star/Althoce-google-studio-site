@@ -3,7 +3,7 @@ import ServicesHubPageClient from '@/components/ServicesHubPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Tous nos services IA pour PME et ETI : agents, automatisation, employé IA, audit | Althoce',
+  title: 'Tous nos services IA pour PME et ETI : agents, automatisation, employé IA, audit',
   description: "Le catalogue complet des services IA Althoce : agents IA, automatisation, formation. Premier agent opérationnel en 1 semaine. Devis gratuit.",
   keywords: ['services IA', 'agence IA services', 'automatisation IA services', 'solutions IA entreprise', 'prestations IA', 'services IA PME'],
   openGraph: {
