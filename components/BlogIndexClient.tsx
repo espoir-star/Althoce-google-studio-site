@@ -13,12 +13,29 @@ const CATEGORY_STYLES: Record<string, { bg: string; color: string; border: strin
 
 const DEFAULT_CAT_STYLE = { bg: '#f4f4f5', color: '#52525b', border: '#e4e4e7' };
 
-const ALL_CATEGORIES = ["Tous", "Cas d'usage", "Guide pratique", "Décryptage", "Coulisses"];
+const ALL_CATEGORIES = [
+  { id: 'all',          label: 'Tous' },
+  { id: 'finance',      label: 'Finance' },
+  { id: 'juridique',    label: 'Juridique' },
+  { id: 'souverainete', label: 'Souveraineté' },
+  { id: 'local',        label: 'Local' },
+  { id: 'operations',   label: 'Opérations' },
+  { id: 'guide',        label: 'Guide pratique' },
+];
+
+function normalizeCategory(cat: string): string {
+  return cat
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+}
 
 export default function BlogIndexClient({ posts }: { posts: BlogPost[] }) {
-  const [activeCategory, setActiveCategory] = useState('Tous');
+  const [activeCategory, setActiveCategory] = useState('all');
 
-  const filtered = activeCategory === 'Tous' ? posts : posts.filter(p => p.category === activeCategory);
+  const filtered = activeCategory === 'all'
+    ? posts
+    : posts.filter(p => normalizeCategory(p.category) === activeCategory);
 
   return (
     <div style={{ paddingTop: 96, paddingBottom: 80, minHeight: '100vh', background: '#fafafa' }}>
@@ -42,17 +59,17 @@ export default function BlogIndexClient({ posts }: { posts: BlogPost[] }) {
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginBottom: 48 }}>
           {ALL_CATEGORIES.map(cat => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
               style={{
                 padding: '8px 18px', borderRadius: 9999, fontSize: 14, fontWeight: 600,
-                border: `1px solid ${activeCategory === cat ? '#09090b' : '#e4e4e7'}`,
-                background: activeCategory === cat ? '#09090b' : '#fff',
-                color: activeCategory === cat ? '#fff' : '#52525b',
+                border: `1px solid ${activeCategory === cat.id ? '#09090b' : '#e4e4e7'}`,
+                background: activeCategory === cat.id ? '#09090b' : '#fff',
+                color: activeCategory === cat.id ? '#fff' : '#52525b',
                 cursor: 'pointer', transition: 'all .15s', fontFamily: 'inherit',
               }}
             >
-              {cat}
+              {cat.label}
             </button>
           ))}
         </div>
