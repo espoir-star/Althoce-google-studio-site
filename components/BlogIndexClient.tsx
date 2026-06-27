@@ -1,14 +1,20 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { BookOpen, ArrowRight } from 'lucide-react';
 import type { BlogPost } from '../lib/blog';
 
 const CATEGORY_STYLES: Record<string, { bg: string; color: string; border: string }> = {
-  "Cas d'usage":   { bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
-  "Guide pratique":{ bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
-  "Décryptage":    { bg: '#fefce8', color: '#a16207', border: '#fef08a' },
-  "Coulisses":     { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
+  "Cas d'usage":    { bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
+  "Guide pratique": { bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
+  "Décryptage":     { bg: '#fefce8', color: '#a16207', border: '#fef08a' },
+  "Coulisses":      { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
+  "Finance":        { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
+  "Local":          { bg: '#fdf4ff', color: '#7e22ce', border: '#e9d5ff' },
+  "Souveraineté":   { bg: '#fff7ed', color: '#c2410c', border: '#fed7aa' },
+  "Juridique":      { bg: '#fefce8', color: '#a16207', border: '#fef08a' },
+  "Opérations":     { bg: '#eff6ff', color: '#1d4ed8', border: '#bfdbfe' },
 };
 
 const DEFAULT_CAT_STYLE = { bg: '#f4f4f5', color: '#52525b', border: '#e4e4e7' };
@@ -86,28 +92,44 @@ export default function BlogIndexClient({ posts }: { posts: BlogPost[] }) {
               return (
                 <a
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', padding: 24, display: 'flex', flexDirection: 'column', textDecoration: 'none', transition: 'box-shadow .2s, border-color .2s' }}
+                  href={`/blog/${post.slug}/`}
+                  style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', overflow: 'hidden', display: 'flex', flexDirection: 'column', textDecoration: 'none', transition: 'box-shadow .2s, border-color .2s' }}
                   onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,.08)'; e.currentTarget.style.borderColor = '#d4d4d8'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = '#e4e4e7'; }}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                    <span style={{ padding: '4px 12px', borderRadius: 9999, fontSize: 11, fontWeight: 700, background: cs.bg, color: cs.color, border: `1px solid ${cs.border}` }}>
-                      {post.category}
-                    </span>
-                    <span style={{ fontSize: 13, color: '#71717a' }}>{post.readingTime}</span>
-                  </div>
-                  <h2 style={{ fontSize: 17, fontWeight: 700, color: '#09090b', marginBottom: 10, lineHeight: 1.4, flex: 1 }}>
-                    {post.title}
-                  </h2>
-                  <p style={{ fontSize: 14.5, color: '#374151', lineHeight: 1.68, marginBottom: 16 }}>{post.excerpt}</p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #f4f4f5' }}>
-                    <span style={{ fontSize: 13, color: '#71717a' }}>
-                      {new Date(post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
-                    </span>
-                    <span style={{ fontSize: 13.5, fontWeight: 600, color: '#2563eb', display: 'flex', alignItems: 'center', gap: 4 }}>
-                      Lire <ArrowRight style={{ width: 14, height: 14 }} />
-                    </span>
+                  {/* Cover image */}
+                  {post.image && (
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '1200/630', background: '#09090b', flexShrink: 0 }}>
+                      <Image
+                        src={post.image}
+                        alt={post.imageAlt ?? post.title}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </div>
+                  )}
+
+                  {/* Contenu */}
+                  <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                      <span style={{ padding: '4px 12px', borderRadius: 9999, fontSize: 11, fontWeight: 700, background: cs.bg, color: cs.color, border: `1px solid ${cs.border}` }}>
+                        {post.category}
+                      </span>
+                      <span style={{ fontSize: 13, color: '#71717a' }}>{post.readingTime}</span>
+                    </div>
+                    <h2 style={{ fontSize: 17, fontWeight: 700, color: '#09090b', marginBottom: 10, lineHeight: 1.4, flex: 1 }}>
+                      {post.title}
+                    </h2>
+                    <p style={{ fontSize: 14.5, color: '#374151', lineHeight: 1.68, marginBottom: 16 }}>{post.excerpt}</p>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #f4f4f5' }}>
+                      <span style={{ fontSize: 13, color: '#71717a' }}>
+                        {new Date(post.publishedAt ?? post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                      </span>
+                      <span style={{ fontSize: 13.5, fontWeight: 600, color: '#2563eb', display: 'flex', alignItems: 'center', gap: 4 }}>
+                        Lire <ArrowRight style={{ width: 14, height: 14 }} />
+                      </span>
+                    </div>
                   </div>
                 </a>
               );
