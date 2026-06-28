@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Logo } from '@/components/ui/brand/Logo';
 import { cities } from '@/lib/data';
 
@@ -152,8 +153,8 @@ export default function Footer({ showCta = true }: { showCta?: boolean }) {
 
           {/* Bottom bar */}
           <div style={{ borderTop: '1px solid rgba(255,255,255,.06)', paddingTop: 28 }}>
-            {/* Logo certification centré */}
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+            {/* Logos certifications centrés */}
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 20 }}>
               <div style={{ background: '#fff', borderRadius: 16, padding: '14px 20px', display: 'inline-flex', alignItems: 'center' }}>
                 <img
                   src="/logos/French tech.png"
@@ -161,6 +162,23 @@ export default function Footer({ showCta = true }: { showCta?: boolean }) {
                   style={{ height: 72, width: 'auto', objectFit: 'contain', display: 'block' }}
                 />
               </div>
+              <a
+                href="https://www.francenum.gouv.fr/activateurs/althoce-conseil"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Althoce, Activateur France Num — programme officiel du gouvernement français pour la transformation numérique des PME"
+                style={{ display: 'inline-flex', background: '#fff', borderRadius: 16, padding: '14px 20px', transition: 'opacity .15s' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '.8'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '1'; }}
+              >
+                <Image
+                  src="/logos/Althoce-Activateur-francenum.png"
+                  alt="Activateur France Num"
+                  width={120}
+                  height={109}
+                  style={{ height: 72, width: 'auto', objectFit: 'contain', display: 'block' }}
+                />
+              </a>
             </div>
             {/* Copyright row */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10, borderTop: '1px solid rgba(255,255,255,.04)', paddingTop: 20 }}>
