@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 
 const AC = '#2563eb';
@@ -768,7 +769,50 @@ export default function AProposPageClient() {
           </div>
         </section>
 
-        {/* ── Section 6 : FAQ ── */}
+        {/* ── Section 6 : Engagements institutionnels ── */}
+        <section style={{ background: '#fff', padding: '80px 24px' }}>
+          <div style={{ maxWidth: 760, margin: '0 auto' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 9999, background: '#eff6ff', border: '1px solid #bfdbfe', fontSize: 12, fontWeight: 700, color: '#2563eb', letterSpacing: '.06em', textTransform: 'uppercase', marginBottom: 20 }}>
+              Reconnaissance officielle
+            </div>
+            <h2 style={{ fontSize: 'clamp(22px,3vw,34px)', fontWeight: 800, letterSpacing: '-.03em', color: '#09090b', lineHeight: 1.2, marginBottom: 20 }}>
+              Engagements institutionnels
+            </h2>
+            <p style={{ fontSize: 16, color: '#52525b', lineHeight: 1.75, marginBottom: 32 }}>
+              Althoce est officiellement référencée comme{' '}
+              <a
+                href="https://www.francenum.gouv.fr/activateurs/althoce-conseil"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#2563eb', textDecoration: 'none', fontWeight: 600 }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'underline'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'none'; }}
+              >
+                Activateur France Num
+              </a>
+              , le programme officiel du gouvernement français qui recense les experts engagés dans la transformation numérique des PME et ETI. À ce titre, nous accompagnons nos clients dans l'activation des dispositifs publics de soutien à la transformation numérique.
+            </p>
+            <a
+              href="https://www.francenum.gouv.fr/activateurs/althoce-conseil"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Voir la fiche Althoce sur France Num"
+              style={{ display: 'inline-block', transition: 'opacity .15s' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '.8'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '1'; }}
+            >
+              <Image
+                src="/logos/Althoce-Activateur-francenum.png"
+                alt="Althoce, Activateur France Num"
+                width={150}
+                height={136}
+                style={{ height: 120, width: 'auto' }}
+              />
+            </a>
+          </div>
+        </section>
+
+        {/* ── Section 7 : FAQ ── */}
         <section className="abt-faq-section" ref={faqRef as React.RefObject<HTMLElement>}>
           <div className="abt-faq-inner">
             <div
