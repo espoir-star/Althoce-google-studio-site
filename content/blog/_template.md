@@ -1,29 +1,33 @@
 ---
-title: Titre de l'article
-date: 2026-04-10
-category: Cas d'usage
-excerpt: Un résumé court de l'article en 1 ou 2 phrases maximum.
-readingTime: 5 min
+title: "Titre de l'article — reformulation naturelle de la requête cible"
+description: "Résumé 150-160 caractères avec mot-clé principal et bénéfice lecteur."
 slug: titre-de-larticle
-published: false
+category: "Finance"
+author: "Althoce"
+publishedAt: "2026-01-01T09:00:00+02:00"
+readingTime: 7
+keywords:
+  - mot-clé principal
+  - secondaire 1
+  - secondaire 2
+image: "/blog/covers/nom-article-cover.png"
+imageAlt: "Description de l'image de couverture avec mot-clé"
+canonicalUrl: "https://althoce.com/blog/titre-de-larticle/"
+published: true
 ---
 
-## Introduction
+Premier paragraphe = réponse directe à la requête (extractible LLM). 2-3 phrases max.
 
-Votre introduction ici...
+## H2 section 1
 
-## Section principale
+Contenu...
 
-Votre contenu ici. Vous pouvez utiliser tout le Markdown standard :
+## H2 section 2
 
-- **Gras** pour les points importants
-- *Italique* pour les nuances
-- `code` pour les termes techniques
-
-## Sous-section
-
-Lorem ipsum...
+Contenu...
 
 ## Conclusion
 
-Votre conclusion ici.
+Contenu de conclusion et maillage interne (≥ 1 lien Silo 1 service + ≥ 1 lien Silo 2 métier).
+
+*Note de bas d'article : source ou contexte de rédaction si pertinent.*

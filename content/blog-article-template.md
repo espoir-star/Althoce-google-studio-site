@@ -474,5 +474,87 @@ Plan éditorial type par cluster :
 
 ---
 
+---
+
+## 10. État technique — implémentation réelle (mis à jour juin 2026)
+
+> Cette section remplace les notes Claude Code §7 qui décrivent le *futur*. Voici ce qui est **en production**.
+
+### Stack technique
+
+- **Route** : `app/blog/[slug]/page.tsx` — route dynamique Next.js 15 App Router
+- **Source données** : fichiers `.md` dans `content/blog/` (pas MDX) parsés par `gray-matter` + `marked`
+- **Lib principale** : `lib/blog.ts` — `getAllPosts()` filtre articles publiés + publication différée
+- **ISR** : `export const revalidate = 3600` sur la page article, le hub `/blog/`, et `app/sitemap.ts`
+
+### Frontmatter obligatoire (tous les champs)
+
+```yaml
+---
+title: "Titre de l'article"
+description: "Résumé 150-160 caractères"
+slug: mon-article-slug
+category: "Finance"          # Finance | Guide pratique | Local | Décryptage | Cas d'usage | Coulisses
+author: "Althoce"
+publishedAt: "2026-07-01T09:00:00+02:00"   # Date de publication — article visible uniquement après cette date
+readingTime: 7               # Nombre entier (minutes)
+keywords:
+  - mot-clé principal
+  - secondaire
+image: "/blog/covers/mon-article-cover.png"   # Image 1200×630px dans /public/blog/covers/
+imageAlt: "Description alt de l'image"
+canonicalUrl: "https://althoce.com/blog/mon-article-slug/"
+published: true
+---
+```
+
+**Publication différée** : si `publishedAt` est dans le futur, l'article est invisible (404) jusqu'à la date. L'ISR revalide toutes les heures — pas besoin de redéployer.
+
+### Règles de formatage Markdown
+
+- **Pas de `---` dans le contenu** (les `<hr>` sont masqués en CSS et ne doivent pas apparaître dans les articles)
+- **Pas de label décoratif** avant une section — les H2 portent directement le sens
+- **H2 et H3 uniquement** pour la structure (le TOC auto-généré ne capture que H2/H3)
+- **Apostrophes et accents libres** — le moteur les gère correctement (décoding HTML entities avant slugification)
+- Les liens internes doivent toujours se terminer par `/` (ex : `[agents IA](/agent-ia/)`)
+
+### Composants en production
+
+| Composant | Fichier | Description |
+|-----------|---------|-------------|
+| TOC sticky | `components/blog/TableOfContents.tsx` | Sommaire H2/H3 auto-généré, sticky desktop (sidebar gauche), masqué mobile. Active section via IntersectionObserver |
+| CTA article | `components/BlogPostCTA.tsx` | CTA dark identique au footer homepage — "Prêt à déployer votre premier agent IA ?" |
+| Hub filtre | `components/BlogIndexClient.tsx` | Filtre par catégorie + cards avec image de couverture |
+
+### Layout article (desktop)
+
+```
+[TOC 220px sticky] | [Header card] [Cover image] [Contenu prose] [BlogPostCTA]
+```
+
+- Le TOC est dans un `<aside>` grid item avec `position: sticky; top: 108px; alignSelf: start`
+- Les cards ont `padding: 40px 48px` desktop → `24px 20px` mobile (≤768px)
+- La `blog-prose` a des styles responsive (headings réduits, font-size 0.9375rem sur mobile)
+
+### Image de couverture
+
+- Format : **1200×630px** (ratio 16:9 pour l'OG image)
+- Dossier : `/public/blog/covers/`
+- Nommage : `[slug]-cover.png` (ex : `ia-cabinets-comptables-cover.png`)
+- Utilisée automatiquement en : hero article, OG image, card hub blog
+
+### Catégories disponibles (filtres hub)
+
+| Catégorie frontmatter | Filtre hub affiché |
+|----------------------|--------------------|
+| Finance | Finance |
+| Local | Local |
+| Guide pratique | Guide pratique |
+| Décryptage | Décryptage (pas encore de filtre dédié) |
+| Cas d'usage | Cas d'usage (pas encore de filtre dédié) |
+| Coulisses | Coulisses (pas encore de filtre dédié) |
+
+---
+
 *Document généré par Claude (content strategist) · v1.0 · avril 2026*
-*Modèle vivant Article blog validé par Vincent.*
+*Section 10 ajoutée par Claude Code · juin 2026 — état technique validé en production.*

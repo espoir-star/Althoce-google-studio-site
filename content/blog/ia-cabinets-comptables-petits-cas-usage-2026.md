@@ -137,6 +137,4 @@ Premier agent en production en une à quatre semaines selon la complexité. ROI 
 
 Et si vous voulez explorer plus largement la couverture métier, notre [hub des agents IA par métier](/agent-ia/) liste les neuf fonctions sur lesquelles nous intervenons, avec un focus particulier sur la [fonction finance](/agent-ia/finance/).
 
----
-
 *Article rédigé en juin 2026 à partir des retours d'expérience opérationnels de neuf cabinets accompagnés par Althoce en 2025-2026. Les chiffres cités sont des moyennes observées, anonymisées.*

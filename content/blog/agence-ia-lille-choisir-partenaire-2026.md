@@ -136,6 +136,4 @@ Si vous voulez approfondir notre approche par fonction métier, le [hub des agen
 
 Enfin, notre [page agence IA Lille](/agence-ia-lille/) détaille spécifiquement notre couverture sur la Métropole Européenne de Lille et l'écosystème nordiste.
 
----
-
 *Article rédigé en juin 2026 à partir de l'observation du marché agences IA française et des retours d'expérience opérationnels d'Althoce.*

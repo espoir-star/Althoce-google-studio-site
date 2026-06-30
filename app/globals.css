@@ -513,7 +513,7 @@ select option { background: #fff; color: #09090b; }
 .blog-prose pre  { background: #09090b; color: #e2e8f0; padding: 1.25rem 1.5rem; border-radius: 1rem; overflow-x: auto; margin-bottom: 1.5rem; font-size: 0.875rem; line-height: 1.7; }
 .blog-prose pre code { background: transparent; color: inherit; padding: 0; }
 .blog-prose blockquote { border-left: 3px solid #2563eb; padding-left: 1.25rem; color: #64748b; font-style: italic; margin: 1.75rem 0; }
-.blog-prose hr  { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+.blog-prose hr  { display: none; }
 .blog-prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.9rem; }
 .blog-prose th,
 .blog-prose td  { border: 1px solid #e2e8f0; padding: 0.6rem 1rem; text-align: left; }
