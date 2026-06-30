@@ -3,6 +3,8 @@ import { getAllPosts } from '@/lib/blog';
 import BlogIndexClient from '@/components/BlogIndexClient';
 import Footer from '@/components/Footer';
 
+export const revalidate = 3600; // Revalide toutes les heures pour la publication différée
+
 export const metadata: Metadata = {
   title: 'Blog',
   description: "Cas d'usage concrets, guides pratiques et décryptages sur l'IA et l'automatisation pour les PME et agences françaises.",

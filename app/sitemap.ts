@@ -3,6 +3,8 @@ import path from 'path';
 import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/blog';
 
+export const revalidate = 3600; // Revalide toutes les heures pour inclure les nouveaux articles
+
 const BASE_URL = 'https://althoce.com';
 const APP_DIR = path.join(process.cwd(), 'app');
 
