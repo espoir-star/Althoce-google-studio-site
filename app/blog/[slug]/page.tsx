@@ -105,12 +105,24 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
 
   return (
     <>
+      <style>{`
+        .art-page    { padding-top: 96px; padding-bottom: 80px; }
+        .art-wrap    { padding: 0 24px; }
+        .art-card    { padding: 40px 48px; }
+        .art-excerpt { font-size: 17px; }
+        @media (max-width: 768px) {
+          .art-page    { padding-top: 80px; padding-bottom: 48px; }
+          .art-wrap    { padding: 0 16px; }
+          .art-card    { padding: 24px 20px; }
+          .art-excerpt { font-size: 15px; }
+        }
+      `}</style>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <div style={{ paddingTop: 96, paddingBottom: 80, minHeight: '100vh', background: '#fafafa' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
+      <div className="art-page" style={{ minHeight: '100vh', background: '#fafafa' }}>
+        <div className="art-wrap" style={{ maxWidth: 1200, margin: '0 auto' }}>
 
           {/* Retour au blog */}
           <Link
@@ -143,7 +155,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
             <div style={{ minWidth: 0 }}>
 
               {/* Header article */}
-              <div style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', padding: '40px 48px', marginBottom: 20 }}>
+              <div className="art-card" style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', marginBottom: 20 }}>
                 {(() => {
                   const cs = CATEGORY_STYLES[post.category] ?? { bg: '#f4f4f5', color: '#52525b', border: '#e4e4e7' };
                   return (
@@ -163,7 +175,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
                 <h1 style={{ fontSize: 'clamp(24px,3vw,36px)', fontWeight: 800, letterSpacing: '-.03em', color: '#09090b', marginBottom: 16, lineHeight: 1.2 }}>
                   {post.title}
                 </h1>
-                <p style={{ fontSize: 17, color: '#52525b', lineHeight: 1.7, borderLeft: '3px solid #2563eb', paddingLeft: 16 }}>
+                <p className="art-excerpt" style={{ color: '#52525b', lineHeight: 1.7, borderLeft: '3px solid #2563eb', paddingLeft: 16 }}>
                   {post.excerpt}
                 </p>
               </div>
@@ -183,7 +195,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
               )}
 
               {/* Contenu MDX/Prose */}
-              <div style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', padding: '40px 48px', marginBottom: 32 }}>
+              <div className="art-card" style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', marginBottom: 32 }}>
                 <div className="blog-prose" dangerouslySetInnerHTML={{ __html: post.content }} />
               </div>
 

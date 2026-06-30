@@ -518,6 +518,14 @@ select option { background: #fff; color: #09090b; }
 .blog-prose th,
 .blog-prose td  { border: 1px solid #e2e8f0; padding: 0.6rem 1rem; text-align: left; }
 .blog-prose th  { background: #f8fafc; font-weight: 700; color: #0f172a; }
+@media (max-width: 768px) {
+  .blog-prose          { font-size: 0.9375rem; }
+  .blog-prose h1       { font-size: 1.5rem; }
+  .blog-prose h2       { font-size: 1.25rem; }
+  .blog-prose h3       { font-size: 1.1rem; }
+  .blog-prose pre      { font-size: 0.8rem; padding: 1rem; }
+  .blog-prose blockquote { padding-left: 1rem; }
+}
 
 /* ── A-propos page ──────────────────────────────────────────── */
 @media (max-width: 860px) {
