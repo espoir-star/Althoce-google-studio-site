@@ -39,7 +39,8 @@ export default function TableOfContents({ items }: Props) {
       aria-label="Sommaire de l'article"
       style={{
         position: 'sticky',
-        top: 112,
+        top: 108,
+        alignSelf: 'flex-start',
         maxHeight: 'calc(100vh - 7rem)',
         overflowY: 'auto',
         paddingRight: 8,

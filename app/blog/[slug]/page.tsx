@@ -122,7 +122,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
           </Link>
 
           {/* Grille : TOC gauche (desktop) + contenu principal */}
-          <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 items-stretch">
 
             {/* Sidebar TOC — masquée sur mobile */}
             <aside className="hidden lg:block" style={{ minWidth: 0 }}>
