@@ -37,14 +37,7 @@ export default function TableOfContents({ items }: Props) {
   return (
     <nav
       aria-label="Sommaire de l'article"
-      style={{
-        position: 'sticky',
-        top: 108,
-        alignSelf: 'flex-start',
-        maxHeight: 'calc(100vh - 7rem)',
-        overflowY: 'auto',
-        paddingRight: 8,
-      }}
+      style={{ paddingRight: 8 }}
     >
       <p style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.08em', color: '#a1a1aa', marginBottom: 16 }}>
         Sommaire
