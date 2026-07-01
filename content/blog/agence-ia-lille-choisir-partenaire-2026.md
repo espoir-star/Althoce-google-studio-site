@@ -1,11 +1,12 @@
 ---
 title: "Agence IA à Lille : 7 critères pour choisir son partenaire en 2026"
-description: "Vous dirigez une PME des Hauts-de-France et vous cherchez une agence IA fiable à Lille ? Voici les 7 critères qui distinguent les vrais partenaires des prestataires opportunistes."
+description: "PME des Hauts-de-France : comment choisir une agence IA sérieuse à Lille ? Les 7 critères qui distinguent les vrais spécialistes des opportunistes."
 slug: "agence-ia-lille-choisir-partenaire-2026"
 category: "Local"
 author: "Althoce"
 publishedAt: "2026-07-02T09:00:00+02:00"
 updatedAt: "2026-07-02T09:00:00+02:00"
+published: true
 readingTime: 6
 keywords:
   - agence ia lille
