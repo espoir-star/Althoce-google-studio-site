@@ -17,14 +17,17 @@ interface AnimatedCounterProps {
 
 export function AnimatedCounter({ target, prefix = '', suffix = '', duration = 2000, className = '' }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [count, setCount] = useState(0);
+  // SEO : la valeur finale est rendue côté serveur (Google indexe "+150", pas "+0").
+  // L'animation 0 → target ne démarre qu'au montage JS, à l'entrée dans le viewport.
+  const [count, setCount] = useState(target);
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) { setCount(target); return; }
+    if (prefersReduced) return;
     const el = ref.current;
     if (!el) return;
+    setCount(0);
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) { setStarted(true); obs.disconnect(); }
     }, { threshold: 0.2 });

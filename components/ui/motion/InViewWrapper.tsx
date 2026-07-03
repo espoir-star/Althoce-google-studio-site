@@ -15,13 +15,16 @@ interface InViewWrapperProps {
 
 export function InViewWrapper({ children, delay = 0, className = '', style, as: Tag = 'div' }: InViewWrapperProps) {
   const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
+  // SEO : visible par défaut — le HTML servi au crawler contient le contenu (opacity 1).
+  // Le masquage + animation ne s'appliquent qu'au montage JS, sous la ligne de flottaison.
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) { setVisible(true); return; }
     const el = ref.current;
     if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    setVisible(false);
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) { setVisible(true); obs.disconnect(); }
     }, { threshold: 0.12 });

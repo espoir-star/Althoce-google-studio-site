@@ -15,12 +15,16 @@ const AC = '#2563eb';
 // ── Shared hook ──────────────────────────────────────────────
 function useInView(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  // SEO : visible par defaut — le HTML servi au crawler contient tout le contenu (opacity 1).
+  // Au montage JS, seuls les elements encore sous la ligne de flottaison sont masques
+  // puis reveles au scroll ; sans JS (Googlebot, lecteurs), rien n'est jamais cache.
+  const [visible, setVisible] = useState(true);
   useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) { setVisible(true); return; }
     const el = ref.current;
     if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    setVisible(false);
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
     obs.observe(el);
     return () => obs.disconnect();
@@ -204,7 +208,7 @@ function Stats() {
                 {visible ? (
                   <AnimatedCounter target={counterProps[i].target} prefix={counterProps[i].prefix} suffix={counterProps[i].suffix} />
                 ) : (
-                  <span>{counterProps[i].prefix}0{counterProps[i].suffix}</span>
+                  <span>{counterProps[i].prefix}{counterProps[i].target}{counterProps[i].suffix}</span>
                 )}
               </div>
               <div style={{ fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.12em', color: AC, marginBottom: 6 }}>{s.label}</div>

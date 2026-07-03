@@ -9,16 +9,17 @@ const AC = '#2563eb';
 // ── Scroll-triggered visibility hook ────────────────────────
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  // SEO : visible par defaut — le HTML servi au crawler contient tout le contenu (opacity 1).
+  // Au montage JS, seuls les elements encore sous la ligne de flottaison sont masques
+  // puis reveles au scroll ; sans JS (Googlebot, lecteurs), rien n'est jamais cache.
+  const [visible, setVisible] = useState(true);
   useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) { setVisible(true); return; }
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    setVisible(false);
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
     obs.observe(el);
     return () => obs.disconnect();
   }, [threshold]);
