@@ -21,7 +21,10 @@ function useInView(threshold = 0.12) {
     setVisible(false);
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
     obs.observe(el);
-    return () => obs.disconnect();
+    // Failsafe : le renderer de Google ne scrolle pas (viewport ~12k px) — tout
+    // element au-dela ne declenche jamais l'IO. On revele apres 3s quoi qu'il arrive.
+    const failsafe = setTimeout(() => { setVisible(true); obs.disconnect(); }, 3000);
+    return () => { clearTimeout(failsafe); obs.disconnect(); };
   }, [threshold]);
   return { ref, visible };
 }
@@ -365,7 +368,7 @@ const agcStyles = `
   @keyframes agcBlob1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,20px) scale(1.08)} }
   @keyframes agcBlob2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(20px,-25px) scale(1.05)} }
   @keyframes agcBlob3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-15px,30px) scale(1.06)} }
-  @keyframes agcFadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+  @keyframes agcFadeUp { from{transform:translateY(20px)} to{transform:none} }
 
   .agc-fade { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
   .agc-fade.agc-on { opacity:1; transform:none; }

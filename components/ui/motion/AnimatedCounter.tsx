@@ -27,7 +27,8 @@ export function AnimatedCounter({ target, prefix = '', suffix = '', duration = 2
     if (prefersReduced) return;
     const el = ref.current;
     if (!el) return;
-    setCount(0);
+    // Ne pas remettre à 0 ici : si les timers sont gelés (renderer Google),
+    // le DOM doit conserver la valeur finale. Le 0 n'apparaît qu'au 1er tick.
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) { setStarted(true); obs.disconnect(); }
     }, { threshold: 0.2 });

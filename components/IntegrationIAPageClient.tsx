@@ -21,7 +21,10 @@ function useInView(threshold = 0.12) {
     setVisible(false);
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
     obs.observe(el);
-    return () => obs.disconnect();
+    // Failsafe : le renderer de Google ne scrolle pas (viewport ~12k px) — tout
+    // element au-dela ne declenche jamais l'IO. On revele apres 3s quoi qu'il arrive.
+    const failsafe = setTimeout(() => { setVisible(true); obs.disconnect(); }, 3000);
+    return () => { clearTimeout(failsafe); obs.disconnect(); };
   }, [threshold]);
   return [ref, visible] as const;
 }

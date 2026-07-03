@@ -21,7 +21,10 @@ function useInView(threshold = 0.1) {
     setVisible(false);
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
     obs.observe(el);
-    return () => obs.disconnect();
+    // Failsafe : le renderer de Google ne scrolle pas (viewport ~12k px) — tout
+    // element au-dela ne declenche jamais l'IO. On revele apres 3s quoi qu'il arrive.
+    const failsafe = setTimeout(() => { setVisible(true); obs.disconnect(); }, 3000);
+    return () => { clearTimeout(failsafe); obs.disconnect(); };
   }, [threshold]);
   return [ref, visible] as const;
 }
@@ -611,8 +614,8 @@ const globalStyles = `
   @keyframes nim-drift { 0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(3%,4%) scale(1.06)} }
   @keyframes nim-ticker { from{transform:translateX(0)}to{transform:translateX(-50%)} }
   @keyframes floatCard { 0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)} }
-  @keyframes slideIn { from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none} }
-  @keyframes countUp { from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none} }
+  @keyframes slideIn { from{transform:translateX(-8px)}to{transform:none} }
+  @keyframes countUp { from{transform:translateY(4px)}to{transform:none} }
 
   @media (max-width:860px) {
     .nim-hero-grid { grid-template-columns:1fr !important; }

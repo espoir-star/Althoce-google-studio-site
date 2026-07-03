@@ -29,7 +29,9 @@ export function InViewWrapper({ children, delay = 0, className = '', style, as: 
       if (entry.isIntersecting) { setVisible(true); obs.disconnect(); }
     }, { threshold: 0.12 });
     obs.observe(el);
-    return () => obs.disconnect();
+    // Failsafe : le renderer de Google ne scrolle pas — révèle après 3s.
+    const failsafe = setTimeout(() => { setVisible(true); obs.disconnect(); }, 3000);
+    return () => { clearTimeout(failsafe); obs.disconnect(); };
   }, []);
 
   const Component = Tag as React.ElementType;

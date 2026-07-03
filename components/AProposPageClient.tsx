@@ -21,7 +21,10 @@ function useInView(threshold = 0.1) {
     setVisible(false);
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
     obs.observe(el);
-    return () => obs.disconnect();
+    // Failsafe : le renderer de Google ne scrolle pas (viewport ~12k px) — tout
+    // element au-dela ne declenche jamais l'IO. On revele apres 3s quoi qu'il arrive.
+    const failsafe = setTimeout(() => { setVisible(true); obs.disconnect(); }, 3000);
+    return () => { clearTimeout(failsafe); obs.disconnect(); };
   }, [threshold]);
   return [ref, visible] as const;
 }
@@ -128,17 +131,19 @@ const tlSteps = [
 ];
 
 const CSS = `
+  /* SEO : pas d'opacity dans les keyframes d'entrée — le renderer de Google
+     gèle les animations à t=0 et masquerait le contenu. Transform uniquement. */
   @keyframes abt-fadeUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from { transform: translateY(28px); }
+    to   { transform: translateY(0); }
   }
   @keyframes abt-fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from { transform: translateY(6px); }
+    to   { transform: translateY(0); }
   }
   @keyframes abt-slideLeft {
-    from { opacity: 0; transform: translateX(-20px); }
-    to   { opacity: 1; transform: translateX(0); }
+    from { transform: translateX(-20px); }
+    to   { transform: translateX(0); }
   }
   @keyframes abt-lineDraw {
     from { clip-path: inset(0 0 100% 0); }
@@ -159,8 +164,8 @@ const CSS = `
     70%      { transform: translate(20px,-15px) scale(.95); }
   }
   @keyframes abt-countUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from { transform: translateY(8px); }
+    to   { transform: translateY(0); }
   }
 
   .abt-page { background: #fff; }

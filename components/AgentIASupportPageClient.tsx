@@ -24,7 +24,10 @@ function useInView(threshold = 0.12) {
     setVisible(false);
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
     obs.observe(el);
-    return () => obs.disconnect();
+    // Failsafe : le renderer de Google ne scrolle pas (viewport ~12k px) — tout
+    // element au-dela ne declenche jamais l'IO. On revele apres 3s quoi qu'il arrive.
+    const failsafe = setTimeout(() => { setVisible(true); obs.disconnect(); }, 3000);
+    return () => { clearTimeout(failsafe); obs.disconnect(); };
   }, [threshold]);
   return [ref, visible] as const;
 }
@@ -767,8 +770,8 @@ const globalStyles = `
   @keyframes gradDrift1 { 0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(3%,4%) scale(1.06)} }
   @keyframes gradDrift2 { 0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-4%,-3%) scale(1.08)} }
   @keyframes floatCard { 0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)} }
-  @keyframes slideIn { from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)} }
-  @keyframes countUp { from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)} }
+  @keyframes slideIn { from{transform:translateX(-8px)}to{transform:translateX(0)} }
+  @keyframes countUp { from{transform:translateY(6px)}to{transform:translateY(0)} }
   .ticker-slow { display:flex;animation:tickerSlide 70s linear infinite;width:max-content; }
   @keyframes tickerSlide { from{transform:translateX(0)}to{transform:translateX(-50%)} }
   @keyframes pillsScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
