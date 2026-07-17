@@ -528,6 +528,8 @@ select option { background: #fff; color: #09090b; }
   .blog-prose h3       { font-size: 1.1rem; }
   .blog-prose pre      { font-size: 0.8rem; padding: 1rem; }
   .blog-prose blockquote { padding-left: 1rem; }
+  /* Tableaux : scroll horizontal plutôt qu'un écrasement des colonnes sur mobile */
+  .blog-prose table    { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
 }
 
 /* ── A-propos page ──────────────────────────────────────────── */
