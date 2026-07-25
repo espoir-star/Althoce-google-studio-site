@@ -3,12 +3,12 @@ import FormationIAPageClient from '@/components/FormationIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Formation IA pour vos équipes',
-  description: "Quatre formats pour monter en compétences IA : ateliers pratiques, onboarding outils, programmes sur mesure, coaching manager. Devis gratuit.",
-  keywords: ['formation IA entreprise', 'formation intelligence artificielle', 'atelier IA PME', 'onboarding outils IA', 'formation ChatGPT entreprise', 'formation Claude IA', 'accompagnement IA équipe'],
+  title: 'Formation IA pour entreprise',
+  description: "Deux formations indépendantes d'une journée pour former vos équipes à l'IA générative. Sur vos vrais dossiers, avec vos outils. Finançables OPCO.",
+  keywords: ['formation IA entreprise', 'formation intelligence artificielle', 'formation IA générative', 'formation ChatGPT entreprise', 'formation Claude IA', 'formation IA finançable OPCO', 'formation prompting'],
   openGraph: {
-    title: 'Formation IA en entreprise — Ateliers, conseil, accompagnement | Althoce',
-    description: "Quatre formats pour former votre équipe à l'IA : ateliers pratiques, onboarding outils, missions conseil, accompagnement long. Sur-mesure, sans jargon. 30 min offertes.",
+    title: 'Formation IA pour entreprise | Althoce',
+    description: "Deux formations indépendantes d'une journée pour former vos équipes à l'IA générative. Sur vos vrais dossiers, avec vos outils. Finançables OPCO.",
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/formation-ia/',
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
         url: '/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+        alt: 'Althoce — Formation IA pour entreprise',
       },
     ],
-},
+  },
   twitter: {
     card: 'summary_large_image',
-    title: 'Formation IA en entreprise | Althoce',
-    description: "Ateliers, onboarding outils IA, missions conseil et accompagnement long. Sur-mesure, contextualisé sur votre métier. 30 min offertes.",
+    title: 'Formation IA pour entreprise | Althoce',
+    description: "Deux formations d'une journée pour former vos équipes à l'IA générative. Sur vos vrais dossiers, avec vos outils. Finançables OPCO.",
   },
   alternates: {
     canonical: 'https://althoce.com/services/formation-ia/',
@@ -37,8 +37,8 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": "https://althoce.com/services/formation-ia/#service",
-      "name": "Formation IA en entreprise",
-      "description": "Quatre formats pour former votre équipe à l'IA : ateliers pratiques, onboarding outils IA (Claude, ChatGPT, Copilot), missions conseil, accompagnement long. Sur-mesure, contextualisé sur votre métier.",
+      "name": "Formation IA pour entreprise",
+      "description": "Deux formations indépendantes d'une journée pour former les équipes des PME et ETI françaises à l'IA générative. Sur vos vrais dossiers, avec vos outils. Finançables OPCO.",
       "url": "https://althoce.com/services/formation-ia/",
       "provider": {
         "@type": "Organization",
@@ -46,53 +46,26 @@ const jsonLd = {
         "name": "Althoce",
         "url": "https://althoce.com/"
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "France"
-      },
-      "serviceType": "Formation IA en entreprise",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Formats de formation IA Althoce",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Atelier IA pratique",
-              "description": "Session intensive d'une demi-journée ou une journée. Vos équipes manipulent l'IA sur des cas réels tirés de votre activité."
-            },
-            "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "EUR", "price": "0", "description": "Sur devis" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Onboarding outils IA",
-              "description": "Prise en main guidée de Claude, ChatGPT, Copilot ou d'un outil IA déjà déployé dans votre SI. Protocoles d'usage, bonnes pratiques, cas d'usage métier."
-            },
-            "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "EUR", "price": "0", "description": "Sur devis" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Mission conseil formation",
-              "description": "Cadrage des besoins, cartographie des compétences, plan de formation sur-mesure, animation des premières sessions."
-            },
-            "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "EUR", "price": "0", "description": "Sur devis" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Accompagnement entreprise",
-              "description": "Présence récurrente à temps partagé (1 à 2 jours/mois). Suivi de l'adoption IA dans la durée, ajustement des usages, formation continue au fil des évolutions."
-            },
-            "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "EUR", "price": "0", "description": "Sur devis" }
-          }
-        ]
-      }
+      "areaServed": { "@type": "Country", "name": "France" },
+      "serviceType": "Formation IA en entreprise"
+    },
+    {
+      "@type": "ItemList",
+      "name": "Formations IA Althoce",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "IA Fondamentaux",
+          "url": "https://althoce.com/services/formation-ia/ia-fondamentaux/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "IA Avancée",
+          "url": "https://althoce.com/services/formation-ia/ia-avancee/"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -107,43 +80,33 @@ const jsonLd = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Faut-il des prérequis techniques pour suivre une formation IA Althoce ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Non. Les formations sont calibrées au niveau réel de votre équipe, du collaborateur non-technique au manager qui veut comprendre les enjeux. Pas de code, pas de jargon si vous n'en voulez pas."
-          }
+          "name": "Faut-il des compétences techniques ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Non pour la formation Fondamentaux, aucun prérequis. La formation Avancée demande une pratique régulière d'un outil IA. Un questionnaire de vérification est envoyé en amont." }
         },
         {
           "@type": "Question",
-          "name": "En quoi la formation Althoce est-elle différente d'un MOOC ou d'une formation catalogue ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Elle est contextualisée sur votre métier. Les exemples, les exercices, les cas pratiques viennent de votre secteur et de vos processus réels — pas d'un catalogue générique."
-          }
+          "name": "Sur quel outil se déroule la formation ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sur celui que vos équipes utilisent déjà, ChatGPT ou Claude. Si le choix n'est pas encore fait, nous vous aidons à le poser pendant le cadrage." }
         },
         {
           "@type": "Question",
-          "name": "Quel format choisir pour débuter ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "L'atelier IA pratique (demi-journée ou journée) est le point d'entrée idéal. Résultat immédiat, équipe mobilisée, coût maîtrisé."
-          }
+          "name": "Peut-on former plus de 10 personnes ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui, en organisant plusieurs sessions. Nous limitons à 10 participants pour garantir un accompagnement individuel pendant les ateliers." }
         },
         {
           "@type": "Question",
-          "name": "Proposez-vous des formations sur des outils spécifiques ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Oui : Claude, ChatGPT, Copilot, Notion AI, et les outils IA déjà déployés dans votre SI. L'onboarding outils IA est pensé pour accélérer l'adoption d'un outil précis."
-          }
+          "name": "Quel délai faut-il prévoir ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Deux à trois semaines entre le premier échange et la session : cadrage, questionnaire aux participants, adaptation des supports et montage du dossier de financement si besoin." }
         },
         {
           "@type": "Question",
-          "name": "Comment se passe la première étape ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "30 minutes offertes avec un expert Althoce. On identifie votre niveau de départ, vos objectifs, le format adapté. Devis sous 5 jours ouvrés, vous décidez sans engagement."
-          }
+          "name": "Les formations sont-elles accessibles aux personnes en situation de handicap ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Contactez-nous en amont pour que nous préparions les aménagements nécessaires." }
+        },
+        {
+          "@type": "Question",
+          "name": "Que se passe-t-il après la formation ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Une visio de suivi est prévue à 30 jours. Beaucoup de clients enchaînent ensuite sur un projet d'automatisation concret, souvent identifié pendant la formation." }
         }
       ]
     }
@@ -158,7 +121,7 @@ export default function FormationIAPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <FormationIAPageClient />
-      <Footer showCta={true} />
+      <Footer showCta={false} />
     </>
   );
 }
