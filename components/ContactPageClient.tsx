@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
+import { trackFb } from '@/lib/fbpixel';
 
 const AC = '#2563eb';
 
@@ -170,6 +171,11 @@ export default function ContactPageClient() {
     taille: '', budget: '', description: '',
   });
 
+  // Pixel Meta : arrivée sur la page contact (haut du tunnel de conversion)
+  useEffect(() => {
+    trackFb('Contact');
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -184,6 +190,13 @@ export default function ContactPageClient() {
         body: JSON.stringify(form),
       });
       setFormState(res.ok ? 'success' : 'error');
+      // Pixel Meta : Lead uniquement si le formulaire est réellement parti (200)
+      if (res.ok) {
+        trackFb('Lead', {
+          content_name: 'Formulaire de contact',
+          content_category: form.budget || undefined,
+        });
+      }
     } catch {
       setFormState('error');
     }
