@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import NavigationProvider from '@/components/NavigationProvider';
 import Navbar from '@/components/Navbar';
+import MetaPixel from '@/components/MetaPixel';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://althoce.com'),
@@ -91,6 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-white text-ink font-sans min-h-screen selection:bg-accent/20 selection:text-accent">
+        <MetaPixel />
         <NavigationProvider>
           <Navbar />
           {children}
