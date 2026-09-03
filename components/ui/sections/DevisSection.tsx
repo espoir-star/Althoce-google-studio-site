@@ -98,7 +98,7 @@ export function DevisSection({ variant = 'default', id, background = '#fafafa' }
                 Voici ce qui fait varier le devis.
               </p>
             </div>
-            <div className="v2-grid2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 20, maxWidth: 900, margin: '0 auto 40px' }}>
+            <div className="devis-facteurs" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 20, maxWidth: 900, margin: '0 auto 40px' }}>
               {facteurs.map((f, i) => (
                 <div key={f.title} style={{ border: '1px solid #e4e4e7', borderRadius: 20, padding: '28px 26px', background: '#fff', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: `all .6s ${i * .08}s ease`, boxShadow: '0 4px 20px rgba(0,0,0,.04)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>

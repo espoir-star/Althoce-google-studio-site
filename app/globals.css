@@ -309,6 +309,17 @@ body {
   .v2-grid-hero { grid-template-columns: 1fr !important; }
 }
 
+/* ── Section devis : les 4 facteurs restent en 2x2 sur mobile ── */
+@media (max-width: 600px) {
+  .devis-facteurs { gap: 10px !important; }
+  .devis-facteurs > div { padding: 18px 14px !important; border-radius: 16px !important; }
+  .devis-facteurs h3 { font-size: 14px !important; letter-spacing: -.02em !important; }
+  .devis-facteurs p { font-size: 12.5px !important; line-height: 1.55 !important; }
+  .devis-facteurs svg { width: 15px !important; height: 15px !important; margin-top: 1px; }
+  /* Titre sur 2 lignes : l'icone s'aligne sur la premiere, pas au centre. */
+  .devis-facteurs > div > div { align-items: flex-start !important; gap: 8px !important; }
+}
+
 /* ── Navbar responsive ──────────────────────────────────────── */
 @media (max-width: 900px) {
   .v2-desk-nav { display: none !important; }
