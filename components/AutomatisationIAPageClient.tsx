@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { steps, pricingPlans, securityItems, heroLogos } from '@/lib/data';
+import { steps, securityItems, heroLogos } from '@/lib/data';
 import { FAQAccordion } from '@/components/ui/data-display/FAQAccordion';
 import type { FAQv2Item } from '@/lib/data';
+import { DevisSection } from '@/components/ui/sections/DevisSection';
 
 const AC = '#2563eb';
 
@@ -40,9 +41,9 @@ function H2({ children, white = false, style: sx = {} }: { children: React.React
 const faqAuto: FAQv2Item[] = [
   { q: "Quelle est la différence entre automatisation classique et automatisation IA ?", a: "L'automatisation classique (RPA, Zapier, Make) exécute des règles fixes écrites à l'avance. Elle est rapide et fiable tant qu'aucune exception n'arrive. L'automatisation IA utilise un modèle de langage pour comprendre le contexte et adapter son comportement. Résultat : elle gère les cas imprévus, lit des documents non-structurés (PDF, mails), et prend des décisions. Concrètement, on combine souvent les deux : plomberie classique pour la stabilité, briques IA pour l'intelligence." },
   { q: "Quels processus sont les plus rentables à automatiser en premier ?", a: "Les processus qui cochent les 4 cases : récurrents (au moins 10 occurrences par semaine), chronophages (15 min ou plus par occurrence), à faible valeur ajoutée cognitive, et déclenchés par un événement numérique. Les meilleurs candidats chez nos clients : tri de mails entrants, extraction de factures, qualification de leads, génération de rapports, réponses aux questions internes RH. ROI typique : 3 à 10× la première année." },
-  { q: "Combien coûte une automatisation IA en 2026 ?", a: "1 400 € HT (tarif fixe) pour un cas simple, 1 semaine de dev. Pour les systèmes multi-agents, employés IA et refontes complètes de process : sur devis, chiffré au cadrage selon la complexité, le nombre d'outils branchés, le volume traité, les exigences de souveraineté et le support souhaité. Tout démarre par 30 minutes offertes avec un expert : vous repartez avec un chiffrage ferme avant tout engagement." },
+  { q: "Combien coûte une automatisation IA en 2026 ?", a: "Le chiffrage dépend du nombre d'outils dans la chaîne, de la qualité de leurs interfaces et du volume traité. Nous cadrons le périmètre avant de chiffrer. Tout démarre par 30 minutes offertes : vous repartez avec un chiffrage ferme avant tout engagement." },
   { q: "Combien de temps faut-il pour mettre une automatisation en production ?", a: "Une automatisation simple est en production sous 7 jours après validation du cadrage. Un système d'automatisation (3 à 6 processus orchestrés) : 2 à 6 semaines. Une refonte complète de département : 6 à 12 semaines. Les délais sont tenus parce qu'on ne démarre jamais sans cadrage ferme et chiffré." },
-  { q: "Peut-on automatiser avec l'IA sans compétences techniques en interne ?", a: "Oui pour l'usage quotidien : une fois livrée, l'automatisation tourne seule. Votre équipe a juste à la superviser via un dashboard. Si vous voulez pouvoir la modifier vous-même, nous formons 1 à 2 personnes chez vous (1 journée de formation incluse dans les systèmes à 8 000 € HT et plus). Alternative : vous restez en support chez nous, sans toucher au code." },
+  { q: "Peut-on automatiser avec l'IA sans compétences techniques en interne ?", a: "Oui pour l'usage quotidien : une fois livrée, l'automatisation tourne seule. Votre équipe a juste à la superviser via un dashboard. Si vous voulez pouvoir la modifier vous-même, nous formons 1 à 2 personnes chez vous (une journée de formation, incluse dès que le périmètre le justifie). Alternative : vous restez en support chez nous, sans toucher au code." },
   { q: "Mes données vont-elles transiter par OpenAI ou Anthropic ?", a: "Uniquement si vous l'acceptez, et jamais sans filtre d'anonymisation préalable sur les données sensibles. Pour les clients qui exigent la souveraineté totale, nous utilisons Mistral (hébergé en France) ou des modèles open-source (Llama, Mixtral) auto-hébergés sur votre propre infrastructure. Aucune donnée ne sort du périmètre sans votre validation explicite." },
   { q: "Les automatisations IA sont-elles conformes RGPD et AI Act ?", a: "Oui. Nos déploiements intègrent par défaut : registre des traitements mis à jour, analyses d'impact (PIA) si nécessaire, clauses contractuelles types si des sous-traitants tiers sont impliqués, documentation de conformité AI Act (niveau de risque, transparence, supervision humaine). Un document unique de conformité vous est livré à chaque mise en production." },
   { q: "Une automatisation IA peut-elle remplacer un employé ?", a: "Elle peut absorber 80 % des tâches répétitives d'un poste, rarement un poste entier. Chez nos clients, l'effet observé est systématiquement le même : les équipes gagnent du temps qu'elles réinvestissent sur les tâches à forte valeur (relation client, stratégie, créativité). Aucun de nos clients n'a supprimé de poste suite à une mission Althoce. Plusieurs ont réaffecté ou recruté différemment." },
@@ -368,18 +369,18 @@ function ProcessFamilies() {
 
 // ── SECTION 5 — 12 cas concrets (marquee) ───────────────────
 const cas12 = [
-  { title: 'Tri et réponse mails support niveau 1', delai: '1-2 sem', prix: '1 400 €' },
-  { title: 'Qualification & enrichissement leads', delai: '1 sem', prix: '1 400 €' },
-  { title: 'Extraction factures → logiciel comptable', delai: '2-3 sem', prix: '4 000 €' },
-  { title: 'Comptes-rendus de réunion automatiques', delai: '1 sem', prix: '1 400 €' },
-  { title: 'Analyse contrats + alerte clauses à risque', delai: '3-4 sem', prix: '6 000 €' },
-  { title: 'Agent relance clients (mail + voicebot)', delai: '3 sem', prix: '5 000 €' },
-  { title: 'Reporting hebdo multi-sources (Stripe, HubSpot, GSC)', delai: '1-2 sem', prix: '3 000 €' },
-  { title: 'Pré-qualification CV + scoring + brief recruteur', delai: '2 sem', prix: '4 500 €' },
-  { title: 'Demandes internes RH (FAQ + formulaires)', delai: '2 sem', prix: '4 000 €' },
-  { title: 'Veille concurrentielle automatisée + digest hebdo', delai: '1-2 sem', prix: '3 500 €' },
-  { title: 'Fiches produit / descriptions depuis une base', delai: '1-2 sem', prix: '1 400 €' },
-  { title: 'Agent SDR complet : ciblage, message, relance, RDV', delai: '6-8 sem', prix: '12 000 €' },
+  { title: 'Tri et réponse mails support niveau 1', delai: '1-2 sem' },
+  { title: 'Qualification & enrichissement leads', delai: '1 sem' },
+  { title: 'Extraction factures → logiciel comptable', delai: '2-3 sem' },
+  { title: 'Comptes-rendus de réunion automatiques', delai: '1 sem' },
+  { title: 'Analyse contrats + alerte clauses à risque', delai: '3-4 sem' },
+  { title: 'Agent relance clients (mail + voicebot)', delai: '3 sem' },
+  { title: 'Reporting hebdo multi-sources (Stripe, HubSpot, GSC)', delai: '1-2 sem' },
+  { title: 'Pré-qualification CV + scoring + brief recruteur', delai: '2 sem' },
+  { title: 'Demandes internes RH (FAQ + formulaires)', delai: '2 sem' },
+  { title: 'Veille concurrentielle automatisée + digest hebdo', delai: '1-2 sem' },
+  { title: 'Fiches produit / descriptions depuis une base', delai: '1-2 sem' },
+  { title: 'Agent SDR complet : ciblage, message, relance, RDV', delai: '6-8 sem' },
 ];
 
 function CasConcrets() {
@@ -402,7 +403,6 @@ function CasConcrets() {
               <div style={{ fontSize: 14, fontWeight: 700, color: '#09090b', lineHeight: 1.45, marginBottom: 12 }}>{c.title}</div>
               <div style={{ display: 'flex', gap: 8 }}>
                 <span style={{ padding: '3px 9px', borderRadius: 9999, background: '#f0f7ff', fontSize: 10, fontWeight: 700, color: AC }}>{c.delai}</span>
-                <span style={{ padding: '3px 9px', borderRadius: 9999, background: '#f4f4f5', fontSize: 10, fontWeight: 700, color: '#8a8a95' }}>à partir de {c.prix}</span>
               </div>
             </div>
           ))}
@@ -551,61 +551,6 @@ function Methodology() {
   );
 }
 
-// ── SECTION 7 — Pricing (héritée) ────────────────────────────
-function Pricing() {
-  const [ref, visible] = useInView();
-  return (
-    <section ref={ref} style={{ padding: '72px 24px', background: '#fafafa', borderTop: '1px solid #e4e4e7' }}>
-      <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <H2 style={{ marginBottom: 12 }}>Combien ça coûte, en combien de temps ?</H2>
-          <p style={{ fontSize: 16, color: '#8a8a95', maxWidth: 500, margin: '0 auto' }}>Nous sommes une des rares agences IA à afficher nos prix. La transparence, c'est le début de la confiance.</p>
-        </div>
-        <div className="v2-grid2 aui-pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 24, marginBottom: 36, maxWidth: 900, margin: '0 auto 36px' }}>
-          {pricingPlans.map((p, i) => (
-            <div key={i} style={{ border: p.dark ? `2px solid ${AC}` : '2px solid #e4e4e7', borderRadius: 28, padding: '40px 36px', background: p.dark ? 'linear-gradient(135deg,#09090b 0%,#0d1117 100%)' : '#fff', position: 'relative', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: `all .6s ${i * .15}s ease`, boxShadow: p.dark ? `0 20px 60px ${AC}20` : '0 4px 20px rgba(0,0,0,.04)' }}>
-              {p.dark && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg,transparent,${AC},transparent)`, borderRadius: '28px 28px 0 0' }} />}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-                <span style={{ fontSize: 15, fontWeight: 800, color: p.dark ? '#d4d4d8' : '#09090b' }}>{p.name}</span>
-                <span style={{ padding: '4px 12px', borderRadius: 9999, background: p.dark ? `${AC}20` : '#f4f4f5', fontSize: 11, fontWeight: 800, color: p.dark ? AC : '#8a8a95', border: p.dark ? `1px solid ${AC}40` : 'none' }}>{p.badge}</span>
-              </div>
-              <div style={{ fontSize: 'clamp(17px,1.9vw,21px)', fontWeight: 700, lineHeight: 1.35, color: p.dark ? '#e4e4e7' : '#09090b', marginBottom: 32, letterSpacing: '-.02em', minHeight: 90 }}>
-                {p.titleText}<span style={{ color: p.dark ? '#93c5fd' : AC }}>{p.titleAccent}</span>
-                {!p.dark && <>, pour un cas d'usage ciblé et ROI immédiat</>}
-                {p.dark && <> qui automatisent votre back-office de bout en bout</>}
-              </div>
-              <div style={{ marginBottom: 32 }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: p.dark ? '#8a8a95' : '#a1a1aa', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '.08em' }}>À partir de</div>
-                <div style={{ fontSize: 44, fontWeight: 800, color: p.dark ? '#fff' : '#09090b', letterSpacing: '-.05em', lineHeight: 1, display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                  {p.price}{p.price !== 'Sur devis' && <span style={{ fontSize: 16, fontWeight: 600, color: p.dark ? '#8a8a95' : '#a1a1aa' }}>HT</span>}
-                </div>
-              </div>
-              <a href="/contact/" style={{ display: 'block', width: '100%', padding: '15px', borderRadius: 9999, background: p.dark ? AC : '#09090b', color: '#fff', fontSize: 16, fontWeight: 700, fontFamily: 'inherit', marginBottom: 32, textDecoration: 'none', textAlign: 'center', transition: 'all .2s', boxShadow: p.dark ? `0 4px 16px ${AC}40` : '0 4px 16px rgba(0,0,0,.1)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}>
-                {p.cta}
-              </a>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                {p.features.map((f, j) => (
-                  <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: p.dark ? '#a1a1aa' : '#52525b', lineHeight: 1.65 }}>
-                    <svg width="18" height="18" viewBox="0 0 18 18" style={{ flexShrink: 0, marginTop: 2 }}><circle cx="9" cy="9" r="8" fill={p.dark ? `${AC}15` : '#f0f7ff'} stroke={AC} strokeWidth="1.5" /><path d="M6 9L8 11L12 7" stroke={AC} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                    <span style={{ fontWeight: 600 }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ textAlign: 'center', padding: '20px 28px', borderRadius: 16, background: 'linear-gradient(135deg,#f0f7ff 0%,#f0f9ff 100%)', border: `1px solid ${AC}20`, maxWidth: 720, margin: '0 auto' }}>
-          <p style={{ fontSize: 16, color: '#374151', lineHeight: 1.7, fontWeight: 500 }}>
-            <strong style={{ color: AC }}>30 minutes offertes</strong> : discutez avec un expert, repartez avec une feuille de route claire et concrète, que l'on travaille ensemble ou non.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ── SECTION 8 — Souveraineté (héritée) ───────────────────────
 function Security() {
   const [ref, visible] = useInView();
@@ -708,7 +653,7 @@ export default function AutomatisationIAPageClient() {
       <ProcessFamilies />
       <CasConcrets />
       <Methodology />
-      <Pricing />
+      <DevisSection />
       <Security />
       <FAQ />
     </main>

@@ -52,12 +52,7 @@ const jsonLd = {
       "description": "Agents IA Althoce pour les RH : tri CV anti-biais documenté, qualification candidats téléphonique, assistant RH interne 24/7, onboarding new hire. Conformité RGPD native opposable.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/rh/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Tarification sur devis selon volume CV, outils branchés, conformité requise. ROI typique en moins de 6 mois (doublement du volume traité sans embauche)."
-        }
+        "url": "https://althoce.com/agent-ia/rh/"
       }
     },
     {

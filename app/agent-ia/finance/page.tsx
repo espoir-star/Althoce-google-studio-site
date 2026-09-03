@@ -52,12 +52,7 @@ const jsonLd = {
       "description": "Agents IA Althoce pour la finance et la comptabilité PME : factures fournisseurs, rapprochement bancaire, reporting financier, assistant DAF. Intégration Sage, Cegid, Pennylane, QuickBooks, EBP. 80 % de saisie absorbée en autonomie.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/finance/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Tarification sur devis selon volume mensuel de factures, outils branchés et périmètre fonctionnel. ROI typique en moins de 6 mois."
-        }
+        "url": "https://althoce.com/agent-ia/finance/"
       }
     },
     {

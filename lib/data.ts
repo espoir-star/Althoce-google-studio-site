@@ -208,40 +208,6 @@ export const caseStudies: CaseStudyItem[] = [
   { chart: 'wave', tag: 'Appels perdus 18 % → 0 %', client: "Cabinet d'avocats · Lyon", desc: "70 % des appels résolus directement par l'agent IA téléphonique. Prises de RDV ×2,3. 12h libérées par semaine pour l'assistante.", href: '/cas-clients/cabinet-avocats-agent-ia-telephonique/' },
 ];
 
-export interface PricingPlan {
-  name: string;
-  badge: string;
-  dark: boolean;
-  titleText: string;
-  titleAccent: string;
-  price: string;
-  features: string[];
-  cta: string;
-}
-
-export const pricingPlans: PricingPlan[] = [
-  {
-    name: 'Agent simple',
-    badge: 'Démarrage',
-    dark: false,
-    titleText: 'Agent IA sur-mesure en ',
-    titleAccent: '1 semaine',
-    price: '1 400 €',
-    features: ['Agents IA sur-mesure', 'Architecture système incluse', 'Documentation & transfert', 'Solutions IA en data', 'Opérationnel en 1 semaine', '1 mois de support inclus'],
-    cta: 'Parler à un consultant',
-  },
-  {
-    name: 'Système multi-agents',
-    badge: 'Le plus choisi',
-    dark: true,
-    titleText: 'Des ',
-    titleAccent: 'agents IA orchestrés',
-    price: 'Sur devis',
-    features: ['3 à 6 agents intégrés', 'Architecture agentique', 'Déploiement 2 à 6 semaines', 'Formation équipe incluse', '3 mois de support', 'App métier sur-mesure'],
-    cta: 'Parler à un consultant',
-  },
-];
-
 export interface SecurityItem {
   title: string;
   desc: string;
@@ -262,7 +228,7 @@ export interface FAQv2Item {
 export const faqsV2: FAQv2Item[] = [
   { q: "Qu'est-ce qu'un agent IA, concrètement ?", a: "Un agent IA est un programme qui combine un modèle de langage (GPT, Claude, Mistral) et un accès à vos outils (mails, CRM, bases de données). Il peut lire une information, raisonner dessus, puis agir. Contrairement à un chatbot qui répond à des questions, un agent IA exécute des tâches de bout en bout." },
   { q: "Quelle est la différence entre automatisation classique et automatisation agentique ?", a: "Une automatisation classique suit des règles fixes : « si X alors Y ». Dès qu'un cas sort du scénario prévu, elle plante. Une automatisation agentique utilise l'IA pour comprendre le contexte et s'adapter. Elle gère les cas imprévus, apprend de ses erreurs et évolue. C'est ce qu'Althoce déploie." },
-  { q: "Combien coûte un agent IA chez Althoce ?", a: "Nos agents démarrent à 1 400 € HT pour un cas d'usage unitaire. Un système multi-agents est sur devis. Un employé IA complet démarre à 30 000 € HT. L'audit initial (48h) est toujours offert, et chaque devis s'appuie sur un ROI chiffré." },
+  { q: "Combien coûte un agent IA chez Althoce ?", a: "Le chiffrage dépend des outils à connecter, de la qualité de leurs API et du périmètre visé. Une tâche bornée sur un outil avec connecteur natif n'a pas le même coût qu'un système multi-agents sur un ERP fermé. Tout démarre par 30 minutes offertes. Vous repartez avec un devis ferme et un périmètre écrit." },
   { q: "En combien de temps voit-on les premiers résultats ?", a: "Un agent simple est opérationnel en 1 semaine. Un système multi-agents demande 2 à 6 semaines. Un employé IA complet, 8 à 12 semaines. Nos cycles sont volontairement courts : on déploie du concret rapidement, on mesure, on itère." },
   { q: "Mes employés vont-ils être remplacés par l'IA ?", a: "Non. Nos agents IA absorbent les tâches répétitives à faible valeur ajoutée. Vos équipes sont redéployées sur des missions à plus forte valeur. Aucun de nos clients n'a supprimé de poste suite à une mission Althoce — plusieurs en ont créé." },
   { q: "Mes données vont-elles être envoyées à OpenAI ou ChatGPT ?", a: "Uniquement si vous le décidez. Pour les clients qui exigent la souveraineté totale, nous utilisons des modèles hébergés en Europe (Mistral) ou auto-hébergés sur votre infrastructure. Les données sensibles sont filtrées avant tout appel à un LLM externe." },

@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { agentTags, steps, pricingPlans, securityItems } from '@/lib/data';
+import { agentTags, steps, securityItems } from '@/lib/data';
 import { FAQAccordion } from '@/components/ui/data-display/FAQAccordion';
 import type { FAQv2Item } from '@/lib/data';
+import { DevisSection } from '@/components/ui/sections/DevisSection';
 
 const AC = '#2563eb';
 
@@ -41,7 +42,7 @@ function H2({ children, white = false, style: sx = {} }: { children: React.React
 
 // ── FAQ data ─────────────────────────────────────────────────
 const faqEmployeIA: FAQv2Item[] = [
-  { q: "Quelle est la différence entre un agent IA et un employé IA ?", a: "Un agent IA exécute 1 cas d'usage borné (ex : qualifier un lead, traiter une facture). Un employé IA couvre un poste entier (ex : SDR de bout en bout, comptable de bout en bout). Techniquement, un employé IA est composé de plusieurs agents orchestrés ensemble + une mémoire long-terme + des outils branchés + une identité de marque cohérente. Conséquence : un agent simple coûte 1 400 € HT, un employé IA est sur devis (chiffré au cadrage)." },
+  { q: "Quelle est la différence entre un agent IA et un employé IA ?", a: "Un agent IA couvre une tâche bornée (ex : qualifier un lead, traiter une facture). Un employé IA couvre un poste entier (ex : SDR de bout en bout, comptable de bout en bout) : plusieurs agents orchestrés, une mémoire long terme, des outils branchés, une identité de marque cohérente. Le chiffrage reflète cet écart de périmètre. Tout démarre par 30 minutes offertes." },
   { q: "Un employé IA va-t-il remplacer mes salariés ?", a: "Non. Les clients qui réussissent l'intégration d'un employé IA ne licencient pas : ils redéploient. Vos humains montent sur des sujets à forte valeur ajoutée cognitive (conseil, arbitrage, relation client complexe). L'employé IA absorbe les tâches répétitives à faible valeur cognitive. Statistique observée chez nos clients PME : 0 départ d'équipe imputable au déploiement IA sur les 4 derniers trimestres." },
   { q: "Combien coûte un employé IA chez Althoce ?", a: "Un employé IA est sur devis, chiffré au cadrage en fonction du périmètre du rôle, du nombre d'outils branchés, du volume traité, des exigences de souveraineté et du support souhaité. Tout démarre par 30 minutes offertes avec un expert : vous repartez avec une cartographie du rôle cible et un devis ferme avant tout engagement." },
   { q: "En combien de temps un employé IA est-il opérationnel ?", a: "Compter 6 à 12 semaines entre la signature du cadrage et la mise en production complète. Décomposé : 1–2 semaines de cadrage et conception, 3–6 semaines de build (selon nombre d'agents et d'outils), 1–2 semaines de POC en parallèle de l'humain, 1 semaine de bascule complète." },
@@ -244,7 +245,7 @@ function ComparisonTable() {
         </div>
 
         <p style={{ marginTop: 24, fontSize: 14, color: '#8a8a95', lineHeight: 1.7, textAlign: 'center', maxWidth: 680, margin: '24px auto 0' }}>
-          L'employé IA n'est pas une « grosse version » de l'agent IA. <strong style={{ color: '#09090b' }}>C'est un produit différent</strong>, conçu pour couvrir un rôle complet, pas une tâche. Si votre besoin est borné, un agent IA simple à 1 400 € HT suffit. Si vous voulez remplacer un poste entier, c'est un employé IA.
+          L'employé IA n'est pas une « grosse version » de l'agent IA. <strong style={{ color: '#09090b' }}>C'est un produit différent</strong>, conçu pour couvrir un rôle complet, pas une tâche. Si votre besoin est borné, un agent IA simple suffit. Si vous voulez couvrir un poste entier, c'est un employé IA.
         </p>
       </div>
     </section>
@@ -649,65 +650,6 @@ function Methodology() {
   );
 }
 
-// ── SECTION 8 — Pricing (héritée home) ───────────────────────
-function Pricing() {
-  const [ref, visible] = useInView();
-  return (
-    <section ref={ref} style={{ padding: '72px 24px', background: '#fafafa', borderTop: '1px solid #e4e4e7' }}>
-      <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <H2 style={{ marginBottom: 12 }}>Combien ça coûte, en combien de temps ?</H2>
-          <p style={{ fontSize: 16, color: '#8a8a95', maxWidth: 500, margin: '0 auto' }}>Nous sommes une des rares agences IA à afficher nos prix. Parce que la transparence, c'est le début de la confiance.</p>
-        </div>
-        <div className="v2-grid2 eia-pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 24, marginBottom: 36, maxWidth: 900, margin: '0 auto 36px' }}>
-          {pricingPlans.map((p, i) => (
-            <div key={i} style={{ border: p.dark ? `2px solid ${AC}` : '2px solid #e4e4e7', borderRadius: 28, padding: '40px 36px', background: p.dark ? 'linear-gradient(135deg,#09090b 0%,#0d1117 100%)' : '#fff', position: 'relative', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: `all .6s ${i * .15}s ease`, boxShadow: p.dark ? `0 20px 60px ${AC}20` : '0 4px 20px rgba(0,0,0,.04)' }}>
-              {p.dark && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg,transparent,${AC},transparent)`, borderRadius: '28px 28px 0 0' }} aria-hidden="true" />}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-                <span style={{ fontSize: 15, fontWeight: 800, color: p.dark ? '#d4d4d8' : '#09090b' }}>{p.name}</span>
-                <span style={{ padding: '4px 12px', borderRadius: 9999, background: p.dark ? `${AC}20` : '#f4f4f5', fontSize: 11, fontWeight: 800, color: p.dark ? AC : '#8a8a95', border: p.dark ? `1px solid ${AC}40` : 'none' }}>{p.badge}</span>
-              </div>
-              <div style={{ fontSize: 'clamp(17px,1.9vw,21px)', fontWeight: 700, lineHeight: 1.35, color: p.dark ? '#e4e4e7' : '#09090b', marginBottom: 32, letterSpacing: '-.02em', minHeight: 90 }}>
-                {p.titleText}<span style={{ color: p.dark ? '#93c5fd' : AC }}>{p.titleAccent}</span>
-                {!p.dark && <>, pour un cas d'usage ciblé et ROI immédiat</>}
-                {p.dark && <> qui automatisent votre back-office de bout en bout</>}
-              </div>
-              <div style={{ marginBottom: 32 }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: p.dark ? '#8a8a95' : '#a1a1aa', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '.08em' }}>À partir de</div>
-                <div style={{ fontSize: 44, fontWeight: 800, color: p.dark ? '#fff' : '#09090b', letterSpacing: '-.05em', lineHeight: 1, display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                  {p.price}
-                  {p.price !== 'Sur devis' && <span style={{ fontSize: 16, fontWeight: 600, color: p.dark ? '#8a8a95' : '#a1a1aa' }}>HT</span>}
-                </div>
-              </div>
-              <a href="/contact/" style={{ display: 'block', width: '100%', padding: '15px', borderRadius: 9999, background: p.dark ? AC : '#09090b', color: '#fff', fontSize: 16, fontWeight: 700, fontFamily: 'inherit', marginBottom: 32, transition: 'all .2s', boxShadow: p.dark ? `0 4px 16px ${AC}40` : '0 4px 16px rgba(0,0,0,.1)', textDecoration: 'none', textAlign: 'center' }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}>
-                {p.cta}
-              </a>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                {p.features.map((f, j) => (
-                  <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: p.dark ? '#a1a1aa' : '#52525b', lineHeight: 1.65 }}>
-                    <svg width="18" height="18" viewBox="0 0 18 18" style={{ flexShrink: 0, marginTop: 2 }} aria-hidden="true">
-                      <circle cx="9" cy="9" r="8" fill={p.dark ? `${AC}15` : '#f0f7ff'} stroke={AC} strokeWidth="1.5" />
-                      <path d="M6 9L8 11L12 7" stroke={AC} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span style={{ fontWeight: 600 }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ textAlign: 'center', padding: '20px 28px', borderRadius: 16, background: 'linear-gradient(135deg,#f0f7ff 0%,#f0f9ff 100%)', border: `1px solid ${AC}20`, maxWidth: 720, margin: '0 auto' }}>
-          <p style={{ fontSize: 16, color: '#374151', lineHeight: 1.7, fontWeight: 500 }}>
-            <strong style={{ color: AC }}>30 minutes offertes</strong> : discutez avec un expert, repartez avec une feuille de route claire et concrète, que l'on travaille ensemble ou non.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ── SECTION 9 — Souveraineté (héritée home) ───────────────────
 function Security() {
   const [ref, visible] = useInView();
@@ -807,7 +749,7 @@ export default function EmployeIAPageClient() {
       <Archetypes />
       <MetiersMarquee />
       <Methodology />
-      <Pricing />
+      <DevisSection />
       <Security />
       <FAQ />
     </main>

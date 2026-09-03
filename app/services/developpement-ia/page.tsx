@@ -44,12 +44,7 @@ const jsonLd = {
       "description": "Développement de solutions IA en code de production : agents, employés IA, intégrations LLM, monitoring continu. Stack Python, TypeScript, n8n, LangGraph.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/services/developpement-ia/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "À partir de 1 400 € HT pour un agent simple. Sur devis pour les systèmes, employés IA et refontes."
-        }
+        "url": "https://althoce.com/services/developpement-ia/"
       }
     },
     {
@@ -66,7 +61,7 @@ const jsonLd = {
         { "@type": "Question", "name": "En quoi vous différenciez-vous d'une agence no-code ?", "acceptedAnswer": { "@type": "Answer", "text": "Le no-code plafonne vite. Chez Althoce, vous obtenez du code de production (Python, TypeScript) et du n8n quand c'est pertinent. Pas de lock-in propriétaire." } },
         { "@type": "Question", "name": "Le code livré nous appartient-il ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Repo Git complet, documentation, credentials infra. Pas de lock-in." } },
         { "@type": "Question", "name": "Quelle est votre stack technique ?", "acceptedAnswer": { "@type": "Answer", "text": "Python (FastAPI, LangGraph), TypeScript, n8n auto-hébergé, Mistral / OpenAI / Anthropic, pgvector / Qdrant, Docker, GitHub Actions." } },
-        { "@type": "Question", "name": "Combien coûte un développement IA ?", "acceptedAnswer": { "@type": "Answer", "text": "Agent simple : 1 400 € HT. Système, employé IA, refonte : sur devis. 30 min offertes avec un expert." } },
+        { "@type": "Question", "name": "Combien coûte un développement IA ?", "acceptedAnswer": { "@type": "Answer", "text": "Le chiffrage dépend de la complexité fonctionnelle et du nombre de systèmes à intégrer. Nous vendons une mission et des livrables, jamais un volume de jours. 30 min offertes." } },
         { "@type": "Question", "name": "Travaillez-vous avec les DSI ou les métiers ?", "acceptedAnswer": { "@type": "Answer", "text": "Les deux. DSI systématiquement incluse au cadrage. Objectif : votre DSI peut maintenir en interne ce qu'on livre." } },
         { "@type": "Question", "name": "Comment monitorez-vous la qualité des modèles ?", "acceptedAnswer": { "@type": "Answer", "text": "Langfuse en standard : tracing des appels LLM, alertes sur dérive, reporting hebdo automatique." } }
       ]

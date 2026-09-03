@@ -41,15 +41,10 @@ const jsonLd = {
       "serviceType": "Automatisation IA sur-mesure",
       "provider": { "@type": "Organization", "@id": "https://althoce.com/#organization", "name": "Althoce", "url": "https://althoce.com/" },
       "areaServed": { "@type": "Country", "name": "France" },
-      "description": "Identification, chiffrage et déploiement d'automatisations IA pour PME et ETI. Mails, documents, CRM, reporting, saisie, rapprochements. Premier livrable en 7 jours, à partir de 1 400 € HT.",
+      "description": "Identification, chiffrage et déploiement d'automatisations IA pour PME et ETI. Mails, documents, CRM, reporting, saisie, rapprochements. Premier livrable en 7 jours, chiffré sur mesure.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/services/automatisation-ia/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "À partir de 1 400 € HT pour une automatisation simple. Sur devis pour les systèmes d'automatisation et les refontes complètes de process."
-        }
+        "url": "https://althoce.com/services/automatisation-ia/"
       }
     },
     {
@@ -75,9 +70,9 @@ const jsonLd = {
       "mainEntity": [
         { "@type": "Question", "name": "Quelle est la différence entre automatisation classique et automatisation IA ?", "acceptedAnswer": { "@type": "Answer", "text": "L'automatisation classique (RPA, Zapier, Make) exécute des règles fixes écrites à l'avance. L'automatisation IA utilise un modèle de langage pour comprendre le contexte et adapter son comportement. Elle gère les cas imprévus, lit des documents non-structurés et prend des décisions." } },
         { "@type": "Question", "name": "Quels processus sont les plus rentables à automatiser en premier ?", "acceptedAnswer": { "@type": "Answer", "text": "Les processus récurrents (au moins 10 occurrences par semaine), chronophages (15 min ou plus par occurrence), à faible valeur ajoutée cognitive, et déclenchés par un événement numérique. ROI typique : 3 à 10× la première année." } },
-        { "@type": "Question", "name": "Combien coûte une automatisation IA en 2026 ?", "acceptedAnswer": { "@type": "Answer", "text": "1 400 € HT (tarif fixe) pour un cas simple, 1 semaine de dev. Pour les systèmes multi-agents et refontes de process : sur devis, chiffré au cadrage. Tout démarre par 30 minutes offertes avec un expert." } },
+        { "@type": "Question", "name": "Combien coûte une automatisation IA en 2026 ?", "acceptedAnswer": { "@type": "Answer", "text": "Le chiffrage dépend du nombre d'outils dans la chaîne, de la qualité de leurs interfaces et du volume traité. Nous cadrons le périmètre avant de chiffrer. Tout démarre par 30 minutes offertes." } },
         { "@type": "Question", "name": "Combien de temps faut-il pour mettre une automatisation en production ?", "acceptedAnswer": { "@type": "Answer", "text": "Une automatisation simple est en production sous 7 jours après validation du cadrage. Un système d'automatisation (3 à 6 processus orchestrés) : 2 à 6 semaines. Une refonte complète de département : 6 à 12 semaines." } },
-        { "@type": "Question", "name": "Peut-on automatiser avec l'IA sans compétences techniques en interne ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui pour l'usage quotidien : une fois livrée, l'automatisation tourne seule. Si vous voulez pouvoir la modifier vous-même, nous formons 1 à 2 personnes chez vous (1 journée incluse dans les systèmes à 8 000 € HT et plus)." } },
+        { "@type": "Question", "name": "Peut-on automatiser avec l'IA sans compétences techniques en interne ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui pour l'usage quotidien : une fois livrée, l'automatisation tourne seule. Si vous voulez pouvoir la modifier vous-même, nous formons 1 à 2 personnes chez vous (une journée incluse dès que le périmètre le justifie)." } },
         { "@type": "Question", "name": "Mes données vont-elles transiter par OpenAI ou Anthropic ?", "acceptedAnswer": { "@type": "Answer", "text": "Uniquement si vous l'acceptez. Pour les clients qui exigent la souveraineté totale, nous utilisons Mistral (hébergé en France) ou des modèles open-source auto-hébergés sur votre propre infrastructure." } },
         { "@type": "Question", "name": "Les automatisations IA sont-elles conformes RGPD et AI Act ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Nos déploiements intègrent par défaut : registre des traitements, analyses d'impact (PIA), clauses contractuelles types, documentation de conformité AI Act. Un document de conformité est livré à chaque mise en production." } },
         { "@type": "Question", "name": "Une automatisation IA peut-elle remplacer un employé ?", "acceptedAnswer": { "@type": "Answer", "text": "Elle peut absorber 80 % des tâches répétitives d'un poste, rarement un poste entier. Aucun de nos clients n'a supprimé de poste suite à une mission Althoce. Plusieurs ont réaffecté ou recruté différemment." } },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ['agents IA métier', 'agent IA entreprise', 'agent IA commercial', 'agent IA finance', 'agent IA RH', 'agent IA juridique', 'agent IA achats', 'automatisation agentique', 'employé IA PME'],
   openGraph: {
     title: 'Agents IA sur-mesure par métier — Althoce',
-    description: "9 spécialisations métier. Un collaborateur virtuel autonome pour chaque fonction de votre entreprise. Commercial, finance, RH, juridique, achats et plus. À partir de 1 400 € HT.",
+    description: "9 spécialisations métier. Un collaborateur virtuel autonome pour chaque fonction de votre entreprise. Commercial, finance, RH, juridique, achats et plus. Chaque projet chiffré sur mesure.",
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/agent-ia/',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Agents IA par métier : commercial, finance, RH, juridique, achats | Althoce',
-    description: "+758 agents en production · 9 métiers couverts · 1 semaine de déploiement · À partir de 1 400 € HT.",
+    description: "+758 agents en production · 9 métiers couverts · 1 semaine de déploiement · Devis sur mesure.",
   },
   alternates: {
     canonical: 'https://althoce.com/agent-ia/',
@@ -52,14 +52,7 @@ const jsonLd = {
       "description": "Althoce conçoit et déploie des agents IA spécialisés par métier (commercial, finance, RH, juridique, achats, opérations, marketing, service client, téléphonique) pour les PME et ETI françaises. Autonomes, souverains, en production en 1 semaine.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "price": "1400",
-          "description": "Agent IA simple (1 cas d'usage borné) : 1 400 € HT. Systèmes multi-agents et Employé IA : sur devis. 30 minutes offertes avec un expert.",
-          "minPrice": "1400"
-        }
+        "url": "https://althoce.com/agent-ia/"
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -96,7 +89,7 @@ const jsonLd = {
         {
           "@type": "Question",
           "name": "Combien coûte la création d'un agent IA chez Althoce ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Un agent IA simple est facturé 1 400 € HT, tarif fixe, 1 cas d'usage borné, 1 semaine de delivery. Pour les systèmes multi-agents et les employés IA complets : sur devis, chiffré au cadrage. Tout démarre par 30 minutes offertes avec un expert." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Le chiffrage dépend des outils à connecter, de la qualité de leurs API et du périmètre visé. Une tâche bornée sur un outil avec connecteur natif n'a pas le même coût qu'un système multi-agents sur un ERP fermé. Tout démarre par 30 minutes offertes : vous repartez avec un devis ferme." }
         },
         {
           "@type": "Question",

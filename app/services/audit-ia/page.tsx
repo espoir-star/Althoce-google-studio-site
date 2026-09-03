@@ -44,12 +44,7 @@ const jsonLd = {
       "description": "Audit IA stratégique : cartographie des opportunités, diagnostic maturité, ROI projet par projet, feuille de route chiffrée, plan de gouvernance, plan de formation. 4 formats : Express (2 sem.), Standard (4 sem.), Approfondi sectoriel (6 sem.), Post-incident (3 sem.).",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/services/audit-ia/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Sur devis selon format et scope. 30 minutes offertes avec un expert pour cadrer le format adapté."
-        }
+        "url": "https://althoce.com/services/audit-ia/"
       }
     },
     {

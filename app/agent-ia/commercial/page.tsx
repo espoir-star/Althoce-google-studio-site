@@ -52,12 +52,7 @@ const jsonLd = {
       "description": "Agents IA Althoce déployés dans le métier commercial : SDR outbound, qualification inbound, relance pipeline, suivi post-vente. Intégration HubSpot, Salesforce, Pipedrive. ROI mesurable en moins de 6 mois.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/commercial/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Tarification sur devis selon scope (nombre de canaux, intégration CRM, volume cible). Payback typique en moins de 6 mois sur les équipes commerciales saturées."
-        }
+        "url": "https://althoce.com/agent-ia/commercial/"
       }
     },
     {

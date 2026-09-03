@@ -52,12 +52,7 @@ const jsonLd = {
       "description": "Agents IA Althoce pour les achats : sourcing fournisseurs accéléré, analyse devis comparatif pondéré, suivi contrats avec alertes, vigilance financière fournisseurs continue. Intégration SAP Ariba, Coupa, Determine, Ivalua, ERP standards.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/achats/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Tarification sur devis selon volume achats, panel fournisseurs, intégration. ROI typique 3 à 7 % d'économies achats supplémentaires la première année."
-        }
+        "url": "https://althoce.com/agent-ia/achats/"
       }
     },
     {

@@ -52,12 +52,7 @@ const jsonLd = {
       "description": "Agents IA Althoce pour les opérations : traitement mails entrants, ADV automatisée, gestion documentaire, suivi fournisseurs et reporting opérationnel. Intégration ERP (SAP, Sage, Cegid, Dynamics, Odoo).",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/operations/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Tarification sur devis selon volume, outils branchés, scope. ROI typique 3 à 6 mois. Fin du turnover assistant ops (coût caché >40 K€/an)."
-        }
+        "url": "https://althoce.com/agent-ia/operations/"
       }
     },
     {

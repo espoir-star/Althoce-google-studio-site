@@ -41,15 +41,10 @@ const jsonLd = {
       "serviceType": "Agents IA sur-mesure",
       "provider": { "@type": "Organization", "@id": "https://althoce.com/#organization", "name": "Althoce", "url": "https://althoce.com/" },
       "areaServed": { "@type": "Country", "name": "France" },
-      "description": "Création et déploiement d'agents IA 100% autonomes pour PME et ETI. Agents commerciaux, opérationnels et support. Premier agent en 1 semaine, à partir de 1 400 € HT.",
+      "description": "Création et déploiement d'agents IA 100% autonomes pour PME et ETI. Agents commerciaux, opérationnels et support. Premier agent en 1 semaine, chiffré sur mesure.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/services/agents-ia/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "À partir de 1 400 € HT pour un agent simple. Sur devis pour les systèmes multi-agents et employés IA."
-        }
+        "url": "https://althoce.com/services/agents-ia/"
       }
     },
     {
@@ -75,7 +70,7 @@ const jsonLd = {
       "mainEntity": [
         { "@type": "Question", "name": "Quelle est la différence entre un agent IA et un chatbot ?", "acceptedAnswer": { "@type": "Answer", "text": "Un chatbot répond à des questions. Un agent IA exécute des tâches de bout en bout. Un chatbot suit un script ; un agent IA suit un objectif. Un chatbot ne peut pas ouvrir votre CRM, lire un contrat PDF ou envoyer un mail en votre nom ; un agent IA le peut." } },
         { "@type": "Question", "name": "Quelle est la différence entre un agent IA et une automatisation classique ?", "acceptedAnswer": { "@type": "Answer", "text": "Une automatisation classique suit des règles fixes : si X alors Y. Un agent IA utilise un modèle de langage pour comprendre le contexte et choisir quoi faire. Il gère les cas imprévus, les documents non structurés, les exceptions." } },
-        { "@type": "Question", "name": "Combien coûte la création d'un agent IA chez Althoce ?", "acceptedAnswer": { "@type": "Answer", "text": "Un agent IA simple est facturé 1 400 € HT — tarif fixe, 1 cas d'usage borné, 1 semaine de delivery. Pour les systèmes multi-agents : sur devis. Tout démarre par 30 minutes offertes avec un expert." } },
+        { "@type": "Question", "name": "Combien coûte la création d'un agent IA chez Althoce ?", "acceptedAnswer": { "@type": "Answer", "text": "Le chiffrage dépend des outils à connecter, de la qualité de leurs API et du périmètre visé. Tout démarre par 30 minutes offertes : vous repartez avec un devis ferme et un périmètre écrit." } },
         { "@type": "Question", "name": "En combien de temps un agent IA est-il opérationnel ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour un agent simple : 1 semaine après validation du cadrage. Pour un système multi-agents : 2 à 6 semaines. Pour un employé IA complet : 8 à 12 semaines." } },
         { "@type": "Question", "name": "À qui appartient l'agent IA à la fin de la mission ?", "acceptedAnswer": { "@type": "Answer", "text": "À vous, à 100 %. Code, accès, logs, workflows : tout vous revient. Pas de rétention technique, pas d'abonnement obligatoire." } },
         { "@type": "Question", "name": "Mes données vont-elles être envoyées à OpenAI ?", "acceptedAnswer": { "@type": "Answer", "text": "Uniquement si vous le décidez. Pour la souveraineté totale, nous utilisons des modèles hébergés en Europe (Mistral) ou auto-hébergés sur votre infrastructure." } },

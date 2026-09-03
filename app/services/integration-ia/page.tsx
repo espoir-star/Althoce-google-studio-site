@@ -44,12 +44,7 @@ const jsonLd = {
       "description": "Intégration des agents et employés IA au système d'information : SSO, RBAC, audit log, monitoring, fallback humain, kill switch. Conformité RGPD native.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/services/integration-ia/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "À partir de 1 400 € HT pour un agent simple intégré à un outil. Sur devis pour les intégrations multi-outils ou avec gouvernance custom."
-        }
+        "url": "https://althoce.com/services/integration-ia/"
       }
     },
     {
@@ -66,7 +61,7 @@ const jsonLd = {
         { "@type": "Question", "name": "Comment l'agent IA s'authentifie auprès de notre CRM ou ERP ?", "acceptedAnswer": { "@type": "Answer", "text": "Par OAuth dédié (compte de service ou app marketplace native) ou via une clé d'API stockée dans un coffre-fort (HashiCorp Vault, AWS Secrets Manager). Jamais de credentials utilisateur réutilisés." } },
         { "@type": "Question", "name": "Mes données vont-elles transiter par OpenAI ou Anthropic ?", "acceptedAnswer": { "@type": "Answer", "text": "Selon votre choix. Mistral hébergé en France pour souveraineté maximale. Si vous acceptez les modèles propriétaires, anonymisation des données entrantes activée automatiquement." } },
         { "@type": "Question", "name": "Comment gérer les permissions différenciées ?", "acceptedAnswer": { "@type": "Answer", "text": "RBAC granulaire mappé sur votre annuaire SI (Active Directory, Entra ID, Workday). Un agent IA n'accède qu'aux données autorisées par le rôle de l'utilisateur qui le sollicite. Tracé dans l'audit log." } },
-        { "@type": "Question", "name": "Combien coûte une intégration IA chez Althoce ?", "acceptedAnswer": { "@type": "Answer", "text": "1 400 € HT (tarif fixe) pour un agent simple intégré à un seul outil. Sur devis pour les intégrations multi-outils ou avec RBAC custom. Tout démarre par 30 minutes offertes avec un expert." } },
+        { "@type": "Question", "name": "Combien coûte une intégration IA chez Althoce ?", "acceptedAnswer": { "@type": "Answer", "text": "Le chiffrage dépend de vos outils. Un connecteur natif, une API documentée ou un logiciel fermé ne demandent pas le même travail. S'ajoutent vos exigences de sécurité. Tout démarre par 30 minutes offertes." } },
         { "@type": "Question", "name": "Quelle gouvernance avez-vous mise en place pour la conformité RGPD ?", "acceptedAnswer": { "@type": "Answer", "text": "Anonymisation des données personnelles avant envoi LLM, registre de traitements documenté, droit à l'oubli implémenté, durée de conservation paramétrable, hébergement France par défaut, DPA disponibles." } },
         { "@type": "Question", "name": "Que se passe-t-il si on veut tout couper en urgence ?", "acceptedAnswer": { "@type": "Answer", "text": "Kill switch disponible 24/7 dans l'interface admin. Désactivation en moins de 30 secondes par votre DSI. Procédure documentée et testée à chaque mise en production." } }
       ]

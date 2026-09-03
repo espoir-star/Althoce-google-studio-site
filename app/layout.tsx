@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'Althoce | Agents IA & Automatisation pour PME françaises',
     template: '%s | Althoce',
   },
-  description: 'Althoce conçoit des agents IA 100% autonomes et des automatisations métier pour les PME et ETI françaises. Premier agent opérationnel en 1 semaine, à partir de 1 400€.',
+  description: 'Althoce conçoit des agents IA 100% autonomes et des automatisations métier pour les PME et ETI françaises. Premier agent opérationnel en 1 semaine. Chaque projet chiffré sur mesure.',
   verification: {
     google: 'owLvah_UoMEisk_eKugO4bY_aFaklREE1wmT9jPImPo',
     other: {

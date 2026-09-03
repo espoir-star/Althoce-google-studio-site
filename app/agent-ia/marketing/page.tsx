@@ -52,12 +52,7 @@ const jsonLd = {
       "description": "Agents IA Althoce pour le marketing : génération de contenu multi-canal au ton de marque, SEO sémantique, email marketing segmenté, veille concurrentielle continue. Intégration HubSpot, Brevo, WordPress, LinkedIn, etc.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/marketing/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Tarification sur devis selon volume cible, canaux, personnalisation segments. ROI typique 3 à 6 mois (volume contenu ×3 à ×5 sans embauche)."
-        }
+        "url": "https://althoce.com/agent-ia/marketing/"
       }
     },
     {

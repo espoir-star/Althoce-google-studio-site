@@ -3,12 +3,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   heroLogos, statsV2, agentMetiers, agentTags, steps,
-  caseStudies, pricingPlans, securityItems, faqsV2, forWhoCards,
+  caseStudies, securityItems, faqsV2, forWhoCards,
   servicesV2,
 } from '@/lib/data';
 import { AnimatedCounter } from '@/components/ui/motion/AnimatedCounter';
 import { FAQAccordion } from '@/components/ui/data-display/FAQAccordion';
 import { AnimChart } from '@/components/ui/data-display/AnimChart';
+import { DevisSection } from '@/components/ui/sections/DevisSection';
 
 const AC = '#2563eb';
 
@@ -793,71 +794,6 @@ function CaseStudies() {
   );
 }
 
-// ── SECTION 9 — Pricing ──────────────────────────────────────
-function Pricing() {
-  const [ref, visible] = useInView();
-  return (
-    <section id="pricing" ref={ref} style={{ padding: '96px 24px', background: '#fff', borderTop: '1px solid #e4e4e7' }}>
-      <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <H2 style={{ marginBottom: 14 }}>Combien ça coûte, en combien de temps ?</H2>
-          <p style={{ fontSize: 16, color: '#52525b', maxWidth: 480, margin: '0 auto', lineHeight: 1.75 }}>Nous sommes une des rares agences IA à afficher nos prix. Parce que la transparence, c'est le début de la confiance.</p>
-        </div>
-        <div className="v2-grid2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 24, marginBottom: 36, maxWidth: 900, margin: '0 auto 36px' }}>
-          {pricingPlans.map((p, i) => (
-            <div key={i} style={{ border: p.dark ? `2px solid ${AC}` : '2px solid #e4e4e7', borderRadius: 28, padding: '40px 36px', background: p.dark ? 'linear-gradient(135deg,#09090b 0%,#0d1117 100%)' : '#fff', position: 'relative', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: `all .6s ${i * .15}s ease`, boxShadow: p.dark ? `0 20px 60px ${AC}20` : '0 4px 20px rgba(0,0,0,.04)' }}>
-              {p.dark && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg,transparent,${AC},transparent)`, borderRadius: '28px 28px 0 0' }} aria-hidden="true" />}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-                <span style={{ fontSize: 14, fontWeight: 800, color: p.dark ? '#d4d4d8' : '#09090b', letterSpacing: '-.01em' }}>{p.name}</span>
-                <span style={{ padding: '4px 12px', borderRadius: 9999, background: p.dark ? `${AC}20` : '#f4f4f5', fontSize: 11, fontWeight: 800, color: p.dark ? AC : '#52525b', border: p.dark ? `1px solid ${AC}40` : 'none' }}>{p.badge}</span>
-              </div>
-              <div style={{ fontSize: 'clamp(17px,1.9vw,21px)', fontWeight: 700, lineHeight: 1.35, color: p.dark ? '#e4e4e7' : '#09090b', marginBottom: 32, letterSpacing: '-.02em', minHeight: 90 }}>
-                {p.titleText}<span style={{ color: p.dark ? '#93c5fd' : AC }}>{p.titleAccent}</span>
-                {!p.dark && <>, pour un cas d'usage ciblé et ROI immédiat</>}
-                {p.dark && <> qui automatisent votre back-office de bout en bout</>}
-              </div>
-              <div style={{ marginBottom: 32 }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: p.dark ? '#71717a' : '#a1a1aa', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '.08em' }}>À partir de</div>
-                <div style={{ fontSize: 44, fontWeight: 800, color: p.dark ? '#fff' : '#09090b', letterSpacing: '-.05em', lineHeight: 1, display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                  {p.price}
-                  {p.price !== 'Sur devis' && <span style={{ fontSize: 16, fontWeight: 600, color: p.dark ? '#71717a' : '#a1a1aa' }}>HT</span>}
-                </div>
-              </div>
-              <a href="/contact/" style={{ display: 'block', width: '100%', padding: '15px', borderRadius: 9999, background: p.dark ? AC : '#09090b', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 15, fontWeight: 700, fontFamily: 'inherit', marginBottom: 32, transition: 'all .2s', boxShadow: p.dark ? `0 4px 16px ${AC}40` : '0 4px 16px rgba(0,0,0,.1)', textDecoration: 'none', textAlign: 'center' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)'; }}>
-                {p.cta}
-              </a>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                {p.features.map((f, j) => (
-                  <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: p.dark ? '#a1a1aa' : '#374151', lineHeight: 1.6 }}>
-                    <svg width="18" height="18" viewBox="0 0 18 18" style={{ flexShrink: 0, marginTop: 2 }} aria-hidden="true">
-                      <circle cx="9" cy="9" r="8" fill={p.dark ? `${AC}15` : '#f0f7ff'} stroke={AC} strokeWidth="1.5" />
-                      <path d="M6 9L8 11L12 7" stroke={AC} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span style={{ fontWeight: 600 }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ textAlign: 'center', padding: '22px 32px', borderRadius: 18, background: `${AC}06`, border: `1px solid ${AC}18`, maxWidth: 680, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
-          <div style={{ width: 40, height: 40, borderRadius: '50%', background: `${AC}12`, border: `1.5px solid ${AC}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <circle cx="9" cy="9" r="7" stroke={AC} strokeWidth="1.6"/>
-              <path d="M9 6v3.5l2 2" stroke={AC} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <p style={{ fontSize: 15, color: '#374151', lineHeight: 1.65, fontWeight: 500, margin: 0 }}>
-            <strong style={{ color: AC }}>30 minutes offertes</strong> — repartez avec une feuille de route claire et concrète, que l'on travaille ensemble ou non.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ── SECTION 10 — Security (dark) ────────────────────────────
 function Security() {
   const [ref, visible] = useInView();
@@ -953,7 +889,7 @@ export default function HomePageClient() {
       <AgentByJob />
       <Methodology />
       <CaseStudies />
-      <Pricing />
+      <DevisSection id="pricing" background="#fff" />
       <Security />
       <FAQ />
     </main>

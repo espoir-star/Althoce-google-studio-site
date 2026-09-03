@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { agentTags, steps, pricingPlans, securityItems, heroLogos } from '@/lib/data';
+import { agentTags, steps, securityItems, heroLogos } from '@/lib/data';
 import { FAQAccordion } from '@/components/ui/data-display/FAQAccordion';
 import type { FAQv2Item } from '@/lib/data';
+import { DevisSection } from '@/components/ui/sections/DevisSection';
 
 const AC = '#2563eb';
 
@@ -41,7 +42,7 @@ const faqDev: FAQv2Item[] = [
   { q: "En quoi vous différenciez-vous d'une agence no-code (Make, Zapier, n8n hosted) ?", a: "Le no-code est rapide à démarrer mais plafonne vite. Dès que vous avez besoin de logique métier complexe, de tests automatisés, de monitoring, ou de tenir 3 ans en production, il faut du code. Chez Althoce, vous obtenez les deux : du n8n quand c'est pertinent pour les équipes métier, du code Python ou TypeScript quand c'est nécessaire." },
   { q: "Le code livré nous appartient-il ?", a: "Oui. À la fin du projet, vous recevez le code source complet (repo Git), la documentation technique, et les credentials d'infrastructure. Vous pouvez reprendre la maintenance en interne, changer de prestataire, ou continuer avec nous. Pas de lock-in propriétaire." },
   { q: "Quelle est votre stack technique principale ?", a: "Python pour les services IA (FastAPI, LangGraph), TypeScript pour les couches front et certains backends. n8n auto-hébergé pour l'orchestration visuelle. Mistral / OpenAI / Anthropic pour les modèles LLM selon souveraineté. pgvector ou Qdrant pour la mémoire vectorielle. Docker + GitHub Actions pour CI/CD." },
-  { q: "Combien coûte un développement IA chez Althoce ?", a: "Un agent IA simple est facturé 1 400 € HT (tarif fixe, 1 semaine de delivery). Un système multi-agents, un employé IA, une intégration produit ou une refonte de process : sur devis, chiffré au cadrage. Tout démarre par 30 minutes offertes avec un expert." },
+  { q: "Combien coûte un développement IA chez Althoce ?", a: "Le chiffrage dépend de la complexité fonctionnelle et du nombre de systèmes à intégrer. Nous vendons une mission et des livrables, jamais un volume de jours. Tout démarre par 30 minutes offertes." },
   { q: "Travaillez-vous avec les DSI ou directement avec les directions métier ?", a: "Les deux. Sur les projets où la direction métier porte le besoin, nous incluons systématiquement la DSI dans la phase cadrage (revue d'architecture, validation des choix techniques, sécurité). Sur les projets DSI-driven, nous travaillons avec votre équipe technique au quotidien. Notre objectif : votre DSI peut maintenir en interne ce que nous livrons." },
   { q: "Comment monitorez-vous la qualité et le coût des modèles LLM en production ?", a: "Langfuse en standard : tracing de chaque appel LLM avec latence, coût en tokens, qualité de la réponse. Alertes Slack ou email en cas de dérive. Reporting hebdomadaire automatique au manager humain de la solution." },
 ];
@@ -568,61 +569,6 @@ function Methodology() {
   );
 }
 
-// ── SECTION 8 — Pricing ───────────────────────────────────────
-function Pricing() {
-  const [ref, visible] = useInView();
-  return (
-    <section ref={ref} style={{ padding: '72px 24px', background: '#fafafa', borderTop: '1px solid #e4e4e7' }}>
-      <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <H2 style={{ marginBottom: 12 }}>Combien ça coûte, en combien de temps ?</H2>
-          <p style={{ fontSize: 16, color: '#8a8a95', maxWidth: 500, margin: '0 auto' }}>Nous sommes une des rares agences IA à afficher nos prix. La transparence, c'est le début de la confiance.</p>
-        </div>
-        <div className="v2-grid2 dia-pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 24, marginBottom: 36, maxWidth: 900, margin: '0 auto 36px' }}>
-          {pricingPlans.map((p, i) => (
-            <div key={i} style={{ border: p.dark ? `2px solid ${AC}` : '2px solid #e4e4e7', borderRadius: 28, padding: '40px 36px', background: p.dark ? 'linear-gradient(135deg,#09090b 0%,#0d1117 100%)' : '#fff', position: 'relative', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: `all .6s ${i * .15}s ease`, boxShadow: p.dark ? `0 20px 60px ${AC}20` : '0 4px 20px rgba(0,0,0,.04)' }}>
-              {p.dark && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg,transparent,${AC},transparent)`, borderRadius: '28px 28px 0 0' }} />}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-                <span style={{ fontSize: 15, fontWeight: 800, color: p.dark ? '#d4d4d8' : '#09090b' }}>{p.name}</span>
-                <span style={{ padding: '4px 12px', borderRadius: 9999, background: p.dark ? `${AC}20` : '#f4f4f5', fontSize: 11, fontWeight: 800, color: p.dark ? AC : '#8a8a95', border: p.dark ? `1px solid ${AC}40` : 'none' }}>{p.badge}</span>
-              </div>
-              <div style={{ fontSize: 'clamp(17px,1.9vw,21px)', fontWeight: 700, lineHeight: 1.35, color: p.dark ? '#e4e4e7' : '#09090b', marginBottom: 32, letterSpacing: '-.02em', minHeight: 90 }}>
-                {p.titleText}<span style={{ color: p.dark ? '#93c5fd' : AC }}>{p.titleAccent}</span>
-                {!p.dark && <>, pour un cas d'usage ciblé et ROI immédiat</>}
-                {p.dark && <> qui automatisent votre back-office de bout en bout</>}
-              </div>
-              <div style={{ marginBottom: 32 }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: p.dark ? '#8a8a95' : '#a1a1aa', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '.08em' }}>À partir de</div>
-                <div style={{ fontSize: 44, fontWeight: 800, color: p.dark ? '#fff' : '#09090b', letterSpacing: '-.05em', lineHeight: 1, display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                  {p.price}{p.price !== 'Sur devis' && <span style={{ fontSize: 16, fontWeight: 600, color: p.dark ? '#8a8a95' : '#a1a1aa' }}>HT</span>}
-                </div>
-              </div>
-              <a href="/contact/" style={{ display: 'block', width: '100%', padding: '15px', borderRadius: 9999, background: p.dark ? AC : '#09090b', color: '#fff', fontSize: 16, fontWeight: 700, fontFamily: 'inherit', marginBottom: 32, textDecoration: 'none', textAlign: 'center', transition: 'all .2s', boxShadow: p.dark ? `0 4px 16px ${AC}40` : '0 4px 16px rgba(0,0,0,.1)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}>
-                {p.cta}
-              </a>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                {p.features.map((f, j) => (
-                  <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: p.dark ? '#a1a1aa' : '#52525b', lineHeight: 1.65 }}>
-                    <svg width="18" height="18" viewBox="0 0 18 18" style={{ flexShrink: 0, marginTop: 2 }}><circle cx="9" cy="9" r="8" fill={p.dark ? `${AC}15` : '#f0f7ff'} stroke={AC} strokeWidth="1.5"/><path d="M6 9L8 11L12 7" stroke={AC} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    <span style={{ fontWeight: 600 }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ textAlign: 'center', padding: '20px 28px', borderRadius: 16, background: 'linear-gradient(135deg,#f0f7ff 0%,#f0f9ff 100%)', border: `1px solid ${AC}20`, maxWidth: 720, margin: '0 auto' }}>
-          <p style={{ fontSize: 16, color: '#374151', lineHeight: 1.7, fontWeight: 500 }}>
-            <strong style={{ color: AC }}>30 minutes offertes</strong> : discutez avec un expert, repartez avec une feuille de route claire et concrète, que l'on travaille ensemble ou non.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ── SECTION 9 — Souveraineté ──────────────────────────────────
 function Security() {
   const [ref, visible] = useInView();
@@ -715,7 +661,7 @@ export default function DeveloppementIAPageClient() {
       <Livrables />
       <MetiersMarquee />
       <Methodology />
-      <Pricing />
+      <DevisSection />
       <Security />
       <FAQ />
     </main>

@@ -261,7 +261,6 @@ const compareRows = [
   { critere: 'Lit des documents ?', chatbot: 'Non', workflow: 'Difficilement', agent: 'Oui (PDF, mails, images)' },
   { critere: 'Apprend de ses erreurs ?', chatbot: 'Non', workflow: 'Non', agent: 'Oui' },
   { critere: 'Exemple typique', chatbot: 'FAQ en 24h/24', workflow: 'Slack quand un lead arrive', agent: 'Mail client traité de A à Z : lecture, réponse, CRM' },
-  { critere: 'Coût typique', chatbot: '50 à 500 €/mois', workflow: '20 à 200 €/mois', agent: 'À partir de 1 400 € HT' },
 ];
 
 const techCols = [
@@ -589,7 +588,7 @@ const faqHub: FAQv2Item[] = [
   },
   {
     q: "Combien coûte la création d'un agent IA chez Althoce ?",
-    a: "Un agent IA simple est facturé 1 400 € HT, tarif fixe, 1 cas d'usage borné, 1 semaine de delivery. Pour les systèmes multi-agents et les employés IA complets remplaçant un poste à temps plein : sur devis, chiffré au cadrage. Tout démarre par 30 minutes offertes avec un expert : on cartographie vos processus prioritaires et vous repartez avec un devis ferme.",
+    a: "Le chiffrage dépend des outils à connecter, de la qualité de leurs API et du périmètre visé. Une tâche bornée sur un outil avec connecteur natif n'a pas le même coût qu'un système multi-agents sur un ERP fermé. Tout démarre par 30 minutes offertes : on cartographie vos processus prioritaires et vous repartez avec un devis ferme.",
   },
   {
     q: "En combien de temps un agent IA est-il opérationnel ?",

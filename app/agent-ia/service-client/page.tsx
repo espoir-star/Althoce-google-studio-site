@@ -52,12 +52,7 @@ const jsonLd = {
       "description": "Agents IA Althoce pour le support client : FAQ N0, tickets N1 multilingue, statut commande e-commerce, escalade enrichie. Intégration Zendesk, Intercom, Freshdesk, Gorgias. 70 % de déflexion N1 typique.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/service-client/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Tarification sur devis selon volume de tickets, outils branchés, langues couvertes. ROI typique en 3 à 6 mois avec CSAT +10 à +15 points."
-        }
+        "url": "https://althoce.com/agent-ia/service-client/"
       }
     },
     {

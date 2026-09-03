@@ -52,12 +52,7 @@ const jsonLd = {
       "description": "Agents IA Althoce pour la téléphonie : réception standard 24/7, qualification commerciale entrante, rappels sortants automatisés, support vocal N0. Voix naturelle française, intégration VoIP (Twilio, Ringover, Aircall, opérateur).",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/telephonique/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Tarification sur devis selon volume d'appels, intégration VoIP, nombre de scénarios. Payback typique en moins de 6 mois sur les standards saturés et SAV vocaux débordés."
-        }
+        "url": "https://althoce.com/agent-ia/telephonique/"
       }
     },
     {

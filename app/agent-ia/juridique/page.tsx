@@ -52,12 +52,7 @@ const jsonLd = {
       "description": "Agents IA Althoce pour le juridique : analyse contractuelle de pré-décision, veille réglementaire continue, rédaction de documents standards, recherche jurisprudence. Strict contrôle humain. Souveraineté France garantie (Mistral hébergé France).",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/agent-ia/juridique/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Tarification sur devis selon volume, thèmes de veille, intégration GED, souveraineté. ROI typique 3 à 6 mois : doublement capacité analyse, libération 4 à 8 jours/mois pour stratégie."
-        }
+        "url": "https://althoce.com/agent-ia/juridique/"
       }
     },
     {

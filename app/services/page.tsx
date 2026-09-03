@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ['services IA', 'agence IA services', 'automatisation IA services', 'solutions IA entreprise', 'prestations IA', 'services IA PME'],
   openGraph: {
     title: 'Tous nos services IA pour PME et ETI | Althoce',
-    description: "Du chatbot à 1 400 € HT à l'employé IA dédié à un poste. 7 services pour couvrir tous les besoins IA d'une PME ou ETI française.",
+    description: "Du chatbot RAG à l'employé IA dédié à un poste. 7 services pour couvrir tous les besoins IA d'une PME ou ETI française.",
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Services IA Althoce — Du chatbot à l\'employé IA',
-    description: "7 services intégrés, souverains France. À partir de 1 400 € HT. 30 min offertes.",
+    description: "7 services intégrés, souverains France. Chaque projet chiffré sur mesure. 30 min offertes.",
   },
   alternates: {
     canonical: 'https://althoce.com/services/',
@@ -66,7 +66,7 @@ const jsonLd = {
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Par quel service commencer quand on n'a jamais déployé d'IA ?", "acceptedAnswer": { "@type": "Answer", "text": "Dans 80 % des cas : agent IA simple à 1 400 € HT, ou chatbot RAG, ou audit IA si vous voulez cartographier en amont." } },
+        { "@type": "Question", "name": "Par quel service commencer quand on n'a jamais déployé d'IA ?", "acceptedAnswer": { "@type": "Answer", "text": "Dans 80 % des cas : un agent IA sur un cas d'usage borné, un chatbot RAG, ou un audit IA si vous voulez cartographier en amont." } },
         { "@type": "Question", "name": "Quelle différence entre agent IA, automatisation IA et employé IA ?", "acceptedAnswer": { "@type": "Answer", "text": "Agent : 1 cas borné. Automatisation : processus métier complet. Employé IA : poste entier avec mémoire et rituels d'équipe." } },
         { "@type": "Question", "name": "Comment se passe la première prise de contact avec Althoce ?", "acceptedAnswer": { "@type": "Answer", "text": "30 minutes offertes avec un expert, devis ferme sous 5 jours ouvrés, vous décidez sans engagement." } },
         { "@type": "Question", "name": "Quel service après un déploiement IA qui pose problème ?", "acceptedAnswer": { "@type": "Answer", "text": "Audit IA Post-incident, puis Intégration IA pour mettre en place la couche gouvernance." } },

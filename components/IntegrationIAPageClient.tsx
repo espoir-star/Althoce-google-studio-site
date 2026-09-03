@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { steps, pricingPlans, securityItems, heroLogos, agentMetiers } from '@/lib/data';
+import { steps, securityItems, heroLogos, agentMetiers } from '@/lib/data';
 import { FAQAccordion } from '@/components/ui/data-display/FAQAccordion';
 import type { FAQv2Item } from '@/lib/data';
+import { DevisSection } from '@/components/ui/sections/DevisSection';
 
 const AC = '#2563eb';
 
@@ -41,7 +42,7 @@ const faqIntegration: FAQv2Item[] = [
   { q: "Comment l'agent IA s'authentifie auprès de notre CRM ou ERP ?", a: "Par OAuth dédié (compte de service ou app marketplace native quand disponible) ou via une clé d'API stockée dans un coffre-fort (HashiCorp Vault, AWS Secrets Manager). Jamais de credentials utilisateur réutilisés. Les permissions du compte de service sont restreintes au strict minimum nécessaire au cas d'usage. Détails arbitrés au cadrage." },
   { q: "Mes données vont-elles transiter par OpenAI ou Anthropic ?", a: "Cela dépend de votre choix au cadrage. Pour la souveraineté maximale, nous utilisons Mistral hébergé en France, et toutes les données restent sur l'infra que vous contrôlez. Si vous acceptez les modèles propriétaires (OpenAI, Anthropic), nous activons l'anonymisation des données entrantes (PII strippées automatiquement) et utilisons les contrats Enterprise sans réutilisation pour entraînement." },
   { q: "Comment gérer les permissions différenciées (un commercial vs un comptable) ?", a: "Via RBAC granulaire intégré au cadrage. Les rôles sont mappés sur votre annuaire SI quand possible (Active Directory, Entra ID, Workday). Sinon, table de permissions Postgres maintenue par votre admin. Un agent IA n'accède qu'aux données autorisées par le rôle de l'utilisateur qui le sollicite. Toutes les actions sont tracées dans l'audit log." },
-  { q: "Combien coûte une intégration IA chez Althoce ?", a: "Le projet d'intégration est facturé selon le scope. Un agent simple intégré à un seul outil (CRM ou ERP) reste à 1 400 € HT (tarif fixe). Une intégration complexe (multi-outils, RBAC custom, journal d'audit dédié, MFA renforcé) est sur devis. Tout démarre par 30 minutes offertes avec un expert." },
+  { q: "Combien coûte une intégration IA chez Althoce ?", a: "Le chiffrage dépend de vos outils. Un connecteur natif, une API documentée ou un logiciel fermé ne demandent pas le même travail. S'ajoutent vos exigences de sécurité (RBAC custom, journal d'audit dédié, MFA renforcé). Tout démarre par 30 minutes offertes." },
   { q: "Quelle gouvernance avez-vous mise en place pour la conformité RGPD ?", a: "Six points : (1) anonymisation des données personnelles avant envoi LLM, (2) registre de traitements documenté livré au DPO client, (3) droit à l'oubli implémenté (purge sur demande), (4) durée de conservation paramétrable des audit logs, (5) hébergement France par défaut, (6) DPA disponibles avec sous-traitants éventuels. L'audit IA inclut un volet conformité complet." },
   { q: "Que se passe-t-il si on veut tout couper en urgence ?", a: "Kill switch disponible 24/7 dans l'interface admin de chaque agent. Désactivation en moins de 30 secondes par votre DSI. Procédure documentée et testée à chaque mise en production (un test mensuel automatique vérifie que le kill switch fonctionne). En cas de panne du kill switch, accès au compte de service et révocation manuelle des credentials." },
 ];
@@ -651,60 +652,6 @@ function Methodology() {
   );
 }
 
-function Pricing() {
-  const [ref, visible] = useInView();
-  return (
-    <section ref={ref} style={{ padding: '72px 24px', background: '#fafafa', borderTop: '1px solid #e4e4e7' }}>
-      <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <H2 style={{ marginBottom: 12 }}>Combien ça coûte, en combien de temps ?</H2>
-          <p style={{ fontSize: 16, color: '#8a8a95', maxWidth: 500, margin: '0 auto' }}>Nous sommes une des rares agences IA à afficher nos prix. La transparence, c'est le début de la confiance.</p>
-        </div>
-        <div className="v2-grid2 int-pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 24, maxWidth: 900, margin: '0 auto 36px' }}>
-          {pricingPlans.map((p, i) => (
-            <div key={i} style={{ border: p.dark ? `2px solid ${AC}` : '2px solid #e4e4e7', borderRadius: 28, padding: '40px 36px', background: p.dark ? 'linear-gradient(135deg,#09090b 0%,#0d1117 100%)' : '#fff', position: 'relative', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: `all .6s ${i * .15}s ease`, boxShadow: p.dark ? `0 20px 60px ${AC}20` : '0 4px 20px rgba(0,0,0,.04)' }}>
-              {p.dark && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg,transparent,${AC},transparent)`, borderRadius: '28px 28px 0 0' }} />}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-                <span style={{ fontSize: 15, fontWeight: 800, color: p.dark ? '#d4d4d8' : '#09090b' }}>{p.name}</span>
-                <span style={{ padding: '4px 12px', borderRadius: 9999, background: p.dark ? `${AC}20` : '#f4f4f5', fontSize: 11, fontWeight: 800, color: p.dark ? AC : '#8a8a95', border: p.dark ? `1px solid ${AC}40` : 'none' }}>{p.badge}</span>
-              </div>
-              <div style={{ fontSize: 'clamp(17px,1.9vw,21px)', fontWeight: 700, lineHeight: 1.35, color: p.dark ? '#e4e4e7' : '#09090b', marginBottom: 32, letterSpacing: '-.02em', minHeight: 90 }}>
-                {p.titleText}<span style={{ color: p.dark ? '#93c5fd' : AC }}>{p.titleAccent}</span>
-                {!p.dark && <>, pour un cas d'usage ciblé et ROI immédiat</>}
-                {p.dark && <> qui automatisent votre back-office de bout en bout</>}
-              </div>
-              <div style={{ marginBottom: 32 }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: p.dark ? '#8a8a95' : '#a1a1aa', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '.08em' }}>À partir de</div>
-                <div style={{ fontSize: 44, fontWeight: 800, color: p.dark ? '#fff' : '#09090b', letterSpacing: '-.05em', lineHeight: 1, display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                  {p.price}{p.price !== 'Sur devis' && <span style={{ fontSize: 16, fontWeight: 600, color: p.dark ? '#8a8a95' : '#a1a1aa' }}>HT</span>}
-                </div>
-              </div>
-              <a href="/contact/" style={{ display: 'block', width: '100%', padding: '15px', borderRadius: 9999, background: p.dark ? AC : '#09090b', color: '#fff', fontSize: 16, fontWeight: 700, fontFamily: 'inherit', marginBottom: 32, textDecoration: 'none', textAlign: 'center', transition: 'all .2s' }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}>
-                {p.cta}
-              </a>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                {p.features.map((f, j) => (
-                  <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: p.dark ? '#a1a1aa' : '#52525b', lineHeight: 1.65 }}>
-                    <svg width="18" height="18" viewBox="0 0 18 18" style={{ flexShrink: 0, marginTop: 2 }}><circle cx="9" cy="9" r="8" fill={p.dark ? `${AC}15` : '#f0f7ff'} stroke={AC} strokeWidth="1.5" /><path d="M6 9L8 11L12 7" stroke={AC} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                    <span style={{ fontWeight: 600 }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ textAlign: 'center', padding: '20px 28px', borderRadius: 16, background: 'linear-gradient(135deg,#f0f7ff 0%,#f0f9ff 100%)', border: `1px solid ${AC}20`, maxWidth: 720, margin: '0 auto' }}>
-          <p style={{ fontSize: 16, color: '#374151', lineHeight: 1.7, fontWeight: 500 }}>
-            <strong style={{ color: AC }}>30 minutes offertes</strong> : discutez avec un expert, repartez avec une feuille de route claire, que l'on travaille ensemble ou non.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Security() {
   const [ref, visible] = useInView();
   return (
@@ -802,7 +749,7 @@ export default function IntegrationIAPageClient() {
       <IntegrationsList />
       <MetiersMarquee />
       <Methodology />
-      <Pricing />
+      <DevisSection />
       <Security />
       <FAQ />
     </main>

@@ -40,7 +40,7 @@ function H2({ children, white = false, style: sx = {} }: { children: React.React
 const faqChatbotIA: FAQv2Item[] = [
   { q: "Quelle est la différence entre un chatbot et un agent IA chez Althoce ?", a: "Un chatbot répond aux questions à partir d'une base de connaissances. Un agent IA répond ET prend des actions (créer un ticket, envoyer un email, prendre un RDV, mettre à jour une base). Un chatbot RAG est une porte d'entrée typique vers un agent IA, qui peut lui-même évoluer vers un employé IA." },
   { q: "Comment évite-t-on les hallucinations (réponses inventées) ?", a: "Trois garde-fous : (1) la réponse doit s'appuyer sur les passages remontés depuis votre base, (2) si aucun passage pertinent n'est trouvé, le chatbot escalade au lieu d'inventer, (3) un filtre vérifie que la réponse ne mentionne pas d'éléments absents des sources." },
-  { q: "Combien coûte un chatbot IA chez Althoce ?", a: "Un chatbot RAG simple sur une base de connaissances unique (FAQ + docs ou intranet) est facturé 1 400 € HT (tarif fixe, 1 semaine de delivery). Pour un chatbot multi-bases, multilingue, ou avec actions complexes, c'est un système sur devis. Tout démarre par 30 minutes offertes avec un expert." },
+  { q: "Combien coûte un chatbot IA chez Althoce ?", a: "Le chiffrage dépend du volume de votre base de connaissances, du nombre de sources à indexer et des actions que le chatbot doit déclencher. Tout démarre par 30 minutes offertes. Vous repartez avec un devis ferme et un périmètre écrit." },
   { q: "En combien de temps un chatbot RAG est-il opérationnel ?", a: "1 semaine pour un chatbot simple sur 1 base de connaissances. 2 à 4 semaines pour un chatbot multi-bases ou multilingue. La vitesse dépend principalement de la qualité de votre base de connaissances." },
   { q: "Le chatbot peut-il s'intégrer à notre site ou intranet existant ?", a: "Oui. Intégration en 2 lignes de code (script embed) ou via API si vous voulez un design custom complet. Compatibles : Next.js, WordPress, Shopify, Webflow, intranets propriétaires, Sharepoint, Notion. Pour les intégrations plus complexes au SI, voir notre service Intégration IA." },
   { q: "Est-ce que le chatbot apprend dans le temps ?", a: "Oui, mais via mise à jour de la base de connaissances, pas par réécriture d'arbres de décision. Nous monitorons les conversations (anonymisées, RGPD) pour identifier les questions fréquentes mal couvertes et alimenter la base automatiquement." },
@@ -201,7 +201,7 @@ function Definition() {
         </p>
 
         <p style={{ fontSize: 16, color: '#8a8a95', lineHeight: 1.75, marginBottom: 36 }}>
-          Pour la plupart de nos clients PME en 2026, le bon point d'entrée IA est un chatbot RAG. Tarif fixe <strong style={{ color: '#09090b' }}>1 400 € HT</strong> (cas simple, 1 semaine de delivery). C'est un projet bordé, mesurable, à fort ROI immédiat. Quand le besoin grandit, le chatbot évolue vers un <a href="/services/agents-ia/" style={{ color: AC, fontWeight: 600, textDecoration: 'none' }}>agent IA</a> capable d'actions, puis vers un employé IA support.
+          Pour la plupart de nos clients PME en 2026, le bon point d'entrée IA est un chatbot RAG. C'est un projet <strong style={{ color: '#09090b' }}>bordé, mesurable, à fort ROI immédiat</strong>, livré en une semaine sur un cas simple. Quand le besoin grandit, le chatbot évolue vers un <a href="/services/agents-ia/" style={{ color: AC, fontWeight: 600, textDecoration: 'none' }}>agent IA</a> capable d'actions, puis vers un employé IA support.
         </p>
 
         {/* DarkBlock */}
@@ -235,7 +235,7 @@ const compareRows = [
   { criterion: 'Escalade humain', scripte: 'Oui mais brutale', rag: 'Avec contexte enrichi (question, ce compris, pourquoi bloque)' },
   { criterion: 'Personnalité de marque', scripte: 'Robotique', rag: 'Identité de marque cohérente (prénom, ton, signature)' },
   { criterion: 'Souveraineté France', scripte: 'Variable', rag: 'Native (Mistral, OVH, Scaleway)' },
-  { criterion: 'Pricing entrée', scripte: 'Variable selon SaaS', rag: '1 400 € HT (cas simple, 1 semaine de delivery)' },
+  { criterion: 'Delivery', scripte: 'Variable selon SaaS', rag: '1 semaine sur un cas simple' },
 ];
 
 function ComparisonTable() {

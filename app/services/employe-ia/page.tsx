@@ -50,12 +50,7 @@ const jsonLd = {
       "description": "Conception et déploiement d'employés IA — collaborateurs IA dédiés à un rôle entier (SDR, support, comptable, ops, RH). Souverains, intégrés au SI et à la culture d'équipe.",
       "offers": {
         "@type": "Offer",
-        "url": "https://althoce.com/services/employe-ia/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Sur devis — chiffré au cadrage. Build initial à partir de plusieurs dizaines de milliers d'euros HT + récurrence mensuelle."
-        }
+        "url": "https://althoce.com/services/employe-ia/"
       }
     },
     {
@@ -69,7 +64,7 @@ const jsonLd = {
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Quelle est la différence entre un agent IA et un employé IA ?", "acceptedAnswer": { "@type": "Answer", "text": "Un agent IA exécute 1 cas d'usage borné. Un employé IA couvre un poste entier (plusieurs agents orchestrés + mémoire + outils + identité de marque). Agent simple = 1 400 € HT, employé IA = sur devis." } },
+        { "@type": "Question", "name": "Quelle est la différence entre un agent IA et un employé IA ?", "acceptedAnswer": { "@type": "Answer", "text": "Un agent IA couvre une tâche bornée. Un employé IA couvre un poste entier : plusieurs agents orchestrés, une mémoire long terme, des outils branchés. Le chiffrage reflète cet écart de périmètre." } },
         { "@type": "Question", "name": "Un employé IA va-t-il remplacer mes salariés ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Les clients qui réussissent l'intégration redéploient leurs humains sur des sujets à forte valeur ajoutée cognitive. 0 départ d'équipe imputable au déploiement IA sur les 4 derniers trimestres." } },
         { "@type": "Question", "name": "Combien coûte un employé IA chez Althoce ?", "acceptedAnswer": { "@type": "Answer", "text": "Sur devis, chiffré au cadrage. Tout démarre par 30 minutes offertes avec un expert, avec un devis ferme à la sortie." } },
         { "@type": "Question", "name": "En combien de temps un employé IA est-il opérationnel ?", "acceptedAnswer": { "@type": "Answer", "text": "6 à 12 semaines entre signature du cadrage et mise en production complète." } },
