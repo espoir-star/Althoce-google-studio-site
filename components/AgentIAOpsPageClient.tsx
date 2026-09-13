@@ -1,5 +1,6 @@
 'use client';
 
+import { ArrowUpRight } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import { steps, securityItems, agentTags } from '@/lib/data';
 import { FAQAccordion } from '@/components/ui/data-display/FAQAccordion';
@@ -84,7 +85,7 @@ function OpsMailboxMockup() {
       </div>
 
       <div style={{ padding: '10px 14px', background: '#0a0a0a', borderRadius: '0 0 14px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid #1a1a1a', flexWrap: 'wrap', gap: 6 }}>
-        {[{ icon: '⚡', label: '47 mails traités', color: GREEN }, { icon: '↗', label: '4 escalades humaines', color: '#d97706' }, { icon: '✓', label: 'Zéro backlog', color: AC }].map((item, i) => (
+        {[{ icon: '⚡', label: '47 mails traités', color: GREEN }, { icon: <ArrowUpRight size={16} aria-hidden="true" />, label: '4 escalades humaines', color: '#d97706' }, { icon: '✓', label: 'Zéro backlog', color: AC }].map((item, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
             <span style={{ fontSize: 9, fontWeight: 900, color: item.color }}>{item.icon}</span>
             <span style={{ fontSize: 9, color: '#52525b', fontWeight: 600 }}>{item.label}</span>

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ArrowUpRight, ArrowRight, Check } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Check, Target, ArrowLeftRight } from 'lucide-react';
 import { TextLink, FaqSection } from '../brand/Sections';
 import { homeMethod } from '@/lib/home-content';
 import { serviceStories, type ServiceStory } from '@/lib/services-content';
@@ -39,7 +39,7 @@ export default function ServicePage({ service: d }: { service: ServiceStory }) {
     <section className={b.section} id={contentAnchor} aria-labelledby="example-title"><div className={b.container}>
       <div className={s.sectionHeading}><h2 id="example-title">{d.exampleTitle}</h2><p>{audit ? 'Le diagnostic transforme vos observations en décisions.' : ['agents-ia','automatisation-ia'].includes(d.slug) ? 'Un exemple pour vous projeter. Nous construisons votre solution sur mesure, à partir de votre contexte.' : pilotage ? 'Un rythme de suivi adapté à votre organisation, défini au démarrage.' : 'Un exemple de parcours, à adapter à votre organisation.'}</p></div>
       <div className={`${s.example} ${audit ? s.auditExample : ''}`}>{d.example.map((item,i)=><div key={item}><span className={s.exampleNumber}>{String(i+1).padStart(2,'0')}</span><p>{item}</p>{i<2&&<ArrowRight aria-hidden="true" size={24} />}</div>)}</div>
-      <div className={s.uses}>{d.uses.map((item,i)=><article key={item.title}><span aria-hidden="true">{['↗','◎','↔'][i]}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+      <div className={s.uses}>{d.uses.map((item,i)=><article key={item.title}><span aria-hidden="true">{i === 0 ? <ArrowUpRight size={28} /> : i === 1 ? <Target size={28} /> : <ArrowLeftRight size={28} />}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
       {d.slug==='agents-ia'&&<div className={s.metiers}><TextLink href="/agent-ia/">Explorer des exemples d’agents IA par métier</TextLink><nav aria-label="Métiers des agents IA">{agentMetiers.map(item=><a key={item.href} href={item.href}>{item.title}<ArrowUpRight size={14} aria-hidden="true" /></a>)}</nav></div>}
     </div></section>
 
