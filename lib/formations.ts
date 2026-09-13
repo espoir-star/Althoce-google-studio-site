@@ -1,3 +1,4 @@
+import { formationDetailFaq } from './formation-faq';
 import type { FormationInfoItem } from '@/components/formation/FormationInfoGrid';
 import type { TimelineModule } from '@/components/formation/FormationTimeline';
 
@@ -30,6 +31,7 @@ export interface FormationDetail {
   ctaTitle: string;
   ctaBody: string;
   mentions: string;
+  faq: { q: string; a: string }[];
 }
 
 const AC = '#2563eb';
@@ -38,6 +40,7 @@ const PURPLE = '#7c3aed';
 // ── Formation 1 : IA Fondamentaux ────────────────────────────────
 export const fondamentaux: FormationDetail = {
   slug: 'ia-fondamentaux',
+  faq: formationDetailFaq['ia-fondamentaux'],
   accent: AC,
   level: 'Niveau 1',
   title: 'IA Fondamentaux',
@@ -163,6 +166,7 @@ export const fondamentaux: FormationDetail = {
 // ── Formation 2 : IA Avancée ─────────────────────────────────────
 export const avancee: FormationDetail = {
   slug: 'ia-avancee',
+  faq: formationDetailFaq['ia-avancee'],
   accent: PURPLE,
   level: 'Niveau 2',
   title: 'IA Avancée',
@@ -305,6 +309,7 @@ export function buildFormationJsonLd(f: FormationDetail) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
+      { '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: f.faq.map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })) },
       {
         '@type': 'Course',
         'name': f.title,
@@ -338,6 +343,10 @@ export function buildFormationJsonLd(f: FormationDetail) {
 }
 
 export const formationFaq = [
+  { q: 'Quelle formation IA choisir pour une PME ?', a: 'Althoce propose trois parcours : IA Fondamentaux pour débuter en équipe, IA Avancée pour approfondir une pratique régulière, et Coaching IA Dirigeant pour travailler individuellement sur ses décisions et sa feuille de route. Un premier échange permet d’orienter les participants selon leur niveau et leurs usages.' },
+  { q: 'Quelles sont les durées des formations IA Althoce ?', a: 'IA Fondamentaux et IA Avancée durent chacune 7 heures sur une journée. Le Coaching IA Dirigeant comprend quatre séances individuelles de 1 h 30, soit 6 heures réparties dans le temps. Les formations collectives accueillent jusqu’à 10 participants par session.' },
+  { q: 'Althoce propose-t-il des formations IA partout en France ?', a: 'Oui. Depuis Bordeaux, Althoce accompagne les entreprises sur l’ensemble du territoire français. Les formations peuvent se dérouler en présentiel ou à distance ; le lieu et les modalités sont préparés avec vous selon les besoins de votre équipe.' },
+  { q: 'Un financement OPCO est-il possible pour une formation IA ?', a: 'Une prise en charge peut être étudiée via notre organisme partenaire. Elle dépend de votre situation et des conditions de votre financeur, et n’est pas automatique. Contactez Althoce en amont pour cadrer le parcours et préparer votre demande.' },
   {
     "q": "Faut-il des compétences techniques ?",
     "a": "Aucun prérequis pour IA Fondamentaux et le coaching IA Dirigeant. La formation Avancée demande une pratique régulière d'un outil IA. Un questionnaire de vérification est envoyé en amont."
