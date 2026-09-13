@@ -1,35 +1,27 @@
-import GithubSlugger from 'github-slugger';
-
 export interface TocItem {
   id: string;
   text: string;
   level: 2 | 3;
 }
 
-/**
- * Extrait les H2 et H3 du markdown brut pour construire le sommaire.
- * Utilise github-slugger (même algo que rehype-slug + addHeadingIds dans lib/blog.ts)
- * pour garantir que les ancres correspondent aux IDs générés dans le HTML.
+/** Use the rendered headings as the single source of truth for the TOC.
+ * This preserves IDs for inline formatting, repeated titles and entities,
+ * and excludes Markdown heading examples inside fenced code blocks.
  */
-export function extractToc(markdownContent: string): TocItem[] {
-  const slugger = new GithubSlugger();
-  const toc: TocItem[] = [];
-  const lines = markdownContent.split('\n');
-
-  for (const line of lines) {
-    // H3 avant H2 pour éviter que "### " soit capturé par le pattern H2
-    const h3 = line.match(/^### (.+)$/);
-    if (h3) {
-      const text = h3[1].trim();
-      toc.push({ id: slugger.slug(text), text, level: 3 });
-      continue;
+export function extractToc(renderedHtml: string): TocItem[] {
+  const decode = (text: string) => text.replace(
+    /&(#x[0-9a-f]+|#\d+|amp|quot|apos|lt|gt|nbsp);/gi,
+    (entity, value: string) => {
+      if (value[0] === '#') {
+        const code = value[1].toLowerCase() === 'x' ? parseInt(value.slice(2), 16) : parseInt(value.slice(1), 10);
+        return code > 0 && code <= 0x10ffff ? String.fromCodePoint(code) : entity;
+      }
+      return ({ amp: '&', quot: '"', apos: "'", lt: '<', gt: '>', nbsp: ' ' } as Record<string, string>)[value.toLowerCase()] ?? entity;
     }
-    const h2 = line.match(/^## (.+)$/);
-    if (h2) {
-      const text = h2[1].trim();
-      toc.push({ id: slugger.slug(text), text, level: 2 });
-    }
-  }
-
-  return toc;
+  );
+  return Array.from(renderedHtml.matchAll(/<h([23])\b[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/h\1>/g), match => ({
+    id: decode(match[2]),
+    text: decode(match[3].replace(/<[^>]*>/g, '')).trim(),
+    level: Number(match[1]) as 2 | 3,
+  }));
 }

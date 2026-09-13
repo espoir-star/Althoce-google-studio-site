@@ -1,0 +1,54 @@
+.story { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.story p + p { margin-top: 18px; }
+.transformation { background: radial-gradient(ellipse at 90% 0,#dfeaff,transparent 65%),#f5f8fc; }
+.learning { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 40px; margin-top: 52px; }
+.learning article { border-left: 2px solid #b9cdf3; padding-left: 24px; }
+.learning p { margin-top: 16px; }
+.commitments { display: grid; grid-template-columns: .8fr 1.2fr; gap: 100px; align-items: start; }
+.commitmentNote { margin-top: 28px !important; max-width: 300px; color: #2459bd !important; font-size: 14px; }
+.values { display: grid; grid-template-columns: 1fr; gap: 28px; }
+.values article { padding-bottom: 28px; border-bottom: 1px solid #dfe3e9; }
+.values article:last-child { padding-bottom: 0; border-bottom: 0; }
+.values p { margin-top: 12px; }
+.recognition { background: radial-gradient(ellipse at 0 100%,#e4ecfb,transparent 65%),linear-gradient(120deg,#f4f3ef,#f4f7fd); }
+.territory { display: grid; grid-template-columns: 1.1fr 1fr; gap: 90px; align-items: center; }
+.territoryDetails p { margin-top: 18px; }
+.franceNum { display: flex; align-items: center; gap: 28px; color: #2459bd; font-size: 14px; margin-top: 52px; padding-top: 28px; border-top: 1px solid #cfd8e5; }
+.franceNum img { flex-shrink: 0; object-fit: contain; }
+.franceNum strong { color: #101318; font-size: 17px; }
+.franceNum p { margin: 6px 0 !important; max-width: 620px; }
+.franceNum span { display: inline-block; padding-block: 8px; }
+.franceNum:hover span { text-decoration: underline; text-underline-offset: 4px; }
+.contactHero { padding: 100px 0 72px; background: radial-gradient(ellipse at 0 5%,#e9f0ff,transparent 65%),#fff; }
+.contactGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.contactPhoto { position: relative; aspect-ratio: 1.9; border-radius: 12px; overflow: hidden; margin-top: 28px; }
+.contactPhoto img { object-fit: cover; }
+.contactNote { margin-top: 18px !important; font-size: 13px; color: #2459bd !important; }
+.form { padding: 32px; border: 1px solid #dfe3e9; background: white; border-radius: 12px; }
+.form h2 { font-size: 25px; }
+.form > p { margin: 10px 0 24px; font-size: 14px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { margin-bottom: 18px; }
+.field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.field input, .field select, .field textarea { width: 100%; min-height: 46px; border: 1px solid #cdd5e1; border-radius: 7px; padding: 10px 12px; color: #101318; background: #fafbfd; font: inherit; font-size: 16px; }
+.field textarea { resize: vertical; min-height: 128px; }
+.field input::placeholder, .field textarea::placeholder { color: #697487; }
+.submit { width: 100%; border: 0; border-radius: 8px; padding: 15px 18px; background: #2563eb; color: white; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+.submit:hover { background: #1d4ed8; }
+.submit:disabled { opacity: .65; cursor: wait; }
+.form .privacy { font-size: 12px; margin: 16px 0 0; }
+.privacy a, .success a, .error a { color: #2459bd; text-decoration: underline; }
+.error { padding: 12px; background: #fff0f0; color: #a51e1e !important; border-radius: 6px; font-size: 14px; margin-top: 16px !important; }
+.success { padding: 32px; border: 1px solid #cedbf0; border-radius: 12px; background: #f2f6fd; }
+.success p { margin-top: 18px; }
+.info { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 36px; }
+.info > div { border-top: 1px solid #dfe3e9; padding-top: 24px; }
+.info h3 { font-size: 19px; margin-bottom: 14px; }
+.info a { color: #2459bd; overflow-wrap: anywhere; }
+@media(max-width:1100px) { .story, .contactGrid { gap: 40px; } .form { padding: 26px; } }
+@media(max-width:900px) { .story, .contactGrid { grid-template-columns: 1fr; gap: 32px; } .contactHero { padding-block: 88px 56px; } .contactPhoto { max-width: 650px; } }
+@media(max-width:600px) { .values, .row, .info { grid-template-columns: 1fr; } .values { gap: 28px; } .row { gap: 0; } .form { padding: 24px 20px; } .contactPhoto { aspect-ratio: 1.5; } }
+
+@media(max-width:1100px) { .commitments, .territory { gap: 48px; } .learning { gap: 24px; } }
+@media(max-width:900px) { .commitments, .territory { grid-template-columns: minmax(0,1fr); gap: 36px; } .commitmentNote { max-width: 560px; } }
+@media(max-width:600px) { .learning { grid-template-columns: minmax(0,1fr); margin-top: 32px; gap: 28px; } .franceNum { align-items: flex-start; gap: 18px; margin-top: 32px; } .franceNum img { width: 64px; height: auto; } }

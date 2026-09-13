@@ -1,0 +1,74 @@
+.origin { padding-bottom: 120px; }
+.originGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+.originCopy h2 { font-size: clamp(38px,4.5vw,64px); }
+.originCopy p { max-width: 440px; margin-top: 24px; }
+.originCopy p + p { margin-top: 16px; }
+.listeningScene { position: relative; padding: 0 0 44px 28px; }
+.listeningPhoto { position: relative; aspect-ratio: 1.2; border-radius: 4px 72px 4px 4px; overflow: hidden; }
+.listeningPhoto img { object-fit: cover; }
+.questionNote { position: absolute; bottom: 0; left: -20px; background: #fff; padding: 24px 36px 28px; box-shadow: 0 14px 55px #132c511a; transform: rotate(-3deg); }
+.questionNote > span { position: absolute; left: 16px; top: 2px; color: #2563eb; font-size: 52px; font-family: Georgia,serif; line-height: 1; }
+.questionNote p { color: #163764; font-size: 23px; line-height: 1.35; letter-spacing: -.025em; }
+.transformation { background: #143b86; color: white; padding-top: 76px; overflow: hidden; }
+.trainingGrid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 54px; align-items: center; }
+.trainingCopy { padding-bottom: 42px; }
+.trainingCopy h2 { font-size: clamp(34px,3.5vw,50px); }
+.trainingCopy h2 span { color: #bcd3ff; }
+.trainingCopy p { color: #e0eaff; margin-top: 26px; max-width: 410px; }
+.lightLink { display: inline-flex; align-items: center; gap: 20px; min-height: 48px; margin-top: 24px; color: white; font-size: 14px; font-weight: 600; border-bottom: 1px solid #789ad3; }
+.lightLink:hover { border-color: white; }
+.transformation :focus-visible { outline-color: white; }
+.workshopPhoto { position: relative; aspect-ratio: 1.12; align-self: stretch; min-height: 400px; border-radius: 80px 4px 0 0; overflow: hidden; margin-right: -70px; }
+.workshopPhoto img { object-fit: cover; }
+.learningPath { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 38px; align-items: center; padding-block: 38px; border-top: 1px solid #4d6daa; }
+.learningPath span { font-size: 24px; letter-spacing: -.025em; font-weight: 600; }
+.learningPath p { color: #c5d6f4; font-size: 14px; margin-top: 4px; }
+.learningPath > svg { color: #a5c1f1; }
+.journeyHeading { display: flex; justify-content: space-between; align-items: end; gap: 40px; }
+.journeyHeading > p { font-size: 16px; }
+.journeySteps { padding: 0; margin: 56px 0 0; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); list-style: none; }
+.journeySteps li { position: relative; padding: 0 28px 0 0; }
+.journeySteps li::before { content: ''; position: absolute; top: 29px; left: 0; right: 0; border-top: 1px solid #c4d3eb; }
+.stepNumber { position: relative; background: white; color: #2563eb; display: inline-block; padding-right: 20px; font-size: 42px; font-weight: 500; line-height: 1.4; letter-spacing: -.06em; }
+.journeySteps h3 { margin-top: 20px; }
+.journeySteps p { margin-top: 12px; max-width: 210px; font-size: 15px; }
+.choices { background: #f4f6fa; }
+.choicesHeading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 40px; }
+.values { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.values article { position: relative; padding: 40px; min-height: 260px; overflow: hidden; background: white; border-radius: 5px; }
+.values h3 { font-size: clamp(42px,4.5vw,64px); line-height: 1.1; letter-spacing: -.055em; position: relative; z-index: 1; }
+.values p { position: relative; z-index: 1; max-width: 300px; margin-top: 28px; }
+.values .clear { background: #e3ecfc; }
+.values .durable { background: #2563eb; color: white; }
+.durable p { color: #fff; }
+.focusMark { position: absolute; right: 28px; top: 22px; width: 120px; height: 120px; display: grid; place-items: center; color: #2563eb; }
+.focusMark i { position: absolute; inset: 0; border: 1px solid #c4d6f5; border-radius: 50%; }
+.focusMark i:nth-child(2) { inset: 18px; }
+.clearMark { position: absolute; top: 30px; right: 32px; width: 106px; transform: rotate(-12deg); }
+.clearMark span { display: block; margin: 10px 0; height: 13px; background: #7a9fe3; border-radius: 2px; }
+.clearMark span:nth-child(2) { width: 75%; }.clearMark span:nth-child(3) { width: 50%; }
+.reliableMark { position: absolute; right: 36px; top: 30px; width: 96px; height: 102px; }
+.reliableMark span { position: absolute; width: 68px; height: 68px; border: 1px solid #8eafea; border-radius: 12px; transform: rotate(30deg); background: #eef3fc; }
+.reliableMark span:nth-child(2) { top: 15px; left: 12px; }.reliableMark span:nth-child(3) { top: 30px; left: 24px; }
+.durationMark { position: absolute; right: 22px; top: -45px; font-size: 200px; color: #ffffff30; line-height: 1.4; }
+.territory { background: radial-gradient(ellipse at 10% 50%,#eaf1fc,transparent 65%); }
+.territoryGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
+.reach { display: flex; align-items: center; gap: 16px; color: #2459bd; font-size: 14px; padding-bottom: 20px; border-bottom: 1px solid #d7e2f3; }
+.reach > span:first-child { background: #e3ecfc; padding: 7px 12px; border-radius: 5px; }
+.reach strong { font-weight: 600; }
+.reachLine { display: flex; flex: 1; align-items: center; }
+.reachLine::before { content: ''; flex: 1; height: 1px; background: #aac0e7; }
+.reachLine svg { flex-shrink: 0; }
+.territoryCopy > p { margin-top: 24px; max-width: 440px; }
+.presence { margin-top: 26px; display: grid; gap: 8px; }
+.presence span { display: flex; align-items: center; gap: 10px; font-size: 15px; color: #163764; }
+.presence span::before { content: ''; width: 6px; height: 6px; background: #2563eb; border-radius: 50%; flex-shrink: 0; }
+.bordeauxLink { display: block; width: fit-content; padding-block: 10px; font-size: 13px; color: #555d69; text-decoration: underline !important; text-underline-offset: 4px; }
+.recognition { display: flex; align-items: center; gap: 24px; border-top: 1px solid #dce4f0; padding-top: 30px; margin-top: 52px; }
+.recognition img { flex-shrink: 0; object-fit: contain; }
+.recognition p { font-size: 14px; }
+.recognition a { margin-left: auto; display: inline-flex; gap: 14px; align-items: center; min-height: 44px; font-size: 14px; color: #2459bd; }
+.recognition a:hover { text-decoration: underline; }
+@media(max-width:1100px) { .originGrid,.territoryGrid { gap: 54px; } .trainingGrid { gap: 32px; } .values p { max-width: 260px; } }
+@media(max-width:900px) { .originGrid,.trainingGrid,.territoryGrid { grid-template-columns: minmax(0,1fr); gap: 40px; } .origin { padding-bottom: 72px; } .listeningScene { max-width: 650px; width: 100%; margin-inline: auto; padding-left: 20px; } .questionNote { left: 0; } .originCopy p { max-width: 560px; } .trainingCopy { padding-bottom: 0; }.trainingCopy p { max-width: 560px; }.workshopPhoto { margin-right: 0; min-height: 0; aspect-ratio: 1.6; border-radius: 48px 4px 0 0; } .learningPath { gap: 18px; }.learningPath span { font-size: 21px; }.journeySteps { grid-template-columns: 1fr 1fr; gap: 36px 0; }.journeyHeading,.choicesHeading { display: block; }.journeyHeading p,.choicesHeading p { margin-top: 20px; }.values article { padding: 30px; }.focusMark,.clearMark,.reliableMark { transform: scale(.7); transform-origin: right top; right: 12px; }.values p { max-width: 100%; margin-top: 36px; } }
+@media(max-width:600px) { .originCopy h2 { font-size: 42px; }.listeningPhoto { aspect-ratio: 1.15; }.questionNote { padding: 26px 26px 24px; }.questionNote p { font-size: 21px; }.transformation { padding-top: 52px; }.trainingCopy h2 { font-size: 35px; }.learningPath { grid-template-columns: 1fr; gap: 18px; padding-block: 28px; }.learningPath > svg { display: none; }.learningPath > div { display: flex; justify-content: space-between; align-items: center; gap: 12px; }.learningPath span { font-size: 20px; }.learningPath p { font-size: 13px; margin: 0; }.workshopPhoto { aspect-ratio: 1.15; }.journeySteps { margin-top: 34px; gap: 28px 16px; }.journeySteps li { padding-right: 0; }.journeySteps h3 { font-size: 19px; margin-top: 12px; }.journeySteps p { font-size: 16px; }.values { grid-template-columns: 1fr; gap: 14px; }.values article { min-height: 230px; padding: 30px; }.values h3 { font-size: 52px; }.values p { max-width: 310px; margin-top: 28px; }.focusMark,.clearMark,.reliableMark { right: 24px; }.territoryGrid { gap: 20px; }.recognition { flex-wrap: wrap; gap: 18px; margin-top: 36px; }.recognition p { flex: 1; }.recognition a { margin-left: 0; }.reach { gap: 10px; font-size: 12px; } }

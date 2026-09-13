@@ -1,0 +1,66 @@
+{
+  "build": "passed",
+  "html_documents": 62,
+  "titles_canonicals_h1_counts_preserved": true,
+  "pages": [
+    {
+      "route": "/services/",
+      "faq_count": 5,
+      "faq_schema_exact": true,
+      "internal_links_valid": true
+    },
+    {
+      "route": "/services/audit-ia/",
+      "faq_count": 6,
+      "faq_schema_exact": true,
+      "internal_links_valid": true
+    },
+    {
+      "route": "/services/agents-ia/",
+      "faq_count": 8,
+      "faq_schema_exact": true,
+      "internal_links_valid": true
+    },
+    {
+      "route": "/services/automatisation-ia/",
+      "faq_count": 7,
+      "faq_schema_exact": true,
+      "internal_links_valid": true
+    },
+    {
+      "route": "/services/integration-ia/",
+      "faq_count": 6,
+      "faq_schema_exact": true,
+      "internal_links_valid": true
+    },
+    {
+      "route": "/services/developpement-ia/",
+      "faq_count": 6,
+      "faq_schema_exact": true,
+      "internal_links_valid": true
+    },
+    {
+      "route": "/services/chatbot-ia/",
+      "faq_count": 6,
+      "faq_schema_exact": true,
+      "internal_links_valid": true
+    },
+    {
+      "route": "/services/employe-ia/",
+      "faq_count": 8,
+      "faq_schema_exact": true,
+      "internal_links_valid": true
+    }
+  ],
+  "responsive_widths": [
+    320,
+    390,
+    768,
+    1024,
+    1440
+  ],
+  "responsive_overflow": false,
+  "keyboard": "native directory and FAQ disclosures tested",
+  "images": "3 new WebP photos visually reviewed; office art direction",
+  "published": false
+}

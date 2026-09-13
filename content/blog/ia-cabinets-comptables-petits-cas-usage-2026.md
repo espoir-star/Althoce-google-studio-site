@@ -13,8 +13,8 @@ keywords:
   - ia expert comptable
   - ia comptabilité
   - intelligence artificielle expertise comptable
-image: "/blog/covers/ia-cabinets-comptables-cover.png"
-imageAlt: "Article Althoce : 5 cas d'usage IA pour les cabinets comptables de moins de 10 personnes"
+image: "/images/blog/comptabilite.webp"
+imageAlt: "Deux collègues d’un cabinet comptable vérifient un dossier sur ordinateur"
 canonicalUrl: "https://althoce.com/blog/ia-cabinets-comptables-petits-cas-usage-2026/"
 ---
 

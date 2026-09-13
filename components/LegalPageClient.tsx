@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
 
 const AC = '#2563eb';
 
@@ -122,41 +121,55 @@ export default function LegalPageClient() {
     <>
       <style>{`
         .legal-wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px 96px; }
-        .legal-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #a1a1aa; margin-bottom: 48px; }
-        .legal-breadcrumb a { color: #a1a1aa; text-decoration: none; transition: color .15s; }
+        .legal-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #607087; margin-bottom: 48px; }
+        .legal-breadcrumb a { color: #607087; text-decoration: none; transition: color .15s; }
         .legal-breadcrumb a:hover { color: #09090b; }
         .legal-h1 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -.04em; color: #09090b; line-height: 1.1; margin-bottom: 10px; }
-        .legal-date { font-size: 14px; color: #a1a1aa; margin-bottom: 52px; }
-        .legal-intro { font-size: 16px; color: #8a8a95; line-height: 1.8; padding: 20px 24px; background: #fafafa; border: 1px solid #e4e4e7; border-radius: 12px; margin-bottom: 48px; }
+        .legal-date { font-size: 14px; color: #607087; margin-bottom: 52px; }
+        .legal-intro { font-size: 16px; color: #53627a; line-height: 1.8; padding: 20px 24px; background: #fafafa; border: 1px solid #e4e4e7; border-radius: 12px; margin-bottom: 48px; }
         .legal-section { padding: 36px 0; border-top: 1px solid #e4e4e7; }
         .legal-section:last-child { border-bottom: 1px solid #e4e4e7; }
         .legal-h2 { font-size: 18px; font-weight: 800; color: #09090b; letter-spacing: -.02em; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
         .legal-h2::before { content: ''; display: inline-block; width: 4px; height: 18px; background: ${AC}; border-radius: 2px; flex-shrink: 0; }
-        .legal-body p { font-size: 16px; color: #8a8a95; line-height: 1.8; margin-bottom: 14px; }
+        .legal-body p { font-size: 16px; color: #53627a; line-height: 1.8; margin-bottom: 14px; }
         .legal-body p:last-child { margin-bottom: 0; }
         .legal-body ul { list-style: none; padding: 0; margin: 12px 0; }
-        .legal-body ul li { font-size: 16px; color: #8a8a95; line-height: 1.75; padding: 5px 0 5px 20px; position: relative; }
+        .legal-body ul li { font-size: 16px; color: #53627a; line-height: 1.75; padding: 5px 0 5px 20px; position: relative; }
         .legal-body ul li::before { content: '—'; position: absolute; left: 0; color: ${AC}; font-weight: 700; }
         .legal-body a { color: ${AC}; text-decoration: underline; text-underline-offset: 3px; transition: color .15s; }
         .legal-body a:hover { color: #1d4ed8; }
         .legal-body strong { font-weight: 700; color: #09090b; }
-        .legal-body em { font-style: normal; color: #a1a1aa; }
+        .legal-body em { font-style: normal; color: #607087; }
         .legal-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
-        .legal-body table td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; color: #8a8a95; vertical-align: top; }
+        .legal-body table td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; color: #53627a; vertical-align: top; }
         .legal-body table td:first-child { font-weight: 700; color: #09090b; white-space: nowrap; width: 220px; }
         .legal-body table tr:last-child td { border-bottom: none; }
-        .legal-footer-note { margin-top: 52px; padding: 20px 24px; background: #09090b; border-radius: 12px; font-size: 14px; color: #8a8a95; line-height: 1.7; }
+        .legal-footer-note { margin-top: 52px; padding: 20px 24px; background: #09090b; border-radius: 12px; font-size: 14px; color: #53627a; line-height: 1.7; }
         .legal-footer-note a { color: ${AC}; text-decoration: underline; }
         @media (max-width: 600px) {
           .legal-wrap { padding: 24px 16px 72px; }
           .legal-table td:first-child { width: auto; white-space: normal; }
           .legal-table { display: block; overflow-x: auto; }
         }
+
+        .legal-h1 { font-weight: 600; line-height: 1.2; }
+        .legal-h2 { font-size: 23px; font-weight: 600; line-height: 1.35; }
+        .legal-h2::before { display: none; }
+        .legal-intro { background: linear-gradient(135deg,#edf3ff,#f8fafc); border-color: #d4dfed; padding: 28px; }
+        .legal-section { scroll-margin-top: 110px; }
+        .legal-body { overflow-wrap: anywhere; }
+        .legal-body table { max-width:100%; }
+        .legal-body tr:nth-child(odd) { background:#f5f8fd; }
+        .legal-breadcrumb { flex-wrap:wrap; }
+        .legal-footer-note { background:#edf3ff; border:1px solid #d4dfed; }
+        @media(max-width:600px) {
+          .legal-intro { padding:22px; }
+          .legal-body table { display:block; overflow-x:auto; }
+          .legal-body table td:first-child { white-space:normal; width:auto; }
+        }
       `}</style>
 
-      <Navbar />
-
-      <main style={{ background: '#fff', paddingTop: 80 }}>
+      <main style={{ background: 'radial-gradient(ellipse at 0 0, #eaf1ff, transparent 600px), #fff', paddingTop: 80 }}>
         <div className="legal-wrap">
 
           {/* Breadcrumb */}
@@ -177,6 +190,7 @@ export default function LegalPageClient() {
             (le «&nbsp;Site&nbsp;»). En consultant le Site, l'utilisateur reconnaît avoir pris connaissance des présentes mentions légales et s'engage à les respecter, conformément à l'article 6 de la loi n°&nbsp;2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN).
           </div>
 
+          <nav aria-label="Sommaire des mentions légales" style={{display:'flex',flexWrap:'wrap',gap:'10px 18px',marginBottom:32}}>{sections.map(section=><a key={section.id} href={`#${section.id}`} style={{color:AC,fontSize:13,padding:'8px 0',textDecoration:'underline',textUnderlineOffset:4}}>{section.title}</a>)}</nav>
           {/* Sections */}
           {sections.map((s, i) => (
             <section key={s.id} id={s.id} className="legal-section">

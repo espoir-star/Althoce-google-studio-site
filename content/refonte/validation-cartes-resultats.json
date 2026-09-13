@@ -1,0 +1,45 @@
+{
+  "pages": {
+    "cas-clients.html": {
+      "h1": 1,
+      "results": 0
+    },
+    "cas-clients/eti-agroalimentaire-agent-ia-juridique.html": {
+      "h1": 1,
+      "results": 1
+    },
+    "cas-clients/distributeur-b2b-agent-ia-ops.html": {
+      "h1": 1,
+      "results": 1
+    },
+    "cas-clients/saas-b2b-agent-ia-service-client.html": {
+      "h1": 1,
+      "results": 1
+    },
+    "cas-clients/saas-b2b-agent-ia-marketing.html": {
+      "h1": 1,
+      "results": 1
+    },
+    "cas-clients/cabinet-recrutement-paris-agent-ia-tri-cv.html": {
+      "h1": 1,
+      "results": 1
+    },
+    "cas-clients/cabinet-comptable-lyon.html": {
+      "h1": 1,
+      "results": 1
+    },
+    "cas-clients/cabinet-avocats-agent-ia-telephonique.html": {
+      "h1": 1,
+      "results": 1
+    },
+    "cas-clients/negoce-vins-bordelais-agent-ia-sdr.html": {
+      "h1": 1,
+      "results": 1
+    },
+    "cas-clients/eti-industrielle-agent-ia-achats.html": {
+      "h1": 1,
+      "results": 1
+    }
+  },
+  "errors": []
+}

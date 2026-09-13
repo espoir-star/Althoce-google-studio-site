@@ -1,0 +1,14 @@
+{
+  "pages": 64,
+  "internal_routes_and_anchors_valid": true,
+  "one_h1_and_navigation": true,
+  "responsive_checks": 36,
+  "responsive_widths": [
+    320,
+    768,
+    1440
+  ],
+  "responsive_issues": [],
+  "toc_test": "inline formatting, entities, code examples",
+  "deployment": "local only"
+}

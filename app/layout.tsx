@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import NavigationProvider from '@/components/NavigationProvider';
 import Navbar from '@/components/Navbar';
-import MetaPixel from '@/components/MetaPixel';
+import TrackingConsent from '@/components/TrackingConsent';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://althoce.com'),
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@id": "https://althoce.com/#organization",
               "name": "Althoce",
               "url": "https://althoce.com/",
-              "description": "Agence spécialisée en agents IA et automatisation pour PME françaises",
+              "description": "Conseil, accompagnement et formation à l’intelligence artificielle, agents IA et automatisation pour PME françaises",
               "foundingDate": "2024",
               "address": {
                 "@type": "PostalAddress",
@@ -92,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-white text-ink font-sans min-h-screen selection:bg-accent/20 selection:text-accent">
-        <MetaPixel />
+        <TrackingConsent />
         <NavigationProvider>
           <Navbar />
           {children}

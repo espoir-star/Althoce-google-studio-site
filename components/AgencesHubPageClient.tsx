@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import Navbar from '@/components/Navbar';
 import { FAQAccordion } from '@/components/ui/data-display/FAQAccordion';
 import { steps, securityItems } from '@/lib/data';
 
@@ -596,8 +595,6 @@ export default function AgencesHubPageClient() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: agcStyles }} />
-
-      <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="agc-hero" aria-labelledby="agc-h1">

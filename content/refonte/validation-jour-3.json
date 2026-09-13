@@ -1,0 +1,20 @@
+{
+  "html_documents": 63,
+  "existing_routes_preserved": true,
+  "titles_and_h1_counts_preserved": true,
+  "canonical_correction": [
+    [
+      "calculateur-roi.html",
+      "canonical",
+      "",
+      "https://althoce.com/calculateur-roi/"
+    ]
+  ],
+  "formation_faq_exact": 6,
+  "course_schemas": 2,
+  "build": "passed (69 generated pages)",
+  "responsive": "Gabarits formation et calculateur contrôlés à 320, 390, 768, 1024 et 1440 px ; aucun débordement horizontal observé",
+  "calculator": "4 steps through results; no lead form submission; calculation engine unchanged",
+  "report_limit": "gated report not tested through real lead submission",
+  "test_name_cleared": true
+}

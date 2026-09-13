@@ -1,0 +1,3 @@
+import { ArrowUpRight, FileCheck2 } from 'lucide-react';
+import s from './Formation.module.css';
+export default function Funding(){return <aside className={s.funding} aria-label="Financement de la formation"><div className={s.fundingIcon}><FileCheck2 size={28} aria-hidden="true"/></div><div><h3>Et si votre OPCO participait au financement ?</h3><p>Une prise en charge peut être étudiée via notre organisme partenaire, selon votre situation et les conditions de votre financeur. Elle n’est pas automatique.</p><a href="/contact/">Étudier les possibilités<ArrowUpRight size={18} aria-hidden="true"/></a></div></aside>}

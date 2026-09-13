@@ -20,7 +20,7 @@ export function Section01({ profile, set }: { profile: Profile; set: (p: Partial
   };
   return (
     <SectionCard n="01" title="Votre entreprise" subtitle="L'effectif et le CA pilotent l'ensemble du calcul.">
-      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 24 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0,1fr) minmax(0,1fr)', gap: 24 }}>
         <Field label="Nom de l'entreprise">
           <TextInput value={profile.nomEntreprise} onChange={v => set({ nomEntreprise: v })} placeholder="Ex : Acme Industries" />
         </Field>
@@ -83,8 +83,8 @@ export function Section02({ profile, set }: { profile: Profile; set: (p: Partial
   };
   const totalReparti = profile.polesActifs.reduce((s, p) => s + (profile.effectifs[p] || 0), 0);
   return (
-    <SectionCard n="02" title="Vos pôles concernés"
-      subtitle={`Sélectionnez les métiers à activer. Effectifs préremplis depuis l'effectif total (${profile.effectifTotal} pers.).`}>
+    <SectionCard n="02" title="Où souhaitez-vous gagner du temps ?"
+      subtitle={`Choisissez jusqu’à 3 équipes. Ajustez ensuite les effectifs proposés (${profile.effectifTotal} personnes au total).`}>
       {atMax && (
         <div style={{
           marginBottom: 12, padding: '8px 14px', borderRadius: T.rSm,
@@ -94,13 +94,13 @@ export function Section02({ profile, set }: { profile: Profile; set: (p: Partial
           Maximum 3 pôles — désélectionnez-en un pour en choisir un autre.
         </div>
       )}
-      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 10 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0,1fr) minmax(0,1fr)', gap: 10 }}>
         {POLES.map(p => {
           const active = profile.polesActifs.includes(p.id);
           const isManual = profile.effectifsManuels[p.id];
           const disabled = atMax && !active;
           return (
-            <div key={p.id} style={{ opacity: disabled ? 0.4 : 1, transition: 'opacity .2s' }}>
+            <div key={p.id} style={{ minWidth: 0, opacity: disabled ? 0.4 : 1, transition: 'opacity .2s' }}>
               <ToggleCard active={active} onClick={() => togglePole(p.id)}
                 title={<span><span style={{ marginRight: 8 }}>{p.icon}</span>{p.label}</span>}
                 right={active ? <span style={{ fontFamily: T.mono, fontSize: 12, color: T.accent, flexShrink: 0 }}>
@@ -191,7 +191,7 @@ export function Section04({ profile, set }: { profile: Profile; set: (p: Partial
   const ch = computeCoutHoraire(profile.salaire, profile.ca);
   return (
     <SectionCard n="04" title="Productivité & coûts" subtitle="Le coût horaire moyen ajusté à la séniorité de votre taille d'entreprise.">
-      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 24, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0,1fr) minmax(0,1fr)', gap: 24, alignItems: 'start' }}>
         <Field label="Salaire brut moyen / mois" hint="Sert de base au coût horaire interne (39h × 4 sem).">
           <LinSlider min={2000} max={8000} step={100} value={profile.salaire}
             onChange={v => set({ salaire: v })} format={v => fmtEur(v) + '/mois'} />
@@ -324,7 +324,7 @@ export function Section05({ profile, set, recommendedByPole, onToast }: {
 
   if (polesActifs.length === 0) {
     return (
-      <SectionCard n="05" title="Vos agents recommandés" subtitle="Activez des pôles pour voir les recommandations.">
+      <SectionCard n="05" title="Des exemples à explorer" subtitle="Activez des pôles pour explorer des usages à concevoir sur mesure.">
         <div style={{ padding: 32, textAlign: 'center', borderRadius: T.r, border: `1px dashed ${T.borderStrong}`, background: T.bgCard2, color: T.textMuted, fontSize: 14 }}>
           Pas encore d&apos;éléments — complétez les sections 02 et 03.
         </div>
@@ -336,8 +336,9 @@ export function Section05({ profile, set, recommendedByPole, onToast }: {
   const totalMarques = (profile.agentsMarques || []).length;
 
   return (
-    <SectionCard n="05" title="Vos agents recommandés"
+    <SectionCard n="05" title="Des exemples à explorer"
       subtitle={`${totalInclus} agent${totalInclus > 1 ? 's' : ''} inclus dans le ROI · ${totalMarques} complémentaire${totalMarques > 1 ? 's' : ''} marqué${totalMarques > 1 ? 's' : ''} pour l'audit.`}>
+      <p style={{fontSize:14,lineHeight:1.7,color:T.textSoft,margin:'0 0 20px'}}>Ces exemples servent à la simulation. Chaque agent ou automatisation est conçu selon vos outils, vos processus et les validations nécessaires.</p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
         {polesActifs.map(pole => {
           const meta = POLES.find(p => p.id === pole);

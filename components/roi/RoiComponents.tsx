@@ -12,7 +12,7 @@ export const T = {
   accentGlow:    'rgba(37,99,235,.07)',
   accentGlowStr: 'rgba(37,99,235,.14)',
   accentInk:     '#ffffff',
-  bg:            '#fafafa',
+  bg:            '#f6f8fc',
   bgCard:        '#ffffff',
   bgCard2:       '#f5f5f5',
   bgSoft:        'rgba(9,9,11,.02)',
@@ -29,8 +29,8 @@ export const T = {
   warn:          '#f59e0b',
   rSm:           '10px',
   r:             '14px',
-  rLg:           '20px',
-  rXl:           '28px',
+  rLg:           '12px',
+  rXl:           '14px',
   shadow:        '0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04)',
   shadowMd:      '0 4px 16px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04)',
   shadowLg:      '0 12px 40px rgba(0,0,0,.10), 0 4px 12px rgba(0,0,0,.05)',
@@ -46,7 +46,7 @@ export function useResponsive() {
     window.addEventListener('resize', fn);
     return () => window.removeEventListener('resize', fn);
   }, []);
-  return { isMobile: width < 768, isTablet: width < 1024 };
+  return { isMobile: width < 768, isTablet: width < 1024, isCompact: width < 1100 };
 }
 
 // ── Eyebrow — matches site's section badge style ───────────────────────
@@ -143,7 +143,8 @@ export function SectionCard({ n, title, subtitle, children }: {
       background: T.bgCard,
       border: `1px solid ${T.border}`,
       borderRadius: T.rLg,
-      padding: isMobile ? 20 : 36,
+      padding: isMobile ? 18 : 26,
+      minWidth: 0,
       marginBottom: 16,
       boxShadow: T.shadow,
       transition: 'box-shadow .2s',
@@ -270,11 +271,11 @@ export function ToggleCard({ active, onClick, title, subtitle, right }: {
 }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <button onClick={onClick} type="button"
+    <button onClick={onClick} type="button" aria-pressed={active}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        display: 'flex', alignItems: 'center', gap: 12, width: '100%',
+        display: 'flex', alignItems: 'center', gap: 10, width: '100%', minWidth: 0, boxSizing: 'border-box',
         padding: '13px 15px', borderRadius: T.r,
         background: active ? T.accentGlow : (hovered ? 'rgba(0,0,0,.018)' : T.bgCard2),
         border: `1px solid ${active ? T.accent : (hovered ? 'rgba(9,9,11,.12)' : T.border)}`,
@@ -298,7 +299,7 @@ export function ToggleCard({ active, onClick, title, subtitle, right }: {
         )}
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 14, fontWeight: 500, letterSpacing: '-0.01em', color: active ? T.text : T.textSoft }}>{title}</div>
+        <div style={{ fontSize: 14, fontWeight: 500, letterSpacing: '-0.01em', overflowWrap: 'anywhere', lineHeight: 1.45, color: active ? T.text : T.textSoft }}>{title}</div>
         {subtitle && <div style={{ fontSize: 12, color: T.textMuted, marginTop: 2, lineHeight: 1.4 }}>{subtitle}</div>}
       </div>
       {right}

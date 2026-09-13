@@ -60,11 +60,12 @@ export function LeadModal({ onClose, onSubmit, summary, profile, activeAgents, t
 
   const handle = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
+    if (loading || !validate()) return;
     setLoading(true);
     const formData = { ...data, consentement: rgpd };
     const payload = buildLeadPayload(formData, profile, activeAgents, total);
-    submitLead(payload).catch(() => {});
+    const result = await submitLead(payload);
+    if (!result.ok) { setErrors({ submit: result.error || 'Envoi impossible. Veuillez réessayer.' }); setLoading(false); return; }
     onSubmit(formData);
   };
 
@@ -131,6 +132,7 @@ export function LeadModal({ onClose, onSubmit, summary, profile, activeAgents, t
           </span>
         </label>
 
+        {errors.submit && <p role="alert" style={{ color: T.warn }}>{errors.submit}</p>}
         <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
           <CTA primary={false} type="button" onClick={onClose}>Annuler</CTA>
           <CTA type="submit" disabled={loading}>{loading ? 'Envoi...' : 'Voir mon rapport'}</CTA>

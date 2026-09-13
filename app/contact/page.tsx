@@ -1,16 +1,17 @@
+import { contactFaqs } from '@/lib/cabinet-content';
 import type { Metadata } from 'next';
 import ContactPageClient from '@/components/ContactPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Discutons de votre projet — 30 minutes offertes',
-  description: "30 minutes pour identifier vos automatisations à fort ROI. Sans engagement, sans pitch commercial. Expert disponible. Réponse sous 24h ouvrées.",
+  description: "Contactez Althoce pour un pré-audit offert de 30 minutes : formations IA, agents IA et automatisation pour votre PME. Sans engagement, réponse sous 24 h ouvrées.",
   keywords: 'contact Althoce, contacter Althoce, prendre RDV Althoce, 30 minutes Althoce, rendez-vous expert IA Althoce',
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://althoce.com/contact/' },
   openGraph: {
     title: 'Discutons de votre projet — 30 minutes offertes | Althoce',
-    description: '30 minutes pour comprendre vos enjeux. Sans engagement. Réponse sous 24 h. Données hébergées en UE.',
+    description: 'Un premier échange offert pour vos besoins de formation IA et d’automatisation. 30 minutes, sans engagement, pour voir par où commencer.',
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/contact/',
@@ -76,28 +77,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Combien de temps avant le premier RDV ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Créneau proposé dans les 24 à 72 heures ouvrées. Urgence ? Précisez-le dans le formulaire." },
-        },
-        {
-          "@type": "Question",
-          "name": "Les 30 minutes sont-elles vraiment gratuites ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Aucune contrepartie. Les 30 minutes servent à qualifier le besoin et proposer un devis pertinent. Vous n'avez aucune obligation de signer." },
-        },
-        {
-          "@type": "Question",
-          "name": "Sans certitude d'avoir un besoin IA, est-ce que ça vaut le coup ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Les 30 minutes servent à clarifier si votre situation se prête à un agent IA, à un workflow, à une formation, ou à rien pour l'instant. Réponse sincère même si c'est « pas maintenant »." },
-        },
-        {
-          "@type": "Question",
-          "name": "Faut-il signer un NDA avant l'échange ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Pas obligatoire pour les 30 minutes (échange fonctionnel uniquement). NDA mutuel possible sur demande dans les 24 h." },
-        },
-      ],
+      "mainEntity": contactFaqs.map(item => ({ "@type": "Question", "name": item.q, "acceptedAnswer": { "@type": "Answer", "text": item.a } })),
     },
   ],
 };
@@ -110,7 +90,7 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ContactPageClient />
-      <Footer showCta={false} />
+      <Footer showCta={false} positioning="cabinet" />
     </>
   );
 }

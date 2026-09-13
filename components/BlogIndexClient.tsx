@@ -1,142 +1,31 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { BookOpen, ArrowRight } from 'lucide-react';
-import type { BlogPost } from '../lib/blog';
-
-const CATEGORY_STYLES: Record<string, { bg: string; color: string; border: string }> = {
-  "Cas d'usage":    { bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
-  "Guide pratique": { bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
-  "Décryptage":     { bg: '#fefce8', color: '#a16207', border: '#fef08a' },
-  "Coulisses":      { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
-  "Finance":        { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
-  "Local":          { bg: '#fdf4ff', color: '#7e22ce', border: '#e9d5ff' },
-  "Souveraineté":   { bg: '#fff7ed', color: '#c2410c', border: '#fed7aa' },
-  "Juridique":      { bg: '#fefce8', color: '#a16207', border: '#fef08a' },
-  "Opérations":     { bg: '#eff6ff', color: '#1d4ed8', border: '#bfdbfe' },
-};
-
-const DEFAULT_CAT_STYLE = { bg: '#f4f4f5', color: '#52525b', border: '#e4e4e7' };
-
-const ALL_CATEGORIES = [
-  { id: 'all',          label: 'Tous' },
-  { id: 'finance',      label: 'Finance' },
-  { id: 'juridique',    label: 'Juridique' },
-  { id: 'souverainete', label: 'Souveraineté' },
-  { id: 'local',        label: 'Local' },
-  { id: 'operations',   label: 'Opérations' },
-  { id: 'guide',        label: 'Guide pratique' },
-];
-
-function normalizeCategory(cat: string): string {
-  return cat
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '');
-}
+import { ArrowUpRight } from 'lucide-react';
+import type { BlogPost } from '@/lib/blog';
+import { PreAuditCTA } from './brand/Sections';
+import b from './brand/Brand.module.css';
+import s from './blog/Blog.module.css';
 
 export default function BlogIndexClient({ posts }: { posts: BlogPost[] }) {
-  const [activeCategory, setActiveCategory] = useState('all');
-
-  const filtered = activeCategory === 'all'
-    ? posts
-    : posts.filter(p => normalizeCategory(p.category) === activeCategory);
-
-  return (
-    <div style={{ paddingTop: 96, paddingBottom: 80, minHeight: '100vh', background: '#fafafa' }}>
-      <div style={{ maxWidth: 1160, margin: '0 auto', padding: '0 24px' }}>
-
-        {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 9999, background: '#eff6ff', border: '1px solid #bfdbfe', fontSize: 12, fontWeight: 700, color: '#2563eb', letterSpacing: '.06em', textTransform: 'uppercase', marginBottom: 20 }}>
-            <BookOpen style={{ width: 12, height: 12 }} />
-            Blog
-          </div>
-          <h1 style={{ fontSize: 'clamp(30px,4vw,52px)', fontWeight: 800, letterSpacing: '-.04em', color: '#09090b', lineHeight: 1.1, marginBottom: 16 }}>
-            Nos <span style={{ color: '#2563eb' }}>insights</span>
-          </h1>
-          <p style={{ fontSize: 17, color: '#52525b', lineHeight: 1.7, maxWidth: 520, margin: '0 auto' }}>
-            Cas d'usage, guides pratiques et décryptages sur l'IA pour les PME françaises.
-          </p>
-        </div>
-
-        {/* Category filters */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginBottom: 48 }}>
-          {ALL_CATEGORIES.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              style={{
-                padding: '8px 18px', borderRadius: 9999, fontSize: 14, fontWeight: 600,
-                border: `1px solid ${activeCategory === cat.id ? '#09090b' : '#e4e4e7'}`,
-                background: activeCategory === cat.id ? '#09090b' : '#fff',
-                color: activeCategory === cat.id ? '#fff' : '#52525b',
-                cursor: 'pointer', transition: 'all .15s', fontFamily: 'inherit',
-              }}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Grid */}
-        {filtered.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '80px 0' }}>
-            <p style={{ color: '#a1a1aa', fontSize: 17 }}>Aucun article publié pour l'instant.</p>
-          </div>
-        ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24 }}>
-            {filtered.map((post) => {
-              const cs = CATEGORY_STYLES[post.category] ?? DEFAULT_CAT_STYLE;
-              return (
-                <a
-                  key={post.slug}
-                  href={`/blog/${post.slug}/`}
-                  style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', overflow: 'hidden', display: 'flex', flexDirection: 'column', textDecoration: 'none', transition: 'box-shadow .2s, border-color .2s' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,.08)'; e.currentTarget.style.borderColor = '#d4d4d8'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = '#e4e4e7'; }}
-                >
-                  {/* Cover image */}
-                  {post.image && (
-                    <div style={{ position: 'relative', width: '100%', aspectRatio: '1200/630', background: '#09090b', flexShrink: 0 }}>
-                      <Image
-                        src={post.image}
-                        alt={post.imageAlt ?? post.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </div>
-                  )}
-
-                  {/* Contenu */}
-                  <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                      <span style={{ padding: '4px 12px', borderRadius: 9999, fontSize: 11, fontWeight: 700, background: cs.bg, color: cs.color, border: `1px solid ${cs.border}` }}>
-                        {post.category}
-                      </span>
-                      <span style={{ fontSize: 13, color: '#71717a' }}>{post.readingTime}</span>
-                    </div>
-                    <h2 style={{ fontSize: 17, fontWeight: 700, color: '#09090b', marginBottom: 10, lineHeight: 1.4, flex: 1 }}>
-                      {post.title}
-                    </h2>
-                    <p style={{ fontSize: 14.5, color: '#374151', lineHeight: 1.68, marginBottom: 16 }}>{post.excerpt}</p>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #f4f4f5' }}>
-                      <span style={{ fontSize: 13, color: '#71717a' }}>
-                        {new Date(post.publishedAt ?? post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
-                      </span>
-                      <span style={{ fontSize: 13.5, fontWeight: 600, color: '#2563eb', display: 'flex', alignItems: 'center', gap: 4 }}>
-                        Lire <ArrowRight style={{ width: 14, height: 14 }} />
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  const [category, setCategory] = useState('Tous');
+  const categories = ['Tous', ...Array.from(new Set(posts.map(post => post.category)))];
+  const filtered = category === 'Tous' ? posts : posts.filter(post => post.category === category);
+  return <main className={b.page}>
+    <header className={s.hero}><div className={b.container}>
+      <nav className={b.breadcrumb} aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span aria-current="page">Blog</span></nav>
+      <div className={s.intro}><h1>Comprendre l’IA.<br/><span>Choisir comment avancer.</span></h1><p className={b.lead}>Des cas concrets et des repères pour les dirigeants et leurs équipes. Le regard d’Althoce sur les usages, les choix et les questions qui comptent dans votre entreprise.</p></div>
+    </div></header>
+    <section className={s.collection} aria-label="Les articles Althoce"><div className={b.container}>
+      <div className={s.filters} role="group" aria-label="Filtrer les articles par thème">{categories.map(item=><button type="button" key={item} aria-pressed={category===item} onClick={()=>setCategory(item)}>{item}</button>)}</div>
+      <p className={s.count} role="status">{filtered.length} article{filtered.length>1?'s':''} à découvrir</p>
+      <div className={s.grid}>{filtered.map((post,index)=><a href={`/blog/${post.slug}/`} key={post.slug} className={`${s.card} ${index===0?s.featured:''}`}>
+        <div className={s.cover}><Image src={post.image || '/images/services/cas-equipe.webp'} alt={post.imageAlt || post.title} fill priority={index===0} sizes={index===0?'(max-width:900px) 90vw, 55vw':'(max-width:600px) 90vw, 45vw'}/></div>
+        <div className={s.cardBody}><div className={s.meta}><span>{post.category}</span><span>{post.readingTime} de lecture</span></div><h2>{post.title}</h2><p>{post.excerpt}</p><div className={s.cardFoot}><time dateTime={post.publishedAt ?? post.date}>{new Date(post.publishedAt ?? post.date).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Paris'})}</time><span>Lire l’article <ArrowUpRight size={18} aria-hidden="true"/></span></div></div>
+      </a>)}</div>
+      {filtered.length===0&&<p>Aucun article disponible pour le moment.</p>}
+    </div></section>
+    <PreAuditCTA/>
+  </main>;
 }

@@ -1,0 +1,30 @@
+{
+  "html_documents": 64,
+  "internal_links_valid": true,
+  "one_h1_and_navigation": true,
+  "lot": [
+    "confidentialite.html",
+    "blog.html",
+    "mentions-legales.html",
+    "blog/agence-ia-lille-choisir-partenaire-2026.html",
+    "blog/chatgpt-claude-mistral-rgpd-guide-2026.html",
+    "blog/ia-cabinets-comptables-petits-cas-usage-2026.html"
+  ],
+  "article_titles_canonicals_preserved": true,
+  "legal_noindex_preserved": true,
+  "responsive_widths": [
+    320,
+    390,
+    768,
+    1024,
+    1440
+  ],
+  "responsive_pages": 7,
+  "overflow": false,
+  "interactions": [
+    "category Finance then Tous",
+    "article mobile contents",
+    "privacy mobile contents"
+  ],
+  "publication": "local only"
+}

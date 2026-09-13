@@ -1,0 +1,65 @@
+{
+  "pages": {
+    "cas-clients.html": {
+      "title": "Cas clients : ce que nos agents IA ont changé concrètement chez des PME et ETI françaises | Althoce",
+      "canonical": "https://althoce.com/cas-clients/",
+      "h1_count": 1,
+      "navs": 1
+    },
+    "cas-clients/eti-agroalimentaire-agent-ia-juridique.html": {
+      "title": "ETI agroalimentaire : agent IA juridique | Althoce",
+      "canonical": "https://althoce.com/cas-clients/eti-agroalimentaire-agent-ia-juridique/",
+      "h1_count": 1,
+      "navs": 1
+    },
+    "cas-clients/distributeur-b2b-agent-ia-ops.html": {
+      "title": "Distributeur B2B : agent IA opérations | Althoce",
+      "canonical": "https://althoce.com/cas-clients/distributeur-b2b-agent-ia-ops/",
+      "h1_count": 1,
+      "navs": 1
+    },
+    "cas-clients/saas-b2b-agent-ia-service-client.html": {
+      "title": "SaaS B2B : agent IA service client | Althoce",
+      "canonical": "https://althoce.com/cas-clients/saas-b2b-agent-ia-service-client/",
+      "h1_count": 1,
+      "navs": 1
+    },
+    "cas-clients/saas-b2b-agent-ia-marketing.html": {
+      "title": "SaaS B2B : agent IA marketing | Althoce",
+      "canonical": "https://althoce.com/cas-clients/saas-b2b-agent-ia-marketing/",
+      "h1_count": 1,
+      "navs": 1
+    },
+    "cas-clients/cabinet-recrutement-paris-agent-ia-tri-cv.html": {
+      "title": "Cabinet recrutement : tri CV par IA | Althoce",
+      "canonical": "https://althoce.com/cas-clients/cabinet-recrutement-paris-agent-ia-tri-cv/",
+      "h1_count": 1,
+      "navs": 1
+    },
+    "cas-clients/cabinet-comptable-lyon.html": {
+      "title": "Cabinet comptable Lyon : agent IA finance | Althoce",
+      "canonical": "https://althoce.com/cas-clients/cabinet-comptable-lyon/",
+      "h1_count": 1,
+      "navs": 1
+    },
+    "cas-clients/cabinet-avocats-agent-ia-telephonique.html": {
+      "title": "Cabinet d'avocats : agent IA téléphonique | Althoce",
+      "canonical": "https://althoce.com/cas-clients/cabinet-avocats-agent-ia-telephonique/",
+      "h1_count": 1,
+      "navs": 1
+    },
+    "cas-clients/negoce-vins-bordelais-agent-ia-sdr.html": {
+      "title": "Négoce de vins bordelais : agent IA SDR | Althoce",
+      "canonical": "https://althoce.com/cas-clients/negoce-vins-bordelais-agent-ia-sdr/",
+      "h1_count": 1,
+      "navs": 1
+    },
+    "cas-clients/eti-industrielle-agent-ia-achats.html": {
+      "title": "ETI industrielle : agent IA achats | Althoce",
+      "canonical": "https://althoce.com/cas-clients/eti-industrielle-agent-ia-achats/",
+      "h1_count": 1,
+      "navs": 1
+    }
+  },
+  "errors": []
+}

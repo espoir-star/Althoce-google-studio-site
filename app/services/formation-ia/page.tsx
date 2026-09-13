@@ -1,14 +1,15 @@
+import { formationFaq } from '@/lib/formations';
 import type { Metadata } from 'next';
 import FormationIAPageClient from '@/components/FormationIAPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Formation IA pour entreprise',
-  description: "Deux formations indépendantes d'une journée pour former vos équipes à l'IA générative. Sur vos vrais dossiers, avec vos outils. Finançables OPCO.",
+  description: "Formations IA pour vos équipes et coaching individuel pour dirigeants. Des parcours sur vos vrais dossiers, avec vos outils et un suivi après la formation.",
   keywords: ['formation IA entreprise', 'formation intelligence artificielle', 'formation IA générative', 'formation ChatGPT entreprise', 'formation Claude IA', 'formation IA finançable OPCO', 'formation prompting'],
   openGraph: {
     title: 'Formation IA pour entreprise | Althoce',
-    description: "Deux formations indépendantes d'une journée pour former vos équipes à l'IA générative. Sur vos vrais dossiers, avec vos outils. Finançables OPCO.",
+    description: "Formations IA pour vos équipes et coaching individuel pour dirigeants. Des parcours sur vos vrais dossiers, avec vos outils et un suivi après la formation.",
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/formation-ia/',
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Formation IA pour entreprise | Althoce',
-    description: "Deux formations d'une journée pour former vos équipes à l'IA générative. Sur vos vrais dossiers, avec vos outils. Finançables OPCO.",
+    description: "Formations IA pour vos équipes et coaching individuel pour dirigeants. Des parcours sur vos vrais dossiers, avec vos outils et un suivi après la formation.",
   },
   alternates: {
     canonical: 'https://althoce.com/services/formation-ia/',
@@ -38,7 +39,7 @@ const jsonLd = {
       "@type": "Service",
       "@id": "https://althoce.com/services/formation-ia/#service",
       "name": "Formation IA pour entreprise",
-      "description": "Deux formations indépendantes d'une journée pour former les équipes des PME et ETI françaises à l'IA générative. Sur vos vrais dossiers, avec vos outils. Finançables OPCO.",
+      "description": "Formations IA pour vos équipes et coaching individuel pour dirigeants. Des parcours sur vos vrais dossiers, avec vos outils et un suivi après la formation.",
       "url": "https://althoce.com/services/formation-ia/",
       "provider": {
         "@type": "Organization",
@@ -53,6 +54,7 @@ const jsonLd = {
       "@type": "ItemList",
       "name": "Formations IA Althoce",
       "itemListElement": [
+        { "@type": "ListItem", "position": 3, "name": "Coaching IA Dirigeant", "url": "https://althoce.com/services/formation-ia/coaching-dirigeant/" },
         {
           "@type": "ListItem",
           "position": 1,
@@ -75,41 +77,7 @@ const jsonLd = {
         { "@type": "ListItem", "position": 3, "name": "Formation IA", "item": "https://althoce.com/services/formation-ia/" }
       ]
     },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Faut-il des compétences techniques ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Non pour la formation Fondamentaux, aucun prérequis. La formation Avancée demande une pratique régulière d'un outil IA. Un questionnaire de vérification est envoyé en amont." }
-        },
-        {
-          "@type": "Question",
-          "name": "Sur quel outil se déroule la formation ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sur celui que vos équipes utilisent déjà, ChatGPT ou Claude. Si le choix n'est pas encore fait, nous vous aidons à le poser pendant le cadrage." }
-        },
-        {
-          "@type": "Question",
-          "name": "Peut-on former plus de 10 personnes ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Oui, en organisant plusieurs sessions. Nous limitons à 10 participants pour garantir un accompagnement individuel pendant les ateliers." }
-        },
-        {
-          "@type": "Question",
-          "name": "Quel délai faut-il prévoir ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Deux à trois semaines entre le premier échange et la session : cadrage, questionnaire aux participants, adaptation des supports et montage du dossier de financement si besoin." }
-        },
-        {
-          "@type": "Question",
-          "name": "Les formations sont-elles accessibles aux personnes en situation de handicap ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Contactez-nous en amont pour que nous préparions les aménagements nécessaires." }
-        },
-        {
-          "@type": "Question",
-          "name": "Que se passe-t-il après la formation ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Une visio de suivi est prévue à 30 jours. Beaucoup de clients enchaînent ensuite sur un projet d'automatisation concret, souvent identifié pendant la formation." }
-        }
-      ]
-    }
+    { "@type": "FAQPage", "mainEntity": formationFaq.map(item => ({ "@type": "Question", "name": item.q, "acceptedAnswer": { "@type": "Answer", "text": item.a } })) }
   ]
 };
 

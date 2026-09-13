@@ -1,16 +1,17 @@
+import { aboutFaqs } from '@/lib/cabinet-content';
 import type { Metadata } from 'next';
 import AProposPageClient from '@/components/AProposPageClient';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "L'histoire et la culture d'Althoce",
-  description: "Althoce, agence IA française d'origine bordelaise. Mission : démocratiser l'IA responsable pour les PME. Souveraineté France, anti-biais documenté.",
+  description: "Althoce, cabinet IA d’origine bordelaise : conseil, formations IA, agents IA et automatisation pour les PME. Une équipe engagée, du diagnostic au suivi des usages.",
   keywords: "qui est Althoce, équipe Althoce, histoire Althoce, culture Althoce, agence IA Bordeaux histoire, Althoce origine",
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://althoce.com/a-propos/' },
   openGraph: {
     title: "L'histoire et la culture d'Althoce | Althoce",
-    description: "Agence IA française d'origine bordelaise. Histoire, culture d'équipe et valeurs : démocratiser l'IA responsable dans les PME françaises.",
+    description: "Découvrez Althoce, cabinet IA bordelais : une approche humaine du conseil, de la formation et de l’automatisation pour les PME.",
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/a-propos/',
@@ -35,7 +36,7 @@ const jsonLd = {
       "legalName": "ALTHOCE CONSEIL",
       "url": "https://althoce.com/",
       "logo": "https://althoce.com/logo.svg",
-      "description": "Agence IA française d'origine bordelaise. Mission : démocratiser l'usage de l'IA dans les entreprises françaises de manière responsable. +150 PME équipées.",
+      "description": "Cabinet IA d’origine bordelaise, Althoce accompagne les PME avec le conseil, les formations IA, les agents IA et l’automatisation, du diagnostic au suivi des usages.",
       "foundingDate": "2025",
       "address": {
         "@type": "PostalAddress",
@@ -62,12 +63,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "Comment Althoce est-elle organisée au quotidien ?", "acceptedAnswer": { "@type": "Answer", "text": "Un noyau permanent qui arbitre collectivement les sujets stratégiques, et un réseau de consultants spécialisés mobilisés selon les missions. Pas de pyramide, pas de département stratégie déconnecté." } },
-        { "@type": "Question", "name": "Est-ce qu'Althoce recrute ?", "acceptedAnswer": { "@type": "Answer", "text": "L'équipe grandit avec ses missions. Développeurs IA seniors, experts métier sectoriels avec expérience PME/ETI, candidatures à espoir@contact.althoce.com." } },
-        { "@type": "Question", "name": "Pourquoi Bordeaux ?", "acceptedAnswer": { "@type": "Answer", "text": "Ancrage culturel et professionnel : tissu PME dense, exigeant, où on attend du concret et où la parole vaut le contrat. ADN bordelais, intervention partout en France." } },
-        { "@type": "Question", "name": "Quelles sont les ambitions d'Althoce ?", "acceptedAnswer": { "@type": "Answer", "text": "Densifier le portefeuille français (200, 500, 1000 PME équipées d'ici 3 ans), étendre le réseau de consultants partenaires, approfondir l'expertise sectorielle sur les verticales déjà signature." } },
-      ],
+      "mainEntity": aboutFaqs.map(item => ({ "@type": "Question", "name": item.q, "acceptedAnswer": { "@type": "Answer", "text": item.a } })),
     },
   ],
 };
@@ -80,7 +76,7 @@ export default function AProposPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AProposPageClient />
-      <Footer showCta={true} />
+      <Footer showCta={true} positioning="cabinet" />
     </>
   );
 }

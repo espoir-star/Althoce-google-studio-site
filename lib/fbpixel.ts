@@ -8,6 +8,7 @@ type FbqParams = Record<string, unknown>;
 
 export function trackFb(event: string, params?: FbqParams): void {
   if (typeof window === 'undefined') return;
+  try { if (localStorage.getItem('althoce-marketing-consent') !== 'yes') return; } catch { return; }
   const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
   if (typeof fbq !== 'function') return;
   if (params) fbq('track', event, params);

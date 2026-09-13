@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
-import AgenceIALyonPageClient from '@/components/AgenceIALyonPageClient';
+import CityPage, { NationalPage, CitySchema } from '@/components/cities/CityPage';
+import { cityStories } from '@/lib/cities-content';
 import Footer from '@/components/Footer';
-
-export const metadata: Metadata = {
-  title: "Agence IA à Lyon : automatisation PME",
-  description: "Althoce, agence IA à Lyon : agents IA sur mesure, automatisation et formation pour les PME et ETI. Souverain, France. 30 min offertes.",
-  keywords: [
+const story=cityStories.find(x=>x.slug==="lyon")!;
+export const metadata:Metadata={...{"title": "Agence IA à Lyon : automatisation PME", "description": "Conseil, formations IA et agents sur mesure pour les entreprises à Lyon. Althoce vous accompagne du diagnostic au suivi.", "alternates": {"canonical": "https://althoce.com/agence-ia-lyon/"}, "openGraph": {"title": "Agence IA à Lyon : automatisation PME", "description": "Conseil, formations IA et agents sur mesure pour les entreprises à Lyon. Althoce vous accompagne du diagnostic au suivi.", "url": "https://althoce.com/agence-ia-lyon/", "type": "website", "locale": "fr_FR", "images": ["/og-default.png"]}, "twitter": {"card": "summary_large_image", "title": "Agence IA à Lyon : automatisation PME", "description": "Conseil, formations IA et agents sur mesure pour les entreprises à Lyon. Althoce vous accompagne du diagnostic au suivi."}},keywords:[
     'agence IA Lyon',
     'agence IA Auvergne-Rhône-Alpes',
     'consultant IA Lyon',
@@ -14,116 +12,5 @@ export const metadata: Metadata = {
     'agent IA Lyon',
     'formation IA Lyon',
     'IA biotech Lyon',
-  ],
-  openGraph: {
-    title: "Agence IA à Lyon : agents IA, automatisation et formation pour PME lyonnaises | Althoce",
-    description: "L'agence IA française qui accompagne les PME lyonnaises. Cas signature cabinet comptable Lyon : ×2 capacité. Présentiel à Lyon + distanciel, souveraineté France.",
-    type: 'website',
-    locale: 'fr_FR',
-    url: 'https://althoce.com/agence-ia-lyon/',
-    images: [
-      {
-        url: '/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
-      },
-    ],
-},
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Agence IA Lyon · Agents IA & Automatisation PME lyonnaises | Althoce',
-    description: '×2 capacité cabinet comptable lyonnais · Présentiel possible · Premier agent en 1 semaine · Souveraineté France garantie.',
-  },
-  alternates: {
-    canonical: 'https://althoce.com/agence-ia-lyon/',
-  },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://althoce.com/agence-ia-lyon/#localbusiness",
-      "name": "Althoce — Agence IA à Lyon",
-      "description": "Agence IA française qui accompagne les PME et ETI à Lyon et en Auvergne-Rhône-Alpes. Cas signature cabinet comptable lyonnais ×2 capacité. Présentiel à Lyon, distanciel, formation IA, souveraineté France.",
-      "url": "https://althoce.com/agence-ia-lyon/",
-      "image": "https://althoce.com/og-default.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lyon",
-        "addressRegion": "Auvergne-Rhône-Alpes",
-        "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "45.7640",
-        "longitude": "4.8357"
-      },
-      "areaServed": [
-        { "@type": "City", "name": "Lyon" },
-        { "@type": "AdministrativeArea", "name": "Métropole de Lyon" },
-        { "@type": "AdministrativeArea", "name": "Auvergne-Rhône-Alpes" },
-        { "@type": "Country", "name": "France" }
-      ],
-      "serviceType": "Agence IA, agents IA, automatisation et formation pour PME et ETI"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://althoce.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Agences", "item": "https://althoce.com/agences/" },
-        { "@type": "ListItem", "position": 3, "name": "Lyon", "item": "https://althoce.com/agence-ia-lyon/" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Présentiel ou distanciel à Lyon : différence pour mon projet ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Aucune sur qualité et délais. Présentiel pertinent en cadrage à Part-Dieu, Confluence ou métropole. Build en distanciel structuré avec points hebdomadaires." }
-        },
-        {
-          "@type": "Question",
-          "name": "Avez-vous un bureau permanent à Lyon ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Pas de bureau permanent. Espaces partenaires Part-Dieu ou Confluence pour RDV présentiels. Déplacements réguliers dans la métropole et en Auvergne-Rhône-Alpes." }
-        },
-        {
-          "@type": "Question",
-          "name": "Proposez-vous des formations IA pour mes équipes lyonnaises ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Ateliers 4h à 21h, présentiel à Lyon ou distanciel synchrone, programme adapté par métier." }
-        },
-        {
-          "@type": "Question",
-          "name": "Mes données restent-elles en France si je travaille avec Althoce à Lyon ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Oui par défaut. Mistral hébergé France (OVH). Particulièrement strict pour biotech Gerland, pharma (Sanofi Pasteur, BioMérieux), banque et industrie chimique." }
-        },
-        {
-          "@type": "Question",
-          "name": "Quelle est la différence avec les cabinets de conseil lyonnais ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Délai (1 semaine vs mois), livrable (code de production, pas un PowerPoint), souveraineté France standard par défaut." }
-        },
-        {
-          "@type": "Question",
-          "name": "Avez-vous des clients à Lyon et en Auvergne-Rhône-Alpes ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Cas signature cabinet comptable lyonnais (×2 capacité). Avocats Part-Dieu, ETI industrielles régionales, biotech Gerland, SaaS Confluence et Vaise." }
-        }
-      ]
-    }
-  ]
-};
-
-export default function AgenceIALyonPage() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <AgenceIALyonPageClient />
-      <Footer showCta={false} />
-    </>
-  );
-}
+  ]};
+export default function Page(){return <><CitySchema story={story}/><CityPage story={story}/><Footer showCta={false}/></>}

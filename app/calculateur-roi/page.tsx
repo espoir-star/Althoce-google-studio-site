@@ -3,7 +3,8 @@ import CalculateurROIPageClient from '@/components/CalculateurROIPageClient';
 
 export const metadata: Metadata = {
   title: 'Calculateur ROI Agents IA',
-  description: "Calculez en 3 minutes les économies qu'un agent IA Althoce ferait à votre entreprise. Méthodologie transparente, hypothèses visibles.",
+  description: "Estimez le temps que des usages IA sur mesure pourraient libérer dans votre entreprise. Simulation indicative, hypothèses et coûts du modèle visibles.",
+  alternates: { canonical: 'https://althoce.com/calculateur-roi/' },
 };
 
 export default function CalculateurROIPage() {

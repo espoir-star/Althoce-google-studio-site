@@ -100,12 +100,13 @@ export function Report({ profile, lead, agents, total, onBackToCalc }: {
             color: T.text, padding: isMobile ? '8px 14px' : '10px 16px', borderRadius: 99,
             fontSize: isMobile ? 12 : 13, cursor: 'pointer', fontWeight: 600, fontFamily: T.font,
           }}>Télécharger PDF</button>
-          <CTA size="sm" href="/contact/">Réserver mon audit 30 min</CTA>
+          <CTA size="sm" href="/contact/">Réserver mon pré-audit offert</CTA>
         </div>
       </header>
 
 
       <main className="report-main" style={{ maxWidth: 1100, margin: '0 auto', padding: `${isMobile ? 32 : 64}px ${px}px 120px` }}>
+        <p style={{padding:20, background:"#eef3fc", color:"#344b6c", lineHeight:1.7}}>Cette simulation illustre des usages à concevoir sur mesure. Les coûts fixes du modèle (1 000 € de mise en place et 100 €/mois par agent) ne sont pas un devis Althoce. Les gains estimés et le temps valorisé restent à vérifier dans votre contexte.</p>
         <ReportHero profile={profile} lead={lead} total={total} agents={agents} />
         <Top3Impacts profile={profile} total={total} agents={agents} />
         <PolesTransformes profile={profile} agents={agents} />
@@ -285,9 +286,9 @@ function ReportHero({ profile, lead, total, agents }: { profile: Profile; lead: 
         </p>
       </div>
       <div className="report-hero-grid" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? 8 : 14 }}>
-        <HeroStat big label="Économies / an" value={fmtEur(total.gainAnnuel, { short: true })} sub={`${fmtEur(total.gainAnnuel * 0.85, { short: true })} → ${fmtEur(total.gainAnnuel * 1.15, { short: true })}`} />
+        <HeroStat big label="Gains estimés / an" value={fmtEur(total.gainAnnuel, { short: true })} sub={`${fmtEur(total.gainAnnuel * 0.85, { short: true })} → ${fmtEur(total.gainAnnuel * 1.15, { short: true })}`} />
         <HeroStat label="Heures / sem" value={`${fmtNum(total.heuresSemaine, 0)} h`} sub={`~${fmtNum(etp, 1)} ETP libéré${etp > 1 ? 's' : ''}`} />
-        <HeroStat label="Agents activés" value={`${agents.length}`} sub={`sur ${profile.polesActifs.length} pôle${profile.polesActifs.length > 1 ? 's' : ''}`} />
+        <HeroStat label="Usages simulés" value={`${agents.length}`} sub={`sur ${profile.polesActifs.length} pôle${profile.polesActifs.length > 1 ? 's' : ''}`} />
         <HeroStat label="Capacité récupérée" value={`+${pct}%`} sub="du temps perdu" />
       </div>
     </section>
@@ -731,7 +732,7 @@ function AgentDetailsValue({ agents, profile }: { agents: Agent[]; profile: Prof
                 <p style={{ margin: '0 0 16px', fontSize: 13, color: T.textSoft, lineHeight: 1.6 }}>{a.description}</p>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: T.border, borderRadius: T.r, overflow: 'hidden' }}>
                   <ACell label="Heures rendues" v={`${fmtNum(r.heuresSemaine, 0)} h /sem`} accent />
-                  <ACell label="Économies / an" v={fmtEur(r.gainMensuel * 12, { short: true })} accent />
+                  <ACell label="Gains estimés / an" v={fmtEur(r.gainMensuel * 12, { short: true })} accent />
                   <ACell label="Adoption visée" v={`${Math.round(a.tauxAdoption * 100)}%`} />
                   <ACell label="Délai de mise en route" v={`${a.delaiJours} jours`} />
                 </div>

@@ -5,16 +5,11 @@ import Image from 'next/image';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import { extractToc } from '@/lib/extract-toc';
 import TableOfContents from '@/components/blog/TableOfContents';
-import BlogPostCTA from '@/components/BlogPostCTA';
 import Footer from '@/components/Footer';
-import { ArrowLeft } from 'lucide-react';
-
-const CATEGORY_STYLES: Record<string, { bg: string; color: string; border: string }> = {
-  "Cas d'usage":    { bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
-  "Guide pratique": { bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' },
-  "Décryptage":     { bg: '#fefce8', color: '#a16207', border: '#fef08a' },
-  "Coulisses":      { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
-};
+import { ArrowUpRight } from 'lucide-react';
+import { PreAuditCTA } from '@/components/brand/Sections';
+import b from '@/components/brand/Brand.module.css';
+import styles from '@/components/blog/Blog.module.css';
 
 export const revalidate = 3600; // Revalide toutes les heures pour la publication différée
 
@@ -63,7 +58,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const toc = extractToc(post.rawContent);
+  const toc = extractToc(post.content);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -93,7 +88,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
       },
     },
     "isPartOf": {
-      "@id": "https://althoce.com/blog/#blog",
+      "@id": "https://althoce.com/blog#blog",
     },
     "articleSection": post.category,
     "keywords": post.category,
@@ -103,108 +98,28 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
     },
   };
 
-  return (
-    <>
-      <style>{`
-        .art-page    { padding-top: 96px; padding-bottom: 80px; }
-        .art-wrap    { padding: 0 24px; }
-        .art-card    { padding: 40px 48px; }
-        .art-excerpt { font-size: 17px; }
-        @media (max-width: 768px) {
-          .art-page    { padding-top: 80px; padding-bottom: 48px; }
-          .art-wrap    { padding: 0 16px; }
-          .art-card    { padding: 24px 20px; }
-          .art-excerpt { font-size: 15px; }
-        }
-      `}</style>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <div className="art-page" style={{ minHeight: '100vh', background: '#fafafa' }}>
-        <div className="art-wrap" style={{ maxWidth: 1200, margin: '0 auto' }}>
-
-          {/* Retour au blog */}
-          <Link
-            href="/blog/"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#52525b', fontSize: 14, fontWeight: 600, textDecoration: 'none', marginBottom: 32 }}
-          >
-            <ArrowLeft style={{ width: 16, height: 16 }} />
-            Retour au blog
-          </Link>
-
-          {/* Grille : TOC gauche (desktop) + contenu principal */}
-          <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10">
-
-            {/* Sidebar TOC — masquée sur mobile, sticky sur le grid item lui-même */}
-            <aside
-              className="hidden lg:block"
-              style={{
-                position: 'sticky',
-                top: 108,
-                alignSelf: 'start',
-                maxHeight: 'calc(100vh - 7rem)',
-                overflowY: 'auto',
-                minWidth: 0,
-              }}
-            >
-              <TableOfContents items={toc} />
-            </aside>
-
-            {/* Colonne principale */}
-            <div style={{ minWidth: 0 }}>
-
-              {/* Header article */}
-              <div className="art-card" style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', marginBottom: 20 }}>
-                {(() => {
-                  const cs = CATEGORY_STYLES[post.category] ?? { bg: '#f4f4f5', color: '#52525b', border: '#e4e4e7' };
-                  return (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10, marginBottom: 24 }}>
-                      <span style={{ padding: '4px 12px', borderRadius: 9999, fontSize: 12, fontWeight: 700, background: cs.bg, color: cs.color, border: `1px solid ${cs.border}` }}>
-                        {post.category}
-                      </span>
-                      <span style={{ color: '#d4d4d8' }}>·</span>
-                      <span style={{ fontSize: 13, color: '#a1a1aa' }}>{post.readingTime}</span>
-                      <span style={{ color: '#d4d4d8' }}>·</span>
-                      <span style={{ fontSize: 13, color: '#a1a1aa' }}>
-                        {new Date(post.publishedAt ?? post.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
-                      </span>
-                    </div>
-                  );
-                })()}
-                <h1 style={{ fontSize: 'clamp(24px,3vw,36px)', fontWeight: 800, letterSpacing: '-.03em', color: '#09090b', marginBottom: 16, lineHeight: 1.2 }}>
-                  {post.title}
-                </h1>
-                <p className="art-excerpt" style={{ color: '#52525b', lineHeight: 1.7, borderLeft: '3px solid #2563eb', paddingLeft: 16 }}>
-                  {post.excerpt}
-                </p>
-              </div>
-
-              {/* Cover image */}
-              {post.image && (
-                <div style={{ borderRadius: 16, overflow: 'hidden', marginBottom: 20, border: '1px solid #e4e4e7' }}>
-                  <Image
-                    src={post.image}
-                    alt={post.imageAlt ?? post.title}
-                    width={900}
-                    height={473}
-                    style={{ width: '100%', height: 'auto', display: 'block' }}
-                    priority
-                  />
-                </div>
-              )}
-
-              {/* Contenu MDX/Prose */}
-              <div className="art-card" style={{ background: '#fff', borderRadius: 20, border: '1px solid #e4e4e7', marginBottom: 32 }}>
-                <div className="blog-prose" dangerouslySetInnerHTML={{ __html: post.content }} />
-              </div>
-
-              <BlogPostCTA />
-            </div>
+  const related = getAllPosts().filter(item=>item.slug!==post.slug).slice(0,2);
+  return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}/>
+    <main className={b.page}>
+      <article className={styles.article}><div className={b.container}>
+        <nav className={b.breadcrumb} aria-label="Fil d’Ariane"><Link href="/">Accueil</Link><span>/</span><Link href="/blog/">Blog</Link><span>/</span><span aria-current="page">{post.category}</span></nav>
+        <header className={styles.articleHead}>
+          <div className={styles.meta}><span>{post.category}</span><span>{post.readingTime} de lecture</span><time dateTime={post.publishedAt ?? post.date}>{new Date(post.publishedAt ?? post.date).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Paris'})}</time></div>
+          <h1>{post.title}</h1><p>{post.excerpt}</p>
+        </header>
+        {post.image&&<div className={styles.articleImage}><Image src={post.image} alt={post.imageAlt ?? post.title} width={1200} height={630} priority sizes="(max-width:900px) 90vw, 920px"/></div>}
+        <div className={styles.reading}>
+          <aside className={styles.sidebar}><TableOfContents items={toc}/></aside>
+          <div className={styles.body}>
+            {toc.length>0&&<details className={styles.mobileToc}><summary>Dans cet article</summary><TableOfContents items={toc}/></details>}
+            <div className="blog-prose" dangerouslySetInnerHTML={{__html:post.content}}/>
+            {related.length>0&&<section className={styles.related}><h2>Pour poursuivre la réflexion.</h2>{related.map(item=><Link key={item.slug} href={`/blog/${item.slug}/`}>{item.title}<ArrowUpRight size={20} aria-hidden="true"/></Link>)}</section>}
           </div>
         </div>
-      </div>
-      <Footer showCta={false} />
-    </>
-  );
+      </div></article>
+      <PreAuditCTA/>
+    </main>
+    <Footer showCta={false}/>
+  </>;
 }

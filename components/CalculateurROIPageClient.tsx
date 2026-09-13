@@ -9,6 +9,10 @@ import { LivePanel } from '@/components/roi/RoiLivePanel';
 import { LeadModal } from '@/components/roi/RoiLeadModal';
 import { Report } from '@/components/roi/RoiReport';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
+import b from './brand/Brand.module.css';
+import f from './formation/Formation.module.css';
+import r from './roi/Calculator.module.css';
 
 const PROFILE_VERSION = 'v3';
 
@@ -200,7 +204,7 @@ export default function CalculateurROIPageClient() {
     setStep(n);
     setAnimKey(k => k + 1);
     setStepError(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('simulation')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   };
 
   const validateStep = (n: number): string | null => {
@@ -279,60 +283,10 @@ export default function CalculateurROIPageClient() {
     <div style={{ minHeight: '100vh', background: T.bg, color: T.text, fontFamily: T.font, position: 'relative' }}>
       <style>{CALC_CSS}</style>
 
-      {/* Subtle grid pattern */}
-      <div aria-hidden="true" style={{
-        position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(0,0,0,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.018) 1px,transparent 1px)',
-        backgroundSize: '48px 48px',
-        maskImage: 'radial-gradient(ellipse 90% 50% at 50% 0%,black,transparent)',
-      }} />
-
-      {/* Accent glow */}
-      <div aria-hidden="true" style={{
-        position: 'fixed', top: -200, left: '50%', transform: 'translateX(-50%)',
-        width: 900, height: 500, borderRadius: '50%',
-        background: 'radial-gradient(circle,rgba(37,99,235,.07) 0%,transparent 65%)',
-        filter: 'blur(60px)', zIndex: 0, pointerEvents: 'none',
-      }} />
-
-      {/* Hero */}
-      <section style={{
-        position: 'relative', zIndex: 1, maxWidth: 1320, margin: '0 auto',
-        padding: `${isMobile ? 32 : 64}px ${px}px ${isMobile ? 28 : 44}px`,
-        paddingTop: isMobile ? 110 : 144,
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: isMobile ? 20 : 28, flexWrap: 'wrap' }}>
-          <Eyebrow>Calculateur ROI · Agents IA</Eyebrow>
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 6, padding: '5px 12px',
-            borderRadius: 9999, background: 'rgba(34,197,94,.08)', border: '1px solid rgba(34,197,94,.25)',
-          }}>
-            <span style={{ width: 6, height: 6, borderRadius: 99, background: T.good, animation: 'alt-pulse-dot 1.6s infinite', display: 'inline-block' }} />
-            <span style={{ fontFamily: T.mono, fontSize: 10, fontWeight: 700, color: T.good, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              {isMobile ? 'Live' : 'Calcul en direct'}
-            </span>
-          </div>
-        </div>
-
-        <h1 style={{ margin: 0, fontSize: 'clamp(30px,4.5vw,60px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.07, maxWidth: 900, color: T.text }}>
-          Combien un agent IA Althoce ferait gagner à{' '}
-          <span style={{ color: T.accent }}>votre entreprise</span>&nbsp;?
-        </h1>
-        <p style={{ margin: '16px 0 0', fontSize: isMobile ? 15 : 17, color: T.textSoft, maxWidth: 620, lineHeight: 1.72 }}>
-          Réponse personnalisée en 3 minutes. Calcul transparent, hypothèses visibles qui s&apos;animent à chaque réponse.
-        </p>
-      </section>
+      <section className={`${b.page} ${f.hero}`}><div className={`${b.container} ${f.grid}`}><div><nav className={b.breadcrumb} aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>Calculateur ROI</span></nav><h1>Quel temps pourriez-vous<br/><span>retrouver avec l’IA ?</span></h1><p className={b.lead}>Explorez un scénario à partir de votre organisation. Les agents proposés illustrent des usages possibles : votre solution sera conçue sur mesure.</p><p className={f.note}>Les gains sont des estimations à confronter au terrain. Les coûts du modèle — 1 000 € de mise en place et 100 €/mois par agent — sont des hypothèses de simulation, pas les tarifs d’Althoce. Le temps valorisé ne constitue pas une économie de trésorerie automatique.</p></div><div className={f.photo}><Image src="/images/services/diagnostic.webp" alt="Deux collègues examinent des documents pour comprendre les priorités de leur entreprise." fill priority sizes="(max-width:900px) 90vw, 50vw"/></div></div></section>
 
       {/* Split layout */}
-      <div style={{
-        position: 'relative', zIndex: 1,
-        maxWidth: 1320, margin: '0 auto',
-        padding: `0 ${px}px ${isMobile ? 120 : 140}px`,
-        display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : 'minmax(0,1.35fr) minmax(360px,1fr)',
-        gap: isMobile ? 16 : 36,
-        alignItems: 'flex-start',
-      }}>
+      <div id="simulation" className={r.layout}>
         <main>
           {/* Step progress */}
           <StepProgress step={step} onGoTo={goTo} isMobile={isMobile} />
@@ -387,7 +341,7 @@ export default function CalculateurROIPageClient() {
           <div style={{
             display: 'flex',
             justifyContent: step > 1 ? 'space-between' : 'flex-end',
-            alignItems: 'center',
+            alignItems: 'center', flexWrap: 'wrap',
             marginTop: 24, gap: 12,
           }}>
             {step > 1 && (

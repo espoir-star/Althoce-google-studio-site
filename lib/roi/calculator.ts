@@ -182,11 +182,10 @@ export async function submitLead(payload: Record<string, unknown>): Promise<{ ok
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    return await response.json();
+    const result = await response.json();
+    return response.ok ? result : { ok: false, error: result.error || 'Envoi impossible. Veuillez réessayer.' };
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : String(err);
-    console.error('[submitLead] Erreur réseau :', msg);
-    return { ok: false, error: msg };
+    return { ok: false, error: 'Connexion impossible. Veuillez réessayer.' };
   }
 }
 
@@ -230,7 +229,7 @@ export function buildLeadPayload(
     nb_agents_inclus: activeAgents.length,
     nb_agents_marques: (profile.agentsMarques || []).length,
     consentement_rgpd: formData.consentement === true,
-    source_url: typeof window !== 'undefined' ? window.location.href : '',
+    source_url: typeof window !== 'undefined' ? window.location.origin + window.location.pathname : '',
     user_agent: typeof navigator !== 'undefined' ? navigator.userAgent.slice(0, 200) : '',
   };
 }

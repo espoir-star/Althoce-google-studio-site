@@ -1,0 +1,5 @@
+.layout { position: relative; z-index: 1; max-width: 1320px; margin: 0 auto; padding: 0 40px 120px; display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 32px; align-items: start; scroll-margin-top: 110px; }
+.layout main { min-width: 0; }
+.layout button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
+@media(max-width:1099px) { .layout { max-width: 850px; grid-template-columns: minmax(0,1fr); padding: 0 28px 120px; } }
+@media(max-width:599px) { .layout { padding: 0 16px 120px; } }

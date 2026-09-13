@@ -14,8 +14,8 @@ keywords:
   - consultant ia lille
   - automatisation pme lille
   - ia hauts-de-france
-image: "/blog/covers/agence-ia-lille-cover.png"
-imageAlt: "Article Althoce : Agence IA à Lille — 7 critères pour choisir son partenaire en 2026"
+image: "/images/blog/partenaire.webp"
+imageAlt: "Un échange de travail entre une dirigeante et des consultants dans un bureau en briques"
 canonicalUrl: "https://althoce.com/blog/agence-ia-lille-choisir-partenaire-2026/"
 ---
 
@@ -99,7 +99,9 @@ Mais ce n'est qu'une partie du potentiel d'un projet IA bien mené.
 
 Le vrai levier, c'est de pouvoir concevoir des agents IA **100% sur mesure** pour des processus spécifiques à votre entreprise. Pas des cas génériques qu'on retrouve dans tous les SaaS du marché, mais les processus métier qui font la particularité de votre activité et qui n'existent nulle part ailleurs sous la même forme.
 
-Chaque PME a ses propres règles métier, son vocabulaire interne, ses outils parfois propriétaires, son ton de marque, ses contraintes réglementaires sectorielles. Un agent générique acheté sur étagère ne saura jamais qu'un de vos comptes clients est codé « main verte » dans votre CRM pour signifier qu'il faut une signature de l'associé sur ses devis, ni que vos relances doivent éviter une tournure précise parce que vous avez eu un différend client il y a deux ans.
+Chaque PME a ses propres règles métier, son vocabulaire interne, ses outils parfois propriétaires, son ton de marque, ses contraintes réglementaires sectorielles.
+
+Un agent générique acheté sur étagère ne saura jamais qu'un de vos comptes clients est codé « main verte » dans votre CRM pour signifier qu'il faut une signature de l'associé sur ses devis, ni que vos relances doivent éviter une tournure précise parce que vous avez eu un différend client il y a deux ans.
 
 Un agent IA 100% sur mesure prend en charge :
 

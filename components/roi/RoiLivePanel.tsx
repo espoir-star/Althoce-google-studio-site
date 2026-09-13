@@ -63,7 +63,7 @@ function MetricCell({ label, value }: { label: string; value: string }) {
 export function LivePanel({ profile, recommended, onSubmit }: {
   profile: Profile; recommended: Agent[]; onSubmit: () => void;
 }) {
-  const { isMobile } = useResponsive();
+  const { isCompact } = useResponsive();
   const activeAgents = useMemo(
     () => recommended.filter(a => !profile.agentsDeselectionnes.includes(a.id)),
     [recommended, profile.agentsDeselectionnes],
@@ -72,13 +72,13 @@ export function LivePanel({ profile, recommended, onSubmit }: {
   const empty = activeAgents.length === 0 || profile.polesActifs.length === 0;
 
   // Mobile: fixed bottom bar
-  if (isMobile) {
+  if (isCompact) {
     return (
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
         background: 'rgba(255,255,255,.94)', backdropFilter: 'blur(20px)',
         borderTop: `1px solid ${T.border}`,
-        padding: '10px 20px 10px', display: 'flex', alignItems: 'center', gap: 12,
+        padding: '10px 16px max(10px, env(safe-area-inset-bottom))', display: 'flex', alignItems: 'center', gap: 12,
         boxShadow: '0 -4px 24px rgba(0,0,0,.08)',
       }} aria-live="polite">
         <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0 }}>
@@ -87,7 +87,7 @@ export function LivePanel({ profile, recommended, onSubmit }: {
         </div>
         {empty ? (
           <div style={{ flex: 1, fontSize: 13, color: T.textMuted, lineHeight: 1.3 }}>
-            Sélectionnez des pôles pour voir vos économies
+            Choisissez une équipe pour commencer
           </div>
         ) : (
           <div style={{ flex: 1 }}>
@@ -109,9 +109,9 @@ export function LivePanel({ profile, recommended, onSubmit }: {
       background: T.bgCard,
       border: `1px solid ${T.border}`,
       borderRadius: T.rXl,
-      padding: 28,
+      padding: 24,
       color: T.text,
-      boxShadow: '0 4px 24px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04)',
+      boxShadow: '0 10px 40px rgba(37,99,235,.06)',
       overflow: 'hidden',
     }} aria-live="polite">
       {/* Header */}
@@ -127,16 +127,14 @@ export function LivePanel({ profile, recommended, onSubmit }: {
 
       {/* Main metric — always visible */}
       {empty ? (
-        <div style={{ padding: '20px 0 12px' }}>
-          <div style={{ fontSize: 52, fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1, color: T.textFaint }}>—</div>
-          <div style={{ fontSize: 13, color: T.textSoft, marginTop: 14, lineHeight: 1.65, maxWidth: 260 }}>
-            Sélectionnez vos pôles et irritants pour voir vos économies annuelles s&apos;animer.
-          </div>
+        <div style={{ padding: '8px 0 4px' }}>
+          <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-.03em', lineHeight: 1.25 }}>Votre point de départ.</div>
+          <p style={{ fontSize: 14, color: T.textSoft, lineHeight: 1.65, margin: '12px 0 0' }}>Choisissez les équipes concernées. Votre estimation se précisera au fil des réponses.</p>
         </div>
       ) : (
         <div style={{ marginBottom: 4 }}>
           <div style={{ fontSize: 11, fontFamily: T.mono, color: T.accent, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, marginBottom: 6 }}>
-            Économies estimées / an
+            Gains estimés / an
           </div>
           <div style={{ fontSize: 56, fontWeight: 800, letterSpacing: '-0.045em', lineHeight: 1, color: T.accent }}>
             <AnimNumber value={total.gainAnnuel} format={v => fmtEur(v, { short: true })} duration={500} />
@@ -147,49 +145,16 @@ export function LivePanel({ profile, recommended, onSubmit }: {
         </div>
       )}
 
-      {/* Details — blurred when locked */}
-      {!empty && (
-        <div style={{ position: 'relative', marginTop: 20 }}>
-          <div style={{ filter: 'blur(5px)', userSelect: 'none', pointerEvents: 'none' }}>
-            <MetricGrid>
-              <MetricCell label="Heures / sem" value={`${fmtNum(total.heuresSemaine, 0)} h`} />
-              <MetricCell label="Heures / mois" value={`${fmtNum(total.heuresSemaine * 4.33, 0)} h`} />
-              <MetricCell label="Agents activés" value={`${activeAgents.length}`} />
-              <MetricCell label="Pôles transformés" value={`${profile.polesActifs.length}`} />
-            </MetricGrid>
-            <div>
-              <StatRow label="ROI net an 1" value={fmtEur(total.roiNetAn1, { short: true })} accent />
-              <StatRow label="Retour sur invest." value={`~${Math.max(1, Math.round(total.paybackMois))} mois`} />
-            </div>
-            <CapaciteBar heuresGaspillees={total.heuresGaspillees} heuresRendues={total.heuresSemaine} />
-          </div>
-
-          <div style={{
-              position: 'absolute', inset: 0,
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-              gap: 10, padding: 16,
-            }}>
-              <div style={{
-                width: 40, height: 40, borderRadius: '50%',
-                background: 'rgba(37,99,235,.1)', border: '1px solid rgba(37,99,235,.25)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18,
-              }}>🔒</div>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 14, fontWeight: 700, letterSpacing: '-0.02em', color: T.text, marginBottom: 4 }}>
-                  Rapport détaillé
-                </div>
-                <div style={{ fontSize: 12, color: T.textSoft, lineHeight: 1.6, maxWidth: 190 }}>
-                  Complétez les étapes pour débloquer l&apos;analyse complète.
-                </div>
-              </div>
-            </div>
-        </div>
-      )}
+      {!empty && <div style={{ marginTop: 20 }}>
+        <StatRow label="Temps estimé / semaine" value={`${fmtNum(total.heuresSemaine, 0)} h`} accent />
+        <StatRow label="Usages simulés" value={`${activeAgents.length}`} />
+        <p style={{ fontSize: 12, lineHeight: 1.6, color: T.textMuted, margin: '16px 0 0' }}>Une première indication, à valider avec vos équipes. Le rapport détaille les hypothèses et le scénario.</p>
+      </div>}
 
       {/* CTA */}
       <div style={{ marginTop: 20 }}>
-        <CTA size="lg" onClick={onSubmit} style={{ width: '100%', justifyContent: 'center' }}>
-          Voir mon rapport ROI
+        <CTA disabled={empty} size="md" onClick={onSubmit} style={{ width: '100%', justifyContent: 'center' }}>
+          Voir mon rapport
         </CTA>
         <div style={{ fontSize: 11, color: T.textFaint, textAlign: 'center', marginTop: 10, fontFamily: T.mono, fontWeight: 500, letterSpacing: '0.03em' }}>
           Calcul transparent · hypothèses visibles

@@ -59,9 +59,9 @@ export const fondamentaux: FormationDetail = {
   objectifs: [
     "Expliquer le fonctionnement d'un LLM et identifier ses limites : hallucinations, biais, fraîcheur des données",
     "Choisir le modèle d'IA adapté à chaque type de tâche",
-    'Rédiger des prompts structurés produisant des résultats exploitables du premier coup',
+    'Rédiger des prompts structurés puis vérifier et améliorer les résultats obtenus',
     'Appliquer l\'IA à au moins 3 tâches récurrentes de leur poste',
-    "Utiliser l'IA en conformité RGPD et IA Act, et identifier les données à ne jamais partager",
+    "Identifier les précautions liées aux données, au RGPD et à l’AI Act, et savoir quand demander un avis adapté",
   ],
   timeline: [
     {
@@ -157,7 +157,7 @@ export const fondamentaux: FormationDetail = {
   ctaBody:
     '30 minutes offertes pour cadrer votre besoin et valider le niveau de vos équipes.',
   mentions:
-    'Formation évaluée par quiz de positionnement et quiz final. Certificat de réalisation remis à chaque participant. Visio de suivi d\'une heure à 30 jours. Formation accessible aux personnes en situation de handicap, nous contacter en amont. Finançable OPCO.',
+    'Formation évaluée par quiz de positionnement et quiz final. Certificat de réalisation remis à chaque participant. Visio de suivi d\'une heure à 30 jours. Formation accessible aux personnes en situation de handicap, nous contacter en amont. Une prise en charge OPCO peut être étudiée via notre organisme partenaire, sous réserve des conditions du financeur.',
 };
 
 // ── Formation 2 : IA Avancée ─────────────────────────────────────
@@ -168,7 +168,7 @@ export const avancee: FormationDetail = {
   title: 'IA Avancée',
   breadcrumbLabel: 'IA Avancée',
   chapo:
-    "Une journée pour passer d'utilisateur à power-user : assistants IA sur mesure, prompting avancé, connexion de l'IA à vos outils et premier agent d'automatisation fonctionnel.",
+    "Une journée pour approfondir votre pratique : assistants IA personnalisés, prompts réutilisables et première automatisation guidée, à partir de vos besoins métier.",
   metaTitle: 'Formation IA Avancée',
   metaDescription:
     "Une journée pour créer vos assistants IA métier, connecter l'IA à vos outils et construire un agent d'automatisation fonctionnel.",
@@ -288,7 +288,7 @@ export const avancee: FormationDetail = {
   ctaBody:
     '30 minutes offertes pour vérifier les prérequis de vos équipes et cadrer les cas d\'usage à travailler.',
   mentions:
-    'Formation évaluée par quiz de positionnement, quiz final et évaluation des productions en atelier. Certificat de réalisation remis à chaque participant. Visio de suivi d\'une heure à 30 jours. Formation accessible aux personnes en situation de handicap, nous contacter en amont. Finançable OPCO.',
+    'Formation évaluée par quiz de positionnement, quiz final et évaluation des productions en atelier. Certificat de réalisation remis à chaque participant. Visio de suivi d\'une heure à 30 jours. Formation accessible aux personnes en situation de handicap, nous contacter en amont. Une prise en charge OPCO peut être étudiée via notre organisme partenaire, sous réserve des conditions du financeur.',
 };
 
 export const formations: Record<string, FormationDetail> = {
@@ -336,3 +336,30 @@ export function buildFormationJsonLd(f: FormationDetail) {
     ],
   };
 }
+
+export const formationFaq = [
+  {
+    "q": "Faut-il des compétences techniques ?",
+    "a": "Aucun prérequis pour IA Fondamentaux et le coaching IA Dirigeant. La formation Avancée demande une pratique régulière d'un outil IA. Un questionnaire de vérification est envoyé en amont."
+  },
+  {
+    "q": "Sur quel outil se déroule la formation ?",
+    "a": "Sur celui que vos équipes utilisent déjà, ChatGPT ou Claude. Si le choix n'est pas encore fait, nous vous aidons à le poser pendant le cadrage."
+  },
+  {
+    "q": "Peut-on former plus de 10 personnes ?",
+    "a": "Pour les formations collectives, oui, en organisant plusieurs sessions. Nous limitons à 10 participants pour garantir un accompagnement individuel pendant les ateliers."
+  },
+  {
+    "q": "Quel délai faut-il prévoir ?",
+    "a": "Le calendrier est convenu ensemble selon les disponibilités, le cadrage, la préparation des participants et les éventuelles démarches de financement."
+  },
+  {
+    "q": "Les formations sont-elles accessibles aux personnes en situation de handicap ?",
+    "a": "Oui. Contactez-nous en amont pour que nous préparions les aménagements nécessaires."
+  },
+  {
+    "q": "Que se passe-t-il après la formation ?",
+    "a": "Une visio de suivi est prévue à 30 jours : une heure pour les formations collectives, et un point sur la feuille de route après la dernière séance du coaching dirigeant. Une formation complémentaire ou un projet sur mesure peut être étudié selon les besoins."
+  }
+];

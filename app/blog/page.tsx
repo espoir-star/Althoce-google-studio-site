@@ -7,9 +7,9 @@ export const revalidate = 3600; // Revalide toutes les heures pour la publicatio
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: "Cas d'usage concrets, guides pratiques et décryptages sur l'IA et l'automatisation pour les PME et agences françaises.",
+  description: "Cas d'usage concrets, guides pratiques et décryptages sur l'IA et l'automatisation pour les PME et leurs équipes.",
   openGraph: {
-    title: 'Blog Althoce — Insights IA & Automatisation',
+    title: 'Blog Althoce — Comprendre et utiliser l’IA',
     url: 'https://althoce.com/blog',
     images: [
       {

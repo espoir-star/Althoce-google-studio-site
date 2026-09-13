@@ -1,0 +1,19 @@
+{
+  "pages": 10,
+  "build": "70 generated pages, passed",
+  "titles_canonicals_h1_counts_preserved": true,
+  "internal_links_valid": true,
+  "faq_synchronized": true,
+  "responsive_widths": [
+    320,
+    390,
+    768,
+    1024,
+    1440
+  ],
+  "responsive_pages": 10,
+  "overflow": false,
+  "keyboard_faq": true,
+  "photos_per_page": 2,
+  "publication": false
+}

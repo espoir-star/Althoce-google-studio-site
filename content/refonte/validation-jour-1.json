@@ -1,0 +1,20 @@
+{
+  "html_documents": 62,
+  "titles_preserved": true,
+  "canonicals_preserved": true,
+  "h1_counts_preserved": true,
+  "one_navigation_per_public_page": true,
+  "faq_schema_exact": [
+    "/",
+    "/a-propos/",
+    "/contact/"
+  ],
+  "responsive_widths": [
+    320,
+    390,
+    768,
+    1024,
+    1440
+  ],
+  "form_test": "native required-field validation only; no real submission"
+}

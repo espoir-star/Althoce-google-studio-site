@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import HomePageClient from '@/components/HomePageClient';
 import Footer from '@/components/Footer';
-import { faqsV2, servicesV2 } from '@/lib/data';
+import { homeFaqs, homeOffers } from '@/lib/home-content';
 
 export const metadata: Metadata = {
-  title: 'Althoce | Agence IA & Automatisation — Agents 100% Autonomes pour PME',
-  description: 'Althoce déploie des agents IA 100% autonomes pour PME et ETI françaises. +150 PME accompagnées, 9M€ économisés, -95% de saisie manuelle. Bordeaux.',
+  title: 'Althoce | Cabinet IA & Automatisation pour PME',
+  description: 'Althoce, cabinet IA à Bordeaux : diagnostic, automatisation, agents IA, formation et pilotage pour les PME. Des usages cadrés, déployés et suivis dans le temps.',
   openGraph: {
-    title: 'Althoce | Agence IA & Automatisation — Agents 100% Autonomes',
-    description: 'Des agents IA qui travaillent à votre place, 24h/24, sans supervision. +150 PME accompagnées, 9M€ économisés.',
+    title: 'Althoce | Cabinet IA & Automatisation pour PME',
+    description: 'Comprendre, équiper, automatiser et faire durer : diagnostic, agents IA, formation et suivi des usages pour les PME, cabinets et agences.',
     url: 'https://althoce.com/',
     images: [
       {
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     ],
 },
   twitter: {
-    title: 'Althoce | Agence IA & Automatisation pour PME',
-    description: 'Des agents IA 100% autonomes pour PME françaises. +150 clients, 9M€ économisés.',
+    title: 'Althoce | Cabinet IA & Automatisation pour PME',
+    description: 'Cabinet IA pour PME : diagnostic, automatisation, agents IA, formation et pilotage. Un accompagnement centré sur l’adoption.',
   },
   alternates: {
     canonical: 'https://althoce.com/',
@@ -35,7 +35,7 @@ const websiteSchema = {
   "@id": "https://althoce.com/#website",
   "name": "Althoce",
   "url": "https://althoce.com/",
-  "description": "Agents IA & Automatisation pour PME françaises",
+  "description": "Cabinet IA, conseil et automatisation pour PME françaises",
   "publisher": { "@id": "https://althoce.com/#organization" },
   "inLanguage": "fr-FR",
 };
@@ -46,7 +46,7 @@ const professionalServiceSchema = {
   "@id": "https://althoce.com/#service",
   "name": "Althoce",
   "url": "https://althoce.com/",
-  "description": "Conception d'agents IA et d'automatisations sur-mesure qui génèrent du ROI pour les PME françaises.",
+  "description": "Cabinet IA : conseil, conception d'agents IA et d'automatisations sur-mesure pour les PME françaises.",
   "image": "https://althoce.com/og-image.png",
   "telephone": "",
   "email": "contact@althoce.com",
@@ -69,8 +69,8 @@ const professionalServiceSchema = {
   "priceRange": "€€",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Services IA & Automatisation",
-    "itemListElement": servicesV2.map((s, i) => ({
+    "name": "Accompagnements IA & Automatisation",
+    "itemListElement": homeOffers.map((s, i) => ({
       "@type": "Offer",
       "position": i + 1,
       "name": s.title,
@@ -90,7 +90,7 @@ const professionalServiceSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqsV2.map(faq => ({
+  "mainEntity": homeFaqs.map(faq => ({
     "@type": "Question",
     "name": faq.q,
     "acceptedAnswer": {
@@ -116,7 +116,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <HomePageClient />
-      <Footer showCta={true} />
+      <Footer showCta={false} positioning="cabinet" />
     </>
   );
 }

@@ -397,6 +397,7 @@ body {
 
 /* ── prefers-reduced-motion ─────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
   .ticker,
   .ticker-slow {
     animation-duration: 0.01ms !important;

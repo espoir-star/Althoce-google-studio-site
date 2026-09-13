@@ -73,7 +73,10 @@ export function getAllPosts(): BlogPost[] {
 
     const slugger = new GithubSlugger();
     const htmlRaw = marked(rawContent) as string;
-    const htmlWithIds = addHeadingIds(htmlRaw, slugger);
+    const htmlWithIds = addHeadingIds(htmlRaw, slugger)
+      // A bold opening sentence becomes a visual subheading without changing
+      // heading levels, wording or table-of-contents anchors.
+      .replace(/<p>(<strong>[\s\S]*?<\/strong>)\s+(?=[^<]|<(?!\/p>))/g, '<p class="article-point">$1 ');
 
     posts.push({
       title: data.title ?? '',

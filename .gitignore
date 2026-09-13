@@ -39,3 +39,19 @@ PROMPT_*.md
 CLAUDE.md
 tsconfig.tsbuildinfo
 graphify-out/
+
+# Local credentials and agent workspaces
+.env.*
+!.env.example
+.codex/
+.agents/
+*.pem
+*.key
+*.p12
+*.pfx
+coverage/
+playwright-report/
+test-results/
+
+# Private historical prompts
+docs/archive/local/
