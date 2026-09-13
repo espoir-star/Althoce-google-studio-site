@@ -60,7 +60,7 @@ export default function AProposPageClient() {
           <article className={s.useful}><div className={s.focusMark} aria-hidden="true"><i /><i /><Check size={32} /></div><h3>Utile.</h3><p>La bonne solution répond à un vrai besoin. Parfois, elle est déjà dans vos outils.</p></article>
           <article className={s.clear}><div className={s.clearMark} aria-hidden="true"><span /><span /><span /></div><h3>Clair.</h3><p>Un cap partagé, un périmètre défini. Vous savez où nous allons, et pourquoi.</p></article>
           <article className={s.reliable}><div className={s.reliableMark} aria-hidden="true"><span /><span /><span /></div><h3>Fiable.</h3><p>Vos données, vos contraintes et votre cadre réglementaire guident le choix des outils.</p></article>
-          <article className={s.durable}><span className={s.durationMark} aria-hidden="true">↗</span><h3>Durable.</h3><p>Nous restons à vos côtés après le déploiement : transfert, maintenance et points de suivi à 30 et 90 jours.</p></article>
+          <article className={s.durable}><ArrowUpRight className={s.durationMark} aria-hidden="true" strokeWidth={1.2} /><h3>Durable.</h3><p>Nous restons à vos côtés après le déploiement : transfert, maintenance et points de suivi à 30 et 90 jours.</p></article>
         </div>
       </div>
     </section>

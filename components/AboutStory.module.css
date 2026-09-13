@@ -50,7 +50,8 @@
 .reliableMark { position: absolute; right: 36px; top: 30px; width: 96px; height: 102px; }
 .reliableMark span { position: absolute; width: 68px; height: 68px; border: 1px solid #8eafea; border-radius: 12px; transform: rotate(30deg); background: #eef3fc; }
 .reliableMark span:nth-child(2) { top: 15px; left: 12px; }.reliableMark span:nth-child(3) { top: 30px; left: 24px; }
-.durationMark { position: absolute; right: 22px; top: -45px; font-size: 200px; color: #ffffff30; line-height: 1.4; }
+.durationMark { position: absolute; right: 20px; top: 12px; width: 144px; height: 144px; color: #fff; opacity: .12; pointer-events: none; z-index: 0; }
+@media (max-width: 600px) { .durationMark { width: 96px; height: 96px; top: 20px; right: 18px; } }
 .territory { background: radial-gradient(ellipse at 10% 50%,#eaf1fc,transparent 65%); }
 .territoryGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
 .reach { display: flex; align-items: center; gap: 16px; color: #2459bd; font-size: 14px; padding-bottom: 20px; border-bottom: 1px solid #d7e2f3; }
