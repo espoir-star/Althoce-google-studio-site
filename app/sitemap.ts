@@ -14,6 +14,9 @@ const EXCLUDED = new Set([
   'api',
   'sitemap',
   'robots',
+  // Pages accessibles aux visiteurs mais volontairement non indexables.
+  'mentions-legales',
+  'confidentialite',
 ]);
 
 function getPriority(route: string): number {
@@ -81,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 1. Routes statiques scannées automatiquement depuis app/
   const staticRoutes = scanAppRoutes(APP_DIR).map(route => ({
     url: buildCanonicalUrl(route),
-    lastModified: now,
+    // Pas de date artificielle à chaque revalidation pour les pages statiques.
     changeFrequency: getChangeFreq(route),
     priority: getPriority(route),
   }));
