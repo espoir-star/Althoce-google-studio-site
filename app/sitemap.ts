@@ -80,8 +80,6 @@ function buildCanonicalUrl(route: string): string {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date().toISOString();
-
   // 1. Routes statiques scannées automatiquement depuis app/
   const staticRoutes = scanAppRoutes(APP_DIR).map(route => ({
     url: buildCanonicalUrl(route),
@@ -96,11 +94,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}/blog/${post.slug}/`,
     lastModified: post.publishedAt
       ? new Date(post.publishedAt).toISOString()
-      : (post.date ? new Date(post.date).toISOString() : now),
+      : (post.date ? new Date(post.date).toISOString() : undefined),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
   const sectorRoutes=sectorStories.map(d=>({url:`${BASE_URL}/secteurs/${d.slug}/`,changeFrequency:'monthly' as const,priority:0.7}));
-  return [...staticRoutes, ...blogRoutes, ...sectorRoutes];
+  return Array.from(new Map([...staticRoutes, ...blogRoutes, ...sectorRoutes].map(entry => [entry.url, entry])).values());
 }

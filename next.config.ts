@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
   // ───────────────────────────────────────────────────────────────
   trailingSlash: true,
   poweredByHeader: false,
+  // Le sitemap rescannant les routes lors de sa revalidation, conserver ces
+  // fichiers dans la fonction Vercel plutôt que dépendre du dossier de build.
+  outputFileTracingIncludes: {
+    "/sitemap.xml": ["./app/**/page.tsx"],
+  },
   async headers() {
     return [{ source: '/:path*', headers: [
       { key: 'X-Content-Type-Options', value: 'nosniff' },

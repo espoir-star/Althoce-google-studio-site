@@ -1,7 +1,5 @@
 User-agent: *
-Allow: /
+Disallow: /api/
 
-Disallow: /mentions-legales
-Disallow: /confidentialite
-
+# Les pages legales restent explorables pour permettre la lecture de noindex.
 Sitemap: https://althoce.com/sitemap.xml
