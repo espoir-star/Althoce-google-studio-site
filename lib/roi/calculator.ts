@@ -177,7 +177,7 @@ export function computeTotalROI(agents: Agent[], profil: Profile): ROITotal {
 
 export async function submitLead(payload: Record<string, unknown>): Promise<{ ok: boolean; score?: number; error?: string; dev?: boolean }> {
   try {
-    const response = await fetch('/api/roi-lead', {
+    const response = await fetch('/api/roi-lead/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),

@@ -78,7 +78,9 @@ export default function Footer({ showCta = true, positioning = 'cabinet' }: { sh
             {/* Logos certifications centrés */}
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 20 }}>
               <div style={{ background: '#fff', borderRadius: 16, padding: '14px 20px', display: 'inline-flex', alignItems: 'center' }}>
-                <img
+                <Image
+                  width={72}
+                  height={72}
                   src="/logos/French tech.png"
                   alt="La French Tech Bordeaux"
                   style={{ height: 72, width: 'auto', objectFit: 'contain', display: 'block' }}

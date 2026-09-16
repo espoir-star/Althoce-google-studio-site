@@ -31,7 +31,7 @@ export default function ContactForm() {
     if(state==='loading') return;
     setState('loading');
     try {
-      const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(form)});
+      const res=await fetch('/api/contact/',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(form)});
       setState(res.ok?'success':'error');
       if(res.ok) trackFb('Lead',{content_name:'Formulaire de contact',content_category:form.budget||undefined});
     } catch {setState('error');}

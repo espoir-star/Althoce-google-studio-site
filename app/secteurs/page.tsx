@@ -6,7 +6,7 @@ import { Breadcrumb, TextLink, PreAuditCTA } from '@/components/brand/Sections';
 import b from '@/components/brand/Brand.module.css';
 import s from '@/components/sectors/Sectors.module.css';
 const description='Finance, droit, marketing, immobilier, commerce, industrie et associations : conseil, formation et outils IA connectés à votre réalité métier avec Althoce.';
-export const metadata:Metadata={title:'L’IA adaptée à votre secteur',description,alternates:{canonical:'https://althoce.com/secteurs/'},openGraph:{title:'L’IA adaptée à votre secteur | Althoce',description,url:'https://althoce.com/secteurs/'},twitter:{title:'L’IA adaptée à votre secteur | Althoce',description}};
+export const metadata:Metadata={title:'L’IA adaptée à votre secteur',description,alternates:{canonical:'https://althoce.com/secteurs/'},openGraph:{title:'L’IA adaptée à votre secteur | Althoce',description,url:'https://althoce.com/secteurs/',images:[{url:'/images/sectors/finance-formation.webp',width:1400,height:933,alt:'Althoce : des agents IA et formations adaptés à votre secteur'}]},twitter:{card:'summary_large_image',title:'L’IA adaptée à votre secteur | Althoce',description,images:['/images/sectors/finance-formation.webp']}};
 const sectorSlugs:Record<string,string>={'Droit':'droit','Marketing & communication':'marketing-communication','Associations & fédérations':'associations','Immobilier':'immobilier','Commerce & distribution':'commerce-distribution','Industrie':'industrie'};
 const sectors=[
  {title:'Droit',icon:Scale,audience:'Avocats · Notaires · Directions juridiques',text:'Préparer la lecture des dossiers, comparer les clauses et retrouver les sources utiles.',before:'Un ensemble de contrats à relire',after:'Les points à examiner, organisés pour le juriste'},

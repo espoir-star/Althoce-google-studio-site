@@ -1,3 +1,4 @@
+import { withBotId } from 'botid/next/config';
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
@@ -16,6 +17,7 @@ const nextConfig: NextConfig = {
   // ───────────────────────────────────────────────────────────────
   trailingSlash: true,
   poweredByHeader: false,
+  images: { remotePatterns: [{ protocol: "https", hostname: "i.ibb.co" }] },
   // Le sitemap rescannant les routes lors de sa revalidation, conserver ces
   // fichiers dans la fonction Vercel plutôt que dépendre du dossier de build.
   outputFileTracingIncludes: {
@@ -100,4 +102,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default nextConfig
+export default withBotId(nextConfig)

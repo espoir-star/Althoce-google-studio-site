@@ -74,9 +74,11 @@ export function validateLead(body: Record<string, unknown>, kind: 'contact' | 'r
   }
   return payload;
 }
-export async function deliverLead(req: Request, kind: 'contact' | 'roi') {
+export async function deliverLead(req: Request, kind: 'contact' | 'roi', verifyHuman?: () => Promise<void>) {
   try {
-    const payload = validateLead(await readLead(req), kind);
+    const body = await readLead(req);
+    if (verifyHuman) await verifyHuman();
+    const payload = validateLead(body, kind);
     const endpoint = process.env[kind === 'contact' ? 'N8N_LEAD_WEBHOOK_URL' : 'ROI_LEAD_WEBHOOK_URL'];
     if (!endpoint || new URL(endpoint).protocol !== 'https:') throw new LeadError(503, 'Service momentanément indisponible.');
     const upstream = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(10000) });

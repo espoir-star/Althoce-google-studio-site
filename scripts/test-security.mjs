@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import ts from 'typescript';
 const source = ts.transpileModule(readFileSync(new URL('../lib/lead-security.ts', import.meta.url), 'utf8'), { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
-const { deliverLead } = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
+const { deliverLead, LeadError } = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
 const contact = { nom: 'Test', entreprise: 'Exemple', email: 'test@example.com', description: 'Demande de test' };
 const roi = { ...contact, prenom:'Test', telephone:'0600000000', consentement_rgpd:true, effectifs_par_pole:{commercial:2}, effectif:2, salaire_moyen:40000, roi_annuel:12000, gain_mensuel:1000, heures_rendues_sem:5, equivalent_etp:0.1, nb_agents_inclus:1, nb_agents_marques:0 };
 let sequence = 0, calls = 0, sent;
@@ -18,6 +18,17 @@ try {
   assert.equal((await deliverLead(request(contact,{'content-type':'text/plain'}),'contact')).status,415);
   assert.equal((await deliverLead(request('x'.repeat(32769),{},true),'contact')).status,413);
   assert.equal(calls,0,'Rejected requests must never reach a webhook');
+  for (const kind of ['contact','roi']) {
+    const before = calls;
+    for (const status of [403,503]) {
+      const blocked = await deliverLead(request(kind === 'contact' ? contact : roi),kind,async()=>{throw new LeadError(status,'Verification rejected');});
+      assert.equal(blocked.status,status);
+      assert.equal(calls,before,'Bot or unavailable verification must never reach the webhook');
+    }
+    let verified = false;
+    assert.equal((await deliverLead(request(kind === 'contact' ? contact : roi),kind,async()=>{verified=true;})).status,200);
+    assert.ok(verified,'Human verification must run before delivery');
+  }
   assert.equal((await deliverLead(request({...contact,injected:'discard'}),'contact')).status,200);
   assert.equal(sent.injected,undefined);
   assert.equal((await deliverLead(request({...roi,consentement_rgpd:false}),'roi')).status,400);
