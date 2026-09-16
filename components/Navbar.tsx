@@ -13,11 +13,13 @@ const groups = [
     {label:'Formation IA',text:'Faire grandir les compétences de vos équipes.',href:'/services/formation-ia/',icon:GraduationCap},
   ]},
   { label:'Ressources', id:'ressources', items:[
+    {label:'Nos guides',text:'Des ressources pratiques classées par secteur.',href:'/guides/',icon:BookOpen},
     {label:'Blog',text:'Des repères pour comprendre et avancer.',href:'/blog/',icon:BookOpen},
     {label:'Cas clients',text:'Des projets et leurs résultats sur le terrain.',href:'/cas-clients/',icon:Users},
     {label:'Calculateur ROI',text:'Explorer le potentiel de vos usages.',href:'/calculateur-roi/',icon:Calculator},
   ]},
   { label:'À propos', id:'apropos', items:[
+    {label:'Nos secteurs',text:'Des usages adaptés à votre activité.',href:'/secteurs/',icon:Compass},
     {label:'Le cabinet',text:'Notre approche et notre engagement.',href:'/a-propos/',icon:Building2},
     {label:'Contact',text:'Faisons connaissance autour de votre projet.',href:'/contact/',icon:MessageCircle},
   ]},

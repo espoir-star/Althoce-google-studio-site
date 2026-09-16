@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import type { MetadataRoute } from 'next';
+import { sectorStories } from '@/lib/sectors-content';
 import { getAllPosts } from '@/lib/blog';
 
 export const revalidate = 3600; // Revalide toutes les heures pour inclure les nouveaux articles
@@ -100,5 +101,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const sectorRoutes=sectorStories.map(d=>({url:`${BASE_URL}/secteurs/${d.slug}/`,changeFrequency:'monthly' as const,priority:0.7}));
+  return [...staticRoutes, ...blogRoutes, ...sectorRoutes];
 }

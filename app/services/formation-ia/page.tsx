@@ -1,3 +1,4 @@
+import {TrainingCityLinks} from '@/components/formation-cities/FormationCityPage';
 import { formationFaq } from '@/lib/formations';
 import type { Metadata } from 'next';
 import FormationIAPageClient from '@/components/FormationIAPageClient';
@@ -89,7 +90,7 @@ export default function FormationIAPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <FormationIAPageClient />
-      <Footer showCta={false} />
+      <TrainingCityLinks/><Footer showCta={false} />
     </>
   );
 }

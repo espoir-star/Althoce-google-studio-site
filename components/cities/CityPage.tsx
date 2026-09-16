@@ -20,7 +20,7 @@ export default function CityPage({story:d}:{story:CityStory}){return <main class
       <div>
         <h2 id="formations-title">Formations IA {cityLocation(d)}.<br/><span>Faites grandir les compétences.</span></h2>
         <p className={b.lead}>Pour vos équipes comme pour les dirigeants, nos formations IA partent de vos vrais dossiers. Apprenez à utiliser les outils avec recul et à transformer les premiers essais en habitudes utiles.</p>
-        <TextLink href="/services/formation-ia/">Découvrir les programmes de formation</TextLink>
+        <TextLink href={`/formation-ia-${d.slug}/`}>Découvrir les formations IA {cityLocation(d)}</TextLink>
       </div>
       <div className={s.formationPhoto}>
         <Image src="/images/services/formation.webp" alt="Des collaborateurs expérimentent l’IA ensemble pendant un atelier de formation" fill sizes="(max-width:900px) 90vw, 40vw"/>
