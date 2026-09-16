@@ -213,7 +213,7 @@ export default function PrivacyPageClient() {
                 <p>Vos données sont <strong>strictement confidentielles</strong>. Elles ne sont jamais vendues, ni partagées avec des tiers à des fins commerciales. Elles sont accessibles uniquement à&nbsp;:</p>
                 <ul>
                   <li><strong>Le personnel autorisé d'ALTHOCE CONSEIL</strong>, dans la stricte limite de leurs fonctions.</li>
-                  <li><strong>Vercel Inc.</strong> — hébergement du Site (États-Unis, voir sec. 06 ci-dessous).</li>
+                  <li><strong>Vercel Inc.</strong> — hébergement du Site et protection anti-bot des formulaires avec BotID (États-Unis, voir sec. 06 ci-dessous).</li>
                   <li><strong>Cal.com</strong> — outil de prise de rendez-vous. DPA disponible sur demande.</li>
                   <li><strong>Les autorités administratives ou judiciaires</strong> sur réquisition légale.</li>
                 </ul>
@@ -253,10 +253,11 @@ export default function PrivacyPageClient() {
                 <p>Lors de votre navigation sur le Site, nous utilisons différents types de cookies, soumis à des règles distinctes selon leur finalité.</p>
                 <h3 className="priv-h3">7.1 — Cookies strictement nécessaires (pas de consentement requis)</h3>
                 <p>Indispensables au fonctionnement du Site. Ne stockent aucune information personnelle à des fins de tracking. Exemples&nbsp;: maintien de session, fonctionnement des formulaires, sécurité anti-CSRF. <strong>Durée</strong>&nbsp;: durée de session ou 6 mois maximum.</p>
+                <p>La protection anti-bot des formulaires repose sur Vercel BotID. Elle analyse des informations techniques de la requête et du navigateur pour distinguer les envois automatisés des demandes humaines. Cette vérification sert à sécuriser les formulaires et fonctionne indépendamment du consentement aux cookies publicitaires.</p>
                 <h3 className="priv-h3">7.2 — Cookies analytiques (consentement requis)</h3>
                 <p>Mesurent l'audience et les parcours utilisateurs. Ne sont déposés qu'après votre consentement explicite via la bannière cookies. <strong>Durée</strong>&nbsp;: 13 mois maximum (recommandation CNIL). Données traitées&nbsp;: IP anonymisée, pages consultées, durée de visite, type de navigateur.</p>
                 <h3 className="priv-h3">7.3 — Cookies de publicité ciblée (consentement requis)</h3>
-                <p>ALTHOCE CONSEIL <strong>n'utilise pas</strong> de cookies publicitaires tiers (Google Ads, Meta Pixel, LinkedIn Insight Tag, etc.) sur le Site, sauf indication contraire de la bannière cookies à laquelle vous donnez votre consentement explicite.</p>
+                <p>Avec votre accord, le Site utilise actuellement le pixel Meta pour mesurer les visites et les demandes issues de nos campagnes. Il est chargé uniquement après acceptation dans la bannière cookies. Vous pouvez retirer cet accord à tout moment avec le bouton « Gérer les cookies ».</p>
                 <h3 className="priv-h3">7.4 — Gestion de votre consentement</h3>
                 <p>Vous pouvez à tout moment modifier vos préférences cookies via la bannière cookies (accessible en bas de chaque page) ou via les paramètres de votre navigateur. Refuser les cookies analytiques n'altère pas le fonctionnement du Site.</p>
               </div>

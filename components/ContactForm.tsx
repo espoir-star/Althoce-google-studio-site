@@ -23,6 +23,7 @@ const budgetOptions = [
 
 export default function ContactForm() {
   const [state,setState] = useState<'idle'|'loading'|'success'|'error'>('idle');
+  const [errorMessage,setErrorMessage] = useState('L’envoi n’a pas abouti. Réessayez ou contactez-nous par email.');
   const [form,setForm] = useState({nom:'',entreprise:'',email:'',telephone:'',taille:'',budget:'',description:''});
   useEffect(()=>{trackFb('Contact');},[]);
   function change(e: ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) { setForm(prev=>({...prev,[e.target.name]:e.target.value})); }
@@ -32,6 +33,10 @@ export default function ContactForm() {
     setState('loading');
     try {
       const res=await fetch('/api/contact/',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(form)});
+      if (!res.ok) {
+        const result = await res.json().catch(() => null);
+        setErrorMessage(typeof result?.error === 'string' ? result.error : 'L’envoi n’a pas abouti. Réessayez ou contactez-nous par email.');
+      }
       setState(res.ok?'success':'error');
       if(res.ok) trackFb('Lead',{content_name:'Formulaire de contact',content_category:form.budget||undefined});
     } catch {setState('error');}
@@ -53,7 +58,7 @@ export default function ContactForm() {
     </div>
     <div className={s.field}><label htmlFor="ctc-description">Votre besoin, en quelques mots *</label><textarea id="ctc-description" name="description" required rows={5} value={form.description} onChange={change} placeholder="Former votre équipe à l’IA, gagner du temps, explorer une idée… Qu’aimeriez-vous faire évoluer ?" /></div>
     <button className={s.submit} type="submit" disabled={state==='loading'}>{state==='loading'?'Envoi en cours…':'Demander mon pré-audit offert →'}</button>
-    {state==='error'&&<p className={s.error} role="alert">L’envoi n’a pas abouti. Vos informations sont conservées dans ce formulaire. Réessayez ou écrivez à <a href="mailto:espoir@contact.althoce.com">espoir@contact.althoce.com</a>.</p>}
+    {state==='error'&&<p className={s.error} role="alert">{errorMessage} Vos informations sont conservées dans ce formulaire. Vous pouvez aussi écrire à <a href="mailto:espoir@contact.althoce.com">espoir@contact.althoce.com</a>.</p>}
     <p className={s.privacy}>Vos informations servent à répondre à votre demande. Consultez notre <a href="/confidentialite/">politique de confidentialité</a>. Vous pouvez exercer vos droits à espoir@contact.althoce.com.</p>
   </form>;
 }

@@ -19,3 +19,9 @@ Contraste calculé sur les textes visibles à fond uni de 13 modèles : accueil,
 Les huit logos sont chargés par le moteur d’optimisation. Police inchangée visuellement, sans requête Google Fonts.
 
 Documentation BotID : https://vercel.com/docs/botid/get-started
+
+## Mesures après publication
+PageSpeed mobile, accueil : **96 performance**, **100 accessibilité**, **100 bonnes pratiques**, **100 SEO**. FCP **1,2 s**, LCP **2,1 s**, TBT **10 ms**, CLS **0**. Les scores sont ceux de cette exécution en laboratoire et peuvent varier.
+Rapport : https://pagespeed.web.dev/analysis/https-althoce-com/s1nuhlksep?form_factor=mobile
+Images Open Graph/Twitter confirmées sur Guides et Secteurs en production. Les deux POST de leads rejettent une requête automatisée vide par HTTP 403 ; aucun contact transmis aux webhooks. Contrastes corrigés revérifiés en ligne sur Finance et le calculateur.
+La politique de confidentialité décrit désormais BotID et l’usage effectif du pixel publicitaire sous consentement. Le formulaire affiche la cause de rejet renvoyée par le serveur pour faciliter la correction des champs et les éventuels problèmes anti-bot.
