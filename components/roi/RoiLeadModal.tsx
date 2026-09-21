@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { type Profile, type Agent } from '@/lib/roi/data';
+import { trackLead } from '@/lib/analytics';
 import { type ROITotal, buildLeadPayload, submitLead, fmtEur } from '@/lib/roi/calculator';
 import { T, useResponsive, CTA } from './RoiComponents';
 
@@ -66,6 +67,7 @@ export function LeadModal({ onClose, onSubmit, summary, profile, activeAgents, t
     const payload = buildLeadPayload(formData, profile, activeAgents, total);
     const result = await submitLead(payload);
     if (!result.ok) { setErrors({ submit: result.error || 'Envoi impossible. Veuillez réessayer.' }); setLoading(false); return; }
+    trackLead('roi');
     onSubmit(formData);
   };
 

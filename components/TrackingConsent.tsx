@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import MetaPixel from './MetaPixel';
+import GoogleAnalytics from './GoogleAnalytics';
+import { revokeAnalytics } from '@/lib/analytics';
 import { Cookie, ArrowUpRight } from 'lucide-react';
 import styles from './TrackingConsent.module.css';
 export const CONSENT_KEY = 'althoce-marketing-consent';
@@ -16,6 +18,7 @@ export default function TrackingConsent() {
   function save(value: 'yes' | 'no') {
     try { localStorage.setItem(CONSENT_KEY, value); } catch { /* Consent remains limited to this page. */ }
     if (value === 'no' && choice === 'yes') {
+      revokeAnalytics();
       const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
       fbq?.('consent', 'revoke');
       for (const name of ['_fbp', '_fbc']) {
@@ -27,7 +30,7 @@ export default function TrackingConsent() {
     setChoice(value); setOpen(false);
   }
   return <>
-    {choice === 'yes' && <MetaPixel />}
+    {choice === 'yes' && <><MetaPixel /><GoogleAnalytics /></>}
     {open && <section className={styles.panel} aria-label="Préférences de confidentialité">
       <div className={styles.content}>
         <div className={styles.heading}><span className={styles.icon}><Cookie size={22} strokeWidth={1.6} aria-hidden="true" /></span><h2>Les cookies, à votre façon.</h2></div>

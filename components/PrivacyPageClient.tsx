@@ -257,7 +257,7 @@ export default function PrivacyPageClient() {
                 <h3 className="priv-h3">7.2 — Cookies analytiques (consentement requis)</h3>
                 <p>Mesurent l'audience et les parcours utilisateurs. Ne sont déposés qu'après votre consentement explicite via la bannière cookies. <strong>Durée</strong>&nbsp;: 13 mois maximum (recommandation CNIL). Données traitées&nbsp;: IP anonymisée, pages consultées, durée de visite, type de navigateur.</p>
                 <h3 className="priv-h3">7.3 — Cookies de publicité ciblée (consentement requis)</h3>
-                <p>Avec votre accord, le Site utilise actuellement le pixel Meta pour mesurer les visites et les demandes issues de nos campagnes. Il est chargé uniquement après acceptation dans la bannière cookies. Vous pouvez retirer cet accord à tout moment avec le bouton « Gérer les cookies ».</p>
+                <p>Avec votre accord, le Site utilise Google Analytics 4 pour mesurer les visites et les formulaires envoyés avec succès, ainsi que le pixel Meta pour mesurer les demandes issues de nos campagnes. Ces outils sont chargés uniquement après acceptation dans la bannière cookies. Les noms, adresses email, numéros de téléphone et messages des formulaires ne sont pas transmis à Google Analytics. Vous pouvez retirer votre accord à tout moment avec le bouton « Gérer les cookies ».</p>
                 <h3 className="priv-h3">7.4 — Gestion de votre consentement</h3>
                 <p>Vous pouvez à tout moment modifier vos préférences cookies via la bannière cookies (accessible en bas de chaque page) ou via les paramètres de votre navigateur. Refuser les cookies analytiques n'altère pas le fonctionnement du Site.</p>
               </div>

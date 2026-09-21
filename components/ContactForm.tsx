@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
+import { trackLead } from '@/lib/analytics';
 import { trackFb } from '@/lib/fbpixel';
 import s from './CabinetPages.module.css';
 const tailleOptions = [
@@ -38,6 +39,7 @@ export default function ContactForm() {
         setErrorMessage(typeof result?.error === 'string' ? result.error : 'L’envoi n’a pas abouti. Réessayez ou contactez-nous par email.');
       }
       setState(res.ok?'success':'error');
+      if(res.ok) trackLead('contact');
       if(res.ok) trackFb('Lead',{content_name:'Formulaire de contact',content_category:form.budget||undefined});
     } catch {setState('error');}
   }
