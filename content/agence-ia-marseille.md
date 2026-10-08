@@ -36,7 +36,7 @@
 - **Pricing** : pas de section pricing.
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
 - **JSON-LD** : `LocalBusiness` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ---
 
@@ -106,7 +106,7 @@ agence IA Marseille · agence IA Provence · consultant IA Marseille · automati
 
 ### Pills (3 max)
 
-> +150 PME équipées en France · Expertise secteurs PACA · Présentiel + distanciel
+> Accompagnement des PME en France · Expertise secteurs PACA · Présentiel + distanciel
 
 ### CTA principal
 
@@ -126,7 +126,7 @@ agence IA Marseille · agence IA Provence · consultant IA Marseille · automati
 
 ### Sous-titre
 
-> Vous avez le choix entre plusieurs prestataires IA en Provence-Alpes-Côte d'Azur. Voici cinq raisons concrètes qui nous distinguent et qui expliquent pourquoi +150 PME françaises, dont plusieurs provençales, nous ont déjà fait confiance.
+> Vous avez le choix entre plusieurs prestataires IA en Provence-Alpes-Côte d'Azur. Voici cinq raisons concrètes qui nous distinguent pour accompagner les entreprises provençales dans leurs projets.
 
 ### Liste verticale numérotée 01→05 (`<NumberedListVertical />`)
 
@@ -148,7 +148,7 @@ agence IA Marseille · agence IA Provence · consultant IA Marseille · automati
 
 **05. Premier agent en 1 semaine, ROI mesurable en moins de 6 mois**
 
-> Pas de PowerPoint à 100 000 € en 6 mois. **Un agent IA simple est en production sous une semaine** après cadrage signé. ROI typique en moins de 6 mois sur les cas concrets : un distributeur agroalimentaire méditerranéen a libéré 50 % du temps de son acheteur unique en 6 semaines. +758 agents déjà en production, +5 M€ d'économies cumulées. Voir [Cas clients](/cas-clients/).
+> Pas de PowerPoint à 100 000 € en 6 mois. **Un agent IA simple est en production sous une semaine** après cadrage signé. ROI typique en moins de 6 mois sur les cas concrets : un distributeur agroalimentaire méditerranéen a libéré 50 % du temps de son acheteur unique en 6 semaines. Des agents conçus sur mesure, puis ajustés avec les équipes. Voir [Cas clients](/cas-clients/).
 
 ### Callout `<DarkBlock />`
 

@@ -33,7 +33,7 @@ Pas de section Pricing héritée (cohérent avec Silo 6). Pas de section Souvera
 - **Breadcrumb pattern** : `Accueil › Cas clients › Cabinet d'expertise comptable Lyon`
 - **CTA primaire** : « Discuter de votre projet → »
 - **JSON-LD obligatoires** : `Article` (ou `CaseStudy` si schéma personnalisé) + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés` (en pied de page)
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 

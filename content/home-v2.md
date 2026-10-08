@@ -3,7 +3,7 @@
 > **Brief de contenu** destiné à Claude Design (conception) et Claude Code (intégration).
 > Version : 2.1 — Avril 2026
 > Rédigé par : Claude (content strategist)
-> **Contexte** : cette v2.1 intègre le dernier feedback PDF du client : nouveaux chiffres (+150 PME, −80%, +958, +7M€), nouveau H1 « agents IA 100% autonomes », nouvelle architecture Silo 2 (`/automatisation/` hub unique + `/agent-ia/[métier]/` enfants), section 7 renommée « Agent IA par métier » avec ~30 tags agents, pricing revu (Employé IA à partir de 30 k€), CTA principal « Discuter de votre projet ».
+> **Contexte historique** : brief initial de refonte. Les arbitrages récents de `direction-editoriale-design.md` priment, notamment le positionnement cabinet IA, la formation des équipes et le retrait des chiffres agrégés.
 
 ---
 
@@ -56,7 +56,7 @@ On se positionne sur les **concepts** et les **cas d'usage métier**, pas sur le
 ```html
 <title>Althoce — Agence IA & Automatisation pour PME et ETI | France</title>
 
-<meta name="description" content="Althoce conçoit des agents IA 100% autonomes et des automatisations métier pour les PME et ETI françaises. Premier agent opérationnel en 1 semaine, à partir de 1 400 € HT. +150 PME accompagnées, +5 M€ économisés.">
+<meta name="description" content="Althoce, cabinet IA pour PME : agents sur mesure, automatisation et formations. Un accompagnement du diagnostic à la prise en main par vos équipes.">
 
 <meta name="keywords" content="agence IA, agents IA, agent IA autonome, automatisation IA, automatisation métier, employé IA, agence automatisation, transformation IA, France, Bordeaux">
 
@@ -127,7 +127,7 @@ On se positionne sur les **concepts** et les **cas d'usage métier**, pas sur le
 
 **Micro-preuves sous le sous-titre (pill badges)**
 
-> +150 PME accompagnées · +7 M€ économisés · Données hébergées en UE · Audit offert 48h
+- Mettre en avant la conception sur mesure, la formation et le suivi, sans statistique globale.
 
 **CTA principal (bouton)**
 
@@ -149,38 +149,33 @@ On se positionne sur les **concepts** et les **cas d'usage métier**, pas sur le
 
 **Accroche (petit texte gris au-dessus)**
 
-> Ils nous font confiance pour leurs automatisations IA.
+> Nos partenaires
 
 **Logos** *(à alimenter)*
-Digitalised · Gemeos · LegalPlace · + autres clients PME/ETI.
+Utiliser le composant partagé `TrustStrip` et les partenaires existants. Sur une ligne distincte, afficher Claude, ChatGPT et Mistral avec la mention « Les IA avec lesquelles nous travaillons ».
 
 **Note SEO**
-Les `alt` des logos doivent contenir le nom du client ET le secteur (ex : `alt="Digitalised — agence marketing digital cliente Althoce"`).
+Les `alt` contiennent uniquement le nom de la marque. Lorsqu’un nom est affiché à côté de son symbole, ce dernier est décoratif (`alt=""`).
 
 ---
 
-## Section 3 — Chiffres-clés
+## Section 3 — Notre accompagnement
 
 **Titre (H2)**
 
-> Des résultats concrets, mesurés chez nos clients.
+> Notre façon de vous accompagner.
 
 **Sous-titre**
 
-> On ne promet pas la lune. On mesure avant, pendant, et après chaque mission.
+> Des solutions adaptées à votre quotidien, avec des équipes formées et accompagnées.
 
-**Les 4 statistiques** *(grille 4 colonnes, responsive 2×2 sur mobile)*
+### Notre façon de vous accompagner
 
-| Valeur | Label | Description |
-|--------|-------|-------------|
-| +150 | **PME accompagnées** | Des structures de 5 à 500 salariés, dans tous les secteurs. |
-| −80 % | **Temps de saisie** | Ce qui prenait des heures prend désormais quelques minutes. |
-| +958 | **Agents & flows en production** | Ils tournent 24h/24 chez nos clients, sans supervision. |
-| +7 M€ | **Économisés** | En temps libéré, erreurs évitées et revenus débloqués. |
+- **Conçus sur mesure** : des agents IA adaptés à vos outils, à vos contraintes et à votre façon de travailler.
+- **Transmis à vos équipes** : des formations et des repères concrets pour prendre la main au quotidien.
+- **Suivis dans la durée** : un accompagnement après la livraison pour ajuster les usages avec vous.
 
-**Note pour Claude Code**
-- Garder le composant `StatCard` existant avec l'animation `animate(0, numericValue)` au scroll.
-- **Remplacer** les valeurs actuelles de `stats` dans `lib/data.ts` : `{ value: "+150", label: "PME accompagnées" }`, `{ value: "-80%", label: "Temps de saisie" }`, `{ value: "+958", label: "Agents & flows" }`, `{ value: "+7M€", label: "Économisés" }`.
+Utiliser le composant partagé `MissionCommitments`. Aucun compteur animé ni chiffre agrégé. Les résultats chiffrés restent attachés aux études de cas validées.
 
 ---
 
@@ -570,7 +565,7 @@ Un agent simple (1 cas d'usage borné) est facturé **1 400 € HT** — tarif f
 
 Un **agent simple est opérationnel en 1 semaine** après validation du cadrage. Un système multi-agents demande 2 à 6 semaines. Un employé IA complet, 8 à 12 semaines. Nos cycles sont volontairement courts : on déploie du concret rapidement, on mesure, on itère.
 
-*Chiffres de référence chez nos clients : −70 % de temps de saisie, +758 agents en production, +5 M€ économisés cumulés sur l'ensemble du portefeuille.*
+*Repères de notre accompagnement : conception sur mesure, formation des équipes et suivi après livraison.*
 
 **Q5 — Mes employés vont-ils être remplacés par l'IA ?**
 
@@ -660,7 +655,7 @@ Althoce est basée à **Bordeaux**, en Nouvelle-Aquitaine. Nous intervenons dans
 
 **v2.1 (dernière version — feedback PDF)**
 1. **H1 précisé** → « Agence IA & Automatisation. On déploie des agents IA **100% autonomes**. »
-2. **Nouveaux chiffres** → +150 PME (au lieu de +50), −80% (au lieu de −70%), +958 agents & flows (au lieu de +758), +7 M€ économisés (au lieu de +5 M€).
+2. **Preuves** : conception sur mesure, formation et suivi, sans statistique globale.
 3. **CTA principal changé** → « Discuter de votre projet » (au lieu de « Réserver mon appel découverte »).
 4. **CTA secondaire changé** → « Explorer nos agents IA ↓ ».
 5. **Architecture Silo 2 restructurée** → Une seule page hub `/automatisation/` + 8 pages enfants `/agent-ia/[métier]/` (au lieu de `/automatisation/[métier]/`). Capture dual keyword : concept générique « automatisation » + concept agent « agent IA [métier] ».

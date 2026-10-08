@@ -21,7 +21,7 @@
 |------|---------|-----------|
 | `H1` | Hero (sec.1) | « Développement IA sur-mesure : on code vraiment, on ne se contente pas d'orchestrer du no-code » |
 | `Sous-titre hero` | sec.1 | 2 lignes ciblant DSI/CTO : code de production, monitoring, MLOps, dette technique maîtrisée |
-| `Pills hero` | sec.1 | 3 pills (chiffres marque, sans mention découverte) |
+| `Pills hero` | sec.1 | 3 pills (repères de marque, sans mention découverte) |
 | `Définition pédagogique` | sec.2 | Différencier développement IA chez Althoce vs no-code (Make, Zapier, n8n hosted) vs SSII classique |
 | `Tableau comparatif` | sec.3 | 3 colonnes : No-code/RPA, SSII classique, Développement IA Althoce |
 | `Stack technique` | sec.4 | Schéma SVG architecture : briques de notre stack (LLM, orchestration, mémoire, intégrations, monitoring, CI/CD) |
@@ -38,7 +38,7 @@
 - **Découverte offerte** : « 30 minutes offertes avec un expert » (jamais dans pills hero)
 - **Souveraineté, Méthode, Pricing, CTA final** : hérités stricts de la home
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -125,7 +125,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : extra
 
 ### Pills (3 max)
 
-> +758 agents en production · Stack maîtrisée Python + TypeScript · 100 % code livré au client
+> Agents IA sur mesure · Stack maîtrisée Python + TypeScript · 100 % code livré au client
 
 ### CTA principal
 
@@ -471,7 +471,7 @@ Bg `#000000`, accent azure `#38BDF8`, texte primaire blanc, texte secondaire `#9
 
 1. ✅ **Pricing arbitré (avril 2026)** : 1 400 € HT (agent simple) / sur devis (système, employé IA, refonte). 30 min offertes avec un expert. Aligné strictement avec home v2 et piliers Silo 1.
 2. **Stack technique listée** (n8n, LangGraph, FastAPI, pgvector, Qdrant, Mistral, Langfuse, Docker, GitHub Actions) : confirmer l'usage en mention technique non-commerciale, OK si pas de logos visuels sans autorisation.
-3. **Cas client implicites** mentionnés : aucun cas nominal cité dans cette page, donc rien à valider côté NDA. Les 758 agents en production servent de preuve agrégée.
+3. **Cas client implicites** mentionnés : aucun cas nominal cité dans cette page, donc rien à valider côté NDA. Utiliser les résultats d’une étude de cas validée, sans extrapolation à tout le portefeuille.
 4. **Snippet de code hero** : Claude Design doit proposer 2 ou 3 snippets candidats, le client valide celui qui est rendu (Python prioritaire pour cohérence avec persona DSI).
 
 ---

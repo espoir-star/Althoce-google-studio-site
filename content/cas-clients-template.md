@@ -59,7 +59,7 @@ Aucun label décoratif (`Cas client`, `Le client`, `Les résultats`, etc.). Les 
 - **Mention pricing** : non affichée explicitement sur la page cas — un lien contextuel vers `/services/agents-ia/` permet d'aller voir
 - **Audit pitch** : mentionné dans le CTA final hérité de la home
 - **JSON-LD obligatoires** : `Article` (le cas est un article éditorial) + `Organization` (le client) + `BreadcrumbList`
-- **Chiffres marque (footer du cas)** : ligne discrète « Cas n°X sur les +758 agents en production · +150 PME équipées »
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Procédure d'adaptation pour un nouveau cas client
 

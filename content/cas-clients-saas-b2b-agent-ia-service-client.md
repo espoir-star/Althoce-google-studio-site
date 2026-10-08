@@ -33,7 +33,7 @@ Pas de section Pricing héritée. Pas de section Souveraineté héritée.
 - **Breadcrumb pattern** : `Accueil › Cas clients › Éditeur SaaS B2B service client`
 - **CTA primaire** : « Discuter de votre projet → »
 - **JSON-LD obligatoires** : `Article` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ---
 

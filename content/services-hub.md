@@ -118,7 +118,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : mini-
 
 ### Pills (3 max)
 
-> 7 services intégrés · +758 agents en production · 100 % souverain France
+> 7 services intégrés · Agents IA sur mesure · 100 % souverain France
 
 ### CTA principal
 

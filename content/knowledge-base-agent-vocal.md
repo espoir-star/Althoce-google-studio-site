@@ -14,7 +14,7 @@
 
 ### Phrase de présentation en 30 secondes (réponse à « qui êtes-vous ? »)
 
-> Althoce, c'est une agence française d'agents IA et d'automatisation, basée à Bordeaux, qui accompagne les PME et ETI françaises depuis 2024. On déploie des agents IA sur mesure pour tous les métiers de l'entreprise : commercial, marketing, RH, finance, juridique, service client, opérations, achats. Nos solutions sont souveraines, hébergées en France, et nos clients ont leur premier agent opérationnel en une semaine. À ce jour on a accompagné plus de 150 PME, déployé plus de 758 agents en production, et nos clients constatent en moyenne 70 % de temps en moins sur les tâches automatisées.
+> Althoce est un cabinet IA basé à Bordeaux, présent auprès des PME et ETI partout en France. Nous concevons des agents IA et des automatisations sur mesure, formons les équipes et accompagnons les usages après la livraison. Le périmètre, les délais et les critères de réussite sont définis ensemble au cadrage.
 
 ### Mission Althoce
 
@@ -26,20 +26,14 @@ Pas de remplacement masqué. Pas de plan social déguisé. L'IA libère les équ
 
 ---
 
-## 2. CHIFFRES CLÉS (à utiliser comme preuves sociales)
+## 2. REPÈRES POUR PRÉSENTER ALTHOCE
 
 | Indicateur | Valeur canonique | À utiliser quand |
 |------------|------------------|------------------|
-| PME accompagnées | **plus de 150** | Question sur l'expérience, le nombre de clients |
-| Agents déployés en production | **plus de 758** | Question sur l'expertise technique, le volume |
-| Économies générées chez nos clients (cumulées) | **plus de 5 millions d'euros** | Question sur la valeur créée, le ROI |
-| Gain de temps moyen sur les tâches automatisées | **-70 %** | Question sur l'efficacité, le bénéfice opérationnel |
-| Délai du premier agent en production | **une semaine** | Question sur la rapidité de déploiement |
-| ROI moyen observé | **3 à 6 mois** | Question sur le retour sur investissement |
 | Année de fondation | **2024** | Question sur l'historique de l'entreprise |
 | Siège social | **Bordeaux** | Question sur la localisation |
 
-**Règle d'usage** : ne jamais combiner plus de 3 chiffres dans une même réponse vocale. La voix doit rester fluide et crédible.
+**Règle d’usage** : décrire les missions et la méthode. Ne pas annoncer de volume de clients, de déploiements ou de gains agrégés. Citer uniquement des résultats rattachés à une étude de cas validée.
 
 ---
 
@@ -299,7 +293,7 @@ Sept points qui structurent notre proposition de valeur. À piocher selon le con
 4. **Couverture métier complète** : neuf fonctions métier accompagnées, on peut combiner les agents pour des projets transverses.
 5. **Pas de remplacement masqué** : engagement explicite, vos équipes sont libérées des tâches répétitives, pas remplacées.
 6. **Formation incluse** : vos équipes deviennent autonomes, on ne crée pas de dépendance prestataire.
-7. **Retour d'expérience** : plus de 150 PME accompagnées, on connaît les pièges et les angles morts par cœur.
+7. **Retour d'expérience** : nous examinons les contraintes de vos équipes avant de proposer une solution.
 
 ---
 

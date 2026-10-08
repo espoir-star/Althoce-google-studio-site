@@ -45,7 +45,7 @@ La page n'est pas un annuaire : c'est un **manifeste**.
 - **Pricing** : pas de section pricing.
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
 - **JSON-LD obligatoires** : `Organization` + `BreadcrumbList` + `ItemList` (les 20 villes en sous-jacent) + `FAQPage`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -83,7 +83,7 @@ agence IA France · partenaire IA PME · démocratiser IA entreprise · agence I
 ```html
 <title>Une IA souveraine, responsable, accessible à toutes les PME françaises | Althoce</title>
 
-<meta name="description" content="Althoce, agence IA française, accompagne les PME et ETI partout en France dans leur transformation IA. Notre mission : une IA souveraine, responsable, accessible à toutes les PME françaises. Souveraineté France, anti-biais documenté, humain au centre. +150 PME équipées. 30 min offertes avec un expert.">
+<meta name="description" content="Althoce, agence IA française, accompagne les PME et ETI partout en France dans leur transformation IA. Notre mission : une IA souveraine, responsable, accessible à toutes les PME françaises. Souveraineté France, anti-biais documenté, humain au centre. Accompagnement sur mesure. 30 min offertes avec un expert.">
 
 <meta name="keywords" content="agence IA France, partenaire IA PME, IA souveraine PME, agence IA responsable, IA éthique entreprise, agence IA souveraine France, partenaire de confiance IA">
 
@@ -130,7 +130,7 @@ Split éditorial. À gauche : H1 mission + sous-titre + pills + deux CTA. À dro
 
 ### Pills (3 max)
 
-> +150 PME équipées · Souveraineté France garantie · Humain au centre
+> Accompagnement sur mesure · Souveraineté France garantie · Humain au centre
 
 ### CTA principal
 
@@ -160,7 +160,7 @@ Split éditorial. À gauche : H1 mission + sous-titre + pills + deux CTA. À dro
 
 ### Sous-paragraphe — Notre mission
 
-> Notre mission est simple : **démocratiser l'usage de l'IA dans les entreprises françaises de manière responsable**. Démocratiser, parce que la valeur de l'IA pour une PME n'est pas dans le PowerPoint stratégique mais dans l'agent IA qui absorbe la saisie comptable d'un cabinet de 12 personnes ou qui qualifie les RDV commerciaux 24/7 sur 4 marchés export. Responsable, parce que la transformation ne doit pas se faire au prix du licenciement de vos équipes, ni au prix d'envoyer toutes vos données chez OpenAI, ni au prix d'introduire des biais discriminatoires dans vos décisions RH. C'est une promesse cohérente, et c'est ce qui nous a permis d'équiper +150 PME en France en quelques années.
+> Notre mission est simple : **démocratiser l'usage de l'IA dans les entreprises françaises de manière responsable**. Démocratiser, parce que la valeur de l'IA pour une PME n'est pas dans le PowerPoint stratégique mais dans l'agent IA qui absorbe la saisie comptable d'un cabinet de 12 personnes ou qui qualifie les RDV commerciaux 24/7 sur 4 marchés export. Responsable, parce que la transformation ne doit pas se faire au prix du licenciement de vos équipes, ni au prix d'envoyer toutes vos données chez OpenAI, ni au prix d'introduire des biais discriminatoires dans vos décisions RH. Cette approche guide le cadrage, la conception et le suivi de chaque mission.
 
 ### Sous-paragraphe — Ce que nous croyons
 
@@ -188,7 +188,7 @@ Split éditorial. À gauche : H1 mission + sous-titre + pills + deux CTA. À dro
 
 **01. Souveraineté France par défaut**
 
-> Notre stack standard est française : Mistral hébergé en France (OVH, Scaleway), aucune donnée nominative envoyée à OpenAI ou Anthropic sans accord client explicite. Pour les secteurs réglementés (défense, santé, juridique, finance privée), nous étudions au cas par cas des configurations renforcées en fonction des contraintes spécifiques. Aucun de nos +150 clients n'a vu ses données franchir la frontière sans son accord documenté. Voir [Souveraineté](/#souverainete).
+> Notre stack standard est française : Mistral hébergé en France (OVH, Scaleway), aucune donnée nominative envoyée à OpenAI ou Anthropic sans accord client explicite. Pour les secteurs réglementés (défense, santé, juridique, finance privée), nous étudions au cas par cas des configurations renforcées en fonction des contraintes spécifiques. Les choix de traitement et d’hébergement des données sont définis avec le client. Voir [Souveraineté](/#souverainete).
 
 **02. Humain au centre, jamais de remplacement masqué**
 
@@ -212,7 +212,7 @@ Split éditorial. À gauche : H1 mission + sous-titre + pills + deux CTA. À dro
 
 ### H2
 
-> **Quatre piliers de l'IA responsable, opérationnels chez nos +150 clients**
+> **Quatre piliers de l'IA responsable, opérationnels dans nos missions**
 
 ### Sous-titre
 
@@ -508,7 +508,7 @@ Bg `#000000`, accent azure `#38BDF8`, texte primaire blanc, texte secondaire `#9
 4. ✅ **Engagement humain au centre** : reformulé en esprit sans chiffre — « Pas de remplacement masqué, pas de plan social déguisé. Nous refusons toute mission dont l'objectif explicite est un plan de licenciement. » — validé.
 5. ✅ **Auto-hébergement Mistral on-premise** : retiré du hub. Resté mentionné uniquement sur la page Brest où c'est une spécificité opérationnelle vérifiée.
 6. **Mission statement sec.2 (manifeste 3 paragraphes)** : à relire mot à mot par la direction. Le détail éditorial peut être ajusté.
-7. **Stat "+150 PME équipées"** : déjà canonique, OK.
+7. **Repère de marque** : présenter le sur-mesure, sans volume de clientèle.
 8. **Mention "Mistral AI Partner Network"** dans le JSON-LD : confirmer si Althoce est officiellement partenaire Mistral ou supprimer la mention.
 9. **3 vérifications opposables** sec.11 Q2 (documentation anti-biais, échange avec un client, lecture du code source) : confirmer que ces propositions sont opérationnelles (cas client référent pour le call, NDA-ready pour code source).
 10. **Mention "0 retour RGPD défavorable sur 6 mois post-déploiement"** sec.3 engagement 03 : confirmer la statistique sur le cas signature recrutement Paris.

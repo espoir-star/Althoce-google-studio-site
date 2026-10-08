@@ -18,7 +18,7 @@ Chaque page Service réutilise **strictement** la même structure. Trois types d
 
 - **Sections héritées de la home** (réutilisation directe des composants v2, pas de redéfinition)
 - **Sections propres au service** (contenu spécifique, slots à remplir)
-- **Blocs immuables** (CTA, audit pitch, JSON-LD, chiffres marque) — identiques à la home
+- **Blocs immuables** (CTA, audit pitch, JSON-LD, repères de marque) — identiques à la home
 
 ### Sections héritées de la home (réutilisation stricte des composants v2)
 
@@ -79,7 +79,7 @@ On ne tombe **jamais** dans le pattern systématique « label + H2 + grille de c
 - **Pricing** : héritée de la home (langage visuel)
 - **CTA final** : hérité de la home (`CTAFinalSection`)
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList` + `HowTo`
-- **Chiffres marque (utilisables dans micro-preuves)** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Procédure d'adaptation pour une nouvelle page Service
 
@@ -209,7 +209,7 @@ Légende : 🟢 Section **propre au service** (slot à adapter par page) · 🏠
 
 **Micro-preuves (pills, max 3)**
 
-> +758 agents en production · +150 PME équipées · 100 % autonome
+> Agents IA sur mesure · Accompagnement sur mesure · 100 % autonome
 
 *Les « 30 minutes offertes avec un expert » n'apparaissent PAS dans le hero — c'est mentionné dans la section pricing héritée de la home, dans la FAQ Q3, et dans le CTA final hérité de la home.*
 

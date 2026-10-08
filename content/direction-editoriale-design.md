@@ -4,6 +4,9 @@ Retours utilisateur du 13 septembre 2026. À relire avant de retravailler une au
 
 ## Identité
 
+- Mise à jour du 8 octobre 2026, applicable à toutes les pages et métadonnées : supprimer les chiffres agrégés de clientèle, de déploiements, d’économies et de gain moyen. Présenter les engagements concrets : conception sur mesure, formation des équipes et suivi après livraison. Seuls les résultats rattachés à une étude de cas validée peuvent être chiffrés. Cette règle remplace les consignes chiffrées des anciens briefs.
+- Bandeau partagé : « Nos partenaires ». Présenter Claude, ChatGPT et Mistral comme les outils IA utilisés dans les missions, sans revendiquer un partenariat officiel avec leurs éditeurs.
+
 - Conserver le branding approuvé : bleu, blanc, encre sombre, typographie actuelle. Rendu professionnel, personnel, épuré et humain.
 - La home présente Althoce comme un **cabinet IA**. Les pages agence gardent leur propre positionnement SEO.
 - Cible prioritaire : dirigeants de PME. Parler de leur quotidien, de leurs équipes, du temps retrouvé et des bénéfices concrets.

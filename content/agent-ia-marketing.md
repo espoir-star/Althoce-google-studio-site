@@ -22,7 +22,7 @@
 |------|---------|-----------|
 | `H1` | Hero (sec.1) | « Agent IA pour le marketing : contenu, SEO, social, email en pilote automatique » |
 | `Sous-titre hero` | sec.1 | 2 lignes : douleur CMO PME (équipe sous-dimensionnée vs ambition, content factory inexistante) + libération |
-| `Pills hero` | sec.1 | 3 pills chiffres marque + ROI métier |
+| `Pills hero` | sec.1 | 3 pills repères de marque + ROI métier |
 | `Définition métier` | sec.2 | Ce qu'absorbe l'agent dans le métier marketing |
 | `Avant / Après` | sec.3 | Split éditorial : semaine type d'un responsable marketing avant / avec agent IA |
 | `Agents recommandés` | sec.4 | 4 agents Althoce marketing (génération contenu multi-canal, SEO sémantique, email séquences, veille concurrentielle) |
@@ -38,7 +38,7 @@
 - **Pricing** : aucun prix dans le contenu visible. Page orientée valeur. Tarification partagée en RDV.
 - **Découverte offerte** : « 30 minutes offertes avec un expert » (jamais dans les pills hero)
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -124,7 +124,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : mocku
 
 ### Pills (3 max)
 
-> +758 agents en production · Cohérence ton de marque garantie · Production multi-canal
+> Agents IA sur mesure · Cohérence ton de marque garantie · Production multi-canal
 
 ### CTA principal
 

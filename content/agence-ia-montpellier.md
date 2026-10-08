@@ -73,7 +73,7 @@ Structure pattern v2.
 
 ### Pills
 
-> +150 PME équipées en France · Expertise santé et FrenchTech · Présentiel + distanciel
+> Accompagnement des PME en France · Expertise santé et FrenchTech · Présentiel + distanciel
 
 ### CTA
 
@@ -107,7 +107,7 @@ Structure pattern v2.
 
 **05. Premier agent en 1 semaine, ROI mesurable en moins de 6 mois**
 
-> **Un agent IA simple en production sous 1 semaine**. ROI typique 3 à 6 mois. +758 agents en production. Voir [Cas clients](/cas-clients/).
+> **Un agent IA simple en production sous 1 semaine**. ROI typique 3 à 6 mois. Agents IA sur mesure. Voir [Cas clients](/cas-clients/).
 
 ### Callout
 

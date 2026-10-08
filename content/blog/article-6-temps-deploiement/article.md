@@ -40,7 +40,7 @@ Quand un éditeur annonce deux semaines, il parle presque toujours du premier ca
 
 ## Le calendrier réel, étape par étape
 
-Sur plus de 150 PME accompagnées, la séquence est remarquablement stable.
+Un déploiement se construit en plusieurs étapes, adaptées au contexte de chaque entreprise.
 
 ### Semaine 0 : le cadrage
 

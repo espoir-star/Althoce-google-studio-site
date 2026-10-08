@@ -35,7 +35,7 @@
 - **Pricing** : aucun prix dans le contenu visible. Page orientée preuve sociale et valeur.
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
 - **JSON-LD obligatoires** : `CollectionPage` + `BreadcrumbList` + `ItemList` (les 9 cas)
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -98,10 +98,10 @@ cas clients Althoce · cas client agent IA · retour expérience agent IA · ROI
 
 | # | Section | Type | Pattern visuel |
 |---|---------|------|----------------|
-| 1 | 🟢 Hero | Propre | Split éditorial : à gauche H1+CTA, à droite stat hero géante en display serif (« +150 PME équipées ») |
+| 1 | 🟢 Hero | Propre | Titre, contexte et photographie humaine |
 | 2 | 🟢 Promesse + méthodologie | Propre | Prose + callout `<DarkBlock />` (anonymisation, vérifiabilité, méthodologie chiffrage) |
 | 3 | 🟢 Filtres + liste 9 cas clients | Propre | Filtres horizontaux + liste éditoriale étoffée alternance |
-| 4 | 🟢 KPI globaux Althoce | Propre | KPI bands pleine largeur (chiffres marque + agrégation des 9 cas) |
+| 4 | 🟢 Notre accompagnement | Partagé | `MissionCommitments` : sur-mesure, transmission et suivi |
 | 5 | 🟢 Sectoriels couverts | Propre | Liste verticale numérotée des secteurs présents dans le portefeuille |
 | 6 | 🏠 Méthode | Hérité home | `<MethodologySection />` |
 | 7 | 🏠 Souveraineté | Hérité home | `<SouveraineteSection />` |
@@ -114,7 +114,7 @@ cas clients Althoce · cas client agent IA · retour expérience agent IA · ROI
 
 ### Layout
 
-Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : **stat hero géante** en display serif XL. Trois chiffres successifs en grand format ("+150 PME équipées · +758 agents en production · +5 M€ économisés"), chacun mis en avant l'un après l'autre avec une animation discrète de défilement (toutes les 4 secondes). Sous chaque chiffre, une ligne courte de contextualisation ("au total, dans les portefeuilles clients Althoce").
+- Hero éditorial : titre, contexte et photographie humaine. Les résultats chiffrés sont associés à chaque étude de cas, jamais cumulés dans un compteur global.
 
 ### H1
 
@@ -126,7 +126,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : **sta
 
 ### Pills (3 max)
 
-> +150 PME équipées · +758 agents en production · +5 M€ économisés
+> Conception sur mesure · Formation des équipes · Suivi après livraison
 
 ### CTA principal
 
@@ -278,26 +278,15 @@ Pour chaque cas, présentation éditoriale large (pas une carte) avec : photo/ic
 
 ---
 
-## 7. Section 4 — KPI globaux Althoce
+## 7. Section 4 — Notre accompagnement
 
-### H2
+### Notre façon de vous accompagner
 
-> **Au total, ce que les agents IA Althoce ont changé pour nos +150 PME équipées**
+- **Conçus sur mesure** : des agents IA adaptés à vos outils, à vos contraintes et à votre façon de travailler.
+- **Transmis à vos équipes** : des formations et des repères concrets pour prendre la main au quotidien.
+- **Suivis dans la durée** : un accompagnement après la livraison pour ajuster les usages avec vous.
 
-### KPI bands pleine largeur (`<KPIBand />` agrégés)
-
-| Indicateur agrégé | Valeur |
-|-------------------|--------|
-| **Agents IA en production** | +758 |
-| **PME et ETI équipées** | +150 |
-| **Temps de saisie économisé** | −70 % en moyenne |
-| **Économies / revenus générés cumulés** | +5 M€ |
-| **Taux de réussite déploiement** | 96 % (les 4 % d'échecs sont arrêtés au cadrage avant build) |
-| **Délai moyen mise en production** | 4 semaines pour un agent simple |
-
-### Callout sous le tableau
-
-> Ces chiffres globaux sont la **somme des transformations** des 150 PME et ETI accompagnées sur les 24 derniers mois. Ils ne sont pas extrapolés : chaque agent compte un, chaque économie est mesurée chez un client identifié, chaque déploiement est documenté en interne. Nous pouvons fournir le détail méthodologique sur demande pendant les 30 minutes offertes avec un expert.
+Utiliser le composant partagé `MissionCommitments`. Aucun compteur animé ni chiffre agrégé. Les résultats chiffrés restent attachés aux études de cas validées.
 
 ---
 
@@ -489,10 +478,10 @@ Tous les liens listés en sec.14 doivent être **câblés à l'endroit exact où
 ### Règle créativité visuelle
 
 Patterns par section :
-- Hero : split éditorial avec stat hero géante en rotation
+- Hero éditorial : titre, contexte et photographie humaine. Les résultats chiffrés sont associés à chaque étude de cas, jamais cumulés dans un compteur global.
 - Sec.2 : prose + DarkBlock callout
 - Sec.3 : filtres horizontaux + liste éditoriale étoffée alternance
-- Sec.4 : KPI bands pleine largeur
+- Sec.4 : engagements qualitatifs avec `MissionCommitments`
 - Sec.5 : liste verticale numérotée 01→08
 - Sec.8 : accordéon vertical FAQ
 
@@ -509,7 +498,7 @@ Bg `#000000`, accent azure `#38BDF8`, texte primaire blanc, texte secondaire `#9
 1. ✅ **Pas de section Pricing héritée** : page orientée preuve sociale et non conversion tarifaire.
 2. ✅ **9 cas listés en présentation éditoriale étoffée**, pas en grille de cartes. Chaque cas mérite une lecture attentive.
 3. ✅ **Filtres multi-critères** par métier / secteur / taille pour faciliter la trouvabilité.
-4. ✅ **KPI globaux Althoce** affichés en sec.4 (agrégation des chiffres marque canoniques + 96 % réussite déploiement + 4 semaines délai moyen).
+4. ✅ **Engagements qualitatifs** : conception sur mesure, formation et suivi après livraison.
 5. ✅ **Anonymisation transparente** posée comme principe dans la sec.2 et explicitée dans la FAQ Q2.
 6. ✅ **Taux d'échec 4 % assumé** dans la FAQ Q3 : geste de transparence qui renforce la crédibilité (vs concurrents qui prétendent 100 % de réussite).
 
@@ -519,8 +508,8 @@ Bg `#000000`, accent azure `#38BDF8`, texte primaire blanc, texte secondaire `#9
 
 1. **Accord nominatif des 9 clients cités** : confirmer pour chaque cas si on peut nommer ou si on anonymise. À ce jour, tous sont anonymisés par défaut.
 2. **Vérification croisée des KPI** : recroiser chaque chiffre avec les données client réelles avant publication.
-3. **Stat "96 % de taux de réussite déploiement"** : valider l'évaluation sur le portefeuille client réel.
-4. **Stat "+5 M€ économisés cumulés"** : confirmer le périmètre (économies directes + revenus générés ?) et la méthodologie.
+3. **Résultats des cas** : conserver un contexte et une période de mesure pour chaque indicateur.
+4. **Engagements de marque** : aucune agrégation des résultats clients.
 5. **Filtres sec.3** : valider la liste des métiers / secteurs / tailles affichés (peuvent évoluer avec l'ajout de futurs cas).
 
 ---

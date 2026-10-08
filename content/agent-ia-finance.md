@@ -11,7 +11,7 @@
 
 ## 0. Statut « modèle vivant Métier » (template du Silo 2)
 
-Ce brief sert de **template vivant** pour les 7 autres pages métier du Silo 2. Trois types de blocs cohabitent : **sections héritées de la home** (composants v2 réutilisés tels quels), **sections propres au métier** (slots à remplir par page), **blocs immuables** (CTA, audit pitch, JSON-LD, chiffres marque).
+Ce brief sert de **template vivant** pour les 7 autres pages métier du Silo 2. Trois types de blocs cohabitent : **sections héritées de la home** (composants v2 réutilisés tels quels), **sections propres au métier** (slots à remplir par page), **blocs immuables** (CTA, audit pitch, JSON-LD, repères de marque).
 
 ### Sections héritées de la home (réutilisation stricte des composants v2)
 
@@ -31,7 +31,7 @@ Ce brief sert de **template vivant** pour les 7 autres pages métier du Silo 2. 
 |------|---------|--------------------|
 | `H1` | Hero (sec.1) | « Agent IA pour [métier] » + bénéfice principal |
 | `Sous-titre hero` | sec.1 | 2 lignes spécifiques au métier (douleur principale + libération) |
-| `Micro-preuves pills` | sec.1 | 3 pills max (chiffres marque + ROI métier — sans « 30 min offertes ») |
+| `Micro-preuves pills` | sec.1 | 3 pills max (repères de marque + ROI métier — sans « 30 min offertes ») |
 | `Définition métier` | sec.2 | 1 paragraphe : ce qu'absorbe l'agent dans ce métier |
 | `Avant / Après` | sec.3 | Tableau ou split éditorial : journée type sans / avec agent |
 | `Agents recommandés` | sec.4 | 3 à 5 agents spécifiques au métier (depuis catalogue 30) |
@@ -64,7 +64,7 @@ Aucun label décoratif au-dessus des H2 (pas de `Métier · Silo 2`, `Avant / Ap
 - **Méthode** : héritée de la home
 - **CTA final** : hérité de la home
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Procédure d'adaptation pour une nouvelle page Métier
 
@@ -194,7 +194,7 @@ Légende : 🟢 Section **propre au métier** (slot à adapter par page) · 🏠
 
 **Micro-preuves (pills, max 3)**
 
-> +758 agents en production · −80 % temps de saisie · ROI < 6 mois
+> Agents IA sur mesure · −80 % temps de saisie · ROI < 6 mois
 
 *Les « 30 minutes offertes avec un expert » n'apparaissent PAS dans le hero — c'est mentionné dans la section pricing héritée et dans le CTA final hérité.*
 
@@ -566,7 +566,7 @@ Pour chaque métier (`/agent-ia/commercial/`, `/agent-ia/service-client/`, `/age
 | Slot | Variation |
 |------|-----------|
 | H1 + sous-titre hero | « Agent IA pour [métier] » + douleur principale métier |
-| Pills hero | 3 chiffres marque + 1 chiffre ROI métier |
+| Pills hero | 3 repères de marque + 1 chiffre ROI métier |
 | Sec.2 paragraphe | Ce qu'absorbe un agent dans ce métier |
 | Sec.3 Avant/Après | Journée type sans/avec agent |
 | Sec.4 Agents | 3 à 5 agents pertinents (depuis catalogue 30) |

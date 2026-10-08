@@ -44,7 +44,7 @@ Les deux pages sont complémentaires : le visiteur qui cherche à comprendre le 
 - **Pricing** : aucun prix dans le contenu visible. Page orientée valeur. Tarification partagée en RDV.
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
 - **JSON-LD obligatoires** : `CollectionPage` + `BreadcrumbList` + `ItemList` (les 9 pages métier)
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -133,7 +133,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : sché
 
 ### Pills (3 max)
 
-> 9 métiers couverts · +758 agents en production · 4 cas d'usage par métier en moyenne
+> 9 métiers couverts · Agents IA sur mesure · 4 cas d'usage par métier en moyenne
 
 ### CTA principal
 
@@ -524,7 +524,7 @@ Bg `#000000`, accent azure `#38BDF8`, texte primaire blanc, texte secondaire `#9
 Cette page hub `/agent-ia/` doit rester complémentaire à `/services/agents-ia/`, jamais redondante. Les deux pages doivent :
 
 1. **Se renvoyer explicitement** dans leur sec.2 respective (différenciation des angles).
-2. **Partager les chiffres marque** (+758 / +150 / −70 % / +5 M€) et la méthode (héritée home v2).
+2. **Partager les repères de marque** : sur-mesure, transmission et suivi. Conserver la méthode commune.
 3. **Diverger sur le focus** :
    - `/services/agents-ia/` : qu'est-ce qu'un agent IA, méthode, archétypes commercial/opérationnel/support génériques, ROI produit
    - `/agent-ia/` : organisation par fonction, sélection par métier, agents pré-conçus par métier, cas clients par fonction

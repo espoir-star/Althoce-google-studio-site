@@ -6,7 +6,7 @@
 > URL : `/services/automatisation-ia/`
 > Statut Miro : tâche #11 — Critique 🔥
 > Pair avec : `/services/agents-ia/` (pilier #1) et `/services/employe-ia/` (pilier #3)
-> **🔵 Adaptation #1 du modèle vivant Service** — ce brief suit la structure canonique définie dans `services-agents-ia.md` §0. Seuls les slots variables ont été remplis (H1, sous-titre, tableau comparatif, FAQ, méthode, maillage). Tous les blocs immuables (CTA, pricing, audit pitch, souveraineté, JSON-LD types, chiffres marque) sont strictement identiques.
+> **🔵 Adaptation #1 du modèle vivant Service** — ce brief suit la structure canonique définie dans `services-agents-ia.md` §0. Seuls les slots variables ont été remplis (H1, sous-titre, tableau comparatif, FAQ, méthode, maillage). Tous les blocs immuables (CTA, pricing, audit pitch, souveraineté, JSON-LD types, repères de marque) sont strictement identiques.
 
 ---
 
@@ -132,7 +132,7 @@ Légende : 🟢 Section **propre au service** (slot à adapter par page) · 🏠
 
 **Micro-preuves (pills, max 3)**
 
-> +150 PME équipées · Premier agent en 1 semaine · ROI validé en 90 jours
+> Accompagnement sur mesure · Premier agent en 1 semaine · ROI validé en 90 jours
 
 *Les « 30 minutes offertes avec un expert » n'apparaissent PAS dans le hero — c'est mentionné dans la section pricing héritée de la home, dans la FAQ Q3, et dans le CTA final hérité de la home.*
 

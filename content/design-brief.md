@@ -44,7 +44,7 @@ Imaginer un croisement entre :
 | `accent-primary` | CTA principal, liens | `#2563EB` (bleu électrique) |
 | `accent-primary-hover` | Hover CTA | `#1D4ED8` |
 | `accent-violet` | Gradient H1 (mots mis en avant : « agents IA », « 100% autonomes ») | `#7C3AED → #2563EB` |
-| `accent-success` | Chiffres positifs (+150, +958, +7M€) | `#059669` |
+| `accent-success` | Repères de progression dans les études de cas | `#059669` |
 | `border-subtle` | Bordures de cartes, séparateurs | `#E5E4DF` |
 
 **Règle gradients** : un seul gradient utilisé dans la page = le gradient violet→bleu sur les mots-clés du H1 et les chiffres hero. Ailleurs, aplats unis.
@@ -113,7 +113,7 @@ Fond `bg-dark`, texte blanc, radius `rounded-3xl`, padding généreux `p-10`. Ut
 [Sous-titre large]            Nous concevons des employés IA sur-mesure
                               pour les PME et ETI françaises...
 
-[Micro-preuves pills x4]      [+150 PME accompagnées] [+7 M€ économisés]
+[Repères]                    [Sur mesure] [Formation] [Suivi]
                               [Données en UE] [Audit offert 48h]
 
 [CTA primaire] [CTA secondaire text]
@@ -129,8 +129,8 @@ Fond `bg-dark`, texte blanc, radius `rounded-3xl`, padding généreux `p-10`. Ut
 ### Bande de confiance — Section 2
 Fond `bg-subtle`. Accroche courte en `text-muted` uppercase + logos clients en grayscale, max 6–8 logos. `section.py-12`.
 
-### Chiffres-clés — Section 3
-Fond `bg-base`. 4 `StatCard` en grille 4 colonnes (2×2 mobile). Les chiffres (+150, −80%, +958, +7 M€) en gradient violet→bleu, display serif 100px. Animation `animate(0, numericValue)` au scroll pour chaque stat.
+### Notre accompagnement — Section 3
+Trois engagements sobres avec le composant `MissionCommitments` : sur-mesure, transmission et suivi.
 
 ### Qu'est-ce qu'un agent IA — Section 4
 
@@ -333,7 +333,7 @@ Donc : pas de SVG complexes non-exportables, pas de filters CSS non-standards, p
 - [ ] La palette, la typo et les tokens sont exportés.
 - [ ] Le responsive (mobile 375 / tablette 768 / desktop 1280) est couvert.
 - [ ] Les 4 CTA clés sont identifiables (hero primaire, hero secondaire, pricing, CTA final).
-- [ ] La section Stats utilise bien les 4 chiffres v2.1 : +150, −80%, +958, +7 M€.
+- [ ] Aucun chiffre agrégé de clientèle, de déploiements ou de gains. Engagements qualitatifs à la place.
 - [ ] Le H1 est rendu avec gradient violet→bleu sur « agents IA » et « 100% autonomes ».
 
 ---

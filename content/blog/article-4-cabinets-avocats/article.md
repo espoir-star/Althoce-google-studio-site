@@ -102,7 +102,7 @@ Un agent sur mesure part de l'inverse : votre organisation, vos trames, votre lo
 
 ## Par où commencer concrètement
 
-L'erreur classique est de vouloir traiter les cinq sujets d'un coup. Notre recommandation, éprouvée sur plus de 150 PME accompagnées, tient en trois temps.
+L'erreur classique est de vouloir traiter les cinq sujets d'un coup. Notre recommandation tient en trois temps.
 
 **Cartographier avant d'outiller.** Une semaine d'observation suffit à identifier où partent réellement les heures non facturables du cabinet. C'est l'objet de notre [audit IA](/services/audit-ia/), qui aboutit à une liste de chantiers classés par ratio gain sur effort.
 

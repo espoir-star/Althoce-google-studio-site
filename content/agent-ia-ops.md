@@ -22,7 +22,7 @@
 |------|---------|-----------|
 | `H1` | Hero (sec.1) | « Agent IA pour les opérations et le back-office : mails, documents, ADV en pilote automatique » |
 | `Sous-titre hero` | sec.1 | 2 lignes : douleur ops (poste pluri-tâches en burn-out cyclique, mails entrants ingérables, ADV bloquée) + libération |
-| `Pills hero` | sec.1 | 3 pills chiffres marque + ROI métier |
+| `Pills hero` | sec.1 | 3 pills repères de marque + ROI métier |
 | `Définition métier` | sec.2 | Ce qu'absorbe l'agent dans les opérations / back-office |
 | `Avant / Après` | sec.3 | Split éditorial : journée type d'un assistant ops avant / avec agent IA |
 | `Agents recommandés` | sec.4 | 4 agents Althoce ops (mails entrants, ADV, gestion documentaire, suivi fournisseurs) |
@@ -38,7 +38,7 @@
 - **Pricing** : aucun prix dans le contenu visible. Page orientée valeur. Tarification partagée en RDV.
 - **Découverte offerte** : « 30 minutes offertes avec un expert » (jamais dans les pills hero)
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -124,7 +124,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : mocku
 
 ### Pills (3 max)
 
-> +758 agents en production · 70 % de mails N1 absorbés · ADV traitée en temps réel
+> Agents IA sur mesure · 70 % de mails N1 absorbés · ADV traitée en temps réel
 
 ### CTA principal
 

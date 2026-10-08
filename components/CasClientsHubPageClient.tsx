@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import MissionCommitments from './brand/MissionCommitments';
 import { steps, securityItems } from '@/lib/data';
 import { FAQAccordion } from '@/components/ui/data-display/FAQAccordion';
 import type { FAQv2Item } from '@/lib/data';
@@ -42,45 +43,8 @@ function H2({ children, style: sx = {} }: { children: React.ReactNode; style?: R
   );
 }
 
-// ── Rotating Stat Hero ────────────────────────────────────────
-const heroStats = [
-  { value: '+150', label: 'PME équipées', sub: 'dans tous les secteurs de l\'économie française' },
-  { value: '+758', label: 'agents en production', sub: 'actifs 24h/24 chez nos clients' },
-  { value: '+5 M€', label: 'économisés', sub: 'en temps libéré, erreurs évitées, revenus générés' },
-];
-
-function RotatingStat() {
-  const [idx, setIdx] = useState(0);
-  const [fade, setFade] = useState(true);
-  useEffect(() => {
-    const t = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setIdx((i) => (i + 1) % heroStats.length);
-        setFade(true);
-      }, 300);
-    }, 4000);
-    return () => clearInterval(t);
-  }, []);
-  const s = heroStats[idx];
-  return (
-    <div style={{ borderRadius: 24, background: '#09090b', border: '1px solid #1a1a1a', padding: '40px 36px', position: 'relative', overflow: 'hidden', minHeight: 220, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px)', backgroundSize: '32px 32px' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 340, height: 240, background: `radial-gradient(ellipse,${AC}12 0%,transparent 65%)`, filter: 'blur(40px)', pointerEvents: 'none' }} />
-      <div style={{ position: 'relative', zIndex: 1, opacity: fade ? 1 : 0, transition: 'opacity .3s ease' }}>
-        <div style={{ fontSize: 'clamp(52px,8vw,88px)', fontWeight: 900, color: AC, letterSpacing: '-.05em', lineHeight: 1, marginBottom: 10 }}>{s.value}</div>
-        <div style={{ fontSize: 18, fontWeight: 800, color: '#f0f0f0', letterSpacing: '-.02em', marginBottom: 8 }}>{s.label}</div>
-        <div style={{ fontSize: 14, color: '#52525b', lineHeight: 1.65, maxWidth: 260 }}>{s.sub}</div>
-      </div>
-      {/* Dots */}
-      <div style={{ position: 'absolute', bottom: 16, display: 'flex', gap: 6, zIndex: 1 }}>
-        {heroStats.map((_, i) => (
-          <div key={i} onClick={() => setIdx(i)} style={{ width: i === idx ? 20 : 6, height: 6, borderRadius: 9999, background: i === idx ? AC : '#2a2a2a', cursor: 'pointer', transition: 'all .3s' }} />
-        ))}
-      </div>
-    </div>
-  );
-}
+// Shared, qualitative commitments replace portfolio-wide statistics.
+function RotatingStat() { return <MissionCommitments />; }
 
 // ── Hero ──────────────────────────────────────────────────────
 function Hero() {
@@ -112,7 +76,7 @@ function Hero() {
 
             <div style={{ marginBottom: 32, overflow: 'hidden' }}>
               <div className="cc-pills" style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                {['+150 PME équipées', '+758 agents en production', '+5 M€ économisés', '+150 PME équipées', '+758 agents en production', '+5 M€ économisés'].map((t, i) => (
+                {['Accompagnement sur mesure', 'Agents IA sur mesure', 'Suivi après livraison', 'Accompagnement sur mesure', 'Agents IA sur mesure', 'Suivi après livraison'].map((t, i) => (
                   <span key={i} className={i >= 3 ? 'pill-dup' : undefined} style={{ padding: '5px 13px', borderRadius: 9999, background: '#f4f4f5', fontSize: 13, fontWeight: 700, color: '#52525b', whiteSpace: 'nowrap', flexShrink: 0 }}>{t}</span>
                 ))}
               </div>
@@ -429,42 +393,10 @@ function CasesListing() {
   );
 }
 
-// ── KPI Globaux ───────────────────────────────────────────────
-const kpiGlobaux = [
-  { value: '+758', label: 'Agents en production', sub: 'Actifs 24h/24' },
-  { value: '+150', label: 'PME et ETI équipées', sub: 'Toutes tailles' },
-  { value: '−70 %', label: 'Temps de saisie', sub: 'En moyenne' },
-  { value: '+5 M€', label: 'Économisés', sub: 'Cumulés 24 mois' },
-  { value: '96 %', label: 'Taux de réussite', sub: '4 % arrêtés au cadrage' },
-  { value: '4 sem.', label: 'Délai moyen', sub: 'Agent simple en prod' },
-];
-
 function KPIGlobaux() {
-  const [ref, visible] = useInView(0.08);
-  return (
-    <section ref={ref} style={{ padding: '96px 24px', background: '#fff', borderTop: '1px solid #e4e4e7' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 52 }}>
-          <H2 style={{ marginBottom: 12 }}>Au total, ce que les agents IA Althoce ont changé pour nos +150 PME équipées</H2>
-        </div>
-        <div className="cc-kpi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2, borderRadius: 20, overflow: 'hidden', border: '1px solid #e4e4e7' }}>
-          {kpiGlobaux.map((k, i) => (
-            <div key={i} style={{ padding: '36px 28px', background: i % 2 === 0 ? '#fff' : '#fafafa', position: 'relative', overflow: 'hidden', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(16px)', transition: `all .5s ${i * .08}s ease`, borderBottom: i < 3 ? '1px solid #e4e4e7' : 'none', borderRight: i % 3 < 2 ? '1px solid #e4e4e7' : 'none' }}>
-              <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: '20%', right: '20%', height: 3, background: `linear-gradient(to right,transparent,${AC},transparent)`, borderRadius: '0 0 4px 4px' }} />
-              <div style={{ fontSize: 'clamp(28px,3vw,44px)', fontWeight: 900, color: AC, letterSpacing: '-.04em', lineHeight: 1, marginBottom: 8 }}>{k.value}</div>
-              <div style={{ fontSize: 15, fontWeight: 800, color: '#09090b', marginBottom: 4 }}>{k.label}</div>
-              <div style={{ fontSize: 13, color: '#a1a1aa', fontWeight: 500 }}>{k.sub}</div>
-            </div>
-          ))}
-        </div>
-        <div style={{ marginTop: 28, padding: '20px 28px', borderRadius: 16, background: `${AC}08`, border: `1px solid ${AC}20` }}>
-          <p style={{ fontSize: 15, color: '#52525b', lineHeight: 1.7, margin: 0, textAlign: 'center' }}>
-            Ces chiffres globaux sont la <strong>somme des transformations</strong> des 150 PME et ETI accompagnées sur les 24 derniers mois. Chaque agent compte un, chaque économie est mesurée chez un client identifié, chaque déploiement est documenté en interne. Méthodologie disponible sur demande pendant les <strong>30 minutes offertes avec un expert</strong>.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
+  return <section style={{ padding: '48px 24px', background: '#fff' }}>
+    <div style={{ maxWidth: 1100, margin: '0 auto' }}><MissionCommitments /></div>
+  </section>;
 }
 
 // ── Secteurs couverts ─────────────────────────────────────────

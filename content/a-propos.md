@@ -42,7 +42,7 @@ Page de marque collective et condensée. Trois règles éditoriales strictes :
 - **Breadcrumb** : `Accueil › À propos`
 - **CTA primaire** : « Discuter de votre projet → »
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
-- **Chiffres marque** : `+758 agents · +150 PME · −70 % temps · +5 M€`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 - **JSON-LD** : `Organization` + `WebPage` + `BreadcrumbList` + `FAQPage` (pas de `Person`)
 
 ---
@@ -59,7 +59,7 @@ qui est Althoce · équipe Althoce · histoire Althoce · culture Althoce · age
 
 ```html
 <title>L'histoire et la culture d'Althoce | Althoce</title>
-<meta name="description" content="Althoce, agence IA française d'origine bordelaise. Histoire, culture d'équipe et valeurs : démocratiser l'IA responsable dans les PME françaises. +150 PME équipées.">
+<meta name="description" content="Althoce, agence IA française d'origine bordelaise. Histoire, culture d'équipe et valeurs : démocratiser l'IA responsable dans les PME françaises. Accompagnement sur mesure.">
 <link rel="canonical" href="https://althoce.com/a-propos/">
 
 <meta property="og:title" content="L'histoire et la culture d'Althoce | Althoce">
@@ -80,7 +80,7 @@ qui est Althoce · équipe Althoce · histoire Althoce · culture Althoce · age
 | 3 | 🟢 Pourquoi Althoce existe | Propre | 3 paragraphes courts + DarkBlock signature équipe |
 | 4 | 🟢 Nos valeurs | Propre | Grille 2×2 cards sobres |
 | 5 | 🟢 Notre équipe et notre culture | Propre | Schéma organisationnel cercles concentriques + 1 paragraphe + bloc candidatures |
-| 6 | 🟢 Nos chiffres | Propre | `<KPIBand />` 4 stats |
+| 6 | 🟢 Notre accompagnement | Partagé | `MissionCommitments` : sur-mesure, transmission et suivi |
 | 7 | 🏠 Méthode | Hérité | `<MethodologySection />` |
 | 8 | 🏠 Souveraineté | Hérité | `<SouveraineteSection />` |
 | 9 | 🟢 FAQ marque | Propre | Accordéon `<FAQItem />` |
@@ -94,7 +94,7 @@ qui est Althoce · équipe Althoce · histoire Althoce · culture Althoce · age
 
 **Pas de portrait humain.** Hero typographique. Deux options visuelles :
 
-- **Option A (recommandée)** : H1 centré display serif XL pleine largeur. Sous-titre centré. Pills. CTA. À l'arrière-plan ou en accent latéral : composition typographique discrète avec les 3 chiffres clés (`+758` / `+150` / `+5 M€`) traités comme éléments graphiques en très grand format mais avec opacité faible (10-15 %).
+- **Option A (recommandée)** : H1 et introduction lisibles, composition typographique sobre, sans compteur ni chiffre agrégé.
 - **Option B** : Split éditorial. À gauche le texte du hero. À droite un **schéma vectoriel** — silhouette France stylisée avec 20 points azure aux villes couvertes (réutilise le composant carte France déjà conçu pour les pages SEO local en taille réduite).
 
 À choisir entre A et B selon l'effet recherché. Par défaut, A.
@@ -109,7 +109,7 @@ qui est Althoce · équipe Althoce · histoire Althoce · culture Althoce · age
 
 ### Pills (3 max)
 
-> Origine Bordeaux · +150 PME équipées · Fondée en [À COMPLÉTER : année]
+> Origine Bordeaux · Accompagnement sur mesure · Fondée en [À COMPLÉTER : année]
 
 ### CTA principal
 
@@ -141,7 +141,7 @@ qui est Althoce · équipe Althoce · histoire Althoce · culture Althoce · age
 
 ### Paragraphe 4 — Aujourd'hui
 
-> Aujourd'hui : **+150 PME équipées**, **+758 agents en production**, **+5 M€ économisés**. Et **aucune mission acceptée dont l'objectif serait un plan de licenciement**, parce que c'est inscrit dans notre méthode. La mission ne change pas : démocratiser l'usage de l'IA dans les entreprises françaises, de manière responsable. Voir notre [manifeste mission](/agences/).
+> Aujourd'hui : **conception sur mesure**, **formation des équipes** et **suivi après livraison**. Et **aucune mission acceptée dont l'objectif serait un plan de licenciement**, parce que c'est inscrit dans notre méthode. La mission ne change pas : démocratiser l'usage de l'IA dans les entreprises françaises, de manière responsable. Voir notre [manifeste mission](/agences/).
 
 ---
 
@@ -227,22 +227,15 @@ Pas de photos, pas de visages, pas de noms. Juste des labels typographiques sur 
 
 ---
 
-## 9. Section 6 — Nos chiffres
+## 9. Section 6 — Notre accompagnement
 
-### H2
+### Notre façon de vous accompagner
 
-> **Quelques chiffres qui parlent pour nous**
+- **Conçus sur mesure** : des agents IA adaptés à vos outils, à vos contraintes et à votre façon de travailler.
+- **Transmis à vos équipes** : des formations et des repères concrets pour prendre la main au quotidien.
+- **Suivis dans la durée** : un accompagnement après la livraison pour ajuster les usages avec vous.
 
-### `<KPIBand />`
-
-**+758 agents IA en production**
-**+150 PME et ETI équipées** dans 20 villes
-**−70 % temps de saisie** en moyenne (finance, back-office)
-**+5 M€ économisés** depuis 2024
-
-### Note sous le KPIBand
-
-> Chiffres cumulés à fin [À COMPLÉTER : date de référence]. Cas signature détaillés dans nos [cas clients](/cas-clients/).
+Utiliser le composant partagé `MissionCommitments`. Aucun compteur animé ni chiffre agrégé. Les résultats chiffrés restent attachés aux études de cas validées.
 
 ---
 
@@ -303,7 +296,7 @@ Densifier le portefeuille français — 200, 500, 1 000 PME équipées d'ici 3 a
       "legalName": "ALTHOCE CONSEIL",
       "url": "https://althoce.com/",
       "logo": "https://althoce.com/logo.svg",
-      "description": "Agence IA française d'origine bordelaise. Mission : démocratiser l'usage de l'IA dans les entreprises françaises de manière responsable. +150 PME équipées.",
+      "description": "Agence IA française d'origine bordelaise. Mission : démocratiser l'usage de l'IA dans les entreprises françaises de manière responsable. Accompagnement sur mesure.",
       "foundingDate": "[À COMPLÉTER : année de création]",
       "address": {
         "@type": "PostalAddress",
@@ -386,7 +379,7 @@ Liens **placés directement dans la prose** :
   - Couleurs : monochrome avec accent azure (`#38BDF8`) sur le cercle central.
   - Animation entrée : pulsation douce du cercle central au scroll.
 
-- `<HeroTypographic />` (sec.1, option A) : hero éditorial typographique. H1 display serif XL centré, avec à l'arrière-plan ou en accent latéral une composition typographique des 3 chiffres clés (`+758` / `+150` / `+5 M€`) en très grand format mais opacité 10-15 %. **Aucune photo.**
+- `<HeroTypographic />` : composition éditoriale sobre mettant en avant la méthode et l’équipe, sans statistique globale.
 
 ### Règle visuelle stricte
 

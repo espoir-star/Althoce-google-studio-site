@@ -143,7 +143,7 @@ function Hero() {
 
             <div style={{ marginBottom: 32, overflow: 'hidden' }}>
               <div className="ach-pills" style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                {['+758 agents en production', 'Scoring devis transparent pondéré', 'Vigilance fournisseurs 24/7', '+758 agents en production', 'Scoring devis transparent pondéré', 'Vigilance fournisseurs 24/7'].map((t, i) => (
+                {['Agents IA sur mesure', 'Scoring devis transparent pondéré', 'Vigilance fournisseurs 24/7', 'Agents IA sur mesure', 'Scoring devis transparent pondéré', 'Vigilance fournisseurs 24/7'].map((t, i) => (
                   <span key={i} className={i >= 3 ? 'pill-dup' : undefined} style={{ padding: '5px 13px', borderRadius: 9999, background: '#f4f4f5', fontSize: 13, fontWeight: 700, color: '#52525b', whiteSpace: 'nowrap', flexShrink: 0 }}>{t}</span>
                 ))}
               </div>

@@ -34,18 +34,12 @@ Démocratiser l'usage responsable de l'intelligence artificielle dans les entrep
 
 ---
 
-## 3. CHIFFRES CLÉS
+## 3. REPÈRES
 
 | Indicateur | Valeur |
 |------------|--------|
 | Année de création de l'agence | **2026** |
 | Expérience cumulée de l'équipe d'ingénieurs | **plus de 10 ans** |
-| Entreprises accompagnées | **plus de 150** |
-| Agents déployés en production | **plus de 758** |
-| Économies cumulées générées chez nos clients | **plus de 5 millions d'euros** |
-| Gain de temps moyen sur les tâches automatisées | **-70 %** |
-| Délai du premier agent en production | **une semaine** |
-| ROI moyen observé | **3 à 6 mois** |
 | Siège social | **Bordeaux** |
 | Zone d'intervention | **France entière** |
 

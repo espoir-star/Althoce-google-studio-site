@@ -2,7 +2,7 @@ import {
   Zap, BarChart3, Layers, Cpu, CheckCircle2,
   ScanLine, Blocks, Briefcase, MessageSquare, Settings2, UserCheck
 } from 'lucide-react';
-import type { ServiceItem, TestimonialItem, FAQItem, StatItem, UseCaseItem } from '../types';
+import type { ServiceItem, TestimonialItem, FAQItem, UseCaseItem } from '../types';
 
 export const getOptimizedImage = (url: string, width = 600) => {
   if (url.includes('images.unsplash.com')) {
@@ -12,12 +12,6 @@ export const getOptimizedImage = (url: string, width = 600) => {
 };
 
 // ── Legacy exports preserved for blog/other pages ────────────────────────────
-
-export const stats: StatItem[] = [
-  { value: "-70%", label: "Temps de Saisie", description: "Administratif réduit." },
-  { value: "+758", label: "Flows Créés", description: "Actifs 24h/24." },
-  { value: "+5M€", label: "Économisés", description: "Pour nos clients." }
-];
 
 export const methodologySteps = [
   { id: "01", title: "L'Audit", desc: "On ne devine pas, on mesure. Cartographie précise des tâches chronophages.", icon: BarChart3 },
@@ -86,19 +80,6 @@ export const HeroLogos = [
 // ── v2 Data (Home Page v2) ────────────────────────────────────────────────────
 
 export const AC = '#2563eb';
-
-export interface StatV2Item {
-  value: string;
-  label: string;
-  sub: string;
-}
-
-export const statsV2: StatV2Item[] = [
-  { value: '+150', label: 'PME accompagnées', sub: 'Des structures de 5 à 500 salariés, dans tous les secteurs.' },
-  { value: '-95%', label: 'Temps de saisie', sub: 'Ce qui prenait des heures prend désormais quelques minutes.' },
-  { value: '+870', label: 'Agents & flows', sub: 'Ils tournent 24h/24 chez nos clients, sans supervision.' },
-  { value: '9 M€', label: 'Économisés', sub: 'En temps libéré, erreurs évitées et revenus débloqués.' },
-];
 
 export interface ServiceV2Item {
   n: string;
@@ -246,14 +227,14 @@ export const cities = {
 };
 
 export const heroLogos = [
-  "https://i.ibb.co/QvCn9FsK/1-1.png",
-  "https://i.ibb.co/9khZ8TVL/2-1.png",
-  "https://i.ibb.co/ns9DWTLB/3-1.png",
-  "https://i.ibb.co/Ps230D63/4-1.png",
-  "https://i.ibb.co/4wcnk99K/5-1.png",
-  "https://i.ibb.co/6R20gLT2/6.png",
-  "https://i.ibb.co/zh3cCrgm/7.png",
-  "https://i.ibb.co/Rkxh2p7z/8.png",
+  { name: 'Digitalised', src: 'https://i.ibb.co/QvCn9FsK/1-1.png' },
+  { name: 'Gemeos Formation', src: 'https://i.ibb.co/9khZ8TVL/2-1.png' },
+  { name: 'LegalPlace', src: 'https://i.ibb.co/ns9DWTLB/3-1.png' },
+  { name: 'Be Immo', src: 'https://i.ibb.co/Ps230D63/4-1.png' },
+  { name: 'Salesforce', src: 'https://i.ibb.co/4wcnk99K/5-1.png' },
+  { name: 'Produweb', src: 'https://i.ibb.co/6R20gLT2/6.png' },
+  { name: 'ED Motors', src: 'https://i.ibb.co/zh3cCrgm/7.png' },
+  { name: 'Yumens', src: 'https://i.ibb.co/Rkxh2p7z/8.png' },
 ];
 
 export interface ForWhoCard {

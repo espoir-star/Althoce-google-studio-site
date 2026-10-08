@@ -36,7 +36,7 @@
 - **Pricing** : pas de section pricing.
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
 - **JSON-LD** : `LocalBusiness` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : canoniques
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ---
 
@@ -98,11 +98,11 @@ agence IA Toulouse · agence IA Occitanie · consultant IA Toulouse · automatis
 
 ### Sous-titre (2 lignes)
 
-> Vous dirigez une PME ou une ETI à Toulouse ou en Occitanie. Althoce vous accompagne avec une expertise sur les secteurs forts régionaux (sous-traitance aéronautique, spatial, biotech) et la même rigueur méthode que sur nos +150 déploiements en France. Présentiel à Toulouse pour les phases stratégiques, distanciel structuré pour le build.
+> Vous dirigez une PME ou une ETI à Toulouse ou en Occitanie. Althoce vous accompagne avec une expertise sur les secteurs forts régionaux (sous-traitance aéronautique, spatial, biotech) et une méthode adaptée à vos équipes et à vos outils. Présentiel à Toulouse pour les phases stratégiques, distanciel structuré pour le build.
 
 ### Pills (3 max)
 
-> +150 PME équipées en France · Expertise secteurs Occitanie · Présentiel + distanciel
+> Accompagnement des PME en France · Expertise secteurs Occitanie · Présentiel + distanciel
 
 ### CTA principal
 
@@ -144,7 +144,7 @@ agence IA Toulouse · agence IA Occitanie · consultant IA Toulouse · automatis
 
 **05. Premier agent en 1 semaine, ROI mesurable en moins de 6 mois**
 
-> Pas de PowerPoint à 100 000 € en 6 mois. **Un agent IA simple en production sous 1 semaine** après cadrage. ROI typique en moins de 6 mois. +758 agents en production. Voir [Cas clients](/cas-clients/).
+> Pas de PowerPoint à 100 000 € en 6 mois. **Un agent IA simple en production sous 1 semaine** après cadrage. ROI typique en moins de 6 mois. Agents IA sur mesure. Voir [Cas clients](/cas-clients/).
 
 ### Callout `<DarkBlock />`
 

@@ -36,7 +36,7 @@
 - **Pricing** : pas de section pricing.
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
 - **JSON-LD** : `LocalBusiness` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Note de positionnement Bordeaux
 
@@ -124,7 +124,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : carte
 
 ### Pills (3 max)
 
-> +150 PME équipées en France · Agence d'origine bordelaise · Présentiel + distanciel
+> Accompagnement des PME en France · Agence d'origine bordelaise · Présentiel + distanciel
 
 ### CTA principal
 
@@ -170,7 +170,7 @@ Composant `<HeroCityMapMockup />` (réutilisable, défini sur la page Paris). Po
 
 **05. Premier agent en 1 semaine, ROI mesurable en moins de 6 mois**
 
-> Pas de PowerPoint à 100 000 € en 6 mois. **Un agent IA simple est en production sous une semaine** après cadrage signé. Le ROI typique se mesure en moins de 6 mois : notre **cas signature bordelais** (négoce de vins) a multiplié par 3 ses RDV qualifiés export en 4 mois sans embaucher. +758 agents déjà en production, +5 M€ d'économies cumulées. Voir [Cas clients](/cas-clients/).
+> Pas de PowerPoint à 100 000 € en 6 mois. **Un agent IA simple est en production sous une semaine** après cadrage signé. Le ROI typique se mesure en moins de 6 mois : notre **cas signature bordelais** (négoce de vins) a multiplié par 3 ses RDV qualifiés export en 4 mois sans embaucher. Des agents conçus sur mesure, puis ajustés avec les équipes. Voir [Cas clients](/cas-clients/).
 
 ### Callout `<DarkBlock />`
 
@@ -437,7 +437,7 @@ Bg `#000000`, accent azure `#38BDF8`, texte primaire blanc, texte secondaire `#9
 2. **Adresse bordelaise précise** : à remplir dans le JSON-LD `LocalBusiness` (vous avez peut-être un siège ou domiciliation à Bordeaux ?).
 3. **Téléphone bordelais** : à remplir si applicable.
 4. **Mention "origine bordelaise"** : valider que c'est commercialement opportun de l'afficher (différenciateur fort sur ce SEO local, neutre voire négatif si vous ciblez les grands comptes parisiens depuis cette page).
-5. **Stat "+5 M€ d'économies cumulées dont [X] € en Nouvelle-Aquitaine"** : ajouter si vous voulez quantifier l'impact régional.
+5. **Preuves locales** : citer un cas validé et son contexte, sans inventer de total régional.
 6. **Cas client négoce de vins bordelais** : déjà cohérent avec `/cas-clients/negoce-vins-bordelais-agent-ia-sdr/`. Mention nominative à confirmer (anonymisé par défaut).
 7. **4 métiers présentés sec.3** : commercial export, service client multilingue, achats, marketing. Valider que c'est bien les 4 plus pertinents pour le tissu PME-ETI bordelais (alternative possible : remplacer marketing par finance pour cibler les cabinets d'expertise comptable bordelais).
 8. **Micro-badge "Origine bordelaise"** : décision design à valider.

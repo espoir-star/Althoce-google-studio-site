@@ -24,7 +24,7 @@
 |------|---------|-----------|
 | `H1` | Hero | « Agence IA à Paris : agents IA, automatisation et formation pour PME et ETI franciliennes » |
 | `Sous-titre hero` | sec.1 | 2 lignes ancrées Paris + Île-de-France, mention présentiel ET distanciel |
-| `Pourquoi Althoce` | sec.2 | Argumentaire partenaire idéal : +150 PME en France, expertise multi-métiers, accompagnement présentiel et distanciel, formation IA, souveraineté France |
+| `Pourquoi Althoce` | sec.2 | Argumentaire partenaire idéal : accompagnement des PME en France, expertise multi-métiers, accompagnement présentiel et distanciel, formation IA, souveraineté France |
 | `4 métiers ciblés Paris` | sec.3 | Finance, Commercial, Service client, Marketing (les 4 plus pertinents pour le tissu PME parisien) + Marquee d'agents en dessous |
 | `Cas client local` | sec.4 | Cas anonymisé éditeur SaaS B2B parisien (lien vers cas complet) |
 | `FAQ locale` | sec.6 | 6 Q/R adaptées Paris (présentiel ET distanciel, formation, expertise multi-métiers, différenciation cabinets parisiens) |
@@ -36,7 +36,7 @@
 - **Pricing** : pas de section pricing. Aucun prix dans le contenu visible.
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
 - **JSON-LD obligatoires** : `LocalBusiness` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -74,14 +74,14 @@ agence IA Paris · agence IA Île-de-France · consultant IA Paris · automatisa
 ```html
 <title>Agence IA à Paris : agents IA, automatisation et formation pour PME et ETI franciliennes | Althoce</title>
 
-<meta name="description" content="Althoce, agence IA française qui accompagne les PME et ETI à Paris et partout en France. Présentiel possible à Paris, distanciel sans contrainte, formation IA pour vos équipes, souveraineté France garantie. +150 PME équipées. 30 min offertes avec un expert.">
+<meta name="description" content="Althoce, agence IA française qui accompagne les PME et ETI à Paris et partout en France. Présentiel possible à Paris, distanciel sans contrainte, formation IA pour vos équipes, souveraineté France garantie. Accompagnement sur mesure. 30 min offertes avec un expert.">
 
 <meta name="keywords" content="agence IA Paris, agence IA Île-de-France, consultant IA Paris, automatisation Paris, IA PME Paris, agent IA Paris, formation IA Paris">
 
 <link rel="canonical" href="https://althoce.com/agence-ia-paris/">
 
 <meta property="og:title" content="Agence IA à Paris : agents IA, automatisation et formation pour PME franciliennes | Althoce">
-<meta property="og:description" content="L'agence IA française qui accompagne vos équipes. Présentiel à Paris + distanciel, souveraineté France, +150 PME équipées.">
+<meta property="og:description" content="L'agence IA française qui accompagne vos équipes. Présentiel à Paris + distanciel, souveraineté France, Accompagnement sur mesure.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://althoce.com/agence-ia-paris/">
@@ -120,7 +120,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : carte
 
 ### Pills (3 max)
 
-> +150 PME équipées en France · Présentiel + distanciel · Premier agent en 1 semaine
+> Accompagnement des PME en France · Présentiel + distanciel · Premier agent en 1 semaine
 
 ### CTA principal
 
@@ -132,7 +132,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : carte
 
 ### Note Claude Design
 
-Composant `<HeroCityMapMockup />` à concevoir (réutilisable pour les 19 pages SEO local) : carte SVG France stylisée avec une ville mise en avant en azure, deux pictogrammes annexes (présentiel + distanciel) en évidence. Mention "+150 PME équipées en France" en pied de carte.
+Composant `<HeroCityMapMockup />` à concevoir (réutilisable pour les 19 pages SEO local) : carte SVG France stylisée avec une ville mise en avant en azure, deux pictogrammes annexes (présentiel + distanciel) en évidence. Mention "Accompagnement des PME en France" en pied de carte.
 
 ---
 
@@ -144,7 +144,7 @@ Composant `<HeroCityMapMockup />` à concevoir (réutilisable pour les 19 pages 
 
 ### Sous-titre
 
-> Vous avez le choix entre plusieurs prestataires IA en Île-de-France. Voici cinq raisons concrètes qui nous distinguent et qui expliquent pourquoi +150 PME françaises nous ont déjà fait confiance.
+> Vous avez le choix entre plusieurs prestataires IA en Île-de-France. Voici cinq raisons concrètes qui nous distinguent pour accompagner les entreprises dans leurs projets.
 
 ### Liste verticale numérotée 01→05 (`<NumberedListVertical />`)
 
@@ -166,7 +166,7 @@ Composant `<HeroCityMapMockup />` à concevoir (réutilisable pour les 19 pages 
 
 **05. Premier agent en 1 semaine, ROI mesurable en moins de 6 mois**
 
-> Pas de PowerPoint à 100 000 € en 6 mois. Pas de POC qui dort dans un coin. **Un agent IA simple est en production sous une semaine** après cadrage signé. Le ROI typique se mesure en moins de 6 mois sur les cas concrets : +758 agents déjà en production, +5 M€ d'économies cumulées documentées. Voir [Cas clients](/cas-clients/) pour les preuves chiffrées.
+> Pas de PowerPoint à 100 000 € en 6 mois. Pas de POC qui dort dans un coin. **Un agent IA simple est en production sous une semaine** après cadrage signé. Le ROI typique se mesure en moins de 6 mois sur les cas concrets : Des agents conçus sur mesure, puis ajustés avec les équipes. Voir [Cas clients](/cas-clients/) pour les preuves chiffrées.
 
 ### Callout `<DarkBlock />`
 

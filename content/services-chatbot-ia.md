@@ -22,7 +22,7 @@
 |------|---------|-----------|
 | `H1` | Hero (sec.1) | « Chatbot IA RAG : pas un chatbot scripté, un assistant qui répond depuis votre base de connaissances » |
 | `Sous-titre hero` | sec.1 | 2 lignes : différenciation chatbot scripté / chatbot RAG / employé IA |
-| `Pills hero` | sec.1 | 3 pills (chiffres marque, sans mention découverte) |
+| `Pills hero` | sec.1 | 3 pills (repères de marque, sans mention découverte) |
 | `Définition pédagogique` | sec.2 | Différencier chatbot IA, assistant IA, et employé IA |
 | `Tableau comparatif` | sec.3 | 2 colonnes : Chatbot scripté / Chatbot RAG Althoce |
 | `Architecture chatbot RAG` | sec.4 | Schéma SVG flux : question utilisateur → embedding → recherche vectorielle → contexte → réponse LLM |
@@ -38,7 +38,7 @@
 - **Pricing** : pas de section pricing sur cette page. Le tarif (1 400 € HT cas simple) est mentionné en FAQ Q3 et en meta description uniquement.
 - **Découverte offerte** : « 30 minutes offertes avec un expert » (jamais dans pills hero)
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -124,7 +124,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : mocku
 
 ### Pills (3 max)
 
-> +758 agents en production · Sources citées dans chaque réponse · 100 % auto-hébergeable
+> Agents IA sur mesure · Sources citées dans chaque réponse · 100 % auto-hébergeable
 
 ### CTA principal
 
@@ -227,7 +227,7 @@ Schéma horizontal en 5 étapes connectées par des flèches azure. Chaque étap
 
 ### Callout sous le schéma
 
-> Cette architecture standard est implémentée chez tous nos clients chatbot. Ce qui change d'un client à l'autre : la base de connaissances injectée (vos FAQ, vos docs, votre intranet), le modèle LLM choisi (selon souveraineté), l'identité de marque du chatbot. Le reste est éprouvé sur +150 PME.
+> Cette architecture standard est implémentée chez tous nos clients chatbot. Ce qui change d'un client à l'autre : la base de connaissances injectée (vos FAQ, vos docs, votre intranet), le modèle LLM choisi (selon souveraineté), l'identité de marque du chatbot. Les autres composants sont testés dans le contexte du projet.
 
 ---
 

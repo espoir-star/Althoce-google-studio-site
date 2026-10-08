@@ -29,7 +29,7 @@ Ce qui s'est vraiment passé le 2 août :
 
 → Et dans presque tous les inventaires d'usages que nous menons, nous trouvons des assistants grand public utilisés sur des données clients. Sans que la direction le sache.
 
-✅ +150 PME accompagnées
+✅ Des équipes accompagnées
 ✅ Un inventaire d'usages bouclé en quelques jours, pas quelques mois
 ✅ Modèles européens hébergés en France par défaut
 

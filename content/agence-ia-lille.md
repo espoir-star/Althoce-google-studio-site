@@ -88,7 +88,7 @@ Structure identique au pattern v2 (Paris, Lyon, Marseille, Toulouse).
 
 ### Pills
 
-> +150 PME équipées en France · Expertise retail et e-commerce Nord · Présentiel + distanciel
+> Accompagnement des PME en France · Expertise retail et e-commerce Nord · Présentiel + distanciel
 
 ### CTA
 
@@ -126,7 +126,7 @@ Structure identique au pattern v2 (Paris, Lyon, Marseille, Toulouse).
 
 **05. Premier agent en 1 semaine, ROI mesurable en moins de 6 mois**
 
-> **Un agent IA en production sous 1 semaine**. ROI typique 3 à 6 mois. +758 agents en production. Voir [Cas clients](/cas-clients/).
+> **Un agent IA en production sous 1 semaine**. ROI typique 3 à 6 mois. Agents IA sur mesure. Voir [Cas clients](/cas-clients/).
 
 ### Callout
 

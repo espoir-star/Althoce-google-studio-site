@@ -73,7 +73,7 @@ Structure identique pattern v2.
 
 ### Pills
 
-> +150 PME équipées en France · Expertise tourisme luxe et biotech · Multilingue 9 langues
+> Accompagnement des PME en France · Expertise tourisme luxe et biotech · Multilingue 9 langues
 
 ### CTA
 
@@ -107,7 +107,7 @@ Structure identique pattern v2.
 
 **05. Premier agent en 1 semaine, ROI mesurable en moins de 6 mois**
 
-> Pas de PowerPoint à 100 000 € en 6 mois. **Un agent IA simple en production sous 1 semaine**. +758 agents en production. Voir [Cas clients](/cas-clients/).
+> Pas de PowerPoint à 100 000 € en 6 mois. **Un agent IA simple en production sous 1 semaine**. Agents IA sur mesure. Voir [Cas clients](/cas-clients/).
 
 ### Callout `<DarkBlock />`
 

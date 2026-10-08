@@ -182,13 +182,13 @@ Althoce conçoit des agents IA sur mesure pour les PME et ETI françaises. Autom
 ### Description longue (~490 caractères)
 
 ```
-Althoce conçoit des agents IA qui prennent en charge vos tâches répétitives et fluidifient vos processus métier : devis, relances, reporting, suivi client, recrutement, gestion documentaire. Vos équipes retrouvent du temps pour ce qui compte vraiment. Hébergement en France, premier agent opérationnel en une semaine, formation des équipes incluse. +150 PME et ETI accompagnées. 30 minutes offertes avec un expert, sans engagement. Bordeaux.
+Althoce conçoit des agents IA qui prennent en charge vos tâches répétitives et fluidifient vos processus métier : devis, relances, reporting, suivi client, recrutement, gestion documentaire. Vos équipes retrouvent du temps pour ce qui compte vraiment. Hébergement en France, premier agent opérationnel en une semaine, formation des équipes incluse. Un accompagnement adapté aux équipes. 30 minutes offertes avec un expert, sans engagement. Bordeaux.
 ```
 
 ### Description complète (~790 caractères)
 
 ```
-Vos équipes passent trop de temps sur des tâches répétitives qui ralentissent votre activité : ressaisie, relances, devis, reporting, gestion documentaire, suivi client. Althoce conçoit des agents IA sur mesure qui prennent en charge ces processus métier de bout en bout, et forme vos collaborateurs pour qu'ils maîtrisent l'IA et restent autonomes dans la durée. Nous intervenons sur l'ensemble des fonctions de l'entreprise : commercial, marketing, RH, finance, juridique, service client. Nos solutions sont hébergées en France pour garantir la souveraineté de vos données, le choix du moteur d'IA est adapté à chaque cas d'usage. Premier agent opérationnel en une semaine. +150 PME et ETI accompagnées. 30 minutes offertes avec un expert pour faire le point, sans engagement. Bordeaux.
+Vos équipes passent trop de temps sur des tâches répétitives qui ralentissent votre activité : ressaisie, relances, devis, reporting, gestion documentaire, suivi client. Althoce conçoit des agents IA sur mesure qui prennent en charge ces processus métier de bout en bout, et forme vos collaborateurs pour qu'ils maîtrisent l'IA et restent autonomes dans la durée. Nous intervenons sur l'ensemble des fonctions de l'entreprise : commercial, marketing, RH, finance, juridique, service client. Nos solutions sont hébergées en France pour garantir la souveraineté de vos données, le choix du moteur d'IA est adapté à chaque cas d'usage. Premier agent opérationnel en une semaine. Un accompagnement adapté aux équipes. 30 minutes offertes avec un expert pour faire le point, sans engagement. Bordeaux.
 ```
 
 ### Les 5 annuaires à viser en priorité
@@ -235,7 +235,7 @@ Pas de roadmap de 18 mois.
 Pas de licences à 50 K€ par an.
 Pas de données qui partent aux États-Unis.
 
-150 PME accompagnées et un constat partagé : ce n'est pas l'IA qui transforme une entreprise, c'est ce qu'elle libère.
+Notre conviction : ce n'est pas l'IA qui transforme une entreprise, c'est ce qu'elle libère.
 
 Les équipes arrêtent de saisir des devis le soir.
 Les commerciaux retrouvent du temps pour les vrais clients.

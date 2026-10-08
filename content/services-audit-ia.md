@@ -21,7 +21,7 @@
 |------|---------|-----------|
 | `H1` | Hero (sec.1) | « Audit IA : la cartographie complète des opportunités IA dans votre entreprise. Pas un PowerPoint de cabinet de conseil. » |
 | `Sous-titre hero` | sec.1 | 2 lignes : différencier l'audit Althoce d'un audit cabinet conseil et des 30 min offertes |
-| `Pills hero` | sec.1 | 3 pills (chiffres marque, sans mention découverte) |
+| `Pills hero` | sec.1 | 3 pills (repères de marque, sans mention découverte) |
 | `Définition pédagogique` | sec.2 | Trois échelles : 30 min offertes / Audit Althoce / Audit cabinet conseil |
 | `Tableau comparatif` | sec.3 | 2 colonnes : Audit cabinet (BCG, McKinsey, Accenture) / Audit Althoce |
 | `6 livrables` | sec.4 | Liste verticale numérotée 01→06 |
@@ -37,7 +37,7 @@
 - **Pricing affiché** : 1 400 € HT (cas simple) / sur devis (système, employé IA, refonte). L'audit IA est sur devis selon scope.
 - **Découverte offerte** : « 30 minutes offertes avec un expert » (qualification du besoin d'audit)
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -124,7 +124,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : mocku
 
 ### Pills (3 max)
 
-> +150 PME équipées · 6 livrables actionnables · Restitution sous 2 à 6 semaines
+> Accompagnement sur mesure · 6 livrables actionnables · Restitution sous 2 à 6 semaines
 
 ### CTA principal
 

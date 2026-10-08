@@ -38,7 +38,7 @@
 - **Pricing** : pas de section pricing sur cette page. Toutes les lignes de produit sont sur devis. La page incite à réserver les 30 minutes offertes avec un expert pour un devis personnalisé.
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Note positionnement (Phase 1, mai 2026)
 

@@ -1,9 +1,10 @@
 import TrustStrip from './brand/TrustStrip';
+import MissionCommitments from './brand/MissionCommitments';
 import { MethodSection, PreAuditCTA, FaqItem as SharedFaqItem } from './brand/Sections';
 import Image from 'next/image';
 import { ArrowUpRight, ArrowRight, Check, Plus } from 'lucide-react';
 import {
-  statsV2, agentMetiers, caseStudies,
+  agentMetiers, caseStudies,
 } from '@/lib/data';
 import { homeOffers, homeMethod, homeFaqs } from '@/lib/home-content';
 import meetingImage from '@/public/images/home/reunion-bureau.webp';
@@ -110,7 +111,7 @@ function CaseStudies() {
         </a>
         <div className={s.caseList}>{others.map(item => <a key={item.href} href={item.href} className={s.case}><div><span>{item.tag}</span><h3>{item.client}</h3><p>{item.desc}</p></div><ArrowUpRight size={21} aria-hidden="true" /></a>)}</div>
       </div>
-      <div className={s.caseStats} aria-label="Résultats de nos accompagnements">{statsV2.map(stat => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div>
+      <MissionCommitments />
     </div></section>
   );
 }

@@ -57,7 +57,7 @@ function Hero() {
             </nav>
 
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 24 }}>
-              {['+150 PME équipées en France', 'Cas client lyonnais validé', 'Présentiel + distanciel'].map((t) => (
+              {['Accompagnement des PME en France', 'Cas client lyonnais validé', 'Présentiel + distanciel'].map((t) => (
                 <span key={t} style={{ padding: '4px 12px', borderRadius: 9999, background: '#f0f7ff', border: `1px solid ${AC}25`, fontSize: 12, fontWeight: 700, color: AC }}>{t}</span>
               ))}
             </div>
@@ -136,7 +136,7 @@ const raisons = [
     title: 'Premier agent en 1 semaine, ROI mesurable en moins de 6 mois',
     body: (
       <p style={{ fontSize: 16, color: '#8a8a95', lineHeight: 1.8, margin: 0 }}>
-        Pas de PowerPoint à 100 000 € en 6 mois. <strong style={{ color: '#09090b' }}>Un agent IA simple est en production sous une semaine</strong> après cadrage signé. Le ROI typique se mesure en moins de 6 mois sur les cas concrets : notre cabinet d'expertise comptable lyonnais signature a doublé sa capacité en 4 mois. +758 agents déjà en production, +5 M€ d'économies cumulées. Voir <a href="/cas-clients/" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>nos cas clients</a>.
+        Pas de PowerPoint à 100 000 € en 6 mois. <strong style={{ color: '#09090b' }}>Un agent IA simple est en production sous une semaine</strong> après cadrage signé. Le ROI typique se mesure en moins de 6 mois sur les cas concrets : notre cabinet d'expertise comptable lyonnais signature a doublé sa capacité en 4 mois. Des agents conçus sur mesure, puis ajustés avec les équipes. Voir <a href="/cas-clients/" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>nos cas clients</a>.
       </p>
     ),
   },
@@ -150,7 +150,7 @@ function PourquoiAlthoce() {
         <div style={{ marginBottom: 52, opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(16px)', transition: 'all .5s ease' }}>
           <H2 style={{ marginBottom: 16 }}>Pourquoi travailler avec Althoce pour votre projet IA à Lyon</H2>
           <p style={{ fontSize: 16, color: '#52525b', lineHeight: 1.7, maxWidth: 640 }}>
-            Vous avez le choix entre plusieurs prestataires IA en Auvergne-Rhône-Alpes. Voici cinq raisons concrètes qui nous distinguent et qui expliquent pourquoi +150 PME françaises, dont plusieurs lyonnaises, nous ont déjà fait confiance.
+            Vous avez le choix entre plusieurs prestataires IA en Auvergne-Rhône-Alpes. Voici cinq raisons concrètes qui nous distinguent pour accompagner les entreprises lyonnaises dans leurs projets.
           </p>
         </div>
 

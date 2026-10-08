@@ -1,0 +1,7 @@
+.commitments { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; list-style: none; margin: 40px 0 0; padding: 28px 0 0; border-top: 1px solid #dfe3e9; }
+.commitments li { display: flex; align-items: flex-start; gap: 15px; min-width: 0; }
+.icon { display: grid; place-items: center; flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px; background: #edf3ff; color: #2459bd; }
+.commitments h3 { margin: 0; color: #101318; font-size: 16px !important; line-height: 1.45; letter-spacing: -.02em; font-weight: 650; }
+.commitments p { margin: 8px 0 0; color: #555d69; font-size: 13px !important; line-height: 1.75; }
+@media (max-width: 900px) { .commitments { gap: 24px; } .commitments li { flex-direction: column; gap: 14px; } }
+@media (max-width: 600px) { .commitments { grid-template-columns: minmax(0, 1fr); margin-top: 30px; padding-top: 24px; gap: 24px; } .commitments li { flex-direction: row; gap: 16px; } }

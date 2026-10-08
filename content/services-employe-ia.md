@@ -45,7 +45,7 @@ Ces 4 sections sont **rendues par Claude Code en réutilisant les composants exi
 - **Pricing** : héritée de la home (langage visuel)
 - **CTA final** : hérité de la home (`CTAFinalSection`)
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList` + `HowTo`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -154,7 +154,7 @@ Split éditorial pleine largeur : à gauche le H1, le sous-titre, les pills et l
 
 ### Micro-preuves (pills, max 3)
 
-> +758 agents en production · +150 PME équipées · 100 % autonome dans son périmètre
+> Agents IA sur mesure · Accompagnement sur mesure · 100 % autonome dans son périmètre
 
 *Les « 30 minutes offertes avec un expert » n'apparaissent PAS dans le hero — c'est mentionné dans la section pricing héritée de la home, dans la FAQ Q3, et dans le CTA final hérité de la home.*
 
@@ -280,7 +280,7 @@ Schéma central : un avatar stylisé au centre, et 5 briques en orbite autour, r
 
 ### Callout sous le schéma
 
-> Ces 5 briques sont systématiquement présentes dans tous nos employés IA. Ce qui varie d'un client à l'autre : le modèle LLM choisi (selon souveraineté + criticité), les outils branchés (selon SI), l'identité de marque (selon culture). **Tout le reste est standardisé et éprouvé sur +150 PME**.
+> Ces 5 briques sont systématiquement présentes dans tous nos employés IA. Ce qui varie d'un client à l'autre : le modèle LLM choisi (selon souveraineté + criticité), les outils branchés (selon SI), l'identité de marque (selon culture). **Chaque composant est testé dans le contexte du projet**.
 
 ---
 
@@ -572,7 +572,7 @@ C'est ce qui transforme un outil dans un coin en collaborateur intégré.
 
 ### Règle pas de labels visuels
 
-Aucune pill / sticker / badge décoratif (« ✨ NOUVEAU », « ⚡ POPULAIRE », « 🚀 BEST-SELLER ») nulle part sur la page. Les pills hero contiennent uniquement les chiffres marque canoniques.
+Aucune pill / sticker / badge décoratif (« ✨ NOUVEAU », « ⚡ POPULAIRE », « 🚀 BEST-SELLER ») nulle part sur la page. Les pills hero contiennent uniquement les repères de marque.
 
 ### Règle créativité visuelle
 

@@ -112,7 +112,7 @@ Trois profils reviennent systématiquement.
 
 **Votre acheteur est submergé par les demandes internes.** Commencez par l'assistant interne. C'est le déploiement le plus rapide et le plus visible pour le reste de l'entreprise, ce qui aide beaucoup pour la suite.
 
-Dans les trois cas, notre méthode est la même, éprouvée sur plus de 150 PME accompagnées : un [audit IA](/services/audit-ia/) court qui cartographie où partent réellement les heures, un premier agent en production en une semaine, et un retour sur investissement visé entre trois et six mois. Nous préférons livrer une brique qui tourne et qui se mesure plutôt qu'un plan de transformation sur douze mois.
+Dans les trois cas, notre méthode part du contexte de votre entreprise : un [audit IA](/services/audit-ia/) court qui cartographie où partent réellement les heures, un premier agent en production en une semaine, et un retour sur investissement visé entre trois et six mois. Nous préférons livrer une brique qui tourne et qui se mesure plutôt qu'un plan de transformation sur douze mois.
 
 ## Ce qu'il faut éviter
 

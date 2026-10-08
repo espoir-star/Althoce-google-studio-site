@@ -39,7 +39,7 @@ Quelques rappels sur notre approche, vu qu'on est officiellement positionnés :
 
 Bien sûr, la mention "Activateur France Num"
 ne fait pas tout. Mais combinée à
-+150 PME accompagnées et un sceau du gouvernement,
+Des équipes accompagnées et un sceau du gouvernement,
 ça commence à compter.
 
 👇 Pour recevoir le guide complet « Comment activer les dispositifs France Num pour son projet IA » en DM :
@@ -109,7 +109,7 @@ Vincent
 
 - [x] Lignes 1-3 créent la curiosité (cible + news + portail officiel)
 - [x] Format aéré : blocs courts, lignes vides entre les parties
-- [x] 4 chiffres concrets (200 000 dirigeants, +150 PME, IA Act 2024/1689, 1 semaine)
+- [x] Présentation factuelle du dispositif et de notre accompagnement, sans volume de clientèle.
 - [x] CTA lead magnet structuré (1️⃣2️⃣3️⃣)
 - [x] Pas de hashtags
 - [x] Pas de lien externe dans le post
@@ -130,7 +130,7 @@ Réponses préparées :
 > Bonne question. Le processus passe par la plateforme extranet France Num. Il faut justifier d'au moins 6 mois d'activité et de références dans la transformation numérique des PME. Le guide en DM détaille les étapes.
 
 **Si quelqu'un est sceptique sur le poids du label**
-> Compréhensible. Le label seul ne fait pas le métier. Mais combiné à notre track record (150+ PME, ROI mesurés sous 6 mois) ça consolide la confiance. C'est aussi ce qui débloque l'accès aux dispositifs publics.
+> Compréhensible. Le label seul ne fait pas le métier. Ce qui compte aussi, c’est une méthode claire : partir de vos besoins, tester sur vos usages et former vos équipes.
 
 **Si quelqu'un demande la liste des subventions accessibles**
 > Ça dépend de ta région et de ton secteur. Le guide en DM liste les principaux dispositifs nationaux. Pour les régionaux, on les active au cas par cas en cadrage projet.

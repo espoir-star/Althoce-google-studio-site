@@ -179,7 +179,7 @@ function Hero() {
             </p>
 
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 32 }}>
-              {['+758 agents en production', '80 % de saisie absorbée', 'ROI inférieur à 6 mois'].map((t) => (
+              {['Agents IA sur mesure', '80 % de saisie absorbée', 'ROI inférieur à 6 mois'].map((t) => (
                 <span key={t} style={{ padding: '5px 13px', borderRadius: 9999, background: '#f4f4f5', fontSize: 13, fontWeight: 700, color: '#52525b' }}>{t}</span>
               ))}
             </div>

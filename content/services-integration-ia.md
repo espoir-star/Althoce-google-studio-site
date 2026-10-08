@@ -21,7 +21,7 @@
 |------|---------|-----------|
 | `H1` | Hero (sec.1) | « Intégration IA dans votre SI : sécurisée, monitorée, gouvernée. Pas un POC oublié dans un coin » |
 | `Sous-titre hero` | sec.1 | 2 lignes ciblant DSI : SSO, RBAC, audit log, monitoring, fallback, conformité |
-| `Pills hero` | sec.1 | 3 pills (chiffres marque, sans mention découverte) |
+| `Pills hero` | sec.1 | 3 pills (repères de marque, sans mention découverte) |
 | `Définition pédagogique` | sec.2 | Différencier intégration sauvage (POC qui devient prod) vs intégration Althoce |
 | `Tableau comparatif` | sec.3 | 2 colonnes : POC sauvage / Intégration Althoce |
 | `Architecture sécurité` | sec.4 | Schéma SVG : SSO, RBAC, audit log, monitoring, fallback humain, kill switch |
@@ -37,7 +37,7 @@
 - **Pricing affiché** : 1 400 € HT (cas simple) / sur devis (système, employé IA, refonte)
 - **Découverte offerte** : « 30 minutes offertes avec un expert »
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -124,7 +124,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : mocku
 
 ### Pills (3 max)
 
-> +150 PME équipées · SSO + RBAC + audit log natifs · 100 % conforme RGPD
+> Accompagnement sur mesure · SSO + RBAC + audit log natifs · 100 % conforme RGPD
 
 ### CTA principal
 
@@ -191,7 +191,7 @@ Le mockup tableau de bord est un composant `<MonitoringDashboardMockup />` à co
 
 ### Note sous le tableau
 
-> Cette grille est issue des 150+ revues d'intégration que nous avons menées en cadrage. La majorité des POCs présentés ne passe pas la moitié de ces critères. Pour évaluer votre situation actuelle, voir notre service [Audit IA](/services/audit-ia/) qui inclut une revue d'intégration complète.
+> Cette grille sert à examiner les contraintes d’intégration au cadrage. La majorité des POCs présentés ne passe pas la moitié de ces critères. Pour évaluer votre situation actuelle, voir notre service [Audit IA](/services/audit-ia/) qui inclut une revue d'intégration complète.
 
 ---
 
@@ -471,7 +471,7 @@ Bg `#000000`, accent azure `#38BDF8`, texte primaire blanc, texte secondaire `#9
 
 1. ✅ **Pricing arbitré (avril 2026)** : 1 400 € HT (agent simple intégré à 1 outil) / sur devis (multi-outils ou gouvernance custom). 30 min offertes avec un expert. Aligné avec home v2 et piliers Silo 1.
 2. **Liste des outils intégrés en standard** sec.5 et FAQ : confirmer que tous sont effectivement supportés en production avant publication.
-3. **Stat "150+ revues d'intégration menées en cadrage"** sec.3 note : croiser avec données réelles.
+3. **Revue d’intégration** : expliquer les critères de cadrage, sans revendiquer un volume de missions.
 4. **Procédure "test mensuel automatique du kill switch"** Q6 : confirmer que c'est bien systématique sur tous les déploiements actifs.
 5. **Logos tech partenaires** cités (Microsoft Entra, Okta, Workday, HashiCorp Vault, AWS, Langfuse, OpenTelemetry, etc.) : usage en mention technique non-commerciale OK si pas de logos visuels sans autorisation.
 

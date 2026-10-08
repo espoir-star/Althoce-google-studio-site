@@ -193,7 +193,7 @@ export function FranceMapSVG({ mainCity, presentielLabel }: FranceMapSVGProps) {
           </div>
         </div>
         <div style={{ fontSize: 10, fontWeight: 700, color: '#a1a1aa', letterSpacing: '.06em', textTransform: 'uppercase' }}>
-          +150 PME équipées en France
+          Accompagnement des PME en France
         </div>
       </div>
     </div>

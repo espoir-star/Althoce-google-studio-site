@@ -270,7 +270,7 @@ Légende : 🍏 Section **propre à l'article** (slot à adapter par article) ·
 
 **Bloc auteur**
 
-> **L'équipe Althoce** — agence d'automatisation IA basée à Bordeaux, +150 PME équipées en France, +758 agents en production. Spécialisée dans la conception d'agents IA sur-mesure pour PME et ETI.
+> **L'équipe Althoce** : cabinet IA basé à Bordeaux. Conseil, agents IA sur mesure, automatisation et formations pour les PME et ETI partout en France.
 >
 > [Lien LinkedIn] · [Lien `/a-propos/`]
 

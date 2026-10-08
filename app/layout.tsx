@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'Althoce | Agents IA & Automatisation pour PME françaises',
     template: '%s | Althoce',
   },
-  description: 'Althoce conçoit des agents IA 100% autonomes et des automatisations métier pour les PME et ETI françaises. Premier agent opérationnel en 1 semaine. Chaque projet chiffré sur mesure.',
+  description: 'Althoce, cabinet IA pour PME et ETI : agents sur mesure, automatisation et formations. Un accompagnement du diagnostic à la prise en main par vos équipes.',
   verification: {
     google: 'owLvah_UoMEisk_eKugO4bY_aFaklREE1wmT9jPImPo',
     other: {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     url: 'https://althoce.com/',
     siteName: 'Althoce',
     title: 'Althoce | Agents IA & Automatisation pour PME françaises',
-    description: 'Althoce conçoit des agents IA sur mesure pour les PME et ETI françaises. Hébergement souverain en France, premier agent opérationnel en une semaine.',
+    description: 'Agents IA sur mesure, automatisation et formations pour les PME et ETI. Althoce construit avec vos équipes et accompagne les usages dans la durée.',
     images: [
       {
         url: '/og-default.png',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@althoce',
     title: 'Althoce | Agents IA & Automatisation pour PME françaises',
-    description: 'Althoce conçoit des agents IA sur mesure pour les PME et ETI françaises. Hébergement souverain en France.',
+    description: 'Agents IA sur mesure, automatisation et formations pour les PME et ETI. Althoce construit avec vos équipes et accompagne les usages dans la durée.',
     images: ['/og-default.png'],
   },
 };

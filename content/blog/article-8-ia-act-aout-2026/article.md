@@ -87,7 +87,7 @@ Ce que cela implique concrètement : votre interlocuteur dépendra de votre sect
 
 ## Les cinq actions qui suffisent à la plupart des PME
 
-Nous accompagnons plus de 150 PME sur ces sujets, et le programme minimum tient en cinq points.
+Nous aidons les PME à structurer leur démarche autour de cinq points.
 
 **1. Inventorier les usages réels.** Pas les outils achetés : les outils utilisés. La différence est systématiquement grande. Dans presque tous les inventaires que nous menons, nous découvrons des usages non déclarés d'assistants grand public sur des données clients. C'est le premier vrai risque, et il est antérieur au règlement.
 

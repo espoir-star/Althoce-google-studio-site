@@ -277,10 +277,10 @@ function SvgBourgogne() {
 
 /* ── Data ──────────────────────────────────────────────────── */
 const kpis = [
-  { val: '+758', label: 'agents en production' },
-  { val: '+150', label: 'PME équipées' },
-  { val: '−70 %', label: 'temps de saisie' },
-  { val: '+5 M€', label: 'économisés' },
+  { val: 'Sur mesure', label: 'Des solutions adaptées à vos outils' },
+  { val: 'Avec vous', label: 'Un travail au contact des équipes' },
+  { val: 'Transmission', label: 'Des formations pour prendre la main' },
+  { val: 'Suivi', label: 'Un accompagnement après la livraison' },
 ];
 
 const engagements: { num: string; title: string; body: string; link: { text: string; href: string } | null; Svg: () => React.ReactElement }[] = [
@@ -419,7 +419,7 @@ const agcStyles = `
   .agc-kpi-grid { max-width:1160px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
   .agc-kpi-item { padding:32px 24px; text-align:center; border-right:1px solid #e4e4e7; }
   .agc-kpi-item:last-child { border-right:none; }
-  .agc-kpi-val { font-size:clamp(28px,3.5vw,42px); font-weight:800; letter-spacing:-.04em; color:#09090b; line-height:1; margin-bottom:6px; }
+  .agc-kpi-val { overflow-wrap: anywhere; font-size:clamp(28px,3.5vw,42px); font-weight:800; letter-spacing:-.04em; color:#09090b; line-height:1; margin-bottom:6px; }
   .agc-kpi-lbl { font-size: 12px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:${AC}; }
 
   /* sections */
@@ -631,7 +631,7 @@ export default function AgencesHubPageClient() {
               Notre mission : que chaque dirigeant puisse utiliser l&apos;IA pour gagner du temps, <strong>sans renoncer à la souveraineté de ses données, ni à l&apos;humain au centre de l&apos;organisation.</strong>
             </p>
             <div className="agc-hero-pills">
-              <span className="agc-hero-pill agc-hero-pill-blue">+150 PME équipées</span>
+              <span className="agc-hero-pill agc-hero-pill-blue">Accompagnement sur mesure</span>
               <span className="agc-hero-pill agc-hero-pill-blue">Souveraineté France</span>
               <span className="agc-hero-pill">Humain au centre</span>
               <span className="agc-hero-pill">20 villes</span>

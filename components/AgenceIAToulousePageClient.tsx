@@ -57,7 +57,7 @@ function Hero() {
             </nav>
 
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 24 }}>
-              {['+150 PME équipées en France', 'Expertise secteurs Occitanie', 'Présentiel + distanciel'].map((t) => (
+              {['Accompagnement des PME en France', 'Expertise secteurs Occitanie', 'Présentiel + distanciel'].map((t) => (
                 <span key={t} style={{ padding: '4px 12px', borderRadius: 9999, background: '#f0f7ff', border: `1px solid ${AC}25`, fontSize: 12, fontWeight: 700, color: AC }}>{t}</span>
               ))}
             </div>
@@ -67,7 +67,7 @@ function Hero() {
             </h1>
 
             <p style={{ fontSize: 16, color: '#8a8a95', lineHeight: 1.75, marginBottom: 32, maxWidth: 520 }}>
-              Vous dirigez une PME ou une ETI à Toulouse ou en Occitanie. Althoce vous accompagne avec une expertise sur les secteurs forts régionaux (sous-traitance aéronautique, spatial, biotech) et la même rigueur méthode que sur nos +150 déploiements en France. Présentiel à Toulouse pour les phases stratégiques, distanciel structuré pour le build.
+              Vous dirigez une PME ou une ETI à Toulouse ou en Occitanie. Althoce vous accompagne avec une expertise sur les secteurs forts régionaux (sous-traitance aéronautique, spatial, biotech) et une méthode adaptée à vos équipes et à vos outils. Présentiel à Toulouse pour les phases stratégiques, distanciel structuré pour le build.
             </p>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -136,7 +136,7 @@ const raisons = [
     title: 'Premier agent en 1 semaine, ROI mesurable en moins de 6 mois',
     body: (
       <p style={{ fontSize: 16, color: '#8a8a95', lineHeight: 1.8, margin: 0 }}>
-        Pas de PowerPoint à 100 000 € en 6 mois. <strong style={{ color: '#09090b' }}>Un agent IA simple en production sous 1 semaine</strong> après cadrage signé. ROI typique en moins de 6 mois. +758 agents en production, +5 M€ d'économies cumulées. Voir <a href="/cas-clients/" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>nos cas clients</a>.
+        Pas de PowerPoint à 100 000 € en 6 mois. <strong style={{ color: '#09090b' }}>Un agent IA simple en production sous 1 semaine</strong> après cadrage signé. ROI typique en moins de 6 mois. Des agents conçus sur mesure, puis ajustés avec les équipes. Voir <a href="/cas-clients/" style={{ color: AC, fontWeight: 700, textDecoration: 'none' }}>nos cas clients</a>.
       </p>
     ),
   },

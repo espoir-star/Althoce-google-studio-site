@@ -22,7 +22,7 @@
 |------|---------|-----------|
 | `H1` | Hero (sec.1) | « Agent IA téléphonique : réception et émission d'appels en pilote automatique, voix naturelle, intégré à votre CRM » |
 | `Sous-titre hero` | sec.1 | 2 lignes ciblant douleur (standard débordé, SAV téléphonique saturé, rappels manuels) + libération |
-| `Pills hero` | sec.1 | 3 pills chiffres marque + ROI métier |
+| `Pills hero` | sec.1 | 3 pills repères de marque + ROI métier |
 | `Définition métier` | sec.2 | Ce qu'absorbe l'agent IA téléphonique vs IVR/SVI classique vs centre d'appel humain |
 | `Avant / Après` | sec.3 | Split éditorial : journée type d'un standard avant / avec agent IA téléphonique |
 | `Agents recommandés` | sec.4 | 4 agents Althoce téléphoniques (réception standard, qualification entrante, rappel sortant, support vocal N0) |
@@ -38,7 +38,7 @@
 - **Pricing** : aucun prix dans le contenu visible. Toute la page est orientée valeur (ROI, payback, transformation). Tarification partagée en RDV après les 30 minutes offertes avec un expert.
 - **Découverte offerte** : « 30 minutes offertes avec un expert » (jamais dans les pills hero)
 - **JSON-LD obligatoires** : `Service` + `FAQPage` + `BreadcrumbList`
-- **Chiffres marque** : `+758 agents en production · +150 PME équipées · −70 % temps de saisie · +5 M€ économisés`
+- **Repères de marque** : conception sur mesure, formation des équipes, suivi après livraison. Aucun chiffre agrégé à reprendre.
 
 ### Règle créativité visuelle
 
@@ -128,7 +128,7 @@ Split éditorial. À gauche : H1, sous-titre, pills, deux CTA. À droite : mocku
 
 ### Pills (3 max)
 
-> +758 agents en production · Voix naturelle française · Disponibilité 24/7
+> Agents IA sur mesure · Voix naturelle française · Disponibilité 24/7
 
 ### CTA principal
 
