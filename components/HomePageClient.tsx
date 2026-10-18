@@ -7,9 +7,9 @@ import {
   agentMetiers, caseStudies,
 } from '@/lib/data';
 import { homeOffers, homeMethod, homeFaqs } from '@/lib/home-content';
+import { brand } from '@/lib/brand-content';
 import meetingImage from '@/public/images/home/reunion-bureau.webp';
 import workingImage from '@/public/images/home/collaboration-bureau.webp';
-import teamImage from '@/public/images/home/equipe-cabinet-v2.webp';
 import AgentMarquee from './AgentMarquee';
 import caseImage from '@/public/images/home/cas-client-bureau.webp';
 import s from './HomePage.module.css';
@@ -24,8 +24,9 @@ function Hero() {
       <div className={`${s.container} ${s.heroGrid}`}>
         <div className={s.heroCopy}>
 
-          <h1 id="hero-h1">Faites de l’IA<br />un atout pour<br /><span>toute votre équipe.</span></h1>
-          <p className={s.lead}>Althoce est un cabinet IA pour les PME. Nous proposons des formations IA, concevons des agents IA et automatisons vos tâches répétitives. Vos équipes gagnent en compétences, en autonomie et en temps pour leur métier.</p>
+          <h1 id="hero-h1">L’IA au service<br /><span>de votre expertise.</span></h1>
+          <p className={s.heroAudience}>{brand.audience}</p>
+          <p className={s.lead}>{brand.description}</p>
           <div className={s.actions}>
             <a className={s.primary} href="/contact/">Réserver mon pré-audit offert<ArrowUpRight size={18} aria-hidden="true" /></a>
             <a className={s.secondary} href="#method">Découvrir notre méthode<ArrowRight size={17} aria-hidden="true" /></a>
@@ -50,7 +51,7 @@ function Approach() {
     <section id="approche" className={s.approach} aria-labelledby="approach-title">
       <div className={`${s.container} ${s.approachGrid}`}>
         <h2 id="approach-title">Moins de tâches répétitives.<br /><span>Plus de place pour votre métier.</span></h2>
-        <div><p>L’IA devient utile quand elle change vraiment votre quotidien. Nous partons de vos besoins pour construire des solutions simples, que vos équipes ont envie d’utiliser.</p><p className={s.approachSignature}>Votre façon de travailler, notre point de départ.</p></div>
+        <div><p>Vos dossiers sont sensibles. Vos décisions engagent votre responsabilité. Nous partons de ces exigences pour alléger le travail répétitif, tout en gardant votre expertise au cœur des décisions.</p><p className={s.approachSignature}>Votre métier donne le cap. Vos équipes gardent la main.</p></div>
       </div>
     </section>
   );
@@ -62,7 +63,7 @@ function Services() {
       <div className={s.container}>
         <div className={s.sectionHeading}>
           <div><h2 id="services-title">Nos services IA,<br /><span>de l’audit à l’adoption.</span></h2></div>
-          <div><p>Conseil, formations IA et automatisation : un accompagnement pour faire progresser vos équipes, du premier pas au suivi quotidien.</p><TextLink href="/services/">Explorer tous nos services</TextLink></div>
+          <div><p>Former vos équipes, encadrer les usages et intégrer l’IA à vos outils : choisissez l’accompagnement adapté à votre point de départ.</p><TextLink href="/services/">Explorer tous nos services</TextLink></div>
         </div>
         <div className={s.offers}>{homeOffers.map((item, i) => (
           <article key={item.title} className={s.offer}>
@@ -120,8 +121,8 @@ function Cabinet() {
   return (
     <section id="cabinet" className={`${s.section} ${s.cabinet}`} aria-labelledby="cabinet-title">
       <div className={`${s.container} ${s.cabinetGrid}`}>
-        <div><h2 id="cabinet-title">Un projet de A à Z.<br /><span>Une équipe à vos côtés.</span></h2><p className={s.lead}>Derrière Althoce, des personnes qui s’impliquent dans votre quotidien. Nous prenons en main votre projet, du premier échange à la mise en place et à la formation de vos équipes.</p><p className={s.lead}>Et après&nbsp;? Nous restons présents pour que les usages durent et évoluent avec vous.</p><TextLink href="/a-propos/">Découvrir le cabinet</TextLink></div>
-        <div className={s.teamPhoto}><Image src={teamImage} alt="Portrait de groupe : Espoir Mwami et neuf collègues dans un espace de travail convivial." fill sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1280px) 48vw, 576px" placeholder="blur" /></div>
+        <h2 id="cabinet-title">Un projet de A à Z.<br /><span>Une équipe à vos côtés.</span></h2>
+        <div><p className={s.lead}>Comprendre votre métier, construire avec vous et transmettre les bons réflexes : nous accompagnons votre projet du premier échange à la prise en main.</p><p className={s.lead}>Après la mise en place, le suivi se définit avec vous pour faire durer les usages.</p><TextLink href="/a-propos/">Découvrir le cabinet</TextLink></div>
       </div>
     </section>
   );

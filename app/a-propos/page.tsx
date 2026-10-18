@@ -5,13 +5,13 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "L'histoire et la culture d'Althoce",
-  description: "Althoce, cabinet IA d’origine bordelaise : conseil, formations IA, agents IA et automatisation pour les PME. Une équipe engagée, du diagnostic au suivi des usages.",
+  description: "Althoce, cabinet de conseil et intégration IA : formation, usages encadrés et automatisation pour les professions réglementées et les entreprises exigeantes.",
   keywords: "qui est Althoce, équipe Althoce, histoire Althoce, culture Althoce, agence IA Bordeaux histoire, Althoce origine",
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://althoce.com/a-propos/' },
   openGraph: {
     title: "L'histoire et la culture d'Althoce | Althoce",
-    description: "Découvrez Althoce, cabinet IA bordelais : une approche humaine du conseil, de la formation et de l’automatisation pour les PME.",
+    description: "Découvrez Althoce : une approche humaine du conseil et de l’intégration IA, adaptée aux exigences de votre profession.",
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/a-propos/',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: '/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+        alt: 'Althoce, cabinet de conseil et intégration IA',
       },
     ],
 },
@@ -36,7 +36,7 @@ const jsonLd = {
       "legalName": "ALTHOCE CONSEIL",
       "url": "https://althoce.com/",
       "logo": "https://althoce.com/logo.svg",
-      "description": "Cabinet IA d’origine bordelaise, Althoce accompagne les PME avec le conseil, les formations IA, les agents IA et l’automatisation, du diagnostic au suivi des usages.",
+      "description": "Cabinet de conseil et intégration IA d’origine bordelaise, Althoce accompagne les professions réglementées et les entreprises à fortes exigences partout en France.",
       "foundingDate": "2025",
       "address": {
         "@type": "PostalAddress",

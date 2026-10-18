@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/formation-ia/ia-fondamentaux/',
-    images: [{ url: fondamentaux.ogImage, width: 1200, height: 630, alt: 'Althoce — Formation IA Fondamentaux' }],
+    images: [{ url: fondamentaux.ogImage, width: 1200, height: 630, alt: 'Althoce, Formation IA métier' }],
   },
   twitter: {
     card: 'summary_large_image',

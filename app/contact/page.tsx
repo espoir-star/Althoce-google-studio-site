@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Discutons de votre projet — 30 minutes offertes',
-  description: "Contactez Althoce pour un pré-audit offert de 30 minutes : formations IA, agents IA et automatisation pour votre PME. Sans engagement, réponse sous 24 h ouvrées.",
+  description: "Parlons de votre métier et de vos exigences : formations IA, usages à encadrer et automatisation. Premier échange Althoce de 30 minutes offert.",
   keywords: 'contact Althoce, contacter Althoce, prendre RDV Althoce, 30 minutes Althoce, rendez-vous expert IA Althoce',
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://althoce.com/contact/' },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: '/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+        alt: 'Althoce, cabinet de conseil et intégration IA',
       },
     ],
 },

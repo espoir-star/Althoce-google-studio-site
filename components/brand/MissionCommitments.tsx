@@ -2,8 +2,8 @@ import { SlidersHorizontal, UsersRound, RefreshCw } from 'lucide-react';
 import s from './MissionCommitments.module.css';
 
 const commitments = [
-  { title: 'Conçus sur mesure', description: 'Des agents IA adaptés à vos outils, à vos contraintes et à votre façon de travailler.', Icon: SlidersHorizontal },
-  { title: 'Transmis à vos équipes', description: 'Des formations et des repères concrets pour prendre la main au quotidien.', Icon: UsersRound },
+  { title: 'Conçus sur mesure', description: 'Des agents IA adaptés à vos outils, à vos données et aux obligations de votre métier.', Icon: SlidersHorizontal },
+  { title: 'Transmis à vos équipes', description: 'Des formations pour pratiquer, vérifier les résultats et maîtriser les usages au quotidien.', Icon: UsersRound },
   { title: 'Suivis dans la durée', description: 'Un accompagnement après la livraison pour ajuster les usages avec vous.', Icon: RefreshCw },
 ];
 

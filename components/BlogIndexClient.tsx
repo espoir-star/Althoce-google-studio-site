@@ -15,7 +15,7 @@ export default function BlogIndexClient({ posts }: { posts: BlogPost[] }) {
   return <main className={b.page}>
     <header className={s.hero}><div className={b.container}>
       <nav className={b.breadcrumb} aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span aria-current="page">Blog</span></nav>
-      <div className={s.intro}><h1>Comprendre l’IA.<br/><span>Choisir comment avancer.</span></h1><p className={b.lead}>Des cas concrets et des repères pour les dirigeants et leurs équipes. Le regard d’Althoce sur les usages, les choix et les questions qui comptent dans votre entreprise.</p></div>
+      <div className={s.intro}><h1>Comprendre l’IA.<br/><span>Choisir comment avancer.</span></h1><p className={b.lead}>Des repères pour les professions réglementées et les entreprises exigeantes : usages métier, données, formation et intégration. Le regard d’Althoce pour avancer avec discernement.</p></div>
     </div></header>
     <section className={s.collection} aria-label="Les articles Althoce"><div className={b.container}>
       <div className={s.filters} role="group" aria-label="Filtrer les articles par thème">{categories.map(item=><button type="button" key={item} aria-pressed={category===item} onClick={()=>setCategory(item)}>{item}</button>)}</div>

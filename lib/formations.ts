@@ -21,6 +21,12 @@ export interface FormationDetail {
   metaDescription: string;
   ogImage: string;
   educationalLevel: 'Beginner' | 'Advanced';
+  individual?: boolean;
+  courseWorkload?: string;
+  courseMode?: string[];
+  followup?: string;
+  programIntro?: string;
+  showFunding?: boolean;
   infos: FormationInfoItem[];
   infoNote?: RichLinkText;    // encart sous la grille d'infos
   objectifsTitre: string;
@@ -34,271 +40,246 @@ export interface FormationDetail {
   faq: { q: string; a: string }[];
 }
 
-const AC = '#2563eb';
-const PURPLE = '#7c3aed';
-
-// ── Formation 1 : IA Fondamentaux ────────────────────────────────
+// Les URL historiques sont conservées ; seuls les programmes sont actualisés.
 export const fondamentaux: FormationDetail = {
-  slug: 'ia-fondamentaux',
-  faq: formationDetailFaq['ia-fondamentaux'],
-  accent: AC,
-  level: 'Niveau 1',
-  title: 'IA Fondamentaux',
-  breadcrumbLabel: 'IA Fondamentaux',
-  chapo:
-    "Une journée pour passer de « j'ai testé ChatGPT » à une utilisation quotidienne, efficace et sécurisée de l'IA dans son travail.",
-  metaTitle: 'Formation IA Fondamentaux',
-  metaDescription:
-    "Une journée pour maîtriser l'IA générative au quotidien professionnel. Aucun prérequis, sur vos vrais dossiers, jusqu'à 10 participants.",
-  ogImage: '/og-default.png',
-  educationalLevel: 'Beginner',
-  infos: [
-    { label: 'Durée', value: '1 journée, 7 heures' },
-    { label: 'Public', value: 'Dirigeants, managers, équipes opérationnelles. Aucun prérequis.' },
-    { label: 'Effectif', value: "Jusqu'à 10 participants" },
-    { label: 'Format', value: 'Présentiel ou distanciel, intra ou inter-entreprise' },
+  "accent": "#2563eb",
+  "ogImage": "/og-default.png",
+  "educationalLevel": "Beginner",
+  "objectifsTitre": "Des compétences pour votre quotidien.",
+  "followup": "Un point de suivi à J+30 pour revenir sur les usages et les difficultés rencontrées.",
+  "mentions": "Évaluation des acquis et attestation de réalisation selon les modalités de l’organisme porteur. Les besoins d’accessibilité sont étudiés avant la session. Licences, API et frais éventuels sont précisés séparément. Les réalisations sont pédagogiques : aucune mise en production n’est incluse.",
+  "programIntro": "Sept modules alternent démonstrations, exercices et vérifications. De 9h à 17h, avec une heure de déjeuner hors des 7 heures pédagogiques.",
+  "slug": "ia-fondamentaux",
+  "level": "Métier",
+  "title": "Formation IA métier",
+  "breadcrumbLabel": "Formation IA métier",
+  "chapo": "Professions réglementées et entreprises exigeantes : apprenez à utiliser l’IA dans votre métier. Prompts, assistants, connexions et prototypes, avec confidentialité et vérification à chaque étape.",
+  "metaTitle": "Formation IA métier : fondamentaux et pratique en 7 h",
+  "metaDescription": "Formation IA métier en 7 h pour professions réglementées et entreprises exigeantes : prompts, assistants, connexions et prototypes, avec suivi à J+30.",
+  "infos": [
+    {
+      "label": "Durée",
+      "value": "1 journée · 7 heures"
+    },
+    {
+      "label": "Public",
+      "value": "Professionnels et équipes · usage courant d’un ordinateur"
+    },
+    {
+      "label": "Groupe",
+      "value": "1 à 10 inclus · 12 participants maximum"
+    },
+    {
+      "label": "Format",
+      "value": "En présentiel ou en visioconférence"
+    }
   ],
-  objectifsTitre: 'À la fin de la journée, vos équipes savent',
-  objectifs: [
-    "Expliquer le fonctionnement d'un LLM et identifier ses limites : hallucinations, biais, fraîcheur des données",
-    "Choisir le modèle d'IA adapté à chaque type de tâche",
-    'Rédiger des prompts structurés puis vérifier et améliorer les résultats obtenus',
-    'Appliquer l\'IA à au moins 3 tâches récurrentes de leur poste',
-    "Identifier les précautions liées aux données, au RGPD et à l’AI Act, et savoir quand demander un avis adapté",
+  "objectifs": [
+    "Choisir un outil IA adapté à une tâche et à ses contraintes.",
+    "Structurer une demande, vérifier les réponses et protéger les données.",
+    "Créer et tester un Skill ou assistant métier réutilisable.",
+    "Comprendre les connexions MCP et les autorisations associées.",
+    "Prototyper un processus avec une validation humaine.",
+    "Construire un tableau de bord d’exercice et contrôler ses calculs."
   ],
-  timeline: [
+  "timeline": [
     {
-      horaire: '9h00',
-      titre: 'Accueil et positionnement',
-      contenu: [
-        'Tour de table, recueil des attentes',
-        'Quiz de positionnement qui sert de référence pour mesurer la progression en fin de journée',
-      ],
+      "horaire": "09h00 · 45 min",
+      "titre": "Panorama des IA et usages responsables",
+      "contenu": [
+        "Comparer ChatGPT, Claude, Gemini, Copilot et Mistral selon les tâches.",
+        "Comprendre les limites, la confidentialité et la validation humaine."
+      ]
     },
     {
-      horaire: '9h30 · Module 1',
-      titre: "Comprendre l'IA générative et les LLM",
-      contenu: [
-        "Qu'est-ce qu'un LLM ? Fonctionnement vulgarisé, sans jargon",
-        "Modèle contre interface : pourquoi ChatGPT n'est pas GPT",
-        'Comparatif des grands modèles : ChatGPT, Claude, Gemini, Mistral, Copilot',
-        'Quel modèle pour quel besoin : rédaction, analyse, recherche, données sensibles',
-        'Les limites : hallucinations, biais, données d\'entraînement, avec démonstration en direct',
-      ],
-      atelier: {
-        label: 'Atelier',
-        description:
-          'Les participants soumettent la même tâche à 2 modèles différents et comparent les résultats.',
-      },
+      "horaire": "09h45 · 45 min",
+      "titre": "Produire et vérifier avec l’IA",
+      "contenu": [
+        "Structurer une demande pour rédiger, synthétiser ou analyser.",
+        "Exercice : résumer un document et vérifier trois informations."
+      ]
     },
     {
-      horaire: '11h15 · Module 2',
-      titre: 'Les bases du prompting efficace',
-      contenu: [
-        'Anatomie d\'un bon prompt : rôle, contexte, tâche, format, contraintes',
-        'Les erreurs classiques et comment les corriger',
-        'Itérer plutôt que recommencer',
-      ],
-      atelier: {
-        label: 'Atelier',
-        description:
-          'Chaque participant reprend 3 de ses prompts ratés et les transforme. Comparaison avant et après.',
-      },
+      "horaire": "10h30 · 1h15",
+      "titre": "Créer un Skill ou assistant métier",
+      "contenu": [
+        "Transformer une procédure en instructions et exemples réutilisables.",
+        "Créer et tester un assistant de compte rendu sur des données fictives."
+      ]
     },
     {
-      horaire: '13h30 · Module 3',
-      titre: "L'IA dans son quotidien professionnel",
-      contenu: [
-        'Cas d\'usage par profil : dirigeant, commercial, administratif, marketing',
-        'Travailler avec ses documents : résumer, extraire, reformuler, traduire',
-      ],
-      atelier: {
-        label: 'Cas pratique central',
-        description:
-          'Chaque participant traite une vraie tâche de son poste apportée le matin, avec accompagnement individuel du formateur.',
-      },
+      "horaire": "11h45 · 45 min",
+      "titre": "Comprendre les connexions MCP",
+      "contenu": [
+        "Découvrir les connecteurs, les permissions et les accès en lecture.",
+        "Démonstration guidée ou simulation selon les outils disponibles."
+      ]
     },
     {
-      horaire: '15h15 · Module 4',
-      titre: 'Réglementation et bonnes pratiques',
-      contenu: [
-        'RGPD appliqué à l\'IA : quelles données partager, lesquelles jamais',
-        "L'IA Act européen : ce qui concerne concrètement une PME",
-        'Confidentialité : paramètres des outils, versions professionnelles contre gratuites',
-        'Construire une charte d\'usage interne',
-      ],
-      atelier: {
-        label: 'Atelier',
-        description:
-          "Auto-audit des pratiques et rédaction des 5 règles d'or pour l'entreprise.",
-      },
+      "horaire": "13h30 · 1h30",
+      "titre": "Prototyper une automatisation métier",
+      "contenu": [
+        "Définir les étapes, les données, les exceptions et le contrôle humain.",
+        "Atelier : suivi de pièces manquantes et préparation de relances."
+      ]
     },
     {
-      horaire: '16h15 · Module 5',
-      titre: "Plan d'action et évaluation",
-      contenu: [
-        'Constituer sa boîte à outils personnelle',
-        'Chaque participant repart avec 3 cas d\'usage prêts à déployer',
-        'Quiz final, évaluation à chaud',
-      ],
+      "horaire": "15h00 · 1h15",
+      "titre": "Construire un tableau de bord d’exercice",
+      "contenu": [
+        "Utiliser un fichier fictif pour produire trois indicateurs, deux graphiques et un filtre.",
+        "Contrôler les calculs et les sources avant d’interpréter les résultats."
+      ]
     },
+    {
+      "horaire": "16h15 · 45 min",
+      "titre": "Mettre en pratique et évaluer",
+      "contenu": [
+        "Combiner les acquis sur un cas métier.",
+        "Évaluer les compétences et préparer un plan individuel d’utilisation."
+      ]
+    }
   ],
-  deliverables: [
-    'Un livret participant complet',
-    "Une bibliothèque de prompts prête à l'emploi",
-    '3 cas d\'usage identifiés et prêts à déployer sur leur poste',
-    "Les 5 règles d'or de l'usage de l'IA dans votre entreprise",
-    'Un certificat de réalisation',
+  "deliverables": [
+    "Des supports et une bibliothèque de prompts métier.",
+    "Un assistant pédagogique testable et un workflow d’exercice documenté.",
+    "Un tableau de bord prototype et une grille de vérification.",
+    "Un bilan des acquis et une attestation de réalisation."
   ],
-  allerPlusLoin: {
-    before: 'Une fois les fondamentaux acquis, la ',
-    linkText: 'formation IA Avancée',
-    href: '/services/formation-ia/ia-avancee/',
-    after: ' permet de créer des assistants IA métier et de construire un premier agent d\'automatisation.',
+  "allerPlusLoin": {
+    "before": "Pour travailler sur deux à trois cas spécifiques à votre organisation, découvrez la ",
+    "linkText": "formation IA métier personnalisée",
+    "href": "/services/formation-ia/ia-avancee/",
+    "after": ", préparée avec votre référent avant la journée."
   },
-  ctaTitle: 'Former vos équipes aux fondamentaux',
-  ctaBody:
-    '30 minutes offertes pour cadrer votre besoin et valider le niveau de vos équipes.',
-  mentions:
-    'Formation évaluée par quiz de positionnement et quiz final. Certificat de réalisation remis à chaque participant. Visio de suivi d\'une heure à 30 jours. Formation accessible aux personnes en situation de handicap, nous contacter en amont. Une prise en charge OPCO peut être étudiée via notre organisme partenaire, sous réserve des conditions du financeur.',
+  "ctaTitle": "Former vos équipes dans le cadre de leur métier.",
+  "ctaBody": "Un premier échange offert pour préciser les usages, les participants et les exigences de votre activité.",
+  faq: formationDetailFaq['ia-fondamentaux']
 };
 
-// ── Formation 2 : IA Avancée ─────────────────────────────────────
 export const avancee: FormationDetail = {
-  slug: 'ia-avancee',
-  faq: formationDetailFaq['ia-avancee'],
-  accent: PURPLE,
-  level: 'Niveau 2',
-  title: 'IA Avancée',
-  breadcrumbLabel: 'IA Avancée',
-  chapo:
-    "Une journée pour approfondir votre pratique : assistants IA personnalisés, prompts réutilisables et première automatisation guidée, à partir de vos besoins métier.",
-  metaTitle: 'Formation IA Avancée',
-  metaDescription:
-    "Une journée pour créer vos assistants IA métier, connecter l'IA à vos outils et construire un agent d'automatisation fonctionnel.",
-  ogImage: '/og-default.png',
-  educationalLevel: 'Advanced',
-  infos: [
-    { label: 'Durée', value: '1 journée, 7 heures' },
-    { label: 'Public', value: 'Professionnels utilisant déjà l\'IA régulièrement' },
-    { label: 'Prérequis', value: 'Pratique régulière d\'un outil IA ou formation Fondamentaux' },
-    { label: 'Effectif', value: "Jusqu'à 10 participants" },
+  "accent": "#7c3aed",
+  "ogImage": "/og-default.png",
+  "educationalLevel": "Beginner",
+  "objectifsTitre": "Des compétences pour votre quotidien.",
+  "followup": "Un point de suivi à J+30 pour revenir sur les usages et les difficultés rencontrées.",
+  "mentions": "Évaluation des acquis et attestation de réalisation selon les modalités de l’organisme porteur. Les besoins d’accessibilité sont étudiés avant la session. Licences, API et frais éventuels sont précisés séparément. Les réalisations sont pédagogiques : aucune mise en production n’est incluse.",
+  "programIntro": "Sept modules alternent démonstrations, exercices et vérifications. De 9h à 17h, avec une heure de déjeuner hors des 7 heures pédagogiques.",
+  "slug": "ia-avancee",
+  "level": "Personnalisée",
+  "title": "Formation IA métier personnalisée",
+  "breadcrumbLabel": "Formation personnalisée",
+  "chapo": "Une journée préparée autour de deux à trois cas de votre organisation. Pour les professions réglementées et les entreprises exigeantes, les exercices s’adaptent à vos outils, à vos données et au quotidien des collaborateurs.",
+  "metaTitle": "Formation IA personnalisée : vos cas métier en 7 h",
+  "metaDescription": "Formation IA personnalisée en 7 h pour professions réglementées et entreprises exigeantes. Vos cas métier, entretien préparatoire et suivi à J+30.",
+  "infos": [
+    {
+      "label": "Formation",
+      "value": "1 journée · 7 heures pédagogiques"
+    },
+    {
+      "label": "Préparation",
+      "value": "Entretien de 1 à 2 h inclus, avant la journée"
+    },
+    {
+      "label": "Groupe",
+      "value": "1 à 10 inclus · 12 participants maximum"
+    },
+    {
+      "label": "Format",
+      "value": "En présentiel ou en visioconférence"
+    }
   ],
-  infoNote: {
-    before: 'Un questionnaire de vérification des prérequis est envoyé en amont. Les participants qui ne les remplissent pas sont orientés vers la ',
-    linkText: 'formation IA Fondamentaux',
-    href: '/services/formation-ia/ia-fondamentaux/',
-    after: '.',
+  "infoNote": {
+    "before": "L’entretien préalable ne fait pas partie des 7 heures et ne constitue pas un audit technique. Pour un programme commun à votre profession, découvrez la ",
+    "linkText": "formation IA métier",
+    "href": "/services/formation-ia/ia-fondamentaux/",
+    "after": "."
   },
-  objectifsTitre: 'À la fin de la journée, vos équipes savent',
-  objectifs: [
-    'Concevoir des prompts avancés réutilisables : few-shot, chaîne de raisonnement, méta-prompting, prompts système',
-    'Créer un assistant IA personnalisé adossé à une base de connaissances métier',
-    'Expliquer le rôle des API et du protocole MCP, et identifier les connexions pertinentes',
-    "Construire un workflow d'automatisation intégrant l'IA",
-    'Définir un cadre de gouvernance et une feuille de route de déploiement',
+  "objectifs": [
+    "Choisir et configurer un environnement IA autorisé.",
+    "Transformer une procédure en Skill ou assistant et tester les cas limites.",
+    "Évaluer les connexions, leurs permissions et les risques associés.",
+    "Prototyper un processus métier avec contrôle et reprise humaine.",
+    "Analyser ou visualiser les données validées selon vos besoins.",
+    "Documenter les réalisations, leurs limites et leur réutilisation."
   ],
-  timeline: [
+  "timeline": [
     {
-      horaire: '9h00',
-      titre: 'Accueil',
-      contenu: [
-        'Tour de table express : chacun présente un usage IA actuel et un processus métier répétitif qu\'il aimerait automatiser',
-        'Ces éléments alimentent la feuille de route construite en fin de journée',
-        'Quiz de positionnement',
-      ],
+      "horaire": "09h00 · 45 min",
+      "titre": "Partir de vos objectifs métier",
+      "contenu": [
+        "Reprendre les deux à trois cas sélectionnés avant la journée.",
+        "Poser les règles de confidentialité et les critères de réussite."
+      ]
     },
     {
-      horaire: '9h15 · Module 1',
-      titre: 'Prompting avancé',
-      contenu: [
-        'Few-shot : guider par l\'exemple pour obtenir un format constant',
-        'Chaîne de raisonnement : faire décomposer avant de conclure',
-        'Méta-prompting : faire écrire et améliorer ses prompts par l\'IA',
-        'Prompts système : poser un cadre permanent de comportement',
-      ],
-      atelier: {
-        label: 'Atelier',
-        description:
-          'Construire un prompt métier réutilisable, sous forme de template paramétrable, sur un cas réel de son poste.',
-      },
+      "horaire": "09h45 · 45 min",
+      "titre": "Personnaliser votre environnement IA",
+      "contenu": [
+        "Configurer des consignes et un contexte métier dans un outil retenu.",
+        "Pratiquer sur des données d’exercice non sensibles."
+      ]
     },
     {
-      horaire: '11h00 · Module 2',
-      titre: 'Son assistant IA métier',
-      contenu: [
-        'Assistants personnalisés : GPTs côté ChatGPT, Projets côté Claude. Instructions, base de connaissances, exemples',
-        'Préparer sa base de connaissances : quels documents, quel format, quels pièges',
-      ],
-      atelier: {
-        label: 'Cas pratique',
-        description:
-          'Chaque participant crée un assistant fonctionnel pour un besoin réel, réponse aux devis, onboarding client ou FAQ interne, et le teste sur des cas concrets.',
-      },
+      "horaire": "10h30 · 1h15",
+      "titre": "Construire un Skill personnalisé",
+      "contenu": [
+        "Traduire une procédure métier en instructions et critères de validation.",
+        "Tester deux situations, dont une exception, puis corriger."
+      ]
     },
     {
-      horaire: '13h30 · Module 3',
-      titre: "Connecter l'IA à ses outils",
-      contenu: [
-        'L\'API expliquée simplement : quand l\'interface ne suffit plus',
-        'MCP : le standard qui branche l\'IA sur vos outils, agenda, CRM, drive, boîte mail',
-        'Démonstrations en direct : IA connectée à des documents, un agenda, un CRM',
-        'Panorama : connecteurs natifs, API et plateformes d\'automatisation',
-      ],
-      atelier: {
-        label: 'Atelier guidé',
-        description: 'Activer et tester un connecteur sur son propre outil.',
-      },
+      "horaire": "11h45 · 45 min",
+      "titre": "Explorer vos connexions et vos données",
+      "contenu": [
+        "Identifier une source autorisée, les permissions et les validations nécessaires.",
+        "Démonstration ou simulation d’un connecteur MCP selon les accès disponibles."
+      ]
     },
     {
-      horaire: '15h15 · Module 4',
-      titre: 'Construire son agent mail',
-      contenu: [
-        'Anatomie d\'un workflow : déclencheur, actions, IA, sortie',
-        'Comparaison des plateformes d\'automatisation et critères de choix',
-        'Démonstration du résultat final par le formateur',
-      ],
-      atelier: {
-        label: 'Atelier standardisé',
-        description:
-          'Tous les participants construisent le même agent mail IA à partir d\'un modèle fourni. Réception d\'un email, analyse et classification par l\'IA en urgent, client ou administratif, étiquetage automatique, puis brouillon de réponse généré. Progression par étapes avec points de contrôle. Chacun repart avec un agent fonctionnel. Variantes présentées en fin d\'atelier : veille automatique, génération de comptes-rendus, alimentation d\'un CRM.',
-      },
+      "horaire": "13h30 · 1h30",
+      "titre": "Prototyper votre processus métier",
+      "contenu": [
+        "Construire le déroulé du cas principal, avec les exceptions.",
+        "Tester le prototype et prévoir une reprise manuelle."
+      ]
     },
     {
-      horaire: '16h30 · Module 5',
-      titre: 'Gouvernance et feuille de route',
-      contenu: [
-        'Sécurité des automatisations : accès, données, supervision humaine',
-        'Prioriser ses chantiers IA avec une matrice effort contre impact',
-        'Feuille de route personnelle à 90 jours',
-        'Quiz final, évaluation à chaud',
-      ],
+      "horaire": "15h00 · 1h15",
+      "titre": "Visualiser les données utiles",
+      "contenu": [
+        "Créer un tableau de bord d’exercice et contrôler ses indicateurs.",
+        "Selon le cadrage, approfondir à la place un second cas documentaire ou de reporting."
+      ]
     },
+    {
+      "horaire": "16h15 · 45 min",
+      "titre": "Transmettre et préparer l’adoption",
+      "contenu": [
+        "Évaluer les réalisations et documenter leurs limites.",
+        "Préparer les fiches de prise en main et le plan d’application à J+30."
+      ]
+    }
   ],
-  deliverables: [
-    'Un prompt template métier réutilisable',
-    'Un assistant IA fonctionnel adossé à leur base de connaissances',
-    'Un agent mail opérationnel, classification et brouillons de réponse',
-    'Une feuille de route personnelle à 90 jours',
-    'Un certificat de réalisation',
+  "deliverables": [
+    "Un Skill ou assistant personnalisé et testable.",
+    "Deux fiches de cas approfondis et un troisième exercice si faisable.",
+    "Des modèles de consignes, un prototype de workflow et, si pertinent, un tableau de bord d’exercice.",
+    "Les règles de validation, le plan d’adoption et le bilan des acquis."
   ],
-  allerPlusLoin: {
-    before: 'Vos équipes ont construit leur premier agent pendant la formation. Pour industrialiser ces automatisations à l\'échelle de votre entreprise, nous concevons des ',
-    linkText: 'agents IA sur mesure',
-    href: '/services/agents-ia/',
-    after: ' intégrés à vos outils métier.',
+  "allerPlusLoin": {
+    "before": "Pour connecter une solution à votre environnement réel et la mettre en production, nous cadrons une mission d’",
+    "linkText": "intégration IA sur mesure",
+    "href": "/services/integration-ia/",
+    "after": " distincte de la formation."
   },
-  ctaTitle: 'Passer au niveau avancé',
-  ctaBody:
-    '30 minutes offertes pour vérifier les prérequis de vos équipes et cadrer les cas d\'usage à travailler.',
-  mentions:
-    'Formation évaluée par quiz de positionnement, quiz final et évaluation des productions en atelier. Certificat de réalisation remis à chaque participant. Visio de suivi d\'une heure à 30 jours. Formation accessible aux personnes en situation de handicap, nous contacter en amont. Une prise en charge OPCO peut être étudiée via notre organisme partenaire, sous réserve des conditions du financeur.',
+  "ctaTitle": "Préparons une formation autour de vos usages.",
+  "ctaBody": "Parlons des cas à travailler, des outils et des responsabilités de votre équipe lors d’un premier échange offert.",
+  faq: formationDetailFaq['ia-avancee']
 };
 
-export const formations: Record<string, FormationDetail> = {
-  'ia-fondamentaux': fondamentaux,
-  'ia-avancee': avancee,
-};
+export const formations: Record<string, FormationDetail> = {'ia-fondamentaux': fondamentaux, 'ia-avancee': avancee};
 
 /**
  * JSON-LD d'une page détail : Course + BreadcrumbList.
@@ -322,8 +303,8 @@ export function buildFormationJsonLd(f: FormationDetail) {
         },
         'hasCourseInstance': {
           '@type': 'CourseInstance',
-          'courseMode': ['Onsite', 'Online'],
-          'courseWorkload': 'PT7H',
+          'courseMode': f.courseMode ?? ['Onsite', 'Online'],
+          'courseWorkload': f.courseWorkload ?? 'PT7H',
         },
         'educationalLevel': f.educationalLevel,
         'teaches': f.objectifs,
@@ -343,32 +324,44 @@ export function buildFormationJsonLd(f: FormationDetail) {
 }
 
 export const formationFaq = [
-  { q: 'Quelle formation IA choisir pour une PME ?', a: 'Althoce propose trois parcours : IA Fondamentaux pour débuter en équipe, IA Avancée pour approfondir une pratique régulière, et Coaching IA Dirigeant pour travailler individuellement sur ses décisions et sa feuille de route. Un premier échange permet d’orienter les participants selon leur niveau et leurs usages.' },
-  { q: 'Quelles sont les durées des formations IA Althoce ?', a: 'IA Fondamentaux et IA Avancée durent chacune 7 heures sur une journée. Le Coaching IA Dirigeant comprend quatre séances individuelles de 1 h 30, soit 6 heures réparties dans le temps. Les formations collectives accueillent jusqu’à 10 participants par session.' },
-  { q: 'Althoce propose-t-il des formations IA partout en France ?', a: 'Oui. Depuis Bordeaux, Althoce accompagne les entreprises sur l’ensemble du territoire français. Les formations peuvent se dérouler en présentiel ou à distance ; le lieu et les modalités sont préparés avec vous selon les besoins de votre équipe.' },
-  { q: 'Un financement OPCO est-il possible pour une formation IA ?', a: 'Une prise en charge peut être étudiée via notre organisme partenaire. Elle dépend de votre situation et des conditions de votre financeur, et n’est pas automatique. Contactez Althoce en amont pour cadrer le parcours et préparer votre demande.' },
   {
-    "q": "Faut-il des compétences techniques ?",
-    "a": "Aucun prérequis pour IA Fondamentaux et le coaching IA Dirigeant. La formation Avancée demande une pratique régulière d'un outil IA. Un questionnaire de vérification est envoyé en amont."
+    "q": "Quelle formation IA choisir pour mon activité ?",
+    "a": "La Formation IA métier propose un programme adapté à votre profession. La Formation IA métier personnalisée se prépare autour de deux à trois cas propres à votre organisation. Le Coaching IA Solo accompagne un indépendant sur une journée ; le Coaching IA Dirigeant reste un parcours individuel de quatre séances."
   },
   {
-    "q": "Sur quel outil se déroule la formation ?",
-    "a": "Sur celui que vos équipes utilisent déjà, ChatGPT ou Claude. Si le choix n'est pas encore fait, nous vous aidons à le poser pendant le cadrage."
+    "q": "Quelles sont les durées des parcours Althoce ?",
+    "a": "Les deux formations collectives durent 7 heures sur une journée. Le Coaching IA Solo comprend 4h30 en visioconférence sur une journée. Le Coaching IA Dirigeant conserve quatre séances individuelles de 1h30, soit 6 heures réparties dans le temps."
   },
   {
-    "q": "Peut-on former plus de 10 personnes ?",
-    "a": "Pour les formations collectives, oui, en organisant plusieurs sessions. Nous limitons à 10 participants pour garantir un accompagnement individuel pendant les ateliers."
+    "q": "Les formations conviennent-elles aux professions réglementées ?",
+    "a": "Oui. Les usages sont préparés en tenant compte du métier, de la confidentialité et des responsabilités des participants. Les ateliers utilisent des données fictives, anonymisées ou autorisées, avec vérification des réponses et validation humaine."
   },
   {
-    "q": "Quel délai faut-il prévoir ?",
-    "a": "Le calendrier est convenu ensemble selon les disponibilités, le cadrage, la préparation des participants et les éventuelles démarches de financement."
+    "q": "Faut-il réaliser un diagnostic avant la formation ?",
+    "a": "Non. Une formation peut être achetée directement. Le questionnaire et, pour la formule personnalisée, l’entretien préalable servent à préparer la pédagogie. Ils ne constituent pas un audit technique."
   },
   {
-    "q": "Les formations sont-elles accessibles aux personnes en situation de handicap ?",
-    "a": "Oui. Contactez-nous en amont pour que nous préparions les aménagements nécessaires."
+    "q": "Les formations comprennent-elles un agent IA en production ?",
+    "a": "Les formations métier et le Coaching IA Solo produisent des outils et prototypes pédagogiques. Une intégration en production nécessite un périmètre, des accès, des tests et un accompagnement distincts."
   },
   {
-    "q": "Que se passe-t-il après la formation ?",
-    "a": "Une visio de suivi est prévue à 30 jours : une heure pour les formations collectives, et un point sur la feuille de route après la dernière séance du coaching dirigeant. Une formation complémentaire ou un projet sur mesure peut être étudié selon les besoins."
+    "q": "Combien de personnes peuvent participer ?",
+    "a": "Les formations collectives incluent 1 à 10 participants au tarif de base. Les 11e et 12e participants font l’objet d’un supplément. Au-delà de 12, plusieurs journées sont organisées. Le Coaching IA Solo est individuel."
+  },
+  {
+    "q": "Intervenez-vous partout en France ?",
+    "a": "Depuis Bordeaux, Althoce accompagne les équipes en présentiel ou à distance partout en France. Le Coaching IA Solo se déroule en visioconférence. Les modalités et les dates sont convenues avant la session."
+  },
+  {
+    "q": "Un financement OPCO peut-il être étudié ?",
+    "a": "Une prise en charge des formations peut être étudiée via notre organisme partenaire. Elle dépend de votre situation et de l’accord du financeur. Nous précisons les modalités du parcours avant toute démarche, sans garantir le financement."
+  },
+  {
+    "q": "Quel suivi est prévu ?",
+    "a": "Les formations collectives prévoient un suivi d’adoption à J+30. Le Coaching IA Solo inclut un point individuel à J+15. Pour le Coaching IA Dirigeant, un suivi à 30 jours après la dernière séance permet de revenir sur la feuille de route."
+  },
+  {
+    "q": "Comment préparer les besoins d’accessibilité ?",
+    "a": "Signalez vos besoins en amont pour que nous étudiions les aménagements nécessaires avec l’organisme porteur, avant de confirmer les modalités de la session."
   }
 ];

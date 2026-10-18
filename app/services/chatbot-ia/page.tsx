@@ -4,13 +4,15 @@ import ServiceSchema from '@/components/services/ServiceSchema';
 import ServicePage from '@/components/services/ServicePage';
 import { serviceStories } from '@/lib/services-content';
 
+const service = serviceStories.find(item => item.slug === 'chatbot-ia')!;
+
 export const metadata: Metadata = {
   title: 'Chatbot IA RAG sur mesure',
-  description: "Chatbot IA RAG connecté à vos connaissances : réponses contextualisées, sources sélectionnées et relais humain pour vos clients ou vos équipes.",
+  description: service.metaDescription,
   keywords: ['chatbot IA', 'chatbot RAG', 'chatbot intelligent', 'agent conversationnel', 'chatbot site internet', 'chatbot français', 'chatbot PME', 'assistant IA conversationnel'],
   openGraph: {
     title: "Chatbot IA | Althoce",
-    description: "Chatbot IA RAG connecté à vos connaissances : réponses contextualisées, sources sélectionnées et relais humain pour vos clients ou vos équipes.",
+    description: service.metaDescription,
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/chatbot-ia/',
@@ -19,19 +21,19 @@ export const metadata: Metadata = {
         url: '/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+        alt: 'Althoce, cabinet de conseil et intégration IA',
       },
     ],
 },
   twitter: {
     card: 'summary_large_image',
     title: "Chatbot IA | Althoce",
-    description: "Chatbot IA RAG connecté à vos connaissances : réponses contextualisées, sources sélectionnées et relais humain pour vos clients ou vos équipes.",
+    description: service.metaDescription,
   },
   alternates: {
     canonical: 'https://althoce.com/services/chatbot-ia/',
   },
 };
 
-const service = serviceStories.find(item => item.slug === 'chatbot-ia')!;
+
 export default function Page() { return <><ServiceSchema service={service} /><ServicePage service={service} /><Footer showCta={true} /></>; }

@@ -3,7 +3,7 @@ import { homeMethod } from '@/lib/home-content';
 export default function ServiceSchema({ service }: { service?: ServiceStory }) {
  const url = `https://althoce.com/services/${service ? `${service.slug}/` : ''}`;
  const faq = service?.faq ?? hubFaq;
- const description = service?.description ?? 'Diagnostic, formations IA, agents IA, automatisation et accompagnement des PME, du cadrage au suivi des usages.';
+ const description = service?.description ?? 'Conseil, formation et intégration IA pour les professions réglementées et les entreprises à fortes exigences. Des solutions sur mesure.';
  const graph = [
   service ? {'@type':'Service','@id':`${url}#service`,name:service.name,serviceType:service.name,description,provider:{'@type':'Organization','@id':'https://althoce.com/#organization',name:'Althoce',url:'https://althoce.com/'},areaServed:{'@type':'Country',name:'France'},offers:{'@type':'Offer',url}} : {'@type':'CollectionPage','@id':`${url}#collection`,name:'Services IA Althoce',description,url},
   {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Accueil',item:'https://althoce.com/'},{'@type':'ListItem',position:2,name:'Services',item:'https://althoce.com/services/'},...(service?[{'@type':'ListItem',position:3,name:service.name,item:url}]:[])]},

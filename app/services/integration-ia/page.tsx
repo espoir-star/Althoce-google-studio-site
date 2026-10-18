@@ -4,13 +4,15 @@ import ServiceSchema from '@/components/services/ServiceSchema';
 import ServicePage from '@/components/services/ServicePage';
 import { serviceStories } from '@/lib/services-content';
 
+const service = serviceStories.find(item => item.slug === 'integration-ia')!;
+
 export const metadata: Metadata = {
   title: 'Intégration IA dans vos outils',
-  description: "Intégration IA dans vos outils : CRM, ERP, documents et messagerie. Des connexions, des accès et une prise en main adaptés à votre entreprise.",
+  description: service.metaDescription,
   keywords: ['intégration IA', 'intégration LLM', 'connecteur IA CRM', 'IA Salesforce', 'IA HubSpot', 'IA Sage', 'gouvernance IA', 'IA RGPD'],
   openGraph: {
     title: "Intégration IA | Althoce",
-    description: "Intégration IA dans vos outils : CRM, ERP, documents et messagerie. Des connexions, des accès et une prise en main adaptés à votre entreprise.",
+    description: service.metaDescription,
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/integration-ia/',
@@ -19,19 +21,19 @@ export const metadata: Metadata = {
         url: '/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+        alt: 'Althoce, cabinet de conseil et intégration IA',
       },
     ],
 },
   twitter: {
     card: 'summary_large_image',
     title: "Intégration IA | Althoce",
-    description: "Intégration IA dans vos outils : CRM, ERP, documents et messagerie. Des connexions, des accès et une prise en main adaptés à votre entreprise.",
+    description: service.metaDescription,
   },
   alternates: {
     canonical: 'https://althoce.com/services/integration-ia/',
   },
 };
 
-const service = serviceStories.find(item => item.slug === 'integration-ia')!;
+
 export default function Page() { return <><ServiceSchema service={service} /><ServicePage service={service} /><Footer showCta={true} /></>; }

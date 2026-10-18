@@ -1,27 +1,28 @@
+import { brand } from '@/lib/brand-content';
 import type { Metadata } from 'next';
 import HomePageClient from '@/components/HomePageClient';
 import Footer from '@/components/Footer';
 import { homeFaqs, homeOffers } from '@/lib/home-content';
 
 export const metadata: Metadata = {
-  title: 'Althoce | Cabinet IA & Automatisation pour PME',
-  description: 'Althoce, cabinet IA à Bordeaux : diagnostic, automatisation, agents IA, formation et pilotage pour les PME. Des usages cadrés, déployés et suivis dans le temps.',
+  title: 'Conseil & intégration IA pour professions réglementées | Althoce',
+  description: brand.shortDescription,
   openGraph: {
-    title: 'Althoce | Cabinet IA & Automatisation pour PME',
-    description: 'Comprendre, équiper, automatiser et faire durer : diagnostic, agents IA, formation et suivi des usages pour les PME, cabinets et agences.',
+    title: 'Conseil & intégration IA pour professions réglementées | Althoce',
+    description: brand.shortDescription,
     url: 'https://althoce.com/',
     images: [
       {
         url: '/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+        alt: 'Althoce, cabinet de conseil et intégration IA',
       },
     ],
 },
   twitter: {
-    title: 'Althoce | Cabinet IA & Automatisation pour PME',
-    description: 'Cabinet IA pour PME : diagnostic, automatisation, agents IA, formation et pilotage. Un accompagnement centré sur l’adoption.',
+    title: 'Conseil & intégration IA pour professions réglementées | Althoce',
+    description: brand.shortDescription,
   },
   alternates: {
     canonical: 'https://althoce.com/',
@@ -35,7 +36,7 @@ const websiteSchema = {
   "@id": "https://althoce.com/#website",
   "name": "Althoce",
   "url": "https://althoce.com/",
-  "description": "Cabinet IA, conseil et automatisation pour PME françaises",
+  "description": brand.shortDescription,
   "publisher": { "@id": "https://althoce.com/#organization" },
   "inLanguage": "fr-FR",
 };
@@ -46,7 +47,7 @@ const professionalServiceSchema = {
   "@id": "https://althoce.com/#service",
   "name": "Althoce",
   "url": "https://althoce.com/",
-  "description": "Cabinet IA : conseil, conception d'agents IA et d'automatisations sur-mesure pour les PME françaises.",
+  "description": brand.shortDescription,
   "image": "https://althoce.com/og-image.png",
   "telephone": "",
   "email": "contact@althoce.com",

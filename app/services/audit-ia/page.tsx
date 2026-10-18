@@ -4,13 +4,15 @@ import ServiceSchema from '@/components/services/ServiceSchema';
 import ServicePage from '@/components/services/ServicePage';
 import { serviceStories } from '@/lib/services-content';
 
+const service = serviceStories.find(item => item.slug === 'audit-ia')!;
+
 export const metadata: Metadata = {
-  title: 'Audit IA pour PME : 30 min offertes',
-  description: "Audit IA pour PME : usages prioritaires, impact estimé et feuille de route. Althoce vous aide à décider. Premier échange de pré-audit offert, 30 min.",
+  title: 'Audit IA : diagnostic organisationnel et technique',
+  description: service.metaDescription,
   keywords: ['audit IA', 'audit IA entreprise', 'cartographie IA', 'stratégie IA PME', 'feuille de route IA', 'diagnostic IA', 'maturité IA', 'roadmap IA'],
   openGraph: {
     title: "Audit IA | Althoce",
-    description: "Audit IA pour PME : usages prioritaires, impact estimé et feuille de route. Althoce vous aide à décider. Premier échange de pré-audit offert, 30 min.",
+    description: service.metaDescription,
     type: 'article',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/audit-ia/',
@@ -19,19 +21,19 @@ export const metadata: Metadata = {
         url: '/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+        alt: 'Althoce, cabinet de conseil et intégration IA',
       },
     ],
 },
   twitter: {
     card: 'summary_large_image',
     title: "Audit IA | Althoce",
-    description: "Audit IA pour PME : usages prioritaires, impact estimé et feuille de route. Althoce vous aide à décider. Premier échange de pré-audit offert, 30 min.",
+    description: service.metaDescription,
   },
   alternates: {
     canonical: 'https://althoce.com/services/audit-ia/',
   },
 };
 
-const service = serviceStories.find(item => item.slug === 'audit-ia')!;
+
 export default function Page() { return <><ServiceSchema service={service} /><ServicePage service={service} /><Footer showCta={true} /></>; }

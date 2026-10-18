@@ -1,3 +1,4 @@
+import { formationCards } from '@/lib/formation-catalogue';
 import {TrainingCityLinks} from '@/components/formation-cities/FormationCityPage';
 import { formationFaq } from '@/lib/formations';
 import type { Metadata } from 'next';
@@ -6,11 +7,11 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Formation IA pour entreprise',
-  description: "Formations IA pour vos équipes et coaching individuel pour dirigeants. Des parcours sur vos vrais dossiers, avec vos outils et un suivi après la formation.",
+  description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, coaching dirigeant et Solo.",
   keywords: ['formation IA entreprise', 'formation intelligence artificielle', 'formation IA générative', 'formation ChatGPT entreprise', 'formation Claude IA', 'formation IA finançable OPCO', 'formation prompting'],
   openGraph: {
     title: 'Formation IA pour entreprise | Althoce',
-    description: "Formations IA pour vos équipes et coaching individuel pour dirigeants. Des parcours sur vos vrais dossiers, avec vos outils et un suivi après la formation.",
+    description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, coaching dirigeant et Solo.",
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/formation-ia/',
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Formation IA pour entreprise | Althoce',
-    description: "Formations IA pour vos équipes et coaching individuel pour dirigeants. Des parcours sur vos vrais dossiers, avec vos outils et un suivi après la formation.",
+    description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, coaching dirigeant et Solo.",
   },
   alternates: {
     canonical: 'https://althoce.com/services/formation-ia/',
@@ -40,7 +41,7 @@ const jsonLd = {
       "@type": "Service",
       "@id": "https://althoce.com/services/formation-ia/#service",
       "name": "Formation IA pour entreprise",
-      "description": "Formations IA pour vos équipes et coaching individuel pour dirigeants. Des parcours sur vos vrais dossiers, avec vos outils et un suivi après la formation.",
+      "description": "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, coaching dirigeant et Solo.",
       "url": "https://althoce.com/services/formation-ia/",
       "provider": {
         "@type": "Organization",
@@ -54,21 +55,7 @@ const jsonLd = {
     {
       "@type": "ItemList",
       "name": "Formations IA Althoce",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 3, "name": "Coaching IA Dirigeant", "url": "https://althoce.com/services/formation-ia/coaching-dirigeant/" },
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "IA Fondamentaux",
-          "url": "https://althoce.com/services/formation-ia/ia-fondamentaux/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "IA Avancée",
-          "url": "https://althoce.com/services/formation-ia/ia-avancee/"
-        }
-      ]
+      "itemListElement": formationCards.map((f,i)=>({"@type":"ListItem",position:i+1,name:f.title,url:`https://althoce.com/services/formation-ia/${f.slug}/`}))
     },
     {
       "@type": "BreadcrumbList",

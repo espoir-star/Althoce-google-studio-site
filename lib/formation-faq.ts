@@ -1,21 +1,63 @@
-/** Réponses issues des programmes Althoce ; source commune au HTML et au JSON-LD. */
+/** Source commune au HTML et au JSON-LD. Programmes Drive : octobre 2026. */
 export const formationDetailFaq = {
-  'ia-fondamentaux': [
-    { q: 'À qui s’adresse la formation IA Fondamentaux d’Althoce ?', a: 'La formation IA Fondamentaux s’adresse aux dirigeants, managers et équipes opérationnelles qui souhaitent utiliser l’IA générative dans leur travail. Aucun prérequis technique n’est nécessaire. Elle convient aux débutants comme aux personnes qui ont déjà essayé un outil sans avoir de méthode régulière.' },
-    { q: 'Combien de temps dure la formation et combien de personnes peuvent participer ?', a: 'IA Fondamentaux se déroule sur une journée de 7 heures, avec un maximum de 10 participants. Ce format laisse du temps pour les démonstrations, les exercices et les retours individuels. Pour une équipe plus nombreuse, plusieurs sessions peuvent être organisées.' },
-    { q: 'Que vais-je apprendre à faire avec ChatGPT ou Claude ?', a: 'Vous apprenez à structurer vos demandes, à améliorer les réponses obtenues et à vérifier leurs limites. Les ateliers partent de tâches professionnelles : synthétiser un document, préparer un texte ou organiser des informations. L’objectif est d’identifier au moins trois usages adaptés à votre poste, avec l’outil retenu lors du cadrage.' },
-    { q: 'Peut-on suivre cette formation IA à distance ou dans notre entreprise ?', a: 'Althoce propose IA Fondamentaux en présentiel ou à distance, en intra ou inter-entreprise. Le cabinet est basé à Bordeaux et accompagne les PME sur l’ensemble du territoire français. Le lieu, les dates et les modalités sont convenus avec vous avant la session.' },
-    { q: 'La formation aborde-t-elle la confidentialité des données et les limites de l’IA ?', a: 'Oui. Le programme aborde les hallucinations, les biais et la fraîcheur des informations, ainsi que les précautions relatives aux données, au RGPD et à l’AI Act. Les participants apprennent à contrôler les réponses et à identifier les situations nécessitant un avis adapté. La formation ne remplace pas un audit de conformité.' },
-    { q: 'Que reçoit-on après la journée de formation ?', a: 'Les participants repartent avec un livret, une bibliothèque de prompts, trois cas d’usage identifiés pour leur poste, des règles d’usage et un certificat de réalisation. Une visioconférence de suivi d’une heure à 30 jours permet de revenir sur les difficultés rencontrées en pratique.' },
-    { q: 'Comment préparer une demande de financement pour IA Fondamentaux ?', a: 'Contactez Althoce avant de planifier la session pour étudier les possibilités de prise en charge via notre organisme partenaire. Un financement OPCO peut être envisagé selon votre situation et les conditions du financeur ; il n’est pas automatique. Les modalités de la formation sont cadrées avant la demande.' },
+  "ia-fondamentaux": [
+    {
+      "q": "À qui s’adresse la formation ia métier ?",
+      "a": "Aux équipes de cabinets et d’entreprises souhaitant utiliser l’IA dans leur métier. Un usage courant de l’ordinateur est nécessaire, sans compétence en programmation. Les exemples sont déclinés selon la profession et le niveau du groupe."
+    },
+    {
+      "q": "Quelle différence entre les deux formations IA métier ?",
+      "a": "La formation métier propose un programme commun adapté à une profession. La formule personnalisée comporte un entretien préparatoire de 1 à 2 heures, puis 7 heures de formation autour de deux à trois cas spécifiques à votre organisation. Cet entretien est inclus et organisé avant la journée."
+    },
+    {
+      "q": "Quelle durée et quelle taille de groupe prévoir ?",
+      "a": "La formation dure 7 heures pédagogiques, de 9h à 17h avec une heure de déjeuner. Le tarif de base couvre 1 à 10 participants ; les 11e et 12e participants font l’objet d’un supplément. Au-delà de 12, plusieurs journées distinctes sont organisées."
+    },
+    {
+      "q": "Que crée-t-on pendant les ateliers ?",
+      "a": "Les participants construisent un Skill ou assistant, un prototype de workflow et, selon le programme retenu, un tableau de bord d’exercice. Les accès MCP sont démontrés ou simulés selon les outils autorisés. Ces réalisations pédagogiques ne sont pas des agents livrés en production."
+    },
+    {
+      "q": "Comment sont traitées les données confidentielles ?",
+      "a": "Les exercices utilisent des données fictives, anonymisées ou explicitement autorisées. Les participants apprennent à vérifier les réponses, limiter les accès et garder une validation humaine. Les obligations propres à votre activité sont prises en compte dans la préparation."
+    },
+    {
+      "q": "Peut-on se former à distance et bénéficier d’un suivi ?",
+      "a": "Oui. La session peut se tenir en présentiel ou en visioconférence. Supports, évaluation des acquis et suivi d’adoption à J+30 sont prévus. Les modalités et les besoins d’accessibilité sont étudiés avant la formation."
+    },
+    {
+      "q": "Un financement OPCO est-il possible ?",
+      "a": "Une prise en charge peut être étudiée via notre organisme partenaire, selon votre situation, les règles applicables et l’accord du financeur. Elle n’est pas automatique. Les modalités et les documents nécessaires sont précisés avant l’inscription."
+    }
   ],
-  'ia-avancee': [
-    { q: 'Quels sont les prérequis pour suivre la formation IA Avancée ?', a: 'IA Avancée s’adresse aux professionnels qui utilisent déjà régulièrement un outil d’IA, ou qui ont suivi IA Fondamentaux. Un questionnaire vérifie les prérequis avant la session. Si les bases doivent être consolidées, Althoce vous oriente vers le parcours Fondamentaux.' },
-    { q: 'Quelle est la différence entre IA Fondamentaux et IA Avancée ?', a: 'IA Fondamentaux aide à comprendre l’IA générative et à l’utiliser sur ses tâches quotidiennes. IA Avancée approfondit cette pratique : prompts réutilisables, assistant adossé à une base de connaissances métier et première automatisation guidée. Chaque parcours dure une journée de 7 heures.' },
-    { q: 'Quels outils et réalisations sont abordés pendant la journée ?', a: 'Les ateliers permettent de créer un modèle de prompt métier, un assistant IA personnalisé et un agent mail pour classer les messages et préparer des brouillons de réponse. Le programme explique aussi le rôle des API et du protocole MCP. Les outils et les cas d’usage sont préparés selon le contexte des participants.' },
-    { q: 'L’agent créé en formation est-il un déploiement complet pour mon entreprise ?', a: 'Non. L’agent construit en atelier est une réalisation pédagogique qui permet de comprendre et de pratiquer l’automatisation. Son utilisation à l’échelle de l’entreprise nécessite un cadrage complémentaire : accès aux outils, règles métier, sécurité, tests et suivi. Althoce peut accompagner ce projet sur mesure dans une mission distincte.' },
-    { q: 'Comment se déroule une session IA Avancée pour une équipe de PME ?', a: 'La session rassemble jusqu’à 10 participants pendant 7 heures. Elle alterne démonstrations, ateliers et retours sur les productions. Elle peut être organisée en présentiel ou à distance, selon les modalités convenues avec Althoce, pour des équipes à Bordeaux ou ailleurs en France.' },
-    { q: 'Quel accompagnement est prévu après la formation IA Avancée ?', a: 'Vous repartez avec les réalisations des ateliers, une feuille de route personnelle à 90 jours et un certificat de réalisation. Une visioconférence de suivi d’une heure à 30 jours permet de faire le point sur la pratique. Un déploiement ou une maintenance en entreprise se définissent dans un accompagnement séparé.' },
-    { q: 'La formation IA Avancée peut-elle faire l’objet d’une prise en charge OPCO ?', a: 'Une prise en charge peut être étudiée via notre organisme partenaire, selon votre situation et les critères de votre financeur. Elle n’est pas garantie. Le premier échange avec Althoce permet de vérifier les prérequis de l’équipe et de préparer les modalités du parcours avant toute démarche de financement.' },
-  ],
+  "ia-avancee": [
+    {
+      "q": "À qui s’adresse la formation ia métier personnalisée ?",
+      "a": "Aux équipes de cabinets et d’entreprises souhaitant utiliser l’IA dans leur métier. Un usage courant de l’ordinateur est nécessaire, sans compétence en programmation. Un référent décrit les processus à travailler pendant la préparation."
+    },
+    {
+      "q": "Quelle différence entre les deux formations IA métier ?",
+      "a": "La formation métier propose un programme commun adapté à une profession. La formule personnalisée comporte un entretien préparatoire de 1 à 2 heures, puis 7 heures de formation autour de deux à trois cas spécifiques à votre organisation. Cet entretien est inclus et organisé avant la journée."
+    },
+    {
+      "q": "Quelle durée et quelle taille de groupe prévoir ?",
+      "a": "La formation dure 7 heures pédagogiques, de 9h à 17h avec une heure de déjeuner. Le tarif de base couvre 1 à 10 participants ; les 11e et 12e participants font l’objet d’un supplément. Au-delà de 12, plusieurs journées distinctes sont organisées."
+    },
+    {
+      "q": "Que crée-t-on pendant les ateliers ?",
+      "a": "Les participants construisent un Skill ou assistant, un prototype de workflow et, selon le programme retenu, un tableau de bord d’exercice. Les accès MCP sont démontrés ou simulés selon les outils autorisés. Ces réalisations pédagogiques ne sont pas des agents livrés en production."
+    },
+    {
+      "q": "Comment sont traitées les données confidentielles ?",
+      "a": "Les exercices utilisent des données fictives, anonymisées ou explicitement autorisées. Les participants apprennent à vérifier les réponses, limiter les accès et garder une validation humaine. Les obligations propres à votre activité sont prises en compte dans la préparation."
+    },
+    {
+      "q": "Peut-on se former à distance et bénéficier d’un suivi ?",
+      "a": "Oui. La session peut se tenir en présentiel ou en visioconférence. Supports, évaluation des acquis et suivi d’adoption à J+30 sont prévus. Les modalités et les besoins d’accessibilité sont étudiés avant la formation."
+    },
+    {
+      "q": "Un financement OPCO est-il possible ?",
+      "a": "Une prise en charge peut être étudiée via notre organisme partenaire, selon votre situation, les règles applicables et l’accord du financeur. Elle n’est pas automatique. Les modalités et les documents nécessaires sont précisés avant l’inscription."
+    }
+  ]
 };

@@ -1,22 +1,20 @@
 import { faqsV2, type FAQv2Item } from './data';
 
-// Homepage editorial source (12 September 2026):
-// https://espoir-metareglage.notion.site/Althoce-Notre-approche-notre-m-thode-nos-offres-3d9c7d01a0e88143bd73e9c1e722f1cf
-// Kept separate from service-page copy until the wider site reorganisation.
+// Positionnement et catalogue Drive d’octobre 2026 : voir docs/positionnement-2026-10.md.
 export const homeOffers = [
   {
     title: 'Diagnostic IA',
     purpose: 'Savoir quoi faire.',
-    desc: 'Repérez où l’IA peut vraiment vous aider. Nous étudions vos usages et construisons une feuille de route claire, avec vos priorités.',
-    deliverable: 'Une feuille de route sur six mois, une bibliothèque de prompts et une note de conformité RGPD et AI Act.',
+    desc: 'Clarifiez vos priorités avec un atelier ciblé, ou approfondissez vos usages et la faisabilité d’un projet avec un diagnostic adapté.',
+    deliverable: 'Une synthèse et des priorités pour l’atelier ; une cartographie ou une étude de faisabilité pour le diagnostic.',
     href: '/services/audit-ia/',
     linkLabel: 'Découvrir notre audit IA',
   },
   {
     title: 'Déploiement & agents IA',
     purpose: 'Construire ce qui fait gagner du temps.',
-    desc: 'Libérez vos équipes des tâches répétitives grâce à des agents IA et des automatisations sur mesure, intégrés à vos outils.',
-    deliverable: 'Mise en production, session de transfert, documentation d’usage et un mois de maintenance inclus.',
+    desc: 'Reliez l’IA à vos outils métier. Des agents et automatisations sur mesure, avec des données autorisées, des tests et des validations humaines.',
+    deliverable: 'Mise en production, documentation, prise en main, correctifs initiaux pendant 30 jours et bilan à J+30.',
     href: '/services/automatisation-ia/',
     linkLabel: 'Découvrir nos automatisations IA',
   },
@@ -24,50 +22,53 @@ export const homeOffers = [
     title: 'Pilotage & maintenance',
     purpose: 'Faire durer ce qui tourne.',
     desc: 'Gardez des solutions fiables au fil du temps. Nous suivons les usages, entretenons vos automatisations et les faisons évoluer avec vous.',
-    deliverable: 'Un accompagnement dans la durée, avec un contrat annuel et un suivi de l’adoption.',
+    deliverable: 'Un périmètre de maintenance et d’évolution sur devis, distinct de l’intégration initiale.',
     href: '/services/pilotage-ia/',
     linkLabel: 'Découvrir le pilotage IA',
   },
   {
     title: 'Formation IA',
     purpose: 'Monter en compétence.',
-    desc: 'Donnez à vos équipes la confiance et les compétences pour utiliser l’IA au quotidien. Des formations et du coaching sur vos cas réels.',
-    deliverable: 'Des formations éligibles à un financement OPCO via notre organisme partenaire.',
+    desc: 'Apprenez à utiliser l’IA dans votre métier : vérifier les réponses, protéger les données et créer des outils pédagogiques réutilisables.',
+    deliverable: 'Des formations métier et personnalisées, avec un financement à étudier selon votre situation et l’accord du financeur.',
     href: '/services/formation-ia/',
     linkLabel: 'Découvrir nos formations IA',
   },
 ];
 
 export const homeMethod = [
-  { n: '01', title: 'Comprendre', purpose: 'Savoir quoi faire, et dans quel ordre.', desc: 'Nous écoutons vos équipes et observons leur quotidien pour choisir les sujets qui méritent votre attention.' },
-  { n: '02', title: 'Équiper', purpose: 'Avoir les bons outils, bien cadrés.', desc: 'Nous choisissons les bons outils et posons un cadre simple. Si vos logiciels actuels suffisent, nous vous le disons.' },
-  { n: '03', title: 'Automatiser', purpose: 'Construire ce qui fait gagner du temps.', desc: 'Nous construisons, testons avec vous et accompagnons la prise en main. Vos équipes savent utiliser ce qui a été mis en place.' },
-  { n: '04', title: 'Faire durer', purpose: 'Entretenir ce qui tourne.', desc: 'Nous faisons le point à 30 et à 90 jours, puis entretenons les solutions pour qu’elles continuent à vous servir.' },
+  { n: '01', title: 'Comprendre', purpose: 'Savoir quoi faire, et dans quel ordre.', desc: 'Nous écoutons vos équipes et identifions les usages utiles, les données sensibles et vos obligations professionnelles.' },
+  { n: '02', title: 'Équiper', purpose: 'Avoir les bons outils, bien cadrés.', desc: 'Nous choisissons les outils et définissons les données autorisées, les accès et les règles d’usage avec vos responsables.' },
+  { n: '03', title: 'Automatiser', purpose: 'Construire ce qui fait gagner du temps.', desc: 'Nous concevons et testons sur des cas représentatifs, puis accompagnons la prise en main. Les décisions sensibles restent encadrées.' },
+  { n: '04', title: 'Faire durer', purpose: 'Entretenir ce qui tourne.', desc: 'Un bilan à 30 jours accompagne l’intégration. La maintenance et les évolutions dans la durée sont définies séparément avec vous.' },
 ];
 
 export const diagnosticSteps = [
   { title: 'Cadrage', desc: 'Périmètre, objectifs, critères de succès et interlocuteurs. La note de cadrage, y compris ce qui est hors périmètre, est validée par écrit.' },
   { title: 'Immersion et mesure', desc: 'Entretiens avec les personnes qui exécutent les tâches. On chronomètre, on observe les détours et les ressaisies d’un outil à l’autre.' },
-  { title: 'Qualification', desc: 'Chaque cas d’usage est testé sur vos dossiers réels. On vérifie en parallèle la connectivité de vos outils.' },
+  { title: 'Qualification', desc: 'Nous examinons les usages sur des exemples autorisés et vérifions les possibilités de connexion aux outils, selon le diagnostic retenu.' },
   { title: 'Priorisation et chiffrage', desc: 'Impact en heures, complexité, risque : on classe chaque cas et on chiffre le coût annuel des irritants avec vos données.' },
   { title: 'Restitution', desc: 'On vous remet le dossier et on présente les résultats. Le diagnostic recommande et chiffre ; il précise aussi ce qu’il ne traite pas.' },
 ];
 
 export const homeCommitments = [
-  { title: 'La prise en main est comprise.', desc: 'Chaque déploiement inclut une session de transfert avec les personnes concernées, une documentation d’usage et un mois de maintenance. Un outil que personne n’utilise n’est pas un projet livré.' },
-  { title: 'La conformité fait partie du projet.', desc: 'RGPD, AI Act, charte d’usage et choix d’outils européens quand c’est pertinent. Pour les professions réglementées, le cadre est adapté au secret professionnel.' },
-  { title: 'L’adoption se mesure dans le temps.', desc: 'Les usages sont mesurés à 30 et à 90 jours. La mise en production est une étape : ce qui compte, c’est que la solution continue à servir vos équipes.' },
+  { title: 'La prise en main est comprise.', desc: 'Chaque intégration comprend la prise en main, la documentation et des correctifs initiaux pendant 30 jours dans le périmètre convenu.' },
+  { title: 'Vos exigences guident le projet.', desc: 'Nous cadrons les données, les accès et les contrôles avec vos responsables, en tenant compte de vos obligations et du secret professionnel lorsqu’il s’applique.' },
+  { title: 'L’adoption se mesure dans le temps.', desc: 'Un bilan à J+30 permet d’examiner les usages. Le pilotage à plus long terme se définit selon vos besoins et les engagements convenus.' },
 ];
 
 // Keep the established questions and vocabulary where relevant. Both the visible
 // disclosures and FAQPage JSON-LD consume this exact array.
 const faqOverrides: Record<number, FAQv2Item> = {
-  2: { q: faqsV2[2].q, a: 'Le chiffrage dépend des outils à connecter, de la qualité de leurs API et du périmètre visé. Tout démarre par un premier échange. Nous mesurons ensuite les tâches et qualifions les cas d’usage avant de chiffrer. Le diagnostic remet une feuille de route ; il recommande et chiffre, mais n’exécute pas les déploiements.' },
-  3: { q: faqsV2[3].q, a: 'Le calendrier dépend du périmètre et de vos outils. On le précise après le cadrage et la mesure des tâches, avant de lancer les chantiers. Le diagnostic fournit déjà des prompts utilisables immédiatement et une feuille de route sur six mois. Après déploiement, les usages sont mesurés à 30 et à 90 jours.' },
-  4: { q: faqsV2[4].q, a: 'Notre démarche part du travail réel de vos équipes. Les agents IA et automatisations prennent en charge des tâches répétitives pour libérer du temps sur les missions qui demandent du jugement et de la relation client. Chaque déploiement comprend une session de transfert et une documentation d’usage pour les personnes concernées.' },
-  5: { q: faqsV2[5].q, a: 'Le choix des outils et des données qu’ils peuvent traiter fait partie du cadrage. Nous examinons les exigences RGPD, AI Act et de confidentialité, avec des outils européens quand c’est pertinent. Une charte d’usage encadre les pratiques. Pour les professions réglementées, ce cadre est adapté au secret professionnel.' },
-  7: { q: faqsV2[7].q, a: 'Oui. Althoce accompagne les PME, cabinets et agences. Le point de départ est un besoin concret, pas un nombre de salariés : des tâches qui prennent du temps, des outils mal utilisés ou des usages IA à structurer. Si votre logiciel actuel suffit, nous le disons avant de proposer une automatisation.' },
-  8: { q: 'Comment travaille votre cabinet de conseil IA ?', a: 'Althoce accompagne les entreprises en quatre temps : comprendre, équiper, automatiser et faire durer. On part de votre organisation et de vos usages, puis on décide ce qui mérite d’être construit. Le diagnostic, l’équipement, le déploiement, le pilotage et les formations sont des accompagnements distincts, adaptés à votre point de départ.' },
-  10: { q: faqsV2[10].q, a: 'On définit le périmètre et les critères de succès avant de construire. Les cas d’usage sont qualifiés sur vos dossiers réels, avec une attention à leur impact, leur complexité et leur risque. Les actions sensibles sont cadrées avec vous et les équipes sont accompagnées dans la prise en main.' },
+  0: { q: faqsV2[0].q, a: 'Un agent IA associe un modèle à des outils et à des actions autorisées. Il peut préparer un dossier, retrouver une information ou proposer une mise à jour. Nous définissons son périmètre, les accès et les validations avec votre équipe.' },
+  1: { q: faqsV2[1].q, a: 'Une automatisation classique suit des règles définies. L’IA peut compléter ces règles pour interpréter un document ou qualifier une demande. Les exceptions et les décisions sensibles nécessitent des contrôles adaptés : le système ne devient pas infaillible.' },
+  2: { q: faqsV2[2].q, a: 'Le prix dépend des processus, des connexions, des volumes et des risques. Le premier échange est offert. Un atelier peut clarifier les priorités ; un diagnostic technique peut être nécessaire avant de chiffrer une intégration complexe. Ces prestations ont un périmètre distinct.' },
+  3: { q: faqsV2[3].q, a: 'Le calendrier dépend du périmètre, des accès et des essais avec vos équipes. Nous le définissons avant de construire. L’intégration comprend des correctifs initiaux pendant 30 jours et un bilan à J+30 ; la maintenance dans la durée se prévoit séparément.' },
+  4: { q: faqsV2[4].q, a: 'Notre objectif est de soutenir votre expertise et d’alléger les tâches répétitives. Nous formons les équipes à vérifier les résultats et à garder la main. Les responsabilités et les décisions sensibles restent définies avec les personnes concernées.' },
+  5: { q: faqsV2[5].q, a: 'Les fournisseurs, l’hébergement et les données autorisées sont choisis avec vous selon votre contexte. Nous examinons les accès, la confidentialité et les validations nécessaires avec vos responsables. Le secret professionnel et la réglementation applicable font partie du cadrage.' },
+  6: { q: faqsV2[6].q, a: 'Les accès, la documentation et les livrables transférés sont définis au contrat, en tenant compte des licences des outils utilisés. La prise en main et les consignes de reprise manuelle font partie de l’intégration.' },
+  7: { q: 'À qui s’adresse Althoce ?', a: 'Althoce accompagne les professions réglementées et les entreprises à fortes exigences de confidentialité, de sécurité et de maîtrise des usages. Le projet part de votre activité et de vos obligations, quelle que soit la taille de votre équipe.' },
+  8: { q: 'Comment travaille votre cabinet de conseil et d’intégration IA ?', a: 'Nous formons les équipes, encadrons les usages et intégrons des agents IA ou des automatisations sur mesure. Un atelier, un diagnostic, une formation ou une intégration peut être choisi selon votre besoin. Une formation peut commencer sans diagnostic préalable.' },
+  10: { q: 'Comment gardons-nous le contrôle sur les résultats de l’IA ?', a: 'Nous définissons les sources, les droits, les tests et les points de validation avec vos équipes. Les cas ambigus doivent pouvoir être repris par une personne. Les résultats sont vérifiés selon leur usage et le niveau de risque, sans promesse d’absence totale d’erreurs.' },
 };
 export const homeFaqs: FAQv2Item[] = faqsV2.map((item, index) => faqOverrides[index] ?? item);

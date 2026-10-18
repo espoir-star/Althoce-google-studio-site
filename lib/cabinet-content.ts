@@ -3,8 +3,8 @@ import type { Faq } from '@/components/brand/Sections';
 // Shared by server-rendered answers and FAQPage structured data.
 export const aboutFaqs: Faq[] = [
   { q: 'Comment Althoce est-elle organisée au quotidien ?', a: 'Nous accompagnons les projets de bout en bout : comprendre le travail réel, choisir les outils, concevoir les agents IA et automatisations utiles, former les équipes et suivre les usages. Le périmètre et les interlocuteurs sont définis avec vous au début de la mission.' },
-  { q: 'Est-ce qu’Althoce recrute ?', a: 'Vous souhaitez contribuer à des projets IA pour les PME, en conseil, développement ou formation ? Présentez votre parcours et vos réalisations à espoir@contact.althoce.com pour échanger sur les besoins du cabinet.' },
-  { q: 'Pourquoi Bordeaux ?', a: 'Althoce est un cabinet IA d’origine bordelaise, au contact des entreprises et de leurs métiers. Nous accompagnons les PME partout en France, avec des échanges à distance et des interventions sur place selon les besoins du projet.' },
+  { q: 'Est-ce qu’Althoce recrute ?', a: 'Vous souhaitez contribuer à des projets de conseil, d’intégration et de formation IA dans des environnements exigeants ? Présentez votre parcours et vos réalisations à espoir@contact.althoce.com pour échanger sur les besoins du cabinet.' },
+  { q: 'Pourquoi Bordeaux ?', a: 'Althoce est un cabinet de conseil et d’intégration IA d’origine bordelaise. Nous accompagnons les professions réglementées et les entreprises à fortes exigences partout en France, à distance et sur place selon les besoins.' },
   { q: 'Quelles sont les ambitions d’Althoce ?', a: 'Faire de l’IA une compétence durable dans les entreprises. Cela passe autant par les formations et la prise en main que par la conception technique : une solution doit être utile, comprise et réellement utilisée au fil du temps.' },
 ];
 export const contactFaqs: Faq[] = [

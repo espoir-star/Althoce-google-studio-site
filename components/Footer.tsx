@@ -1,4 +1,5 @@
 'use client';
+import { brand } from '@/lib/brand-content';
 import { PreAuditCTA } from './brand/Sections';
 
 import React from 'react';
@@ -6,7 +7,7 @@ import Image from 'next/image';
 import { Logo } from '@/components/ui/brand/Logo';
 import { cities } from '@/lib/data';
 
-const footerCols = [{"h": "Accompagnement", "links": [{"l": "Diagnostic IA", "href": "/services/audit-ia/"}, {"l": "Déploiement & agents IA", "href": "/services/automatisation-ia/"}, {"l": "Pilotage & maintenance", "href": "/services/pilotage-ia/"}, {"l": "Formations IA", "href": "/services/formation-ia/"}, {"l": "Tous nos services", "href": "/services/"}]}, {"h": "Formations", "links": [{"l": "IA Fondamentaux", "href": "/services/formation-ia/ia-fondamentaux/"}, {"l": "IA Avancée", "href": "/services/formation-ia/ia-avancee/"}, {"l": "Coaching dirigeant", "href": "/services/formation-ia/coaching-dirigeant/"}]}, {"h": "Secteurs", "links": [{"l": "Finance", "href": "/secteurs/finance/"}, {"l": "Droit", "href": "/secteurs/droit/"}, {"l": "Marketing & communication", "href": "/secteurs/marketing-communication/"}, {"l": "Associations", "href": "/secteurs/associations/"}, {"l": "Immobilier", "href": "/secteurs/immobilier/"}, {"l": "Commerce & distribution", "href": "/secteurs/commerce-distribution/"}, {"l": "Industrie", "href": "/secteurs/industrie/"}]}, {"h": "Ressources", "links": [{"l": "Nos guides gratuits", "href": "/guides/"}, {"l": "Cas clients", "href": "/cas-clients/"}, {"l": "Blog", "href": "/blog/"}, {"l": "Calculateur ROI", "href": "/calculateur-roi/"}]}, {"h": "Le cabinet", "links": [{"l": "À propos", "href": "/a-propos/"}, {"l": "Contact", "href": "/contact/"}, {"l": "Nos secteurs", "href": "/secteurs/"}]}];
+const footerCols = [{"h": "Accompagnement", "links": [{"l": "Diagnostic IA", "href": "/services/audit-ia/"}, {"l": "Déploiement & agents IA", "href": "/services/automatisation-ia/"}, {"l": "Pilotage & maintenance", "href": "/services/pilotage-ia/"}, {"l": "Formations IA", "href": "/services/formation-ia/"}, {"l": "Tous nos services", "href": "/services/"}]}, {"h": "Formations", "links": [{"l": "Formation IA métier", "href": "/services/formation-ia/ia-fondamentaux/"}, {"l": "Formation personnalisée", "href": "/services/formation-ia/ia-avancee/"}, {"l": "Coaching dirigeant", "href": "/services/formation-ia/coaching-dirigeant/"}, {"l": "Coaching IA Solo", "href": "/services/formation-ia/coaching-independant/"}]}, {"h": "Secteurs", "links": [{"l": "Finance", "href": "/secteurs/finance/"}, {"l": "Droit", "href": "/secteurs/droit/"}, {"l": "Marketing & communication", "href": "/secteurs/marketing-communication/"}, {"l": "Associations", "href": "/secteurs/associations/"}, {"l": "Immobilier", "href": "/secteurs/immobilier/"}, {"l": "Commerce & distribution", "href": "/secteurs/commerce-distribution/"}, {"l": "Industrie", "href": "/secteurs/industrie/"}]}, {"h": "Ressources", "links": [{"l": "Nos guides gratuits", "href": "/guides/"}, {"l": "Cas clients", "href": "/cas-clients/"}, {"l": "Blog", "href": "/blog/"}, {"l": "Calculateur ROI", "href": "/calculateur-roi/"}]}, {"h": "Le cabinet", "links": [{"l": "À propos", "href": "/a-propos/"}, {"l": "Contact", "href": "/contact/"}, {"l": "Nos secteurs", "href": "/secteurs/"}]}];
 
 const FooterLink = ({ href, label, dim = false }: { href: string; label: string; dim?: boolean }) => (
   <a
@@ -50,7 +51,7 @@ export default function Footer({ showCta = true, positioning = 'cabinet' }: { sh
                 <a href="/" aria-label="Althoce — accueil" style={{display:"inline-flex",alignItems:"center",gap:10,color:"white",textDecoration:"none"}}><Logo variant="white" size={40} /><span style={{fontSize:30,fontWeight:600,letterSpacing:"-.05em"}}>althoce<span style={{color:"#8cb6ff"}}>.</span></span></a>
               </div>
               <p style={{ fontSize: 15, lineHeight: 1.72, maxWidth: 260, marginBottom: 16 }}>
-                {positioning === 'cabinet' ? 'Cabinet IA pour les PME et ETI françaises. Conseil, formations IA, agents IA et automatisation.' : 'Agence IA & Automatisation pour les PME et ETI françaises. Conseil, formations IA et agents adaptés à vos équipes.'}
+                {brand.footer}
               </p>
               <p style={{ fontSize: 13, color: '#a9bdd9' }}>Bordeaux, partout en France</p>
             </div>

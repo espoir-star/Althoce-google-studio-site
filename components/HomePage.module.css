@@ -26,6 +26,7 @@
 .heroCopy { padding-block: 16px 24px; }
 .hero h1 { font-size: clamp(36px, 3.7vw, 53px); font-weight: 650; line-height: 1.12; letter-spacing: -.05em; text-wrap: initial; }
 .hero h1 span { color: var(--home-blue); }
+.home .heroAudience { margin-top: 22px; color: var(--home-ink); font-size: 18px; line-height: 1.5; font-weight: 600; max-width: 490px; }
 .hero .lead { max-width: 490px; margin-top: 26px; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 30px; }
 .home .heroNote { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; font-size: 12px; margin-top: 14px; color: #657080; }
@@ -96,8 +97,6 @@
 .cabinetGrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
 .cabinet h2 span { color: #2459bd; }
 .cabinet .lead + .lead { margin-top: 16px; }
-.teamPhoto { position: relative; aspect-ratio: 1.5; overflow: hidden; border-radius: 16px; background: #e0e3e4; }
-.teamPhoto img { object-fit: cover; object-position: 50% center; }
 .faqGrid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 100px; }
 .faqList { border-top: 1px solid var(--home-line); }
 .faqItem { border-bottom: 1px solid var(--home-line); }
@@ -191,7 +190,6 @@
   .methodSteps li:not(:last-child)::before { display: block; }
   .stepTitle h3 { font-size: 22px; }
   .featuredBody { padding: 24px; }
-  .teamPhoto { aspect-ratio: 1.5; }
   .faqItem summary { font-size: 14px; gap: 18px; }
   .faqItem p { padding-right: 0; }
   .callAction .primary { width: 100%; }

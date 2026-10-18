@@ -4,21 +4,21 @@ import { ArrowUpRight, ArrowRight, Check } from 'lucide-react';
 import { PhotoHero, TextLink, FaqSection } from './brand/Sections';
 import { homeMethod } from '@/lib/home-content';
 import { aboutFaqs } from '@/lib/cabinet-content';
-import team from '@/public/images/home/equipe-cabinet-v2.webp';
+import office from '@/public/images/home/collaboration-bureau.webp';
 import work from '@/public/images/home/collaboration-bureau.webp';
 import b from './brand/Brand.module.css';
 import s from './AboutStory.module.css';
 
 export default function AProposPageClient() {
   return <main className={b.page}>
-    <PhotoHero label="À propos" title={<>Un cabinet IA.<br /><span>Des personnes engagées.</span></>} description="Conseil, formations IA, agents IA et automatisation : Althoce accompagne les PME de A à Z, pour faire de l’IA un atout entre les mains de leurs équipes." image={team} alt="Espoir Mwami au sein d’un groupe dans un espace de travail convivial."><TextLink href="/contact/">Faisons connaissance</TextLink></PhotoHero>
+    <PhotoHero label="À propos" title={<>Un cabinet IA.<br /><span>Des personnes engagées.</span></>} description="Althoce est un cabinet de conseil et d’intégration IA. Nous accompagnons les professions réglementées et les entreprises dont les données, les décisions et les processus demandent un cadre exigeant." image={office} alt="Deux professionnels échangent sur un projet dans un bureau."><TextLink href="/contact/">Faisons connaissance</TextLink></PhotoHero>
     <TrustStrip className={b.container} />
 
     <section className={`${b.section} ${s.origin}`} aria-labelledby="histoire-title">
       <div className={`${b.container} ${s.originGrid}`}>
         <div className={s.originCopy}>
           <h2 id="histoire-title">Tout commence<br />par <span>vous écouter.</span></h2>
-          <p>Un document à reprendre. Une information à chercher. Une équipe qui manque de temps.</p>
+          <p>Un dossier confidentiel. Une décision à préparer. Une équipe qui manque de temps.</p>
           <p>Né à Bordeaux en 2025, Althoce part de là : votre quotidien. Puis nous choisissons ensemble où l’IA peut vraiment vous aider.</p>
           <TextLink href="/services/">Trouver votre point de départ</TextLink>
         </div>
@@ -33,7 +33,7 @@ export default function AProposPageClient() {
       <div className={`${b.container} ${s.trainingGrid}`}>
         <div className={s.trainingCopy}>
           <h2 id="equipes-title">Faire de vos équipes<br /><span>le moteur de la transformation.</span></h2>
-          <p>L’IA prend sa place quand chacun ose s’en servir. Nos formations IA partent de vos cas réels, pour apprendre ensemble et gagner en autonomie.</p>
+          <p>L’IA prend sa place quand chacun sait s’en servir avec discernement. Nos formations relient les usages métier à la confidentialité, à la vérification des réponses et à la responsabilité de chacun.</p>
           <a className={s.lightLink} href="/services/formation-ia/">Découvrir nos formations IA<ArrowUpRight size={20} aria-hidden="true" /></a>
         </div>
         <div className={s.workshopPhoto}><Image src="/images/home/atelier-equipes.webp" alt="Quatre collègues apprennent ensemble autour d’un ordinateur et d’un carnet dans un bureau." fill sizes="(max-width: 900px) 100vw, 60vw" /></div>
@@ -60,7 +60,7 @@ export default function AProposPageClient() {
           <article className={s.useful}><div className={s.focusMark} aria-hidden="true"><i /><i /><Check size={32} /></div><h3>Utile.</h3><p>La bonne solution répond à un vrai besoin. Parfois, elle est déjà dans vos outils.</p></article>
           <article className={s.clear}><div className={s.clearMark} aria-hidden="true"><span /><span /><span /></div><h3>Clair.</h3><p>Un cap partagé, un périmètre défini. Vous savez où nous allons, et pourquoi.</p></article>
           <article className={s.reliable}><div className={s.reliableMark} aria-hidden="true"><span /><span /><span /></div><h3>Fiable.</h3><p>Vos données, vos contraintes et votre cadre réglementaire guident le choix des outils.</p></article>
-          <article className={s.durable}><ArrowUpRight className={s.durationMark} aria-hidden="true" strokeWidth={1.2} /><h3>Durable.</h3><p>Nous restons à vos côtés après le déploiement : transfert, maintenance et points de suivi à 30 et 90 jours.</p></article>
+          <article className={s.durable}><ArrowUpRight className={s.durationMark} aria-hidden="true" strokeWidth={1.2} /><h3>Durable.</h3><p>Prise en main, documentation et bilan à 30 jours accompagnent le déploiement. Le suivi dans la durée se construit avec vous.</p></article>
         </div>
       </div>
     </section>

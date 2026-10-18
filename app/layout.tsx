@@ -1,3 +1,4 @@
+import { brand } from '@/lib/brand-content';
 import type { Metadata } from 'next';
 import './globals.css';
 import NavigationProvider from '@/components/NavigationProvider';
@@ -7,10 +8,10 @@ import TrackingConsent from '@/components/TrackingConsent';
 export const metadata: Metadata = {
   metadataBase: new URL('https://althoce.com'),
   title: {
-    default: 'Althoce | Agents IA & Automatisation pour PME françaises',
+    default: 'Althoce | Conseil & intégration IA',
     template: '%s | Althoce',
   },
-  description: 'Althoce, cabinet IA pour PME et ETI : agents sur mesure, automatisation et formations. Un accompagnement du diagnostic à la prise en main par vos équipes.',
+  description: brand.shortDescription,
   verification: {
     google: 'owLvah_UoMEisk_eKugO4bY_aFaklREE1wmT9jPImPo',
     other: {
@@ -29,22 +30,22 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://althoce.com/',
     siteName: 'Althoce',
-    title: 'Althoce | Agents IA & Automatisation pour PME françaises',
-    description: 'Agents IA sur mesure, automatisation et formations pour les PME et ETI. Althoce construit avec vos équipes et accompagne les usages dans la durée.',
+    title: 'Althoce | Conseil & intégration IA',
+    description: brand.shortDescription,
     images: [
       {
         url: '/og-default.png',
         width: 1200,
         height: 630,
-        alt: 'Althoce — Agents IA & Automatisation pour PME et ETI françaises',
+        alt: 'Althoce, cabinet de conseil et intégration IA',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     site: '@althoce',
-    title: 'Althoce | Agents IA & Automatisation pour PME françaises',
-    description: 'Agents IA sur mesure, automatisation et formations pour les PME et ETI. Althoce construit avec vos équipes et accompagne les usages dans la durée.',
+    title: 'Althoce | Conseil & intégration IA',
+    description: brand.shortDescription,
     images: ['/og-default.png'],
   },
 };
@@ -64,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@id": "https://althoce.com/#organization",
               "name": "Althoce",
               "url": "https://althoce.com/",
-              "description": "Conseil, accompagnement et formation à l’intelligence artificielle, agents IA et automatisation pour PME françaises",
+              "description": brand.shortDescription,
               "foundingDate": "2024",
               "address": {
                 "@type": "PostalAddress",
