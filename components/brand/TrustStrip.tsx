@@ -15,6 +15,7 @@ export default function TrustStrip({ className = '', inset = false }: { classNam
           { name: 'Claude', src: '/logos/claude.svg' },
           { name: 'ChatGPT', src: '/logos/chatgpt.svg' },
           { name: 'Mistral', src: '/logos/mistral.svg' },
+          { name: 'Copilot', src: '/logos/copilot.svg' },
         ].map(({ name, src }) => <li key={name}><Image src={src} alt="" width={26} height={26} loading="lazy" /><span>{name}</span></li>)}
       </ul>
     </div>
