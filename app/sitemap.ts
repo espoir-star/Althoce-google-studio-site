@@ -19,6 +19,8 @@ const EXCLUDED = new Set([
   'mentions-legales',
   'confidentialite',
 ]);
+// Sous-pages légales (non indexables) dont le premier segment est indexé.
+const EXCLUDED_ROUTES = new Set(['connecteurs/cgv']);
 
 function getPriority(route: string): number {
   if (route === '')                                    return 1.0;
@@ -48,7 +50,7 @@ function scanAppRoutes(dir: string, base = ''): string[] {
   }
 
   const hasPage = entries.some(e => e.isFile() && e.name === 'page.tsx');
-  if (hasPage && !EXCLUDED.has(base.split('/')[0])) {
+  if (hasPage && !EXCLUDED.has(base.split('/')[0]) && !EXCLUDED_ROUTES.has(base)) {
     routes.push(base);
   }
 
