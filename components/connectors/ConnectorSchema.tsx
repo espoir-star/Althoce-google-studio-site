@@ -9,7 +9,7 @@ const crumbs = (extra?: { name: string; item: string }) => ({ '@type': 'Breadcru
   ...(extra ? [{ '@type': 'ListItem', position: 3, ...extra }] : []),
 ] });
 
-/** Données structurées : hub (CollectionPage) ou connecteur Pennylane (Service + Offer HT mensuelle). */
+/** Données structurées : hub (CollectionPage) ou connecteur Pennylane (Service, offre sur rendez-vous sans prix affiché). */
 export default function ConnectorSchema({ page }: { page: 'hub' | 'pennylane' }) {
   const graph = page === 'hub'
     ? [
@@ -23,11 +23,7 @@ export default function ConnectorSchema({ page }: { page: 'hub' | 'pennylane' })
           '@type': 'Service', '@id': `${pennylane.url}#service`, name: pennylane.name, serviceType: 'Connecteur MCP Pennylane',
           description: 'Connecteur Pennylane pour Claude, ChatGPT et les IA compatibles MCP, en lecture et en écriture. L’IA propose, le cabinet valide.',
           provider: org, areaServed: { '@type': 'Country', name: 'France' },
-          offers: {
-            '@type': 'Offer', url: pennylane.url, priceCurrency: 'EUR', price: String(pennylane.priceHt),
-            priceSpecification: { '@type': 'UnitPriceSpecification', price: pennylane.priceHt, priceCurrency: 'EUR', valueAddedTaxIncluded: false, billingDuration: 'P1M', unitText: 'cabinet par mois' },
-            eligibleCustomerType: 'https://schema.org/Business',
-          },
+          offers: { '@type': 'Offer', url: pennylane.url, availability: 'https://schema.org/InStock', eligibleCustomerType: 'https://schema.org/Business' },
         },
         crumbs({ name: 'Pennylane', item: pennylane.url }),
         faqPage(pennylane.faq),

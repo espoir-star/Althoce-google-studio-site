@@ -1,18 +1,18 @@
-import { ArrowDown, BookOpen, Check, FileSpreadsheet, Minus, PenLine, ScanSearch, ShieldCheck, Link2, MapPin, CalendarX } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, BookOpen, Check, FileSpreadsheet, Minus, PenLine, ScanSearch, ShieldCheck, Link2, MapPin } from 'lucide-react';
 import { FaqSection } from '../brand/Sections';
-import { BookingLink, OfferButton, OfferChoiceProvider, OtherPath, PricingCards, SeatChoice } from './OfferChoice';
-
-const AI_TOOLS = ['Claude', 'ChatGPT', 'Autres IA compatibles MCP'];
+import { BookingLink } from './BookingLink';
 import { pennylane } from '@/lib/connectors-content';
 import b from '../brand/Brand.module.css';
 import s from './Connectors.module.css';
+
+const AI_TOOLS = ['Claude', 'ChatGPT', 'Autres IA compatibles MCP'];
 
 const yes = <><Check size={20} aria-hidden="true" /><span className={s.srOnly}>Oui</span></>;
 const no = <><Minus size={20} aria-hidden="true" /><span className={s.srOnly}>Non</span></>;
 const exampleIcons = [ScanSearch, PenLine, Link2, FileSpreadsheet];
 
 export default function PennylanePage() {
-  return <OfferChoiceProvider><main className={b.page}>
+  return <main className={b.page}>
     <section className={s.hero} aria-labelledby="pennylane-title"><div className={`${b.container} ${s.heroGrid}`}>
       <div>
         <nav className={b.breadcrumb} aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><a href="/connecteurs/">Connecteurs</a><span aria-hidden="true">/</span><span aria-current="page">Pennylane</span></nav>
@@ -41,7 +41,6 @@ export default function PennylanePage() {
           <thead><tr><th scope="col">Ce que votre IA peut faire</th><th scope="col">Connecteur officiel de Pennylane</th><th scope="col" className={s.compareAlthoce}>Connecteur Althoce</th></tr></thead>
           <tbody>
             {pennylane.comparison.map(row => <tr key={row.label}><th scope="row">{row.label}</th><td className={row.official ? s.cellYes : s.cellNo}>{row.official ? yes : no}</td><td className={`${s.compareAlthoce} ${s.cellYes}`}>{row.althoce ? yes : no}</td></tr>)}
-            <tr><th scope="row">Tarif</th><td className={s.cellText}>Voir Pennylane</td><td className={`${s.compareAlthoce} ${s.cellText}`}>{pennylane.priceHt}&nbsp;€ HT par mois et par cabinet</td></tr>
           </tbody>
         </table>
       </div>
@@ -61,14 +60,16 @@ export default function PennylanePage() {
       <div className={s.uses}>{pennylane.uses.map((u, i) => { const Icon = exampleIcons[i]; return <article key={u.title}><span className={s.capIcon}><Icon size={22} aria-hidden="true" /></span><h3>{u.title}</h3><p>{u.text}</p></article>; })}</div>
     </div></section>
 
-    <section className={b.section} id="tarif" aria-labelledby="tarif-title"><div className={b.container}>
-      <div className={s.sectionHeading}><h2 id="tarif-title">Un tarif simple,<br /><span>selon la taille du cabinet.</span></h2><SeatChoice /></div>
-      <PricingCards />
-      <p className={s.pricingTerms}>En démarrant l’essai, vous acceptez les <a href="/connecteurs/cgv/">conditions générales de vente</a>.</p>
+    <section className={b.section} id="rendez-vous" aria-labelledby="rdv-title"><div className={b.container}>
+      <div className={s.sectionHeading}><h2 id="rdv-title">Sur rendez-vous,<br /><span>branché avec vous.</span></h2><p>Un conseiller Althoce branche le connecteur avec vous sur votre cabinet. Nous regardons ensemble vos dossiers, vos logiciels et le nombre de comptes.</p></div>
+      <article className={s.rdvCard} aria-labelledby="rdv-card-title">
+        <div><h3 id="rdv-card-title">Le connecteur Pennylane, mis en place avec vous</h3><ul>{pennylane.offer.map(item => <li key={item}><Check size={18} aria-hidden="true" /><span>{item}</span></li>)}</ul></div>
+        <div className={s.rdvAction}><BookingLink placement="offre" className={b.primary}>Prendre rendez-vous avec un conseiller<ArrowUpRight size={18} aria-hidden="true" /></BookingLink><p>Choisissez un créneau dans notre calendrier dédié aux connecteurs.</p></div>
+      </article>
     </div></section>
 
     <section className={`${b.section} ${b.soft}`} aria-labelledby="etapes-title"><div className={b.container}>
-      <div className={s.sectionHeading}><h2 id="etapes-title">En place<br /><span>en quatre étapes.</span></h2><p>Pour les premiers cabinets, nous faisons la mise en route ensemble en visio.</p></div>
+      <div className={s.sectionHeading}><h2 id="etapes-title">En place<br /><span>en quatre étapes.</span></h2><p>Un conseiller Althoce fait la mise en route avec vous, en visio.</p></div>
       <ol className={s.steps}>{pennylane.steps.map(st => <li key={st.n}><span>{st.n}</span><h3>{st.title}</h3><p>{st.desc}</p></li>)}</ol>
     </div></section>
 
@@ -78,16 +79,15 @@ export default function PennylanePage() {
         <article><ShieldCheck size={24} aria-hidden="true" /><h3>L’accès du cabinet</h3><p>Votre IA ne voit et ne fait que ce que l’accès Pennylane du cabinet permet.</p></article>
         <article><BookOpen size={24} aria-hidden="true" /><h3>Des données personnelles&nbsp;?</h3><p>Le connecteur fonctionne avec les abonnements classiques. Si vos dossiers contiennent des données personnelles, nous conseillons Claude Team : le contrat de traitement des données est inclus et vos contenus ne servent pas à entraîner le modèle par défaut.</p></article>
         <article><MapPin size={24} aria-hidden="true" /><h3>Tout doit rester en France&nbsp;?</h3><p>Althoce construit un agent hébergé sur un serveur en France, au nom du cabinet.</p><BookingLink placement="donnees_france" className={s.inlineLink}>Prendre rendez-vous</BookingLink></article>
-        <article><CalendarX size={24} aria-hidden="true" /><h3>Sans engagement</h3><p>Vous résiliez seul depuis votre espace client. La résiliation prend effet en fin de période.</p></article>
       </div>
     </div></section>
 
     <FaqSection id="faq-pennylane" title="Vos questions sur le connecteur Pennylane." description="Des réponses courtes pour décider." items={pennylane.faq} showContactLink={false} />
 
     <section className={b.callSection} aria-labelledby="pennylane-cta-title"><div className={`${b.container} ${b.callContent}`}>
-      <div><h2 id="pennylane-cta-title">Essayez le connecteur<br />sur vos dossiers.</h2><p>Votre IA propose, vous validez. Essai gratuit de 7 jours, sans engagement.</p></div>
-      <div className={b.callAction}><OfferButton placement="final" showNote={false} /><OtherPath placement="final_autre" /></div>
+      <div><h2 id="pennylane-cta-title">Branchez le connecteur<br />sur votre cabinet.</h2><p>Votre IA propose, vous validez. Un conseiller Althoce le met en place avec vous.</p></div>
+      <div className={b.callAction}><BookingLink placement="final" className={b.primary}>Prendre rendez-vous avec un conseiller<ArrowUpRight size={18} aria-hidden="true" /></BookingLink><p>Calendrier dédié aux connecteurs.</p></div>
     </div></section>
 
-  </main></OfferChoiceProvider>;
+  </main>;
 }
