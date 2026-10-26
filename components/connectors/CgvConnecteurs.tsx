@@ -38,7 +38,8 @@ const articles: { id: string; title: string; body: ReactNode }[] = [
   { id: 'prix', title: 'Prix et paiement', body: <>
     <p>Le prix est de {pennylane.priceHt} € HT par mois et par cabinet, soit {pennylane.priceTtc} € TTC avec une TVA de 20 %. Il est payable chaque mois, d’avance, par prélèvement sur la carte enregistrée.</p>
     <p>Une facture est émise pour chaque paiement. Toute évolution du prix est annoncée par mail au moins 30 jours avant son application. Le Client peut résilier avant cette date.</p>
-    <p>En cas de retard de paiement, des pénalités sont dues au taux d’intérêt appliqué par la Banque centrale européenne à son opération de refinancement la plus récente, majoré de 10 points, ainsi qu’une indemnité forfaitaire pour frais de recouvrement de 40 € (articles L441-10 et D441-5 du Code de commerce). En cas d’échec du paiement, l’accès au Service est suspendu jusqu’à régularisation.</p>
+    <p>Tout retard ou échec de paiement entraîne la coupure immédiate du Service, sans préavis, jusqu’à régularisation. Les liens de connexion sont alors désactivés.</p>
+    <p>En cas de retard de paiement, des pénalités sont également dues au taux d’intérêt appliqué par la Banque centrale européenne à son opération de refinancement la plus récente, majoré de 10 points, ainsi qu’une indemnité forfaitaire pour frais de recouvrement de 40 € (articles L441-10 et D441-5 du Code de commerce).</p>
   </> },
   { id: 'duree', title: 'Durée et résiliation', body: <>
     <p>L’abonnement est mensuel et sans engagement. Il se renouvelle chaque mois jusqu’à sa résiliation.</p>
@@ -50,9 +51,10 @@ const articles: { id: string; title: string; body: ReactNode }[] = [
     <p>Le Client règle les autorisations de son IA. Nous lui conseillons d’exiger une validation pour toutes les écritures (réglage « validation requise » dans Claude).</p>
     <p>Le Client utilise le Service dans le respect de la loi et de ses obligations professionnelles et déontologiques.</p>
   </> },
-  { id: 'validation', title: 'Validation des écritures et responsabilité', body: <>
+  { id: 'validation', title: 'Utilisation du Service et responsabilité', body: <>
+    <p>Le Client est seul responsable de l’utilisation qu’il fait du Service et du connecteur MCP : choix de son IA, réglages des autorisations, demandes faites à l’IA, actions qu’il autorise ou valide, et leurs conséquences. ALTHOCE CONSEIL n’est pas responsable de cette utilisation.</p>
     <p>L’IA propose, le Client valide. Les propositions de l’IA peuvent contenir des erreurs. Le Client vérifie chaque action avant de la valider et reste seul responsable des écritures passées dans Pennylane et de ses obligations comptables, fiscales et sociales.</p>
-    <p>ALTHOCE CONSEIL est tenue d’une obligation de moyens. Sa responsabilité ne peut être engagée qu’en cas de faute prouvée et est limitée, tous préjudices confondus, aux sommes payées par le Client au titre du Service pendant les 12 mois précédant le fait générateur. Elle ne couvre pas les préjudices indirects, comme une perte de chiffre d’affaires, de clientèle ou de données.</p>
+    <p>ALTHOCE CONSEIL n’est responsable ni des propositions de l’IA, ni des écritures passées dans Pennylane, ni des décisions prises par le Client. Pour le reste, elle est tenue d’une obligation de moyens. Sa responsabilité ne peut être engagée qu’en cas de faute prouvée de sa part et est limitée, tous préjudices confondus, aux sommes payées par le Client au titre du Service pendant les 12 mois précédant le fait générateur. Elle ne couvre pas les préjudices indirects, comme une perte de chiffre d’affaires, de clientèle ou de données.</p>
   </> },
   { id: 'disponibilite', title: 'Disponibilité du Service', body: <>
     <p>Le Service dépend de l’API de Pennylane et de l’IA choisie par le Client. Une évolution ou une interruption de ces services peut limiter le Service, sans engager la responsabilité d’ALTHOCE CONSEIL.</p>
