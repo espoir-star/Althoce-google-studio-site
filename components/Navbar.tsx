@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ChevronDown, Compass, Workflow, GraduationCap, ChartNoAxesCombined, BookOpen, Users, Calculator, Building2, MessageCircle, Menu, X } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Compass, Workflow, GraduationCap, ChartNoAxesCombined, BookOpen, Users, Calculator, Building2, MessageCircle, Menu, X, Plug } from 'lucide-react';
 import { Logo } from '@/components/ui/brand/Logo';
 import s from './Navigation.module.css';
 
@@ -11,6 +11,7 @@ const groups = [
     {label:'Déploiement & agents IA',text:'Des agents et automatisations sur mesure.',href:'/services/automatisation-ia/',icon:Workflow},
     {label:'Pilotage & maintenance',text:'Suivre, entretenir et faire évoluer vos solutions.',href:'/services/pilotage-ia/',icon:ChartNoAxesCombined},
     {label:'Formation IA',text:'Faire grandir les compétences de vos équipes.',href:'/services/formation-ia/',icon:GraduationCap},
+    {label:'Connecteurs',text:'Claude branché sur vos logiciels, comme Pennylane.',href:'/connecteurs/',icon:Plug},
   ]},
   { label:'Ressources', id:'ressources', items:[
     {label:'Nos guides',text:'Des ressources pratiques classées par secteur.',href:'/guides/',icon:BookOpen},
