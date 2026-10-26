@@ -4,8 +4,8 @@ import PennylanePage from '@/components/connectors/PennylanePage';
 import ConnectorSchema from '@/components/connectors/ConnectorSchema';
 import { pennylane } from '@/lib/connectors-content';
 
-const title = 'Connecteur Pennylane pour Claude, en lecture et en écriture';
-const description = 'Branchez Claude sur vos dossiers Pennylane. Lecture et écriture, chaque écriture validée par le cabinet. 99 € HT par mois, essai gratuit de 7 jours.';
+const title = 'Connecteur Pennylane pour Claude et ChatGPT : lecture et écriture';
+const description = 'Branchez Claude, ChatGPT ou une autre IA compatible MCP sur vos dossiers Pennylane. Lecture et écriture, validées par le cabinet. 99 € HT par mois, essai 7 jours.';
 
 export const metadata: Metadata = {
   title,

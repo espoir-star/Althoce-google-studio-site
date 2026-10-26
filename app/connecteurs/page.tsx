@@ -3,8 +3,8 @@ import Footer from '@/components/Footer';
 import ConnectorsHub from '@/components/connectors/ConnectorsHub';
 import ConnectorSchema from '@/components/connectors/ConnectorSchema';
 
-const title = 'Connecteurs Claude pour vos logiciels comptables';
-const description = 'Branchez Claude sur vos logiciels comptables. Connecteur Pennylane en lecture et en écriture, autres logiciels sur rendez-vous.';
+const title = 'Connecteurs MCP pour vos logiciels comptables';
+const description = 'Branchez Claude, ChatGPT ou une autre IA compatible MCP sur vos logiciels comptables. Connecteur Pennylane en lecture et en écriture, autres logiciels sur rendez-vous.';
 const url = 'https://althoce.com/connecteurs/';
 
 export const metadata: Metadata = {

@@ -18,7 +18,7 @@ export function SeatChoice({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
   const { seats, setSeats } = useContext(SeatsContext);
   const name = useId();
   return <fieldset className={`${s.seatChoice} ${tone === 'dark' ? s.seatChoiceDark : ''}`}>
-    <legend>Combien de personnes du cabinet utiliseront Claude&nbsp;?</legend>
+    <legend>Combien de personnes du cabinet utiliseront le connecteur&nbsp;?</legend>
     <div className={s.seatOptions}>{SEAT_OPTIONS.map(o => <label key={o.value} className={seats === o.value ? s.seatActive : undefined}>
       <input type="radio" name={name} value={o.value} checked={seats === o.value} onChange={() => setSeats(o.value)} />{o.label}
     </label>)}</div>

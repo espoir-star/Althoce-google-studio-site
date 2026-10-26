@@ -10,6 +10,6 @@ export function ConnectorLegal() {
       <a href="/mentions-legales/">Mentions légales</a>
       <a href="/confidentialite/">Confidentialité</a>
     </p>
-    <p>Pennylane est une marque de Pennylane SAS et Claude un produit d’Anthropic. Althoce n’est affilié à aucune de ces sociétés.</p>
+    <p>Pennylane est une marque de Pennylane SAS, Claude un produit d’Anthropic et ChatGPT un produit d’OpenAI. Althoce n’est affilié à aucune de ces sociétés.</p>
   </div></section>;
 }

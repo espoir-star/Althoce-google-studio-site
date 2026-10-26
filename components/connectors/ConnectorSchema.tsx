@@ -13,15 +13,15 @@ const crumbs = (extra?: { name: string; item: string }) => ({ '@type': 'Breadcru
 export default function ConnectorSchema({ page }: { page: 'hub' | 'pennylane' }) {
   const graph = page === 'hub'
     ? [
-        { '@type': 'CollectionPage', '@id': `${HUB_URL}#collection`, name: 'Connecteurs Althoce pour Claude', url: HUB_URL },
+        { '@type': 'CollectionPage', '@id': `${HUB_URL}#collection`, name: 'Connecteurs MCP Althoce', url: HUB_URL },
         { '@type': 'ItemList', name: 'Connecteurs Althoce', itemListElement: [{ '@type': 'ListItem', position: 1, name: pennylane.name, url: pennylane.url }] },
         crumbs(),
         faqPage(connectorsHubFaq),
       ]
     : [
         {
-          '@type': 'Service', '@id': `${pennylane.url}#service`, name: pennylane.name, serviceType: 'Connecteur Pennylane pour Claude',
-          description: 'Connecteur Pennylane pour Claude, en lecture et en écriture. Claude propose, le cabinet valide.',
+          '@type': 'Service', '@id': `${pennylane.url}#service`, name: pennylane.name, serviceType: 'Connecteur MCP Pennylane',
+          description: 'Connecteur Pennylane pour Claude, ChatGPT et les IA compatibles MCP, en lecture et en écriture. L’IA propose, le cabinet valide.',
           provider: org, areaServed: { '@type': 'Country', name: 'France' },
           offers: {
             '@type': 'Offer', url: pennylane.url, priceCurrency: 'EUR', price: String(pennylane.priceHt),
