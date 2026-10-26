@@ -10,7 +10,6 @@ import type { Faq } from '@/components/brand/Sections';
 
 export const PENNYLANE_TRIAL_URL = 'https://buy.stripe.com/cNi28q0za3pNdUFaUk7ok00';
 export const CONNECTOR_BOOKING_URL = 'https://calendar.app.google/JmhxjFqk2kybuFLR9';
-export const PENNYLANE_OFFICIAL_SOURCE = 'https://www.pennylane.com/fr/mcp';
 
 export type Seats = 'small' | 'large';
 export const SEAT_OPTIONS: { value: Seats; label: string }[] = [

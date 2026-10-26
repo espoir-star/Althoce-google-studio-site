@@ -3,7 +3,7 @@ import { FaqSection } from '../brand/Sections';
 import { BookingLink, OfferButton, OfferChoiceProvider, OtherPath, PricingCards, SeatChoice } from './OfferChoice';
 
 const AI_TOOLS = ['Claude', 'ChatGPT', 'Autres IA compatibles MCP'];
-import { PENNYLANE_OFFICIAL_SOURCE, pennylane } from '@/lib/connectors-content';
+import { pennylane } from '@/lib/connectors-content';
 import b from '../brand/Brand.module.css';
 import s from './Connectors.module.css';
 
@@ -45,7 +45,6 @@ export default function PennylanePage() {
           </tbody>
         </table>
       </div>
-      <p className={s.source}>Connecteur officiel en lecture seule : source <a href={PENNYLANE_OFFICIAL_SOURCE} target="_blank" rel="noopener noreferrer">pennylane.com/fr/mcp</a>, consulté en octobre 2026.</p>
     </div></section>
 
     <section className={b.section} aria-labelledby="capacites-title"><div className={b.container}>

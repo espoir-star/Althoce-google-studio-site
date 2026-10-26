@@ -47,8 +47,6 @@
 .cellYes { color: #2563eb; }
 .cellNo { color: #98a2b3; }
 .cellText { font-size: 14px; color: #283b57; }
-.source { margin-top: 14px !important; font-size: 13px; }
-.source a { color: #2459bd; text-decoration: underline !important; text-underline-offset: 3px; }
 
 /* Lecture / écriture */
 .capabilities { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
