@@ -64,6 +64,7 @@ export default function PennylanePage() {
     <section className={b.section} id="tarif" aria-labelledby="tarif-title"><div className={b.container}>
       <div className={s.sectionHeading}><h2 id="tarif-title">Un tarif simple,<br /><span>selon la taille du cabinet.</span></h2><SeatChoice /></div>
       <PricingCards />
+      <p className={s.pricingTerms}>En démarrant l’essai, vous acceptez les <a href="/connecteurs/cgv/">conditions générales de vente</a>.</p>
     </div></section>
 
     <section className={`${b.section} ${b.soft}`} aria-labelledby="etapes-title"><div className={b.container}>

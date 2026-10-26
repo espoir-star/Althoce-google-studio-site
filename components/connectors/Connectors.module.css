@@ -138,3 +138,19 @@
   .uses p, .rights p, .steps p, .capabilities li, .priceCard li, .hubCard li, .hubCard > p { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .priceCard { transition: none; } }
+
+/* CGV du connecteur */
+.cgv { padding-block: 104px 72px; background: radial-gradient(ellipse at 5% 6%, #eef3ff, transparent 50%), #fff; }
+.cgvInner { width: min(860px, calc(100% - 48px)); margin-inline: auto; }
+.cgvDate { margin-top: 18px !important; font-size: 14px; }
+.cgvToc { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 32px 0 8px; padding: 20px 24px; border: 1px solid #e4e9f2; border-radius: 14px; background: #f8fafd; }
+.cgvToc a { display: inline-flex; align-items: center; min-height: 36px; font-size: 13px; color: #2459bd; }
+.cgvToc a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cgvArticle { padding-top: 36px; }
+.cgvArticle h2 { display: flex; align-items: baseline; gap: 12px; font-size: 24px !important; line-height: 1.3 !important; letter-spacing: -.03em !important; }
+.cgvArticle h2 span { font-size: 13px; font-weight: 800; color: #2563eb; letter-spacing: .08em; }
+.cgvArticle p { margin-top: 12px !important; font-size: 15px; line-height: 1.8; }
+.cgvArticle a, .cgvContact a, .pricingTerms a { color: #2459bd; text-decoration: underline !important; text-underline-offset: 3px; }
+.cgvContact { margin-top: 44px !important; padding-top: 24px; border-top: 1px solid #e4e9f2; font-size: 15px; }
+.pricingTerms { margin-top: 18px !important; font-size: 13px; text-align: center; }
+@media (max-width: 600px) { .cgv { padding-block: 92px 52px; } .cgvInner { width: calc(100% - 40px); } .cgvArticle h2 { font-size: 21px !important; } .cgvArticle p { font-size: 16px; } }
