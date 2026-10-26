@@ -109,7 +109,7 @@ export default function Footer({ showCta = true, positioning = 'cabinet' }: { sh
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10, borderTop: '1px solid rgba(187,213,247,.18)', paddingTop: 20 }}>
               <span style={{ fontSize: 13 }}>© {new Date().getFullYear()} Althoce. Tous droits réservés.</span>
               <button type="button" onClick={() => window.dispatchEvent(new Event('althoce:cookie-settings'))} style={{ background: 'none', border: 0, color: 'inherit', fontSize: 13, textDecoration: 'underline', cursor: 'pointer', padding: 8 }}>Gérer les cookies</button>
-              <a href="/mentions-legales/" style={{color:"inherit",fontSize:13}}>Mentions légales</a><a href="/confidentialite/" style={{color:"inherit",fontSize:13}}>Confidentialité</a>
+              <a href="/mentions-legales/" style={{color:"inherit",fontSize:13}}>Mentions légales</a><a href="/confidentialite/" style={{color:"inherit",fontSize:13}}>Confidentialité</a><a href="/connecteurs/cgv/" style={{color:"inherit",fontSize:13}}>CGV</a>
             </div>
           </div>
         </div>
