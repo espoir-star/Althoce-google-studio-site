@@ -5,7 +5,7 @@ import ConnectorSchema from '@/components/connectors/ConnectorSchema';
 import { pennylane } from '@/lib/connectors-content';
 
 const title = 'Connecteur Pennylane pour Claude et ChatGPT : lecture et écriture';
-const description = 'Branchez Claude, ChatGPT ou une autre IA compatible MCP sur vos dossiers Pennylane. Lecture et écriture, validées par le cabinet. 99 € HT par mois, essai 7 jours.';
+const description = 'Branchez Claude, ChatGPT ou une autre IA compatible MCP sur vos dossiers Pennylane. Lecture et écriture, validées par le cabinet. Mise en place avec un conseiller Althoce.';
 
 export const metadata: Metadata = {
   title,

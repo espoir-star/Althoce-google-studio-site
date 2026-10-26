@@ -1,7 +1,7 @@
 import { ArrowUpRight, Check, FileText, MapPin } from 'lucide-react';
 import { Breadcrumb, FaqSection } from '../brand/Sections';
-import { BookingLink } from './OfferChoice';
-import { connectorsHubFaq, pennylane } from '@/lib/connectors-content';
+import { BookingLink } from './BookingLink';
+import { connectorsHubFaq } from '@/lib/connectors-content';
 import b from '../brand/Brand.module.css';
 import s from './Connectors.module.css';
 
@@ -14,17 +14,16 @@ export default function ConnectorsHub() {
     </div></section>
 
     <section className={b.section} aria-labelledby="catalogue-title"><div className={b.container}>
-      <div className={s.sectionHeading}><h2 id="catalogue-title">Nos connecteurs.</h2><p>Un connecteur disponible en ligne. Les autres logiciels se voient en rendez-vous.</p></div>
+      <div className={s.sectionHeading}><h2 id="catalogue-title">Nos connecteurs.</h2><p>Chaque connecteur se met en place avec un conseiller Althoce, sur rendez-vous.</p></div>
       <div className={s.hubCards}>
         <a className={`${s.hubCard} ${s.hubCardMain}`} href="/connecteurs/pennylane/">
-          <span className={s.hubBadge}>Disponible</span>
+          <span className={s.hubBadge}>Disponible sur rendez-vous</span>
           <h3>Pennylane</h3>
           <p>Votre IA lit et écrit dans vos dossiers Pennylane : catégoriser, lettrer, rapprocher, passer des écritures. Vous validez chaque écriture.</p>
           <ul>
             <li><Check size={18} aria-hidden="true" />Lecture et écriture</li>
             <li><Check size={18} aria-hidden="true" />Claude, ChatGPT ou une autre IA compatible MCP</li>
-            <li><Check size={18} aria-hidden="true" />{pennylane.priceHt}&nbsp;€ HT par mois et par cabinet, jusqu’à 10 comptes</li>
-            <li><Check size={18} aria-hidden="true" />Essai gratuit de 7 jours, sans engagement</li>
+            <li><Check size={18} aria-hidden="true" />Mis en place avec un conseiller Althoce, sur rendez-vous</li>
           </ul>
           <span className={s.hubMore}>Découvrir le connecteur Pennylane<ArrowUpRight size={18} aria-hidden="true" /></span>
         </a>

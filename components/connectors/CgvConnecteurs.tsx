@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { CONNECTOR_BOOKING_URL, pennylane } from '@/lib/connectors-content';
+import { CONNECTOR_BOOKING_URL } from '@/lib/connectors-content';
 import b from '../brand/Brand.module.css';
 import s from './Connectors.module.css';
 
@@ -15,8 +15,8 @@ const mail = <a href="mailto:espoir@contact.althoce.com">espoir@contact.althoce.
 const articles: { id: string; title: string; body: ReactNode }[] = [
   { id: 'objet', title: 'Objet et champ d’application', body: <>
     <p>Les présentes conditions générales de vente (les « CGV ») encadrent la vente de l’abonnement au connecteur Pennylane (le « Service ») par ALTHOCE CONSEIL à ses clients professionnels (le « Client »).</p>
-    <p>Le Service est réservé aux professionnels. La souscription en ligne vaut acceptation des CGV en vigueur à cette date. Elles prévalent sur les conditions d’achat du Client.</p>
-    <p>Pour plus de 10 utilisateurs, une offre est établie sur rendez-vous. Des conditions particulières peuvent alors compléter les CGV.</p>
+    <p>Le Service est réservé aux professionnels. Il est proposé sur rendez-vous avec un conseiller d’ALTHOCE CONSEIL. La souscription vaut acceptation des CGV en vigueur à cette date. Elles prévalent sur les conditions d’achat du Client.</p>
+    <p>L’offre remise au Client à la suite du rendez-vous (nombre de comptes, logiciels, prix) forme les conditions particulières. Elle complète les CGV et prévaut sur elles en cas de différence.</p>
   </> },
   { id: 'vendeur', title: 'Vendeur', body: <>
     <p>ALTHOCE CONSEIL, société par actions simplifiée (SAS), immatriculée au RCS de Bordeaux sous le numéro SIREN 999 696 404, dont le siège est situé 5 rue Fénelon, 33000 Bordeaux, France. Contact : {mail}.</p>
@@ -24,26 +24,26 @@ const articles: { id: string; title: string; body: ReactNode }[] = [
   { id: 'service', title: 'Description du Service', body: <>
     <p>Le Service est un connecteur MCP qui relie les dossiers Pennylane du Client à l’intelligence artificielle de son choix : Claude, ChatGPT ou une autre IA compatible MCP.</p>
     <p>En lecture, le Service donne accès aux dossiers, transactions, factures, écritures et FEC. En écriture, il permet de catégoriser une transaction, affecter un tiers, ventiler une facture fournisseur, lettrer, rapprocher et passer des écritures.</p>
-    <p>Le Service n’agit que dans la limite de l’accès Pennylane du Client, ouvert par la clé API que le Client crée et fournit. L’abonnement couvre jusqu’à 10 comptes, avec un lien de connexion par compte.</p>
+    <p>Le Service n’agit que dans la limite de l’accès Pennylane du Client, ouvert par la clé API que le Client crée et fournit. Le nombre de comptes est fixé dans l’offre, avec un lien de connexion par compte.</p>
     <p>Ne sont pas inclus : l’abonnement à l’IA choisie par le Client et l’abonnement Pennylane. Le Client les souscrit et les règle directement auprès de ces éditeurs.</p>
   </> },
   { id: 'souscription', title: 'Souscription et mise en service', body: <>
-    <p>Le Client souscrit en ligne sur la page de paiement sécurisée de notre prestataire de paiement Stripe et y enregistre sa carte bancaire.</p>
-    <p>Après la souscription, le Client reçoit un mail d’activation avec sa page personnelle. Il y colle la clé API Pennylane du cabinet, puis crée un lien par compte et l’ajoute dans son IA.</p>
+    <p>Le Client prend rendez-vous avec un conseiller d’ALTHOCE CONSEIL. À la suite de ce rendez-vous, il souscrit selon les modalités de l’offre, notamment sur la page de paiement sécurisée de notre prestataire de paiement Stripe, où il enregistre sa carte bancaire.</p>
+    <p>La mise en service se fait avec le conseiller, en visio : le Client crée la clé API Pennylane du cabinet, puis crée un lien par compte et l’ajoute dans son IA.</p>
   </> },
-  { id: 'essai', title: 'Essai gratuit', body: <>
-    <p>L’abonnement commence par un essai gratuit de 7 jours. La carte bancaire est enregistrée à l’inscription. Aucun prélèvement n’a lieu pendant l’essai.</p>
+  { id: 'essai', title: 'Période d’essai', body: <>
+    <p>Une période d’essai gratuite peut être proposée dans l’offre, qui en précise la durée. La carte bancaire est alors enregistrée à la souscription et aucun prélèvement n’a lieu pendant l’essai.</p>
     <p>Un rappel est envoyé par mail 2 jours avant la fin de l’essai. Sauf résiliation avant la fin de l’essai, le premier prélèvement a lieu à la fin de l’essai.</p>
   </> },
   { id: 'prix', title: 'Prix et paiement', body: <>
-    <p>Le prix est de {pennylane.priceHt} € HT par mois et par cabinet, soit {pennylane.priceTtc} € TTC avec une TVA de 20 %. Il est payable chaque mois, d’avance, par prélèvement sur la carte enregistrée.</p>
+    <p>Le prix est celui de l’offre remise au Client avant la souscription, exprimé en euros hors taxes, par mois et par cabinet. La TVA applicable s’y ajoute. Il est payable chaque mois, d’avance, par prélèvement sur la carte enregistrée, sauf autre modalité prévue dans l’offre.</p>
     <p>Une facture est émise pour chaque paiement. Toute évolution du prix est annoncée par mail au moins 30 jours avant son application. Le Client peut résilier avant cette date.</p>
     <p>Tout retard ou échec de paiement entraîne la coupure immédiate du Service, sans préavis, jusqu’à régularisation. Les liens de connexion sont alors désactivés.</p>
     <p>En cas de retard de paiement, des pénalités sont également dues au taux d’intérêt appliqué par la Banque centrale européenne à son opération de refinancement la plus récente, majoré de 10 points, ainsi qu’une indemnité forfaitaire pour frais de recouvrement de 40 € (articles L441-10 et D441-5 du Code de commerce).</p>
   </> },
   { id: 'duree', title: 'Durée et résiliation', body: <>
     <p>L’abonnement est mensuel et sans engagement. Il se renouvelle chaque mois jusqu’à sa résiliation.</p>
-    <p>Le Client résilie seul, à tout moment, depuis son espace client. La résiliation prend effet en fin de période en cours. Le mois commencé reste dû et n’est pas remboursé. Si le Client résilie pendant l’essai, il n’est pas prélevé.</p>
+    <p>Le Client résilie à tout moment, depuis son espace client ou par mail à {mail}. La résiliation prend effet en fin de période en cours. Le mois commencé reste dû et n’est pas remboursé. Si le Client résilie pendant l’essai, il n’est pas prélevé.</p>
     <p>À la fin de l’abonnement, les liens de connexion sont désactivés. En cas de manquement grave du Client aux CGV, ALTHOCE CONSEIL peut suspendre ou résilier l’abonnement après une mise en demeure restée sans effet pendant 15 jours.</p>
   </> },
   { id: 'client', title: 'Engagements du Client', body: <>
