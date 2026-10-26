@@ -14,9 +14,7 @@ export const CONNECTOR_BOOKING_URL = 'https://calendar.app.google/m6thfjDsXzEqKd
 export const pennylane = {
   name: 'Connecteur Pennylane pour votre IA (Claude, ChatGPT, IA compatibles MCP)',
   url: 'https://althoce.com/connecteurs/pennylane/',
-  /* Prix des CGV (article 6). Depuis le 26/10/2026, la vente se fait uniquement sur rendez-vous : le prix n'est plus affiché sur les pages. */
-  priceHt: 99,
-  priceTtc: '118,80',
+  /* Depuis le 26/10/2026, vente uniquement sur rendez-vous : aucun prix affiché (prix fixé dans l'offre, CGV article 1). */
   read: ['Dossiers', 'Transactions', 'Factures', 'Écritures', 'FEC'],
   write: ['Catégoriser une transaction', 'Affecter un tiers', 'Ventiler une facture fournisseur', 'Lettrer', 'Rapprocher', 'Passer des écritures'],
   comparison: [
