@@ -63,12 +63,17 @@ export default function PennylanePage() {
       <div className={s.uses}>{pennylane.uses.map((u, i) => { const Icon = exampleIcons[i]; return <article key={u.title}><span className={s.capIcon}><Icon size={22} aria-hidden="true" /></span><h3>{u.title}</h3><p>{u.text}</p></article>; })}</div>
     </div></section>
 
-    <section className={b.section} aria-labelledby="etapes-title"><div className={b.container}>
+    <section className={b.section} id="tarif" aria-labelledby="tarif-title"><div className={b.container}>
+      <div className={s.sectionHeading}><h2 id="tarif-title">Un tarif simple,<br /><span>selon la taille du cabinet.</span></h2><SeatChoice /></div>
+      <PricingCards />
+    </div></section>
+
+    <section className={`${b.section} ${b.soft}`} aria-labelledby="etapes-title"><div className={b.container}>
       <div className={s.sectionHeading}><h2 id="etapes-title">En place<br /><span>en quatre étapes.</span></h2><p>Pour les premiers cabinets, nous faisons la mise en route ensemble en visio.</p></div>
       <ol className={s.steps}>{pennylane.steps.map(st => <li key={st.n}><span>{st.n}</span><h3>{st.title}</h3><p>{st.desc}</p></li>)}</ol>
     </div></section>
 
-    <section className={`${b.section} ${b.soft}`} aria-labelledby="donnees-title"><div className={b.container}>
+    <section className={b.section} aria-labelledby="donnees-title"><div className={b.container}>
       <div className={s.sectionHeading}><h2 id="donnees-title">Vos données<br /><span>et vos droits.</span></h2><p>Le cabinet garde la main sur ce que l’IA voit et sur ce qu’elle fait.</p></div>
       <div className={s.rights}>
         <article><ShieldCheck size={24} aria-hidden="true" /><h3>L’accès du cabinet</h3><p>Votre IA ne voit et ne fait que ce que l’accès Pennylane du cabinet permet.</p></article>
@@ -76,11 +81,6 @@ export default function PennylanePage() {
         <article><MapPin size={24} aria-hidden="true" /><h3>Tout doit rester en France&nbsp;?</h3><p>Althoce construit un agent hébergé sur un serveur en France, au nom du cabinet.</p><BookingLink placement="donnees_france" className={s.inlineLink}>Prendre rendez-vous</BookingLink></article>
         <article><CalendarX size={24} aria-hidden="true" /><h3>Sans engagement</h3><p>Vous résiliez seul depuis votre espace client. La résiliation prend effet en fin de période.</p></article>
       </div>
-    </div></section>
-
-    <section className={b.section} id="tarif" aria-labelledby="tarif-title"><div className={b.container}>
-      <div className={s.sectionHeading}><h2 id="tarif-title">Un tarif simple,<br /><span>selon la taille du cabinet.</span></h2><SeatChoice /></div>
-      <PricingCards />
     </div></section>
 
     <FaqSection id="faq-pennylane" title="Vos questions sur le connecteur Pennylane." description="Des réponses courtes pour décider." items={pennylane.faq} showContactLink={false} />

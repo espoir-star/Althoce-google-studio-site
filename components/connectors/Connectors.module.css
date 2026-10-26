@@ -76,7 +76,7 @@
 .steps li { position: relative; }
 .steps li::before { content: ''; position: absolute; top: 28px; left: 0; right: -24px; border-top: 1px solid #cbd9ee; }
 .steps li:last-child::before { right: 0; }
-.steps li > span { position: relative; display: inline-block; background: #fff; padding-right: 18px; font-size: 40px; line-height: 1.4; letter-spacing: -.06em; color: #2563eb; }
+.steps li > span { position: relative; display: inline-block; background: #f6f8fb; padding-right: 18px; font-size: 40px; line-height: 1.4; letter-spacing: -.06em; color: #2563eb; }
 .steps h3 { margin-top: 18px; }
 .steps p { margin-top: 10px !important; font-size: 15px; }
 
