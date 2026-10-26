@@ -46,6 +46,14 @@ export function trackPageView(pathname: string) {
     page_referrer: previous, page_title: document.title,
   });
 }
+/** Clic sur un bouton d'offre connecteur (essai Stripe ou rendez-vous). Aucune donnée personnelle. */
+export function trackConnectorClick(connector: 'pennylane' | 'hub', path: 'essai' | 'rendez_vous', placement: string) {
+  if (!initializeAnalytics() || !/^[a-z_]+$/.test(placement)) return;
+  (window as unknown as AnalyticsWindow).gtag?.('event', 'connector_cta_click', {
+    send_to: GA_ID, connector, cta_path: path, placement,
+    page_location: cleanUrl(location.href),
+  });
+}
 export function trackLead(leadType: 'contact' | 'roi' | 'guide', resourceSlug?: string) {
   if (!initializeAnalytics()) return;
   (window as unknown as AnalyticsWindow).gtag?.('event', 'generate_lead', {
