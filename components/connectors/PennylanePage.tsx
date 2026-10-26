@@ -3,7 +3,6 @@ import { FaqSection } from '../brand/Sections';
 import { BookingLink, OfferButton, OfferChoiceProvider, OtherPath, PricingCards, SeatChoice } from './OfferChoice';
 
 const AI_TOOLS = ['Claude', 'ChatGPT', 'Autres IA compatibles MCP'];
-import { ConnectorLegal } from './ConnectorLegal';
 import { PENNYLANE_OFFICIAL_SOURCE, pennylane } from '@/lib/connectors-content';
 import b from '../brand/Brand.module.css';
 import s from './Connectors.module.css';
@@ -90,6 +89,5 @@ export default function PennylanePage() {
       <div className={b.callAction}><OfferButton placement="final" showNote={false} /><OtherPath placement="final_autre" /></div>
     </div></section>
 
-    <ConnectorLegal />
   </main></OfferChoiceProvider>;
 }

@@ -45,6 +45,5 @@ export default function ConnectorsHub() {
     </div></section>
 
     <FaqSection id="faq-connecteurs" title="Vos questions sur les connecteurs." description="L’essentiel avant de brancher votre IA sur vos outils." items={connectorsHubFaq} showContactLink={false} />
-    <section className={s.legal} aria-label="Mentions de marques"><div className={s.legalInner}><p>Pennylane est une marque de Pennylane SAS, Claude un produit d’Anthropic et ChatGPT un produit d’OpenAI. Althoce n’est affilié à aucune de ces sociétés.</p></div></section>
   </main>;
 }
