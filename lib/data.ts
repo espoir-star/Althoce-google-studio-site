@@ -58,25 +58,6 @@ export const faqs: FAQItem[] = [
   { question: "L'IA va-t-elle remplacer mes employés ?", answer: "Non, elle va remplacer leur ennui. Notre mission est d'automatiser les 80 % de tâches répétitives et sans valeur ajoutée qui saturent vos journées. L'objectif ? Libérer vos talents pour qu'ils se concentrent sur les 20 % de missions stratégiques là où l'humain est irremplaçable (et là où se crée la vraie croissance)." }
 ];
 
-export const PartnerLogos = [
-  { name: "Partner 1", src: "https://i.ibb.co/8DgmnnLp/1.png" },
-  { name: "Partner 2", src: "https://i.ibb.co/LdGWJpBw/2.png" },
-  { name: "Partner 3", src: "https://i.ibb.co/4w5VnnNG/3.png" },
-  { name: "Partner 4", src: "https://i.ibb.co/bgYwxFTs/4.png" },
-  { name: "Partner 5", src: "https://i.ibb.co/HfxvFHYm/5.png" }
-];
-
-export const HeroLogos = [
-  "https://i.ibb.co/QvCn9FsK/1-1.png",
-  "https://i.ibb.co/9khZ8TVL/2-1.png",
-  "https://i.ibb.co/ns9DWTLB/3-1.png",
-  "https://i.ibb.co/Ps230D63/4-1.png",
-  "https://i.ibb.co/4wcnk99K/5-1.png",
-  "https://i.ibb.co/6R20gLT2/6.png",
-  "https://i.ibb.co/zh3cCrgm/7.png",
-  "https://i.ibb.co/Rkxh2p7z/8.png"
-];
-
 // ── v2 Data (Home Page v2) ────────────────────────────────────────────────────
 
 export const AC = '#2563eb';
@@ -226,15 +207,16 @@ export const cities = {
   secondary: ['Nantes', 'Lille', 'Strasbourg', 'Nice', 'Rennes', 'Montpellier', 'Grenoble', 'Dijon', 'Reims', 'Angers', 'Le Havre', 'Saint-Étienne', 'Toulon', 'Nîmes'],
 };
 
+// Logos hébergés sur le site (public/logos/partenaires/) : plus de dépendance à un hébergeur d'images externe.
 export const heroLogos = [
-  { name: 'Digitalised', src: 'https://i.ibb.co/QvCn9FsK/1-1.png' },
-  { name: 'Gemeos Formation', src: 'https://i.ibb.co/9khZ8TVL/2-1.png' },
-  { name: 'LegalPlace', src: 'https://i.ibb.co/ns9DWTLB/3-1.png' },
-  { name: 'Be Immo', src: 'https://i.ibb.co/Ps230D63/4-1.png' },
-  { name: 'Salesforce', src: 'https://i.ibb.co/4wcnk99K/5-1.png' },
-  { name: 'Produweb', src: 'https://i.ibb.co/6R20gLT2/6.png' },
-  { name: 'ED Motors', src: 'https://i.ibb.co/zh3cCrgm/7.png' },
-  { name: 'Yumens', src: 'https://i.ibb.co/Rkxh2p7z/8.png' },
+  { name: 'Digitalised', src: '/logos/partenaires/digitalised.png' },
+  { name: 'Gemeos Formation', src: '/logos/partenaires/gemeos-formation.png' },
+  { name: 'LegalPlace', src: '/logos/partenaires/legalplace.png' },
+  { name: 'Be Immo', src: '/logos/partenaires/be-immo.png' },
+  { name: 'Salesforce', src: '/logos/partenaires/salesforce.png' },
+  { name: 'Produweb', src: '/logos/partenaires/produweb.png' },
+  { name: 'ED Motors', src: '/logos/partenaires/ed-motors.png' },
+  { name: 'Yumens', src: '/logos/partenaires/yumens.png' },
 ];
 
 export interface ForWhoCard {

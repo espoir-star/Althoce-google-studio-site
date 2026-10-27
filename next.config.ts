@@ -17,7 +17,6 @@ const nextConfig: NextConfig = {
   // ───────────────────────────────────────────────────────────────
   trailingSlash: true,
   poweredByHeader: false,
-  images: { remotePatterns: [{ protocol: "https", hostname: "i.ibb.co" }] },
   // Le sitemap rescannant les routes lors de sa revalidation, conserver ces
   // fichiers dans la fonction Vercel plutôt que dépendre du dossier de build.
   outputFileTracingIncludes: {
