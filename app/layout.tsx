@@ -1,5 +1,6 @@
 import { brand } from '@/lib/brand-content';
 import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import NavigationProvider from '@/components/NavigationProvider';
 import Navbar from '@/components/Navbar';
@@ -50,11 +51,14 @@ export const metadata: Metadata = {
   },
 };
 
+/* Police commune du site, des ressources et des mails : Geist (standard davinci). */
+const geist = Geist({ subsets: ['latin'], variable: '--font-geist', weight: ['400', '500', '600', '700'], display: 'swap' });
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', weight: ['400', '500'], display: 'swap' });
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className="scroll-smooth scroll-pt-28">
+    <html lang="fr" className={`${geist.variable} ${geistMono.variable} scroll-smooth scroll-pt-28`}>
       <head>
-        <link rel="preload" href="/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         {/* Organization — présent sur toutes les pages */}
         <script
           type="application/ld+json"
