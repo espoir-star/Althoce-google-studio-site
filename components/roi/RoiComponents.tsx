@@ -35,7 +35,7 @@ export const T = {
   shadowMd:      '0 4px 16px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04)',
   shadowLg:      '0 12px 40px rgba(0,0,0,.10), 0 4px 12px rgba(0,0,0,.05)',
   mono:          "'SF Mono','Cascadia Code',ui-monospace,monospace",
-  font:          "'Plus Jakarta Sans','Inter',sans-serif",
+  font:          "var(--font-geist), ui-sans-serif, system-ui, sans-serif",
 };
 
 export function useResponsive() {
