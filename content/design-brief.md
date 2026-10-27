@@ -51,6 +51,9 @@ Imaginer un croisement entre :
 
 ### 2.2 Typographie
 
+> **Mise à jour du 27/10/2026 (identité commune site, ressources et mails, skill davinci)** : police **Geist** partout (corps et titres), boutons d'action **en pilule**, palette inchangée (accent #2563eb, neutres zinc). Les choix serif ci-dessous ne sont plus d'actualité.
+
+
 - **Display (H1, H2)** : `Instrument Serif` ou `Fraunces` (serif moderne, élégant, éditorial). Fallback : `Georgia, serif`.
 - **Sans-serif (corps, H3, UI)** : `Inter` ou `Geist`. Fallback : `-apple-system, BlinkMacSystemFont, sans-serif`.
 - **Monospace (code, stats)** : `JetBrains Mono` ou `Geist Mono`.

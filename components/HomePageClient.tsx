@@ -122,7 +122,7 @@ function Cabinet() {
     <section id="cabinet" className={`${s.section} ${s.cabinet}`} aria-labelledby="cabinet-title">
       <div className={`${s.container} ${s.cabinetGrid}`}>
         <h2 id="cabinet-title">Un projet de A à Z.<br /><span>Une équipe à vos côtés.</span></h2>
-        <div><p className={s.lead}>Comprendre votre métier, construire avec vous et transmettre les bons réflexes : nous accompagnons votre projet du premier échange à la prise en main.</p><p className={s.lead}>Après la mise en place, le suivi se définit avec vous pour faire durer les usages.</p><TextLink href="/a-propos/">Découvrir le cabinet</TextLink></div>
+        <div><p className={s.lead}>Du premier échange à la prise en main, nous comprenons votre métier, construisons avec vous et transmettons les bons réflexes. Le suivi se définit ensuite avec vous.</p><TextLink href="/a-propos/">Découvrir le cabinet</TextLink></div>
       </div>
     </section>
   );

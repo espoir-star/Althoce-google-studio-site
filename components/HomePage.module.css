@@ -17,7 +17,7 @@
 .home .lead { margin-top: 24px; font-size: 16px; line-height: 1.8; max-width: 560px; }
 .textLink { display: inline-flex; gap: 12px; align-items: center; min-height: 44px; color: #2459bd; font-size: 14px; font-weight: 650; margin-top: 20px; }
 .textLink:hover { color: #163d8c; text-decoration: underline; text-underline-offset: 5px; }
-.primary { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 52px; padding: 14px 22px; border-radius: 8px; background: var(--home-blue); color: #fff; font-size: 14px; font-weight: 650; line-height: 1.5; transition: background .18s ease; }
+.primary { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 52px; padding: 14px 24px; border-radius: 999px; background: var(--home-blue); color: #fff; font-size: 14px; font-weight: 650; line-height: 1.5; transition: background .18s ease; }
 .primary:hover { background: #1d4ed8; }
 .secondary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; color: var(--home-ink); font-size: 13px; font-weight: 600; }
 .secondary:hover { color: var(--home-blue); }
@@ -48,7 +48,7 @@
 .approachGrid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 90px; align-items: center; }
 .approach h2 { font-size: clamp(28px, 2.7vw, 37px); }
 .approach h2 span { color: #2459bd; }
-.home .approachSignature { color: #2459bd; font-weight: 600; font-size: 14px; margin-top: 20px; }
+.home .approachSignature { color: var(--home-ink); font-weight: 600; font-size: 14px; margin-top: 20px; }
 .dark { background: #10151e; color: #fff; }
 .dark p { color: #bcc5d2; }
 .dark h2 span, .dark .textLink { color: #a9c7ff; }
