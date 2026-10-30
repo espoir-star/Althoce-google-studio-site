@@ -1,6 +1,6 @@
 import type { FormationDetail } from './formations';
 
-// Programme Drive du 16 octobre 2026. Parcours distinct du coaching dirigeant.
+// Programme Drive du 16 octobre 2026. Parcours distinct de la Formation IA Dirigeant & Associés.
 export const coachingSolo: FormationDetail = {
   "accent": "#2563eb",
   "ogImage": "/og-default.png",
@@ -104,8 +104,8 @@ export const coachingSolo: FormationDetail = {
       "a": "Aux indépendants, consultants et dirigeants de petites structures qui souhaitent créer leurs premiers outils IA à partir de deux cas métier. Un participant est accompagné en visioconférence pendant 4h30 sur une journée."
     },
     {
-      "q": "Quelle différence avec le Coaching IA Dirigeant ?",
-      "a": "Le Coaching IA Solo est une journée pratique de 4h30 centrée sur deux cas métier, avec un suivi à J+15. Le Coaching IA Dirigeant est un parcours distinct de quatre séances de 1h30 pour travailler sur les usages du dirigeant et la feuille de route de son entreprise."
+      "q": "Quelle différence avec la Formation IA Dirigeant & Associés ?",
+      "a": "Le Coaching IA Solo est une journée pratique de 4h30 centrée sur deux cas métier, avec un suivi à J+15. La Formation IA Dirigeant & Associés est une journée de 7 heures pour 1 à 5 décideurs, consacrée aux usages de direction, à la gouvernance et à une feuille de route à 90 jours. Elle comprend un entretien préparatoire de 45 minutes et un suivi à J+30."
     },
     {
       "q": "Que faut-il préparer ?",

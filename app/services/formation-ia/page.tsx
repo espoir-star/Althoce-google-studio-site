@@ -7,11 +7,11 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Formation IA pour entreprise',
-  description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, coaching dirigeant et Solo.",
+  description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, Dirigeant & Associés et coaching Solo.",
   keywords: ['formation IA entreprise', 'formation intelligence artificielle', 'formation IA générative', 'formation ChatGPT entreprise', 'formation Claude IA', 'formation IA finançable OPCO', 'formation prompting'],
   openGraph: {
     title: 'Formation IA pour entreprise | Althoce',
-    description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, coaching dirigeant et Solo.",
+    description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, Dirigeant & Associés et coaching Solo.",
     type: 'website',
     locale: 'fr_FR',
     url: 'https://althoce.com/services/formation-ia/',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Formation IA pour entreprise | Althoce',
-    description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, coaching dirigeant et Solo.",
+    description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, Dirigeant & Associés et coaching Solo.",
   },
   alternates: {
     canonical: 'https://althoce.com/services/formation-ia/',
@@ -41,7 +41,7 @@ const jsonLd = {
       "@type": "Service",
       "@id": "https://althoce.com/services/formation-ia/#service",
       "name": "Formation IA pour entreprise",
-      "description": "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, coaching dirigeant et Solo.",
+      "description": "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, Dirigeant & Associés et coaching Solo.",
       "url": "https://althoce.com/services/formation-ia/",
       "provider": {
         "@type": "Organization",

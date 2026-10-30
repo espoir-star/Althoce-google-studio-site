@@ -326,11 +326,11 @@ export function buildFormationJsonLd(f: FormationDetail) {
 export const formationFaq = [
   {
     "q": "Quelle formation IA choisir pour mon activité ?",
-    "a": "La Formation IA métier propose un programme adapté à votre profession. La Formation IA métier personnalisée se prépare autour de deux à trois cas propres à votre organisation. Le Coaching IA Solo accompagne un indépendant sur une journée ; le Coaching IA Dirigeant reste un parcours individuel de quatre séances."
+    "a": "La Formation IA métier propose un programme adapté à votre profession. La Formation IA métier personnalisée se prépare autour de deux à trois cas propres à votre organisation. Le Coaching IA Solo accompagne un indépendant sur une journée ; la Formation IA Dirigeant & Associés réunit 1 à 5 décideurs pour travailler leurs usages, la gouvernance et une feuille de route à 90 jours."
   },
   {
     "q": "Quelles sont les durées des parcours Althoce ?",
-    "a": "Les deux formations collectives durent 7 heures sur une journée. Le Coaching IA Solo comprend 4h30 en visioconférence sur une journée. Le Coaching IA Dirigeant conserve quatre séances individuelles de 1h30, soit 6 heures réparties dans le temps."
+    "a": "Les formations métier et la Formation IA Dirigeant & Associés durent 7 heures sur une journée. Le parcours dirigeant inclut un entretien préparatoire de 45 minutes, distinct des 7 heures. Le Coaching IA Solo comprend 4h30 en visioconférence sur une journée."
   },
   {
     "q": "Les formations conviennent-elles aux professions réglementées ?",
@@ -338,15 +338,15 @@ export const formationFaq = [
   },
   {
     "q": "Faut-il réaliser un diagnostic avant la formation ?",
-    "a": "Non. Une formation peut être achetée directement. Le questionnaire et, pour la formule personnalisée, l’entretien préalable servent à préparer la pédagogie. Ils ne constituent pas un audit technique."
+    "a": "Non. Une formation peut être achetée directement. Le questionnaire et les entretiens préparatoires des formules personnalisée et Dirigeant & Associés servent à préparer la pédagogie. Ils ne constituent pas un audit technique."
   },
   {
     "q": "Les formations comprennent-elles un agent IA en production ?",
-    "a": "Les formations métier et le Coaching IA Solo produisent des outils et prototypes pédagogiques. Une intégration en production nécessite un périmètre, des accès, des tests et un accompagnement distincts."
+    "a": "Les formations métier, Dirigeant & Associés et le Coaching IA Solo produisent des outils et prototypes pédagogiques. Une intégration en production nécessite un périmètre, des accès, des tests et un accompagnement distincts."
   },
   {
     "q": "Combien de personnes peuvent participer ?",
-    "a": "Les formations collectives incluent 1 à 10 participants au tarif de base. Les 11e et 12e participants font l’objet d’un supplément. Au-delà de 12, plusieurs journées sont organisées. Le Coaching IA Solo est individuel."
+    "a": "Les formations métier incluent 1 à 10 participants au tarif de base, avec un supplément pour les 11e et 12e. Au-delà de 12, plusieurs journées sont organisées. La Formation IA Dirigeant & Associés accueille un dirigeant et jusqu’à quatre associés ou décideurs, soit cinq personnes maximum. Le Coaching IA Solo est individuel."
   },
   {
     "q": "Intervenez-vous partout en France ?",
@@ -358,7 +358,7 @@ export const formationFaq = [
   },
   {
     "q": "Quel suivi est prévu ?",
-    "a": "Les formations collectives prévoient un suivi d’adoption à J+30. Le Coaching IA Solo inclut un point individuel à J+15. Pour le Coaching IA Dirigeant, un suivi à 30 jours après la dernière séance permet de revenir sur la feuille de route."
+    "a": "Les formations métier et la Formation IA Dirigeant & Associés prévoient un point à J+30 sur les premiers usages et les difficultés rencontrées. Le Coaching IA Solo inclut un suivi individuel à J+15."
   },
   {
     "q": "Comment préparer les besoins d’accessibilité ?",

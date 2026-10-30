@@ -36,17 +36,19 @@ humains et des responsabilités, selon le périmètre de la mission.
 - **Formation IA métier personnalisée**, `/services/formation-ia/ia-avancee/` :
   7 heures, entretien préparatoire distinct, deux à trois cas de l’organisation,
   suivi à J+30. L’URL historique ne signifie plus un prérequis de niveau avancé.
-- **Coaching IA Dirigeant**, `/services/formation-ia/coaching-dirigeant/` :
-  conserver le programme actuel de quatre séances de 1h30. Le client a demandé
-  expressément de reporter sa refonte. Seuls les liens et références vers les
-  formations collectives sont actualisés.
+- **Formation IA Dirigeant & Associés**, `/services/formation-ia/coaching-dirigeant/` :
+  programme Drive du 29 octobre 2026, intégré à la demande du client le 30 octobre.
+  Il remplace les quatre séances de coaching sur la même URL : 7 heures sur une
+  journée pour 1 à 5 décideurs, entretien de 45 minutes distinct des 7 heures,
+  six modules, assistant pédagogique, trois opportunités priorisées, checklist de
+  gouvernance, feuille de route à 90 jours et point à J+30.
 - **Coaching IA Solo**, `/services/formation-ia/coaching-independant/` : nouveau
-  parcours indépendant, et non remplacement du Coaching Dirigeant. Une journée
+  parcours indépendant, distinct de la Formation IA Dirigeant & Associés. Une journée
   individuelle de 4h30 en visioconférence, deux cas préparés, un Skill ou assistant,
   un prototype simple testé ou simulé, un plan d’action et un suivi à J+15.
 
-Les formations collectives incluent 1 à 10 participants ; le maximum est 12 avec
-supplément. Les réalisations de formation sont pédagogiques. Une intégration en
+Les deux formations métier incluent 1 à 10 participants ; le maximum est 12 avec
+supplément. La Formation IA Dirigeant & Associés est limitée à 5 participants. Les réalisations de formation sont pédagogiques. Une intégration en
 production ou un agent complexe relève d’une mission séparée. Utiliser des données
 fictives, anonymisées ou autorisées. Ne pas publier les tarifs ni l’identité de
 l’organisme de portage dans les pages commerciales. Le financement est conditionnel.
@@ -75,6 +77,8 @@ l’organisme de portage dans les pages commerciales. Le financement est conditi
 - [Programme métier](https://docs.google.com/document/d/12hDgW3QNml1jnXL2m9Qb0MERk51bTKzjYTDWdGZgC8U/edit)
 - [Programme personnalisé](https://docs.google.com/document/d/1DIel2Etq3hxY_PHs1tO7QDEXE1q1mBZ-lgSqN_pzC6k/edit)
 - [Programme Solo](https://docs.google.com/document/d/1qdSAlzforpJH8MAHJ22vSIL4r2rPzg4Rmxtu8JZ3_Ww/edit)
+- [Programme Dirigeant & Associés](https://docs.google.com/document/d/1F9gn6yn-jm3HCriTzGf8ndh3i_34T57lslhSGiIx-NM/edit)
+- [Fiche commerciale Dirigeant & Associés](https://docs.google.com/document/d/1pqE3D1495dICDsi7RdCg33_Nhi_bVRGCSUDC0g3R4oo/edit)
 
 Les documents de programme contiennent encore des champs administratifs à
 compléter. Aucun champ provisoire ni statut de certification non confirmé n’est
@@ -87,7 +91,8 @@ priment sur le rapprochement initial entre anciennes et nouvelles offres.
 - `lib/formation-catalogue.ts` : quatre cartes partagées entre hub et pages locales.
 - `lib/formations.ts`, `lib/formation-faq.ts` : programmes collectifs et schémas.
 - `lib/coaching-solo.ts` : nouveau programme individuel.
-- `lib/coaching-dirigeant.ts` : programme existant à conserver pour l’instant.
+- `lib/coaching-dirigeant.ts` : nouveau programme Dirigeant & Associés ; le nom
+  du fichier et l’URL historique sont conservés pour préserver les liens.
 - `lib/home-content.ts`, `lib/services-content.ts` : articulation des services.
 - `components/cities/CityPage.tsx` : métadonnées des 19 pages conseil locales,
   offres partagées avec l’accueil et le hub services.
