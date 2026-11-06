@@ -19,7 +19,7 @@ canonicalUrl: "https://althoce.com/blog/ia-agentique-definition-exemples-pme/"
 published: true
 ---
 
-L’**IA agentique**, dans la définition de travail retenue ici, désigne un système qui utilise un modèle pour choisir des actions et des outils selon un objectif et les informations disponibles.[^microsoft] Dans les scénarios de cet article, nous prévoyons des validations humaines.
+L’**IA agentique**, dans la définition de travail retenue ici, désigne un système qui utilise un modèle pour choisir des actions et des outils selon un objectif et les informations disponibles. La documentation de [Microsoft Learn sur les workflows agentiques](https://learn.microsoft.com/en-us/azure/logic-apps/agent-workflows-concepts) décrit ce type de fonctionnement. Dans les scénarios de cet article, nous prévoyons des validations humaines.
 
 ## IA agentique : définition et différence avec un chatbot
 
@@ -27,7 +27,7 @@ La distinction proposée ici sert à comparer des fonctionnements. Elle constitu
 
 Pour ta PME, la question utile est : **qui choisit la prochaine action ?**
 
-Pour rendre la comparaison lisible, réservons ici le rôle d’assistant à la compréhension d’un message et à la préparation d’une réponse, sans lui confier le pilotage du dossier. Le tutoriel Microsoft consacré aux workflows autonomes d’Azure Logic Apps décrit des boucles qui utilisent un modèle pour traiter des informations, prendre des décisions et accomplir des tâches à l’aide d’outils. Cet exemple technique concerne Azure Logic Apps, pas tous les systèmes commercialisés sous le nom d’agent.[^microsoft]
+Pour rendre la comparaison lisible, réservons ici le rôle d’assistant à la compréhension d’un message et à la préparation d’une réponse, sans lui confier le pilotage du dossier. Microsoft décrit, pour Azure Logic Apps, des boucles utilisant un modèle pour traiter des informations, choisir des tâches et appeler des outils. Ce périmètre technique ne décrit pas tous les systèmes commercialisés sous le nom d’agent. [Microsoft Learn — workflows agentiques](https://learn.microsoft.com/en-us/azure/logic-apps/agent-workflows-concepts)
 
 Par « automatisation à règles », cet article entend un parcours prédéfini : si telle condition est remplie, telle action est déclenchée. Nous ne définissons donc pas ainsi toute forme d’automatisation. Pour illustrer une combinaison avec l’IA, imaginons un modèle qui classe un message, puis des règles qui fixent la suite du traitement.
 
@@ -55,7 +55,7 @@ Pour poursuivre sur ce domaine métier, consulte notre page [agent IA pour le se
 
 ## Ce qu’un agent choisit, étape par étape
 
-Dans le tutoriel Microsoft sur les workflows autonomes d’Azure Logic Apps, le modèle demande à la boucle d’agent d’appeler des outils, puis les résultats des outils sont transmis au modèle.[^microsoft]
+Dans Azure Logic Apps, la boucle utilise le modèle pour interpréter les entrées et planifier les outils à appeler, puis restitue les résultats des outils. [Microsoft Learn — fonctionnement des boucles d’agent](https://learn.microsoft.com/en-us/azure/logic-apps/agent-workflows-concepts)
 
 Dans notre scénario fictif, cela pourrait donner :
 
@@ -66,7 +66,7 @@ Dans notre scénario fictif, cela pourrait donner :
 
 Dans ce scénario, nous limitons le choix aux étapes et aux outils accessibles : aucune liberté générale d’agir n’est prévue.
 
-Pour concevoir ton système, précise le rôle du modèle, les outils disponibles et les consignes à respecter. Le même tutoriel Microsoft décrit des instructions précisant le rôle et les tâches de la boucle d’agent, ainsi que des outils contenant chacun une ou plusieurs actions.[^microsoft]
+Pour concevoir ton système, précise le rôle du modèle, les outils disponibles et les consignes à respecter. Microsoft décrit des instructions définissant le rôle et les tâches de l’agent, ainsi que des outils contenant une ou plusieurs actions. [Microsoft Learn — instructions et outils](https://learn.microsoft.com/en-us/azure/logic-apps/agent-workflows-concepts)
 
 Dans notre exemple, examine séparément la consultation d’une fiche client, sa modification et l’envoi d’un message. N’accorde pas un accès global au seul nom de « l’autonomie ».
 
@@ -103,7 +103,7 @@ La grille suivante est une **synthèse éditoriale**, pas un diagnostic automati
 
 Pour appliquer cette grille, dessine d’abord le circuit attendu. Si tu peux en fixer les étapes et les exceptions, examine une automatisation à règles avant d’ajouter un choix dynamique du parcours.
 
-Pour explorer cette voie, consulte notre page [automatisation IA](/services/automatisation-ia/). Elle présente une approche combinant des règles de workflow et des capacités d’IA pour traiter notamment des mails ou des documents, avec une orientation des cas à vérifier vers une personne.[^automatisation]
+Pour explorer cette voie, consulte notre page [automatisation IA](/services/automatisation-ia/). Elle présente une approche combinant des règles de workflow et des capacités d’IA pour traiter notamment des mails ou des documents, avec une orientation des cas à vérifier vers une personne. [Althoce — automatisation IA](https://althoce.com/services/automatisation-ia/)
 
 À l’inverse, si ton scénario exige de choisir la suite en fonction des informations découvertes, évalue l’intérêt d’un agent. Ne prends pas la présence de texte libre comme un critère suffisant : demande-toi surtout quelles décisions de parcours tu souhaites confier au modèle.
 
@@ -122,7 +122,7 @@ Le travail de conception devrait alors porter sur :
 
 N’impose pas un fonctionnement agentique à chaque étape. Dans une conception hypothétique, une règle déclencherait le traitement, un modèle classerait le message, puis un agent choisirait certaines vérifications. Les actions sensibles resteraient dans un circuit d’approbation défini. Il faudrait ensuite vérifier et tester cette conception avec les outils retenus.
 
-C’est ce périmètre qu’il faut examiner avant d’envisager des [agents IA sur mesure](/services/agents-ia/). Cette page présente des exemples d’usages à personnaliser selon les processus, les données, les outils et les validations nécessaires.[^agents] L’objectif proposé ici : accorder une marge de décision là où tu peux en justifier l’utilité et en organiser le contrôle.
+C’est ce périmètre qu’il faut examiner avant d’envisager des [agents IA sur mesure](/services/agents-ia/). Cette page présente des exemples d’usages à personnaliser selon les processus, les données, les outils et les validations nécessaires. [Althoce — agents IA sur mesure](https://althoce.com/services/agents-ia/) L’objectif proposé ici : accorder une marge de décision là où tu peux en justifier l’utilité et en organiser le contrôle.
 
 ## Décider à partir du processus, pas de l’étiquette
 
@@ -132,13 +132,13 @@ Tu pourras alors formuler une question précise : « Le système doit-il suivre 
 
 Les capacités d’un logiciel précis et les gains pour ta PME restent à vérifier. Cet article explique une distinction de fonctionnement et propose des scénarios, pas les performances d’un produit particulier.
 
-La page contact d’Althoce présente un premier appel de pré-audit de 30 minutes offert et sans engagement. Pour faire le point : [30 minutes offertes pour étudier ton projet](/contact/). Le diagnostic complet, sa feuille de route et le chiffrage des projets constituent un accompagnement distinct.[^contact]
+La page contact d’Althoce présente un premier appel de pré-audit de 30 minutes offert et sans engagement. Pour faire le point : [30 minutes offertes pour étudier ton projet](/contact/). Le diagnostic complet, sa feuille de route et le chiffrage des projets constituent un accompagnement distinct. [Althoce — contact et conditions du premier échange](https://althoce.com/contact/)
 
 ## Questions fréquentes
 
 ### L’IA agentique, c’est quoi en une phrase ?
 
-Dans notre définition de travail, c’est un système qui utilise un modèle pour choisir certaines actions et certains outils selon un objectif et les informations disponibles.[^microsoft]
+Dans notre définition de travail, c’est un système qui utilise un modèle pour choisir certaines actions et certains outils selon un objectif et les informations disponibles. [Microsoft Learn — workflows agentiques](https://learn.microsoft.com/en-us/azure/logic-apps/agent-workflows-concepts)
 
 ### Un agent IA, c’est quoi par rapport à un chatbot ?
 
@@ -150,16 +150,20 @@ Non : dans une conception hypothétique, un modèle classerait un message, puis 
 
 ### Un agent peut-il envoyer un message ou rembourser un client ?
 
-Le tutoriel Microsoft sur Azure Logic Apps montre comment créer un outil d’envoi d’e-mails.[^microsoft] Cela ne démontre aucune capacité de remboursement pour ton futur dispositif. Vérifie séparément les fonctions disponibles et les autorisations accordées. Dans le scénario fictif de cet article, le remboursement reste soumis à une approbation humaine. Ne déduis pas une capacité du seul mot « agent ».
+Microsoft donne l’envoi d’e-mails comme exemple de tâche réalisable par un outil dans Azure Logic Apps. [Microsoft Learn — outils d’un agent](https://learn.microsoft.com/en-us/azure/logic-apps/agent-workflows-concepts) Cela ne démontre aucune capacité de remboursement pour ton futur dispositif. Vérifie séparément les fonctions disponibles et les autorisations accordées. Dans le scénario fictif de cet article, le remboursement reste soumis à une approbation humaine. Ne déduis pas une capacité du seul mot « agent ».
 
 ### Comment savoir si un agent s’améliore après une erreur ?
 
-Demande comment les erreurs sont enregistrées, analysées et corrigées, puis comment les changements sont testés. Pour ton projet, fais vérifier ce fonctionnement avant de conclure à une amélioration de la fiabilité.
+Demande comment les erreurs sont enregistrées, analysées et corrigées, puis comment les changements sont testés. Pour ton projet, fais vérifier ce fonctionnement avant de conclure à une amélioration de la fiabilité. Anthropic décrit une démarche associant prototypes, évaluations et analyse des erreurs d’outils, plutôt qu’une garantie d’amélioration automatique. [Anthropic — conception et évaluation des outils pour agents](https://www.anthropic.com/research/writing-tools-for-agents)
 
-[^microsoft]: Microsoft Learn, « Create autonomous agentic workflows without human interactions in Azure Logic Apps », mise à jour affichée : 12 avril 2026. Tutoriel pour Azure Logic Apps Consumption et Standard ; la variante Consumption est signalée en préversion. Source : `https://learn.microsoft.com/en-us/azure/logic-apps/create-autonomous-agent-workflows`.
+## Sources
 
-[^automatisation]: Althoce, page « Automatisation IA des processus métier », notamment la réponse « Qu’est-ce que l’automatisation IA ? ». Aucune date de mise à jour éditoriale affichée dans le texte consulté. Source : `https://althoce.com/services/automatisation-ia/`.
+- [Microsoft Learn — « What are agentic workflows that work with AI agents and models in Azure Logic Apps? »](https://learn.microsoft.com/en-us/azure/logic-apps/agent-workflows-concepts), mise à jour affichée : 16 septembre 2026. Documentation Azure Logic Apps Consumption et Standard ; la capacité agentique Consumption y est signalée en préversion.
 
-[^agents]: Althoce, page « Agents IA sur mesure pour votre métier », notamment la réponse sur les exemples présentés et leur personnalisation. Aucune date de mise à jour éditoriale affichée dans le texte consulté. Source : `https://althoce.com/services/agents-ia/`.
+- [Anthropic — « Writing effective tools for agents — with agents »](https://www.anthropic.com/research/writing-tools-for-agents), publié le 11 septembre 2025. Retour d’expérience technique sur la conception et l’évaluation des outils pour agents, sans portée réglementaire française.
 
-[^contact]: Althoce, page contact, notamment la réponse sur la gratuité du premier appel et la distinction avec le diagnostic complet. Aucune date de mise à jour éditoriale affichée dans le texte consulté. Source : `https://althoce.com/contact/`.
+- [Althoce — « Automatisation IA des processus métier »](https://althoce.com/services/automatisation-ia/), notamment la réponse « Qu’est-ce que l’automatisation IA ? ».
+
+- [Althoce — « Agents IA sur mesure pour votre métier »](https://althoce.com/services/agents-ia/), notamment la réponse sur les exemples présentés et leur personnalisation.
+
+- [Althoce — page contact](https://althoce.com/contact/), notamment la réponse sur la gratuité du premier appel et la distinction avec le diagnostic complet.
