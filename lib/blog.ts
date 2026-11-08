@@ -12,6 +12,7 @@ export interface BlogPost {
   title: string;
   date: string;
   publishedAt?: string;
+  updatedAt?: string;
   category: BlogCategory | string;
   excerpt: string;
   readingTime: string;
@@ -82,6 +83,9 @@ export function getAllPosts(): BlogPost[] {
       title: data.title ?? '',
       date: data.date ?? data.publishedAt ?? '',
       publishedAt: data.publishedAt ?? data.date ?? undefined,
+      updatedAt: data.updatedAt && Number.isFinite(new Date(data.updatedAt).getTime())
+        ? new Date(data.updatedAt).toISOString()
+        : undefined,
       category: (data.category as BlogCategory) ?? "Cas d'usage",
       excerpt: data.excerpt ?? data.description ?? '',
       readingTime,

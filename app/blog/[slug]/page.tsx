@@ -33,6 +33,7 @@ export async function generateMetadata(
       type: 'article',
       url: `https://althoce.com/blog/${post.slug}/`,
       publishedTime: post.publishedAt ?? post.date,
+      modifiedTime: post.updatedAt ?? post.publishedAt ?? post.date,
       images: [
         {
           url: post.image ? `https://althoce.com${post.image}` : '/og-default.png',
@@ -67,7 +68,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
     "headline": post.title,
     "description": post.excerpt,
     "datePublished": post.publishedAt ?? post.date,
-    "dateModified": post.publishedAt ?? post.date,
+    "dateModified": post.updatedAt ?? post.publishedAt ?? post.date,
     "url": `https://althoce.com/blog/${post.slug}/`,
     "image": post.image ? `https://althoce.com${post.image}` : "https://althoce.com/og-default.png",
     "inLanguage": "fr-FR",
