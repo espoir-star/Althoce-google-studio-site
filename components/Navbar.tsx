@@ -41,6 +41,7 @@ export default function Navbar(){
   return <nav ref={root} className={s.nav} aria-label="Navigation principale" onKeyDown={e=>{if(e.key==='Escape'){const trigger=root.current?.querySelector<HTMLButtonElement>(`button[data-group="${open}"]`);close();if(mobile)burger.current?.focus();else trigger?.focus()}}} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget as Node)){close()}}}>
     <a className={s.brand} href="/" aria-label="Althoce — accueil"><Logo variant="white" size={34}/><span>althoce<span className={s.brandDot}>.</span></span></a>
     <div className={s.desktop}>
+      <a className={s.centraleLink} href="/ia-souveraine/" onClick={close}>La Centrale<ArrowUpRight size={14} aria-hidden="true" /></a>
       {groups.map(group=><div key={group.id} className={s.group}>
         <button type="button" data-group={group.id} className={s.trigger} aria-expanded={open===group.id} aria-controls={`nav-${group.id}`} onClick={()=>setOpen(open===group.id?null:group.id)}>{group.label}<ChevronDown size={14} aria-hidden="true"/></button>
         {open===group.id&&<div id={`nav-${group.id}`} className={`${s.dropdown} ${group.id==='services'?s.services:''}`}>
@@ -51,7 +52,7 @@ export default function Navbar(){
     </div>
     <button ref={burger} className={s.burger} type="button" aria-label={mobile?'Fermer le menu':'Ouvrir le menu'} aria-expanded={mobile} aria-controls="nav-mobile" onClick={()=>{setMobile(!mobile);setOpen(null)}}>{mobile?<X size={24}/>:<Menu size={24}/>}</button>
     {mobile&&<div id="nav-mobile" className={s.mobile}>
-      <div className={s.mobileScroll}>{groups.map(group=><div key={group.id}>
+      <div className={s.mobileScroll}><a className={s.mobileFeature} href="/ia-souveraine/" onClick={close}><span><strong>La Centrale</strong><small>Vos agents IA, chez vous.</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>{groups.map(group=><div key={group.id}>
         <button type="button" className={s.mobileTrigger} aria-expanded={open===group.id} aria-controls={`mobile-${group.id}`} onClick={()=>setOpen(open===group.id?null:group.id)}>{group.label}<ChevronDown size={18} aria-hidden="true"/></button>
         {open===group.id&&<div id={`mobile-${group.id}`}>{group.items.map(item=><a key={item.href} className={s.item} href={item.href} onClick={close}><span className={s.icon}><item.icon size={20} aria-hidden="true"/></span><span><strong>{item.label}</strong><small>{item.text}</small></span></a>)}</div>}
       </div>)}</div>
