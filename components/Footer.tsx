@@ -7,7 +7,149 @@ import Image from 'next/image';
 import { Logo } from '@/components/ui/brand/Logo';
 import { cities } from '@/lib/data';
 
-const footerCols = [{"h": "Accompagnement", "links": [{"l": "Diagnostic IA", "href": "/services/audit-ia/"}, {"l": "Déploiement & agents IA", "href": "/services/automatisation-ia/"}, {"l": "Pilotage & maintenance", "href": "/services/pilotage-ia/"}, {"l": "Formations IA", "href": "/services/formation-ia/"}, {"l": "La Centrale · IA souveraine", "href": "/ia-souveraine/"}, {"l": "Connecteurs", "href": "/connecteurs/"}, {"l": "Tous nos services", "href": "/services/"}]}, {"h": "Formations", "links": [{"l": "Formation IA métier", "href": "/services/formation-ia/ia-fondamentaux/"}, {"l": "Formation personnalisée", "href": "/services/formation-ia/ia-avancee/"}, {"l": "Formation IA Dirigeant", "href": "/services/formation-ia/coaching-dirigeant/"}, {"l": "Coaching IA Solo", "href": "/services/formation-ia/coaching-independant/"}]}, {"h": "Secteurs", "links": [{"l": "Finance", "href": "/secteurs/finance/"}, {"l": "Droit", "href": "/secteurs/droit/"}, {"l": "Marketing & communication", "href": "/secteurs/marketing-communication/"}, {"l": "Associations", "href": "/secteurs/associations/"}, {"l": "Immobilier", "href": "/secteurs/immobilier/"}, {"l": "Commerce & distribution", "href": "/secteurs/commerce-distribution/"}, {"l": "Industrie", "href": "/secteurs/industrie/"}, {"l": "Tous les secteurs", "href": "/secteurs/"}]}, {"h": "Ressources", "links": [{"l": "Nos guides gratuits", "href": "/guides/"}, {"l": "Cas clients", "href": "/cas-clients/"}, {"l": "Blog", "href": "/blog/"}, {"l": "Calculateur ROI", "href": "/calculateur-roi/"}]}, {"h": "Le cabinet", "links": [{"l": "À propos", "href": "/a-propos/"}, {"l": "Contact", "href": "/contact/"}]}];
+const footerCols = [
+  {
+    "h": "Accompagnement",
+    "links": [
+      {
+        "l": "Diagnostic IA",
+        "href": "/services/audit-ia/"
+      },
+      {
+        "l": "Déploiement & agents IA",
+        "href": "/services/automatisation-ia/"
+      },
+      {
+        "l": "Pilotage & maintenance",
+        "href": "/services/pilotage-ia/"
+      },
+      {
+        "l": "Formations IA",
+        "href": "/services/formation-ia/"
+      },
+      {
+        "l": "La Centrale · IA souveraine",
+        "href": "/ia-souveraine/"
+      },
+      {
+        "l": "Connecteurs",
+        "href": "/connecteurs/"
+      },
+      {
+        "l": "Tous nos services",
+        "href": "/services/"
+      }
+    ]
+  },
+  {
+    "h": "Formations",
+    "links": [
+      {
+        "l": "Formation IA métier",
+        "href": "/services/formation-ia/ia-fondamentaux/"
+      },
+      {
+        "l": "Formation personnalisée",
+        "href": "/services/formation-ia/ia-avancee/"
+      },
+      {
+        "l": "Formation IA Dirigeant",
+        "href": "/services/formation-ia/coaching-dirigeant/"
+      },
+      {
+        "l": "Coaching IA Solo",
+        "href": "/services/formation-ia/coaching-independant/"
+      }
+    ]
+  },
+  {
+    "h": "Secteurs",
+    "links": [
+      {
+        "l": "Expertise comptable",
+        "href": "/secteurs/comptabilite/"
+      },
+      {
+        "l": "Droit",
+        "href": "/secteurs/droit/"
+      },
+      {
+        "l": "Santé & médical",
+        "href": "/secteurs/medical/"
+      },
+      {
+        "l": "Assurance & patrimoine",
+        "href": "/secteurs/assurance-patrimoine/"
+      },
+      {
+        "l": "Immobilier",
+        "href": "/secteurs/immobilier/"
+      },
+      {
+        "l": "Commerce",
+        "href": "/secteurs/commerce-distribution/"
+      },
+      {
+        "l": "Industrie",
+        "href": "/secteurs/industrie/"
+      },
+      {
+        "l": "Agences marketing",
+        "href": "/secteurs/marketing-communication/"
+      },
+      {
+        "l": "Associations",
+        "href": "/secteurs/associations/"
+      },
+      {
+        "l": "Tous les secteurs",
+        "href": "/secteurs/"
+      }
+    ]
+  },
+  {
+    "h": "Ressources",
+    "links": [
+      {
+        "l": "Usages IA par métier",
+        "href": "/agent-ia/"
+      },
+      {
+        "l": "Direction financière",
+        "href": "/secteurs/finance/"
+      },
+      {
+        "l": "Nos guides gratuits",
+        "href": "/guides/"
+      },
+      {
+        "l": "Cas clients",
+        "href": "/cas-clients/"
+      },
+      {
+        "l": "Blog",
+        "href": "/blog/"
+      },
+      {
+        "l": "Calculateur ROI",
+        "href": "/calculateur-roi/"
+      }
+    ]
+  },
+  {
+    "h": "Le cabinet",
+    "links": [
+      {
+        "l": "À propos",
+        "href": "/a-propos/"
+      },
+      {
+        "l": "Contact",
+        "href": "/contact/"
+      }
+    ]
+  }
+];
 
 const FooterLink = ({ href, label, dim = false }: { href: string; label: string; dim?: boolean }) => (
   <a

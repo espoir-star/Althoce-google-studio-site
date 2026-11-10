@@ -12,6 +12,10 @@ const groups = [
     {label:'Pilotage & maintenance',text:'Suivre, entretenir et faire évoluer vos solutions.',href:'/services/pilotage-ia/',icon:ChartNoAxesCombined},
     {label:'Formation IA',text:'Faire grandir les compétences de vos équipes.',href:'/services/formation-ia/',icon:GraduationCap},
   ]},
+  { label:'Votre activité', id:'activite', items:[
+    {label:'Par secteur',text:'Les enjeux et dossiers propres à votre organisation.',href:'/secteurs/',icon:Building2},
+    {label:'Par métier',text:'Les tâches et contrôles de vos équipes.',href:'/agent-ia/',icon:Workflow},
+  ]},
   { label:'Ressources', id:'ressources', items:[
     {label:'Nos guides',text:'Des ressources pratiques classées par secteur.',href:'/guides/',icon:BookOpen},
     {label:'Blog',text:'Des repères pour comprendre et avancer.',href:'/blog/',icon:BookOpen},
@@ -19,7 +23,6 @@ const groups = [
     {label:'Calculateur ROI',text:'Explorer le potentiel de vos usages.',href:'/calculateur-roi/',icon:Calculator},
   ]},
   { label:'À propos', id:'apropos', items:[
-    {label:'Nos secteurs',text:'Des usages adaptés à votre activité.',href:'/secteurs/',icon:Compass},
     {label:'Le cabinet',text:'Notre approche et notre engagement.',href:'/a-propos/',icon:Building2},
     {label:'Contact',text:'Faisons connaissance autour de votre projet.',href:'/contact/',icon:MessageCircle},
   ]},
@@ -32,7 +35,7 @@ export default function Navbar(){
   const burger=useRef<HTMLButtonElement>(null);
   useEffect(()=>{
     const close=(e:PointerEvent)=>{if(!root.current?.contains(e.target as Node)){setOpen(null);setMobile(false)}};
-    const resize=()=>{if(window.innerWidth>900)setMobile(false)};
+    const resize=()=>{if(window.innerWidth>1050)setMobile(false)};
     document.addEventListener('pointerdown',close);window.addEventListener('resize',resize);
     return()=>{document.removeEventListener('pointerdown',close);window.removeEventListener('resize',resize)};
   },[]);

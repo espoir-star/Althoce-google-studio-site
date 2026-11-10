@@ -1,29 +1,180 @@
-import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
-import TailoredAgents from './TailoredAgents';
 import Image from 'next/image';
-import { ArrowUpRight, FileCheck2, ChartNoAxesCombined, Landmark, ScanLine, GraduationCap, Database, ArrowRight, FileSpreadsheet, CheckCheck } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
 import { FaqSection, PreAuditCTA, TextLink } from '@/components/brand/Sections';
 import ResourceSection from '@/components/resources/ResourceSection';
 import { financeFaq } from '@/lib/resources';
 import b from '@/components/brand/Brand.module.css';
-import s from './Sectors.module.css';
-const audiences=[
- {icon:FileCheck2,title:'Cabinets comptables',text:'Préparer les pièces et la révision. Garder du temps pour expliquer, conseiller et accompagner vos clients.',example:'Du dossier à vérifier au conseil à apporter.'},
- {icon:ChartNoAxesCombined,title:'Directions financières',text:'Rassembler les données, préparer le reporting et faire ressortir les écarts qui méritent votre attention.',example:'Moins de consolidation. Plus de recul.'},
- {icon:ScanLine,title:'Contrôle de gestion',text:'Structurer les analyses et préparer les commentaires, avec des résultats reliés à leurs sources.',example:'Des chiffres à comprendre, pas seulement à produire.'},
- {icon:Landmark,title:'Patrimoine & investissement',text:'Explorer la synthèse de dossiers et la veille documentaire, dans un périmètre défini avec vos équipes.',example:'Une préparation utile. Un jugement qui reste le vôtre.'},
-];
-export default function FinancePage(){return <main className={b.page}>
- <section className={s.hero}><div className={b.container}><nav className={b.breadcrumb} aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href="/secteurs/">Secteurs</a><span>/</span><span aria-current="page">Finance</span></nav><div className={s.heroGrid}><div><h1>L’IA pour la finance.<br/><span>Plus de place<br/>pour votre analyse.</span></h1><p className={b.lead}>Cabinets comptables, directions financières et métiers du patrimoine : Althoce forme vos équipes et conçoit des agents IA connectés à vos logiciels. Confidentialité des dossiers, accès aux données et vérification des résultats guident chaque projet. Votre expertise reste au cœur de l’analyse.</p><a className={b.primary} href="/contact/">Parlons de vos priorités<ArrowUpRight size={18}/></a><a className={s.secondary} href="#finance-guides-title">Explorer les guides gratuits</a></div><div className={s.heroPhoto}><Image src="/images/sectors/finance-dossiers.webp" alt="Trois collègues échangent autour de dossiers financiers dans un bureau." fill priority sizes="(max-width:900px) 90vw, 48vw"/><div className={s.photoNote}>L’IA prépare.<br/><strong>Votre équipe décide.</strong></div></div></div></div></section>
- <TailoredAgents/>
- <section className={b.section}><div className={b.container}><div className={s.heading}><h2>Le même secteur.<br/><span>Des réalités différentes.</span></h2><p>Une clôture à préparer, un client à conseiller, une décision à éclairer. Nous partons de votre métier pour définir ce qui peut être simplifié.</p></div><div className={s.audiences}>{audiences.map(x=><article key={x.title}><x.icon size={26} strokeWidth={1.5} aria-hidden="true"/><h3>{x.title}</h3><p>{x.text}</p><small>{x.example}</small></article>)}</div></div></section>
- <section className={s.workflow}><div className={b.container}><div className={s.heading}><h2>Vos outils savent déjà beaucoup.<br/><span>Faisons-les travailler ensemble.</span></h2><p>Relier vos données à l’IA pour préparer le travail, sans multiplier les copier-coller.</p></div><div className={s.connection}><div className={s.sourceTools}><span><img src="/logos/pennylane.svg" alt="Pennylane" width={130} height={26}/></span><span><FileSpreadsheet size={22}/>Tableurs & exports</span><span><Database size={22}/>ERP & documents</span></div><ArrowRight className={s.connectionArrow} size={26} aria-hidden="true"/><div className={s.aiCore}><img src="/logos/claude.svg" alt="" width={32} height={32}/><strong>Votre assistant IA</strong><small>Un accès défini.<br/>Des consignes métier.</small></div><ArrowRight className={s.connectionArrow} size={26} aria-hidden="true"/><div className={s.output}><CheckCheck size={26} aria-hidden="true"/><strong>Une analyse à valider</strong><p>Les écarts à examiner, les pièces utiles et une synthèse reliée à ses sources.</p></div></div><p className={s.workflowNote}>Connexion ou export contrôlé : nous choisissons le chemin adapté à vos outils et à vos droits d’accès.</p><div className={s.connectionBenefits}><span><CheckCheck size={17} aria-hidden="true"/>Moins de ressaisies</span><span><CheckCheck size={17} aria-hidden="true"/>Des sources accessibles</span><span><CheckCheck size={17} aria-hidden="true"/>Votre validation à chaque étape</span></div></div></section>
-
- <CentraleDiscovery context="finance" />
- <section className={b.section}><div className={`${b.container} ${s.training}`}><div className={s.trainingPhoto}><Image src="/images/sectors/finance-formation.webp" alt="Un atelier de formation réunit une petite équipe autour de ses ordinateurs." fill sizes="(max-width:900px) 90vw, 48vw"/></div><div><GraduationCap size={30} strokeWidth={1.5} aria-hidden="true"/><h2>Le progrès se joue<br/><span>aussi dans l’équipe.</span></h2><p className={b.lead}>Un outil n’installe pas une nouvelle habitude à lui seul. Nos formations IA partent de vos dossiers : poser une bonne demande, vérifier une réponse et savoir quelles données utiliser.</p><p className={s.paragraph}>Du dirigeant aux collaborateurs, chacun trouve sa place. Puis nous ajustons les usages et organisons le suivi pour qu’ils restent utiles après le projet.</p><TextLink href="/services/formation-ia/">Découvrir les formations IA</TextLink></div></div></section>
- <section className={b.section}><div className={b.container}><div className={s.heading}><h2>Un reporting à préparer.<br/><span>Un parcours plus court.</span></h2><p>Voici un usage possible pour une direction financière. Le même principe s’adapte aux dossiers d’un cabinet comptable.</p></div><ol className={s.steps}><li><span>01</span><h3>Rassembler les données</h3><p>Récupérer les éléments autorisés depuis les outils connectés, ou charger les exports du mois.</p></li><li><span>02</span><h3>Préparer avec l’IA</h3><p>Faire ressortir les variations et préparer un commentaire accompagné des données qui le justifient.</p></li><li><span>03</span><h3>Vérifier et partager</h3><p>Le responsable financier contrôle les calculs, ajuste l’analyse et diffuse le reporting validé.</p></li></ol><TextLink href="/agent-ia/finance/">Explorer les agents IA sur mesure pour la finance</TextLink></div></section>
- <ResourceSection/>
- <section className={b.section}><div className={b.container}><a href="/cas-clients/cabinet-comptable-lyon/" className={s.case}><div><span>Dans un cabinet comptable lyonnais</span><h2>Accueillir davantage de dossiers.<br/>Garder la relation.</h2><p>La préparation des factures et des rapprochements laisse davantage de place à la vérification et au conseil.</p><strong>Découvrir le cas client <ArrowUpRight size={18} aria-hidden="true"/></strong></div><div className={s.metric}><b>×2</b><p>capacité gérée à effectif constant,<br/>sur quatre mois dans ce cabinet.</p></div></a></div></section>
- <FaqSection id="faq-finance" title="Vos questions, simplement." description="Le point de départ, les outils et la place de votre équipe." items={financeFaq} showContactLink={false}/>
- <PreAuditCTA title={<>Et si vos équipes retrouvaient<br/>le temps d’analyser ?</>}/>
- </main>}
+import s from '@/components/expertise/Expertise.module.css';
+export default function FinancePage() {
+  return (
+    <main className={b.page}>
+      <section className={s.hero}>
+        <div className={`${b.container} ${s.heroGrid}`}>
+          <div>
+            <nav className={b.breadcrumb} aria-label="Fil d’Ariane">
+              <a href="/">Accueil</a>
+              <span>/</span>
+              <a href="/agent-ia/">Usages IA par métier</a>
+              <span>/</span>
+              <span aria-current="page">Direction financière</span>
+            </nav>
+            <p className={s.audience}>DAF · Responsables financiers · Contrôle de gestion</p>
+            <h1>
+              L’IA pour votre direction financière.
+              <span>Des sources fiables pour préparer vos décisions.</span>
+            </h1>
+            <p className={b.lead}>
+              Avant le commentaire de gestion, il y a les exports à réunir, les écarts à expliquer
+              et les chiffres à vérifier. Althoce vous aide à choisir les usages utiles, former
+              l’équipe et relier l’IA à vos sources financières.
+            </p>
+            <div className={s.actions}>
+              <a href="/contact/" className={b.primary}>
+                Parlons de vos priorités
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+          <div className={s.photo}>
+            <Image
+              src="/images/services/metiers-operations.webp"
+              alt="Des professionnels préparent la lecture et le contrôle de leurs dossiers au bureau."
+              fill
+              priority
+              sizes="(max-width:800px) 90vw, 46vw"
+            />
+          </div>
+        </div>
+      </section>
+      <section className={`${b.section} ${s.soft}`}>
+        <div className={`${b.container} ${s.split}`}>
+          <div>
+            <h2>
+              Relier les sources.
+              <br />
+              <span>Rendre les écarts explicables.</span>
+            </h2>
+            <p className={b.lead}>
+              Nous examinons ensemble le logiciel comptable, l’ERP, les tableurs et les pièces
+              utilisées pour vos reportings. Le projet doit préciser d’où vient chaque indicateur, à
+              quelle période il correspond et qui en valide la lecture.
+            </p>
+            <div className={s.deliverables}>
+              <div>
+                <span>01</span>
+                <p>Une définition partagée des indicateurs, périodes et périmètres.</p>
+              </div>
+              <div>
+                <span>02</span>
+                <p>Des connexions autorisées ou des exports contrôlés, selon les outils.</p>
+              </div>
+              <div>
+                <span>03</span>
+                <p>
+                  Une préparation des analyses qui conserve les références et signale les inconnues.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className={s.dossier}>
+            <small>EXEMPLE · PRÉPARATION DU REPORTING</small>
+            <p>
+              Le réalisé s’écarte du budget. Une partie vient du périmètre, une autre reste à
+              expliquer avec les responsables opérationnels.
+            </p>
+            <div className={s.dossierResult}>
+              <h3>Une note de préparation, pas une explication inventée.</h3>
+              <ul>
+                {[
+                  'Chiffres rapprochés de leurs sources',
+                  'Variations constatées et calculs à vérifier',
+                  'Questions ouvertes pour les responsables',
+                ].map((x) => (
+                  <li key={x}>
+                    <Check size={16} aria-hidden="true" />
+                    {x}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className={b.section}>
+        <div className={`${b.container} ${s.split}`}>
+          <div className={`${s.photo} ${s.photoWide}`}>
+            <Image
+              src="/images/sectors/finance-formation.webp"
+              alt="Des collaborateurs pratiquent ensemble lors d’un atelier sur leurs dossiers financiers."
+              fill
+              sizes="(max-width:800px) 90vw, 46vw"
+            />
+          </div>
+          <div>
+            <h2>
+              Faire de la vérification
+              <br />
+              <span>une compétence partagée.</span>
+            </h2>
+            <p className={b.lead}>
+              Vos équipes apprennent à préparer une analyse, contrôler les calculs et reconnaître
+              une information insuffisante. Les exercices s’adaptent aux responsabilités de la
+              comptabilité, du contrôle de gestion et de la direction.
+            </p>
+            <TextLink href="/services/formation-ia/">
+              Choisir la formation adaptée à l’équipe
+            </TextLink>
+            <br />
+            <TextLink href="/ia-souveraine/">Étudier une plateforme sous votre contrôle</TextLink>
+          </div>
+        </div>
+      </section>
+      <section className={b.section}>
+        <div className={b.container}>
+          <div className={s.heading}>
+            <h2>
+              Choisir le bon périmètre
+              <br />
+              <span>pour commencer.</span>
+            </h2>
+          </div>
+          <div className={s.hubSwitch}>
+            <div>
+              <h3>Un processus financier à alléger</h3>
+              <p>
+                Extraction de factures, rapprochement documentaire, suivi des échéances : la page
+                métier détaille les données d’entrée, le travail préparé et la validation humaine.
+              </p>
+              <TextLink href="/agent-ia/finance/">Explorer les agents IA finance</TextLink>
+            </div>
+            <div>
+              <h3>Un cabinet d’expertise comptable</h3>
+              <p>
+                Vos dossiers multi-clients, vos responsables de mission et votre production
+                appellent un autre parcours, de la collecte à la restitution.
+              </p>
+              <TextLink href="/secteurs/comptabilite/">
+                Découvrir le parcours cabinet comptable
+              </TextLink>
+            </div>
+          </div>
+        </div>
+      </section>
+      <ResourceSection
+        slugs={['12-agents-ia-direction-financiere', '12-skills-claude-finance']}
+        description="Deux ressources pour explorer les tâches et les méthodes de votre direction financière."
+      />
+      <FaqSection
+        id="faq-finance"
+        title="Avant de lancer le projet."
+        description="Les priorités et les responsabilités de votre équipe financière."
+        items={financeFaq}
+        showContactLink={false}
+      />
+      <PreAuditCTA
+        title="Quel reporting mérite une autre façon de travailler ?"
+        description="Partons de vos sources, de vos contrôles et du temps consacré à la préparation. Le premier échange permet de choisir une priorité réaliste."
+      />
+    </main>
+  );
+}

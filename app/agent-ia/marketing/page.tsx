@@ -6,11 +6,11 @@ import {metierStories} from '@/lib/metiers-content';
 const story=metierStories.find(x=>x.slug==="marketing")!;
 const url=`https://althoce.com/agent-ia/${story.slug}/`;
 export const metadata: Metadata = {
- title: 'Agent IA marketing : contenu et SEO en pilote',
- description: story.intro,
+ title: `${story.name} sur mesure : usages et contrôles`,
+ description: story.description,
  keywords: ['agent IA marketing', 'IA pour marketing', 'IA création contenu', 'agent IA SEO', 'agent IA email marketing', 'automatisation marketing IA', 'IA pour CMO', 'génération contenu IA entreprise'],
  alternates:{canonical:url},
- openGraph:{title:`${story.name} sur mesure | Althoce`,description:story.intro,url,type:'website',locale:'fr_FR',images:[{url:`/images/services/${story.image}.webp`,alt:story.name}]},
- twitter:{card:'summary_large_image',title:`${story.name} sur mesure | Althoce`,description:story.intro},
+ openGraph:{title:`${story.name} sur mesure | Althoce`,description:story.description,url,type:'website',locale:'fr_FR',images:[{url:`/images/services/${story.image}.webp`,alt:story.name}]},
+ twitter:{card:'summary_large_image',title:`${story.name} sur mesure | Althoce`,description:story.description},
 };
 export default function Page(){return <><MetierSchema story={story}/><MetierPage story={story}/><Footer showCta={false}/></>}

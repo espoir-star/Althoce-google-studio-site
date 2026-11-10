@@ -1,22 +1,208 @@
-import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
-import { centraleSectorContexts } from '@/lib/centrale-links';
-import TailoredAgents from './TailoredAgents';
 import Image from 'next/image';
-import { ArrowUpRight, ArrowRight, Check, GraduationCap } from 'lucide-react';
-import { FaqSection, PreAuditCTA, TextLink } from '@/components/brand/Sections';
+import { ArrowUpRight, Check, ShieldCheck } from 'lucide-react';
+import { sectorFaq, type SectorStory } from '@/lib/sectors-content';
 import ResourceSection from '@/components/resources/ResourceSection';
-import {sectorFaq,type SectorStory} from '@/lib/sectors-content';
+import WorkflowExamples from '@/components/expertise/WorkflowExamples';
+import RelatedExpertise from '@/components/expertise/RelatedExpertise';
+import { FaqSection, PreAuditCTA, TextLink } from '@/components/brand/Sections';
 import b from '@/components/brand/Brand.module.css';
-import s from './Sectors.module.css';
-const sectorTitles:Record<string,string>={droit:'L’IA pour le droit.', 'marketing-communication':'L’IA pour le marketing.',associations:'L’IA pour les associations.',immobilier:'L’IA pour l’immobilier.','commerce-distribution':'L’IA pour le commerce.',industrie:'L’IA pour l’industrie.'};
-export default function SectorPage({story:d}:{story:SectorStory}){const centraleContext=centraleSectorContexts[d.slug];return <main className={b.page}>
-<section className={s.hero}><div className={b.container}><nav className={b.breadcrumb} aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href="/secteurs/">Secteurs</a><span>/</span><span aria-current="page">{d.name}</span></nav><div className={s.heroGrid}><div><h1>{sectorTitles[d.slug]}<br/><span>{d.promise}</span></h1><p className={b.lead}>Nous formons vos équipes et créons des agents IA sur mesure, adaptés aux exigences de votre activité. {d.intro}</p><a className={b.primary} href="/contact/">Parlons de votre quotidien<ArrowUpRight size={18} aria-hidden="true"/></a></div><div className={s.heroPhoto}><Image src={`/images/sectors/${d.slug}.webp`} alt={`Une équipe travaille sur ses dossiers dans un bureau du secteur ${d.name.toLowerCase()}.`} fill priority sizes="(max-width:900px) 90vw, 48vw"/></div></div></div></section>
-<TailoredAgents/>
-{centraleContext && <CentraleDiscovery context={centraleContext} />}
-<section className={b.section}><div className={b.container}><div className={s.heading}><h2>Votre métier,<br/><span>notre point de départ.</span></h2><p>Un accompagnement adapté aux responsabilités, aux outils et aux habitudes de chaque équipe.</p></div><div className={s.audiences}>{d.audiences.map(x=><article key={x.title}><Check size={22} aria-hidden="true"/><h3>{x.title}</h3><p>{x.text}</p></article>)}</div></div></section>
+import s from '@/components/expertise/Expertise.module.css';
 
-<section className={b.section}><div className={`${b.container} ${s.training}`}><div className={s.trainingPhoto}><Image src={`/images/sectors/${d.slug}-atelier.webp`} alt={`Atelier en bureau pour apprendre et partager des pratiques dans le secteur ${d.name.toLowerCase()}.`} fill sizes="(max-width:900px) 90vw, 48vw"/></div><div><GraduationCap size={28} aria-hidden="true"/><h2>Une équipe qui comprend.<br/><span>Des usages qui durent.</span></h2><p className={b.lead}>{d.training}</p><TextLink href="/services/formation-ia/">Explorer les formations IA</TextLink></div></div></section>
-<section className={s.workflow}><div className={b.container}><div className={s.heading}><h2>Un usage concret.<br/><span>Une place claire pour chacun.</span></h2><p>Nous commençons par un périmètre limité. Les outils préparent ; les personnes valident.</p></div><div className={s.sectorFlow}>{[d.input,d.prepared,d.decision].map((x,i)=><div key={x}><small>{['Votre point de départ','Le travail préparé avec l’IA','La décision humaine'][i]}</small><strong>{x}</strong>{i<2&&<ArrowRight size={20} aria-hidden="true"/>}</div>)}</div><p className={s.workflowNote}>Exemple illustratif : connexions, données et contrôles sont définis lors du cadrage.</p><TextLink href={`/agent-ia/${d.metier}/`}>Découvrir les usages de ce métier</TextLink></div></section>
-{d.guides.length>0&&<ResourceSection slugs={d.guides} id={`guides-${d.slug}`} description="Des ressources choisies pour prolonger les usages présentés. Les guides donnent des repères ; votre contexte guide la mise en pratique."/>}
-<section className={`${b.section} ${s.sectorFollow}`}><div className={`${b.container} ${s.heading}`}><div><h2>Du premier essai<br/><span>au quotidien de l’équipe.</span></h2><p className={b.lead}>Cadrer les accès, tester, transmettre et suivre : nous accompagnons le projet de bout en bout, avec des étapes que votre équipe peut comprendre et valider.</p></div><div>{d.caseSlug?<TextLink href={`/cas-clients/${d.caseSlug}/`}>Voir un projet dans ce secteur</TextLink>:<TextLink href="/a-propos/">Découvrir notre façon de travailler</TextLink>}<p className={s.workflowNote}>Un premier échange de 30 minutes pour identifier où commencer.</p></div></div></section>
-<FaqSection id={`faq-${d.slug}`} title={`L’IA dans votre secteur, simplement.`} description="Des réponses pour cadrer votre premier usage." items={sectorFaq(d)} showContactLink={false}/><PreAuditCTA/></main>}
+export default function SectorPage({ story: d }: { story: SectorStory }) {
+  return (
+    <main className={b.page}>
+      <section className={s.hero}>
+        <div className={b.container}>
+          <div className={s.heroGrid}>
+            <div>
+              <nav className={b.breadcrumb} aria-label="Fil d’Ariane">
+                <a href="/">Accueil</a>
+                <span>/</span>
+                <a href="/secteurs/">Secteurs</a>
+                <span>/</span>
+                <span aria-current="page">{d.name}</span>
+              </nav>
+              <p className={s.audience}>{d.audience}</p>
+              <h1>
+                {d.title}.<span>{d.promise}</span>
+              </h1>
+              <p className={b.lead}>{d.intro}</p>
+              <div className={s.actions}>
+                <a href="/contact/" className={b.primary}>
+                  Parlons de votre organisation
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+                <TextLink href="#usages">Voir les situations concrètes</TextLink>
+              </div>
+            </div>
+            <div className={s.photo}>
+              <Image
+                src={d.image}
+                alt={d.imageAlt}
+                fill
+                priority
+                sizes="(max-width:800px) 90vw, 46vw"
+              />
+            </div>
+          </div>
+          <div className={s.friction}>
+            {d.friction.map((x) => (
+              <p key={x}>{x}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className={`${b.section} ${s.soft}`}>
+        <div className={b.container}>
+          <div className={s.split}>
+            <div>
+              <h2>{d.approach.title}</h2>
+              <p className={b.lead}>{d.approach.text}</p>
+              <div className={s.deliverables}>
+                {d.approach.deliverables.map((x, i) => (
+                  <div key={x}>
+                    <span>0{i + 1}</span>
+                    <p>{x}</p>
+                  </div>
+                ))}
+              </div>
+              <TextLink href="/services/agents-ia/">
+                Comment nous concevons vos agents sur mesure
+              </TextLink>
+            </div>
+            <aside className={s.boundary}>
+              <ShieldCheck size={26} strokeWidth={1.5} aria-hidden="true" />
+              <h3>Le cadre fait partie du projet.</h3>
+              <p>{d.boundaries}</p>
+              {['comptabilite', 'droit', 'industrie'].includes(d.slug) && (
+                <TextLink href="/ia-souveraine/">
+                  Étudier une plateforme sous votre contrôle
+                </TextLink>
+              )}
+            </aside>
+          </div>
+          {d.paths && (
+            <div className={s.paths}>
+              {d.paths.map((p) => (
+                <article className={s.path} key={p.id}>
+                  <h3>{p.title}</h3>
+                  <p>{p.text}</p>
+                  <strong>{p.result}</strong>
+                  <TextLink href={`#usages-${p.id}`}>Explorer ce parcours</TextLink>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+      <section className={b.section}>
+        <div className={`${b.container} ${s.split}`}>
+          <div className={`${s.photo} ${s.photoWide}`}>
+            <Image
+              src={d.trainingImage}
+              alt={`Un atelier de travail en équipe, pour illustrer une formation IA adaptée au secteur ${d.name.toLowerCase()}.`}
+              fill
+              sizes="(max-width:800px) 90vw, 46vw"
+            />
+          </div>
+          <div>
+            <h2>
+              Former sur le travail
+              <br />
+              <span>que vous faites vraiment.</span>
+            </h2>
+            <p className={b.lead}>{d.training}</p>
+            <ul className={s.practice}>
+              {d.trainingPractice.map((x) => (
+                <li key={x}>
+                  <Check size={17} aria-hidden="true" />
+                  {x}
+                </li>
+              ))}
+            </ul>
+            <TextLink href="/services/formation-ia/">
+              Découvrir les formations IA sur mesure
+            </TextLink>
+          </div>
+        </div>
+      </section>
+      <section id="usages" className={b.section}>
+        <div className={b.container}>
+          <div className={s.headingRow}>
+            <h2>
+              Reconnaître une situation.
+              <br />
+              <span>Imaginer une autre façon de faire.</span>
+            </h2>
+            <p>
+              Voici des scénarios à construire avec vous. Les sources, les connexions et les
+              validations se précisent pendant le cadrage.
+            </p>
+          </div>
+          {d.paths ? (
+            d.paths.map((p, i) => (
+              <div key={p.id}>
+                <h3 id={`usages-${p.id}`} className={s.pathHeading}>
+                  {p.title}
+                </h3>
+                <WorkflowExamples
+                  id={`scenarios-${p.id}`}
+                  items={d.scenarios.slice(i * 2, i * 2 + 2)}
+                />
+              </div>
+            ))
+          ) : (
+            <WorkflowExamples items={d.scenarios} id={`scenarios-${d.slug}`} />
+          )}
+          <p className={s.caption}>
+            Exemples de périmètres sur mesure. Ils ne constituent pas un catalogue d’agents prêts à
+            l’emploi ni des références de projets livrés.
+          </p>
+        </div>
+      </section>
+      {d.guides.length > 0 && (
+        <ResourceSection
+          slugs={d.guides}
+          id={`guides-${d.slug}`}
+          description={`Des ressources sélectionnées pour prolonger les usages présentés en ${d.name.toLowerCase()}. Les guides s’ouvrent sur leur page de téléchargement.`}
+        />
+      )}
+      <section className={`${b.section} ${s.soft}`}>
+        <div className={b.container}>
+          {d.caseSlug && (
+            <a href={`/cas-clients/${d.caseSlug}/`} className={s.caseLink}>
+              <div>
+                <span>Un projet à découvrir</span>
+                <strong>{d.caseLabel}</strong>
+              </div>
+              <ArrowUpRight size={23} aria-hidden="true" />
+            </a>
+          )}
+          <div className={s.heading}>
+            <h2>
+              Approfondir le travail
+              <br />
+              <span>de vos équipes.</span>
+            </h2>
+            <p>
+              Découvrez les documents à réunir, le travail que l’agent peut préparer et les
+              contrôles à organiser pour chaque fonction.
+            </p>
+          </div>
+          <RelatedExpertise type="metiers" slugs={d.related} />
+        </div>
+      </section>
+      <FaqSection
+        id={`faq-${d.slug}`}
+        title={`L’IA en ${d.name.toLowerCase()} : vos questions.`}
+        description="Le périmètre, les données et le bon point de départ."
+        items={sectorFaq(d)}
+        showContactLink={false}
+      />
+      <PreAuditCTA
+        title="Partons d’un dossier concret."
+        description="Parlons d’une tâche qui mobilise votre équipe, des outils utilisés et des exigences à respecter. Ce premier échange nous aide à choisir un point de départ utile."
+      />
+    </main>
+  );
+}

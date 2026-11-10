@@ -87,15 +87,51 @@ export interface AgentMetierItem {
 }
 
 export const agentMetiers: AgentMetierItem[] = [
-  { title: 'Marketing', desc: "Génération de contenu, SEO, emailing personnalisés à l'échelle.", href: '/agent-ia/marketing/' },
-  { title: 'Commercial', desc: 'Prospection hyper-personnalisée, scoring, relances automatiques.', href: '/agent-ia/commercial/' },
-  { title: 'Service client', desc: 'Tickets niveau 1 & 2 traités automatiquement, support 24/7.', href: '/agent-ia/service-client/' },
-  { title: 'Téléphonique', desc: 'Standard 24/7, qualification entrante, rappels sortants, voix naturelle.', href: '/agent-ia/telephonique/' },
-  { title: 'Ressources humaines', desc: 'Tri de CV, pré-qualification, onboarding guidé.', href: '/agent-ia/rh/' },
-  { title: 'Finance & compta', desc: 'Extraction de pièces, rapprochements, relances impayés.', href: '/agent-ia/finance/' },
-  { title: 'Opérations', desc: 'Mails entrants, ADV, gestion documentaire, suivi fournisseurs.', href: '/agent-ia/operations/' },
-  { title: 'Juridique', desc: 'Lecture de contrats, détection de clauses à risque, rédaction assistée.', href: '/agent-ia/juridique/' },
-  { title: 'Achats', desc: 'Sourcing fournisseurs, analyse devis comparatif, suivi contrats, vigilance financière.', href: '/agent-ia/achats/' },
+  {
+    "title": "Marketing & communication",
+    "desc": "Briefs, contenus et analyses de campagne à vérifier.",
+    "href": "/agent-ia/marketing/"
+  },
+  {
+    "title": "Commercial & prospection",
+    "desc": "Préparation des comptes, suivi CRM et consultations.",
+    "href": "/agent-ia/commercial/"
+  },
+  {
+    "title": "Service client & support",
+    "desc": "Tickets, sources et réponses préparées pour les conseillers.",
+    "href": "/agent-ia/service-client/"
+  },
+  {
+    "title": "Accueil téléphonique",
+    "desc": "Motif d’appel, rendez-vous et reprise humaine.",
+    "href": "/agent-ia/telephonique/"
+  },
+  {
+    "title": "Ressources humaines",
+    "desc": "Procédures internes, arrivées et préparation documentaire.",
+    "href": "/agent-ia/rh/"
+  },
+  {
+    "title": "Finance & comptabilité interne",
+    "desc": "Pièces, rapprochements et relances sous contrôle.",
+    "href": "/agent-ia/finance/"
+  },
+  {
+    "title": "Opérations & ADV",
+    "desc": "Commandes, dossiers incomplets et passages de relais.",
+    "href": "/agent-ia/operations/"
+  },
+  {
+    "title": "Juridique & contrats",
+    "desc": "Comparaison de clauses, versions et arbitrages.",
+    "href": "/agent-ia/juridique/"
+  },
+  {
+    "title": "Achats & fournisseurs",
+    "desc": "Devis comparables, pièces et échéances à vérifier.",
+    "href": "/agent-ia/achats/"
+  }
 ];
 
 export interface AgentTagItem {
@@ -104,41 +140,82 @@ export interface AgentTagItem {
 }
 
 export const agentTags: AgentTagItem[] = [
-  { name: 'Agent SEO IA', href: '/agent-ia/marketing/' },
-  { name: 'Agent Content Manager IA', href: '/agent-ia/marketing/' },
-  { name: 'Agent Emailing IA', href: '/agent-ia/marketing/' },
-  { name: 'Agent Social Media IA', href: '/agent-ia/marketing/' },
-  { name: 'Agent Reporting Marketing IA', href: '/agent-ia/marketing/' },
-  { name: 'Agent Prospection IA', href: '/agent-ia/commercial/' },
-  { name: 'Agent Qualification leads IA', href: '/agent-ia/commercial/' },
-  { name: 'Agent CRM IA', href: '/agent-ia/commercial/' },
-  { name: 'Agent Relance IA', href: '/agent-ia/commercial/' },
-  { name: 'Agent Closing assistant IA', href: '/agent-ia/commercial/' },
-  { name: 'Agent Support N1 IA', href: '/agent-ia/service-client/' },
-  { name: 'Agent Chatbot IA', href: '/agent-ia/service-client/' },
-  { name: 'Agent Voice IA', href: '/agent-ia/service-client/' },
-  { name: 'Agent Ticketing IA', href: '/agent-ia/service-client/' },
-  { name: 'Agent Standard téléphonique IA', href: '/agent-ia/telephonique/' },
-  { name: 'Agent Rappels sortants IA', href: '/agent-ia/telephonique/' },
-  { name: 'Agent Qualification appels IA', href: '/agent-ia/telephonique/' },
-  { name: 'Agent Support vocal IA', href: '/agent-ia/telephonique/' },
-  { name: 'Agent Tri CV IA', href: '/agent-ia/rh/' },
-  { name: 'Agent Onboarding IA', href: '/agent-ia/rh/' },
-  { name: 'Agent Paie assistante IA', href: '/agent-ia/rh/' },
-  { name: 'Agent Facturation IA', href: '/agent-ia/finance/' },
-  { name: 'Agent Rapprochement bancaire IA', href: '/agent-ia/finance/' },
-  { name: 'Agent Relance impayés IA', href: '/agent-ia/finance/' },
-  { name: 'Agent Reporting finance IA', href: '/agent-ia/finance/' },
-  { name: 'Agent Documentation IA', href: '/agent-ia/operations/' },
-  { name: 'Agent Data entry IA', href: '/agent-ia/operations/' },
-  { name: 'Agent Architecture système IA', href: '/agent-ia/operations/' },
-  { name: 'Agent Data & BI IA', href: '/agent-ia/operations/' },
-  { name: 'Agent Lecture contrats IA', href: '/agent-ia/juridique/' },
-  { name: 'Agent Conformité IA', href: '/agent-ia/juridique/' },
-  { name: 'Agent Clauses-risque IA', href: '/agent-ia/juridique/' },
-  { name: 'Agent BTP devis IA', href: '/agent-ia/secteurs/' },
-  { name: 'Agent Cabinet médical IA', href: '/agent-ia/secteurs/' },
-  { name: 'Agent Immobilier IA', href: '/agent-ia/secteurs/' },
+  {
+    "name": "Préparation SEO",
+    "href": "/agent-ia/marketing/"
+  },
+  {
+    "name": "Bilans de campagne",
+    "href": "/agent-ia/marketing/"
+  },
+  {
+    "name": "Préparation des comptes",
+    "href": "/agent-ia/commercial/"
+  },
+  {
+    "name": "Suivi des opportunités",
+    "href": "/agent-ia/commercial/"
+  },
+  {
+    "name": "Réponses aux consultations",
+    "href": "/agent-ia/commercial/"
+  },
+  {
+    "name": "Qualification des tickets",
+    "href": "/agent-ia/service-client/"
+  },
+  {
+    "name": "Réponses sourcées",
+    "href": "/agent-ia/service-client/"
+  },
+  {
+    "name": "Accueil et rappel",
+    "href": "/agent-ia/telephonique/"
+  },
+  {
+    "name": "Orientation des appels",
+    "href": "/agent-ia/telephonique/"
+  },
+  {
+    "name": "Procédures RH",
+    "href": "/agent-ia/rh/"
+  },
+  {
+    "name": "Préparation des arrivées",
+    "href": "/agent-ia/rh/"
+  },
+  {
+    "name": "Lecture des factures",
+    "href": "/agent-ia/finance/"
+  },
+  {
+    "name": "Rapprochements documentaires",
+    "href": "/agent-ia/finance/"
+  },
+  {
+    "name": "Préparation des commandes",
+    "href": "/agent-ia/operations/"
+  },
+  {
+    "name": "Transmission des exceptions",
+    "href": "/agent-ia/operations/"
+  },
+  {
+    "name": "Comparaison de contrats",
+    "href": "/agent-ia/juridique/"
+  },
+  {
+    "name": "Suivi des échéances",
+    "href": "/agent-ia/juridique/"
+  },
+  {
+    "name": "Comparaison des devis",
+    "href": "/agent-ia/achats/"
+  },
+  {
+    "name": "Dossiers fournisseurs",
+    "href": "/agent-ia/achats/"
+  }
 ];
 
 export interface StepItem {
