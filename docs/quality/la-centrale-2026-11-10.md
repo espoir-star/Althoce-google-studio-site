@@ -14,7 +14,8 @@ La page présente une installation et un accompagnement sur mesure. Son objectif
 - Même destination de contact que les pages services : `/contact/`. Le calendrier existant étant dédié aux connecteurs, il n’est pas réutilisé pour cette offre.
 - Réutilisation du fil d’Ariane, de la FAQ, de la section méthode, des boutons, des styles de marque et du CTA commun. Deux propriétés facultatives permettent de personnaliser le libellé et la note du CTA sans changer ses valeurs par défaut ailleurs.
 - Deux photographies de bureau déjà présentes sur le site, en WebP, avec `next/image`, tailles responsive et chargement différé. Elles ne sont pas présentées comme des photos de clients de La Centrale.
-- Schéma HTML/CSS explicitement nommé « Schéma de principe ». Il ne prétend pas montrer une interface existante.
+- Schéma HTML/CSS explicitement nommé « Schéma de principe » : sources, données autorisées, agents sur mesure, propositions, validation humaine et hébergement. Il ne prétend pas montrer une interface existante.
+- Comparaison des usages dispersés et de La Centrale en listes courtes. Deux cartes alternatives pour l’hébergement, puis un bandeau commun pour les modèles open source. Trois schémas illustrent le démarrage, l’extension et les ajustements avec Althoce.
 - Page rendue côté serveur, sans nouvelle dépendance ni JavaScript interactif propre à l’offre.
 
 ## Référencement
@@ -49,6 +50,8 @@ Les précisions de processus proposées pour éviter une promesse universelle so
 - « Vos collaborateurs prennent en main leurs agents à partir de leurs tâches et de leurs dossiers du quotidien. »
 - FAQ : « Le premier rendez-vous sert à comprendre votre contexte et à définir le projet avec vous. »
 
+Les nouvelles légendes « Uniquement les données autorisées » et « Elles relisent et valident avant envoi » reformulent le périmètre des accès et les validations demandées dans le brief. Elles ne sont pas la preuve d’un contrôle de sécurité de la plateforme.
+
 Les autres titres et textes sont des reformulations du brief : usages dispersés, plateforme commune, choix d’hébergement, décision humaine, évolution et accompagnement. Ils ne rajoutent aucune garantie de conformité, certification, compatibilité avec un logiciel nommé ou apprentissage autonome.
 
 ## Vérifications réalisées
@@ -60,8 +63,8 @@ Les autres titres et textes sont des reformulations du brief : usages dispersés
 - Navigation : quatre services conservés ; lien La Centrale sur ordinateur et dans le menu mobile ; fermeture par Échap avec restitution du focus.
 - FAQ native utilisable au clavier ; lien de rendez-vous vers Contact, puis retour via le menu.
 - Largeurs 320, 375, 390, 768, 1024 et 1440 px : aucun débordement horizontal du document ni des éléments de la nouvelle page.
-- Revue visuelle du schéma, des sections, des photographies, du menu mobile et de l’image de partage.
-- Pas d’erreur JavaScript observée pendant le parcours local.
+- Revue visuelle initiale des photographies, du menu et de l’image de partage. Après la passe de clarté : nouveau schéma du hero, comparaison, hébergement et évolution revus sur ordinateur ; schéma et cartes d’hébergement revus sur téléphone. Mesures de débordement renouvelées à toutes les largeurs indiquées.
+- Pas d’erreur JavaScript observée pendant le parcours local. La page reste rendue côté serveur ; aucune dépendance ni animation ajoutée pendant la passe de clarté.
 - `git diff --check` et `graphify update .`.
 
 L’aperçu local est servi sur le port 3002. Aucun formulaire envoyé, aucune mise en production et aucune fusion de branche réalisés dans cette intervention. L’intégration effective aux outils, les droits et le traitement des données de La Centrale restent hors du périmètre de ces tests de page web.
