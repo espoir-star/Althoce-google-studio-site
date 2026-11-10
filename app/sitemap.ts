@@ -24,7 +24,7 @@ const EXCLUDED_ROUTES = new Set(['connecteurs/cgv']);
 
 function getPriority(route: string): number {
   if (route === '')                                    return 1.0;
-  if (/^(services|calculateur-roi|connecteurs)/.test(route)) return 0.8;
+  if (/^(services|calculateur-roi|connecteurs|ia-souveraine)/.test(route)) return 0.8;
   if (/^(blog|agences|agent-ia|cas-clients|agence-ia)/.test(route)) return 0.7;
   if (/^(contact|a-propos)/.test(route))              return 0.6;
   if (/^(mentions-legales|confidentialite)/.test(route)) return 0.3;

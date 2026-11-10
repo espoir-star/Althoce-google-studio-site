@@ -48,7 +48,7 @@ const professionalServiceSchema = {
   "name": "Althoce",
   "url": "https://althoce.com/",
   "description": brand.shortDescription,
-  "image": "https://althoce.com/og-image.png",
+  "image": "https://althoce.com/og-default.png",
   "telephone": "",
   "email": "contact@althoce.com",
   "address": {
@@ -78,13 +78,6 @@ const professionalServiceSchema = {
       "description": s.desc,
       "seller": { "@id": "https://althoce.com/#organization" },
     })),
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "50",
-    "bestRating": "5",
-    "worstRating": "1"
   },
 };
 

@@ -1,149 +1,139 @@
-import TrustStrip from './brand/TrustStrip';
-import MissionCommitments from './brand/MissionCommitments';
-import { MethodSection, PreAuditCTA, FaqItem as SharedFaqItem } from './brand/Sections';
 import Image from 'next/image';
-import { ArrowUpRight, ArrowRight, Check, Plus } from 'lucide-react';
-import {
-  agentMetiers, caseStudies,
-} from '@/lib/data';
+import { ArrowUpRight, ArrowRight, Check, Compass, GraduationCap, Layers3, Plus, RefreshCw } from 'lucide-react';
+import TrustStrip from './brand/TrustStrip';
+import { PreAuditCTA, FaqItem as SharedFaqItem } from './brand/Sections';
+import { agentMetiers, caseStudies } from '@/lib/data';
 import { homeOffers, homeMethod, homeFaqs } from '@/lib/home-content';
 import { brand } from '@/lib/brand-content';
+import { centrale } from '@/lib/centrale-content';
+import { centraleLinks } from '@/lib/centrale-links';
 import meetingImage from '@/public/images/home/reunion-bureau.webp';
 import workingImage from '@/public/images/home/collaboration-bureau.webp';
-import AgentMarquee from './AgentMarquee';
 import caseImage from '@/public/images/home/cas-client-bureau.webp';
 import s from './HomePage.module.css';
 
-// Server rendering and native disclosures keep content and FAQ available without JS.
+// Summaries are specific to the homepage; the detailed service catalogue is unchanged.
+const offerOverview = [
+  { index: 0, Icon: Compass, text: 'Identifier les usages utiles, les données sensibles et les priorités de votre projet.', label: 'Découvrir l’audit IA' },
+  { index: 3, Icon: GraduationCap, text: 'Pratiquer sur vos situations métier, apprendre à vérifier les réponses et protéger les données.', label: 'Explorer les formations IA' },
+  { index: 1, Icon: Layers3, text: 'Créer des agents IA et des automatisations sur mesure, reliés à vos outils et validés avec vous.', label: 'Voir les solutions sur mesure' },
+  { index: 2, Icon: RefreshCw, text: 'Entretenir vos solutions et ajuster les usages avec vos équipes, selon le suivi convenu.', label: 'Découvrir le pilotage IA' },
+];
+const methodOverview = [
+  'Écouter vos équipes, vos priorités et vos exigences.',
+  'Choisir les outils, les accès et les données autorisées.',
+  'Tester sur vos cas et former les personnes qui les utilisent.',
+  'Faire le bilan et définir ensemble les évolutions utiles.',
+];
+
 function TextLink({ href, children }: { href: string; children: React.ReactNode }) {
   return <a className={s.textLink} href={href}>{children}<ArrowUpRight size={18} aria-hidden="true" /></a>;
 }
+
 function Hero() {
-  return (
-    <section className={s.hero} aria-labelledby="hero-h1">
-      <div className={`${s.container} ${s.heroGrid}`}>
-        <div className={s.heroCopy}>
-
-          <h1 id="hero-h1">L’IA au service<br /><span>de votre expertise.</span></h1>
-          <p className={s.heroAudience}>{brand.audience}</p>
-          <p className={s.lead}>{brand.description}</p>
-          <div className={s.actions}>
-            <a className={s.primary} href="/contact/">Réserver mon pré-audit offert<ArrowUpRight size={18} aria-hidden="true" /></a>
-            <a className={s.secondary} href="#method">Découvrir notre méthode<ArrowRight size={17} aria-hidden="true" /></a>
-          </div>
-          <p className={s.heroNote}><Check size={16} aria-hidden="true" />30 min offertes<span aria-hidden="true">·</span>Sans engagement</p>
+  return <section className={s.hero} aria-labelledby="hero-h1">
+    <div className={`${s.container} ${s.heroGrid}`}>
+      <div className={s.heroCopy}>
+        <h1 id="hero-h1">L’IA au service<br /><span>de votre expertise.</span></h1>
+        <p className={s.heroAudience}>{brand.audience}</p>
+        <p className={s.lead}>{brand.description}</p>
+        <div className={s.actions}>
+          <a className={s.primary} href="/contact/">Réserver mon pré-audit offert<ArrowUpRight size={18} aria-hidden="true" /></a>
+          <a className={s.secondary} href="#services">Découvrir nos accompagnements<ArrowRight size={17} aria-hidden="true" /></a>
         </div>
-        <figure className={s.heroFigure}>
-          <div className={s.heroPhoto}>
-            <Image src={meetingImage} alt="Trois collègues échangent autour d’un projet dans un bureau lumineux." fill priority sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1280px) 48vw, 576px" placeholder="blur" />
-            <div className={s.photoMessage}><p>La technologie avance.<br /><strong>Vos équipes aussi.</strong></p></div>
-          </div>
-
-        </figure>
+        <p className={s.heroNote}><Check size={16} aria-hidden="true" />30 min offertes<span aria-hidden="true">·</span>Sans engagement</p>
       </div>
-      <TrustStrip className={s.container} inset />
-    </section>
-  );
-}
-
-function Approach() {
-  return (
-    <section id="approche" className={s.approach} aria-labelledby="approach-title">
-      <div className={`${s.container} ${s.approachGrid}`}>
-        <h2 id="approach-title">Moins de tâches répétitives.<br /><span>Plus de place pour votre métier.</span></h2>
-        <div><p>Vos dossiers sont sensibles. Vos décisions engagent votre responsabilité. Nous partons de ces exigences pour alléger le travail répétitif, tout en gardant votre expertise au cœur des décisions.</p><p className={s.approachSignature}>Votre métier donne le cap. Vos équipes gardent la main.</p></div>
-      </div>
-    </section>
-  );
+      <figure className={s.heroFigure}>
+        <div className={s.heroPhoto}>
+          <Image src={meetingImage} alt="Trois collègues échangent autour d’un projet dans un bureau lumineux." fill priority sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1280px) 48vw, 576px" placeholder="blur" />
+          <div className={s.photoMessage}><p>La technologie avance.<br /><strong>Vos équipes aussi.</strong></p></div>
+        </div>
+      </figure>
+    </div>
+    <TrustStrip className={`${s.container} ${s.trustStrip}`} inset />
+  </section>;
 }
 
 function Services() {
-  return (
-    <section id="services" className={`${s.section} ${s.dark}`} aria-labelledby="services-title">
-      <div className={s.container}>
-        <div className={s.sectionHeading}>
-          <div><h2 id="services-title">Nos services IA,<br /><span>de l’audit à l’adoption.</span></h2></div>
-          <div><p>Former vos équipes, encadrer les usages et intégrer l’IA à vos outils : choisissez l’accompagnement adapté à votre point de départ.</p><TextLink href="/services/">Explorer tous nos services</TextLink></div>
-        </div>
-        <div className={s.offers}>{homeOffers.map((item, i) => (
-          <article key={item.title} className={s.offer}>
-            <span className={s.index}>0{i + 1}</span>
-            <div>
-              <h3>{item.title}</h3>
-
-              <p>{item.desc}</p>
-
-              <TextLink href={item.href}>{item.linkLabel}</TextLink>
-
-            </div>
-          </article>
-        ))}</div>
+  return <section id="services" className={s.section} aria-labelledby="services-title">
+    <div className={s.container}>
+      <div id="approche" className={s.sectionHeading}>
+        <div><h2 id="services-title">Nos services IA.<br /><span>Votre point de départ.</span></h2></div>
+        <div><p>Former, cadrer, intégrer : nous choisissons avec vous ce qui aide votre équipe, selon vos outils et vos responsabilités.</p><TextLink href="/services/">Explorer tous nos services</TextLink></div>
       </div>
-    </section>
-  );
+      <div className={s.offers}>{offerOverview.map(({ index, Icon, text, label }) => {
+        const item = homeOffers[index];
+        return <a key={item.href} className={s.offer} href={item.href}>
+          <Icon size={25} strokeWidth={1.6} aria-hidden="true" />
+          <h3>{item.title}</h3><p>{text}</p>
+          <span className={s.offerLink}>{label}<ArrowUpRight size={17} aria-hidden="true" /></span>
+        </a>;
+      })}</div>
+      <aside id="decouvrir-la-centrale" className={s.centrale} aria-labelledby="decouvrir-la-centrale-title">
+        <div className={s.centraleCopy}><Layers3 size={25} aria-hidden="true" /><div><h3 id="decouvrir-la-centrale-title">{centraleLinks.home.title}</h3><p>{centraleLinks.home.description}</p></div></div>
+        <TextLink href={centrale.path}>Découvrir La Centrale</TextLink>
+      </aside>
+      <details id="agents" className={s.directory}>
+        <summary>Explorer les agents IA par métier<Plus size={19} aria-hidden="true" /></summary>
+        <nav aria-label="Agents IA par métier">{agentMetiers.map(item => <a href={item.href} key={item.href}>{item.title}<ArrowUpRight size={16} aria-hidden="true" /></a>)}</nav>
+        <TextLink href="/agent-ia/">Tous les usages par métier</TextLink>
+      </details>
+    </div>
+  </section>;
 }
-function AgentByJob() {
-  return (
-    <section id="agents" className={s.expertiseSection} aria-labelledby="jobs-title">
-      <div className={s.container}>
-        <div className={s.expertiseHeading}>
-          <h2 id="jobs-title">Des agents IA adaptés à vos métiers.</h2>
-          <TextLink href="/agent-ia/">Voir tous les agents IA</TextLink>
-        </div>
-        <nav className={s.expertiseLinks} aria-label="Agents IA par métier">
-          {agentMetiers.map(item => <a href={item.href} key={item.href}>{item.title}<ArrowUpRight size={14} aria-hidden="true" /></a>)}
-        </nav>
-        <AgentMarquee />
-      </div>
-    </section>
-  );
-}
-function Methodology() {
-  return <MethodSection title="Comment se passe une mission avec Althoce ?" description="On avance avec vous, étape par étape. Les formations IA et la prise en main des outils donnent à vos équipes les moyens d’avancer en autonomie." steps={homeMethod} image={workingImage} alt="Deux collègues étudient un projet sur ordinateur dans un bureau." />;
-}
+
 function CaseStudies() {
   const [featured, ...others] = caseStudies;
-  return (
-    <section id="cases" className={s.section} aria-labelledby="cases-title"><div className={s.container}>
-      <div className={s.sectionHeading}><div><h2 id="cases-title">L’IA prend tout son sens<br />sur le terrain.</h2></div><div><p>Du temps retrouvé, des équipes qui avancent. Découvrez ce qui a changé dans leur quotidien.</p><TextLink href="/cas-clients/">Voir tous les cas</TextLink></div></div>
-      <div className={s.cases}><a href={featured.href} className={s.featuredCase}>
-          <div className={s.casePhoto}><Image src={caseImage} alt="Deux collègues échangent sur un dossier dans un bureau comptable." fill sizes="(max-width: 600px) calc(100vw - 40px), 48vw" placeholder="blur" /></div>
-          <div className={s.featuredBody}><div className={s.caseResult}><strong>×2</strong><span>de capacité,<br />à effectif constant</span></div><h3>{featured.client}</h3><p>{featured.desc}</p><span className={s.caseLink}>Découvrir leur projet<ArrowUpRight size={20} aria-hidden="true" /></span></div>
-        </a>
-        <div className={s.caseList}>{others.map(item => <a key={item.href} href={item.href} className={s.case}><div><span>{item.tag}</span><h3>{item.client}</h3><p>{item.desc}</p></div><ArrowUpRight size={21} aria-hidden="true" /></a>)}</div>
-      </div>
-      <MissionCommitments />
-    </div></section>
-  );
+  return <section id="cases" className={`${s.section} ${s.soft}`} aria-labelledby="cases-title">
+    <div className={s.container}>
+      <div className={s.sectionHeading}><h2 id="cases-title">Ce que l’IA change,<br /><span>sur le terrain.</span></h2><div><p>Un exemple concret, à l’échelle d’une équipe.</p><TextLink href="/cas-clients/">Découvrir nos cas clients</TextLink></div></div>
+      <a href={featured.href} className={s.featuredCase}>
+        <div className={s.casePhoto}><Image src={caseImage} alt="Deux collègues échangent sur un dossier dans un bureau comptable." fill sizes="(max-width: 700px) calc(100vw - 40px), 45vw" placeholder="blur" /></div>
+        <div className={s.featuredBody}>
+          <p className={s.caseName}>{featured.client}</p>
+          <h3>Plus de dossiers.<br />La même attention aux clients.</h3>
+          <p>La préparation des factures et des rapprochements laisse davantage de place à la vérification et au conseil.</p>
+          <div className={s.caseResult}><strong>×2</strong><span>de capacité, à effectif constant<small>Résultat observé dans ce cabinet.</small></span></div>
+          <span className={s.caseLink}>Découvrir leur projet<ArrowUpRight size={20} aria-hidden="true" /></span>
+        </div>
+      </a>
+      <nav className={s.otherCases} aria-label="Autres cas clients">{others.map(item => <a href={item.href} key={item.href}>{item.client}<ArrowUpRight size={17} aria-hidden="true" /></a>)}</nav>
+    </div>
+  </section>;
 }
-function Pricing() { return <PreAuditCTA id="pricing" />; }
-function Cabinet() {
-  return (
-    <section id="cabinet" className={`${s.section} ${s.cabinet}`} aria-labelledby="cabinet-title">
-      <div className={`${s.container} ${s.cabinetGrid}`}>
-        <h2 id="cabinet-title">Un projet de A à Z.<br /><span>Une équipe à vos côtés.</span></h2>
-        <div><p className={s.lead}>Du premier échange à la prise en main, nous comprenons votre métier, construisons avec vous et transmettons les bons réflexes. Le suivi se définit ensuite avec vous.</p><TextLink href="/a-propos/">Découvrir le cabinet</TextLink></div>
+
+function Methodology() {
+  return <section id="method" className={s.section} aria-labelledby="method-title">
+    <div className={`${s.container} ${s.methodGrid}`}>
+      <div id="cabinet" className={s.methodFigure}>
+        <div className={s.methodPhoto}><Image src={workingImage} alt="Deux collègues étudient un projet sur ordinateur dans un bureau." fill sizes="(max-width: 900px) calc(100vw - 40px), 44vw" placeholder="blur" /></div>
+        <TextLink href="/a-propos/">Découvrir le cabinet Althoce</TextLink>
       </div>
-    </section>
-  );
+      <div><h2 id="method-title">Un projet de A à Z.<br /><span>Une équipe à vos côtés.</span></h2><p className={s.lead}>Vos dossiers sont sensibles. Vos décisions engagent votre responsabilité. Nous construisons avec vous, puis transmettons les bons réflexes à votre équipe.</p>
+        <ol className={s.methodSteps}>{homeMethod.map((step, i) => <li key={step.n}><span className={s.stepNumber} aria-hidden="true">{step.n}</span><div><h3>{step.title}</h3><p>{methodOverview[i]}</p></div></li>)}</ol>
+      </div>
+    </div>
+  </section>;
 }
+
 function FaqItem({ index }: { index: number }) {
   return <SharedFaqItem item={homeFaqs[index]} id={`faq-question-${index}`} group="home-faq" />;
 }
 function FAQ() {
-  return (
-    <section id="faq" className={s.section} aria-labelledby="faq-title"><div className={`${s.container} ${s.faqGrid}`}>
-      <div><h2 id="faq-title">Vos questions,<br />nos réponses directes.</h2><p className={s.lead}>Quelques repères pour faire le premier pas sereinement.</p><TextLink href="/contact/">Parlons de votre projet</TextLink></div>
+  return <section id="faq" className={`${s.section} ${s.faqSection}`} aria-labelledby="faq-title">
+    <div className={`${s.container} ${s.faqGrid}`}>
+      <div><h2 id="faq-title">Avant de<br /><span>faire le premier pas.</span></h2><p className={s.lead}>L’accompagnement, les données et le budget : quelques réponses pour vous situer.</p></div>
       <div className={s.faqList}>
-        {[2, 3, 4, 5, 8, 10].map(i => <FaqItem key={i} index={i} />)}
-        <details className={s.moreFaq}><summary>Toutes les questions sur l’IA en entreprise<Plus size={18} aria-hidden="true" /></summary>{[0, 1, 6, 7, 9, 11].map(i => <FaqItem key={i} index={i} />)}</details>
+        {[8, 5, 2, 4].map(i => <FaqItem key={i} index={i} />)}
+        <details className={s.moreFaq}><summary>D’autres questions sur l’IA en entreprise<Plus size={18} aria-hidden="true" /></summary>{[0, 1, 3, 6, 7, 9, 10, 11].map(i => <FaqItem key={i} index={i} />)}</details>
       </div>
-    </div></section>
-  );
+    </div>
+  </section>;
 }
+
 export default function HomePageClient() {
   return <main id="home-content" className={s.home}>
     <a href="#approche" className={s.skipLink}>Aller au contenu</a>
-    <Hero /><Approach /><Services /><Methodology /><CaseStudies /><Cabinet /><FAQ /><Pricing /><AgentByJob />
+    <Hero /><Services /><CaseStudies /><Methodology /><FAQ /><PreAuditCTA id="pricing" />
   </main>;
 }

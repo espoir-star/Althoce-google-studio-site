@@ -1,3 +1,4 @@
+import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -115,6 +116,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
           <div className={styles.body}>
             {toc.length>0&&<details className={styles.mobileToc}><summary>Dans cet article</summary><TableOfContents items={toc}/></details>}
             <div className="blog-prose" dangerouslySetInnerHTML={{__html:post.content}}/>
+            {post.slug === 'ia-souveraine-donnees-sensibles-hds-secret-professionnel' && <CentraleDiscovery context="souverainete" inset />}
             {related.length>0&&<section className={styles.related}><h2>Pour poursuivre la réflexion.</h2>{related.map(item=><Link key={item.slug} href={`/blog/${item.slug}/`}>{item.title}<ArrowUpRight size={20} aria-hidden="true"/></Link>)}</section>}
           </div>
         </div>

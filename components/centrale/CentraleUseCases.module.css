@@ -1,0 +1,64 @@
+.examples { min-width: 0; }
+.tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 7px; border: 1px solid #d6e2f3; border-radius: 17px; background: #edf3fc; margin-bottom: 24px; }
+.tabs button { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 12px; border: 1px solid transparent; border-radius: 11px; font-size: 15px; line-height: 1.4; font-weight: 500; color: #405979; background: transparent; cursor: pointer; transition: background-color .18s ease, color .18s ease; }
+.tabs button svg { flex-shrink: 0; }
+.tabs button:hover { background: #ffffffb8; color: #1b4b91; }
+.tabs button[aria-selected='true'] { color: #fff; background: #255fbd; border-color: #255fbd; box-shadow: 0 3px 8px #244f8a1a; }
+.tabs button:focus-visible, .panel:focus-visible, .footer a:focus-visible { outline: 3px solid #2563eb; outline-offset: 4px; }
+.panel { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 60px; padding: 44px; border: 1px solid #d8e3f2; border-radius: 22px; background: radial-gradient(ellipse at 90% 0, #e7effc, transparent 60%), #fff; }
+.panel[hidden] { display: none; }
+.panel > * { min-width: 0; }
+.panel .copy h3 { font-size: clamp(25px, 2.3vw, 32px); line-height: 1.25; letter-spacing: -.035em; color: #182f50; }
+.panel .copy > p { font-size: 16px; line-height: 1.8; margin-top: 20px; color: #526176; }
+.sources { display: flex; gap: 12px; align-items: flex-start; padding-top: 24px; margin-top: 28px; border-top: 1px solid #d9e3ef; }
+.sources > svg { flex-shrink: 0; color: #326ab9; margin-top: 2px; }
+.sources strong { font-size: 14px; color: #2b4e7c; font-weight: 550; }
+.panel .sources p { font-size: 14px; line-height: 1.65; margin-top: 6px; color: #5c6b80; }
+.scenario { margin: 0; border: 1px solid #c5d7f0; border-radius: 16px; background: white; box-shadow: 0 18px 32px -20px #173e7b35; }
+.scenario figcaption { padding: 24px 26px 21px; border-bottom: 1px solid #e1e9f4; }
+.scenario figcaption > span { display: block; color: #5a6f8b; font-size: 12px; margin-bottom: 8px; }
+.scenario figcaption > strong { display: block; color: #1f477d; font-size: 21px; line-height: 1.35; font-weight: 600; letter-spacing: -.02em; }
+.work { padding: 22px 26px 26px; }
+.panel .workLabel { color: #4b6080; font-size: 13px; font-weight: 550; margin-bottom: 16px; }
+.work ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.work li { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid #e1e8f3; border-radius: 9px; background: #f7f9fd; font-size: 14px; line-height: 1.55; color: #304b70; }
+.work svg { flex-shrink: 0; color: #6382ad; }
+.validation { display: flex; align-items: center; gap: 14px; padding: 19px 26px; border-radius: 0 0 15px 15px; background: #1d447e; color: #fff; }
+.validation > svg { flex-shrink: 0; color: #c6dcff; }
+.validation strong { font-size: 14px; font-weight: 550; }
+.panel .validation p { color: #e0eafd; font-size: 13px; line-height: 1.6; margin-top: 5px; }
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 22px; }
+.footer p { max-width: 620px; font-size: 14px; line-height: 1.65; color: #536680; }
+.footer a { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; min-height: 44px; font-size: 14px; font-weight: 550; color: #2459a6; }
+.footer a:hover { text-decoration: underline; text-underline-offset: 5px; }
+@media (max-width: 1100px) {
+  .panel { padding: 32px; gap: 32px; }
+  .tabs button { font-size: 14px; }
+  .work, .scenario figcaption { padding-inline: 22px; }
+  .validation { padding-inline: 22px; }
+}
+@media (max-width: 800px) {
+  .panel { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tabs button { justify-content: flex-start; }
+  .panel .copy h3 { max-width: 540px; }
+  .sources { margin-top: 20px; padding-top: 20px; }
+  .footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+@media (max-width: 480px) {
+  .tabs { gap: 5px; padding: 5px; border-radius: 14px; margin-bottom: 18px; }
+  .tabs button { gap: 8px; padding: 10px; font-size: 13px; min-height: 56px; }
+  .tabs button svg { width: 18px; height: 18px; }
+  .panel { padding: 24px 18px; border-radius: 16px; }
+  .panel .copy h3 { font-size: 27px; }
+  .scenario figcaption { padding: 22px 18px; }
+  .scenario figcaption > strong { font-size: 20px; }
+  .work { padding: 20px 16px; }
+  .work li { padding: 11px 10px; font-size: 15px; gap: 10px; }
+  .validation { padding: 18px; align-items: flex-start; }
+  .validation > svg { margin-top: 2px; }
+  .panel .sources p, .panel .validation p, .footer p { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tabs button { transition: none; }
+}

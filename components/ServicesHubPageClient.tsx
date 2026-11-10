@@ -1,3 +1,4 @@
+import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
 import Image from 'next/image';
 import { ArrowUpRight, Compass, Layers, RefreshCw, Users, Plus } from 'lucide-react';
 import { Breadcrumb, FaqSection } from './brand/Sections';
@@ -20,6 +21,7 @@ export default function ServicesHubPageClient() {
     <h3>{offer.title}</h3><p>{offer.desc}</p><div className={h.cardBottom}><strong>{benefits[i]}</strong><a href={offer.href}>{offer.linkLabel}<ArrowUpRight size={20} aria-hidden="true"/></a></div>
    </article>})}</div>
   </div></section>
+  <CentraleDiscovery context="services" featured />
   <section className={`${b.section} ${h.working}`} aria-labelledby="method-title"><div className={`${b.container} ${h.workingGrid}`}>
    <div className={h.scene}><Image src="/images/services/construction.webp" alt="Des collègues construisent une solution ensemble autour d’un ordinateur." fill sizes="(max-width:900px) 90vw, 42vw"/><div className={h.sceneCaption}>Vos outils. Vos habitudes.<br/><strong>Notre point de départ.</strong></div></div>
    <div className={h.method}><h2 id="method-title">Du premier échange<br /><span>à l’usage quotidien.</span></h2><p>Votre métier, vos obligations et vos équipes guident le projet. Les accès, les validations et les critères de réussite sont définis avant de construire.</p><ol>{homeMethod.map(step=><li key={step.n}><span aria-hidden="true">{step.n}</span><div><h3>{step.title}</h3><p>{step.desc}</p></div></li>)}</ol></div>
