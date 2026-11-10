@@ -1,12 +1,13 @@
-import type { WorkflowExample, ExpertiseFaq } from './expertise';
+import type { WorkflowExample, ExpertiseFaq } from "./expertise";
 export type MetierDossier = {
   label: string;
   focus: string;
   headline: string;
   description: string;
-  brief: string;
-  deliverable: string;
-  checks: string[];
+  intro: string;
+  setup: string;
+  guard: string;
+  cta: string;
   scenarios: WorkflowExample[];
   training: string;
   sectors: string[];
@@ -14,536 +15,490 @@ export type MetierDossier = {
 };
 export const metierDossiers: Record<string, MetierDossier> = {
   commercial: {
-    label: 'Commercial & prospection',
-    focus: 'Préparation des comptes · Rendez-vous · Suivi des opportunités',
-    headline: 'Une prochaine action claire pour chaque opportunité.',
+    label: "Commercial & prospection",
+    focus: "Préparation des comptes · Rendez-vous · Suivi des opportunités",
+    headline: "Plus de temps pour vendre. Un suivi mieux préparé.",
     description:
-      'Agents IA commerciaux sur mesure : préparation des comptes, comptes rendus CRM, relances et réponses aux consultations, sous le contrôle de vos commerciaux.',
-    brief:
-      'Un rendez-vous vient de se terminer. Le besoin a changé, un décideur doit être associé et le devis précédent n’est plus tout à fait adapté.',
-    deliverable: 'Une fiche d’opportunité prête à relire',
-    checks: [
-      'Besoin exprimé, sans le confondre avec une hypothèse',
-      'Interlocuteurs et informations à confirmer',
-      'Engagements pris et prochaine action proposée',
-    ],
+      "Agents IA commerciaux sur mesure : préparation des comptes, comptes rendus CRM, relances et réponses aux consultations, sous le contrôle de vos commerciaux.",
     training:
-      'Vos commerciaux apprennent à fournir un contexte exploitable, vérifier une synthèse et personnaliser un suivi. Les exercices partent de rendez-vous et d’opportunités représentatifs de votre cycle de vente.',
-    sectors: ['commerce-distribution', 'industrie', 'immobilier'],
+      "Vos commerciaux apprennent à corriger une fiche, personnaliser une relance et exploiter les informations préparées avant un rendez-vous.",
+    sectors: ["commerce-distribution", "industrie", "immobilier"],
     scenarios: [
       {
-        title: 'Préparer le compte avant le contact',
-        situation: 'Une liste de prospects ne dit pas encore pourquoi les contacter.',
-        input: 'Critères de ciblage, informations CRM et sources professionnelles autorisées.',
-        output: 'Une fiche avec faits sourcés, questions à poser et angle de contact proposé.',
-        review:
-          'Le commercial confirme la pertinence, vérifie les sources et les règles de prospection. Pas de message envoyé par défaut.',
+        title: "Préparer la prospection",
+        output:
+          "L’agent rassemble les informations utiles sur chaque compte et prépare une fiche avec les interlocuteurs, les faits sourcés et un angle de contact.",
+        review: "Le commercial confirme le ciblage et les règles de contact.",
       },
       {
-        title: 'Transformer le rendez-vous en suivi',
-        situation: 'Les notes existent mais le CRM ne reflète pas la conversation.',
-        input: 'Notes du commercial, opportunité existante et champs attendus.',
+        title: "Mettre le CRM à jour après un rendez-vous",
         output:
-          'Une mise à jour proposée, les informations incertaines et un brouillon de message de suivi.',
+          "À partir de vos notes, l’agent prépare le compte rendu, les champs à compléter et le prochain message de suivi.",
         review:
-          'Le commercial corrige et valide avant toute écriture ou communication. Un engagement absent n’est pas reconstitué.',
+          "Le commercial corrige et valide les informations avant mise à jour ou envoi.",
       },
       {
-        title: 'Préparer la réponse à une consultation',
-        situation: 'L’équipe doit vérifier qu’elle couvre chaque exigence et dispose des preuves.',
-        input: 'Dossier de consultation, capacités documentées et contenus approuvés.',
+        title: "Préparer les réponses aux consultations",
         output:
-          'Une matrice des exigences, réponses et justificatifs, plus les éléments manquants à affecter.',
+          "L’agent rapproche les exigences du client de vos offres et références, puis prépare une réponse en signalant les justificatifs manquants.",
         review:
-          'Les responsables valident la décision de répondre, les engagements, le chiffrage et le dépôt. L’agent ne garantit pas la recevabilité ni l’attribution.',
+          "L’équipe valide le prix, les capacités annoncées et le dépôt de l’offre.",
       },
     ],
     faq: [
       {
-        q: 'L’agent peut-il mettre à jour notre CRM ?',
-        a: 'Une proposition de mise à jour peut être préparée à partir de notes validées. L’écriture dans le CRM dépend des accès disponibles et du circuit de contrôle retenu. Les champs incertains doivent rester à confirmer.',
+        q: "Peut-il fonctionner avec notre CRM actuel ?",
+        a: "Nous vérifions les possibilités de connexion à votre configuration. Le projet peut commencer par la préparation de comptes rendus avant d’ajouter l’écriture dans le CRM.",
       },
       {
-        q: 'Comment éviter les relances génériques ou déplacées ?',
-        a: 'Le scénario utilise l’historique, le stade de l’opportunité et les engagements vérifiés. Les oppositions et règles de contact sont prises en compte. Le commercial valide la pertinence et le ton avant l’envoi.',
+        q: "Comment éviter les relances génériques ?",
+        a: "L’agent utilise l’historique et les questions restées ouvertes. Le commercial relit le message, choisit le moment et tient compte des règles de contact et des oppositions.",
       },
       {
-        q: 'Peut-on commencer seulement par les comptes rendus ?',
-        a: 'Oui. Un seul processus permet de mesurer la qualité des fiches et l’effort de correction avant d’ajouter la prospection ou les consultations.',
+        q: "Peut-on commencer uniquement par les comptes rendus ?",
+        a: "Oui. Un premier usage ciblé permet de vérifier la qualité des fiches et le temps de correction avec vos commerciaux.",
       },
     ],
+    intro:
+      "Votre agent IA commercial prépare les comptes à contacter, les comptes rendus et les relances. Althoce le construit autour de votre CRM, de vos critères de ciblage et de votre façon de vendre.",
+    setup:
+      "Nous relions le CRM, les notes de rendez-vous et la messagerie pour retrouver le bon contexte sans ressaisie inutile.",
+    guard:
+      "Vous choisissez les contacts, validez les messages et gardez la décision sur les engagements commerciaux.",
+    cta: "Quelle étape du suivi commercial vous ralentit ?",
   },
   finance: {
-    label: 'Finance & comptabilité interne',
-    focus: 'Factures · Écarts · Relances · Préparation du reporting',
-    headline: 'Moins de recherches avant chaque contrôle.',
+    label: "Finance & comptabilité interne",
+    focus: "Factures · Écarts · Relances · Préparation du reporting",
+    headline:
+      "Des factures prêtes à contrôler. Des écarts plus faciles à comprendre.",
     description:
-      'Agent IA finance sur mesure : extraction des pièces, rapprochements documentaires et préparation des relances. Votre équipe contrôle les écritures et décisions.',
-    brief:
-      'Une facture arrive, mais la référence de commande manque. Le montant diffère du devis et la réception n’est pas confirmée.',
-    deliverable: 'Une exception documentée, prête pour le contrôle',
-    checks: [
-      'Pièces utilisées et références rapprochées',
-      'Écarts de montant, de période ou de périmètre',
-      'Informations manquantes et personne à solliciter',
-    ],
+      "Agent IA finance sur mesure : extraction des pièces, rapprochements documentaires et préparation des relances. Votre équipe contrôle les écritures et décisions.",
     training:
-      'Les équipes financières s’exercent à vérifier une extraction, rapprocher un commentaire de sa source et repérer un calcul erroné. Les droits sur les pièces et la validation des opérations font partie des exercices.',
-    sectors: ['comptabilite', 'industrie', 'associations'],
+      "Votre équipe apprend à vérifier les montants extraits, comprendre un écart et reprendre les dossiers incomplets.",
+    sectors: ["comptabilite", "industrie", "associations"],
     scenarios: [
       {
-        title: 'Extraire sans masquer les incertitudes',
-        situation: 'Les factures arrivent dans des formats variables et nécessitent une ressaisie.',
-        input: 'Factures autorisées et liste des champs attendus.',
-        output: 'Une fiche avec montants, dates, références et champs illisibles ou incohérents.',
-        review:
-          'Le comptable vérifie les champs et les pièces. Aucune donnée absente n’est devinée pour compléter la saisie.',
-      },
-      {
-        title: 'Préparer le rapprochement facture, commande, réception',
-        situation: 'Les écarts ne deviennent visibles qu’après plusieurs recherches.',
-        input: 'Documents accessibles, références et tolérances définies par votre équipe.',
+        title: "Préparer la saisie des factures",
         output:
-          'Une comparaison sourcée distinguant correspondance, différence et document absent.',
+          "L’agent extrait dates, montants et références des factures et signale les champs illisibles ou incohérents.",
         review:
-          'La personne habilitée confirme les rapprochements. Paiement et écriture définitive restent soumis au circuit de validation.',
+          "Le comptable vérifie les pièces et les informations avant intégration.",
       },
       {
-        title: 'Préparer une relance d’échéance',
-        situation: 'La balance ne reflète pas toujours une contestation ou un échange récent.',
-        input: 'Échéances contrôlées, statut de règlement et échanges autorisés.',
-        output: 'Une liste à revoir et des brouillons de relance avec les litiges signalés.',
+        title: "Rapprocher facture, commande et réception",
+        output:
+          "L’agent compare les documents pour faire ressortir les écarts de quantité, de prix ou de référence et les pièces absentes.",
         review:
-          'L’équipe confirme la situation avant l’envoi. Un montant ou une date contestés déclenchent une reprise humaine.',
+          "La personne habilitée confirme les correspondances et traite les anomalies.",
+      },
+      {
+        title: "Préparer les relances clients",
+        output:
+          "L’agent rassemble échéances, règlements et échanges récents pour préparer une liste de relances avec les litiges signalés.",
+        review:
+          "L’équipe confirme le solde et la situation du client avant l’envoi.",
       },
     ],
     faq: [
       {
-        q: 'L’agent passe-t-il des écritures ou déclenche-t-il des paiements ?',
-        a: 'Les scénarios décrits préparent les données et les contrôles. Ils ne déclenchent pas de paiement ni d’écriture définitive sans le circuit de validation prévu avec les personnes habilitées.',
+        q: "L’agent peut-il déclencher un paiement ?",
+        a: "Les usages présentés préparent les données et les contrôles. Ils ne déclenchent pas de paiement ni d’écriture définitive sans la validation des personnes habilitées.",
       },
       {
-        q: 'Que se passe-t-il lorsqu’une pièce manque ?',
-        a: 'Le résultat doit afficher le manque et la source attendue. Le système ne doit pas transformer une absence en donnée certaine. Les cas incomplets sont regroupés pour reprise.',
+        q: "Que se passe-t-il si une pièce manque ?",
+        a: "Le dossier est signalé comme incomplet, avec la pièce attendue. L’agent ne complète pas une information comptable par supposition.",
       },
       {
-        q: 'Quelle différence avec l’accompagnement d’une direction financière ?',
-        a: 'Cette page décrit des tâches opérationnelles. L’accompagnement de la direction financière porte sur les priorités, le reporting, l’organisation des sources et la montée en compétence de l’équipe.',
+        q: "Les factures sont-elles accessibles à toute l’entreprise ?",
+        a: "Non. Les sources et droits sont définis selon les personnes qui utilisent l’agent. Les restrictions sont testées avec votre équipe avant le déploiement.",
       },
     ],
+    intro:
+      "Votre agent IA finance rassemble les pièces, compare les factures aux commandes et prépare le suivi des échéances. Althoce l’adapte aux contrôles de votre comptabilité interne.",
+    setup:
+      "Nous partons de votre logiciel comptable, des commandes et des justificatifs pour relier les informations utiles au contrôle.",
+    guard:
+      "Les paiements, corrections et écritures définitives restent soumis à votre circuit de validation.",
+    cta: "Quel contrôle vous oblige encore à tout rechercher ?",
   },
   operations: {
-    label: 'Opérations & administration des ventes',
-    focus: 'Demandes entrantes · Commandes · Pièces · Passages de relais',
-    headline: 'Un dossier qui avance, même entre deux équipes.',
+    label: "Opérations & administration des ventes",
+    focus: "Demandes entrantes · Commandes · Pièces · Passages de relais",
+    headline: "Des commandes mieux préparées. Moins de dossiers bloqués.",
     description:
-      'Agent IA opérations et ADV : préparer les commandes, repérer les pièces manquantes et transmettre les exceptions, avec vos outils et vos règles de validation.',
-    brief:
-      'Une commande reçue par mail mentionne une ancienne référence. L’adresse de livraison change et le commercial détient la dernière condition négociée.',
-    deliverable: 'Un dossier de traitement complet et attribué',
-    checks: [
-      'Demande rapprochée du bon client et de la bonne référence',
-      'Champs à confirmer avant saisie',
-      'Responsable de l’exception et prochaine étape',
-    ],
+      "Agent IA opérations et ADV : préparer les commandes, repérer les pièces manquantes et transmettre les exceptions, avec vos outils et vos règles de validation.",
     training:
-      'Les équipes ADV et support pratiquent la vérification d’un dossier préparé, le traitement d’une exception et la correction des consignes. L’objectif est un processus que plusieurs personnes savent reprendre.',
-    sectors: ['commerce-distribution', 'industrie', 'associations'],
+      "L’équipe ADV apprend à vérifier une commande préparée, reprendre une anomalie et faire évoluer les consignes avec les retours du terrain.",
+    sectors: ["commerce-distribution", "industrie", "associations"],
     scenarios: [
       {
-        title: 'Préparer une commande reçue par mail',
-        situation: 'Le mail contient les informations utiles, mais pas dans les champs de l’ERP.',
-        input: 'Commande, référentiel autorisé et règles de saisie.',
-        output: 'Une proposition structurée avec quantités, références et points incertains.',
-        review:
-          'L’ADV confirme les références, conditions et coordonnées avant saisie ou confirmation. Les modifications sensibles sont vérifiées séparément.',
-      },
-      {
-        title: 'Réunir les pièces d’un dossier',
-        situation: 'Un traitement reste bloqué sans que l’on sache quelle pièce réclamer.',
-        input: 'Checklist du processus, pièces reçues et historique des demandes.',
-        output: 'Un état de complétude avec liens vers les documents et demande ciblée à préparer.',
-        review:
-          'Le gestionnaire confirme la pièce attendue et son destinataire. Les doublons et versions contradictoires sont signalés.',
-      },
-      {
-        title: 'Transmettre les exceptions',
-        situation: 'Une anomalie circule entre services sans responsable identifié.',
-        input: 'Dossier, règles d’orientation et faits déjà vérifiés.',
+        title: "Préparer une commande reçue par mail",
         output:
-          'Une fiche d’exception : contexte, documents, question à résoudre et destinataire proposé.',
+          "L’agent extrait les références, quantités et coordonnées, puis prépare les champs attendus par votre outil de gestion.",
         review:
-          'Le responsable valide l’affectation et la décision. L’agent ne modifie pas une commande pour faire disparaître un écart.',
+          "L’ADV confirme les références et conditions avant saisie ou confirmation.",
+      },
+      {
+        title: "Réunir les pièces manquantes",
+        output:
+          "L’agent compare les documents reçus à la liste attendue et prépare une demande ciblée, sans réclamer à nouveau les pièces déjà présentes.",
+        review:
+          "Le gestionnaire vérifie le document attendu et son destinataire.",
+      },
+      {
+        title: "Transmettre les anomalies",
+        output:
+          "L’agent réunit le contexte, les pièces et la question à résoudre dans une fiche destinée au responsable concerné.",
+        review:
+          "Le responsable décide de la correction et du traitement du dossier.",
       },
     ],
     faq: [
       {
-        q: 'Comment éviter qu’une erreur se propage dans plusieurs outils ?',
-        a: 'Nous définissons les champs à contrôler, les validations avant écriture et la procédure de reprise. Le premier test peut fonctionner uniquement en préparation, sans modifier les données sources.',
+        q: "L’agent modifie-t-il directement les commandes ?",
+        a: "Nous définissons avec vous ce qui peut être préparé, enregistré ou doit attendre une validation. Les changements de prix, coordonnées ou conditions sont traités selon vos règles.",
       },
       {
-        q: 'Que se passe-t-il si une connexion est indisponible ?',
-        a: 'Le scénario doit signaler l’échec et conserver les éléments nécessaires à une reprise. Les règles de nouvelle tentative et la prévention des doublons se définissent selon les outils.',
+        q: "Peut-on garder notre ERP et nos fichiers ?",
+        a: "Oui, si leurs possibilités d’accès le permettent. Un premier essai peut s’appuyer sur des exports et des documents sélectionnés.",
       },
       {
-        q: 'Est-ce applicable à l’administration d’un établissement de santé ?',
-        a: 'Certaines tâches documentaires se ressemblent, mais le cadre ne se transpose pas automatiquement. La page Santé distingue les parcours et le travail préalable sur les données, les responsabilités et l’hébergement.',
+        q: "Que se passe-t-il si une connexion ne fonctionne plus ?",
+        a: "Le traitement doit être signalé comme interrompu et pouvoir être repris. Les contrôles de doublons et le suivi des incidents sont prévus dans le projet.",
       },
     ],
+    intro:
+      "Votre agent IA opérations transforme les demandes reçues en dossiers prêts à traiter. Il prépare les commandes, retrouve les pièces et transmet les exceptions aux bonnes personnes.",
+    setup:
+      "Nous relions la messagerie, les références clients et les documents utiles à votre ERP ou à votre outil de suivi, selon leurs possibilités de connexion.",
+    guard:
+      "Vos équipes confirment les commandes, les conditions et les changements qui engagent l’entreprise.",
+    cta: "Quel dossier reste trop souvent en attente ?",
   },
   juridique: {
-    label: 'Juridique & contrats',
-    focus: 'Revue contractuelle · Versions · Clauses · Échéances',
-    headline: 'Lire les écarts avec leurs sources, avant de se prononcer.',
+    label: "Juridique & contrats",
+    focus: "Revue contractuelle · Versions · Clauses · Échéances",
+    headline: "Des contrats plus rapides à préparer pour votre revue.",
     description:
-      'Agent IA juridique pour les équipes d’entreprise : comparaison contractuelle, clauses et suivi des engagements, avec sources vérifiables et revue du juriste.',
-    brief:
-      'Le fournisseur renvoie un contrat modifié. Le commercial veut avancer, mais certaines clauses sortent de votre modèle et doivent être arbitrées.',
-    deliverable: 'Une fiche de revue contractuelle sourcée',
-    checks: [
-      'Passages modifiés avec renvois aux deux versions',
-      'Écarts par rapport à votre grille de lecture',
-      'Questions à arbitrer par le juriste et les responsables métier',
-    ],
+      "Agent IA juridique pour les équipes d’entreprise : comparaison contractuelle, clauses et suivi des engagements, avec sources vérifiables et revue du juriste.",
     training:
-      'Les juristes apprennent à cadrer une comparaison, demander les renvois aux clauses et contrôler une référence. Les équipes opérationnelles apprennent à préparer une demande de revue complète, sans se substituer au conseil juridique.',
-    sectors: ['droit', 'industrie', 'commerce-distribution'],
+      "Vos juristes s’exercent à vérifier les passages signalés et leurs sources. Les opérationnels apprennent à préparer des demandes de revue complètes.",
+    sectors: ["droit", "industrie", "commerce-distribution"],
     scenarios: [
       {
-        title: 'Comparer le contrat au modèle validé',
-        situation: 'Une modification discrète change une obligation ou un délai.',
-        input: 'Versions datées, modèle approuvé et grille de revue juridique.',
-        output: 'Un relevé des différences, exclusions et passages à examiner.',
+        title: "Comparer un contrat à votre modèle",
+        output:
+          "L’agent relève les modifications, suppressions et ajouts en renvoyant aux passages des deux versions.",
         review:
-          'Le juriste apprécie la portée dans le contexte. L’agent ne délivre pas de certificat de conformité.',
+          "Le juriste apprécie la portée des écarts dans le contexte du contrat.",
       },
       {
-        title: 'Préparer un circuit d’approbation',
-        situation:
-          'La revue ralentit parce que les questions financières ou opérationnelles ne sont pas adressées.',
-        input: 'Relevé de revue et règles internes d’approbation.',
+        title: "Préparer les arbitrages internes",
         output:
-          'Une liste d’arbitrages avec le responsable pressenti et les éléments justificatifs.',
+          "L’agent regroupe les clauses et questions à faire examiner par les responsables juridiques, financiers ou opérationnels.",
         review:
-          'Les personnes habilitées confirment les responsabilités et leurs décisions. Le circuit ne vaut pas délégation de signature.',
+          "Les personnes habilitées confirment les décisions et les conditions à accepter.",
       },
       {
-        title: 'Repérer les échéances à vérifier',
-        situation: 'Les renouvellements sont suivis dans des fichiers indépendants des contrats.',
-        input: 'Contrats signés, avenants et référentiel des dossiers.',
+        title: "Suivre les échéances contractuelles",
         output:
-          'Une liste de dates et clauses associées, avec contradictions ou pièces manquantes.',
+          "L’agent extrait les dates de renouvellement et de préavis avec les clauses correspondantes, en signalant les contradictions entre pièces.",
         review:
-          'Le juriste contrôle le calcul et les conditions. Une notification ou résiliation reste décidée et validée par l’équipe.',
+          "Le juriste vérifie les dates et valide toute notification ou résiliation.",
       },
     ],
     faq: [
       {
-        q: 'L’agent peut-il garantir la validité d’un contrat ?',
-        a: 'Non. Il prépare une lecture selon vos critères et montre ses sources. La validité et les conséquences d’un contrat dépendent d’une analyse professionnelle du contexte.',
+        q: "L’agent garantit-il la validité d’un contrat ?",
+        a: "Non. Il prépare la lecture et montre les passages utilisés. La validité et les conséquences du contrat nécessitent l’analyse d’un professionnel.",
       },
       {
-        q: 'Peut-il chercher dans tous nos dossiers ?',
-        a: 'Les accès sont limités aux droits de l’utilisateur et aux sources autorisées. Les dossiers confidentiels ou sensibles doivent être séparés et les restrictions testées.',
+        q: "Comment gérer les contrats confidentiels ?",
+        a: "Les accès sont limités aux sources et dossiers autorisés pour l’utilisateur. Les restrictions et la séparation des documents sensibles sont testées avant utilisation.",
       },
       {
-        q: 'Cette page remplace-t-elle la page secteur Droit ?',
-        a: 'Non. Cette page porte sur le processus contractuel d’une fonction juridique. La page Droit présente l’organisation d’un cabinet d’avocats ou d’une étude notariale et les situations propres à leurs dossiers clients.',
+        q: "Peut-on utiliser notre propre grille de revue ?",
+        a: "Oui. Les clauses, points d’attention et circuits de validation sont définis à partir de vos modèles et pratiques internes.",
       },
     ],
+    intro:
+      "Votre agent IA juridique compare les versions, repère les clauses à examiner et prépare le suivi des échéances. Il s’appuie sur vos contrats et modèles pour aider vos juristes à concentrer leur analyse.",
+    setup:
+      "Nous organisons l’accès aux contrats signés, aux avenants et à vos modèles de référence, selon les droits de chaque utilisateur.",
+    guard:
+      "L’analyse juridique, la position de négociation et les décisions contractuelles restent humaines.",
+    cta: "Quelle étape de la revue contractuelle pourrait être allégée ?",
   },
   marketing: {
-    label: 'Marketing & communication',
-    focus: 'Contenus · SEO · Campagnes · Analyse',
-    headline: 'Des contenus mieux préparés. Des choix mieux documentés.',
+    label: "Marketing & communication",
+    focus: "Contenus · SEO · Campagnes · Analyse",
+    headline: "Du brief aux contenus, une préparation qui suit votre marque.",
     description:
-      'Agent IA marketing sur mesure : briefs, déclinaisons éditoriales, analyse des campagnes et veille SEO, avec vos sources et votre circuit de validation.',
-    brief:
-      'Le même message doit devenir un article, une newsletter et plusieurs publications, sans perdre sa précision ni le ton de votre marque.',
-    deliverable: 'Un dossier éditorial prêt pour la revue',
-    checks: [
-      'Objectif, public et message principal',
-      'Sources et affirmations à vérifier',
-      'Variantes par canal, encore à choisir et retravailler',
-    ],
+      "Agent IA marketing sur mesure : briefs, déclinaisons éditoriales, analyse des campagnes et veille SEO, avec vos sources et votre circuit de validation.",
     training:
-      'Les équipes s’exercent à donner un brief précis, vérifier les faits et repérer une interprétation abusive des chiffres. Les critères de qualité servent autant à guider l’agent qu’à relire sa production.',
-    sectors: ['marketing-communication', 'commerce-distribution', 'associations'],
+      "L’équipe apprend à donner un brief précis, relire les propositions et vérifier les faits comme les chiffres.",
+    sectors: [
+      "marketing-communication",
+      "commerce-distribution",
+      "associations",
+    ],
     scenarios: [
       {
-        title: 'Transformer un brief en propositions éditoriales',
-        situation:
-          'La production commence alors que les sources et les messages ne sont pas encore stabilisés.',
-        input: 'Brief, charte, références autorisées et objectif de chaque format.',
-        output: 'Un plan et des variantes avec les affirmations qui demandent une source.',
+        title: "Préparer les déclinaisons de contenu",
+        output:
+          "L’agent transforme un brief approuvé en plans d’articles, newsletters ou publications, avec les sources à vérifier.",
         review:
-          'L’équipe choisit l’angle, vérifie les droits et les faits, puis retravaille avant publication.',
+          "L’équipe choisit l’angle, retravaille le texte et valide la publication.",
       },
       {
-        title: 'Préparer une analyse de campagne',
-        situation: 'Les résultats doivent être rapprochés des objectifs et des bonnes périodes.',
-        input: 'Exports contrôlés, définition des indicateurs et historique des actions.',
-        output: 'Une synthèse des écarts et des questions à examiner, reliée aux chiffres.',
+        title: "Préparer l’analyse des campagnes",
+        output:
+          "L’agent rassemble les résultats par période et les compare aux objectifs pour faire ressortir les variations à examiner.",
         review:
-          'Le responsable vérifie calculs, attribution et limites. L’agent ne modifie ni ciblage ni budget par défaut.',
+          "Le responsable vérifie les calculs et décide des recommandations.",
       },
       {
-        title: 'Organiser une revue SEO',
-        situation:
-          'Les contenus existants se recoupent et les sujets prioritaires sont difficiles à trier.',
-        input: 'Inventaire des pages, données de recherche autorisées et objectifs éditoriaux.',
-        output: 'Des regroupements par intention, pages à revoir et pistes de maillage à examiner.',
+        title: "Prioriser le travail SEO",
+        output:
+          "L’agent rapproche les pages existantes et les données de recherche pour proposer les contenus à améliorer, regrouper ou compléter.",
         review:
-          'Le responsable valide les intentions et les modifications. Aucun classement dans les moteurs n’est garanti.',
+          "Le responsable valide les priorités et les modifications du site.",
       },
     ],
     faq: [
       {
-        q: 'Comment conserver notre ton de marque ?',
-        a: 'Nous utilisons vos exemples validés, vos formulations et vos contre-exemples. L’équipe teste et corrige les propositions. La cohérence se travaille ; elle ne supprime pas la relecture.',
+        q: "Comment conserver notre ton de marque ?",
+        a: "Nous utilisons vos exemples validés, messages et formulations à éviter. L’équipe teste les propositions et les corrige pour affiner les consignes.",
       },
       {
-        q: 'L’agent publie-t-il les contenus ?',
-        a: 'Le périmètre proposé prépare les brouillons. La publication et les engagements de marque restent soumis à votre circuit de validation. Les droits d’utilisation des sources sont vérifiés.',
+        q: "Les contenus sont-ils publiés automatiquement ?",
+        a: "Le premier usage peut se limiter aux brouillons. La publication suit ensuite le circuit que vous avez défini et validé.",
       },
       {
-        q: 'Nous sommes une agence : quel parcours consulter ?',
-        a: 'La page Agences marketing & communication traite la production multi-clients, les passations et les retours. Cette page détaille les tâches éditoriales et d’analyse, quel que soit le type d’organisation.',
+        q: "Peut-on utiliser les données de nos campagnes ?",
+        a: "Oui, selon les accès ou exports disponibles. Les périodes et définitions des indicateurs sont fixées pour éviter de comparer des résultats incompatibles.",
       },
     ],
+    intro:
+      "Votre agent IA marketing prépare les contenus, les analyses de campagne et les priorités SEO. Althoce le construit à partir de vos messages, de vos sources et de vos critères éditoriaux.",
+    setup:
+      "Nous réunissons les briefs, les exemples de marque et les données de campagne utiles. Les connexions à vos outils sont choisies selon le premier usage retenu.",
+    guard:
+      "Vous gardez les choix créatifs, les budgets et la validation des publications.",
+    cta: "Quelle préparation prend le pas sur votre travail créatif ?",
   },
-  'service-client': {
-    label: 'Service client & support',
-    focus: 'Tickets · Base de connaissances · Réponses · Escalades',
-    headline: 'Le conseiller retrouve le contexte, sans refaire l’enquête.',
+  "service-client": {
+    label: "Service client & support",
+    focus: "Tickets · Base de connaissances · Réponses · Escalades",
+    headline: "La bonne information pour répondre à chaque client.",
     description:
-      'Agent IA service client : qualification des tickets, recherche dans les procédures et réponses préparées avec leurs sources, selon vos règles de traitement.',
-    brief:
-      'Un client revient pour la troisième fois. Sa demande actuelle ne suffit pas à comprendre le problème ni la promesse faite au premier échange.',
-    deliverable: 'Une fiche de réponse avec l’historique utile',
-    checks: [
-      'Demande actuelle et étapes déjà réalisées',
-      'Procédure applicable et source de référence',
-      'Réponse proposée ou motif d’escalade',
-    ],
+      "Agent IA service client : qualification des tickets, recherche dans les procédures et réponses préparées avec leurs sources, selon vos règles de traitement.",
     training:
-      'Les conseillers apprennent à contrôler la source, repérer un engagement non justifié et faire remonter les réponses insuffisantes. Les retours servent à améliorer la base de connaissances et les consignes.',
-    sectors: ['commerce-distribution', 'immobilier', 'assurance-patrimoine'],
+      "Les conseillers apprennent à vérifier la réponse, reprendre un cas sensible et signaler une procédure manquante ou dépassée.",
+    sectors: ["commerce-distribution", "immobilier", "assurance-patrimoine"],
     scenarios: [
       {
-        title: 'Qualifier une demande entrante',
-        situation: 'Le ticket est envoyé au mauvais service faute de contexte.',
-        input: 'Message, catégorie de dossier et règles d’orientation.',
-        output: 'Un motif proposé, les informations manquantes et la bonne équipe pressentie.',
-        review:
-          'Les demandes ambiguës ou sensibles sont orientées vers un conseiller. L’urgence n’est pas déduite sans règles adaptées.',
+        title: "Orienter les demandes entrantes",
+        output:
+          "L’agent identifie le sujet du ticket, rassemble les informations utiles et propose le service qui doit le traiter.",
+        review: "Un conseiller reprend les demandes ambiguës ou sensibles.",
       },
       {
-        title: 'Préparer une réponse avec ses sources',
-        situation: 'La réponse existe mais le conseiller doit parcourir plusieurs procédures.',
-        input: 'Ticket, historique autorisé et base documentaire approuvée.',
+        title: "Préparer une réponse sourcée",
         output:
-          'Un brouillon avec les références utilisées, ou une indication que la source est insuffisante.',
+          "L’agent cherche dans les procédures et l’historique, puis prépare une réponse avec les références utilisées.",
         review:
-          'Le conseiller vérifie l’applicabilité et les engagements. Remboursements et gestes commerciaux suivent vos autorisations.',
+          "Le conseiller confirme que la réponse convient au dossier avant l’envoi.",
       },
       {
-        title: 'Transmettre un cas sans perdre son histoire',
-        situation: 'Le client doit répéter sa demande lors de chaque changement d’interlocuteur.',
-        input: 'Échanges pertinents, actions effectuées et points non résolus.',
+        title: "Transmettre un dossier complet",
         output:
-          'Une synthèse d’escalade qui distingue faits, demandes et prochaines vérifications.',
+          "L’agent résume les échanges, les démarches déjà réalisées et les points non résolus pour le prochain interlocuteur.",
         review:
-          'Le conseiller confirme le destinataire et les données partagées. L’accès reste limité au besoin du traitement.',
+          "Le conseiller confirme le destinataire et les informations à partager.",
       },
     ],
     faq: [
       {
-        q: 'Que fait l’agent quand la documentation ne contient pas la réponse ?',
-        a: 'Il doit signaler le manque et préparer une transmission plutôt que produire une réponse plausible. Ces situations sont incluses dans les essais avec votre équipe.',
+        q: "Faut-il installer un chatbot visible par les clients ?",
+        a: "Non. L’agent peut rester réservé aux conseillers pour préparer leurs recherches et leurs réponses. Votre équipe conserve alors tout le contact client.",
       },
       {
-        q: 'Peut-il prendre des engagements envers le client ?',
-        a: 'Les engagements sont limités par les règles que vous validez. Les cas sensibles, remboursements et exceptions passent par les personnes habilitées.',
+        q: "Que fait l’agent s’il ne trouve pas la réponse ?",
+        a: "Il signale les informations manquantes et transmet le cas à un conseiller. Cette situation fait partie des essais avant utilisation.",
       },
       {
-        q: 'Peut-on le réserver aux conseillers, sans chatbot public ?',
-        a: 'Oui. Un assistant interne qui prépare la recherche et les réponses est un périmètre possible. Le contact client reste alors assuré par votre équipe.',
+        q: "Comment maintenir les réponses à jour ?",
+        a: "Un responsable est identifié pour les procédures de référence. Les retours des conseillers servent à corriger les documents et les consignes de l’agent.",
       },
     ],
+    intro:
+      "Votre agent IA de service client retrouve l’historique, consulte vos procédures et prépare les réponses. Vos conseillers passent moins de temps à rechercher et plus de temps à résoudre les demandes.",
+    setup:
+      "Nous relions les tickets, l’historique autorisé et les procédures à jour pour que chaque réponse s’appuie sur le bon dossier.",
+    guard:
+      "Les remboursements, gestes commerciaux et engagements suivent vos règles d’autorisation.",
+    cta: "Quelles demandes font perdre du temps à vos conseillers ?",
   },
   telephonique: {
-    label: 'Accueil téléphonique',
-    focus: 'Accueil · Motif d’appel · Agenda · Transfert',
-    headline: 'Un appel compris, une suite bien préparée.',
+    label: "Accueil téléphonique",
+    focus: "Accueil · Motif d’appel · Agenda · Transfert",
+    headline: "Chaque appel trouve une suite, même quand l’équipe est occupée.",
     description:
-      'Agent IA téléphonique sur mesure : accueil, recueil du motif, rendez-vous et transmission, avec scénario de reprise humaine et règles adaptées à votre activité.',
-    brief:
-      'L’équipe est déjà en rendez-vous. L’appelant doit pouvoir expliquer sa demande et savoir comment une personne pourra lui répondre.',
-    deliverable: 'Un message de rappel exploitable',
-    checks: [
-      'Motif administratif reformulé et confirmé',
-      'Coordonnées strictement utiles à vérifier',
-      'Destinataire, transfert ou rappel selon le scénario',
-    ],
+      "Agent IA téléphonique sur mesure : accueil, recueil du motif, rendez-vous et transmission, avec scénario de reprise humaine et règles adaptées à votre activité.",
     training:
-      'L’équipe prépare les formulations d’accueil, teste des appels difficiles et apprend à reprendre un échange. Les essais incluent les interruptions, les noms mal compris et les demandes hors périmètre.',
-    sectors: ['droit', 'medical', 'immobilier'],
+      "L’équipe teste les formulations, les noms mal compris et les demandes inhabituelles pour savoir reprendre la conversation au bon moment.",
+    sectors: ["droit", "medical", "immobilier"],
     scenarios: [
       {
-        title: 'Recueillir une demande de rappel',
-        situation: 'Un message vocal laisse un numéro incomplet et peu de contexte.',
-        input: 'Échange avec l’appelant et scénario d’accueil approuvé.',
-        output: 'Un motif reformulé, les coordonnées confirmées et une synthèse à transmettre.',
+        title: "Préparer un rappel utile",
+        output:
+          "L’agent recueille le motif, confirme les coordonnées et prépare un message pour la personne chargée de rappeler.",
         review:
-          'L’équipe prend en charge le rappel. L’appelant dispose d’une solution de sortie si l’assistance ne comprend pas.',
+          "L’équipe prend en charge le rappel et les demandes hors scénario.",
       },
       {
-        title: 'Proposer un rendez-vous administratif',
-        situation: 'Un appel simple nécessite plusieurs échanges pour trouver un créneau.',
-        input: 'Agenda autorisé, types de rendez-vous et règles de disponibilité.',
-        output: 'Un créneau proposé et les informations nécessaires à sa confirmation.',
-        review:
-          'Les conflits, exceptions et situations non prévues sont repris par l’équipe. Aucun besoin clinique n’est évalué.',
+        title: "Organiser un rendez-vous",
+        output:
+          "L’agent propose un créneau à partir des disponibilités et règles de votre agenda, puis recueille les informations nécessaires.",
+        review: "Les exceptions ou conflits sont repris par l’équipe.",
       },
       {
-        title: 'Orienter vers le bon interlocuteur',
-        situation: 'L’appel arrive au standard mais relève d’un responsable précis.',
-        input: 'Motif déclaré, annuaire autorisé et règles de transfert.',
-        output: 'Une orientation et une courte synthèse pour l’interlocuteur.',
-        review:
-          'Le transfert doit être techniquement possible et testé. En cas d’échec, un rappel est proposé selon le scénario validé.',
+        title: "Orienter vers le bon interlocuteur",
+        output:
+          "L’agent identifie le motif déclaré et prépare le transfert ou la demande de rappel selon votre annuaire et vos consignes.",
+        review: "Une solution de rappel est prévue si le transfert échoue.",
       },
     ],
     faq: [
       {
-        q: 'L’appelant sait-il qu’il échange avec une assistance automatisée ?',
-        a: 'Le scénario prévoit une information claire dès l’accueil et une possibilité de reprise humaine. Les règles de collecte et de conservation sont définies avant le déploiement.',
+        q: "L’appelant sait-il qu’il parle à une IA ?",
+        a: "Oui. Le scénario annonce clairement l’assistance automatisée et prévoit une possibilité de reprise humaine.",
       },
       {
-        q: 'Les appels sont-ils enregistrés ?',
-        a: 'L’enregistrement n’est pas présumé nécessaire. Sa finalité, l’information des personnes, les accès et la conservation doivent être examinés si cette fonction est envisagée.',
+        q: "Faut-il enregistrer les appels ?",
+        a: "Pas nécessairement. Si un enregistrement est envisagé, sa finalité, l’information des appelants, les accès et la conservation sont définis avant le déploiement.",
       },
       {
-        q: 'Peut-on utiliser un agent vocal dans un cabinet médical ?',
-        a: 'Un éventuel usage doit rester cadré avec la structure, notamment sur les données et l’hébergement. Les scénarios de cette page ne réalisent ni triage clinique, ni diagnostic, ni gestion autonome des urgences.',
+        q: "Peut-on l’utiliser dans un cabinet médical ?",
+        a: "Un usage administratif doit être étudié avec la structure, notamment sur les données et l’hébergement. L’agent ne réalise ni triage clinique, ni diagnostic, ni gestion autonome des urgences.",
       },
     ],
+    intro:
+      "Votre agent IA téléphonique accueille les appelants, recueille leur demande et prépare la transmission ou le rendez-vous. Althoce adapte le scénario à votre organisation et à vos horaires.",
+    setup:
+      "Nous vérifions les possibilités de votre téléphonie et de votre agenda, puis testons les transferts, disponibilités et solutions de rappel.",
+    guard:
+      "L’appelant est informé de l’assistance automatisée et peut être orienté vers une personne.",
+    cta: "Que deviennent les appels que votre équipe ne peut pas prendre ?",
   },
   rh: {
-    label: 'Ressources humaines',
-    focus: 'Questions internes · Arrivées · Documentation · Coordination',
-    headline: 'Des réponses accessibles, des situations personnelles protégées.',
+    label: "Ressources humaines",
+    focus: "Questions internes · Arrivées · Documentation · Coordination",
+    headline: "Moins de demandes répétitives. Plus de temps pour vos équipes.",
     description:
-      'Agent IA RH sur mesure : procédures internes, préparation des arrivées et organisation documentaire, avec accès par rôle et décisions humaines.',
-    brief:
-      'Un collaborateur cherche une procédure. La réponse dépend de la version en vigueur, mais son dossier individuel ne doit pas devenir accessible aux autres salariés.',
-    deliverable: 'Une réponse de procédure, ou le bon contact RH',
-    checks: [
-      'Source approuvée et date de mise à jour',
-      'Périmètre d’accès du collaborateur',
-      'Orientation humaine pour la situation individuelle',
-    ],
+      "Agent IA RH sur mesure : procédures internes, préparation des arrivées et organisation documentaire, avec accès par rôle et décisions humaines.",
     training:
-      'Les RH et managers apprennent à distinguer une question de procédure d’une situation individuelle sensible. Les exercices portent aussi sur la préparation documentaire, la vérification et la limitation des données partagées.',
-    sectors: ['industrie', 'associations', 'marketing-communication'],
+      "Les RH et managers apprennent à vérifier les sources, reprendre une situation personnelle et mettre à jour les réponses de procédure.",
+    sectors: ["industrie", "associations", "marketing-communication"],
     scenarios: [
       {
-        title: 'Retrouver une procédure interne',
-        situation: 'Les mêmes questions arrivent alors que les documents existent déjà.',
-        input: 'Procédures approuvées et droits du collaborateur.',
-        output: 'Une réponse liée au texte en vigueur ou une orientation vers l’équipe RH.',
+        title: "Répondre aux questions internes",
+        output:
+          "L’agent retrouve la procédure applicable dans les documents approuvés et prépare une réponse avec sa source.",
         review:
-          'Les situations individuelles, litiges ou interprétations non prévues sont repris par une personne habilitée.',
+          "Les RH reprennent les situations individuelles ou les cas non prévus.",
       },
       {
-        title: 'Préparer l’arrivée d’un collaborateur',
-        situation: 'RH, manager et informatique se relancent sur les mêmes étapes.',
-        input: 'Checklist d’arrivée validée, date confirmée et responsables concernés.',
-        output: 'Un plan de préparation et les éléments manquants, répartis par interlocuteur.',
+        title: "Préparer l’arrivée d’un collaborateur",
+        output:
+          "À partir de votre liste d’accueil, l’agent prépare les actions et informations manquantes pour les RH, le manager et l’informatique.",
         review:
-          'Chaque responsable confirme ses actions. L’agent ne crée pas d’accès ni de droit sans autorisation.',
+          "Chaque responsable confirme ses actions et autorise les accès nécessaires.",
       },
       {
-        title: 'Organiser les dossiers de recrutement',
-        situation: 'L’équipe cherche les pièces et les échanges avant un entretien.',
-        input: 'Documents autorisés et étapes administratives du recrutement.',
-        output: 'Un dossier organisé, les pièces absentes et une trame de préparation à relire.',
+        title: "Organiser les dossiers avant entretien",
+        output:
+          "L’agent réunit les pièces et échanges disponibles et signale les documents manquants pour préparer le rendez-vous.",
         review:
-          'Pas de classement autonome, de score de personnalité ou de décision sur les candidats. Le recruteur conserve l’évaluation.',
+          "Le recruteur conserve l’évaluation et la décision sur les candidats.",
       },
     ],
     faq: [
       {
-        q: 'Proposez-vous un classement automatique des candidats ?',
-        a: 'Les scénarios présentés privilégient l’organisation et la préparation documentaire. Ils ne reposent pas sur une sélection, une notation ou une décision autonome sur les personnes.',
+        q: "L’agent peut-il classer les candidats ?",
+        a: "Les usages présentés concernent l’organisation et la préparation documentaire. Ils ne proposent pas de sélection, de notation ou de décision autonome sur les candidats.",
       },
       {
-        q: 'Un salarié peut-il accéder à des informations sur ses collègues ?',
-        a: 'Le dispositif doit limiter les sources aux droits de l’utilisateur. Les dossiers individuels sensibles ne font pas partie d’une base de réponses générales. Ces restrictions sont testées avant utilisation.',
+        q: "Un salarié peut-il voir les données de ses collègues ?",
+        a: "Les réponses générales s’appuient sur des procédures, pas sur les dossiers individuels. Les droits sont définis selon les rôles et testés avant utilisation.",
       },
       {
-        q: 'Qui met à jour les réponses RH ?',
-        a: 'Un responsable de la source doit être identifié. Lorsqu’une procédure change, le document de référence et sa version doivent être actualisés. Une réponse sans source applicable est transmise à l’équipe RH.',
+        q: "Qui met les réponses à jour ?",
+        a: "Un responsable RH maintient les documents de référence. Lorsqu’une procédure change, sa version est actualisée pour que l’agent utilise la bonne information.",
       },
     ],
+    intro:
+      "Votre agent IA RH répond aux questions de procédure, prépare les arrivées et organise les documents de recrutement. Althoce l’adapte à vos règles internes et aux droits de chaque collaborateur.",
+    setup:
+      "Nous sélectionnons les procédures à jour et séparons les informations générales des dossiers individuels auxquels seules certaines personnes ont accès.",
+    guard:
+      "Les décisions de recrutement et d’évaluation restent prises par vos équipes ; aucun classement autonome des personnes.",
+    cta: "Quelles demandes reviennent chaque semaine aux RH ?",
   },
   achats: {
-    label: 'Achats & fournisseurs',
-    focus: 'Consultations · Devis · Comparaisons · Échéances',
-    headline: 'Comparer ce qui est comparable, avant de négocier.',
+    label: "Achats & fournisseurs",
+    focus: "Consultations · Devis · Comparaisons · Échéances",
+    headline: "Des devis comparables avant de négocier.",
     description:
-      'Agent IA achats sur mesure : normalisation des devis, comparaison des conditions et préparation des dossiers fournisseurs, sans déléguer la décision d’achat.',
-    brief:
-      'Les devis semblent proches. Mais un fournisseur exclut le transport, un autre chiffre une option et les délais ne partent pas de la même date.',
-    deliverable: 'Une comparaison à périmètre explicite',
-    checks: [
-      'Unités, quantités, options et exclusions',
-      'Conditions de délai et de règlement',
-      'Points non comparables à faire préciser',
-    ],
+      "Agent IA achats sur mesure : normalisation des devis, comparaison des conditions et préparation des dossiers fournisseurs, sans déléguer la décision d’achat.",
     training:
-      'Les acheteurs s’exercent à définir une grille, contrôler les extractions et repérer une fausse équivalence. L’agent prépare une comparaison ; la connaissance du fournisseur et la négociation restent décisives.',
-    sectors: ['industrie', 'commerce-distribution', 'medical'],
+      "Les acheteurs apprennent à vérifier les unités, repérer les exclusions et distinguer une différence réelle d’une information manquante.",
+    sectors: ["industrie", "commerce-distribution", "medical"],
     scenarios: [
       {
-        title: 'Préparer la grille d’une consultation',
-        situation: 'Les réponses reçues ne couvrent pas les mêmes critères.',
-        input: 'Besoin validé, exigences et critères établis par les acheteurs.',
-        output: 'Une grille commune et les questions à clarifier avant de comparer.',
+        title: "Préparer une consultation",
+        output:
+          "L’agent transforme le besoin et les exigences validées en grille de réponse commune, avec les questions à préciser aux fournisseurs.",
         review:
-          'L’acheteur valide les critères, leur portée et leur éventuelle pondération. L’agent n’invente pas une exigence.',
+          "L’acheteur valide les critères et les conditions de la consultation.",
       },
       {
-        title: 'Normaliser et comparer les devis',
-        situation: 'Les prix ne peuvent pas être comparés sans reprendre les conditions.',
-        input: 'Devis, annexes et règles de comparaison.',
-        output: 'Un tableau sourcé séparant base, options, exclusions, frais et délais.',
+        title: "Comparer les devis",
+        output:
+          "L’agent sépare prix de base, options, transport, exclusions et délais dans un tableau qui renvoie à chaque offre.",
         review:
-          'L’équipe vérifie calculs et conversions. Une information absente est affichée comme inconnue, pas comme nulle.',
+          "L’acheteur vérifie les calculs et confirme les points non comparables.",
       },
       {
-        title: 'Préparer une revue fournisseur',
-        situation: 'Les échéances et documents à actualiser sont répartis dans plusieurs outils.',
-        input: 'Contrats autorisés, historique vérifié et liste des pièces attendues.',
-        output: 'Un dossier de revue avec échéances, éléments manquants et questions ouvertes.',
+        title: "Préparer une revue fournisseur",
+        output:
+          "L’agent rassemble les contrats, échéances et pièces à actualiser pour préparer les questions et documents du rendez-vous.",
         review:
-          'L’acheteur et les responsables compétents apprécient les risques et les engagements. Aucun jugement de solvabilité n’est produit sans analyse adaptée.',
+          "Les responsables apprécient les risques et décident de la suite de la relation.",
       },
     ],
     faq: [
       {
-        q: 'L’agent choisit-il le fournisseur le moins cher ?',
-        a: 'Non. Il aide à rendre les offres comparables, en montrant les exclusions et les inconnues. La décision intègre les critères, la connaissance du fournisseur et les validations de votre organisation.',
+        q: "L’agent choisit-il le fournisseur ?",
+        a: "Non. Il présente les différences, exclusions et informations manquantes. La décision tient compte de vos critères, de la qualité et de votre connaissance du fournisseur.",
       },
       {
-        q: 'Comment traiter une offre incomplète ?',
-        a: 'Les éléments absents sont signalés et des questions peuvent être préparées. Le système ne complète pas les prix, délais ou certifications par supposition.',
+        q: "Comment traiter un devis incomplet ?",
+        a: "Les champs absents restent signalés et l’agent prépare les questions à poser. Il ne remplace pas un prix ou un délai manquant par une estimation non demandée.",
       },
       {
-        q: 'Les critères sont-ils les mêmes en industrie et en santé ?',
-        a: 'Non. Les exigences dépendent du contexte et du dossier. Cette page décrit un processus de préparation ; les pages secteurs précisent les interlocuteurs et les limites à examiner.',
+        q: "Peut-on utiliser nos propres critères de comparaison ?",
+        a: "Oui. Les unités, critères, tolérances et conditions sont définis avec les acheteurs pour chaque type d’achat.",
       },
     ],
+    intro:
+      "Votre agent IA achats rassemble les offres, compare les conditions et prépare les revues fournisseurs. Vos acheteurs disposent plus vite des écarts et des questions à traiter.",
+    setup:
+      "Nous partons de vos devis, cahiers des charges et dossiers fournisseurs pour construire les grilles utiles à vos décisions.",
+    guard:
+      "Le choix du fournisseur, la négociation et les engagements d’achat restent entre vos mains.",
+    cta: "Combien de temps passez-vous à rendre les devis comparables ?",
   },
 };

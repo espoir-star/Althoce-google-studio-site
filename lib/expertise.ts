@@ -1,7 +1,5 @@
 export type WorkflowExample = {
   title: string;
-  situation: string;
-  input: string;
   output: string;
   review: string;
 };
@@ -10,25 +8,27 @@ export type ExpertiseFaq = { q: string; a: string };
 export type SectorStory = {
   slug: string;
   name: string;
-  group: 'professions' | 'organisations';
+  group: "professions" | "organisations";
   audience: string;
   title: string;
+  heading: string;
   promise: string;
   intro: string;
   description: string;
   image: string;
   imageAlt: string;
   trainingImage: string;
-  friction: string[];
   approach: { title: string; text: string; deliverables: string[] };
   boundaries: string;
   training: string;
   trainingPractice: string[];
   scenarios: WorkflowExample[];
+  usesTitle: string;
+  cta: { title: string; description: string };
   guides: string[];
   related: string[];
   caseSlug?: string;
   caseLabel?: string;
   faq: ExpertiseFaq[];
-  paths?: { id: string; title: string; text: string; result: string }[];
+  paths?: { id: string; title: string; text: string }[];
 };

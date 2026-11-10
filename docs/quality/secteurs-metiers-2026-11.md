@@ -1,5 +1,7 @@
 # Secteurs et métiers : refonte du 10 novembre 2026
 
+> Historique de la première livraison. La seconde passe demandée après relecture est décrite dans [Clarté des secteurs et métiers](clarte-secteurs-metiers-2026-11.md). Elle remplace notamment les dossiers illustratifs, les accordéons de scénarios et les grands blocs de renvois décrits ici.
+
 ## Périmètre et intention
 
 Prévisualisation sur la branche `codex/secteurs-metiers-20261110`, créée depuis la production `89444a1`. Le dossier principal, qui contient d’autres travaux non publiés, reste intact. Aucune mise en production n’est autorisée pour ce nouveau lot.

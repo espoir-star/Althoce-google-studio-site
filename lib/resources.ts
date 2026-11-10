@@ -13,10 +13,10 @@ export const guides: Guide[] = [
  {slug:'claude-data-gouv-20-prompts',title:'Claude × data.gouv : 20 prompts',description:'Des pistes pour explorer les données publiques : entreprises, informations financières et valeurs foncières.',audience:'Analyse & données publiques',theme:'sand',mark:'20',solutions:['claude']},
 ];
 export const financeFaq = [
- {q:'À qui s’adresse ce parcours IA Finance ?',a:'Aux DAF, responsables financiers et équipes de contrôle de gestion qui souhaitent structurer les usages de leur entreprise. Les cabinets d’expertise comptable disposent d’une page dédiée à leur production multi-clients.'},
- {q:'Faut-il commencer par une formation ou un diagnostic ?',a:'Une formation permet de travailler un usage individuel ou collectif. Si le projet touche plusieurs sources, contrôles et services, un diagnostic aide à choisir le périmètre. Le point de départ dépend du besoin, pas d’un parcours imposé.'},
- {q:'Comment vérifier les analyses proposées par l’IA ?',a:'Les indicateurs, périmètres et périodes sont définis avant les essais. Les résultats doivent conserver leurs sources et distinguer chiffres constatés, hypothèses et informations manquantes. Les décisions financières restent prises par les personnes habilitées.'},
- {q:'Nos outils actuels peuvent-ils être conservés ?',a:'Nous étudions les possibilités d’accès, de connexion ou d’export de votre environnement. Un essai peut fonctionner sur des fichiers contrôlés. Une intégration continue nécessite ensuite un cadrage des droits, des mises à jour et des reprises.'},
+ {q:'Faut-il changer nos outils de reporting ?',a:'Nous partons de votre environnement actuel. Les accès, connexions et exports disponibles déterminent comment réunir les données utiles.'},
+ {q:'Comment vérifier les analyses préparées ?',a:'Les chiffres restent reliés à leurs sources, périodes et définitions. L’équipe contrôle les calculs et confirme les explications avant de les présenter ou de décider.'},
+ {q:'Peut-on commencer par une formation ?',a:'Oui. Une formation sur vos analyses et documents peut précéder la création d’un agent. Elle permet aussi d’identifier les tâches qui gagneraient à être automatisées.'},
+ {q:'Qui faut-il associer au projet ?',a:'Le responsable du reporting et les personnes qui préparent les données. L’informatique est associée lorsque les connexions ou les droits d’accès le nécessitent.'},
 ];
 
 export const financeGuideSlugs=['12-cas-usage-experts-comptables','guide-claude-pennylane','12-agents-ia-direction-financiere','12-skills-claude-finance','7-chantiers-ia-cabinet'];

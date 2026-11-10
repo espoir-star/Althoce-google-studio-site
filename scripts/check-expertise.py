@@ -112,8 +112,6 @@ for route in ROUTES:
                 assert plain(q['name']) in text, (route,'invisible FAQ question')
                 assert plain(q['acceptedAnswer']['text']) in text, (route,'invisible FAQ answer')
                 faq_count += 1
-    if '/secteurs/' in route and route not in ['/secteurs/', '/secteurs/finance/']:
-        assert len([a for a in p.links if a.get('href','').startswith('/agent-ia/')]) >= 2, (route,'missing metier links')
     if '/agent-ia/' in route and route != '/agent-ia/':
         assert 'scenarios-'+route.strip('/').split('/')[-1]+'-0' in p.ids, (route,'missing scenarios')
 medical = page_for('/secteurs/medical/')

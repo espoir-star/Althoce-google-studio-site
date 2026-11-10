@@ -1,5 +1,7 @@
 # Refonte éditoriale des pages secteurs — proposition du 10 novembre 2026
 
+> État actuel : construction réalisée en aperçu, puis seconde passe de simplification à la demande du propriétaire. Voir [le bilan de clarté](quality/clarte-secteurs-metiers-2026-11.md) pour la structure finale, les choix de liens et les contrôles. Ce document conserve le cadrage initial ; la production n’a pas été modifiée.
+
 ## Demande et décisions
 
 Construire chaque page comme une page de vente spécialisée, dans l’architecture et la direction artistique actuelles. Montrer la compréhension des métiers, les situations de travail concrètes et la contribution réelle d’Althoce. Éviter les textes interchangeables, les catalogues d’agents standard et les promesses non démontrées.
