@@ -1,3 +1,4 @@
+import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
 import TrustStrip from './brand/TrustStrip';
 import MissionCommitments from './brand/MissionCommitments';
 import { MethodSection, PreAuditCTA, FaqItem as SharedFaqItem } from './brand/Sections';
@@ -144,6 +145,6 @@ function FAQ() {
 export default function HomePageClient() {
   return <main id="home-content" className={s.home}>
     <a href="#approche" className={s.skipLink}>Aller au contenu</a>
-    <Hero /><Approach /><Services /><Methodology /><CaseStudies /><Cabinet /><FAQ /><Pricing /><AgentByJob />
+    <Hero /><Approach /><Services /><CentraleDiscovery context="home" featured /><Methodology /><CaseStudies /><Cabinet /><FAQ /><Pricing /><AgentByJob />
   </main>;
 }

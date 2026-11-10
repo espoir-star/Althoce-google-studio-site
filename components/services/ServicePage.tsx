@@ -1,3 +1,5 @@
+import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
+import { centraleServiceContexts } from '@/lib/centrale-links';
 import Image from 'next/image';
 import { ArrowUpRight, ArrowRight, Check, Target, ArrowLeftRight } from 'lucide-react';
 import { TextLink, FaqSection } from '../brand/Sections';
@@ -17,6 +19,7 @@ export function MetierLinks() {
   return <details className={s.directory}><summary>Explorer les usages par métier<span aria-hidden="true">+</span></summary><nav aria-label="Usages IA par métier">{agentMetiers.map(item=><a key={item.href} href={item.href}>{item.title}<ArrowUpRight size={16} aria-hidden="true" /></a>)}</nav></details>;
 }
 export default function ServicePage({ service: d }: { service: ServiceStory }) {
+  const centraleContext = centraleServiceContexts[d.slug];
   const audit = d.slug==='audit-ia';
   const pilotage = d.slug==='pilotage-ia';
   const faqSubject: Record<string,string> = {'pilotage-ia':'le pilotage IA','audit-ia':'l’audit IA','agents-ia':'les agents IA','automatisation-ia':'l’automatisation IA','integration-ia':'l’intégration IA','developpement-ia':'le développement IA','chatbot-ia':'les chatbots IA','employe-ia':'l’employé IA'};
@@ -48,6 +51,7 @@ export default function ServicePage({ service: d }: { service: ServiceStory }) {
       <ul className={audit ? s.auditDeliverables : undefined}>{d.delivery.map((item,i)=><li key={item}>{audit ? <strong className={s.deliverableIndex} aria-hidden="true">0{i+1}</strong> : <Check size={21} aria-hidden="true" />}<span>{item}</span></li>)}</ul>
     </div></section>
 
+    {centraleContext && <CentraleDiscovery context={centraleContext} />}
     <section className={b.section} aria-labelledby="mission-title"><div className={b.container}><div className={s.sectionHeading}><h2 id="mission-title">Avec vous,<br /><span>du début à la suite.</span></h2><p>Une méthode commune, adaptée à votre besoin. Les décisions sont prises avec les personnes qui utiliseront la solution.</p></div><MissionPath /><div className={s.related}><TextLink href="/a-propos/">Découvrir le cabinet</TextLink><TextLink href="/cas-clients/">Explorer nos cas clients</TextLink>{!audit&&<TextLink href="/services/audit-ia/">Clarifier vos priorités avec un audit IA</TextLink>}</div>{!pilotage&&<TextLink href="/services/pilotage-ia/">Faire durer votre projet avec le pilotage IA</TextLink>}<ServiceLinks current={d.slug} />{['automatisation-ia','integration-ia'].includes(d.slug)&&<MetierLinks />}</div></section>
     <FaqSection id="faq-service" title={`Vos questions sur ${faqSubject[d.slug]}.`} description="Des repères pour décider de la prochaine étape." items={d.faq} />
   </main>;

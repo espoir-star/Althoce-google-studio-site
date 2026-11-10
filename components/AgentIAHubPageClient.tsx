@@ -1,3 +1,4 @@
+import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
 import Image from 'next/image';
 import {ArrowUpRight} from 'lucide-react';
 import {FaqSection,PreAuditCTA,TextLink} from './brand/Sections';
@@ -12,6 +13,7 @@ export default function AgentIAHubPageClient(){return <main className={b.page}>
  <TrustStrip className={b.container}/>
  <section className={b.section} id="metiers"><div className={b.container}><div className={s.heading}><h2>Quel quotidien<br/><span>voulez-vous simplifier ?</span></h2><p>Du commercial aux opérations, découvrez des situations concrètes et la place que l’IA peut y prendre.</p></div><MetierDirectory/></div></section>
  <section className={`${b.section} ${s.soft}`} id="agents"><div className={`${b.container} ${s.grid}`}><div className={s.photo}><Image src="/images/services/diagnostic.webp" alt="Deux professionnels examinent les documents et les priorités d’une entreprise." fill sizes="(max-width:900px) 90vw, 50vw"/></div><div><h2>Un besoin réel.<br/><span>Le bon niveau d’IA.</span></h2><p className={b.lead}>Un outil existant suffit parfois. Ailleurs, une automatisation ou un agent connecté à vos données fait la différence. Nous partons du travail à accomplir pour choisir l’approche.</p><div className={s.followup}><div><strong>Comprendre</strong><p>Observer les étapes, les données et les décisions prises par l’équipe.</p></div><div><strong>Vérifier</strong><p>Tester un périmètre utile, mesurer les résultats et traiter les exceptions.</p></div></div><TextLink href="/services/audit-ia/">Commencer par le diagnostic</TextLink></div></div></section>
+ <CentraleDiscovery context="agents" />
  <section className={b.section}><div className={b.container}><div className={s.heading}><h2>Concevoir ensemble.<br/><span>Transmettre pour la suite.</span></h2><p>La réussite du projet passe aussi par les compétences des personnes qui l’utilisent.</p></div><MissionPath/><div className={s.links}><TextLink href="/services/formation-ia/">Former vos équipes</TextLink><TextLink href="/services/agents-ia/">Comprendre la conception sur mesure</TextLink><TextLink href="/services/pilotage-ia/">Organiser le suivi</TextLink></div></div></section>
  <FaqSection id="faq" title="Avant d’imaginer votre agent IA." description="Des repères pour choisir le bon point de départ." items={metierHubFaq}/>
  <PreAuditCTA id="footer-pre-audit"/>

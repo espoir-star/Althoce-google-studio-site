@@ -129,3 +129,96 @@ Les autres titres et textes sont des reformulations du brief : usages dispersés
 - `git diff --check` et `graphify update .`.
 
 L’aperçu local est servi sur le port 3002. Aucun formulaire envoyé, aucune mise en production et aucune fusion de branche réalisés dans cette intervention. L’intégration effective aux outils, les droits et le traitement des données de La Centrale restent hors du périmètre de ces tests de page web.
+
+## Intégration dans les pages clés
+
+La Centrale est présentée après les quatre accompagnements sur l’accueil et la page Services, avec un schéma court des outils, des agents et de la validation humaine. Elle ne devient pas un cinquième service.
+
+Un composant serveur `CentraleDiscovery` propose deux formats : présentation avec schéma et encart compact. Les textes sont centralisés dans `lib/centrale-links.ts`. Un seul encart et un seul lien contextualisé sont ajoutés par page. Le menu, le footer et le sitemap assurent déjà l’accès transversal.
+
+### Pages concernées
+
+- `/`
+- `/services/`
+- `/agent-ia/`
+- `/services/agents-ia/`
+- `/services/automatisation-ia/`
+- `/services/integration-ia/`
+- `/services/developpement-ia/`
+- `/services/pilotage-ia/`
+- `/secteurs/`
+- `/secteurs/finance/`
+- `/secteurs/droit/`
+- `/secteurs/industrie/`
+- `/agent-ia/finance/`
+- `/agent-ia/juridique/`
+- `/agent-ia/operations/`
+- `/blog/ia-souveraine-donnees-sensibles-hds-secret-professionnel/`
+
+Le déploiement, l’intégration, le développement et le pilotage sont des moments où le visiteur peut envisager une plateforme commune. Finance, droit, industrie et trois pages métiers prolongent ce besoin avec leurs propres sujets. L’article sur l’IA souveraine relie la réflexion éditoriale à une offre concrète, après son contenu.
+
+Les formations, l’audit et les autres pages conservent leur parcours actuel, sans encart supplémentaire ni suggestion que La Centrale soit incluse dans une formation. Aucune compatibilité logicielle, certification, durée ou résultat chiffré n’est ajouté.
+
+### Textes des encarts proposés pour validation
+
+Ces formulations adaptent les promesses du brief aux pages concernées ; elles ne constituent pas une vérification technique des fonctionnalités.
+
+**home : Vos outils. Vos agents. Une même plateforme.**
+
+Avec La Centrale, Althoce réunit vos agents IA sur mesure et les relie à vos outils. Une plateforme installée en France ou sur vos serveurs, avec vos règles et la validation de vos équipes.
+
+**services : Un cadre commun pour vos agents IA.**
+
+Vous souhaitez réunir vos agents et vos outils dans une plateforme souveraine ? Althoce installe La Centrale sur mesure, forme vos équipes et accompagne son évolution.
+
+**agents : Vos agents, réunis dans La Centrale.**
+
+Lorsque plusieurs usages doivent travailler ensemble, La Centrale leur donne un cadre commun. Vos agents sont conçus sur mesure, reliés aux outils prévus et utilisés avec les validations de votre équipe.
+
+**automatisation : Relier les tâches. Garder la main.**
+
+Pour réunir vos agents et les outils de vos processus, Althoce peut installer La Centrale. Nous définissons avec vous les connexions, les données accessibles et les validations nécessaires.
+
+**integration : Vos outils reliés. Vos accès définis.**
+
+La Centrale peut réunir vos agents dans une plateforme hébergée en France ou sur vos serveurs. Les connexions se définissent selon vos outils et les autorisations de votre organisation.
+
+**developpement : Une plateforme construite pour vos usages.**
+
+La Centrale est une possibilité pour réunir vos agents IA sur mesure. Althoce installe la plateforme, raccorde les outils retenus et ajuste les usages avec vos équipes.
+
+**pilotage : Un même espace. Des usages qui évoluent.**
+
+Avec La Centrale, vous pouvez commencer par une priorité, puis ajouter des agents et des connexions. Althoce accompagne la prise en main et les ajustements au fil de vos usages.
+
+**secteurs : Vos exigences donnent le cadre.**
+
+Données sensibles, accès à encadrer, décisions à valider : La Centrale réunit vos agents IA dans une plateforme sur mesure, installée en France ou sur vos serveurs selon votre projet.
+
+**finance : Vos dossiers financiers, dans un cadre maîtrisé.**
+
+La Centrale peut réunir la préparation des pièces et des analyses avec des agents reliés aux outils retenus. Les données accessibles sont définies avec vous ; votre équipe garde la validation des conclusions.
+
+**droit : Vos dossiers juridiques, avec vos règles.**
+
+Pour préparer des synthèses à partir des documents autorisés, La Centrale réunit vos agents dans une plateforme sur mesure. Hébergement, accès et validations se cadrent avec votre organisation.
+
+**industrie : Vos données métier, dans votre environnement.**
+
+Relier la documentation et préparer des analyses : La Centrale peut accueillir vos agents sur mesure en France ou sur vos serveurs. Les outils à connecter et les données accessibles sont définis avec vos équipes.
+
+**souverainete : Passer des exigences au projet.**
+
+La Centrale est la plateforme d’agents IA sur mesure qu’Althoce installe et accompagne. Modèles open source par défaut, hébergement en France ou sur vos serveurs : les choix se cadrent selon vos données et vos usages.
+
+L’illustration des deux présentations reprend seulement les éléments du brief : « Vos outils et données autorisés », « La Centrale », « Vos agents IA sur mesure », « Vos équipes valident », « La décision reste humaine » et « En France ou sur vos serveurs ». Le lien commun est « Découvrir La Centrale ».
+
+### Vérification de l’intégration
+
+- Compilation complète de production et TypeScript réussis ; `git diff --check` et `graphify update .` exécutés.
+- Comparaison du HTML compilé avant et après : titres, canonicals, H1 et JSON-LD strictement identiques sur les 16 pages. Un seul nouvel encart et un seul lien vers `/ia-souveraine/` dans chacun d’eux.
+- Aucun encart sur les pages Formation IA, Audit IA, Contact, Associations et Agent téléphonique contrôlées comme témoins.
+- 40 contrôles de dimensions : accueil, services, agents IA, finance, droit, industrie, métier juridique et article, à 320, 390, 768, 1024 et 1440 px. Aucun débordement horizontal du document ou de l’encart ; lien d’au moins 44 px de haut.
+- Revue visuelle : présentation Services sur ordinateur, accueil et finance sur mobile, encart dans la colonne de lecture de l’article sur ordinateur.
+- Parcours Services → La Centrale → Contact vérifié sans envoi de formulaire. Navigation clavier et focus visible du lien vérifiés. Aucune erreur ou alerte JavaScript observée.
+- Composant rendu côté serveur, sans nouvelle image à télécharger, dépendance ou JavaScript interactif supplémentaire.
