@@ -132,7 +132,7 @@ L’aperçu local est servi sur le port 3002. Aucun formulaire envoyé, aucune m
 
 ## Intégration dans les pages clés
 
-La Centrale est présentée après les quatre accompagnements sur l’accueil et la page Services, avec un schéma court des outils, des agents et de la validation humaine. Elle ne devient pas un cinquième service.
+La Centrale est présentée après les quatre accompagnements : un encart court sur l’accueil et une présentation avec schéma sur Services. Elle ne devient pas un cinquième service. La simplification de l’accueil est documentée dans `homepage-simplification-2026-11-10.md`.
 
 Un composant serveur `CentraleDiscovery` propose deux formats : présentation avec schéma et encart compact. Les textes sont centralisés dans `lib/centrale-links.ts`. Un seul encart et un seul lien contextualisé sont ajoutés par page. Le menu, le footer et le sitemap assurent déjà l’accès transversal.
 
@@ -163,9 +163,9 @@ Les formations, l’audit et les autres pages conservent leur parcours actuel, s
 
 Ces formulations adaptent les promesses du brief aux pages concernées ; elles ne constituent pas une vérification technique des fonctionnalités.
 
-**home : Vos outils. Vos agents. Une même plateforme.**
+**home : La Centrale : vos agents IA, chez vous.**
 
-Avec La Centrale, Althoce réunit vos agents IA sur mesure et les relie à vos outils. Une plateforme installée en France ou sur vos serveurs, avec vos règles et la validation de vos équipes.
+Une plateforme sur mesure, reliée à vos outils et hébergée en France ou sur vos serveurs. Althoce l’installe et accompagne vos équipes.
 
 **services : Un cadre commun pour vos agents IA.**
 
@@ -211,9 +211,9 @@ Relier la documentation et préparer des analyses : La Centrale peut accueillir 
 
 La Centrale est la plateforme d’agents IA sur mesure qu’Althoce installe et accompagne. Modèles open source par défaut, hébergement en France ou sur vos serveurs : les choix se cadrent selon vos données et vos usages.
 
-L’illustration des deux présentations reprend seulement les éléments du brief : « Vos outils et données autorisés », « La Centrale », « Vos agents IA sur mesure », « Vos équipes valident », « La décision reste humaine » et « En France ou sur vos serveurs ». Le lien commun est « Découvrir La Centrale ».
+L’illustration de la présentation Services reprend seulement les éléments du brief : « Vos outils et données autorisés », « La Centrale », « Vos agents IA sur mesure », « Vos équipes valident », « La décision reste humaine » et « En France ou sur vos serveurs ». Le lien commun est « Découvrir La Centrale ».
 
-### Vérification de l’intégration
+### Vérification de l’intégration initiale (avant simplification de l’accueil)
 
 - Compilation complète de production et TypeScript réussis ; `git diff --check` et `graphify update .` exécutés.
 - Comparaison du HTML compilé avant et après : titres, canonicals, H1 et JSON-LD strictement identiques sur les 16 pages. Un seul nouvel encart et un seul lien vers `/ia-souveraine/` dans chacun d’eux.

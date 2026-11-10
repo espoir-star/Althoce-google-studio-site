@@ -1,8 +1,8 @@
 /** Liens éditoriaux vers la plateforme, sans modifier les quatre accompagnements. */
 export const centraleLinks = {
   home: {
-    title: 'Vos outils. Vos agents. Une même plateforme.',
-    description: 'Avec La Centrale, Althoce réunit vos agents IA sur mesure et les relie à vos outils. Une plateforme installée en France ou sur vos serveurs, avec vos règles et la validation de vos équipes.',
+    title: 'La Centrale : vos agents IA, chez vous.',
+    description: 'Une plateforme sur mesure, reliée à vos outils et hébergée en France ou sur vos serveurs. Althoce l’installe et accompagne vos équipes.',
   },
   services: {
     title: 'Un cadre commun pour vos agents IA.',
