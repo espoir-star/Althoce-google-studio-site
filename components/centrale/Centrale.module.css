@@ -12,6 +12,10 @@
 .heroPromises { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 0; margin: 0 0 28px; color: #2d507e; font-size: 13px; }
 .heroPromises li { display: flex; align-items: center; gap: 7px; }
 .heroPromises svg { color: #2563eb; flex-shrink: 0; }
+.heroActions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; }
+.exploreLink { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #2b5897; font-size: 14px; font-weight: 500; }
+.exploreLink:hover { text-decoration: underline; text-underline-offset: 5px; }
+.exploreLink:focus-visible { outline: 3px solid #2563eb; outline-offset: 4px; border-radius: 4px; }
 .diagram { margin: 0; position: relative; padding: 28px; border: 1px solid #cfddf1; border-radius: 24px; background: #ffffffc9; box-shadow: 0 24px 64px -28px #224c8b30, 0 2px 6px #224c8b04; }
 .diagramCaption { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 28px; }
 .diagramCaption strong { color: #223c60; font-size: 15px; font-weight: 600; letter-spacing: -.02em; }
@@ -59,14 +63,6 @@
 .storyArrow { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; background: white; color: #3367b0; width: 38px; height: 38px; border-radius: 50%; border: 1px solid #d3e0f3; }
 .page .scopeNote { margin-top: 20px; font-size: 13px; color: #596a80; }
 .usesSection { background: linear-gradient(180deg, #f6f8fc, #fff); }
-.useGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.useCard { border: 1px solid #dce5f2; border-radius: 16px; background: white; padding: 26px 23px; }
-.useTop { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 36px; color: #2563eb; }
-.useTop span { font-size: 12px; color: #536883; }
-.page .useCard h3 { font-size: 20px; }
-.page .useCard p { font-size: 15px; line-height: 1.75; margin-top: 14px; }
-.page .usesEnd { display: flex; justify-content: center; gap: 12px; align-items: center; margin-top: 28px; color: #3d587d; font-size: 15px; }
-.usesEnd > span { color: #2563eb; font-size: 24px; }
 .hostingSection { background: radial-gradient(ellipse at 90% 0, #234b85, transparent 60%), #102e56; color: white; }
 .hostingIntro { max-width: 700px; margin-bottom: 42px; }
 .hostingIntro > svg { color: #a9caff; margin-bottom: 24px; }
@@ -125,8 +121,6 @@
   .teamNode { padding: 16px 13px; }
   .teamCheck { display: none; }
   .sectionHeading, .controlGrid, .sectorsLayout { gap: 40px; }
-  .useGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .useTop { margin-bottom: 24px; }
   .evolutionSketch { padding-inline: 12px; gap: 6px; }
 }
 @media (max-width: 900px) {
@@ -167,11 +161,7 @@
   .storyArrow { position: relative; z-index: 1; top: auto; left: auto; margin: -19px auto; transform: rotate(90deg); }
   .connectionStory li { font-size: 16px; align-items: flex-start; }
   .connectionStory li svg { margin-top: 3px; }
-  .page .useCard p, .page .controlList p, .page .evolution p, .page .sectors p { font-size: 16px; }
-  .useGrid { grid-template-columns: 1fr; gap: 12px; }
-  .useCard { padding: 24px; }
-  .useTop { margin-bottom: 20px; }
-  .page .usesEnd { justify-content: flex-start; align-items: flex-start; font-size: 16px; }
+  .page .controlList p, .page .evolution p, .page .sectors p { font-size: 16px; }
   .hostingIntro { margin-bottom: 30px; }
   .hostingGrid { display: flex; flex-direction: column; gap: 0; }
   .hostingGrid article { padding: 26px; }
