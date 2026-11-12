@@ -12,7 +12,7 @@
 .home :focus-visible { outline: 3px solid #2563eb; outline-offset: 5px; }
 .container { width: min(1200px, calc(100% - 80px)); margin-inline: auto; }
 .section { padding-block: 76px; }
-.soft { background: #f6f8fb; }
+.soft { background: linear-gradient(135deg, #f5faff, #edf5ff); }
 .sectionHeading { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 80px; align-items: end; margin-bottom: 32px; }
 .sectionHeading p { max-width: 480px; }
 .home .lead { margin-top: 22px; font-size: 16px; line-height: 1.8; max-width: 560px; }

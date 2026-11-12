@@ -1,10 +1,10 @@
 'use client';
 
-import { Children, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { Children, useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react';
 import s from './CaseStudyCarousel.module.css';
 
-const READING_TIME = 9000;
+const READING_TIME = 5500;
 
 /** Cards stay server-rendered. Only their navigation and optional rotation are interactive. */
 export default function CaseStudyCarousel({ children, labels }: { children: ReactNode; labels: string[] }) {
@@ -91,6 +91,7 @@ export default function CaseStudyCarousel({ children, labels }: { children: Reac
   }
 
   return <div className={s.carousel} role="region" aria-roledescription="carrousel" aria-label="Projets clients Althoce"
+    data-playing={playing} style={{ '--reading-time': `${READING_TIME}ms` } as CSSProperties}
     onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
     onFocusCapture={event => {
       if ((event.target as HTMLElement).closest('[data-rotation]')) return;
@@ -116,8 +117,8 @@ export default function CaseStudyCarousel({ children, labels }: { children: Reac
         event.preventDefault();
         navigate(index, true);
       }}>
-      {slides.map((slide, index) => <div className={s.slide} key={labels[index]} data-slide={index} role="group" aria-roledescription="diapositive" aria-label={`${index + 1} sur ${slides.length} : ${labels[index]}`}>{slide}</div>)}
+      {slides.map((slide, index) => <div className={s.slide} key={labels[index]} data-slide={index} data-active={active === index} role="group" aria-roledescription="diapositive" aria-label={`${index + 1} sur ${slides.length} : ${labels[index]}`}>{slide}</div>)}
     </div>
-    <div className={s.pagination} aria-label="Choisir un cas client">{labels.map((label, index) => <button key={label} type="button" aria-label={`Voir le cas ${label}`} aria-current={active === index ? 'true' : undefined} aria-controls="home-case-slides" onClick={() => navigate(index)}><span className={s.marker} /><span className={s.paginationLabel}>{label}</span></button>)}</div>
+    <div className={s.pagination} aria-label="Choisir un cas client">{labels.map((label, index) => <button key={label} type="button" aria-label={`Voir le cas ${label}`} aria-current={active === index ? 'true' : undefined} aria-controls="home-case-slides" onClick={() => navigate(index)}><span className={s.marker} aria-hidden="true">{active === index && <span className={s.progress} />}</span><span className={s.paginationLabel}>{label}</span></button>)}</div>
   </div>;
 }
