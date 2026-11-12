@@ -1,0 +1,27 @@
+.columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:6px}
+.column{min-width:0;padding:6px 8px}
+.column+.column{border-left:1px solid #dce6f3;padding-left:20px}
+.heading{display:flex;align-items:center;gap:12px;padding:8px 8px 19px}
+.heading p{margin:0;color:#163862;font-size:17px;font-weight:600;letter-spacing:-.025em}
+.heading small{display:block;margin-top:4px;color:#566f8f;font-size:12px;line-height:1.5}
+.icon{display:grid;place-items:center;flex-shrink:0;width:39px;height:39px;border:1px solid #d4e4f8;border-radius:12px;background:#eaf3ff;color:#2a5da5}
+.links{list-style:none!important;margin:0!important;padding:0!important}
+.links li{margin:0;padding:0}
+.links a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:40px;padding:9px 12px;border-radius:8px;color:#294866;font-size:13px;line-height:1.5;text-decoration:none;transition:background .18s,color .18s}
+.links a svg{flex-shrink:0;color:#4d74a3;opacity:0;transform:translate(-3px,3px);transition:opacity .18s,transform .18s}
+.links a:hover,.links a:focus-visible,.links a[aria-current=page]{background:#e7f0fc;color:#194d99}
+.links a:hover svg,.links a:focus-visible svg,.links a[aria-current=page] svg{opacity:1;transform:none}
+.all{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;margin-top:13px;padding:14px 12px 5px;border-top:1px solid #dce6f3;color:#245ab0;font-size:13px;font-weight:600;text-decoration:none}
+.all:hover{color:#143c7b;text-decoration:underline;text-underline-offset:4px}
+.mobile{padding:2px 0 12px}
+.mobileGroup+.mobileGroup{margin-top:6px}
+.mobileTrigger{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:12px;border:1px solid #dce6f3;border-radius:9px;background:#edf4fd;color:#204b83;font:inherit;font-size:14px;font-weight:600;text-align:left;cursor:pointer}
+.mobileTrigger span{flex:1}
+.mobileTrigger[aria-expanded=true]{background:#e2edfc;border-color:#bdd3f0}
+.mobileTrigger[aria-expanded=true]>svg:last-child{transform:rotate(180deg)}
+.mobileLinks{padding:6px 0 10px}
+.mobileLinks .links a{min-height:44px;padding:10px 12px;font-size:13px}
+.mobileLinks .links a svg{opacity:.65;transform:none}
+.mobileLinks .all{padding:12px;margin-top:6px}
+@media(min-width:480px) and (max-width:1050px){.mobileLinks .links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.links a,.links a svg{transition:none}}

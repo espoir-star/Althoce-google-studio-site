@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, ChevronDown, Compass, Workflow, GraduationCap, ChartNoAxesCombined, BookOpen, Users, Calculator, Building2, MessageCircle, Menu, X } from 'lucide-react';
 import { Logo } from '@/components/ui/brand/Logo';
+import { MobileSolutionsMenu, SolutionsMenu } from './navigation/SolutionsMenu';
 import s from './Navigation.module.css';
 
 const groups = [
@@ -12,10 +13,7 @@ const groups = [
     {label:'Pilotage & maintenance',text:'Suivre, entretenir et faire évoluer vos solutions.',href:'/services/pilotage-ia/',icon:ChartNoAxesCombined},
     {label:'Formation IA',text:'Faire grandir les compétences de vos équipes.',href:'/services/formation-ia/',icon:GraduationCap},
   ]},
-  { label:'Votre activité', id:'activite', items:[
-    {label:'Par secteur',text:'Les enjeux et dossiers propres à votre organisation.',href:'/secteurs/',icon:Building2},
-    {label:'Par métier',text:'Les tâches et contrôles de vos équipes.',href:'/agent-ia/',icon:Workflow},
-  ]},
+  { label:'Solutions', id:'solutions', items:[] },
   { label:'Ressources', id:'ressources', items:[
     {label:'Nos guides',text:'Des ressources pratiques classées par secteur.',href:'/guides/',icon:BookOpen},
     {label:'Blog',text:'Des repères pour comprendre et avancer.',href:'/blog/',icon:BookOpen},
@@ -45,10 +43,10 @@ export default function Navbar(){
     <a className={s.brand} href="/" aria-label="Althoce — accueil"><Logo variant="white" size={34}/><span>althoce<span className={s.brandDot}>.</span></span></a>
     <div className={s.desktop}>
       <a className={s.centraleLink} href="/ia-souveraine/" onClick={close}>La Centrale<ArrowUpRight size={14} aria-hidden="true" /></a>
-      {groups.map(group=><div key={group.id} className={s.group}>
+      {groups.map(group=><div key={group.id} className={`${s.group} ${group.id==='solutions'?s.solutionsGroup:''}`}>
         <button type="button" data-group={group.id} className={s.trigger} aria-expanded={open===group.id} aria-controls={`nav-${group.id}`} onClick={()=>setOpen(open===group.id?null:group.id)}>{group.label}<ChevronDown size={14} aria-hidden="true"/></button>
-        {open===group.id&&<div id={`nav-${group.id}`} className={`${s.dropdown} ${group.id==='services'?s.services:''}`}>
-          {group.items.map(item=><a key={item.href} href={item.href} onClick={close} className={s.item}><span className={s.icon}><item.icon size={21} aria-hidden="true"/></span><span><strong>{item.label}</strong><small>{item.text}</small></span><ArrowUpRight className={s.arrow} size={16} aria-hidden="true"/></a>)}
+        {open===group.id&&<div id={`nav-${group.id}`} className={`${s.dropdown} ${group.id==='services'?s.services:''} ${group.id==='solutions'?s.solutions:''}`}>
+          {group.id==='solutions'?<SolutionsMenu onNavigate={close}/>:group.items.map(item=><a key={item.href} href={item.href} onClick={close} className={s.item}><span className={s.icon}><item.icon size={21} aria-hidden="true"/></span><span><strong>{item.label}</strong><small>{item.text}</small></span><ArrowUpRight className={s.arrow} size={16} aria-hidden="true"/></a>)}
         </div>}
       </div>)}
       <a className={s.cta} href="/contact/">Pré-audit offert<ArrowUpRight size={17} aria-hidden="true"/></a>
@@ -57,7 +55,7 @@ export default function Navbar(){
     {mobile&&<div id="nav-mobile" className={s.mobile}>
       <div className={s.mobileScroll}><a className={s.mobileFeature} href="/ia-souveraine/" onClick={close}><span><strong>La Centrale</strong><small>Vos agents IA, chez vous.</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>{groups.map(group=><div key={group.id}>
         <button type="button" className={s.mobileTrigger} aria-expanded={open===group.id} aria-controls={`mobile-${group.id}`} onClick={()=>setOpen(open===group.id?null:group.id)}>{group.label}<ChevronDown size={18} aria-hidden="true"/></button>
-        {open===group.id&&<div id={`mobile-${group.id}`}>{group.items.map(item=><a key={item.href} className={s.item} href={item.href} onClick={close}><span className={s.icon}><item.icon size={20} aria-hidden="true"/></span><span><strong>{item.label}</strong><small>{item.text}</small></span></a>)}</div>}
+        {open===group.id&&<div id={`mobile-${group.id}`}>{group.id==='solutions'?<MobileSolutionsMenu onNavigate={close}/>:group.items.map(item=><a key={item.href} className={s.item} href={item.href} onClick={close}><span className={s.icon}><item.icon size={20} aria-hidden="true"/></span><span><strong>{item.label}</strong><small>{item.text}</small></span></a>)}</div>}
       </div>)}</div>
       <div className={s.mobileBottom}><a className={s.cta} href="/contact/" onClick={close}>Pré-audit offert<ArrowUpRight size={18} aria-hidden="true"/></a><p>30 minutes ensemble. Sans engagement.</p></div>
     </div>}
