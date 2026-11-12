@@ -1,5 +1,7 @@
 # Accueil : cartes services et cas clients — 12 novembre 2026
 
+Cette note décrit la première livraison du 12 novembre. La présentation des cas clients a ensuite évolué vers un carrousel illustré, à la demande du client ; voir `accueil-carrousel-cas-2026-11-12.md`. Les cartes services ci-dessous sont conservées.
+
 ## Périmètre
 
 Amélioration des sections « Nos services IA. Votre point de départ. » et « Ce que l’IA change, sur le terrain. », sur l’aperçu existant de la PR 13. Aucun changement de production.

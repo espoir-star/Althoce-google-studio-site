@@ -2,15 +2,20 @@ import Image from 'next/image';
 import { ArrowUpRight, ArrowRight, Check, Compass, GraduationCap, Layers3, Plus, RefreshCw } from 'lucide-react';
 import TrustStrip from './brand/TrustStrip';
 import { PreAuditCTA, FaqItem as SharedFaqItem } from './brand/Sections';
-import { agentMetiers, caseStudies } from '@/lib/data';
+import { agentMetiers } from '@/lib/data';
 import { homeOffers, homeMethod, homeFaqs } from '@/lib/home-content';
-import { caseStories, caseDetails } from '@/lib/cases-content';
+import { caseStories } from '@/lib/cases-content';
+import CaseStudyCarousel from './home/CaseStudyCarousel';
+import cs from './home/CaseStudyCarousel.module.css';
 import { brand } from '@/lib/brand-content';
 import { centrale } from '@/lib/centrale-content';
 import { centraleLinks } from '@/lib/centrale-links';
 import meetingImage from '@/public/images/home/reunion-bureau.webp';
 import workingImage from '@/public/images/home/collaboration-bureau.webp';
-import caseImage from '@/public/images/home/cas-client-bureau.webp';
+import accountingArt from '@/public/images/cases/comptabilite-editorial.webp';
+import prospectingArt from '@/public/images/cases/prospection-editorial.webp';
+import supportArt from '@/public/images/cases/service-client-editorial.webp';
+import phoneArt from '@/public/images/cases/accueil-telephonique-editorial.webp';
 import s from './HomePage.module.css';
 
 // Summaries are specific to the homepage; the detailed service catalogue is unchanged.
@@ -83,29 +88,32 @@ function Services() {
   </section>;
 }
 
+const caseOverview = [
+  { slug: 'cabinet-comptable-lyon', label: 'Comptabilité', image: accountingArt, alt: 'Des factures reliées aux lignes d’un registre comptable, illustrées en bleu.', title: 'Plus de dossiers. La même attention aux clients.', summary: 'La préparation des factures et des rapprochements laisse davantage de place à la vérification et au conseil.', result: 'de capacité, à effectif constant sur quatre mois' },
+  { slug: 'negoce-vins-bordelais-agent-ia-sdr', label: 'Prospection', image: prospectingArt, alt: 'Un globe et des messages relient un négoce de vins à ses prospects.', summary: 'La prospection multilingue prépare les premiers contacts et passe le relais aux commerciaux pour les échanges qualifiés.', result: 'de rendez-vous qualifiés sur quatre mois' },
+  { slug: 'saas-b2b-agent-ia-service-client', label: 'Service client', image: supportArt, alt: 'Des messages sont orientés vers des dossiers de support client.', summary: 'Les questions récurrentes sont prises en charge. Les conseillers retrouvent du temps pour les situations complexes.', result: 'des tickets de niveau 1 pris en charge' },
+  { slug: 'cabinet-avocats-agent-ia-telephonique', label: 'Accueil téléphonique', image: phoneArt, alt: 'Un téléphone, un agenda et un dossier illustrent l’accueil d’un cabinet.', summary: 'Les appels sont accueillis, les besoins recueillis et les rendez-vous préparés, même lorsque l’équipe est déjà occupée.', result: 'libérées par semaine pour l’équipe' },
+];
+
 function CaseStudies() {
-  const [featured, ...others] = caseStudies;
   return <section id="cases" className={`${s.section} ${s.soft}`} aria-labelledby="cases-title">
     <div className={s.container}>
       <div className={s.sectionHeading}><h2 id="cases-title">Ce que l’IA change,<br /><span>sur le terrain.</span></h2><div><p>Des projets concrets, à l’échelle de chaque équipe.</p><TextLink href="/cas-clients/">Découvrir nos cas clients</TextLink></div></div>
-      <a href={featured.href} className={s.featuredCase}>
-        <div className={s.casePhoto}><Image src={caseImage} alt="Deux collègues échangent sur un dossier dans un bureau comptable." fill sizes="(max-width: 800px) calc(100vw - 40px), (max-width: 1280px) 50vw, 624px" placeholder="blur" /><span className={s.caseName}>{featured.client}</span></div>
-        <div className={s.featuredBody}>
-          <h3>Plus de dossiers.<br />La même attention aux clients.</h3>
-          <p>La préparation des factures et des rapprochements laisse davantage de place à la vérification et au conseil.</p>
-          <div className={s.caseResult}><strong>×2</strong><span>de capacité, à effectif constant<small>Résultat observé dans ce cabinet.</small></span></div>
-          <span className={s.caseLink}>Découvrir leur projet<span className={s.cardArrow}><ArrowUpRight size={20} aria-hidden="true" /></span></span>
-        </div>
-      </a>
-      <nav className={s.otherCases} aria-label="Autres cas clients">{others.map(item => {
-        const story = caseStories.find(story => `/cas-clients/${story.slug}/` === item.href);
-        if (!story) return null;
-        const evidence = caseDetails[story.metier];
-        return <a href={item.href} key={item.href} className={s.otherCase}>
-          <div className={s.otherCasePhoto}><Image src={`/images/services/${evidence.image}.webp`} alt={evidence.alt} fill sizes="(max-width: 700px) 88px, (max-width: 1280px) 30vw, 384px" /></div>
-          <div className={s.otherCaseBody}><p>{item.client}</p><h3>{story.title}</h3><span className={s.otherCaseLink}>Lire le cas<ArrowUpRight size={18} aria-hidden="true" /></span></div>
-        </a>;
-      })}</nav>
+      <CaseStudyCarousel labels={caseOverview.map(item => item.label)}>
+        {caseOverview.map(item => {
+          const story = caseStories.find(story => story.slug === item.slug)!;
+          return <a key={item.slug} href={`/cas-clients/${item.slug}/`} className={cs.card}>
+            <div className={cs.art}><Image src={item.image} alt={item.alt} sizes="(max-width: 800px) calc(100vw - 64px), (max-width: 1280px) 48vw, 554px" placeholder="blur" /></div>
+            <div className={cs.body}>
+              <p className={cs.client}>{story.name}</p>
+              <h3>{'title' in item ? item.title : story.title}</h3>
+              <p className={cs.summary}>{item.summary}</p>
+              <div className={cs.result}><strong>{story.metric}</strong><span>{item.result}<small>Résultat observé dans ce projet.</small></span></div>
+              <span className={cs.link}>Découvrir leur projet<span className={cs.linkIcon}><ArrowUpRight size={19} aria-hidden="true" /></span></span>
+            </div>
+          </a>;
+        })}
+      </CaseStudyCarousel>
     </div>
   </section>;
 }
