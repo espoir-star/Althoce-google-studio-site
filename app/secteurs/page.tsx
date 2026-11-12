@@ -4,12 +4,12 @@ import { ArrowUpRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import { Breadcrumb, PreAuditCTA } from "@/components/brand/Sections";
 import RelatedExpertise from "@/components/expertise/RelatedExpertise";
-import { sectorStories } from "@/lib/sectors-content";
+import { sectorDirectory } from "@/lib/sectors-content";
 import b from "@/components/brand/Brand.module.css";
 import s from "@/components/expertise/Expertise.module.css";
-const title = "IA par secteur : professions, santé et entreprises";
+const title = "IA par secteur : finance, santé, hôtellerie et entreprises";
 const description =
-  "Découvrez les formations et agents IA sur mesure d’Althoce pour les cabinets comptables, le droit, la santé, l’industrie, le commerce et les organisations.";
+  "Finance, droit, santé, hôtellerie, retail et luxe : découvrez les formations et agents IA sur mesure d’Althoce, adaptés aux enjeux de chaque secteur.";
 export const metadata: Metadata = {
   title,
   description,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 const sectorSummaries: Record<string, string> = {
-  comptabilite: "Collecte, rapprochement bancaire, lettrage et révision.",
+  finance: "Dossiers clients, analyses documentées et reporting financier.",
   droit: "Pièces, chronologies, contrats et préparation des échanges.",
   medical: "Secrétariat, procédures et documentation qualité.",
   "assurance-patrimoine": "Collecte, rendez-vous et suivi des échéances.",
@@ -37,11 +37,13 @@ const sectorSummaries: Record<string, string> = {
   industrie: "Achats, documentation technique et qualité.",
   "marketing-communication": "Briefs, retours clients et bilans de campagne.",
   associations: "Adhésions, subventions et bilans d’activité.",
+  hotellerie: "Demandes de séjour, arrivées, groupes et avis clients.",
+  "retail-luxe": "Catalogue, rendez-vous clients et suivi après-vente.",
 };
 const groups = [
   {
     id: "professions",
-    title: "Cabinets, professions et santé",
+    title: "Finance, droit et activités à fortes exigences",
     text: "Des dossiers qui engagent votre responsabilité, avec des données à protéger et des validations propres à votre activité.",
   },
   {
@@ -60,7 +62,7 @@ export default function Page() {
             "@context": "https://schema.org",
             "@type": "ItemList",
             name: title,
-            itemListElement: sectorStories.map((d, i) => ({
+            itemListElement: sectorDirectory.map((d, i) => ({
               "@type": "ListItem",
               position: i + 1,
               name: d.name,
@@ -106,7 +108,7 @@ export default function Page() {
                   <h2 className={s.groupTitle}>{g.title}</h2>
                 </div>
                 <div className={s.directory}>
-                  {sectorStories
+                  {sectorDirectory
                     .filter((d) => d.group === g.id)
                     .map((d) => (
                       <a

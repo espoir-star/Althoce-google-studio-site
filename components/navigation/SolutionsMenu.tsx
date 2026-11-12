@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ArrowUpRight, Building2, ChevronDown, Workflow } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import s from './SolutionsMenu.module.css';
+import { sectorNavigation, metierNavigation } from '@/lib/solutions-navigation';
 
 const solutionGroups = [
   {
@@ -13,17 +14,7 @@ const solutionGroups = [
     icon: Building2,
     href: '/secteurs/',
     all: 'Tous les secteurs',
-    links: [
-      { label: 'Expertise comptable', href: '/secteurs/comptabilite/' },
-      { label: 'Droit', href: '/secteurs/droit/' },
-      { label: 'Santé & médical', href: '/secteurs/medical/' },
-      { label: 'Assurance & patrimoine', href: '/secteurs/assurance-patrimoine/' },
-      { label: 'Immobilier', href: '/secteurs/immobilier/' },
-      { label: 'Commerce', href: '/secteurs/commerce-distribution/' },
-      { label: 'Industrie', href: '/secteurs/industrie/' },
-      { label: 'Agences marketing', href: '/secteurs/marketing-communication/' },
-      { label: 'Associations', href: '/secteurs/associations/' },
-    ],
+    links: sectorNavigation,
   },
   {
     id: 'metiers',
@@ -32,17 +23,7 @@ const solutionGroups = [
     icon: Workflow,
     href: '/agent-ia/',
     all: 'Tous les métiers',
-    links: [
-      { label: 'Commercial & prospection', href: '/agent-ia/commercial/' },
-      { label: 'Marketing & communication', href: '/agent-ia/marketing/' },
-      { label: 'Finance & comptabilité interne', href: '/agent-ia/finance/' },
-      { label: 'Opérations & ADV', href: '/agent-ia/operations/' },
-      { label: 'Juridique & contrats', href: '/agent-ia/juridique/' },
-      { label: 'Ressources humaines', href: '/agent-ia/rh/' },
-      { label: 'Service client & support', href: '/agent-ia/service-client/' },
-      { label: 'Achats & fournisseurs', href: '/agent-ia/achats/' },
-      { label: 'Accueil téléphonique', href: '/agent-ia/telephonique/' },
-    ],
+    links: metierNavigation,
   },
 ];
 

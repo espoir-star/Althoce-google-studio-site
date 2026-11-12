@@ -9,6 +9,7 @@ export type SectorStory = {
   slug: string;
   name: string;
   group: "professions" | "organisations";
+  category?: "metier";
   audience: string;
   title: string;
   heading: string;
@@ -18,6 +19,7 @@ export type SectorStory = {
   image: string;
   imageAlt: string;
   trainingImage: string;
+  trainingImageAlt?: string;
   approach: { title: string; text: string; deliverables: string[] };
   boundaries: string;
   training: string;

@@ -30,7 +30,7 @@ export default function SectorPage({ story: d }: { story: SectorStory }) {
             <nav className={b.breadcrumb} aria-label="Fil d’Ariane">
               <a href="/">Accueil</a>
               <span>/</span>
-              <a href="/secteurs/">Secteurs</a>
+              <a href={d.category === 'metier' ? '/agent-ia/' : '/secteurs/'}>{d.category === 'metier' ? 'Métiers' : 'Secteurs'}</a>
               <span>/</span>
               <span aria-current="page">{d.name}</span>
             </nav>
@@ -81,7 +81,7 @@ export default function SectorPage({ story: d }: { story: SectorStory }) {
           <div className={`${s.photo} ${s.photoWide}`}>
             <Image
               src={d.trainingImage}
-              alt={`Atelier de formation IA en équipe, secteur ${d.name.toLowerCase()}.`}
+              alt={d.trainingImageAlt || `Atelier de formation IA en équipe : ${d.name.toLowerCase()}.`}
               fill
               sizes="(max-width:800px) 90vw, 46vw"
             />

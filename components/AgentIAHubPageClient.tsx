@@ -44,7 +44,7 @@ export default function AgentIAHubPageClient() {
       <section className={`${b.section} ${s.soft}`} id="metiers">
         <div className={b.container}>
           <div className={s.heading}>
-            <h2>Quelle équipe souhaitez-vous aider ?</h2>
+            <h2>Quels usages pour votre métier ?</h2>
           </div>
           <MetierDirectory />
         </div>

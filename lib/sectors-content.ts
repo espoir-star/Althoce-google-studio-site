@@ -1,4 +1,6 @@
 import type { SectorStory } from "./expertise";
+import { additionalSectorStories } from "./sector-additions";
+import { sectorNavigation } from "./solutions-navigation";
 export type { SectorStory } from "./expertise";
 
 export const sectorStories: SectorStory[] = [
@@ -6,6 +8,7 @@ export const sectorStories: SectorStory[] = [
     slug: "comptabilite",
     name: "Expertise comptable",
     group: "professions",
+    category: "metier",
     audience: "Associés · Responsables de mission · Collaborateurs",
     title: "IA pour les cabinets d’expertise comptable",
     promise: "Des dossiers prêts pour votre expertise.",
@@ -804,7 +807,11 @@ export const sectorStories: SectorStory[] = [
         "Parlons de votre équipe, de ses moyens et d’un premier usage qui lui serait vraiment utile.",
     },
   },
+  ...additionalSectorStories,
 ];
+export const sectorDirectory = sectorStories.filter(d => d.category !== 'metier').sort((a, b) =>
+  sectorNavigation.findIndex(x => x.href === `/secteurs/${a.slug}/`) - sectorNavigation.findIndex(x => x.href === `/secteurs/${b.slug}/`)
+);
 export function sectorFaq(d: SectorStory) {
   return d.faq;
 }

@@ -76,7 +76,7 @@ export const metierDossiers: Record<string, MetierDossier> = {
       "Agent IA finance sur mesure : extraction des pièces, rapprochements documentaires et préparation des relances. Votre équipe contrôle les écritures et décisions.",
     training:
       "Votre équipe apprend à vérifier les montants extraits, comprendre un écart et reprendre les dossiers incomplets.",
-    sectors: ["comptabilite", "industrie", "associations"],
+    sectors: ["finance", "industrie", "associations"],
     scenarios: [
       {
         title: "Préparer la saisie des factures",

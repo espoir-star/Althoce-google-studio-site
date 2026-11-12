@@ -5,7 +5,7 @@ import SectorPage from '@/components/sectors/SectorPage';
 import { sectorStories, sectorFaq } from '@/lib/sectors-content';
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return sectorStories.map((d) => ({ slug: d.slug }));
+  return sectorStories.filter(d => d.slug !== 'finance').map((d) => ({ slug: d.slug }));
 }
 export async function generateMetadata({
   params,
@@ -39,7 +39,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       '@type': 'BreadcrumbList',
       itemListElement: [
         ['Accueil', 'https://althoce.com/'],
-        ['Secteurs', 'https://althoce.com/secteurs/'],
+        d.category === 'metier' ? ['Métiers', 'https://althoce.com/agent-ia/'] : ['Secteurs', 'https://althoce.com/secteurs/'],
         [d.name, url],
       ].map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })),
     },

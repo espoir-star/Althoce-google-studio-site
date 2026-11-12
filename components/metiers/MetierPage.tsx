@@ -19,6 +19,7 @@ import RelatedExpertise from "../expertise/RelatedExpertise";
 import { metierGuideSlugs } from "@/lib/resources";
 import { sectorStories } from "@/lib/sectors-content";
 import { metierStories, type MetierStory } from "@/lib/metiers-content";
+import { professionalMetierNavigation } from '@/lib/solutions-navigation';
 import b from "../brand/Brand.module.css";
 import s from "../expertise/Expertise.module.css";
 const cases: Record<string, { slug: string; label: string }> = {
@@ -65,6 +66,11 @@ const icons: Record<string, typeof Megaphone> = {
 export function MetierDirectory({ current }: { current?: string }) {
   return (
     <nav className={s.directory} aria-label="Usages IA par métier">
+      {professionalMetierNavigation.map(x => <a key={x.href} href={x.href} className={s.sectorCard}>
+        <ReceiptText size={24} strokeWidth={1.5} aria-hidden="true" />
+        <h3>{x.label}</h3><p>{x.description}</p>
+        <span className={s.cardBottom}>Voir les usages<ArrowUpRight size={18} aria-hidden="true" /></span>
+      </a>)}
       {metierStories
         .filter((x) => x.slug !== current)
         .map((x) => {

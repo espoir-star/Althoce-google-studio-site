@@ -12,12 +12,6 @@ export const guides: Guide[] = [
  {slug:'copilot-8-cas-usage',title:'Copilot : 8 cas d’usage pour vos équipes',description:'Des exemples pratiques, un premier agent et une checklist pour cadrer les usages.',audience:'Équipes & organisation',theme:'sage',mark:'8',solutions:['copilot']},
  {slug:'claude-data-gouv-20-prompts',title:'Claude × data.gouv : 20 prompts',description:'Des pistes pour explorer les données publiques : entreprises, informations financières et valeurs foncières.',audience:'Analyse & données publiques',theme:'sand',mark:'20',solutions:['claude']},
 ];
-export const financeFaq = [
- {q:'Faut-il changer nos outils de reporting ?',a:'Nous partons de votre environnement actuel. Les accès, connexions et exports disponibles déterminent comment réunir les données utiles.'},
- {q:'Comment vérifier les analyses préparées ?',a:'Les chiffres restent reliés à leurs sources, périodes et définitions. L’équipe contrôle les calculs et confirme les explications avant de les présenter ou de décider.'},
- {q:'Peut-on commencer par une formation ?',a:'Oui. Une formation sur vos analyses et documents peut précéder la création d’un agent. Elle permet aussi d’identifier les tâches qui gagneraient à être automatisées.'},
- {q:'Qui faut-il associer au projet ?',a:'Le responsable du reporting et les personnes qui préparent les données. L’informatique est associée lorsque les connexions ou les droits d’accès le nécessitent.'},
-];
 
 export const financeGuideSlugs=['12-cas-usage-experts-comptables','guide-claude-pennylane','12-agents-ia-direction-financiere','12-skills-claude-finance','7-chantiers-ia-cabinet'];
 export const metierGuideSlugs:Record<string,string[]>={finance:['12-agents-ia-direction-financiere','12-skills-claude-finance'],juridique:['claude-droit-10-cas-usage'],marketing:['guide-claude-meta-ads'],operations:['copilot-8-cas-usage']};
