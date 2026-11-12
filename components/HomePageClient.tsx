@@ -4,6 +4,7 @@ import TrustStrip from './brand/TrustStrip';
 import { PreAuditCTA, FaqItem as SharedFaqItem } from './brand/Sections';
 import { agentMetiers, caseStudies } from '@/lib/data';
 import { homeOffers, homeMethod, homeFaqs } from '@/lib/home-content';
+import { caseStories, caseDetails } from '@/lib/cases-content';
 import { brand } from '@/lib/brand-content';
 import { centrale } from '@/lib/centrale-content';
 import { centraleLinks } from '@/lib/centrale-links';
@@ -14,10 +15,10 @@ import s from './HomePage.module.css';
 
 // Summaries are specific to the homepage; the detailed service catalogue is unchanged.
 const offerOverview = [
-  { index: 0, Icon: Compass, text: 'Identifier les usages utiles, les données sensibles et les priorités de votre projet.', label: 'Découvrir l’audit IA' },
-  { index: 3, Icon: GraduationCap, text: 'Pratiquer sur vos situations métier, apprendre à vérifier les réponses et protéger les données.', label: 'Explorer les formations IA' },
-  { index: 1, Icon: Layers3, text: 'Créer des agents IA et des automatisations sur mesure, reliés à vos outils et validés avec vous.', label: 'Voir les solutions sur mesure' },
-  { index: 2, Icon: RefreshCw, text: 'Entretenir vos solutions et ajuster les usages avec vos équipes, selon le suivi convenu.', label: 'Découvrir le pilotage IA' },
+  { index: 0, Icon: Compass, purpose: 'Clarifier vos priorités', text: 'Identifier les usages utiles, les données sensibles et les priorités de votre projet.', label: 'Découvrir l’audit IA', tone: 'paper' },
+  { index: 3, Icon: GraduationCap, purpose: 'Rendre vos équipes autonomes', text: 'Pratiquer sur vos situations métier, apprendre à vérifier les réponses et protéger les données.', label: 'Explorer les formations IA', tone: 'ice' },
+  { index: 1, Icon: Layers3, purpose: 'Alléger le travail quotidien', text: 'Créer des agents IA et des automatisations sur mesure, reliés à vos outils et validés avec vous.', label: 'Voir les solutions sur mesure', tone: 'blue' },
+  { index: 2, Icon: RefreshCw, purpose: 'Faire durer les usages', text: 'Entretenir vos solutions et ajuster les usages avec vos équipes, selon le suivi convenu.', label: 'Découvrir le pilotage IA', tone: 'paper' },
 ];
 const methodOverview = [
   'Écouter vos équipes, vos priorités et vos exigences.',
@@ -61,12 +62,12 @@ function Services() {
         <div><h2 id="services-title">Nos services IA.<br /><span>Votre point de départ.</span></h2></div>
         <div><p>Former, cadrer, intégrer : nous choisissons avec vous ce qui aide votre équipe, selon vos outils et vos responsabilités.</p><TextLink href="/services/">Explorer tous nos services</TextLink></div>
       </div>
-      <div className={s.offers}>{offerOverview.map(({ index, Icon, text, label }) => {
+      <div className={s.offers}>{offerOverview.map(({ index, Icon, purpose, text, label, tone }) => {
         const item = homeOffers[index];
-        return <a key={item.href} className={s.offer} href={item.href}>
-          <Icon size={25} strokeWidth={1.6} aria-hidden="true" />
+        return <a key={item.href} className={s.offer} data-tone={tone} href={item.href}>
+          <div className={s.offerTop}><span className={s.offerIcon}><Icon size={25} strokeWidth={1.6} aria-hidden="true" /></span><span className={s.offerPurpose}>{purpose}</span></div>
           <h3>{item.title}</h3><p>{text}</p>
-          <span className={s.offerLink}>{label}<ArrowUpRight size={17} aria-hidden="true" /></span>
+          <span className={s.offerLink}>{label}<span className={s.cardArrow}><ArrowUpRight size={19} aria-hidden="true" /></span></span>
         </a>;
       })}</div>
       <aside id="decouvrir-la-centrale" className={s.centrale} aria-labelledby="decouvrir-la-centrale-title">
@@ -86,18 +87,25 @@ function CaseStudies() {
   const [featured, ...others] = caseStudies;
   return <section id="cases" className={`${s.section} ${s.soft}`} aria-labelledby="cases-title">
     <div className={s.container}>
-      <div className={s.sectionHeading}><h2 id="cases-title">Ce que l’IA change,<br /><span>sur le terrain.</span></h2><div><p>Un exemple concret, à l’échelle d’une équipe.</p><TextLink href="/cas-clients/">Découvrir nos cas clients</TextLink></div></div>
+      <div className={s.sectionHeading}><h2 id="cases-title">Ce que l’IA change,<br /><span>sur le terrain.</span></h2><div><p>Des projets concrets, à l’échelle de chaque équipe.</p><TextLink href="/cas-clients/">Découvrir nos cas clients</TextLink></div></div>
       <a href={featured.href} className={s.featuredCase}>
-        <div className={s.casePhoto}><Image src={caseImage} alt="Deux collègues échangent sur un dossier dans un bureau comptable." fill sizes="(max-width: 700px) calc(100vw - 40px), 45vw" placeholder="blur" /></div>
+        <div className={s.casePhoto}><Image src={caseImage} alt="Deux collègues échangent sur un dossier dans un bureau comptable." fill sizes="(max-width: 800px) calc(100vw - 40px), (max-width: 1280px) 50vw, 624px" placeholder="blur" /><span className={s.caseName}>{featured.client}</span></div>
         <div className={s.featuredBody}>
-          <p className={s.caseName}>{featured.client}</p>
           <h3>Plus de dossiers.<br />La même attention aux clients.</h3>
           <p>La préparation des factures et des rapprochements laisse davantage de place à la vérification et au conseil.</p>
           <div className={s.caseResult}><strong>×2</strong><span>de capacité, à effectif constant<small>Résultat observé dans ce cabinet.</small></span></div>
-          <span className={s.caseLink}>Découvrir leur projet<ArrowUpRight size={20} aria-hidden="true" /></span>
+          <span className={s.caseLink}>Découvrir leur projet<span className={s.cardArrow}><ArrowUpRight size={20} aria-hidden="true" /></span></span>
         </div>
       </a>
-      <nav className={s.otherCases} aria-label="Autres cas clients">{others.map(item => <a href={item.href} key={item.href}>{item.client}<ArrowUpRight size={17} aria-hidden="true" /></a>)}</nav>
+      <nav className={s.otherCases} aria-label="Autres cas clients">{others.map(item => {
+        const story = caseStories.find(story => `/cas-clients/${story.slug}/` === item.href);
+        if (!story) return null;
+        const evidence = caseDetails[story.metier];
+        return <a href={item.href} key={item.href} className={s.otherCase}>
+          <div className={s.otherCasePhoto}><Image src={`/images/services/${evidence.image}.webp`} alt={evidence.alt} fill sizes="(max-width: 700px) 88px, (max-width: 1280px) 30vw, 384px" /></div>
+          <div className={s.otherCaseBody}><p>{item.client}</p><h3>{story.title}</h3><span className={s.otherCaseLink}>Lire le cas<ArrowUpRight size={18} aria-hidden="true" /></span></div>
+        </a>;
+      })}</nav>
     </div>
   </section>;
 }
