@@ -45,4 +45,3 @@ Use case: photorealistic-natural. Create an editorial photograph for Althoce, a 
 - Aucun avertissement ni erreur dans la console sur les pages inspectées.
 - `graphify update .` : effectué (501 nœuds, 384 liens, 165 communautés).
 - Build et contrôles locaux effectués sans modifier les API ou les formulaires. Aucun déploiement de production.
-

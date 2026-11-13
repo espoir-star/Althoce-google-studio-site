@@ -46,4 +46,3 @@ Use case: photorealistic-natural. Asset: editorial hero photograph for the Publi
 - Aucune erreur ni avertissement console observé.
 - `graphify update .` exécuté après les dernières modifications.
 - Aucune modification des API ou des formulaires. Aucune fusion en production.
-
