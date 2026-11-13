@@ -1,5 +1,6 @@
 'use client';
 import { brand } from '@/lib/brand-content';
+import { sectorNavigation, professionalMetierNavigation } from '@/lib/solutions-navigation';
 import { PreAuditCTA } from './brand/Sections';
 
 import React from 'react';
@@ -7,7 +8,104 @@ import Image from 'next/image';
 import { Logo } from '@/components/ui/brand/Logo';
 import { cities } from '@/lib/data';
 
-const footerCols = [{"h": "Accompagnement", "links": [{"l": "Diagnostic IA", "href": "/services/audit-ia/"}, {"l": "Déploiement & agents IA", "href": "/services/automatisation-ia/"}, {"l": "Pilotage & maintenance", "href": "/services/pilotage-ia/"}, {"l": "Formations IA", "href": "/services/formation-ia/"}, {"l": "La Centrale · IA souveraine", "href": "/ia-souveraine/"}, {"l": "Connecteurs", "href": "/connecteurs/"}, {"l": "Tous nos services", "href": "/services/"}]}, {"h": "Formations", "links": [{"l": "Formation IA métier", "href": "/services/formation-ia/ia-fondamentaux/"}, {"l": "Formation personnalisée", "href": "/services/formation-ia/ia-avancee/"}, {"l": "Formation IA Dirigeant", "href": "/services/formation-ia/coaching-dirigeant/"}, {"l": "Coaching IA Solo", "href": "/services/formation-ia/coaching-independant/"}]}, {"h": "Secteurs", "links": [{"l": "Finance", "href": "/secteurs/finance/"}, {"l": "Droit", "href": "/secteurs/droit/"}, {"l": "Marketing & communication", "href": "/secteurs/marketing-communication/"}, {"l": "Associations", "href": "/secteurs/associations/"}, {"l": "Immobilier", "href": "/secteurs/immobilier/"}, {"l": "Commerce & distribution", "href": "/secteurs/commerce-distribution/"}, {"l": "Industrie", "href": "/secteurs/industrie/"}, {"l": "Tous les secteurs", "href": "/secteurs/"}]}, {"h": "Ressources", "links": [{"l": "Nos guides gratuits", "href": "/guides/"}, {"l": "Cas clients", "href": "/cas-clients/"}, {"l": "Blog", "href": "/blog/"}, {"l": "Calculateur ROI", "href": "/calculateur-roi/"}]}, {"h": "Le cabinet", "links": [{"l": "À propos", "href": "/a-propos/"}, {"l": "Contact", "href": "/contact/"}]}];
+const footerCols = [
+  {
+    "h": "Accompagnement",
+    "links": [
+      {
+        "l": "Diagnostic IA",
+        "href": "/services/audit-ia/"
+      },
+      {
+        "l": "Déploiement & agents IA",
+        "href": "/services/automatisation-ia/"
+      },
+      {
+        "l": "Pilotage & maintenance",
+        "href": "/services/pilotage-ia/"
+      },
+      {
+        "l": "Formations IA",
+        "href": "/services/formation-ia/"
+      },
+      {
+        "l": "La Centrale · IA souveraine",
+        "href": "/ia-souveraine/"
+      },
+      {
+        "l": "Connecteurs",
+        "href": "/connecteurs/"
+      },
+      {
+        "l": "Tous nos services",
+        "href": "/services/"
+      }
+    ]
+  },
+  {
+    "h": "Formations",
+    "links": [
+      {
+        "l": "Formation IA métier",
+        "href": "/services/formation-ia/ia-fondamentaux/"
+      },
+      {
+        "l": "Formation personnalisée",
+        "href": "/services/formation-ia/ia-avancee/"
+      },
+      {
+        "l": "Formation IA Dirigeant",
+        "href": "/services/formation-ia/coaching-dirigeant/"
+      },
+      {
+        "l": "Coaching IA Solo",
+        "href": "/services/formation-ia/coaching-independant/"
+      }
+    ]
+  },
+  {
+    "h": "Secteurs",
+    "links": [...sectorNavigation.map(x => ({ l: x.label, href: x.href })), { l: 'Tous les secteurs', href: '/secteurs/' }]
+  },
+  {
+    "h": "Métiers",
+    "links": [...professionalMetierNavigation.map(x => ({ l: x.label, href: x.href })), { l: 'Commercial & prospection', href: '/agent-ia/commercial/' }, { l: 'Finance & comptabilité interne', href: '/agent-ia/finance/' }, { l: 'Tous les métiers', href: '/agent-ia/' }]
+  },
+  {
+    "h": "Ressources",
+    "links": [
+      {
+        "l": "Nos guides gratuits",
+        "href": "/guides/"
+      },
+      {
+        "l": "Cas clients",
+        "href": "/cas-clients/"
+      },
+      {
+        "l": "Blog",
+        "href": "/blog/"
+      },
+      {
+        "l": "Calculateur ROI",
+        "href": "/calculateur-roi/"
+      }
+    ]
+  },
+  {
+    "h": "Le cabinet",
+    "links": [
+      {
+        "l": "À propos",
+        "href": "/a-propos/"
+      },
+      {
+        "l": "Contact",
+        "href": "/contact/"
+      }
+    ]
+  }
+];
 
 const FooterLink = ({ href, label, dim = false }: { href: string; label: string; dim?: boolean }) => (
   <a
@@ -31,7 +129,7 @@ export default function Footer({ showCta = true, positioning = 'cabinet' }: { sh
         .footer-local-grid summary{cursor:pointer;padding:18px 0;color:#e5efff;font-size:15px}
         .footer-city-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 16px;padding:10px 0 16px}
         footer summary:focus-visible,footer button:focus-visible{outline:2px solid #a9caff;outline-offset:4px}
-        @media(max-width:900px){.footer-top-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.footer-city-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+        @media(max-width:1100px){.footer-top-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.footer-city-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
         @media(max-width:600px){.footer-top-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px!important}.footer-local-grid{grid-template-columns:1fr;gap:12px}}
 
         @media (max-width: 640px) {
@@ -45,7 +143,7 @@ export default function Footer({ showCta = true, positioning = 'cabinet' }: { sh
       <div style={{ background: 'radial-gradient(ellipse at 0 0, #214b78, transparent 65%), linear-gradient(125deg, #142f50, #0e223d)' , color: '#a9bdd9', padding: '64px 24px 36px', borderTop: '1px solid #385574' }}>
         <div style={{ maxWidth: 1160, margin: '0 auto' }}>
           {/* Top grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: '40px', marginBottom: 48 }} className="footer-top-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '28px', marginBottom: 48 }} className="footer-top-grid">
             <div className="footer-intro" style={{gridColumn:"1 / -1"}}>
               <div style={{ marginBottom: 16 }}>
                 <a href="/" aria-label="Althoce — accueil" style={{display:"inline-flex",alignItems:"center",gap:10,color:"white",textDecoration:"none"}}><Logo variant="white" size={40} /><span style={{fontSize:30,fontWeight:600,letterSpacing:"-.05em"}}>althoce<span style={{color:"#8cb6ff"}}>.</span></span></a>

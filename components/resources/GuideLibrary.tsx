@@ -11,7 +11,7 @@ export default function GuideLibrary({ groups, children }: { groups: Group[]; ch
   const count = groups.filter(g => selected === 'all' || g.id === selected).reduce((total, g) => total + g.count, 0);
   return <>
     <div className={`${b.container} ${s.filters}`}>
-      <div className={s.categories} role="group" aria-label="Filtrer les guides par secteur">
+      <div className={s.categories} role="group" aria-label="Filtrer les guides par secteur ou métier">
         {[{id:'all',title:'Tous les guides'}, ...groups].map(g => <button type="button" key={g.id} aria-pressed={selected === g.id} aria-controls="guide-results" onClick={() => setSelected(g.id)}>{g.title}</button>)}
       </div>
       <p className={s.resultCount} role="status">{count} guide{count > 1 ? 's' : ''} disponible{count > 1 ? 's' : ''}</p>

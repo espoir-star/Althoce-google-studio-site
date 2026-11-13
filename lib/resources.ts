@@ -12,13 +12,6 @@ export const guides: Guide[] = [
  {slug:'copilot-8-cas-usage',title:'Copilot : 8 cas d’usage pour vos équipes',description:'Des exemples pratiques, un premier agent et une checklist pour cadrer les usages.',audience:'Équipes & organisation',theme:'sage',mark:'8',solutions:['copilot']},
  {slug:'claude-data-gouv-20-prompts',title:'Claude × data.gouv : 20 prompts',description:'Des pistes pour explorer les données publiques : entreprises, informations financières et valeurs foncières.',audience:'Analyse & données publiques',theme:'sand',mark:'20',solutions:['claude']},
 ];
-export const financeFaq = [
- {q:'À qui s’adresse l’accompagnement IA Finance d’Althoce ?',a:'Aux cabinets d’expertise comptable, directions financières et équipes de contrôle de gestion. Nous pouvons également cadrer des usages documentaires pour les professionnels du patrimoine et de l’investissement, selon leurs contraintes et leurs données.'},
- {q:'Faut-il commencer par une formation ou par un diagnostic IA ?',a:'La formation permet à une équipe de prendre en main des usages concrets. Le diagnostic aide à choisir les priorités lorsqu’un projet touche plusieurs outils ou processus. Le premier échange sert à déterminer le point de départ adapté à votre organisation.'},
- {q:'Les agents présentés dans les guides sont-ils vendus à la carte ?',a:'Non. Les guides présentent des exemples et des méthodes à explorer. Althoce conçoit les agents IA et les automatisations sur mesure, à partir de vos outils, de vos règles de validation et du travail de vos équipes.'},
- {q:'Comment gardons-nous le contrôle sur les données et les résultats ?',a:'Le périmètre des données, les accès et les étapes de validation sont définis pendant le cadrage. Les résultats sont testés avec vos équipes. L’IA prépare le travail ; la validation des écritures, des analyses et des décisions reste humaine.'},
- {q:'Peut-on travailler avec nos outils actuels ?',a:'Oui. Nous étudions les connexions disponibles entre vos logiciels comptables, votre ERP, vos tableurs et l’IA. Selon les outils et les droits d’accès, nous utilisons une connexion autorisée ou des exports contrôlés. L’objectif est de limiter les copier-coller et les ressaisies, sans imposer un remplacement de vos logiciels.'},
-];
 
 export const financeGuideSlugs=['12-cas-usage-experts-comptables','guide-claude-pennylane','12-agents-ia-direction-financiere','12-skills-claude-finance','7-chantiers-ia-cabinet'];
-export const metierGuideSlugs:Record<string,string[]>={finance:['12-cas-usage-experts-comptables','12-agents-ia-direction-financiere'],juridique:['claude-droit-10-cas-usage'],marketing:['guide-claude-meta-ads'],operations:['copilot-8-cas-usage']};
+export const metierGuideSlugs:Record<string,string[]>={finance:['12-agents-ia-direction-financiere','12-skills-claude-finance'],juridique:['claude-droit-10-cas-usage'],marketing:['guide-claude-meta-ads'],operations:['copilot-8-cas-usage']};

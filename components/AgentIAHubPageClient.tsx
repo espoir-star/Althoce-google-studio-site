@@ -1,20 +1,116 @@
-import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
-import Image from 'next/image';
-import {ArrowUpRight} from 'lucide-react';
-import {FaqSection,PreAuditCTA,TextLink} from './brand/Sections';
-import TrustStrip from './brand/TrustStrip';
-import {MissionPath} from './services/ServicePage';
-import {MetierDirectory} from './metiers/MetierPage';
-import {metierHubFaq} from '@/lib/metiers-content';
-import b from './brand/Brand.module.css';
-import s from './metiers/Metiers.module.css';
-export default function AgentIAHubPageClient(){return <main className={b.page}>
- <section className={s.hero}><div className={`${b.container} ${s.grid}`}><div><nav className={b.breadcrumb} aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span aria-current="page">Agents IA par métier</span></nav><h1>Des agents IA.<br/><span>À la mesure de vos métiers.</span></h1><p className={b.lead}>Althoce conçoit des agents IA sur mesure pour les professions réglementées et les entreprises à fortes exigences. Vos outils, vos données et les décisions à garder entre vos mains définissent le périmètre de chaque solution.</p><a href="#metiers" className={b.primary}>Explorer les usages<ArrowUpRight size={18} aria-hidden="true"/></a><p className={s.note}>Les exemples ci-dessous servent à vous projeter. Votre solution se construit avec vous.</p></div><div className={s.photo}><Image src="/images/services/metiers-collaboration.webp" alt="Des collègues échangent autour de leurs documents et d’un ordinateur dans un bureau." fill priority sizes="(max-width:900px) 90vw, 50vw"/></div></div></section>
- <TrustStrip className={b.container}/>
- <section className={b.section} id="metiers"><div className={b.container}><div className={s.heading}><h2>Quel quotidien<br/><span>voulez-vous simplifier ?</span></h2><p>Du commercial aux opérations, découvrez des situations concrètes et la place que l’IA peut y prendre.</p></div><MetierDirectory/></div></section>
- <section className={`${b.section} ${s.soft}`} id="agents"><div className={`${b.container} ${s.grid}`}><div className={s.photo}><Image src="/images/services/diagnostic.webp" alt="Deux professionnels examinent les documents et les priorités d’une entreprise." fill sizes="(max-width:900px) 90vw, 50vw"/></div><div><h2>Un besoin réel.<br/><span>Le bon niveau d’IA.</span></h2><p className={b.lead}>Un outil existant suffit parfois. Ailleurs, une automatisation ou un agent connecté à vos données fait la différence. Nous partons du travail à accomplir pour choisir l’approche.</p><div className={s.followup}><div><strong>Comprendre</strong><p>Observer les étapes, les données et les décisions prises par l’équipe.</p></div><div><strong>Vérifier</strong><p>Tester un périmètre utile, mesurer les résultats et traiter les exceptions.</p></div></div><TextLink href="/services/audit-ia/">Commencer par le diagnostic</TextLink></div></div></section>
- <CentraleDiscovery context="agents" />
- <section className={b.section}><div className={b.container}><div className={s.heading}><h2>Concevoir ensemble.<br/><span>Transmettre pour la suite.</span></h2><p>La réussite du projet passe aussi par les compétences des personnes qui l’utilisent.</p></div><MissionPath/><div className={s.links}><TextLink href="/services/formation-ia/">Former vos équipes</TextLink><TextLink href="/services/agents-ia/">Comprendre la conception sur mesure</TextLink><TextLink href="/services/pilotage-ia/">Organiser le suivi</TextLink></div></div></section>
- <FaqSection id="faq" title="Avant d’imaginer votre agent IA." description="Des repères pour choisir le bon point de départ." items={metierHubFaq}/>
- <PreAuditCTA id="footer-pre-audit"/>
- </main>}
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { FaqSection, PreAuditCTA } from "./brand/Sections";
+import { MetierDirectory } from "./metiers/MetierPage";
+import RelatedExpertise from "./expertise/RelatedExpertise";
+import { metierHubFaq } from "@/lib/metiers-content";
+import b from "./brand/Brand.module.css";
+import s from "./expertise/Expertise.module.css";
+export default function AgentIAHubPageClient() {
+  return (
+    <main className={b.page}>
+      <section className={s.hero}>
+        <div className={`${b.container} ${s.heroGrid}`}>
+          <div>
+            <nav className={b.breadcrumb} aria-label="Fil d’Ariane">
+              <a href="/">Accueil</a>
+              <span>/</span>
+              <span aria-current="page">Usages IA par métier</span>
+            </nav>
+            <h1>Des agents IA pour le travail qui se répète.</h1>
+            <p className={b.lead}>
+              Préparer une relance, comparer des devis, retrouver une pièce :
+              Althoce crée des agents sur mesure dans vos outils et forme les
+              équipes qui les utilisent.
+            </p>
+            <div className={s.actions}>
+              <a href="#metiers" className={b.primary}>
+                Trouver les usages de mon équipe
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+          <div className={s.photo}>
+            <Image
+              src="/images/services/metiers-collaboration.webp"
+              alt="Des collègues échangent autour de leurs documents au bureau."
+              fill
+              priority
+              sizes="(max-width:800px) 90vw, 46vw"
+            />
+          </div>
+        </div>
+      </section>
+      <section className={`${b.section} ${s.soft}`} id="metiers">
+        <div className={b.container}>
+          <div className={s.heading}>
+            <h2>Quels usages pour votre métier ?</h2>
+          </div>
+          <MetierDirectory />
+        </div>
+      </section>
+      <section className={b.section} id="agents">
+        <div className={`${b.container} ${s.split}`}>
+          <div className={`${s.photo} ${s.photoWide}`}>
+            <Image
+              src="/images/services/diagnostic.webp"
+              alt="Deux professionnels préparent un projet à partir de leurs documents."
+              fill
+              sizes="(max-width:800px) 90vw, 46vw"
+            />
+          </div>
+          <div>
+            <h2>Un premier usage utile, puis la suite.</h2>
+            <div className={s.projectSteps}>
+              <div>
+                <h3>Choisir la tâche</h3>
+                <p>
+                  Nous regardons ce qui prend du temps, les outils utilisés et
+                  le résultat attendu par votre équipe.
+                </p>
+              </div>
+              <div>
+                <h3>Construire et tester</h3>
+                <p>
+                  L’agent est adapté à vos documents et à vos règles. Votre
+                  équipe l’essaie avant sa mise en service.
+                </p>
+              </div>
+              <div>
+                <h3>Former et accompagner</h3>
+                <p>
+                  Nous transmettons la méthode d’utilisation et organisons le
+                  suivi pour ajuster l’agent aux retours du quotidien.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <FaqSection
+        id="faq"
+        title="Avant de choisir votre premier agent."
+        description="Le fonctionnement et l’accompagnement Althoce."
+        items={metierHubFaq}
+        showContactLink={false}
+      />
+      <PreAuditCTA
+        id="footer-pre-audit"
+        title="Quelle tâche aimeriez-vous déléguer à un agent ?"
+        description="Partons d’un exemple de votre quotidien. Nous vous aiderons à voir ce qui peut être simplifié et comment commencer."
+      />
+      <div className={b.container}>
+        <RelatedExpertise
+          links={[
+            { label: "L’IA dans votre secteur", href: "/secteurs/", text: "" },
+            {
+              label: "La Centrale, pour réunir vos agents",
+              href: "/ia-souveraine/",
+              text: "",
+            },
+          ]}
+        />
+      </div>
+    </main>
+  );
+}

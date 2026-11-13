@@ -1,0 +1,36 @@
+export type WorkflowExample = {
+  title: string;
+  output: string;
+  review: string;
+};
+export type ExpertiseLink = { label: string; href: string; text: string };
+export type ExpertiseFaq = { q: string; a: string };
+export type SectorStory = {
+  slug: string;
+  name: string;
+  group: "professions" | "organisations";
+  category?: "metier";
+  audience: string;
+  title: string;
+  heading: string;
+  promise: string;
+  intro: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  trainingImage: string;
+  trainingImageAlt?: string;
+  approach: { title: string; text: string; deliverables: string[] };
+  boundaries: string;
+  training: string;
+  trainingPractice: string[];
+  scenarios: WorkflowExample[];
+  usesTitle: string;
+  cta: { title: string; description: string };
+  guides: string[];
+  related: string[];
+  caseSlug?: string;
+  caseLabel?: string;
+  faq: ExpertiseFaq[];
+  paths?: { id: string; title: string; text: string }[];
+};

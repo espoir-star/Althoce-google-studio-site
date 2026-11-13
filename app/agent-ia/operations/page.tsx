@@ -6,11 +6,11 @@ import {metierStories} from '@/lib/metiers-content';
 const story=metierStories.find(x=>x.slug==="operations")!;
 const url=`https://althoce.com/agent-ia/${story.slug}/`;
 export const metadata: Metadata = {
- title: 'Agent IA opérations : back-office et ADV',
- description: story.intro,
+ title: `${story.name} sur mesure : usages et contrôles`,
+ description: story.description,
  keywords: ['agent IA ops', 'agent IA back-office', 'automatisation ADV', 'IA pour assistant administratif', 'agent IA traitement mails', 'IA gestion documentaire', 'automatisation suivi fournisseurs'],
  alternates:{canonical:url},
- openGraph:{title:`${story.name} sur mesure | Althoce`,description:story.intro,url,type:'website',locale:'fr_FR',images:[{url:`/images/services/${story.image}.webp`,alt:story.name}]},
- twitter:{card:'summary_large_image',title:`${story.name} sur mesure | Althoce`,description:story.intro},
+ openGraph:{title:`${story.name} sur mesure | Althoce`,description:story.description,url,type:'website',locale:'fr_FR',images:[{url:`/images/services/${story.image}.webp`,alt:story.name}]},
+ twitter:{card:'summary_large_image',title:`${story.name} sur mesure | Althoce`,description:story.description},
 };
 export default function Page(){return <><MetierSchema story={story}/><MetierPage story={story}/><Footer showCta={false}/></>}

@@ -1,28 +1,153 @@
-import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import { Scale, Megaphone, HeartHandshake, Building2, ShoppingBag, Factory, ArrowUpRight, Cable, GraduationCap, Compass } from 'lucide-react';
-import Footer from '@/components/Footer';
-import { Breadcrumb, TextLink, PreAuditCTA } from '@/components/brand/Sections';
-import b from '@/components/brand/Brand.module.css';
-import s from '@/components/sectors/Sectors.module.css';
-const description='Professions réglementées et entreprises exigeantes : Althoce adapte ses formations, agents IA et automatisations aux outils et responsabilités de votre secteur.';
-export const metadata:Metadata={title:'L’IA adaptée à votre secteur',description,alternates:{canonical:'https://althoce.com/secteurs/'},openGraph:{title:'L’IA adaptée à votre secteur | Althoce',description,url:'https://althoce.com/secteurs/',images:[{url:'/images/sectors/finance-formation.webp',width:1400,height:933,alt:'Althoce : des agents IA et formations adaptés à votre secteur'}]},twitter:{card:'summary_large_image',title:'L’IA adaptée à votre secteur | Althoce',description,images:['/images/sectors/finance-formation.webp']}};
-const sectorSlugs:Record<string,string>={'Droit':'droit','Marketing & communication':'marketing-communication','Associations & fédérations':'associations','Immobilier':'immobilier','Commerce & distribution':'commerce-distribution','Industrie':'industrie'};
-const sectors=[
- {title:'Droit',icon:Scale,audience:'Avocats · Notaires · Directions juridiques',text:'Préparer la lecture des dossiers, comparer les clauses et retrouver les sources utiles.',before:'Un ensemble de contrats à relire',after:'Les points à examiner, organisés pour le juriste'},
- {title:'Marketing & communication',icon:Megaphone,audience:'Agences · Communication · Équipes marketing',text:'Relier vos données de campagne à vos analyses et préparer les contenus dans votre ton.',before:'Des résultats dispersés entre les plateformes',after:'Une synthèse pour préparer les prochaines actions'},
- {title:'Associations & fédérations',icon:HeartHandshake,audience:'Associations · Fondations · Réseaux',text:'Alléger la gestion quotidienne pour consacrer davantage de temps à votre mission.',before:'Des informations réparties entre salariés et bénévoles',after:'Une base partagée pour répondre et transmettre'},
- {title:'Immobilier',icon:Building2,audience:'Agences · Syndics · Gestion locative',text:'Organiser les demandes, préparer les dossiers et faciliter le suivi de chaque échange.',before:'Des demandes et pièces reçues par email',after:'Un dossier préparé pour la personne qui le suit'},
- {title:'Commerce & distribution',icon:ShoppingBag,audience:'Négoce · E-commerce · Commerce de gros',text:'Fluidifier les passages de relais entre la vente, les commandes et le service client.',before:'Une demande de prix à qualifier',after:'Les informations utiles réunies pour le commercial'},
- {title:'Industrie',icon:Factory,audience:'Production · Qualité · Achats',text:'Faire circuler la documentation et préparer les comparaisons dans vos processus existants.',before:'Plusieurs offres fournisseurs à comparer',after:'Une grille commune pour décider avec les acheteurs'},
+import type { Metadata } from "next";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import Footer from "@/components/Footer";
+import { Breadcrumb, PreAuditCTA } from "@/components/brand/Sections";
+import RelatedExpertise from "@/components/expertise/RelatedExpertise";
+import { sectorDirectory } from "@/lib/sectors-content";
+import b from "@/components/brand/Brand.module.css";
+import s from "@/components/expertise/Expertise.module.css";
+const title = "IA par secteur : finance, santé, hôtellerie et entreprises";
+const description =
+  "Finance, droit, santé, hôtellerie, retail et luxe : découvrez les formations et agents IA sur mesure d’Althoce, adaptés aux enjeux de chaque secteur.";
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: { canonical: "https://althoce.com/secteurs/" },
+  openGraph: {
+    title,
+    description,
+    url: "https://althoce.com/secteurs/",
+    images: [{ url: "/images/sectors/finance-formation.webp" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/images/sectors/finance-formation.webp"],
+  },
+};
+const sectorSummaries: Record<string, string> = {
+  finance: "Dossiers clients, analyses documentées et reporting financier.",
+  droit: "Pièces, chronologies, contrats et préparation des échanges.",
+  medical: "Secrétariat, procédures et documentation qualité.",
+  "assurance-patrimoine": "Collecte, rendez-vous et suivi des échéances.",
+  immobilier: "Transaction, gestion locative et copropriété.",
+  "commerce-distribution": "Prospection, devis, appels d’offres et commandes.",
+  industrie: "Achats, documentation technique et qualité.",
+  "marketing-communication": "Briefs, retours clients et bilans de campagne.",
+  associations: "Adhésions, subventions et bilans d’activité.",
+  hotellerie: "Demandes de séjour, arrivées, groupes et avis clients.",
+  "retail-luxe": "Catalogue, rendez-vous clients et suivi après-vente.",
+  "secteur-public": "Courriers aux usagers, dossiers, notes et procédures internes.",
+};
+const groups = [
+  {
+    id: "professions",
+    title: "Finance, droit et activités à fortes exigences",
+    text: "Des dossiers qui engagent votre responsabilité, avec des données à protéger et des validations propres à votre activité.",
+  },
+  {
+    id: "organisations",
+    title: "Entreprises et organisations",
+    text: "Des cycles de vente, des documents techniques ou une mission collective : l’IA se construit autour du travail à accomplir.",
+  },
 ];
-export default function Page(){return <><main className={b.page}>
- <section className={s.hero}><div className={b.container}><Breadcrumb label="Secteurs"/><div className={s.hubHero}><div><h1>Votre secteur a ses exigences.<br/><span>L’IA doit les comprendre.</span></h1><p className={b.lead}>Professions réglementées et entreprises à fortes exigences : nous adaptons l’IA à vos responsabilités, à vos données et à vos outils. Finance, droit, immobilier, associations ou industrie, chaque activité appelle son propre cadre.</p><a className={b.primary} href="#vos-secteurs">Explorer votre secteur<ArrowUpRight size={18} aria-hidden="true"/></a></div><div className={s.hubHeroVisual}><Image src="/images/sectors/finance-formation.webp" alt="Des collègues apprennent ensemble à utiliser leurs outils dans un atelier de travail." fill priority sizes="(max-width:900px) 90vw, 45vw"/><div><strong>Vos métiers.<br/>Vos outils.<br/>Votre manière de travailler.</strong></div></div></div></div></section>
- <section className={b.section}><div className={b.container}><div className={s.heading}><h2>Le potentiel de l’IA<br/><span>se trouve sur le terrain.</span></h2><p>Nous cherchons les tâches qui se répètent, les informations qui circulent mal et les décisions qui manquent de contexte. Puis nous construisons avec vous.</p></div><div className={s.hubPillars}><article><Compass size={28} aria-hidden="true"/><h3>Choisir le bon usage</h3><p>Observer un processus, repérer un point de friction et fixer un résultat concret à tester.</p></article><article><Cable size={28} aria-hidden="true"/><h3>Relier les bons outils</h3><p>Connecter les données utiles à l’IA pour limiter les recherches, les copier-coller et les ressaisies.</p></article><article><GraduationCap size={28} aria-hidden="true"/><h3>Faire progresser l’équipe</h3><p>Former sur vos propres situations, transmettre les repères et suivre l’adoption après le projet.</p></article></div></div></section>
- <section id="vos-secteurs" className={`${b.section} ${s.directorySection}`}><div className={b.container}><div className={s.heading}><h2>À chaque secteur,<br/><span>ses usages concrets.</span></h2><p>Voici des points de départ à adapter ensemble. Les agents IA et les automatisations sont conçus pour votre contexte, vos données et vos règles.</p></div><div className={s.hubGrid}><a href="/secteurs/finance/" className={s.financeCard}><div className={s.financePhoto}><Image src="/images/sectors/finance-dossiers.webp" alt="Une équipe échange autour de dossiers financiers." fill sizes="(max-width:700px) 90vw, 40vw"/></div><div className={s.financeCopy}><h2>Finance</h2><h3>Moins de ressaisie.<br/>Plus de place pour le conseil.</h3><p>Relier vos outils comptables à l’IA, préparer les analyses et garder la main sur chaque décision.</p><small>Cabinets comptables · Directions financières · Gestion de patrimoine</small><span className={s.cardLink}>Explorer la finance<ArrowUpRight size={20} aria-hidden="true"/></span></div></a>{sectors.map(({title,icon:Icon,audience,text,before,after})=><a key={title} href={`/secteurs/${sectorSlugs[title]}/`} className={`${s.hubCard} ${s.clickableCard}`}><div className={s.sectorTitle}><Icon size={25} strokeWidth={1.5} aria-hidden="true"/><h2>{title}</h2></div><small>{audience}</small><p>{text}</p><div className={s.sectorExample}><span>{before}</span><ArrowUpRight size={18} aria-hidden="true"/><strong>{after}</strong></div><span className={s.cardLink}>Explorer ce secteur<ArrowUpRight size={18} aria-hidden="true"/></span></a>)}</div></div></section>
- <CentraleDiscovery context="secteurs" />
- <section className={b.section}><div className={`${b.container} ${s.hubMethod}`}><div><h2>Un premier usage.<br/><span>Une équipe qui avance.</span></h2><p className={b.lead}>Pas besoin de transformer toute votre organisation d’un coup. Nous relions le diagnostic, la formation et le déploiement autour d’une première priorité.</p><TextLink href="/services/">Comprendre notre accompagnement</TextLink></div><ol><li><span>01</span><div><h3>Observer ensemble</h3><p>Les tâches, les outils, les personnes et les règles à respecter.</p></div></li><li><span>02</span><div><h3>Tester en situation</h3><p>Un périmètre limité, des résultats vérifiés et des ajustements avec l’équipe.</p></div></li><li><span>03</span><div><h3>Transmettre et suivre</h3><p>Les bonnes pratiques, la prise en main et les évolutions utiles dans la durée.</p></div></li></ol></div></section>
- <section className={s.hubResource}><div className={`${b.container} ${s.hubResourceGrid}`}><div className={s.miniBook} aria-hidden="true"><span>althoce.</span><strong>Les guides<br/>pour passer<br/>à la pratique.</strong><small>IA · OUTILS · TRANSFORMATION</small></div><div><h2>Quelques pages pour<br/>voir ce qui est possible.</h2><p>Des cas d’usage, des méthodes et des repères pour vos équipes. Retrouvez nos ressources classées par secteur, de la finance au marketing en passant par le droit et les outils du quotidien.</p><TextLink href="/guides/">Parcourir nos guides</TextLink></div></div></section>
- <PreAuditCTA title="Parlons de votre réalité." description="Quel que soit votre secteur, commençons par ce qui prend trop de place dans le quotidien de votre équipe. Le premier échange de 30 minutes est offert."/>
- </main><Footer showCta={false}/></>}
+export default function Page() {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: title,
+            itemListElement: sectorDirectory.map((d, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: d.name,
+              url: `https://althoce.com/secteurs/${d.slug}/`,
+            })),
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
+      <main className={b.page}>
+        <section className={s.hero}>
+          <div className={`${b.container} ${s.heroGrid}`}>
+            <div>
+              <Breadcrumb label="Secteurs" />
+              <h1>Des agents IA et des formations adaptés à votre secteur.</h1>
+              <p className={b.lead}>
+                Althoce forme vos équipes et conçoit des agents IA autour des
+                tâches propres à votre activité. Retrouvez les usages qui
+                peuvent aider votre organisation au quotidien.
+              </p>
+              <div className={s.actions}>
+                <a className={b.primary} href="#vos-secteurs">
+                  Trouver mon secteur
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+            <div className={s.photo}>
+              <Image
+                src="/images/sectors/finance-formation.webp"
+                alt="Des professionnels travaillent ensemble sur leurs documents lors d’un atelier."
+                fill
+                priority
+                sizes="(max-width:800px) 90vw, 46vw"
+              />
+            </div>
+          </div>
+        </section>
+        <section id="vos-secteurs" className={`${b.section} ${s.soft}`}>
+          <div className={b.container}>
+            {groups.map((g) => (
+              <div key={g.id} className={s.sectorGroup}>
+                <div className={s.heading}>
+                  <h2 className={s.groupTitle}>{g.title}</h2>
+                </div>
+                <div className={s.directory}>
+                  {sectorDirectory
+                    .filter((d) => d.group === g.id)
+                    .map((d) => (
+                      <a
+                        key={d.slug}
+                        href={`/secteurs/${d.slug}/`}
+                        className={s.sectorCard}
+                      >
+                        <h3>{d.name}</h3>
+                        <p>{sectorSummaries[d.slug]}</p>
+                        <span className={s.cardBottom}>
+                          Découvrir les usages
+                          <ArrowUpRight size={18} aria-hidden="true" />
+                        </span>
+                      </a>
+                    ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        <PreAuditCTA
+          title="Parlons de votre activité."
+          description="Votre secteur n’est pas dans la liste ? Décrivez-nous votre activité et une tâche que vous aimeriez simplifier."
+        />
+        <div className={b.container}>
+          <RelatedExpertise
+            links={[
+              {
+                label: "Les usages IA par métier",
+                href: "/agent-ia/",
+                text: "",
+              },
+              { label: "Nos guides pratiques", href: "/guides/", text: "" },
+            ]}
+          />
+        </div>
+      </main>
+      <Footer showCta={false} />
+    </>
+  );
+}

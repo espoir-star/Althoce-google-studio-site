@@ -1,0 +1,416 @@
+.hero {
+  padding: 112px 0 64px;
+  background:
+    radial-gradient(ellipse at 10% 0%, #eaf1ff 0, transparent 60%), #fff;
+}
+.heroGrid,
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+}
+.hero h1 {
+  font-size: clamp(32px, 3.3vw, 48px);
+  line-height: 1.16;
+  max-width: 19ch;
+}
+.hero h1 span {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.8em;
+  color: #285bc1;
+}
+.audience {
+  font-size: 14px !important;
+  color: #526682 !important;
+  line-height: 1.6;
+  margin-bottom: 16px !important;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+.actions > a {
+  margin-top: 0;
+}
+.photo {
+  position: relative;
+  aspect-ratio: 1.25;
+  overflow: hidden;
+  background: #e6ebf1;
+  border-radius: 16px 64px 16px 16px;
+}
+.photo img {
+  object-fit: cover;
+}
+.photoWide {
+  aspect-ratio: 1.4;
+  border-radius: 16px;
+}
+.heading {
+  max-width: 740px;
+  margin-bottom: 32px;
+}
+.heading p {
+  margin-top: 18px !important;
+  max-width: 60ch;
+}
+.headingRow {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.headingRow > p {
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 58ch;
+}
+.soft {
+  background: linear-gradient(125deg, #f1f5fc, #f9fafc 70%);
+}
+.benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.benefits li {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #dae4f2;
+  border-radius: 12px;
+}
+.benefits svg {
+  color: #285bc1;
+  margin-bottom: 16px;
+}
+.benefits p {
+  color: #183657 !important;
+  line-height: 1.65;
+  font-size: 17px;
+}
+.assurance {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border-top: 1px solid #d4dfed;
+  padding-top: 22px;
+  margin-top: 32px !important;
+  color: #42516a !important;
+  font-size: 15px !important;
+  line-height: 1.75;
+  max-width: 100%;
+}
+.assurance svg {
+  flex-shrink: 0;
+  color: #285bc1;
+  margin-top: 3px;
+}
+.practice {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  gap: 14px;
+}
+.practice li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 16px;
+  color: #344158;
+  line-height: 1.65;
+}
+.practice svg {
+  flex-shrink: 0;
+  color: #2459bd;
+  transform: translateY(3px);
+}
+.useGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.useCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid #d4dfed;
+  border-radius: 14px;
+  background: #fff;
+  min-width: 0;
+}
+.useCard:last-child:nth-child(odd) {
+  grid-column: 1/-1;
+}
+.useNumber {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: #526b90;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 16px;
+}
+.useCard h3 {
+  font-size: 23px;
+  line-height: 1.35;
+  color: #183657;
+  margin-bottom: 16px !important;
+  max-width: 30ch;
+  scroll-margin-top: 115px;
+}
+.useCard > p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #42516a;
+  max-width: 75ch;
+  padding-bottom: 24px;
+}
+.useReview {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding-top: 18px;
+  border-top: 1px solid #dce5f1;
+  margin-top: auto;
+}
+.useReview svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: #2459bd;
+}
+.useReview p {
+  font-size: 15px !important;
+  line-height: 1.7;
+  color: #52627a !important;
+  max-width: 85ch;
+}
+.medicalPath {
+  margin-top: 38px;
+  scroll-margin-top: 110px;
+}
+.medicalPath > h3 {
+  font-size: 26px;
+  color: #244b85;
+}
+.medicalPath > p {
+  margin: 12px 0 24px !important;
+  max-width: 65ch;
+}
+.projectSteps {
+  display: grid;
+  gap: 24px;
+  margin-top: 28px;
+}
+.projectSteps > div {
+  padding-left: 20px;
+  border-left: 2px solid #bfd2ee;
+}
+.projectSteps h3 {
+  font-size: 20px;
+  color: #183657;
+  margin-bottom: 9px !important;
+}
+.projectSteps p {
+  font-size: 16px;
+  line-height: 1.75;
+  max-width: 58ch;
+}
+.readNext {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  padding: 26px 0;
+}
+.readNext > span {
+  font-size: 14px;
+  color: #65748a;
+}
+.readNext a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: #28539b;
+  font-size: 15px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: #b7cbe9;
+}
+.readNext a:hover {
+  color: #17366a;
+  text-decoration-color: currentColor;
+}
+.readNext svg {
+  flex-shrink: 0;
+}
+.groupTitle {
+  font-size: 28px !important;
+  margin: 0 0 24px !important;
+}
+.sectorGroup + .sectorGroup {
+  margin-top: 50px;
+}
+.directory {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.sectorCard {
+  padding: 28px;
+  border: 1px solid #d4dfee;
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  color: #152a49;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+  min-width: 0;
+}
+.sectorCard:hover {
+  background: #f7faff;
+  border-color: #809dcc;
+}
+.sectorCard h3 {
+  margin: 14px 0 !important;
+  font-size: 23px;
+  line-height: 1.35;
+}
+.sectorCard p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 20px !important;
+  color: #52627a;
+}
+.sectorCard .cardBottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  color: #2459bd;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+}
+.sectorCard svg {
+  flex-shrink: 0;
+  color: #285bc1;
+}
+@media (max-width: 1050px) {
+  .heroGrid,
+  .split,
+  .headingRow {
+    gap: 36px;
+  }
+  .directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .useCard {
+    padding: 26px;
+  }
+}
+@media (max-width: 800px) {
+  .hero {
+    padding-top: 90px;
+  }
+  .heroGrid,
+  .split,
+  .headingRow {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .heroGrid .photo {
+    aspect-ratio: 1.7;
+  }
+  .hero h1 {
+    max-width: 23ch;
+  }
+  .benefits {
+    gap: 16px;
+  }
+  .benefits li {
+    padding: 20px;
+  }
+  .benefits p {
+    font-size: 16px;
+  }
+  .useCard h3 {
+    font-size: 21px;
+  }
+}
+@media (max-width: 560px) {
+  .hero {
+    padding-bottom: 40px;
+  }
+  .hero h1 {
+    font-size: 34px;
+  }
+  .directory,
+  .benefits,
+  .useGrid {
+    grid-template-columns: 1fr;
+  }
+  .photo,
+  .heroGrid .photo {
+    aspect-ratio: 1.4;
+    border-radius: 12px 32px 12px 12px;
+  }
+  .actions {
+    gap: 10px;
+  }
+  .actions > a:first-child {
+    width: 100%;
+  }
+  .sectorCard,
+  .useCard {
+    padding: 24px;
+  }
+  .sectorCard p {
+    margin-bottom: 12px !important;
+  }
+  .useCard > p {
+    font-size: 16px;
+  }
+  .useReview p {
+    font-size: 16px !important;
+  }
+  .readNext {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .groupTitle {
+    font-size: 25px !important;
+  }
+  .assurance {
+    font-size: 16px !important;
+  }
+  .benefits li {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .benefits svg {
+    flex-shrink: 0;
+    margin: 0;
+    transform: translateY(3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sectorCard {
+    transition: none;
+  }
+}

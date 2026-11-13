@@ -1,29 +1,235 @@
-import CentraleDiscovery from '@/components/centrale/CentraleDiscovery';
-import { centraleMetierContexts } from '@/lib/centrale-links';
-import Image from 'next/image';
-import { metierGuideSlugs } from '@/lib/resources';
-import ResourceSection from '@/components/resources/ResourceSection';
-import AgentMarquee from '../AgentMarquee';
-import { ArrowUpRight, ArrowRight, Layers3, ShieldCheck, ChartNoAxesCombined, Megaphone, Handshake, Headphones, Phone, Users, ReceiptText, Settings2, Scale, ShoppingBag } from 'lucide-react';
-import { FaqSection, PreAuditCTA, TextLink } from '../brand/Sections';
-import TrustStrip from '../brand/TrustStrip';
-import { MissionPath, ServiceLinks } from '../services/ServicePage';
-import { metierStories, type MetierStory } from '@/lib/metiers-content';
-import b from '../brand/Brand.module.css';
-import s from './Metiers.module.css';
-const cases:Record<string,string>={marketing:'saas-b2b-agent-ia-marketing',commercial:'negoce-vins-bordelais-agent-ia-sdr',finance:'cabinet-comptable-lyon',operations:'distributeur-b2b-agent-ia-ops',rh:'cabinet-recrutement-paris-agent-ia-tri-cv',juridique:'eti-agroalimentaire-agent-ia-juridique',achats:'eti-industrielle-agent-ia-achats','service-client':'saas-b2b-agent-ia-service-client',telephonique:'cabinet-avocats-agent-ia-telephonique'};
-const icons:Record<string,typeof Megaphone>={marketing:Megaphone,commercial:Handshake,'service-client':Headphones,telephonique:Phone,rh:Users,finance:ReceiptText,operations:Settings2,juridique:Scale,achats:ShoppingBag};
-export function MetierDirectory({current}:{current?:string}){return <nav className={s.directory} aria-label="Agents IA par métier">{metierStories.filter(x=>x.slug!==current).map(x=>{const Icon=icons[x.slug];return <a key={x.slug} href={`/agent-ia/${x.slug}/`}><span className={s.directoryIcon}><Icon size={21} strokeWidth={1.5} aria-hidden="true"/></span><span>{x.name}<small>{x.promise}</small></span><ArrowUpRight size={20} aria-hidden="true"/></a>})}</nav>}
-export default function MetierPage({story:d}:{story:MetierStory}){const centraleContext=centraleMetierContexts[d.slug];return <main className={b.page}>
- <section className={s.hero}><div className={`${b.container} ${s.grid}`}><div><nav className={b.breadcrumb} aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href="/agent-ia/">Agents IA par métier</a><span>/</span><span aria-current="page">{d.name}</span></nav><h1>{d.name}.<br/><span>{d.promise}</span></h1><p className={b.lead}>{d.intro}</p><a href="/contact/" className={b.primary}>Parlons de votre quotidien<ArrowUpRight size={18} aria-hidden="true"/></a><p className={s.note}>Pour les professions réglementées et les entreprises à fortes exigences. Chaque usage se cadre avec vous.</p></div><div className={s.photo}><Image src={`/images/services/${d.image}.webp`} alt={`Des collègues travaillent ensemble sur des dossiers dans un bureau, pour illustrer les usages de l’${d.name.toLowerCase()}.`} fill priority sizes="(max-width:900px) 90vw, 50vw"/></div></div></section>
- <TrustStrip className={b.container}/>
- <section className={b.section} id="agents"><div className={b.container}><div className={s.heading}><h2>Ça commence<br/><span>dans votre quotidien.</span></h2><p>{d.situation}</p></div><div className={s.scenario}>{d.example.map((x,i)=><div key={x}><span className={s.number}>0{i+1}</span><p>{x}</p>{i<2&&<ArrowRight className={s.connector} size={22} aria-hidden="true"/>}</div>)}</div><p className={s.note}>Un scénario illustratif, à adapter à vos outils, vos données et vos règles.</p><div className={s.uses}>{d.uses.map((x,i)=><article key={x.title}><span aria-hidden="true">0{i+1}</span><h3>{x.title}</h3><p>{x.text}</p></article>)}</div></div></section>
- <section className={`${b.section} ${s.soft}`}><div className={`${b.container} ${s.grid}`}><div><h2>Le sur-mesure,<br/><span>c’est ce qui fait la différence.</span></h2><p className={b.lead}>Nous observons le travail réel, la sensibilité des données et les décisions qui engagent votre équipe. Puis nous testons un premier périmètre avec des accès et des validations définis.</p><TextLink href="/services/audit-ia/">Partir du terrain avec un diagnostic IA</TextLink></div><div className={s.context}><article><Layers3 size={22} strokeWidth={1.5} aria-hidden="true"/><div><strong>Vos outils</strong><p>{d.tools}</p></div></article><article><ShieldCheck size={22} strokeWidth={1.5} aria-hidden="true"/><div><strong>Vos règles</strong><p>{d.guard}</p></div></article><article><ChartNoAxesCombined size={22} strokeWidth={1.5} aria-hidden="true"/><div><strong>Vos repères de progrès</strong><p>{d.measure} Les objectifs se fixent après observation du point de départ.</p></div></article></div></div></section>
- {centraleContext && <CentraleDiscovery context={centraleContext} />}
- <section className={b.section}><div className={`${b.container} ${s.grid}`}><div className={s.photo}><Image src="/images/home/atelier-equipes.webp" alt="Une équipe pratique ensemble pendant un atelier de prise en main." fill sizes="(max-width:900px) 90vw, 50vw"/></div><div><h2>L’outil compte.<br/><span>L’équipe fait la suite.</span></h2><p className={b.lead}>Essais sur vos cas réels, documentation, formation à l’usage et suivi après le lancement : nous préparons l’adoption avec vous.</p><div className={s.followup}><div><strong>Prendre en main</strong><p>Des consignes claires pour utiliser, vérifier et reprendre la main.</p></div><div><strong>Faire durer</strong><p>Des correctifs initiaux pendant 30 jours et un bilan, puis un pilotage sur devis selon vos besoins.</p></div></div><TextLink href="/services/formation-ia/">Former vos équipes à l’IA</TextLink><br/><TextLink href="/services/pilotage-ia/">Prévoir le suivi dans la durée</TextLink></div></div></section>
- <section className={`${b.section} ${s.soft}`}><div className={b.container}><div className={s.heading}><h2>De votre besoin<br/><span>à un usage qui tient.</span></h2><p>Un accompagnement de A à Z, avec des points de validation tout au long de la mission.</p></div><MissionPath/><div className={s.links}><TextLink href="/a-propos/">Rencontrer le cabinet</TextLink><TextLink href={`/cas-clients/${cases[d.slug]}/`}>Explorer un cas dans ce métier</TextLink></div><ServiceLinks/></div></section>
- {metierGuideSlugs[d.slug]&&<ResourceSection compact slugs={metierGuideSlugs[d.slug]} id={`guides-${d.slug}`} description="Une sélection pratique pour explorer les usages de votre métier."/>}
- <FaqSection id="faq" title={`Vos questions sur l’${d.name.toLowerCase()}.`} description="Le périmètre, les outils et la place de votre équipe." items={d.faq}/>
- <PreAuditCTA id="footer-pre-audit"/>
- <section className={s.marqueeSection}><div className={b.container}><AgentMarquee/></div></section>
- </main>}
+import Image from "next/image";
+import {
+  ArrowUpRight,
+  ShieldCheck,
+  Megaphone,
+  Handshake,
+  Headphones,
+  Phone,
+  Users,
+  ReceiptText,
+  Settings2,
+  Scale,
+  ShoppingBag,
+} from "lucide-react";
+import { FaqSection, PreAuditCTA } from "../brand/Sections";
+import ResourceSection from "../resources/ResourceSection";
+import WorkflowExamples from "../expertise/WorkflowExamples";
+import RelatedExpertise from "../expertise/RelatedExpertise";
+import { metierGuideSlugs } from "@/lib/resources";
+import { sectorStories } from "@/lib/sectors-content";
+import { metierStories, type MetierStory } from "@/lib/metiers-content";
+import { professionalMetierNavigation } from '@/lib/solutions-navigation';
+import b from "../brand/Brand.module.css";
+import s from "../expertise/Expertise.module.css";
+const cases: Record<string, { slug: string; label: string }> = {
+  marketing: {
+    slug: "saas-b2b-agent-ia-marketing",
+    label: "Cas client : marketing B2B",
+  },
+  commercial: {
+    slug: "negoce-vins-bordelais-agent-ia-sdr",
+    label: "Cas client : prospection dans le négoce",
+  },
+  operations: {
+    slug: "distributeur-b2b-agent-ia-ops",
+    label: "Cas client : administration des ventes",
+  },
+  juridique: {
+    slug: "eti-agroalimentaire-agent-ia-juridique",
+    label: "Cas client : revue juridique en entreprise",
+  },
+  achats: {
+    slug: "eti-industrielle-agent-ia-achats",
+    label: "Cas client : achats industriels",
+  },
+  "service-client": {
+    slug: "saas-b2b-agent-ia-service-client",
+    label: "Cas client : support client B2B",
+  },
+  telephonique: {
+    slug: "cabinet-avocats-agent-ia-telephonique",
+    label: "Cas client : accueil d’un cabinet d’avocats",
+  },
+};
+const icons: Record<string, typeof Megaphone> = {
+  marketing: Megaphone,
+  commercial: Handshake,
+  "service-client": Headphones,
+  telephonique: Phone,
+  rh: Users,
+  finance: ReceiptText,
+  operations: Settings2,
+  juridique: Scale,
+  achats: ShoppingBag,
+};
+export function MetierDirectory({ current }: { current?: string }) {
+  return (
+    <nav className={s.directory} aria-label="Usages IA par métier">
+      {professionalMetierNavigation.map(x => <a key={x.href} href={x.href} className={s.sectorCard}>
+        <ReceiptText size={24} strokeWidth={1.5} aria-hidden="true" />
+        <h3>{x.label}</h3><p>{x.description}</p>
+        <span className={s.cardBottom}>Voir les usages<ArrowUpRight size={18} aria-hidden="true" /></span>
+      </a>)}
+      {metierStories
+        .filter((x) => x.slug !== current)
+        .map((x) => {
+          const Icon = icons[x.slug];
+          return (
+            <a
+              key={x.slug}
+              href={`/agent-ia/${x.slug}/`}
+              className={s.sectorCard}
+            >
+              <Icon size={24} strokeWidth={1.5} aria-hidden="true" />
+              <h3>{x.dossier.label}</h3>
+              <p>{x.dossier.focus}</p>
+              <span className={s.cardBottom}>
+                Voir les usages
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </span>
+            </a>
+          );
+        })}
+    </nav>
+  );
+}
+export default function MetierPage({ story: d }: { story: MetierStory }) {
+  const f = d.dossier;
+  const related = f.sectors.flatMap((slug) => {
+    const sector = sectorStories.find((x) => x.slug === slug);
+    return sector
+      ? [{ label: sector.name, href: `/secteurs/${slug}/`, text: "" }]
+      : [];
+  });
+  const reading = [
+    ...(cases[d.slug]
+      ? [
+          {
+            label: cases[d.slug].label,
+            href: `/cas-clients/${cases[d.slug].slug}/`,
+            text: "",
+          },
+        ]
+      : []),
+    ...(d.slug === "finance"
+      ? [
+          {
+            label: "IA pour votre direction financière",
+            href: "/secteurs/finance/",
+            text: "",
+          },
+        ]
+      : []),
+    ...(d.slug === "finance" ? [] : related),
+  ];
+  return (
+    <main className={b.page}>
+      <section className={s.hero}>
+        <div className={`${b.container} ${s.heroGrid}`}>
+          <div>
+            <nav className={b.breadcrumb} aria-label="Fil d’Ariane">
+              <a href="/">Accueil</a>
+              <span>/</span>
+              <a href="/agent-ia/">Usages IA par métier</a>
+              <span>/</span>
+              <span aria-current="page">{f.label}</span>
+            </nav>
+            <h1>
+              {d.name} sur mesure.<span>{f.headline}</span>
+            </h1>
+            <p className={b.lead}>{d.intro}</p>
+            <div className={s.actions}>
+              <a href="/contact/" className={b.primary}>
+                Parlons de votre projet
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+          <div className={s.photo}>
+            <Image
+              src={`/images/services/${d.image}.webp`}
+              alt={`Équipe au travail, pour illustrer les usages IA en ${f.label.toLowerCase()}.`}
+              fill
+              priority
+              sizes="(max-width:800px) 90vw, 46vw"
+            />
+          </div>
+        </div>
+      </section>
+      <section className={`${b.section} ${s.soft}`} id="agents">
+        <div className={b.container}>
+          <div className={s.heading}>
+            <h2>Ce que votre agent peut prendre en charge.</h2>
+            <p>
+              Nous adaptons ces exemples à vos outils et aux tâches de votre
+              équipe.
+            </p>
+          </div>
+          <WorkflowExamples items={f.scenarios} id={`scenarios-${d.slug}`} />
+        </div>
+      </section>
+      {metierGuideSlugs[d.slug] && (
+        <ResourceSection
+          slugs={metierGuideSlugs[d.slug]}
+          id={`guides-${d.slug}`}
+          title="Un guide pour commencer."
+          description="Des exemples à explorer avec votre équipe."
+        />
+      )}
+      <section className={b.section}>
+        <div className={`${b.container} ${s.split}`}>
+          <div className={`${s.photo} ${s.photoWide}`}>
+            <Image
+              src="/images/home/atelier-equipes.webp"
+              alt="Des collaborateurs pratiquent ensemble pendant une formation IA."
+              fill
+              sizes="(max-width:800px) 90vw, 46vw"
+            />
+          </div>
+          <div>
+            <h2>Installé avec vous. Adopté par votre équipe.</h2>
+            <div className={s.projectSteps}>
+              <div>
+                <h3>Dans vos outils</h3>
+                <p>{f.setup}</p>
+              </div>
+              <div>
+                <h3>Avec la formation nécessaire</h3>
+                <p>{f.training}</p>
+              </div>
+              <div>
+                <h3>Avec un suivi après l’installation</h3>
+                <p>
+                  Nous testons l’agent avec votre équipe, documentons son
+                  utilisation et organisons les ajustements au fil des retours.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={b.container}>
+          <p className={s.assurance}>
+            <ShieldCheck size={20} aria-hidden="true" />
+            <span>{f.guard}</span>
+          </p>
+        </div>
+      </section>
+      <FaqSection
+        id="faq"
+        title="Avant de démarrer."
+        description="Vos questions sur l’installation et l’utilisation."
+        items={d.faq}
+        showContactLink={false}
+      />
+      <PreAuditCTA
+        id="footer-pre-audit"
+        title={f.cta}
+        description="Décrivez-nous une tâche, les outils que vous utilisez et ce que vous aimeriez simplifier. Nous vous aidons à choisir un premier usage utile."
+      />
+      <div className={b.container}>
+        <RelatedExpertise links={reading} />
+      </div>
+    </main>
+  );
+}
