@@ -122,4 +122,46 @@ const retailLuxe: SectorStory = {
   ],
 };
 
-export const additionalSectorStories = [financeStory, hotellerie, retailLuxe];
+const secteurPublic: SectorStory = {
+  slug: 'secteur-public',
+  name: 'Secteur public & collectivités',
+  group: 'organisations',
+  audience: 'Collectivités · Établissements publics · Administrations',
+  title: 'IA pour le secteur public et les collectivités',
+  heading: 'Moins de recherches. Plus de temps pour le service public.',
+  promise: 'Des dossiers mieux préparés, des équipes qui gardent la main.',
+  intro: 'Courriers à traiter, dossiers à compléter, notes à préparer : Althoce forme vos agents publics et conçoit des agents IA sur mesure, reliés à vos documents et à vos outils autorisés.',
+  description: 'Formation et agents IA sur mesure pour les collectivités et le secteur public : courriers, dossiers et procédures, avec maîtrise des données et validation humaine.',
+  image: '/images/sectors/secteur-public-equipe.webp',
+  imageAlt: 'Trois collègues préparent un dossier autour d’un ordinateur dans un bureau ouvert sur un accueil administratif.',
+  trainingImage: '/images/sectors/associations-atelier.webp',
+  trainingImageAlt: 'Une formatrice accompagne trois participants qui travaillent sur leurs documents et leurs ordinateurs.',
+  approach: {
+    title: 'Partir de vos procédures, relier vos informations.',
+    text: 'Nous partons d’un service et d’un circuit réel : demande d’un usager, suivi d’un dossier ou préparation d’une réunion. Avec vos équipes, nous relions les sources autorisées et définissons ce que l’agent IA prépare, et qui le valide.',
+    deliverables: ['Un projet de réponse relié à la bonne procédure.', 'Les pièces manquantes repérées avant l’instruction.', 'Des notes de synthèse avec leurs sources.'],
+  },
+  boundaries: 'Votre service garde la décision et valide les envois. Les accès, les données utilisables et les conditions d’hébergement sont définis avec vos responsables métiers, votre DSI et votre délégué à la protection des données.',
+  training: 'Accueil, services administratifs et encadrement travaillent sur leurs situations réelles. Vos agents publics apprennent à utiliser les outils autorisés, à vérifier une réponse et à repérer les informations qui demandent une protection particulière.',
+  trainingPractice: ['Rédiger un courrier clair à partir d’informations vérifiées.', 'Résumer une note en conservant ses réserves et ses sources.', 'Repérer les données à retirer ou à protéger avant utilisation.'],
+  usesTitle: 'Quatre usages au plus près du travail des services.',
+  scenarios: [
+    { title: 'Préparer les réponses aux usagers', output: 'L’agent IA repère le sujet d’un courrier, propose le service destinataire et prépare une réponse à partir des procédures à jour : modalités d’une démarche, pièces attendues ou suivi d’une demande. Les points sans réponse sont signalés.', review: 'L’agent public vérifie la situation, adapte le courrier et valide son envoi.' },
+    { title: 'Vérifier les pièces avant l’instruction', output: 'À partir de la liste définie par votre service, l’agent IA prépare un état de complétude, par exemple pour une demande d’occupation du domaine public, et un projet de demande de complément.', review: 'Le service instructeur vérifie les pièces. La complétude ne vaut ni recevabilité ni autorisation.' },
+    { title: 'Préparer une note pour la réunion', output: 'L’agent IA rassemble les éléments d’un dossier de séance ou d’un comité de direction : faits, décisions antérieures, points ouverts et documents sources. Il prépare une synthèse dans votre trame habituelle.', review: 'Le rédacteur contrôle les faits et les réserves. Les responsables et les élus conservent les arbitrages.' },
+    { title: 'Retrouver la bonne procédure interne', output: 'Dans les documents RH, achats ou finances autorisés, l’agent IA retrouve le passage utile avec sa source et sa date. Il signale les versions contradictoires ou l’absence de réponse pour solliciter le service référent.', review: 'Le référent confirme la règle applicable. Chacun n’accède qu’aux documents permis par son rôle.' },
+  ],
+  guides: [],
+  related: [],
+  cta: { title: 'Quel service pourrait retrouver du temps ?', description: 'Partons d’un courrier récurrent, d’un dossier ou d’une recherche qui ralentit vos équipes. Regardons ensemble ce qui peut être préparé avec l’IA et les contrôles à conserver.' },
+  faq: [
+    { q: 'Est-ce adapté à une petite collectivité ?', a: 'Oui. Le périmètre peut se limiter à une formation ou à un usage dans un service. Nous examinons la fréquence des demandes, les documents disponibles et les moyens de suivi avant de proposer une connexion à vos outils.' },
+    { q: 'Peut-on commencer par former les agents publics ?', a: 'Oui. La formation est construite autour des tâches du service : rédaction de courriers, synthèse de notes et recherche dans les procédures. Les exercices utilisent des données fictives, anonymisées ou autorisées dans les outils retenus.' },
+    { q: 'Faut-il remplacer les outils déjà utilisés par notre administration ?', a: 'Non. Nous commençons par les outils autorisés et les connexions disponibles. Si vous disposez déjà d’un assistant IA, l’accompagnement peut porter sur les pratiques des équipes, les documents de référence et les usages à développer autour de cet outil.' },
+    { q: 'Comment encadrer les données des usagers ?', a: 'Avant de connecter un dossier, nous définissons avec vos responsables métiers, votre DSI et votre délégué à la protection des données les informations utilisables, les accès, les règles de conservation et les validations attendues. Les premiers essais peuvent être réalisés avec des données fictives ou anonymisées.' },
+    { q: 'L’IA peut-elle décider d’une aide ou d’une autorisation ?', a: 'Les usages présentés ici préparent les informations et les documents. Ils ne décident pas de l’attribution d’une aide, d’un droit ou d’une autorisation. L’instruction, l’appréciation de la situation et la décision restent assurées par les personnes habilitées.' },
+    { q: 'Où sont hébergées les données du projet ?', a: 'L’hébergement est étudié selon vos exigences et la nature des données : en France ou sur vos propres serveurs lorsque le projet le prévoit. Ce choix ne suffit pas à lui seul à répondre à toutes les obligations. Les conditions d’accès, de conservation et d’utilisation sont validées avec vos interlocuteurs compétents.' },
+  ],
+};
+
+export const additionalSectorStories = [financeStory, hotellerie, retailLuxe, secteurPublic];

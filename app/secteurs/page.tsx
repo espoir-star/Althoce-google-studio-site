@@ -39,6 +39,7 @@ const sectorSummaries: Record<string, string> = {
   associations: "Adhésions, subventions et bilans d’activité.",
   hotellerie: "Demandes de séjour, arrivées, groupes et avis clients.",
   "retail-luxe": "Catalogue, rendez-vous clients et suivi après-vente.",
+  "secteur-public": "Courriers aux usagers, dossiers, notes et procédures internes.",
 };
 const groups = [
   {

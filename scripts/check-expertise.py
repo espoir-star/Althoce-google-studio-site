@@ -6,7 +6,7 @@ from urllib.parse import urlsplit, parse_qs, unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / '.next/server/app'
-SECTORS = ['comptabilite','droit','medical','assurance-patrimoine','immobilier','industrie','commerce-distribution','marketing-communication','associations','finance','hotellerie','retail-luxe']
+SECTORS = ['comptabilite','droit','medical','assurance-patrimoine','immobilier','industrie','commerce-distribution','marketing-communication','associations','finance','hotellerie','retail-luxe','secteur-public']
 METIERS = ['commercial','marketing','finance','operations','juridique','achats','rh','service-client','telephonique']
 ROUTES = ['/', '/secteurs/', '/agent-ia/', '/guides/', '/formation-ia-paris/', '/formation-ia-nantes/', '/formation-ia-montpellier/', '/formation-ia-dijon/'] + ['/secteurs/'+s+'/' for s in SECTORS] + ['/agent-ia/'+s+'/' for s in METIERS]
 

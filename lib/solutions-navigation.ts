@@ -11,6 +11,7 @@ export const sectorNavigation = [
   { label: 'Industrie', href: '/secteurs/industrie/' },
   { label: 'Agences marketing', href: '/secteurs/marketing-communication/' },
   { label: 'Associations', href: '/secteurs/associations/' },
+  { label: 'Secteur public & collectivités', href: '/secteurs/secteur-public/' },
 ];
 export const professionalMetierNavigation = [
   { label: 'Expert-comptable', href: '/secteurs/comptabilite/', description: 'Collecte, rapprochement bancaire, lettrage et révision du cabinet.' },
