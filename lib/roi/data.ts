@@ -15,12 +15,13 @@ export type Simulation = {
   reduction: NumericInput; adoption: NumericInput; hourlyCost: NumericInput; weeks: NumericInput;
   setupCost: NumericInput; monthlyCost: NumericInput;
 };
-export const SECTORS = ['Finance & expertise comptable', 'Droit & professions juridiques', 'Santé', 'Assurance', 'Immobilier', 'Conseil & services', 'Associations', 'Commerce & industrie', 'Autre activité'];
+// Mêmes intitulés et même ordre que les pages /secteurs/ (lib/sectors-content.ts et lib/sector-additions.ts).
+export const SECTORS = ['Finance', 'Expertise comptable', 'Droit & professions juridiques', 'Santé & médical', 'Assurance, courtage & patrimoine', 'Immobilier', 'Commerce', 'Hôtellerie', 'Retail & luxe', 'Industrie', 'Agences marketing & communication', 'Associations & fédérations', 'Secteur public & collectivités', 'Autre activité'];
 export function initialSimulation(): Simulation {
   return { sector: '', people: null, customTask: '', tasks: [], reduction: 30, adoption: 70, hourlyCost: 35, weeks: 46, setupCost: null, monthlyCost: null };
 }
 export function exampleSimulation(): Simulation {
-  return { ...initialSimulation(), sector: 'Conseil & services', people: 5, tasks: [{ id: 'documents', hours: 10 }, { id: 'messages', hours: 5 }] };
+  return { ...initialSimulation(), sector: 'Expertise comptable', people: 5, tasks: [{ id: 'documents', hours: 10 }, { id: 'messages', hours: 5 }] };
 }
 export function taskTitle(task: SimulationTask, simulation: Simulation): string {
   return task.id === 'autre' ? simulation.customTask.trim() || 'Autre usage métier' : TASKS.find(t => t.id === task.id)!.title;

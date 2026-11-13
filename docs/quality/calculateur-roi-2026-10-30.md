@@ -38,3 +38,14 @@ La simulation est conservée dans l’onglet pendant 30 minutes avec validation 
 ## Limites de la validation
 
 Aucune demande réelle envoyée au CRM. Le contrat et les réponses du formulaire sont testés avec des appels simulés, pas par une livraison externe. Les styles d’impression sont intégrés ; aucun PDF exporté n’a fait l’objet d’une validation visuelle. La version reste locale et n’a pas été déployée.
+
+## Reprise du 13 novembre 2026
+
+La refonte, restée locale depuis le 30 octobre, est reportée sur `main` à jour (`60feeed`, après les PR #12 et #13) dans la branche `feat/calculateur-roi-refonte`. Les pages secteurs ne sont pas touchées : la version publiée par la PR #13 est conservée.
+
+- Menu « Votre activité » aligné sur les 13 secteurs publiés, mêmes intitulés et même ordre que `/secteurs/`, plus « Autre activité ». `npm run test:roi` compare désormais ce menu aux noms déclarés dans `lib/sectors-content.ts` et `lib/sector-additions.ts`, et vérifie qu’une simulation enregistrée avec un ancien intitulé est écartée.
+- Revérifié sur cette base : `npm run test:roi`, `npm run test:security`, `npm run typecheck`, `npm run build` (116 pages), `git diff --check`.
+- Navigateur : parcours complet, validation des champs obligatoires, résultats (16 h saisies : 3,4 h par semaine, 154,6 h et 5 410 € par an), budget facultatif avec ROI négatif (−53 %, équilibre au-delà de 36 mois), dialogue de contact ouvert puis fermé avec Échap et retour du focus, restauration après actualisation, aucune erreur dans la console. Sans débordement horizontal à 320, 390, 768 et 1440 px.
+- HTML serveur : un H1, URL canonique inchangée, JSON-LD WebApplication, BreadcrumbList et FAQPage (6 questions).
+
+Limites inchangées : aucune demande réelle envoyée au CRM, aucun PDF imprimé contrôlé visuellement.
