@@ -1,0 +1,77 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import ts from 'typescript';
+const compile = path => ts.transpileModule(readFileSync(new URL(path, import.meta.url), 'utf8'), { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
+const dataUrl = 'data:text/javascript;base64,' + Buffer.from(compile('../lib/roi/data.ts')).toString('base64');
+const calcUrl = 'data:text/javascript;base64,' + Buffer.from(compile('../lib/roi/calculator.ts').replace("'./data'", JSON.stringify(dataUrl))).toString('base64');
+const { initialSimulation, exampleSimulation, SECTORS } = await import(dataUrl);
+const { calculateSimulation: calc, validateSimulation: validate, restoreSimulation: restore, buildLeadPayload, submitLead } = await import(calcUrl);
+const securityUrl = 'data:text/javascript;base64,' + Buffer.from(compile('../lib/lead-security.ts')).toString('base64');
+const { validateLead } = await import(securityUrl);
+const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-8, `${actual} != ${expected}`);
+const example = exampleSimulation();
+assert.equal(calc(initialSimulation()), null);
+const result = calc(example);
+near(result.savedWeeklyHours, 3.15);
+near(result.savedAnnualHours, 144.9);
+near(result.annualValue, 5071.5);
+assert.equal(result.annualCost, null);
+assert.equal(result.roiPercent, null);
+assert.equal(result.paybackMonths, null);
+near(result.tasks.reduce((sum, t) => sum + t.savedHours, 0), result.savedWeeklyHours);
+// Total team hours must not be multiplied by headcount, sector, or an agent count.
+near(calc({ ...example, people: 1000, sector: 'Finance' }).annualValue, result.annualValue);
+near(calc({ ...example, hourlyCost: 70 }).annualValue, result.annualValue * 2);
+near(calc({ ...example, weeks: 23 }).annualValue, result.annualValue / 2);
+const funded = calc({ ...example, setupCost: 3000, monthlyCost: 100 });
+near(funded.annualCost, 4200); near(funded.netAnnualValue, 871.5); near(funded.roiPercent, 20.75);
+near(funded.paybackMonths, 3000 / (5071.5 / 12 - 100));
+const loss = calc({ ...example, setupCost: 3000, monthlyCost: 500 });
+assert.ok(loss.netAnnualValue < 0); assert.ok(loss.roiPercent < 0); assert.equal(loss.paybackMonths, null);
+const free = calc({ ...example, setupCost: 0, monthlyCost: 0 });
+assert.equal(free.roiPercent, null); assert.equal(free.paybackMonths, 0);
+for (const change of [{ reduction: 0 }, { adoption: 0 }]) {
+  const zero = calc({ ...example, ...change, setupCost: 5000, monthlyCost: 100 });
+  assert.equal(zero.annualValue, 0); assert.equal(zero.savedWeeklyHours, 0); assert.equal(zero.paybackMonths, null); assert.equal(zero.roiPercent, -100);
+}
+assert.equal(calc({ ...example, setupCost: 1000, monthlyCost: null }).annualCost, null);
+assert.deepEqual(validate({ ...example, setupCost: -1 }, 2), {});
+assert.ok(validate({ ...example, setupCost: -1 }, 3).setupCost);
+for (const change of [{ reduction: NaN }, { adoption: Infinity }, { weeks: 53 }, { weeks: 0.5 }, { people: 0 }, { people: 1.5 }, { hourlyCost: 0 }, { setupCost: -1 }, { monthlyCost: Infinity }, { tasks: [{ id:'documents', hours: null }] }, { tasks: [{ id: 'unknown', hours: 5 }] }, { tasks: [{ id:'documents', hours: 5 }, { id:'documents', hours: 5 }] }, { tasks: [{ id:'autre', hours: 5 }], customTask: '' }]) assert.equal(calc({ ...example, ...change }), null, JSON.stringify(change));
+assert.ok(validate({ ...example, people: 1, tasks: [{ id: 'documents', hours: 169 }] }).capacity);
+assert.ok(calc({ ...example, people: 1, tasks: [{ id: 'documents', hours: 40 }] }));
+const now = Date.now();
+const saved = (simulation = example, savedAt = now) => JSON.stringify({ version: 4, savedAt, simulation });
+assert.deepEqual(restore(saved(), now), example);
+// The sector menu must mirror the published sector pages, and reject names that no longer exist.
+const siteSectorNames = (path, pattern) => [...readFileSync(new URL(path, import.meta.url), 'utf8').matchAll(pattern)].map(match => match[1]);
+const siteSectors = [...siteSectorNames('../lib/sectors-content.ts', /^ {4}name: "([^"]+)"/gm), ...siteSectorNames('../lib/sector-additions.ts', /^ {2}name: '([^']+)'/gm)];
+assert.equal(siteSectors.length, 13);
+assert.deepEqual(SECTORS.filter(name => name !== 'Autre activité').sort(), [...siteSectors].sort());
+assert.equal(SECTORS.at(-1), 'Autre activité');
+assert.equal(restore(saved({ ...example, sector: 'Finance & expertise comptable' }), now), null);
+assert.equal(restore(saved(example, now - 1800001), now), null);
+assert.equal(restore(saved(example, now + 1000), now), null);
+for (const raw of [null, '', '{', JSON.stringify({ version:3, savedAt:now, simulation:example }), saved({ ...example, people:'5' }), saved({ ...example, tasks:[{ id:'bad', hours:2 }] }), saved({ ...example, tasks:[example.tasks[0], example.tasks[0]] })]) assert.equal(restore(raw, now), null);
+const form = { prenom:'Test', nom:'Exemple', email:'test@example.com', tel:'0600000000', entreprise:'Exemple', consentement:true };
+const payload = buildLeadPayload(form, example, result);
+const accepted = validateLead(payload, 'roi');
+assert.equal(accepted.roi_annuel, result.annualValue);
+assert.equal(accepted.nb_agents_inclus, 0);
+assert.ok(accepted.irritants_selectionnes.includes('adoption 70 %'));
+assert.ok(accepted.irritants_selectionnes.includes('Budget initial: non renseigné'));
+assert.throws(() => validateLead({ ...payload, consentement_rgpd:false }, 'roi'));
+const originalFetch = globalThis.fetch;
+try {
+  globalThis.fetch = async () => Response.json({ ok:true });
+  assert.deepEqual(await submitLead(payload), { ok:true });
+  globalThis.fetch = async () => Response.json({ ok:false }, { status:200 });
+  assert.equal((await submitLead(payload)).ok, false);
+  globalThis.fetch = async () => Response.json({ ok:true }, { status:500 });
+  assert.equal((await submitLead(payload)).ok, false);
+  globalThis.fetch = async () => new Response('not-json');
+  assert.equal((await submitLead(payload)).ok, false);
+  globalThis.fetch = async () => { throw new Error('offline'); };
+  assert.equal((await submitLead(payload)).ok, false);
+} finally { globalThis.fetch = originalFetch; }
+console.log('ROI checks passed: arithmetic, no headcount multiplier, negative and zero ROI, payback, optional budgets, invalid values, sector menu aligned with the site, session restore, lead contract and network failures. No external calls.');

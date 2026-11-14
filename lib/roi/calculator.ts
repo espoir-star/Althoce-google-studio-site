@@ -1,238 +1,95 @@
-import { AGENTS, POLES, type Agent, type Profile, type ROITotal } from './data';
-export type { ROITotal } from './data';
-
-const COUT_SETUP_PAR_AGENT   = 1000;
-const COUT_MENSUEL_PAR_AGENT = 100;
-const HEURES_DISPO_MOIS      = 156;
-const TAUX_PLAFOND_CAPACITE  = 0.40;
-const CALIBRATION_FACTOR     = 0.80;
-const TAUX_ADOPTION_DEFAUT   = 0.7;
-
-export function fmtEur(v: number, opts: { short?: boolean } = {}): string {
-  if (!isFinite(v)) v = 0;
-  const abs = Math.abs(v);
-  if (opts.short) {
-    if (abs >= 1_000_000) return `${(v / 1_000_000).toFixed(1).replace(/\.0$/, '')}M€`;
-    if (abs >= 10_000)    return `${Math.round(v / 1000)}k€`;
-    if (abs >= 1000)      return `${(v / 1000).toFixed(1).replace(/\.0$/, '')}k€`;
+import { TASKS, SECTORS, taskTitle, type Simulation, type NumericInput } from './data';
+export type SimulationErrors = Record<string, string>;
+export type SimulationResult = {
+  currentWeeklyHours: number; savedWeeklyHours: number; savedAnnualHours: number; annualValue: number;
+  reductionEffective: number; annualCost: number | null; netAnnualValue: number | null;
+  roiPercent: number | null; paybackMonths: number | null;
+  tasks: { id: string; title: string; currentHours: number; savedHours: number }[];
+};
+export function fmtNum(value: number, decimals = 0) {
+  return (Number.isFinite(value) ? value : 0).toLocaleString('fr-FR', { maximumFractionDigits: decimals });
+}
+export function fmtEur(value: number) { return `${fmtNum(value)} €`; }
+function inRange(value: NumericInput, min: number, max: number): value is number {
+  return typeof value === 'number' && Number.isFinite(value) && value >= min && value <= max;
+}
+export function validateSimulation(s: Simulation, step: 1 | 2 | 3 = 3): SimulationErrors {
+  const errors: SimulationErrors = {};
+  if (!inRange(s.people, 1, 10000) || !Number.isInteger(s.people)) errors.people = 'Indiquez entre 1 et 10 000 personnes.';
+  if (!s.tasks.length) errors.tasks = 'Choisissez au moins une tâche à étudier.';
+  if (s.tasks.some(t => !TASKS.some(known => known.id === t.id)) || new Set(s.tasks.map(t => t.id)).size !== s.tasks.length) errors.tasks = 'Vérifiez les tâches sélectionnées : chaque usage doit apparaître une seule fois.';
+  if (s.tasks.some(t => t.id === 'autre') && !s.customTask.trim()) errors.customTask = 'Décrivez votre tâche en quelques mots.';
+  if (s.customTask.length > 100) errors.customTask = 'Limitez la description à 100 caractères.';
+  if (step === 1) return errors;
+  s.tasks.forEach(t => { if (!inRange(t.hours, 0.25, 350000)) errors[t.id] = 'Indiquez un temps hebdomadaire supérieur ou égal à 0,25 h.'; });
+  const total = s.tasks.reduce((sum, task) => sum + (task.hours || 0), 0);
+  // Physical upper bound only. Hours are never multiplied by headcount.
+  if (inRange(s.people, 1, 10000) && total > s.people * 168) errors.capacity = 'Ce total représente plus de 168 heures par personne et par semaine. Vérifiez les durées et le nombre de personnes concernées.';
+  if (!inRange(s.reduction, 0, 100)) errors.reduction = 'Choisissez un pourcentage entre 0 et 100.';
+  if (!inRange(s.adoption, 0, 100)) errors.adoption = 'Choisissez un pourcentage entre 0 et 100.';
+  if (!inRange(s.hourlyCost, 1, 1000)) errors.hourlyCost = 'Indiquez un coût compris entre 1 et 1 000 € / h.';
+  if (!inRange(s.weeks, 1, 52) || !Number.isInteger(s.weeks)) errors.weeks = 'Indiquez entre 1 et 52 semaines complètes.';
+  // Budget fields only exist on the results step. Keep them reachable after navigating back.
+  if (step === 2) return errors;
+  for (const key of ['setupCost', 'monthlyCost'] as const) {
+    if (s[key] !== null && !inRange(s[key], 0, 10000000)) errors[key] = 'Indiquez un montant entre 0 et 10 000 000 €.';
   }
-  return Math.round(v).toLocaleString('fr-FR') + ' €';
+  return errors;
 }
-
-export function fmtNum(v: number, dec = 0): string {
-  if (!isFinite(v)) v = 0;
-  return v.toLocaleString('fr-FR', { minimumFractionDigits: dec, maximumFractionDigits: dec });
-}
-
-export function getMaxAgentsPole(effectifPole: number): number {
-  if (effectifPole <= 1)  return 1;
-  if (effectifPole <= 2)  return 2;
-  if (effectifPole <= 8)  return 3;
-  if (effectifPole <= 25) return 4;
-  return 5;
-}
-
-export function computeCoutHoraire(salaireMoyen: number, caAnnuel: number): number {
-  const horaireBase = salaireMoyen / HEURES_DISPO_MOIS;
-  // Smooth log interpolation: 0.82× at 100k€ CA → 1.38× at 1B€ CA
-  // (ensures the CA slider always produces a visible change)
-  const logMin = Math.log10(100_000);
-  const logMax = Math.log10(1_000_000_000);
-  const t = Math.max(0, Math.min(1,
-    (Math.log10(Math.max(100_000, caAnnuel)) - logMin) / (logMax - logMin)
-  ));
-  const multSeniorite = 0.82 + t * (1.38 - 0.82);
-  return horaireBase * multSeniorite;
-}
-
-function plafondCapacitePole(effectifPole: number): number {
-  return Math.max(0, effectifPole) * HEURES_DISPO_MOIS * TAUX_PLAFOND_CAPACITE;
-}
-
-function heuresAgent(agent: Agent): number {
-  const h = agent.heuresEcoTotales ?? 0;
-  const adoption = agent.tauxAdoption ?? TAUX_ADOPTION_DEFAUT;
-  return h * adoption;
-}
-
-// Scale agent hours with pole headcount (calibrated at 10 people = 1.0×)
-// Ensures the effectif slider always influences the ROI
-function effectifScale(effectifPole: number): number {
-  const n = Math.max(1, effectifPole);
-  return Math.max(0.35, Math.min(2.0, 0.6 + 0.4 * Math.log10(n)));
-}
-
-export function computeAgentROI(agent: Agent, profil: Profile) {
-  const coutHoraire = computeCoutHoraire(profil.salaire, profil.ca);
-  const effectifPole = profil.effectifs[agent.pole] || 1;
-  const heures = heuresAgent(agent) * effectifScale(effectifPole);
-  const gainMensuel = coutHoraire * heures;
-  const heuresSemaine = heures / 4.33;
+export function calculateSimulation(s: Simulation): SimulationResult | null {
+  if (Object.keys(validateSimulation(s)).length) return null;
+  const reductionEffective = s.reduction! / 100 * s.adoption! / 100;
+  const tasks = s.tasks.map(task => ({ id: task.id, title: taskTitle(task, s), currentHours: task.hours!, savedHours: task.hours! * reductionEffective }));
+  const currentWeeklyHours = tasks.reduce((sum, task) => sum + task.currentHours, 0);
+  const savedWeeklyHours = currentWeeklyHours * reductionEffective;
+  const savedAnnualHours = savedWeeklyHours * s.weeks!;
+  const annualValue = savedAnnualHours * s.hourlyCost!;
+  const hasBudget = s.setupCost !== null && s.monthlyCost !== null;
+  const annualCost = hasBudget ? s.setupCost! + s.monthlyCost! * 12 : null;
+  const netAnnualValue = annualCost !== null ? annualValue - annualCost : null;
+  const monthlyNetValue = annualValue / 12 - (s.monthlyCost ?? 0);
   return {
-    gainMensuel: Math.round(gainMensuel),
-    heuresSemaine,
-    coutHoraire,
+    currentWeeklyHours, savedWeeklyHours, savedAnnualHours, annualValue, reductionEffective, tasks, annualCost, netAnnualValue,
+    roiPercent: annualCost !== null && annualCost > 0 ? netAnnualValue! / annualCost * 100 : null,
+    // Never manufacture a payback when recurring costs exceed the value of time.
+    paybackMonths: hasBudget && monthlyNetValue > 0 ? s.setupCost! / monthlyNetValue : null,
   };
 }
-
-function scoreAgent(agent: Agent, profil: Profile) {
-  let score = 0;
-  const effectif = profil.effectifs[agent.pole] || 0;
-  if (effectif >= 1) score += 20;
-  if (effectif >= 5) score += 10;
-
-  const irritantsPole = profil.irritants[agent.pole] || [];
-  const matched = (agent.triggersIrritants || []).filter(t => irritantsPole.includes(t)).length;
-  score += matched * 25;
-
-  const r = computeAgentROI(agent, profil);
-  if (r.gainMensuel > 2000) score += 10;
-  if (r.gainMensuel > 5000) score += 10;
-
-  const h = agent.heuresEcoTotales || 0;
-  if (h >= 80) score += 10;
-  if (h >= 50) score += 5;
-
-  return { agent, score };
-}
-
-export function recommendAgents(profil: Profile, opts: { grouped?: boolean } = {}): Agent[] | Record<string, Agent[]> {
-  const grouped = !!opts.grouped;
-  const polesActifs = profil.polesActifs || [];
-  const groupedResult: Record<string, Agent[]> = {};
-  const flat: Agent[] = [];
-
-  polesActifs.forEach(pole => {
-    const effectifPole = (profil.effectifs && profil.effectifs[pole]) || 1;
-    const max = getMaxAgentsPole(effectifPole);
-    const candidats = AGENTS.filter(a => a.pole === pole);
-    const scored = candidats.map(a => scoreAgent(a, profil)).sort((a, b) => b.score - a.score);
-    const top = scored.slice(0, max).map(s => s.agent);
-    groupedResult[pole] = top;
-    top.forEach(a => flat.push(a));
-  });
-
-  return grouped ? groupedResult : flat;
-}
-
-export function getAllAgentsForPole(pole: string, profil: Profile): Agent[] {
-  const candidats = AGENTS.filter(a => a.pole === pole);
-  return candidats.map(a => scoreAgent(a, profil))
-    .sort((a, b) => b.score - a.score)
-    .map(s => s.agent);
-}
-
-export function computeTotalROIByPole(agentsParPole: Record<string, Agent[]>, profil: Profile): ROITotal {
-  const coutHoraire = computeCoutHoraire(profil.salaire, profil.ca);
-  let gainMensuel = 0, heuresMensuelles = 0, nbAgents = 0;
-
-  Object.entries(agentsParPole).forEach(([pole, agents]) => {
-    if (!agents || !agents.length) return;
-    const effectifPole = profil.effectifs[pole] || 1;
-    const scale = effectifScale(effectifPole);
-    const heuresBrutes = agents.reduce((s, a) => s + heuresAgent(a) * scale, 0);
-    const plafond = plafondCapacitePole(effectifPole);
-    const heuresCapees = Math.min(heuresBrutes, plafond);
-    gainMensuel += coutHoraire * heuresCapees * CALIBRATION_FACTOR;
-    heuresMensuelles += heuresCapees;
-    nbAgents += agents.length;
-  });
-
-  const coutSetup   = nbAgents * COUT_SETUP_PAR_AGENT;
-  const coutMensuel = nbAgents * COUT_MENSUEL_PAR_AGENT;
-  const gainAnnuel  = gainMensuel * 12;
-  const coutAn1     = coutSetup + coutMensuel * 12;
-  const roiNetAn1   = gainAnnuel - coutAn1;
-  const amortiMois  = coutSetup / Math.max(1, gainMensuel - coutMensuel);
-  const heuresSemaine = heuresMensuelles / 4.33;
-
-  let heuresGaspillees = 0;
-  Object.entries(agentsParPole).forEach(([pole, agents]) => {
-    const scale = effectifScale(profil.effectifs[pole] || 1);
-    (agents || []).forEach(a => { heuresGaspillees += (a.heuresEcoTotales || 0) * scale / 4.33; });
-  });
-
-  return {
-    gainMensuel: Math.round(gainMensuel),
-    gainAnnuel:  Math.round(gainAnnuel),
-    heuresSemaine: Math.round(heuresSemaine),
-    heuresGaspillees: Math.round(heuresGaspillees),
-    coutSetup, coutMensuel, coutAn1,
-    roiNetAn1: Math.round(roiNetAn1),
-    amortiMois,
-    paybackMois: amortiMois,
-    nbAgents,
-    multiplicateur3ans: (gainAnnuel * 3) / Math.max(1, coutSetup + coutMensuel * 36),
-  };
-}
-
-export function computeTotalROI(agents: Agent[], profil: Profile): ROITotal {
-  const byPole: Record<string, Agent[]> = {};
-  (agents || []).forEach(a => {
-    if (!byPole[a.pole]) byPole[a.pole] = [];
-    byPole[a.pole].push(a);
-  });
-  return computeTotalROIByPole(byPole, profil);
-}
-
-export async function submitLead(payload: Record<string, unknown>): Promise<{ ok: boolean; score?: number; error?: string; dev?: boolean }> {
+export const STORAGE_KEY = 'althoce-roi-simulation-v4';
+export function restoreSimulation(raw: string | null, now = Date.now()): Simulation | null {
+  if (!raw) return null;
   try {
-    const response = await fetch('/api/roi-lead/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    const result = await response.json();
-    return response.ok ? result : { ok: false, error: result.error || 'Envoi impossible. Veuillez réessayer.' };
-  } catch (err: unknown) {
-    return { ok: false, error: 'Connexion impossible. Veuillez réessayer.' };
-  }
+    const { version, savedAt, simulation: s } = JSON.parse(raw);
+    if (version !== 4 || !Number.isFinite(savedAt) || savedAt > now || now - savedAt > 30 * 60 * 1000 || !s || typeof s !== 'object') return null;
+    if (typeof s.sector !== 'string' || (s.sector && !SECTORS.includes(s.sector)) || typeof s.customTask !== 'string' || s.customTask.length > 100) return null;
+    if (!Array.isArray(s.tasks) || s.tasks.length > TASKS.length || new Set(s.tasks.map(t => t?.id)).size !== s.tasks.length) return null;
+    if (s.tasks.some(t => !t || !TASKS.some(p => p.id === t.id) || (t.hours !== null && !inRange(t.hours, 0, 350000)))) return null;
+    const bounds = { people: 10000, reduction: 100, adoption: 100, hourlyCost: 1000, weeks: 52, setupCost: 10000000, monthlyCost: 10000000 };
+    for (const [key, max] of Object.entries(bounds)) if (s[key] !== null && !inRange(s[key], 0, max)) return null;
+    return { sector: s.sector, customTask: s.customTask, tasks: s.tasks.map(t => ({ id: t.id, hours: t.hours })), people: s.people, reduction: s.reduction, adoption: s.adoption, hourlyCost: s.hourlyCost, weeks: s.weeks, setupCost: s.setupCost, monthlyCost: s.monthlyCost };
+  } catch { return null; }
 }
-
-export function buildLeadPayload(
-  formData: { prenom: string; nom: string; email: string; tel: string; entreprise: string; consentement: boolean },
-  profile: Profile,
-  activeAgents: Agent[],
-  total: ROITotal,
-): Record<string, unknown> {
-  const irritantsIds: string[] = [];
-  Object.values(profile.irritants || {}).forEach(arr => {
-    arr.forEach(id => { if (!irritantsIds.includes(id)) irritantsIds.push(id); });
-  });
-
-  const agentsMarquesNoms = (profile.agentsMarques || [])
-    .map(id => { const a = AGENTS.find(x => x.id === id); return a ? a.nom : id; })
-    .join(', ');
-
-  const etp = total.heuresSemaine / 35;
-
+export type LeadData = { prenom: string; nom: string; email: string; tel: string; entreprise: string; consentement: boolean };
+export function buildLeadPayload(form: LeadData, s: Simulation, result: SimulationResult): Record<string, unknown> {
+  // Existing webhook contract retained. No catalogue agents are recommended.
+  const assumptions = `${result.tasks.map(t => `${t.title}: ${fmtNum(t.currentHours, 2)} h/sem pour l’équipe`).join('; ')}. Réduction nette ${s.reduction} %, adoption ${s.adoption} %, ${s.weeks} sem/an, ${s.hourlyCost} €/h. Budget initial: ${s.setupCost ?? 'non renseigné'}; mensuel: ${s.monthlyCost ?? 'non renseigné'}. Valeur du temps, pas une économie de trésorerie.`;
   return {
-    prenom: formData.prenom,
-    nom: formData.nom,
-    email: formData.email,
-    telephone: formData.tel,
-    entreprise: formData.entreprise,
-    secteur: profile.secteur,
-    secteur_personnalise: profile.secteurPersonnalise || '',
-    effectif: profile.effectifTotal,
-    ca_annuel: fmtEur(profile.ca, { short: true }),
-    salaire_moyen: profile.salaire,
-    poles_actifs: profile.polesActifs.join(', '),
-    effectifs_par_pole: profile.effectifs,
-    irritants_selectionnes: irritantsIds.join(', '),
-    agents_recommandes_inclus_roi: activeAgents.map(a => a.nom).join(', '),
-    agents_complementaires_marques: agentsMarquesNoms,
-    roi_annuel: total.gainAnnuel,
-    gain_mensuel: total.gainMensuel,
-    heures_rendues_sem: total.heuresSemaine,
-    equivalent_etp: parseFloat(etp.toFixed(1)),
-    nb_agents_inclus: activeAgents.length,
-    nb_agents_marques: (profile.agentsMarques || []).length,
-    consentement_rgpd: formData.consentement === true,
+    prenom: form.prenom, nom: form.nom, email: form.email, telephone: form.tel, entreprise: form.entreprise,
+    secteur: s.sector || 'Non précisé', secteur_personnalise: '', effectif: s.people,
+    ca_annuel: 'Non renseigné', salaire_moyen: s.hourlyCost! * 35 * 52 / 12,
+    poles_actifs: 'Périmètre de simulation', effectifs_par_pole: { equipe: s.people },
+    irritants_selectionnes: assumptions, agents_recommandes_inclus_roi: '', agents_complementaires_marques: '',
+    roi_annuel: result.annualValue, gain_mensuel: result.annualValue / 12,
+    heures_rendues_sem: result.savedWeeklyHours, equivalent_etp: result.savedWeeklyHours / 35,
+    nb_agents_inclus: 0, nb_agents_marques: 0, consentement_rgpd: form.consentement,
     source_url: typeof window !== 'undefined' ? window.location.origin + window.location.pathname : '',
     user_agent: typeof navigator !== 'undefined' ? navigator.userAgent.slice(0, 200) : '',
   };
 }
-
-// Re-exports for convenience
-export { AGENTS, POLES } from './data';
+export async function submitLead(payload: Record<string, unknown>): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const response = await fetch('/api/roi-lead/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const result = await response.json();
+    return response.ok && result.ok === true ? { ok: true } : { ok: false, error: result.error || 'Envoi impossible. Veuillez réessayer.' };
+  } catch { return { ok: false, error: 'Connexion impossible. Votre estimation reste disponible. Réessayez dans un instant.' }; }
+}

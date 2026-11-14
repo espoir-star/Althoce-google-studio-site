@@ -451,16 +451,10 @@ h1, h2, h3 { letter-spacing: -0.03em; }
 @media print {
   nav,
   .no-print { display: none !important; }
+  body:has([data-roi-report]) footer,
+  body:has([data-roi-report]) [aria-label="Navigation principale"],
+  body:has([data-roi-report]) [aria-label="Préférences de confidentialité"] { display:none!important; }
 }
-
-/* ── Calculateur ROI ─────────────────────────────────────────── */
-@keyframes alt-pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.35} }
-@keyframes alt-fade-in { from{transform:translateY(6px)} to{transform:none} }
-@keyframes alt-spin { to{transform:rotate(360deg)} }
-@keyframes roi-step-in { from{transform:translateY(20px)} to{transform:none} }
-.alt-fade-in { animation: alt-fade-in .28s ease-out both; }
-.roi-step-in { animation: roi-step-in .35s cubic-bezier(.16,1,.3,1) both; }
-.alt-card-hover:hover { border-color: rgba(9,9,11,.18) !important; }
 
 /* Range slider — reset + premium thumb */
 input[type=range] { -webkit-appearance: none; appearance: none; }
