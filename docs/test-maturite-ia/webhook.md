@@ -25,7 +25,7 @@ Pour traiter ces demandes à part (étiquette, séquence d’emails, tableau de 
 | Champ | Contenu |
 |---|---|
 | `nom` | Prénom et nom ; le prénom seul pour une demande `plan` |
-| `entreprise` | Entreprise ou cabinet ; « Non précisée » si elle n’est pas renseignée dans une demande `plan` |
+| `entreprise` | Entreprise ou cabinet ; « Non précisée » pour une demande `plan`, qui ne demande que le prénom et l’email |
 | `email` | Email professionnel |
 | `telephone` | Facultatif, vide si non renseigné |
 | `taille` | Tranche au format du formulaire de contact (« 10 à 49 personnes ») |

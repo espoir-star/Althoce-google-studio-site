@@ -76,7 +76,7 @@ Trois précautions rendent l’exercice utile.
 2. **Acceptez de ne pas savoir.** Si vous ignorez quels outils vos collaborateurs utilisent, c’est déjà une information.
 3. **Croisez les regards.** Un associé et un responsable d’équipe ne décrivent pas toujours le même cabinet. Les écarts sont instructifs.
 
-Le [test de maturité IA](/test-maturite-ia/) applique ces principes : quinze questions, quatre situations par question, un résultat par dimension sans inscription, puis un plan d’action en trois priorités.
+Le [test de maturité IA](/test-maturite-ia/) applique ces principes : quinze questions, quatre situations par question, un score sans inscription, puis le résultat complet par dimension et un plan d’action en trois priorités.
 
 ## Et après ?
 

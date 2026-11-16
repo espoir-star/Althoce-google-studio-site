@@ -34,13 +34,13 @@ Nous avons repris des **principes généraux** (résultat immédiat, questions f
 2. **Quatre stades, alignés sur les quatre situations de chaque question.** Chaque question décrit la même progression que l’échelle finale. Le score se comprend sans mode d’emploi.
 3. **« Je ne sais pas » est une réponse.** Elle n’est pas comptée comme une mauvaise note. Elle est signalée, parce qu’un dirigeant qui ne sait pas ce qui se pratique a déjà appris quelque chose.
 4. **Aucun benchmark tant que nous n’avons pas de données.** Le résultat situe par rapport à quatre stades décrits, pas par rapport à une moyenne inventée.
-5. **Le constat est libre, le plan s’échange contre un email.** Score, stade, lecture des dimensions et déséquilibres s’affichent sans rien demander, et le calcul se fait sur l’appareil du visiteur. Les trois priorités détaillées, le prochain pas par dimension, l’accompagnement recommandé, les repères du secteur et la version imprimable s’ouvrent avec un prénom et un email professionnel. Rien n’est transmis avant cette demande.
+5. **Un aperçu libre, le reste contre un email.** Sans rien demander, le visiteur voit son score, son stade, ses trois dimensions les mieux notées, le premier point relevé et les titres de ses trois priorités. Le calcul se fait sur son appareil. Les deux autres dimensions, les autres points relevés, le détail des priorités, le prochain pas par dimension, l’accompagnement recommandé, les repères du secteur et la version imprimable s’ouvrent avec un prénom et un email professionnel. Rien n’est transmis avant cette demande.
 6. **Le cadre avant l’automatisation.** Le test ne recommande jamais de relier l’IA aux outils tant que le cadre ou les usages sont faibles.
 7. **Adapté au secteur.** Le secteur modifie la pondération, les liens proposés et ajoute un bloc d’exemples tiré de la page secteur correspondante.
 8. **Adapté aux indépendants.** Chaque question a une formulation dédiée à la personne qui exerce seule.
 9. **Chaque résultat mène à une offre.** Le plan recommande un accompagnement du catalogue et en propose deux autres. La règle est décrite dans `exploitation-commerciale.md`.
 
-Deux points ont changé en cours de route. Le barème n’est pas caché côté serveur : le calcul dans le navigateur protège les réponses, et un concurrent peut de toute façon reconstituer un barème en passant le test plusieurs fois. Et la première version donnait tout sans rien demander : à la demande du client, le plan d’action passe derrière un prénom et un email, pour que le test produise des contacts et pas seulement des demandes d’échange.
+Deux points ont changé en cours de route. Le barème n’est pas caché côté serveur : le calcul dans le navigateur protège les réponses, et un concurrent peut de toute façon reconstituer un barème en passant le test plusieurs fois. Et la première version donnait tout sans rien demander : à la demande du client, le plan d’action passe derrière un prénom et un email, puis l’aperçu libre est réduit à trois dimensions et la demande d’email s’ouvre en fenêtre au défilement, pour que le test produise des contacts et pas seulement des demandes d’échange.
 
 ## 4. Le modèle
 
@@ -114,9 +114,10 @@ Le test propose toujours exactement trois priorités, dans cet ordre :
 
 1. **Profil** : secteur, rôle, taille. Trois champs, obligatoires. « Autre activité » ouvre un champ libre, obligatoire, pour préciser l’activité.
 2. **Quinze questions**, une par écran. Un clic passe à la suivante ; au clavier, on choisit puis on valide.
-3. **Constat immédiat, sans inscription** : score et stade, lecture des cinq dimensions, signaux et points d’appui, titres des trois priorités, méthode de calcul.
-4. **Plan d’action, contre prénom et email** : détail des priorités, prochain pas par dimension, premier pas par signal, accompagnement recommandé, bloc secteur. Il s’affiche à l’écran dès l’envoi.
-5. **Suites possibles** : imprimer ou enregistrer en PDF, copier un lien de partage, demander un échange. Le dialogue d’échange reprend le prénom et l’email déjà saisis.
+3. **Aperçu immédiat, sans inscription** : score et stade, trois dimensions sur cinq (les mieux notées), le premier signal, les points d’appui, les titres des trois priorités, la méthode de calcul. Les deux dimensions les plus fragiles sont masquées : ce sont celles qui appellent une action.
+4. **Demande d’email en fenêtre** : elle s’ouvre d’elle-même, une seule fois, quand le visiteur fait défiler son résultat jusqu’à la première dimension masquée. Elle se ferme librement ; un bouton et un bloc en bas du résultat permettent de la retrouver. Deux champs : prénom et email.
+5. **Résultat complet et plan d’action** : cinq dimensions et radar, tous les signaux avec leur premier pas, détail des priorités, prochain pas par dimension, accompagnement recommandé, bloc secteur. Il s’affiche à l’écran dès l’envoi.
+6. **Suites possibles** : imprimer ou enregistrer en PDF, copier un lien de partage, demander un échange. Le dialogue d’échange reprend le prénom et l’email déjà saisis.
 
 Le test en cours est conservé deux heures dans l’onglet, avec l’indication que le plan a été ouvert. Les coordonnées ne sont jamais conservées dans le navigateur. Le lien de partage contient les réponses après le signe `#` : cette partie d’une adresse n’est pas transmise au serveur. Il ouvre le résultat complet en lecture seule et ne contient jamais la précision libre du secteur.
 

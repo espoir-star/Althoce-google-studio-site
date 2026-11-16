@@ -26,11 +26,11 @@ Nous avons construit un test pour le voir en 5 minutes.
 15 questions. Chacune décrit quatre situations réelles : vous choisissez celle qui ressemble le plus à votre quotidien.
 
 Vous obtenez tout de suite, sans inscription :
-→ votre stade parmi quatre
-→ votre score sur chacune des cinq dimensions
-→ les déséquilibres relevés dans vos réponses
+→ votre score et votre stade parmi quatre
+→ une première lecture de vos dimensions
+→ le principal déséquilibre relevé dans vos réponses
 
-Puis, si vous le souhaitez, votre plan d’action : trois priorités dans l’ordre, avec le premier pas pour chacune.
+Puis, avec votre email, le résultat complet et votre plan d’action : trois priorités dans l’ordre, avec le premier pas pour chacune.
 
 Et pas de « vous êtes au-dessus de 63 % des entreprises ». Nous n’affichons pas de comparaison tant que nous n’avons pas assez de réponses réelles pour qu’elle ait un sens.
 

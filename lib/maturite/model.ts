@@ -82,6 +82,17 @@ export function offerFor(action: ActionId, solo: boolean): OfferId {
     case 'suivi': return 'pilotage';
   }
 }
+/** Nombre de dimensions et de signaux lisibles avant l’ouverture du plan d’action. */
+export const FREE_DIMENSIONS = 3;
+export const FREE_SIGNALS = 1;
+/**
+ * Dimensions affichées sans email : les trois mieux notées. Les deux plus fragiles, celles qui appellent
+ * une action, se lisent dans le plan. À égalité, l’ordre du rapport départage.
+ */
+export function freeDimensions(dims: Record<DimensionId, number | null>): DimensionId[] {
+  const ranked = [...DIMENSION_IDS].sort((a, b) => (dims[b] ?? -1) - (dims[a] ?? -1) || DIMENSION_IDS.indexOf(a) - DIMENSION_IDS.indexOf(b)).slice(0, FREE_DIMENSIONS);
+  return DIMENSION_IDS.filter(id => ranked.includes(id));
+}
 export const MAX_OFFERS = 3;
 export const MAX_SIGNALS = 3;
 export const MAX_STRENGTHS = 3;

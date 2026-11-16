@@ -1,10 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { ArrowUpRight, Check, Link2, Printer, TriangleAlert } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Check, Link2, LockKeyhole, Printer, TriangleAlert } from 'lucide-react';
 import { DIMENSIONS, QUESTION_IDS, ROLES, SIZES, sectorLabel, type Answers, type DimensionId, type Profile } from '@/lib/maturite/questions';
-import { MIN_ANSWERS, STAGES, encodeShare, type Result } from '@/lib/maturite/model';
+import { FREE_SIGNALS, MIN_ANSWERS, STAGES, encodeShare, freeDimensions, type Result } from '@/lib/maturite/model';
 import { ACTION_TEXTS, DIMENSION_TEXTS, OFFER_TEXTS, SIGNAL_TEXTS, STAGE_TEXTS, STRENGTH_TEXTS, actionLink } from '@/lib/maturite/report-content';
-import { PlanGate } from './MaturitePlanGate';
+import { PlanGate, PlanGateDialog } from './MaturitePlanGate';
 import type { Contact } from './sendMaturite';
 import s from '@/components/roi/Calculator.module.css';
 import m from './Maturite.module.css';
@@ -45,6 +45,25 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
   const stage = result.stage;
   // Sans aucune dimension lisible, il n’y a ni lecture ni priorité à proposer.
   const readable = DIMENSIONS.some(dimension => result.dims[dimension.id] !== null);
+  // Avant l’ouverture du plan : trois dimensions sur cinq et le premier signal.
+  const locked = !open && readable;
+  const freeDims = freeDimensions(result.dims);
+  const signals = locked ? result.signals.slice(0, FREE_SIGNALS) : result.signals;
+  const hiddenSignals = result.signals.length - signals.length;
+  // La demande d’email s’ouvre d’elle-même, une seule fois, quand le défilement atteint la première partie verrouillée.
+  const [gateOpen, setGateOpen] = useState(false);
+  const proposed = useRef(false);
+  const firstLock = useRef<HTMLLIElement>(null);
+  useEffect(() => {
+    if (!locked) return;
+    const onScroll = () => {
+      if (proposed.current || document.querySelector('dialog[open]')) return;
+      const top = firstLock.current?.getBoundingClientRect().top;
+      if (top !== undefined && top < innerHeight * 0.8) { proposed.current = true; setGateOpen(true); }
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    return () => removeEventListener('scroll', onScroll);
+  }, [locked]);
   async function copyLink() {
     const link = `${location.origin}${location.pathname}#resultat=${encodeShare(profile, answers)}`;
     try { await navigator.clipboard.writeText(link); setCopied('done'); } catch { setCopied('failed'); }
@@ -77,10 +96,14 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
     {readable && <>
     <section className={m.block} aria-labelledby="maturite-dims-title">
       <h3 id="maturite-dims-title">Cinq dimensions</h3>
-      <div className={m.dimLayout}>
-        <Radar dims={result.dims} />
-        <ul className={m.dimList}>{DIMENSIONS.map(dimension => {
+      <div className={locked ? undefined : m.dimLayout} style={locked ? { marginTop: 20 } : undefined}>
+        {!locked && <Radar dims={result.dims} />}
+        <ul className={m.dimList}>{DIMENSIONS.map((dimension, i) => {
           const score = result.dims[dimension.id], band = result.bands[dimension.id];
+          if (locked && !freeDims.includes(dimension.id)) return <li key={dimension.id} ref={DIMENSIONS.findIndex(item => !freeDims.includes(item.id)) === i ? firstLock : undefined} className={m.dimLocked}>
+            <div className={m.dimTop}><strong>{dimension.name}<small>{dimension.label}</small></strong><span className={m.lockTag}><LockKeyhole size={13} strokeWidth={2} aria-hidden="true" />Dans votre plan</span></div>
+            <div className={m.dimBar} aria-hidden="true" />
+          </li>;
           return <li key={dimension.id}>
             <div className={m.dimTop}><strong>{dimension.name}<small>{dimension.label}</small></strong><span>{score === null ? <small>Non évalué</small> : <>{score}<small> / 100</small></>}</span></div>
             <div className={m.dimBar} role="img" aria-label={score === null ? `${dimension.name} : non évalué` : `${dimension.name} : ${score} sur 100`}><i style={{ width: `${score ?? 0}%` }} /></div>
@@ -88,19 +111,22 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
           </li>;
         })}</ul>
       </div>
+      {locked && <button type="button" className={`${s.secondary} ${m.unlock} ${s.noPrint}`} onClick={() => setGateOpen(true)}><LockKeyhole size={15} strokeWidth={2} aria-hidden="true" />Voir mes cinq dimensions</button>}
     </section>
 
     <section className={m.block} aria-labelledby="maturite-signals-title">
       <h3 id="maturite-signals-title">Ce que vos réponses révèlent</h3>
-      {result.signals.length > 0 ? <div className={m.signals}>{result.signals.map(id => { const item = SIGNAL_TEXTS[id]; return <article key={id} className={m.signal}>
+      {signals.length > 0 ? <div className={m.signals}>{signals.map(id => { const item = SIGNAL_TEXTS[id]; return <article key={id} className={m.signal}>
         <h4><TriangleAlert size={17} strokeWidth={2} aria-hidden="true" />{item.title}</h4>
         <p>{item.finding} {item.effect}</p>
         {open && <p className={m.signalStep}><b>Premier pas.</b> {item.step}</p>}
       </article>; })}</div> : <p className={m.noSignal}>Aucun déséquilibre marqué entre vos dimensions.</p>}
+      {hiddenSignals > 0 && <p className={m.lockedLine}><LockKeyhole size={14} strokeWidth={2} aria-hidden="true" />{hiddenSignals > 1 ? `${hiddenSignals} autres points relevés` : 'Un autre point relevé'} dans votre plan d’action.</p>}
       {result.strengths.length > 0 && <ul className={m.strengths} aria-label="Vos points d’appui">{result.strengths.map(id => <li key={id}><Check size={16} strokeWidth={2.5} aria-hidden="true" /><div><strong>{STRENGTH_TEXTS[id].title}</strong><span>{STRENGTH_TEXTS[id].text}</span></div></li>)}</ul>}
     </section>
 
     {!open && <PlanGate profile={profile} answers={answers} result={result} contact={contact} onUnlocked={onUnlocked} onContact={onContact} />}
+    {locked && gateOpen && <PlanGateDialog profile={profile} answers={answers} result={result} contact={contact} onUnlocked={onUnlocked} onClose={() => setGateOpen(false)} />}
     {open && <>
     <section className={m.block} aria-labelledby="maturite-priorities-title">
       <h3 id="maturite-priorities-title">Vos trois priorités</h3>

@@ -104,6 +104,20 @@
 .actions button:hover { color:#1c52b9; }
 
 .subField { margin-top:12px; }
+.dimLocked .dimTop strong { color:#5c6d85; }
+.dimLocked .dimBar { margin-bottom:0; background:repeating-linear-gradient(135deg,#e6ecf6 0 8px,#f1f5fb 8px 16px); }
+.lockTag { display:inline-flex!important; align-items:center; gap:6px; padding:3px 10px; border-radius:999px; background:#edf3ff; color:#2459bd!important; font-size:11px!important; font-weight:600!important; white-space:nowrap; }
+.unlock { margin-top:20px; }
+.lockedLine { display:flex; align-items:center; gap:8px; margin-top:14px!important; font-size:13px; font-weight:550; color:#2459bd; }
+.gateDialog .gateLabel { margin-bottom:10px; }
+.gateDialog h2 { padding-right:36px; }
+.gateDialog .gateList { margin:14px 0 18px; }
+.gateDialog .gateList li { padding:7px 0; font-size:14px; }
+/* La croix ne prend pas de ligne : le bouton d’envoi doit rester visible sans défilement sur un écran d’ordinateur portable. */
+.gateDialog > div > button:first-child { position:absolute; top:14px; right:14px; margin:0; }
+.gateDialog .gateList li::before { background:#e5edfa; }
+.gateDialog .gateForm { padding:0; border:0; }
+.gateDialog .gateForm > button[type="button"] { color:#5c6d85; }
 .gate { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; align-items:start; margin-top:36px; padding:28px; border-radius:14px; background:#edf3ff; }
 .gateLabel { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:#2459bd; }
 .gate h3 { margin-top:10px; font-size:24px; font-weight:600; line-height:1.25; letter-spacing:-.03em; color:#16386e; }

@@ -126,7 +126,7 @@ export default function MaturiteTestClient({ sectorNotes }: { sectorNotes: Recor
             <button type="button" className={s.primary} onClick={next}>{step === 1 ? 'Commencer les questions' : index < last ? 'Question suivante' : 'Voir mon résultat'}<ArrowRight size={18} aria-hidden="true" /></button>
           </div>}
         </div>
-        {step !== 3 && <p className={s.privacyNote}>Score et lecture par dimension sans inscription. Votre plan d’action s’ouvre ensuite avec votre prénom et votre email.</p>}
+        {step !== 3 && <p className={s.privacyNote}>Score et stade sans inscription. Le résultat complet et votre plan d’action s’ouvrent ensuite avec votre prénom et votre email.</p>}
       </div>
       <MaturitePanel step={step} answers={answers} current={step === 2 ? question.dim : null} result={result} unlocked={unlocked || shared} />
     </div>

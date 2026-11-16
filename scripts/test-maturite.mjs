@@ -13,7 +13,7 @@ const securityUrl = dataUrl(compile('lib/lead-security.ts'));
 const leadUrl = dataUrl(compile('lib/maturite/lead.ts').replace("'../lead-security'", JSON.stringify(securityUrl)).replace("'./questions'", JSON.stringify(questionsUrl)).replace("'./model'", JSON.stringify(modelUrl)).replace("'./report-content'", JSON.stringify(contentUrl)));
 
 const { DIMENSIONS, QUESTIONS, QUESTION_IDS, SECTOR_OPTIONS, SENSITIVE_SECTORS, SIZES, ROLES, questionText, sectorLabel } = await import(questionsUrl);
-const { STAGES, MIN_ANSWERS, computeResult, stageOf, bandOf, weightsFor, isComplete, isProfileComplete, encodeShare, decodeShare, restoreDraft, DRAFT_TTL, SIGNAL_ACTION, offerFor } = await import(modelUrl);
+const { STAGES, MIN_ANSWERS, computeResult, stageOf, bandOf, weightsFor, isComplete, isProfileComplete, encodeShare, decodeShare, restoreDraft, DRAFT_TTL, SIGNAL_ACTION, offerFor, freeDimensions, FREE_DIMENSIONS, FREE_SIGNALS } = await import(modelUrl);
 const { STAGE_TEXTS, DIMENSION_TEXTS, SIGNAL_TEXTS, STRENGTH_TEXTS, ACTION_TEXTS, OFFER_TEXTS, MATURITE_FAQ, actionLink } = await import(contentUrl);
 const { deliverPayload, LeadError } = await import(securityUrl);
 const { buildMaturiteLead, commercialPriority, MATURITE_SOURCE } = await import(leadUrl);
@@ -122,6 +122,10 @@ for (let i = 0; i < 4000; i++) {
   if (r.bands.cadre === 'low' || r.bands.usages === 'low') assert.ok(!r.priorities.includes('integration') && !r.priorities.includes('suivi'), 'Pas d’automatisation avant le cadre et les usages');
   if (r.bands.cadre === 'low' && answers.usa1 >= 1) assert.equal(r.priorities[0], 'regles_donnees');
   assert.ok(r.signals.length <= 3 && r.strengths.length <= 3);
+  // Sans email : trois dimensions sur cinq, jamais une dimension moins bien notée qu’une dimension masquée.
+  const free = freeDimensions(r.dims), hidden = DIMENSIONS.map(d => d.id).filter(id => !free.includes(id));
+  assert.equal(free.length, 3); assert.equal(hidden.length, 2);
+  for (const shown of free) for (const masked of hidden) assert.ok((r.dims[shown] ?? -1) >= (r.dims[masked] ?? -1));
   assert.ok(r.offers.length >= 1 && r.offers.length <= 3); assert.equal(new Set(r.offers).size, r.offers.length);
   for (const offer of r.offers) assert.ok(OFFER_TEXTS[offer], offer);
   if (p.size === 'solo' && (r.stage === null || r.stage <= 1)) assert.equal(r.offers[0], 'coaching_solo');
@@ -150,6 +154,10 @@ assert.equal(actionLink('formation_metier', 'solo', false).href, '/services/form
 assert.equal(actionLink('formation_metier', '10-49', true).href, '/services/formation-ia/ia-fondamentaux/');
 assert.notEqual(actionLink('outil_pro', '10-49', true).href, actionLink('outil_pro', '10-49', false).href);
 assert.equal(MATURITE_FAQ.length, 7);
+assert.equal(FREE_DIMENSIONS, 3); assert.equal(FREE_SIGNALS, 1);
+assert.deepEqual(freeDimensions({ cap: 50, usages: 44, cadre: 22, competences: 33, integration: 22 }), ['cap', 'usages', 'competences']);
+assert.deepEqual(freeDimensions({ cap: 0, usages: 0, cadre: 0, competences: 0, integration: 0 }), ['cap', 'usages', 'cadre'], 'À égalité, l’ordre du rapport');
+assert.deepEqual(freeDimensions({ cap: null, usages: 10, cadre: null, competences: 5, integration: 0 }), ['usages', 'competences', 'integration'], 'Une dimension non évaluée passe après les autres');
 // Accompagnements : chaque fiche pointe vers une page publiée, et la recommandation suit des règles lisibles.
 assert.equal(Object.keys(OFFER_TEXTS).length, 10);
 for (const [id, offer] of Object.entries(OFFER_TEXTS)) { assert.ok(offer.title && offer.text && offer.format, id); assert.ok(pageExists(offer.href), `Page absente : ${offer.href}`); }

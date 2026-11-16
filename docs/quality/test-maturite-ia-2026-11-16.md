@@ -53,6 +53,18 @@ Vérifications ajoutées :
 - Navigateur : champ « Autre activité », résultat verrouillé (aucun prochain pas, aucune offre, pas d’impression), envoi refusé sans accord, échec d’envoi (plan toujours verrouillé, message affiché), ouverture après une réponse positive simulée, plan toujours ouvert après rechargement, aucune coordonnée dans le stockage du navigateur, dialogue d’échange prérempli. Sans débordement à 320 px.
 - L’ouverture réelle du plan n’a pas pu être testée de bout en bout en local : la vérification anti-robot y refuse toute demande, ce qui est le comportement attendu hors production.
 
+## Second complément : inciter à ouvrir le plan
+
+À la demande du client, l’aperçu libre montre moins et la demande d’email vient au-devant du visiteur.
+
+- **Trois dimensions sur cinq** sans email : les mieux notées. Les deux autres apparaissent verrouillées, sans score. Le radar ne s’affiche qu’une fois le plan ouvert.
+- **Un seul signal** sans email, le plus critique ; les autres sont annoncés par leur nombre.
+- **Fenêtre de demande d’email** : elle s’ouvre d’elle-même, une seule fois, quand le défilement atteint la première dimension verrouillée. Elle se ferme par la croix, Échap, un clic à l’extérieur ou « Continuer sans le plan ». Le bouton « Voir mes cinq dimensions » et le bloc en bas du résultat la remplacent ensuite.
+- **Deux champs** : prénom et email. L’entreprise n’est plus demandée à ce stade.
+- **« Autre activité »** : la précision est obligatoire.
+
+Vérifications ajoutées : règle de choix des trois dimensions (`npm run test:maturite`, 4 000 profils) ; dans le navigateur, aucune fenêtre avant défilement, ouverture au défilement, pas de réouverture après fermeture, réouverture par le bouton, ouverture du plan depuis la fenêtre avec une réponse simulée.
+
 ## Limites de la validation
 
 - Aucune demande réelle envoyée : la réception dans l’outil commercial et la tolérance du flux n8n du contact aux champs supplémentaires restent à vérifier lors d’un premier envoi avec les coordonnées du client.
