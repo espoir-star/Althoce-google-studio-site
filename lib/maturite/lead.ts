@@ -55,9 +55,10 @@ export function buildMaturiteLead(body: Record<string, unknown>): Record<string,
   const { sector, size, role, sectorDetail } = rawProfile as Record<string, unknown>;
   if (typeof sector !== 'string' || typeof size !== 'string' || typeof role !== 'string') throw new LeadError(400, 'Résultat invalide.');
   const profile = { sector, size, role } as Profile;
-  if (!isProfileComplete(profile)) throw new LeadError(400, 'Résultat invalide.');
   const detail = text(sectorDetail, SECTOR_DETAIL_MAX, false);
   if (profile.sector === 'autre' && detail) profile.sectorDetail = detail;
+  // Refuse aussi « Autre activité » sans précision.
+  if (!isProfileComplete(profile)) throw new LeadError(400, 'Résultat invalide.');
   const answers: Answers = {};
   const entries = Object.entries(rawAnswers as Record<string, unknown>);
   if (entries.length !== QUESTION_IDS.length) throw new LeadError(400, 'Résultat invalide.');

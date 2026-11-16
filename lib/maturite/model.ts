@@ -53,8 +53,10 @@ export function weightsFor(sector: string): Record<DimensionId, number> {
 export function bandOf(score: number): Band { return score <= 33 ? 'low' : score <= 66 ? 'mid' : 'high'; }
 export function stageOf(total: number): Stage { return total < 25 ? 0 : total < 50 ? 1 : total < 75 ? 2 : 3; }
 export function isValidAnswer(value: unknown): value is Answer { return value === -1 || value === 0 || value === 1 || value === 2 || value === 3; }
+/** « Autre activité » doit être précisée : sans cela, le résultat ne peut pas être rapproché d’un métier. */
+export function needsSectorDetail(profile: Profile) { return profile.sector === 'autre' && !profile.sectorDetail?.trim(); }
 export function isProfileComplete(profile: Profile) {
-  return SECTOR_OPTIONS.some(sector => sector.slug === profile.sector) && SIZES.some(size => size.id === profile.size) && ROLES.some(role => role.id === profile.role);
+  return SECTOR_OPTIONS.some(sector => sector.slug === profile.sector) && SIZES.some(size => size.id === profile.size) && ROLES.some(role => role.id === profile.role) && !needsSectorDetail(profile);
 }
 export function isComplete(answers: Answers) { return QUESTION_IDS.every(id => isValidAnswer(answers[id])); }
 

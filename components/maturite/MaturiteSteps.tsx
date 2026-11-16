@@ -1,11 +1,13 @@
 import { useRef, type RefObject } from 'react';
 import { Check } from 'lucide-react';
 import { DIMENSIONS, QUESTIONS, ROLES, SECTOR_DETAIL_MAX, SECTOR_OPTIONS, SIZES, UNKNOWN_LABEL, questionText, type Answer, type Profile, type Question } from '@/lib/maturite/questions';
+import { needsSectorDetail } from '@/lib/maturite/model';
 import s from '@/components/roi/Calculator.module.css';
 import m from './Maturite.module.css';
 
 export function ProfileStep({ profile, update, showErrors }: { profile: Profile; update: (patch: Partial<Profile>) => void; showErrors: boolean }) {
   const missing = (key: keyof Profile) => showErrors && !profile[key];
+  const detailMissing = showErrors && needsSectorDetail(profile);
   return <>
     <div className={s.fields}>
       <div className={s.field}>
@@ -15,7 +17,11 @@ export function ProfileStep({ profile, update, showErrors }: { profile: Profile;
           {SECTOR_OPTIONS.map(option => <option key={option.slug} value={option.slug}>{option.name}</option>)}
         </select>
         {missing('sector') && <p className={s.error}>Choisissez un secteur.</p>}
-        {profile.sector === 'autre' && <div className={`${s.field} ${m.subField}`}><label htmlFor="maturite-sector-detail">Précisez votre activité <span className={s.optional}>(facultatif)</span></label><input id="maturite-sector-detail" type="text" maxLength={SECTOR_DETAIL_MAX} placeholder="Ex. cabinet d’architecture" autoComplete="off" value={profile.sectorDetail ?? ''} onChange={e => update({ sectorDetail: e.target.value })} /></div>}
+        {profile.sector === 'autre' && <div className={`${s.field} ${m.subField}`}>
+          <label htmlFor="maturite-sector-detail">Précisez votre activité</label>
+          <input id="maturite-sector-detail" type="text" required maxLength={SECTOR_DETAIL_MAX} placeholder="Ex. cabinet d’architecture" autoComplete="off" value={profile.sectorDetail ?? ''} onChange={e => update({ sectorDetail: e.target.value })} aria-invalid={detailMissing} aria-describedby={detailMissing ? 'maturite-sector-detail-error' : undefined} />
+          {detailMissing && <p className={s.error} id="maturite-sector-detail-error">Précisez votre activité.</p>}
+        </div>}
       </div>
       <div className={s.field}>
         <label htmlFor="maturite-role">Votre rôle</label>

@@ -117,7 +117,7 @@ export const SECTOR_OPTIONS: { slug: string; name: string }[] = [
  */
 export const SENSITIVE_SECTORS: readonly string[] = ['finance', 'comptabilite', 'droit', 'medical', 'assurance-patrimoine', 'immobilier', 'secteur-public'];
 
-/** `sectorDetail` : précision libre quand le secteur est « Autre activité ». Jamais placée dans le lien de partage. */
+/** `sectorDetail` : précision obligatoire quand le secteur est « Autre activité ». Jamais placée dans le lien de partage. */
 export type Profile = { sector: string; size: SizeId | ''; role: RoleId | ''; sectorDetail?: string };
 export const SECTOR_DETAIL_MAX = 80;
 /** Intitulé du secteur à afficher : la précision saisie si elle existe, sinon le nom du secteur. */

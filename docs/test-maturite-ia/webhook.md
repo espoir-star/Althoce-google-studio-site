@@ -58,7 +58,7 @@ Réponses (14 sur 15, auto-évaluation déclarative) :
 | `priorite_commerciale`, `priorite_raisons` | A, B ou C, et les critères qui l’expliquent |
 | `prenom`, `nom_famille` | Prénom et nom séparés ; le nom est vide pour une demande `plan` |
 | `secteur`, `secteur_slug` | Intitulé et identifiant du secteur |
-| `secteur_personnalise` | Précision saisie quand le secteur est « Autre activité », vide sinon |
+| `secteur_personnalise` | Précision saisie quand le secteur est « Autre activité » (obligatoire dans ce cas), vide sinon |
 | `taille_test`, `role` | Tranche et rôle tels qu’affichés dans le test |
 | `score` | 0 à 100, ou `null` si le score n’est pas établi |
 | `stade`, `stade_nom` | 1 à 4 et son nom, ou `null` |

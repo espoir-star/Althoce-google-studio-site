@@ -76,6 +76,8 @@ assert.equal(result.answered, 9); assert.ok(result.answered < MIN_ANSWERS); asse
 assert.equal(computeResult(profile, all(-1)).priorities.length, 3);
 assert.ok(isComplete(all(-1))); assert.ok(!isComplete({ ...all(1), cap1: undefined })); assert.ok(!isComplete({ ...all(1), cap1: 4 }));
 assert.ok(isProfileComplete(profile)); assert.ok(!isProfileComplete({ ...profile, sector: 'inconnu' })); assert.ok(!isProfileComplete({ ...profile, role: '' }));
+// « Autre activité » doit être précisée.
+assert.ok(!isProfileComplete({ ...profile, sector: 'autre' })); assert.ok(!isProfileComplete({ ...profile, sector: 'autre', sectorDetail: '   ' })); assert.ok(isProfileComplete({ ...profile, sector: 'autre', sectorDetail: 'Architecte' }));
 
 // 5. Signaux.
 const signals = (answers, p = profile) => computeResult(p, answers).signals;
@@ -217,6 +219,7 @@ rejected({ ...lead, demande: undefined }); rejected({ ...lead, demande: 'autre' 
 rejected({ ...lead, consentement_rgpd: false }); rejected({ ...lead, consentement_rgpd: 'true' }); rejected({ ...lead, email: 'invalide' }); rejected({ ...lead, prenom: ' ' });
 rejected({ ...lead, nom: '' }); rejected({ ...lead, entreprise: '' }); rejected({ ...plan, prenom: '' }); rejected({ ...plan, email: '' }); rejected({ ...plan, consentement_rgpd: undefined });
 rejected({ ...lead, entreprise: 'x'.repeat(201) }); rejected({ ...lead, telephone: '123' }); rejected({ ...lead, profil: { ...profile, sector: 'x' } }); rejected({ ...lead, profil: null });
+rejected({ ...plan, profil: { sector: 'autre', size: '2-9', role: 'dirigeant' } }); rejected({ ...plan, profil: { sector: 'autre', size: '2-9', role: 'dirigeant', sectorDetail: '  ' } });
 rejected({ ...plan, profil: { sector: 'autre', size: '2-9', role: 'dirigeant', sectorDetail: 'x'.repeat(81) } }); rejected({ ...plan, profil: { sector: 'autre', size: '2-9', role: 'dirigeant', sectorDetail: {} } });
 rejected({ ...lead, reponses: { ...all(1), cap1: 4 } }); rejected({ ...lead, reponses: { ...all(1), extra: 1 } }); rejected({ ...lead, reponses: { usa1: 1 } }); rejected({ ...lead, reponses: [] });
 rejected({ ...lead, source_url: 'javascript:alert(1)' }); rejected({ ...lead, nom: { $ne: '' } });

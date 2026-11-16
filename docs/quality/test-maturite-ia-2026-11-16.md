@@ -43,7 +43,7 @@ Auto-évaluation déclarative, présentée comme telle. Aucune comparaison chiff
 - **Plan d’action contre prénom et email.** Le constat (score, stade, lecture des dimensions, déséquilibres) reste libre. Le détail des priorités, le prochain pas par dimension, le premier pas par signal, l’accompagnement recommandé, le bloc secteur, l’impression et le lien de partage s’ouvrent après la saisie. Affichage immédiat à l’écran ; aucun email automatique n’est annoncé.
 - **Accompagnement recommandé.** Chaque plan met en avant une offre du catalogue et en propose jusqu’à deux autres. Intitulés et formats repris des pages services et formations.
 - **Deux contacts distincts** par la même route : `plan` et `echange`. Chacun porte une priorité commerciale A, B ou C, l’accompagnement recommandé et un lien qui rouvre le résultat complet. Le dialogue d’échange reprend le prénom et l’email déjà saisis.
-- **« Autre activité »** ouvre un champ libre facultatif. La précision s’affiche dans le résultat et accompagne le contact ; elle ne figure jamais dans le lien de partage.
+- **« Autre activité »** ouvre un champ libre obligatoire : sans précision, le test ne démarre pas et le serveur refuse le contact. La précision s’affiche dans le résultat et accompagne le contact ; elle ne figure jamais dans le lien de partage.
 - **Mesure** : événements `maturite_resultat` (test terminé, stade) et `generate_lead` avec `lead_type = maturite_plan`. Aucune réponse ni coordonnée.
 - **Guide** : `docs/test-maturite-ia/exploitation-commerciale.md`.
 

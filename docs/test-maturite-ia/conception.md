@@ -112,7 +112,7 @@ Le test propose toujours exactement trois priorités, dans cet ordre :
 
 ## 5. Parcours
 
-1. **Profil** : secteur, rôle, taille. Trois champs, obligatoires. « Autre activité » ouvre un champ libre facultatif pour préciser.
+1. **Profil** : secteur, rôle, taille. Trois champs, obligatoires. « Autre activité » ouvre un champ libre, obligatoire, pour préciser l’activité.
 2. **Quinze questions**, une par écran. Un clic passe à la suivante ; au clavier, on choisit puis on valide.
 3. **Constat immédiat, sans inscription** : score et stade, lecture des cinq dimensions, signaux et points d’appui, titres des trois priorités, méthode de calcul.
 4. **Plan d’action, contre prénom et email** : détail des priorités, prochain pas par dimension, premier pas par signal, accompagnement recommandé, bloc secteur. Il s’affiche à l’écran dès l’envoi.
