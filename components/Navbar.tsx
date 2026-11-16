@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ChevronDown, Compass, Workflow, GraduationCap, ChartNoAxesCombined, BookOpen, Users, Calculator, Building2, MessageCircle, Menu, X } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Compass, Workflow, GraduationCap, ChartNoAxesCombined, BookOpen, Users, Calculator, Gauge, Building2, MessageCircle, Menu, X } from 'lucide-react';
 import { Logo } from '@/components/ui/brand/Logo';
 import { MobileSolutionsMenu, SolutionsMenu } from './navigation/SolutionsMenu';
 import s from './Navigation.module.css';
@@ -18,6 +18,7 @@ const groups = [
     {label:'Nos guides',text:'Des ressources pratiques classées par secteur.',href:'/guides/',icon:BookOpen},
     {label:'Blog',text:'Des repères pour comprendre et avancer.',href:'/blog/',icon:BookOpen},
     {label:'Cas clients',text:'Des projets et leurs résultats sur le terrain.',href:'/cas-clients/',icon:Users},
+    {label:'Test de maturité IA',text:'Situer votre structure en cinq minutes.',href:'/test-maturite-ia/',icon:Gauge},
     {label:'Calculateur ROI',text:'Explorer le potentiel de vos usages.',href:'/calculateur-roi/',icon:Calculator},
   ]},
   { label:'À propos', id:'apropos', items:[
