@@ -7,5 +7,7 @@ initBotId({
     { path: '/api/contact', method: 'POST' },
     { path: '/api/roi-lead/', method: 'POST' },
     { path: '/api/roi-lead', method: 'POST' },
+    { path: '/api/maturite-lead/', method: 'POST' },
+    { path: '/api/maturite-lead', method: 'POST' },
   ],
 });
