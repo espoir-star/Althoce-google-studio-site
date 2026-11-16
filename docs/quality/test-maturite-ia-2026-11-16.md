@@ -13,7 +13,7 @@ Modifications de l’existant :
 - `lib/analytics.ts` : type de demande `maturite`.
 - `components/Navbar.tsx`, `components/Footer.tsx` : entrée « Test de maturité IA » dans Ressources.
 - `components/services/ServicePage.tsx` : lien vers le test depuis la page Diagnostic IA.
-- `components/PrivacyPageClient.tsx` : ligne décrivant les données d’une demande d’échange issue du test ; date de mise à jour. **À valider par le client.**
+- `components/PrivacyPageClient.tsx` : ligne décrivant les données transmises à l’ouverture du plan d’action ou lors d’une demande d’échange ; date de mise à jour. **À valider par le client.**
 - `app/globals.css` : la règle d’impression qui masque la navigation s’applique aussi au rapport du test.
 - `app/sitemap.ts` : priorité de la page. `.env.example` : variable facultative `MATURITE_LEAD_WEBHOOK_URL`.
 
@@ -35,6 +35,23 @@ Auto-évaluation déclarative, présentée comme telle. Aucune comparaison chiff
 - Route `/api/maturite-lead/` en local : origine étrangère 403, format non JSON 415, JSON invalide 400, vérification anti-robot indisponible 503. Aucune demande transmise.
 - HTML serveur : un H1, URL canonique, JSON-LD WebApplication, BreadcrumbList et FAQPage (6 questions identiques à la FAQ visible). Page présente dans le sitemap.
 - Graphe mis à jour avec `graphify update .`.
+
+## Complément du 16 novembre : exploitation commerciale
+
+À la demande du client, le test doit produire des contacts et proposer davantage d’accompagnements.
+
+- **Plan d’action contre prénom et email.** Le constat (score, stade, lecture des dimensions, déséquilibres) reste libre. Le détail des priorités, le prochain pas par dimension, le premier pas par signal, l’accompagnement recommandé, le bloc secteur, l’impression et le lien de partage s’ouvrent après la saisie. Affichage immédiat à l’écran ; aucun email automatique n’est annoncé.
+- **Accompagnement recommandé.** Chaque plan met en avant une offre du catalogue et en propose jusqu’à deux autres. Intitulés et formats repris des pages services et formations.
+- **Deux contacts distincts** par la même route : `plan` et `echange`. Chacun porte une priorité commerciale A, B ou C, l’accompagnement recommandé et un lien qui rouvre le résultat complet. Le dialogue d’échange reprend le prénom et l’email déjà saisis.
+- **« Autre activité »** ouvre un champ libre facultatif. La précision s’affiche dans le résultat et accompagne le contact ; elle ne figure jamais dans le lien de partage.
+- **Mesure** : événements `maturite_resultat` (test terminé, stade) et `generate_lead` avec `lead_type = maturite_plan`. Aucune réponse ni coordonnée.
+- **Guide** : `docs/test-maturite-ia/exploitation-commerciale.md`.
+
+Vérifications ajoutées :
+
+- `npm run test:maturite` : règles de recommandation, existence de chaque page d’offre, contrat des deux demandes, priorité commerciale, lien reconstruit côté serveur, précision du secteur, état « plan ouvert » dans la reprise.
+- Navigateur : champ « Autre activité », résultat verrouillé (aucun prochain pas, aucune offre, pas d’impression), envoi refusé sans accord, échec d’envoi (plan toujours verrouillé, message affiché), ouverture après une réponse positive simulée, plan toujours ouvert après rechargement, aucune coordonnée dans le stockage du navigateur, dialogue d’échange prérempli. Sans débordement à 320 px.
+- L’ouverture réelle du plan n’a pas pu être testée de bout en bout en local : la vérification anti-robot y refuse toute demande, ce qui est le comportement attendu hors production.
 
 ## Limites de la validation
 

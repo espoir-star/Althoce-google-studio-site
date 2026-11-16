@@ -11,7 +11,7 @@ Un dirigeant qui arrive sur le site ne sait pas toujours quoi demander : une for
 - **Ouvrir la discussion** : une demande d’échange arrive avec le score, les réponses et les priorités proposées.
 - **Référencer** : la page vise les recherches « test maturité IA », « diagnostic maturité IA », « évaluer la maturité IA de son entreprise ».
 
-Le test est gratuit et sans inscription. Il se distingue du **Diagnostic IA** payant (`/services/audit-ia/`) : c’est une auto-évaluation déclarative, pas une étude. Le nom « test » a été choisi pour éviter la confusion.
+Le test est gratuit. Le résultat s’affiche sans inscription ; le plan d’action s’ouvre avec un prénom et un email. Il se distingue du **Diagnostic IA** payant (`/services/audit-ia/`) : c’est une auto-évaluation déclarative, pas une étude. Le nom « test » a été choisi pour éviter la confusion.
 
 ## 2. Ce que nous avons observé chez un concurrent
 
@@ -34,12 +34,13 @@ Nous avons repris des **principes généraux** (résultat immédiat, questions f
 2. **Quatre stades, alignés sur les quatre situations de chaque question.** Chaque question décrit la même progression que l’échelle finale. Le score se comprend sans mode d’emploi.
 3. **« Je ne sais pas » est une réponse.** Elle n’est pas comptée comme une mauvaise note. Elle est signalée, parce qu’un dirigeant qui ne sait pas ce qui se pratique a déjà appris quelque chose.
 4. **Aucun benchmark tant que nous n’avons pas de données.** Le résultat situe par rapport à quatre stades décrits, pas par rapport à une moyenne inventée.
-5. **Les réponses restent dans le navigateur.** Le calcul se fait sur l’appareil du visiteur. Rien n’est envoyé tant qu’il ne demande pas un échange. C’est cohérent avec ce que nous disons aux professions réglementées, et c’est un argument en soi.
+5. **Le constat est libre, le plan s’échange contre un email.** Score, stade, lecture des dimensions et déséquilibres s’affichent sans rien demander, et le calcul se fait sur l’appareil du visiteur. Les trois priorités détaillées, le prochain pas par dimension, l’accompagnement recommandé, les repères du secteur et la version imprimable s’ouvrent avec un prénom et un email professionnel. Rien n’est transmis avant cette demande.
 6. **Le cadre avant l’automatisation.** Le test ne recommande jamais de relier l’IA aux outils tant que le cadre ou les usages sont faibles.
 7. **Adapté au secteur.** Le secteur modifie la pondération, les liens proposés et ajoute un bloc d’exemples tiré de la page secteur correspondante.
 8. **Adapté aux indépendants.** Chaque question a une formulation dédiée à la personne qui exerce seule.
+9. **Chaque résultat mène à une offre.** Le plan recommande un accompagnement du catalogue et en propose deux autres. La règle est décrite dans `exploitation-commerciale.md`.
 
-Un point a changé par rapport à l’idée de départ : le barème n’est pas caché côté serveur. Le calcul dans le navigateur garantit la confidentialité des réponses, et un concurrent peut de toute façon reconstituer un barème en passant le test plusieurs fois. La confidentialité l’a emporté.
+Deux points ont changé en cours de route. Le barème n’est pas caché côté serveur : le calcul dans le navigateur protège les réponses, et un concurrent peut de toute façon reconstituer un barème en passant le test plusieurs fois. Et la première version donnait tout sans rien demander : à la demande du client, le plan d’action passe derrière un prénom et un email, pour que le test produise des contacts et pas seulement des demandes d’échange.
 
 ## 4. Le modèle
 
@@ -111,18 +112,19 @@ Le test propose toujours exactement trois priorités, dans cet ordre :
 
 ## 5. Parcours
 
-1. **Profil** : secteur, rôle, taille. Trois champs, obligatoires.
+1. **Profil** : secteur, rôle, taille. Trois champs, obligatoires. « Autre activité » ouvre un champ libre facultatif pour préciser.
 2. **Quinze questions**, une par écran. Un clic passe à la suivante ; au clavier, on choisit puis on valide.
-3. **Résultat immédiat** : score et stade, lecture des cinq dimensions, signaux et points d’appui, trois priorités, bloc secteur, méthode de calcul.
-4. **Suites possibles** : imprimer ou enregistrer en PDF, copier un lien de partage, demander un échange.
+3. **Constat immédiat, sans inscription** : score et stade, lecture des cinq dimensions, signaux et points d’appui, titres des trois priorités, méthode de calcul.
+4. **Plan d’action, contre prénom et email** : détail des priorités, prochain pas par dimension, premier pas par signal, accompagnement recommandé, bloc secteur. Il s’affiche à l’écran dès l’envoi.
+5. **Suites possibles** : imprimer ou enregistrer en PDF, copier un lien de partage, demander un échange. Le dialogue d’échange reprend le prénom et l’email déjà saisis.
 
-Le test en cours est conservé deux heures dans l’onglet. Le lien de partage contient les réponses après le signe `#` : cette partie d’une adresse n’est pas transmise au serveur.
+Le test en cours est conservé deux heures dans l’onglet, avec l’indication que le plan a été ouvert. Les coordonnées ne sont jamais conservées dans le navigateur. Le lien de partage contient les réponses après le signe `#` : cette partie d’une adresse n’est pas transmise au serveur. Il ouvre le résultat complet en lecture seule et ne contient jamais la précision libre du secteur.
 
 ## 6. Ce qui est volontairement absent
 
 - **Pas de comparaison chiffrée** avec d’autres entreprises.
 - **Pas de feuille de route à 90 jours** : c’est un livrable de la Formation IA Dirigeant & Associés et de l’atelier Priorités IA. Le test s’arrête à trois priorités.
-- **Pas d’envoi du rapport par email** : il demanderait de collecter l’adresse avant de montrer le résultat. Le rapport s’imprime et se partage par lien.
+- **Pas d’email automatique annoncé** : le plan s’affiche à l’écran dès que l’email est saisi. Le lien du résultat est transmis avec le contact, pour qu’un envoi automatique puisse être branché dans n8n sans toucher au site.
 - **Aucun pourcentage, aucune promesse de conformité** dans les textes. Un test automatique le vérifie.
 
 ## 7. Lien avec le catalogue
@@ -147,7 +149,7 @@ Un test automatique vérifie que chaque page de destination existe.
 | `lib/maturite/questions.ts` | Dimensions, questions, variantes pour indépendants, profil |
 | `lib/maturite/model.ts` | Calcul du score, stades, signaux, priorités, lien de partage, reprise |
 | `lib/maturite/report-content.ts` | Tous les textes du rapport et la FAQ |
-| `lib/maturite/lead.ts` | Demande d’échange : validation et résumé recalculé côté serveur |
+| `lib/maturite/lead.ts` | Contacts (plan ouvert, échange demandé) : validation, résumé recalculé côté serveur, priorité commerciale |
 | `components/MaturiteTestClient.tsx`, `components/maturite/` | Interface |
 | `app/test-maturite-ia/page.tsx` | Page, métadonnées, données structurées |
 | `app/api/maturite-lead/route.ts` | Réception des demandes d’échange |

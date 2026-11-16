@@ -12,10 +12,10 @@ Page : `https://althoce.com/test-maturite-ia/`. Conception : `docs/test-maturite
 
 ## Ordre conseillé
 
-1. **Avant d’annoncer** : passer le test soi-même, puis envoyer une demande d’échange avec ses propres coordonnées pour vérifier qu’elle arrive dans l’outil commercial (`docs/test-maturite-ia/webhook.md`).
+1. **Avant d’annoncer** : passer le test soi-même, ouvrir le plan d’action puis envoyer une demande d’échange avec ses propres coordonnées, pour vérifier que les deux contacts arrivent dans l’outil commercial (`docs/test-maturite-ia/webhook.md`). Brancher si possible l’email automatique décrit dans `docs/test-maturite-ia/exploitation-commerciale.md`.
 2. **Jour du lancement** : demander l’indexation de la page dans la Search Console, publier le post LinkedIn (mardi ou jeudi, 8 h à 10 h), puis le post Google Business Profile.
 3. **Dans les deux semaines** : publier l’article d’appui, qui renvoie vers le test.
-4. **Après un mois** : regarder dans GA4 les visites de la page et les événements `generate_lead` avec `lead_type = maturite`.
+4. **Après un mois** : regarder dans GA4 les visites de la page, les tests terminés (`maturite_resultat`), les plans ouverts (`lead_type = maturite_plan`) et les échanges demandés (`lead_type = maturite`).
 
 ## Idées de suites
 

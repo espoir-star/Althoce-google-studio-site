@@ -25,13 +25,12 @@ Nous avons construit un test pour le voir en 5 minutes.
 
 15 questions. Chacune décrit quatre situations réelles : vous choisissez celle qui ressemble le plus à votre quotidien.
 
-Vous obtenez tout de suite :
+Vous obtenez tout de suite, sans inscription :
 → votre stade parmi quatre
 → votre score sur chacune des cinq dimensions
 → les déséquilibres relevés dans vos réponses
-→ trois priorités, dans l’ordre
 
-Sans inscription. Vos réponses restent dans votre navigateur : rien ne nous est transmis si vous ne le demandez pas.
+Puis, si vous le souhaitez, votre plan d’action : trois priorités dans l’ordre, avec le premier pas pour chacune.
 
 Et pas de « vous êtes au-dessus de 63 % des entreprises ». Nous n’affichons pas de comparaison tant que nous n’avons pas assez de réponses réelles pour qu’elle ait un sens.
 
@@ -41,7 +40,7 @@ Le lien est en premier commentaire.
 
 ## Premier commentaire
 
-Le test de maturité IA, gratuit et sans inscription : https://althoce.com/test-maturite-ia/
+Le test de maturité IA, gratuit, avec un résultat sans inscription : https://althoce.com/test-maturite-ia/
 
 Si vous le passez à plusieurs dans le même cabinet, comparez vos résultats : les écarts sont souvent la partie la plus instructive.
 
@@ -49,7 +48,7 @@ Si vous le passez à plusieurs dans le même cabinet, comparez vos résultats : 
 
 - « Où en êtes-vous avec l’IA ? » La plupart des dirigeants me répondent par un nombre de licences.
 - Très avancé sur les usages, aucune règle sur les données : c’est le déséquilibre que je croise le plus souvent.
-- 15 questions pour savoir où en est vraiment votre cabinet avec l’IA. Sans inscription.
+- 15 questions pour savoir où en est vraiment votre cabinet avec l’IA. Résultat immédiat.
 
 ## Repères
 

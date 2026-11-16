@@ -15,7 +15,7 @@ published: false
 
 Vous voulez savoir **où en est votre cabinet avec l’IA**. La question semble simple, et pourtant la réponse la plus fréquente est un nombre de licences ou le nom d’un outil.
 
-La maturité IA ne se mesure pas au matériel. Elle se lit dans cinq dimensions, et se décrit en quatre stades. Ce guide vous aide à vous situer et à choisir la prochaine étape. Si vous préférez un résultat immédiat, le [test de maturité IA](/test-maturite-ia/) vous le donne en cinq minutes, sans inscription.
+La maturité IA ne se mesure pas au matériel. Elle se lit dans cinq dimensions, et se décrit en quatre stades. Ce guide vous aide à vous situer et à choisir la prochaine étape. Si vous préférez un résultat immédiat, le [test de maturité IA](/test-maturite-ia/) vous le donne en cinq minutes : le score s’affiche sans inscription.
 
 ## Cinq dimensions à regarder
 
@@ -76,7 +76,7 @@ Trois précautions rendent l’exercice utile.
 2. **Acceptez de ne pas savoir.** Si vous ignorez quels outils vos collaborateurs utilisent, c’est déjà une information.
 3. **Croisez les regards.** Un associé et un responsable d’équipe ne décrivent pas toujours le même cabinet. Les écarts sont instructifs.
 
-Le [test de maturité IA](/test-maturite-ia/) applique ces principes : quinze questions, quatre situations par question, un résultat par dimension et trois priorités. Vos réponses restent dans votre navigateur.
+Le [test de maturité IA](/test-maturite-ia/) applique ces principes : quinze questions, quatre situations par question, un résultat par dimension sans inscription, puis un plan d’action en trois priorités.
 
 ## Et après ?
 
