@@ -158,7 +158,7 @@ export default function PrivacyPageClient() {
                   </thead>
                   <tbody>
                     <tr><td>Formulaire de contact</td><td>Nom, prénom, email pro, téléphone (optionnel), société, sujet</td><td>Répondre à votre demande, qualifier votre besoin, organiser les 30 min offertes.</td></tr>
-                    <tr><td>Test de maturité IA (demande d'échange)</td><td>Prénom, nom, email pro, téléphone (optionnel), société, secteur, taille, rôle, réponses au test et résultat</td><td>Préparer l'échange que vous demandez. Sans demande de votre part, vos réponses restent dans votre navigateur et ne nous sont pas transmises.</td></tr>
+                    <tr><td>Test de maturité IA (plan d'action ou demande d'échange)</td><td>Prénom, email pro, nom, téléphone et société (optionnels pour le plan d'action), secteur, taille, rôle, réponses au test et résultat</td><td>Vous donner accès à votre plan d'action, vous recontacter à ce sujet et préparer l'échange demandé. Tant que vous n'ouvrez pas votre plan et ne demandez pas d'échange, vos réponses restent dans votre navigateur et ne nous sont pas transmises.</td></tr>
                     <tr><td>Prise de rendez-vous</td><td>Nom, prénom, email, créneau, sujet</td><td>Programmer le rendez-vous, envoyer la confirmation et le lien visio.</td></tr>
                     <tr><td>Newsletter (si applicable)</td><td>Email</td><td>Publications éditoriales. Désabonnement à chaque envoi.</td></tr>
                     <tr><td>Cookies analytiques</td><td>IP anonymisée, navigateur, pages, durée</td><td>Mesurer l'audience, améliorer l'expérience. Soumis à consentement.</td></tr>

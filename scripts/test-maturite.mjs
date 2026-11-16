@@ -12,11 +12,11 @@ const contentUrl = dataUrl(compile('lib/maturite/report-content.ts'));
 const securityUrl = dataUrl(compile('lib/lead-security.ts'));
 const leadUrl = dataUrl(compile('lib/maturite/lead.ts').replace("'../lead-security'", JSON.stringify(securityUrl)).replace("'./questions'", JSON.stringify(questionsUrl)).replace("'./model'", JSON.stringify(modelUrl)).replace("'./report-content'", JSON.stringify(contentUrl)));
 
-const { DIMENSIONS, QUESTIONS, QUESTION_IDS, SECTOR_OPTIONS, SENSITIVE_SECTORS, SIZES, ROLES, questionText } = await import(questionsUrl);
-const { STAGES, MIN_ANSWERS, computeResult, stageOf, bandOf, weightsFor, isComplete, isProfileComplete, encodeShare, decodeShare, restoreDraft, DRAFT_TTL, SIGNAL_ACTION } = await import(modelUrl);
-const { STAGE_TEXTS, DIMENSION_TEXTS, SIGNAL_TEXTS, STRENGTH_TEXTS, ACTION_TEXTS, MATURITE_FAQ, actionLink } = await import(contentUrl);
+const { DIMENSIONS, QUESTIONS, QUESTION_IDS, SECTOR_OPTIONS, SENSITIVE_SECTORS, SIZES, ROLES, questionText, sectorLabel } = await import(questionsUrl);
+const { STAGES, MIN_ANSWERS, computeResult, stageOf, bandOf, weightsFor, isComplete, isProfileComplete, encodeShare, decodeShare, restoreDraft, DRAFT_TTL, SIGNAL_ACTION, offerFor } = await import(modelUrl);
+const { STAGE_TEXTS, DIMENSION_TEXTS, SIGNAL_TEXTS, STRENGTH_TEXTS, ACTION_TEXTS, OFFER_TEXTS, MATURITE_FAQ, actionLink } = await import(contentUrl);
 const { deliverPayload, LeadError } = await import(securityUrl);
-const { buildMaturiteLead, MATURITE_SOURCE } = await import(leadUrl);
+const { buildMaturiteLead, commercialPriority, MATURITE_SOURCE } = await import(leadUrl);
 
 const profile = { sector: 'commerce-distribution', size: '10-49', role: 'dirigeant' };
 const sensitiveProfile = { ...profile, sector: 'droit' };
@@ -120,6 +120,13 @@ for (let i = 0; i < 4000; i++) {
   if (r.bands.cadre === 'low' || r.bands.usages === 'low') assert.ok(!r.priorities.includes('integration') && !r.priorities.includes('suivi'), 'Pas d’automatisation avant le cadre et les usages');
   if (r.bands.cadre === 'low' && answers.usa1 >= 1) assert.equal(r.priorities[0], 'regles_donnees');
   assert.ok(r.signals.length <= 3 && r.strengths.length <= 3);
+  assert.ok(r.offers.length >= 1 && r.offers.length <= 3); assert.equal(new Set(r.offers).size, r.offers.length);
+  for (const offer of r.offers) assert.ok(OFFER_TEXTS[offer], offer);
+  if (p.size === 'solo' && (r.stage === null || r.stage <= 1)) assert.equal(r.offers[0], 'coaching_solo');
+  if (p.size !== 'solo') assert.ok(!r.offers.includes('coaching_solo'));
+  if (r.bands.cadre === 'low' && answers.usa1 >= 1 && !(p.size === 'solo' && (r.stage === null || r.stage <= 1))) assert.equal(r.offers[0], 'diagnostic_organisationnel');
+  // La précision libre du secteur ne figure jamais dans le lien de partage.
+  assert.ok(!encodeShare({ ...p, sectorDetail: 'Cabinet secret' }, answers).includes('secret'));
   if (r.total !== null) { assert.ok(r.total >= 0 && r.total <= 100); assert.equal(r.stage, stageOf(r.total)); assert.ok(r.answered >= MIN_ANSWERS); }
   for (const dimension of DIMENSIONS) { const value = r.dims[dimension.id]; assert.ok(value === null || (value >= 0 && value <= 100)); }
   // Partage : aller-retour exact.
@@ -140,9 +147,22 @@ for (const [id, action] of Object.entries(ACTION_TEXTS)) for (const link of [act
 assert.equal(actionLink('formation_metier', 'solo', false).href, '/services/formation-ia/coaching-independant/');
 assert.equal(actionLink('formation_metier', '10-49', true).href, '/services/formation-ia/ia-fondamentaux/');
 assert.notEqual(actionLink('outil_pro', '10-49', true).href, actionLink('outil_pro', '10-49', false).href);
-assert.equal(MATURITE_FAQ.length, 6);
+assert.equal(MATURITE_FAQ.length, 7);
+// Accompagnements : chaque fiche pointe vers une page publiée, et la recommandation suit des règles lisibles.
+assert.equal(Object.keys(OFFER_TEXTS).length, 10);
+for (const [id, offer] of Object.entries(OFFER_TEXTS)) { assert.ok(offer.title && offer.text && offer.format, id); assert.ok(pageExists(offer.href), `Page absente : ${offer.href}`); }
+assert.equal(computeResult(profile, all(0)).offers[0], 'formation_dirigeant', 'Un dirigeant qui explore commence par décider');
+assert.equal(computeResult({ ...profile, role: 'collaborateur' }, all(0)).offers[0], 'atelier_priorites');
+assert.equal(computeResult({ ...profile, size: 'solo' }, all(1)).offers[0], 'coaching_solo');
+assert.equal(computeResult(profile, { ...all(1), cad2: 0 }).offers[0], 'diagnostic_organisationnel', 'Le cadre d’abord');
+assert.deepEqual(computeResult(profile, { ...all(2), int1: 3, int2: 1, int3: 0 }).offers.filter(o => o === 'diagnostic_technique' || o === 'deploiement').length, 2);
+assert.equal(computeResult(profile, all(3)).offers[0], 'pilotage');
+assert.ok(computeResult(sensitiveProfile, all(3)).offers.includes('centrale'));
+assert.equal(offerFor('formation_metier', true), 'coaching_solo'); assert.equal(offerFor('regles_donnees', true), 'diagnostic_organisationnel');
+assert.equal(sectorLabel({ ...profile, sector: 'autre', sectorDetail: ' Cabinet d’architecture ' }), 'Cabinet d’architecture');
+assert.equal(sectorLabel({ ...profile, sector: 'autre' }), 'Autre activité'); assert.equal(sectorLabel({ ...profile, sector: 'droit', sectorDetail: 'ignoré' }), 'Droit & professions juridiques');
 // Aucune promesse chiffrée ni garantie de conformité dans les textes du test.
-const prose = JSON.stringify([STAGE_TEXTS, DIMENSION_TEXTS, SIGNAL_TEXTS, STRENGTH_TEXTS, ACTION_TEXTS, QUESTIONS]);
+const prose = JSON.stringify([STAGE_TEXTS, DIMENSION_TEXTS, SIGNAL_TEXTS, STRENGTH_TEXTS, ACTION_TEXTS, OFFER_TEXTS, QUESTIONS]);
 assert.ok(!/\d+ ?%|garanti|conforme au RGPD|certifi/i.test(prose), 'Ni pourcentage inventé, ni garantie, ni certification');
 assert.ok(!/[\u{1F300}-\u{1FAFF}]/u.test(prose + JSON.stringify(MATURITE_FAQ)), 'Pas d’emoji');
 
@@ -151,26 +171,53 @@ for (const bad of ['', '1', '2.droit.1.0.' + '0'.repeat(15), '1.inconnu.1.0.' + 
   assert.equal(decodeShare(bad), null, String(bad));
 const now = 1800000000000;
 const draft = (patch = {}, savedAt = now) => JSON.stringify({ version: 1, savedAt, profile, answers: { usa1: 2, usa2: -1 }, index: 2, ...patch });
-assert.deepEqual(restoreDraft(draft(), now), { profile, answers: { usa1: 2, usa2: -1 }, index: 2 });
+assert.deepEqual(restoreDraft(draft(), now), { profile, answers: { usa1: 2, usa2: -1 }, index: 2, unlocked: false });
+assert.equal(restoreDraft(draft({ unlocked: true }), now).unlocked, true);
+assert.equal(restoreDraft(draft({ profile: { ...profile, sector: 'autre', sectorDetail: 'Architecte' } }), now).profile.sectorDetail, 'Architecte');
+assert.equal(restoreDraft(draft({ profile: { ...profile, sectorDetail: 'ignoré hors autre activité' } }), now).profile.sectorDetail, undefined);
 assert.deepEqual(restoreDraft(draft({ profile: { sector: '', size: '', role: '' }, answers: {}, index: 0 }), now).profile, { sector: '', size: '', role: '' });
 assert.equal(restoreDraft(draft({}, now - DRAFT_TTL - 1), now), null); assert.equal(restoreDraft(draft({}, now + 1000), now), null);
-for (const raw of [null, '', '{', draft({ version: 2 }), draft({ profile: { ...profile, sector: 'x' } }), draft({ profile: { ...profile, size: '11-50' } }), draft({ answers: { usa1: 5 } }), draft({ answers: { inconnue: 1 } }), draft({ answers: [1] }), draft({ index: 99 }), draft({ index: 1.5 }), draft({ profile: null })])
+for (const raw of [null, '', '{', draft({ version: 2 }), draft({ profile: { ...profile, sector: 'x' } }), draft({ profile: { ...profile, size: '11-50' } }), draft({ answers: { usa1: 5 } }), draft({ answers: { inconnue: 1 } }), draft({ answers: [1] }), draft({ index: 99 }), draft({ index: 1.5 }), draft({ profile: null }), draft({ unlocked: 'oui' }), draft({ profile: { ...profile, sector: 'autre', sectorDetail: 'x'.repeat(81) } }), draft({ profile: { ...profile, sectorDetail: 42 } })])
   assert.equal(restoreDraft(raw, now), null);
 
-// 9. Demande d’échange : contrat du formulaire de contact, résultat recalculé côté serveur.
-const lead = { prenom: 'Test', nom: 'Exemple', email: 'test@example.com', telephone: '', entreprise: 'Cabinet Exemple', consentement_rgpd: true, profil: sensitiveProfile, reponses: all(1), source_url: 'https://althoce.com/test-maturite-ia/?utm=x#resultat=1' };
-const payload = buildMaturiteLead({ ...lead, score: 99, stade: 4, injected: 'discard', description: 'falsifié' });
+// 9. Contacts : contrat du formulaire de contact, résultat recalculé côté serveur, deux demandes distinctes.
+const lead = { demande: 'echange', prenom: 'Test', nom: 'Exemple', email: 'test@example.com', telephone: '', entreprise: 'Cabinet Exemple', consentement_rgpd: true, profil: sensitiveProfile, reponses: all(1), source_url: 'https://althoce.com/test-maturite-ia/?utm=x#resultat=1' };
+const plan = { demande: 'plan', prenom: 'Test', email: 'test@example.com', consentement_rgpd: true, profil: sensitiveProfile, reponses: all(1) };
+const payload = buildMaturiteLead({ ...lead, score: 99, stade: 4, injected: 'discard', description: 'falsifié', priorite_commerciale: 'A', lien_resultat: 'https://evil.example' });
 for (const key of ['nom', 'entreprise', 'email', 'telephone', 'taille', 'budget', 'description']) assert.equal(typeof payload[key], 'string', key);
-assert.equal(payload.nom, 'Test Exemple'); assert.equal(payload.taille, '10 à 49 personnes'); assert.equal(payload.source, MATURITE_SOURCE);
+assert.equal(payload.nom, 'Test Exemple'); assert.equal(payload.taille, '10 à 49 personnes'); assert.equal(payload.source, MATURITE_SOURCE); assert.equal(payload.demande, 'echange');
 assert.equal(payload.score, 33); assert.equal(payload.stade, 2); assert.equal(payload.stade_nom, 'Usages dispersés'); assert.equal(payload.injected, undefined);
 assert.ok(payload.description.includes('33/100') && payload.description.includes('Droit & professions juridiques') && !payload.description.includes('falsifié'));
+assert.ok(payload.description.startsWith('Demande d’échange'));
 assert.equal(payload.source_url, 'https://althoce.com/test-maturite-ia/'); assert.equal(payload.consentement_rgpd, true);
+// Le lien du résultat est reconstruit côté serveur et rouvre exactement ce résultat.
+assert.ok(payload.lien_resultat.startsWith('https://althoce.com/test-maturite-ia/#resultat='));
+assert.deepEqual(decodeShare(payload.lien_resultat.split('#resultat=')[1]), { profile: sensitiveProfile, answers: all(1) });
+assert.ok(payload.description.includes(payload.lien_resultat));
+assert.equal(payload.offre_recommandee, OFFER_TEXTS[computeResult(sensitiveProfile, all(1)).offers[0]].title); assert.ok(payload.description.includes(payload.offre_recommandee));
+// Ouverture du plan : prénom et email suffisent ; l’entreprise absente ne bloque pas le contrat du contact.
+const planPayload = buildMaturiteLead(plan);
+assert.equal(planPayload.demande, 'plan'); assert.equal(planPayload.nom, 'Test'); assert.equal(planPayload.entreprise, 'Non précisée'); assert.equal(planPayload.nom_famille, '');
+assert.ok(planPayload.description.startsWith('Plan d’action ouvert')); assert.equal(buildMaturiteLead({ ...plan, entreprise: 'Cabinet Exemple' }).entreprise, 'Cabinet Exemple');
+// Priorité commerciale : une aide au tri, fondée sur la demande, le rôle, la taille, le secteur et les risques relevés.
+assert.equal(payload.priorite_commerciale, 'A'); assert.equal(planPayload.priorite_commerciale, 'B');
+assert.equal(buildMaturiteLead({ ...plan, profil: { sector: 'commerce-distribution', size: 'solo', role: 'collaborateur' }, reponses: all(3) }).priorite_commerciale, 'C');
+assert.equal(commercialPriority('echange', { sector: 'autre', size: 'solo', role: 'collaborateur' }, computeResult({ sector: 'autre', size: 'solo', role: 'collaborateur' }, all(3))).grade, 'B', 'Une demande d’échange n’est jamais classée C');
+assert.ok(payload.description.includes('Priorité commerciale : A'));
+// « Autre activité » : la précision saisie est transmise, et seulement dans ce cas.
+const other = buildMaturiteLead({ ...plan, profil: { sector: 'autre', size: '2-9', role: 'dirigeant', sectorDetail: ' Cabinet d’architecture ' } });
+assert.equal(other.secteur, 'Autre activité'); assert.equal(other.secteur_personnalise, 'Cabinet d’architecture'); assert.ok(other.description.includes('Cabinet d’architecture (autre activité)'));
+assert.equal(buildMaturiteLead({ ...plan, profil: { ...sensitiveProfile, sectorDetail: 'ignoré' } }).secteur_personnalise, '');
+assert.ok(!other.lien_resultat.includes('architecture'));
 // Le message le plus long reste sous la limite du formulaire de contact.
-for (const size of ['solo', '200+']) for (const value of [-1, 0, 1, 2, 3]) assert.ok(buildMaturiteLead({ ...lead, profil: { ...sensitiveProfile, size }, reponses: all(value) }).description.length < 5000);
+for (const size of ['solo', '200+']) for (const value of [-1, 0, 1, 2, 3]) assert.ok(buildMaturiteLead({ ...lead, profil: { sector: 'autre', size, role: 'dirigeant', sectorDetail: 'x'.repeat(80) }, reponses: all(value) }).description.length < 5000);
 assert.equal(buildMaturiteLead({ ...lead, reponses: all(-1) }).score, null);
 const rejected = body => assert.throws(() => buildMaturiteLead(body), error => error instanceof LeadError && error.status === 400);
+rejected({ ...lead, demande: undefined }); rejected({ ...lead, demande: 'autre' });
 rejected({ ...lead, consentement_rgpd: false }); rejected({ ...lead, consentement_rgpd: 'true' }); rejected({ ...lead, email: 'invalide' }); rejected({ ...lead, prenom: ' ' });
+rejected({ ...lead, nom: '' }); rejected({ ...lead, entreprise: '' }); rejected({ ...plan, prenom: '' }); rejected({ ...plan, email: '' }); rejected({ ...plan, consentement_rgpd: undefined });
 rejected({ ...lead, entreprise: 'x'.repeat(201) }); rejected({ ...lead, telephone: '123' }); rejected({ ...lead, profil: { ...profile, sector: 'x' } }); rejected({ ...lead, profil: null });
+rejected({ ...plan, profil: { sector: 'autre', size: '2-9', role: 'dirigeant', sectorDetail: 'x'.repeat(81) } }); rejected({ ...plan, profil: { sector: 'autre', size: '2-9', role: 'dirigeant', sectorDetail: {} } });
 rejected({ ...lead, reponses: { ...all(1), cap1: 4 } }); rejected({ ...lead, reponses: { ...all(1), extra: 1 } }); rejected({ ...lead, reponses: { usa1: 1 } }); rejected({ ...lead, reponses: [] });
 rejected({ ...lead, source_url: 'javascript:alert(1)' }); rejected({ ...lead, nom: { $ne: '' } });
 assert.equal(buildMaturiteLead({ ...lead, telephone: '06 00 00 00 00' }).telephone, '06 00 00 00 00');
@@ -198,4 +245,4 @@ try {
   response = await deliverPayload(request(lead), delivery); assert.equal(response.status, 502); assert.ok(!(await response.text()).includes('secret'));
 } finally { globalThis.fetch = originalFetch; }
 
-console.log('Maturity test checks passed: structure, sector alignment, scoring, unknown answers, signals, priorities (4,000 random profiles), texts and links, sharing, draft restore, lead contract and delivery. No external calls.');
+console.log('Maturity test checks passed: structure, sector alignment, scoring, unknown answers, signals, priorities (4,000 random profiles), texts and links, sharing, draft restore, recommended offers, plan and call requests, commercial priority and delivery. No external calls.');

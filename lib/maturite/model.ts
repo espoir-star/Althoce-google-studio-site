@@ -2,7 +2,7 @@
  * Test de maturité IA — calcul du résultat. Fonctions pures, sans accès réseau ni navigateur.
  * Utilisé à l’identique dans la page (résultat immédiat) et côté serveur (résumé joint à une demande de contact).
  */
-import { DIMENSIONS, QUESTIONS, QUESTION_IDS, ROLES, SECTOR_OPTIONS, SENSITIVE_SECTORS, SIZES, type Answer, type Answers, type DimensionId, type Profile, type QuestionId, type RoleId, type SizeId } from './questions';
+import { DIMENSIONS, QUESTIONS, QUESTION_IDS, ROLES, SECTOR_DETAIL_MAX, SECTOR_OPTIONS, SENSITIVE_SECTORS, SIZES, type Answer, type Answers, type DimensionId, type Profile, type QuestionId, type RoleId, type SizeId } from './questions';
 
 export type Band = 'low' | 'mid' | 'high';
 export type Stage = 0 | 1 | 2 | 3;
@@ -12,6 +12,8 @@ export type SignalId =
   | 'direction_sans_relais' | 'savoir_concentre' | 'usage_generaliste' | 'sans_mesure';
 export type StrengthId = 'cadre_pose' | 'sujet_porte' | 'equipe_formee' | 'methodes_partagees' | 'outils_verifies' | 'ia_reliee' | 'effets_suivis' | 'priorites_classees';
 export type ActionId = 'premier_usage' | 'regles_donnees' | 'outil_pro' | 'validation' | 'formation_metier' | 'priorites' | 'methodes' | 'cas_metier' | 'mesure' | 'integration' | 'suivi';
+/** Accompagnements du catalogue Althoce. Voir docs/positionnement-2026-10.md. */
+export type OfferId = 'coaching_solo' | 'formation_dirigeant' | 'atelier_priorites' | 'diagnostic_organisationnel' | 'formation_metier' | 'formation_personnalisee' | 'diagnostic_technique' | 'deploiement' | 'pilotage' | 'centrale';
 export type Result = {
   /** Vrai si le nombre de réponses permet d’établir un score. */
   scored: boolean;
@@ -26,6 +28,8 @@ export type Result = {
   signals: SignalId[];
   strengths: StrengthId[];
   priorities: ActionId[];
+  /** Accompagnements proposés : le premier est la recommandation principale. */
+  offers: OfferId[];
 };
 
 /** Quatre stades, alignés sur les quatre situations proposées à chaque question. */
@@ -64,6 +68,19 @@ export const SIGNAL_ACTION: Record<SignalId, ActionId> = {
 const STRENGTH_ORDER: StrengthId[] = ['cadre_pose', 'sujet_porte', 'equipe_formee', 'methodes_partagees', 'outils_verifies', 'ia_reliee', 'effets_suivis', 'priorites_classees'];
 /** En cas d’égalité entre dimensions, on traite d’abord ce qui conditionne le reste. */
 const TIE_ORDER: DimensionId[] = ['usages', 'cadre', 'competences', 'cap', 'integration'];
+/** Accompagnement qui répond à une priorité. Les indépendants sont orientés vers le coaching individuel. */
+export function offerFor(action: ActionId, solo: boolean): OfferId {
+  if (solo && action !== 'regles_donnees' && action !== 'outil_pro' && action !== 'validation' && action !== 'integration' && action !== 'suivi') return 'coaching_solo';
+  switch (action) {
+    case 'premier_usage': case 'formation_metier': return 'formation_metier';
+    case 'methodes': case 'cas_metier': return 'formation_personnalisee';
+    case 'regles_donnees': case 'outil_pro': case 'validation': return 'diagnostic_organisationnel';
+    case 'priorites': case 'mesure': return 'atelier_priorites';
+    case 'integration': return 'diagnostic_technique';
+    case 'suivi': return 'pilotage';
+  }
+}
+export const MAX_OFFERS = 3;
 export const MAX_SIGNALS = 3;
 export const MAX_STRENGTHS = 3;
 
@@ -137,9 +154,28 @@ export function computeResult(profile: Profile, answers: Answers): Result {
   const premature = bands.cadre === 'low' || bands.usages === 'low';
   const priorities = [...new Set(candidates)].filter(action => !(premature && (action === 'integration' || action === 'suivi'))).slice(0, 3);
 
+  // Accompagnement recommandé : le coaching pour un indépendant qui débute, le diagnostic organisationnel
+  // quand le cadre manque, une décision de direction au stade de l’exploration, sinon ce que demande la première priorité.
+  const stage = total === null ? null : stageOf(total);
+  const sensitive = isSensitive(profile.sector);
+  const decides = profile.role === 'dirigeant' || profile.role === 'direction';
+  const early = stage === null || stage <= 1;
+  const primary: OfferId = solo && early ? 'coaching_solo'
+    : frameFirst ? 'diagnostic_organisationnel'
+    : stage === null || stage === 0 ? (decides ? 'formation_dirigeant' : 'atelier_priorites')
+    : offerFor(priorities[0], solo);
+  // À la suite : la mise en œuvre quand l’intégration est une priorité, la plateforme souveraine pour les
+  // secteurs sensibles déjà avancés, puis ce que demandent les autres priorités.
+  const next: OfferId[] = [];
+  if (!solo && decides && early) next.push('formation_dirigeant');
+  if (priorities.includes('integration')) next.push('diagnostic_technique', 'deploiement');
+  if (sensitive && priorities.some(action => action === 'integration' || action === 'suivi')) next.push('centrale');
+  next.push(...priorities.map(action => offerFor(action, solo)));
+  const offers = [...new Set([primary, ...next])].slice(0, MAX_OFFERS);
+
   return {
-    scored, total, stage: total === null ? null : stageOf(total), dims, bands, weights, sensitive: isSensitive(profile.sector),
-    answered, unknown, signals: allSignals.slice(0, MAX_SIGNALS), strengths: STRENGTH_ORDER.filter(id => strong[id]).slice(0, MAX_STRENGTHS), priorities,
+    scored, total, stage, dims, bands, weights, sensitive,
+    answered, unknown, signals: allSignals.slice(0, MAX_SIGNALS), strengths: STRENGTH_ORDER.filter(id => strong[id]).slice(0, MAX_STRENGTHS), priorities, offers,
   };
 }
 
@@ -162,23 +198,28 @@ export function decodeShare(code: string): { profile: Profile; answers: Answers 
 
 export const STORAGE_KEY = 'althoce-maturite-v1';
 export const DRAFT_TTL = 2 * 60 * 60 * 1000;
-export type Draft = { profile: Profile; answers: Answers; index: number };
+/** `unlocked` : le plan d’action a été ouvert dans cet onglet. Aucune coordonnée n’est conservée dans le navigateur. */
+export type Draft = { profile: Profile; answers: Answers; index: number; unlocked: boolean };
 /** Reprise d’un test en cours dans le même onglet. Toute valeur inattendue invalide le brouillon. */
 export function restoreDraft(raw: string | null, now = Date.now()): Draft | null {
   if (!raw) return null;
   try {
-    const { version, savedAt, profile, answers, index } = JSON.parse(raw);
+    const { version, savedAt, profile, answers, index, unlocked } = JSON.parse(raw);
     if (version !== 1 || !Number.isFinite(savedAt) || savedAt > now || now - savedAt > DRAFT_TTL) return null;
     if (!profile || typeof profile !== 'object' || !answers || typeof answers !== 'object' || Array.isArray(answers)) return null;
     if (profile.sector !== '' && !SECTOR_OPTIONS.some(option => option.slug === profile.sector)) return null;
     if (profile.size !== '' && !SIZES.some(size => size.id === profile.size)) return null;
     if (profile.role !== '' && !ROLES.some(role => role.id === profile.role)) return null;
     if (!Number.isInteger(index) || index < 0 || index > QUESTION_IDS.length) return null;
+    if (profile.sectorDetail !== undefined && (typeof profile.sectorDetail !== 'string' || profile.sectorDetail.length > SECTOR_DETAIL_MAX)) return null;
+    if (unlocked !== undefined && typeof unlocked !== 'boolean') return null;
     const clean: Answers = {};
     for (const [key, value] of Object.entries(answers)) {
       if (!QUESTION_IDS.includes(key as QuestionId) || !isValidAnswer(value)) return null;
       clean[key as QuestionId] = value;
     }
-    return { profile: { sector: profile.sector, size: profile.size as SizeId | '', role: profile.role as RoleId | '' }, answers: clean, index };
+    const restored: Profile = { sector: profile.sector, size: profile.size as SizeId | '', role: profile.role as RoleId | '' };
+    if (profile.sector === 'autre' && profile.sectorDetail) restored.sectorDetail = profile.sectorDetail;
+    return { profile: restored, answers: clean, index, unlocked: unlocked === true };
   } catch { return null; }
 }

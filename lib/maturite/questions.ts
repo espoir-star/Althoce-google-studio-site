@@ -117,7 +117,14 @@ export const SECTOR_OPTIONS: { slug: string; name: string }[] = [
  */
 export const SENSITIVE_SECTORS: readonly string[] = ['finance', 'comptabilite', 'droit', 'medical', 'assurance-patrimoine', 'immobilier', 'secteur-public'];
 
-export type Profile = { sector: string; size: SizeId | ''; role: RoleId | '' };
+/** `sectorDetail` : précision libre quand le secteur est « Autre activité ». Jamais placée dans le lien de partage. */
+export type Profile = { sector: string; size: SizeId | ''; role: RoleId | ''; sectorDetail?: string };
+export const SECTOR_DETAIL_MAX = 80;
+/** Intitulé du secteur à afficher : la précision saisie si elle existe, sinon le nom du secteur. */
+export function sectorLabel(profile: Profile): string {
+  const detail = profile.sector === 'autre' ? profile.sectorDetail?.trim() : '';
+  return detail || SECTOR_OPTIONS.find(option => option.slug === profile.sector)?.name || '';
+}
 export function emptyProfile(): Profile { return { sector: '', size: '', role: '' }; }
 /** Texte et options à afficher selon le profil (variante pour les indépendants). */
 export function questionText(question: Question, size: Profile['size']): { q: string; opts: Options; help?: string } {

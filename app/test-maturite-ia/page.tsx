@@ -14,7 +14,7 @@ import m from '@/components/maturite/Maturite.module.css';
 import b from '@/components/brand/Brand.module.css';
 
 const title = 'Test de maturité IA : situez votre structure';
-const description = 'Quinze questions pour situer votre cabinet ou votre entreprise parmi quatre stades de maturité IA. Résultat par dimension et trois priorités, sans inscription.';
+const description = 'Quinze questions pour situer votre cabinet ou votre entreprise parmi quatre stades de maturité IA. Score sans inscription, puis plan d’action personnalisé.';
 const url = 'https://althoce.com/test-maturite-ia/';
 const image = '/images/services/pilotage.webp';
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export default function TestMaturiteIAPage() {
     <main className={s.page}>
       <section className={s.hero}><div className={s.container}>
         <Breadcrumb label="Test de maturité IA" />
-        <div className={s.heroGrid}><div><h1>Où en êtes-vous<br /><span>avec l’IA ?</span></h1><p>Quinze situations concrètes pour situer votre structure, repérer ce qui manque et choisir vos trois priorités.</p><ul className={s.heroBenefits}>{['5 minutes', 'Résultat immédiat', 'Sans inscription'].map(x => <li key={x}><Check size={15} aria-hidden="true" />{x}</li>)}</ul></div><div className={s.heroPhoto}><Image src={image} alt="Trois professionnels font le point autour d’un ordinateur et de documents de suivi." fill priority sizes="(max-width:700px) 0px, 35vw" /><span>Vos pratiques réelles comme point de départ.</span></div></div>
+        <div className={s.heroGrid}><div><h1>Où en êtes-vous<br /><span>avec l’IA ?</span></h1><p>Quinze situations concrètes pour situer votre structure, repérer ce qui manque et choisir vos trois priorités.</p><ul className={s.heroBenefits}>{['5 minutes', 'Score sans inscription', 'Plan d’action personnalisé'].map(x => <li key={x}><Check size={15} aria-hidden="true" />{x}</li>)}</ul></div><div className={s.heroPhoto}><Image src={image} alt="Trois professionnels font le point autour d’un ordinateur et de documents de suivi." fill priority sizes="(max-width:700px) 0px, 35vw" /><span>Vos pratiques réelles comme point de départ.</span></div></div>
       </div></section>
       <MaturiteTestClient sectorNotes={sectorNotes} />
       <div className={`${b.page} ${m.afterTool}`}>

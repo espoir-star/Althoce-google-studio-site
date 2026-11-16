@@ -3,7 +3,7 @@
  * Rédaction : constats généraux, sans statistique ni promesse de conformité. Voir docs/positionnement-2026-10.md.
  */
 import type { DimensionId, SizeId } from './questions';
-import type { ActionId, Band, SignalId, Stage, StrengthId } from './model';
+import type { ActionId, Band, OfferId, SignalId, Stage, StrengthId } from './model';
 
 export const STAGE_TEXTS: Record<Stage, { diagnostic: string; next: string; priority: string }> = {
   0: {
@@ -101,11 +101,26 @@ export function actionLink(action: ActionId, size: SizeId | '', sensitive: boole
   return (size === 'solo' && item.soloLink) || (sensitive && item.sensitiveLink) || item.link;
 }
 
+/** Accompagnements du catalogue. Intitulés et formats repris des pages services et formations : les modifier là-bas d’abord. */
+export const OFFER_TEXTS: Record<OfferId, { title: string; text: string; format: string; href: string }> = {
+  coaching_solo: { title: 'Coaching IA Solo', text: 'Deux cas de votre activité, un assistant réutilisable et un prototype simple, construits avec vous.', format: '4 h 30 en visio · Individuel · Suivi à J+15', href: '/services/formation-ia/coaching-independant/' },
+  formation_dirigeant: { title: 'Formation IA Dirigeant & Associés', text: 'Créer votre assistant, prioriser trois opportunités et bâtir une feuille de route IA à 90 jours.', format: '1 journée · 7 h · 1 à 5 participants', href: '/services/formation-ia/coaching-dirigeant/' },
+  atelier_priorites: { title: 'Atelier Priorités IA', text: 'Clarifier le besoin et prioriser jusqu’à trois pistes, avec une synthèse et un plan d’action.', format: 'Atelier ciblé · Sans audit technique approfondi', href: '/services/audit-ia/' },
+  diagnostic_organisationnel: { title: 'Diagnostic organisationnel', text: 'Cartographier les usages et les outils, repérer les freins et définir des règles communes, avec une feuille de route.', format: 'Étude sur devis · Livrables remis même sans suite', href: '/services/audit-ia/' },
+  formation_metier: { title: 'Formation IA métier', text: 'Pratiquer sur des situations de votre profession, avec méthode, confidentialité et vérification des réponses.', format: '1 journée · 7 h · 12 participants maximum', href: '/services/formation-ia/ia-fondamentaux/' },
+  formation_personnalisee: { title: 'Formation IA métier personnalisée', text: 'Des exercices et des supports préparés avec vous, à partir de vos outils, de vos processus et de vos exigences.', format: '1 journée · 7 h · Entretien préalable inclus', href: '/services/formation-ia/ia-avancee/' },
+  diagnostic_technique: { title: 'Diagnostic technique', text: 'Étudier les processus, les connexions, les droits et les risques pour définir la faisabilité, le périmètre et le budget.', format: 'Étude sur devis · Avant un projet d’intégration', href: '/services/audit-ia/' },
+  deploiement: { title: 'Déploiement & agents IA', text: 'Des agents et des automatisations sur mesure, reliés à vos outils, testés et transmis à vos équipes.', format: 'Projet sur mesure · Bilan à J+30', href: '/services/automatisation-ia/' },
+  pilotage: { title: 'Pilotage & maintenance', text: 'Suivre les usages, entretenir vos automatisations et les faire évoluer, selon un périmètre convenu.', format: 'Périmètre défini sur devis', href: '/services/pilotage-ia/' },
+  centrale: { title: 'La Centrale', text: 'Vos agents IA sur une seule plateforme sur mesure, reliée à vos outils et hébergée en France ou sur vos serveurs.', format: 'Plateforme sur mesure', href: '/ia-souveraine/' },
+};
+
 export const MATURITE_FAQ = [
   { q: 'Combien de temps dure le test de maturité IA ?', a: 'Environ cinq minutes : trois informations sur votre structure, puis quinze questions à choix unique. Vous pouvez répondre « Je ne sais pas » ; ces réponses ne sont pas comptées dans le score et sont signalées dans le résultat.' },
   { q: 'Qui doit répondre ?', a: 'De préférence un dirigeant, un associé ou un responsable qui connaît les pratiques réelles de l’équipe. Pour une vision plus juste, faites passer le test à deux ou trois personnes et comparez les résultats : les écarts sont souvent instructifs.' },
   { q: 'Comment le score est-il calculé ?', a: 'Chaque question propose quatre situations, de la moins avancée à la plus avancée, notées de 0 à 3. Chaque dimension est ramenée sur 100, puis les cinq dimensions sont pondérées à parts égales. Pour les professions réglementées et le secteur public, le cadre pèse 25 % et l’intégration 15 %. Le score donne l’un des quatre stades.' },
   { q: 'Mon résultat est-il comparé à d’autres entreprises ?', a: 'Non. Nous ne publions pas de comparaison chiffrée tant que nous ne disposons pas d’un nombre suffisant de réponses réelles pour qu’elle ait un sens. Le résultat vous situe par rapport à quatre stades décrits, pas par rapport à une moyenne.' },
-  { q: 'Que deviennent mes réponses ?', a: 'Elles restent dans votre navigateur. Le calcul se fait sur votre appareil et rien n’est enregistré sur nos serveurs. Vos réponses ne nous sont transmises que si vous demandez un échange, avec vos coordonnées et votre accord.' },
+  { q: 'Faut-il donner son email ?', a: 'Pas pour le résultat : votre score, votre stade, la lecture des cinq dimensions et les déséquilibres relevés s’affichent sans inscription. Votre plan d’action détaillé, avec les accompagnements adaptés et la version imprimable, s’ouvre avec votre prénom et votre email professionnel.' },
+  { q: 'Que deviennent mes réponses ?', a: 'Tant que vous ne demandez rien, elles restent dans votre navigateur : le calcul se fait sur votre appareil et rien n’est enregistré sur nos serveurs. Si vous ouvrez votre plan d’action ou demandez un échange, vos réponses et votre résultat nous sont transmis avec vos coordonnées et votre accord, pour vous recontacter à ce sujet.' },
   { q: 'Ce test remplace-t-il un diagnostic IA ?', a: 'Non. C’est une auto-évaluation fondée sur vos déclarations, utile pour vous situer et ouvrir la discussion. Un diagnostic repose sur des entretiens, l’observation du travail réel et l’examen de vos outils et de vos données.' },
 ];

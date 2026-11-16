@@ -1,6 +1,6 @@
 import { useRef, type RefObject } from 'react';
 import { Check } from 'lucide-react';
-import { DIMENSIONS, QUESTIONS, ROLES, SECTOR_OPTIONS, SIZES, UNKNOWN_LABEL, questionText, type Answer, type Profile, type Question } from '@/lib/maturite/questions';
+import { DIMENSIONS, QUESTIONS, ROLES, SECTOR_DETAIL_MAX, SECTOR_OPTIONS, SIZES, UNKNOWN_LABEL, questionText, type Answer, type Profile, type Question } from '@/lib/maturite/questions';
 import s from '@/components/roi/Calculator.module.css';
 import m from './Maturite.module.css';
 
@@ -15,6 +15,7 @@ export function ProfileStep({ profile, update, showErrors }: { profile: Profile;
           {SECTOR_OPTIONS.map(option => <option key={option.slug} value={option.slug}>{option.name}</option>)}
         </select>
         {missing('sector') && <p className={s.error}>Choisissez un secteur.</p>}
+        {profile.sector === 'autre' && <div className={`${s.field} ${m.subField}`}><label htmlFor="maturite-sector-detail">Précisez votre activité <span className={s.optional}>(facultatif)</span></label><input id="maturite-sector-detail" type="text" maxLength={SECTOR_DETAIL_MAX} placeholder="Ex. cabinet d’architecture" autoComplete="off" value={profile.sectorDetail ?? ''} onChange={e => update({ sectorDetail: e.target.value })} /></div>}
       </div>
       <div className={s.field}>
         <label htmlFor="maturite-role">Votre rôle</label>

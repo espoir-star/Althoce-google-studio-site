@@ -54,13 +54,18 @@ export function trackConnectorClick(connector: 'pennylane' | 'hub', path: 'essai
     page_location: cleanUrl(location.href),
   });
 }
-export function trackLead(leadType: 'contact' | 'roi' | 'guide' | 'maturite', resourceSlug?: string) {
+export function trackLead(leadType: 'contact' | 'roi' | 'guide' | 'maturite' | 'maturite_plan', resourceSlug?: string) {
   if (!initializeAnalytics()) return;
   (window as unknown as AnalyticsWindow).gtag?.('event', 'generate_lead', {
     send_to: GA_ID, lead_type: leadType,
     ...(leadType === 'guide' && resourceSlug && /^[a-z0-9-]+$/.test(resourceSlug) ? { resource_slug: resourceSlug } : {}),
     page_location: cleanUrl(location.href),
   });
+}
+/** Test de maturité IA terminé : stade obtenu (1 à 4, 0 si non établi). Aucune réponse ni coordonnée. */
+export function trackMaturiteResult(stage: number) {
+  if (!initializeAnalytics() || !Number.isInteger(stage) || stage < 0 || stage > 4) return;
+  (window as unknown as AnalyticsWindow).gtag?.('event', 'maturite_resultat', { send_to: GA_ID, stade: stage, page_location: cleanUrl(location.href) });
 }
 export function revokeAnalytics() {
   if (typeof window === 'undefined') return;

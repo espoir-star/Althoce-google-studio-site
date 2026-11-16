@@ -7,6 +7,8 @@ import { STORAGE_KEY, computeResult, decodeShare, isComplete, isProfileComplete,
 import { ProfileStep, QuestionStep } from './maturite/MaturiteSteps';
 import { MaturitePanel } from './maturite/MaturitePanel';
 import type { SectorNote } from './maturite/MaturiteReport';
+import { emptyContact, type Contact } from './maturite/sendMaturite';
+import { trackMaturiteResult } from '@/lib/analytics';
 import s from './roi/Calculator.module.css';
 
 // Les textes du rapport ne sont chargés qu’au moment d’afficher le résultat.
@@ -28,6 +30,9 @@ export default function MaturiteTestClient({ sectorNotes }: { sectorNotes: Recor
   const [showErrors, setShowErrors] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
+  // Plan d’action ouvert : mémorisé dans l’onglet. Les coordonnées, elles, ne quittent pas la mémoire de la page.
+  const [unlocked, setUnlocked] = useState(false);
+  const [contact, setContact] = useState<Contact>(emptyContact);
   const heading = useRef<HTMLHeadingElement>(null);
   const legend = useRef<HTMLLegendElement>(null);
   const navigated = useRef(false);
@@ -44,7 +49,7 @@ export default function MaturiteTestClient({ sectorNotes }: { sectorNotes: Recor
       else {
         const draft = restoreDraft(sessionStorage.getItem(STORAGE_KEY));
         if (draft) {
-          setProfile(draft.profile); setAnswers(draft.answers); setIndex(Math.min(draft.index, last));
+          setProfile(draft.profile); setAnswers(draft.answers); setIndex(Math.min(draft.index, last)); setUnlocked(draft.unlocked);
           const profileDone = isProfileComplete(draft.profile);
           setStep(profileDone && isComplete(draft.answers) ? 3 : profileDone && Object.keys(draft.answers).length > 0 ? 2 : 1);
           setResumed(profileDone);
@@ -57,9 +62,9 @@ export default function MaturiteTestClient({ sectorNotes }: { sectorNotes: Recor
   useEffect(() => {
     // Un résultat reçu par lien ne remplace jamais le test en cours du visiteur.
     if (!ready || shared) return;
-    const save = setTimeout(() => { try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, savedAt: Date.now(), profile, answers, index })); } catch {} }, 250);
+    const save = setTimeout(() => { try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, savedAt: Date.now(), profile, answers, index, unlocked })); } catch {} }, 250);
     return () => clearTimeout(save);
-  }, [profile, answers, index, ready, shared]);
+  }, [profile, answers, index, unlocked, ready, shared]);
   function focusStep() {
     if (!navigated.current) return;
     (step === 2 ? legend.current : heading.current)?.focus({ preventScroll: true });
@@ -79,6 +84,7 @@ export default function MaturiteTestClient({ sectorNotes }: { sectorNotes: Recor
   function finish(current: Answers) {
     const missing = QUESTIONS.findIndex(item => current[item.id] === undefined);
     if (missing >= 0) { move(missing); setShowErrors(true); return; }
+    trackMaturiteResult(result.stage === null ? 0 : result.stage + 1);
     goTo(3);
   }
   function next() {
@@ -89,7 +95,7 @@ export default function MaturiteTestClient({ sectorNotes }: { sectorNotes: Recor
   function back() { if (step === 2 && index > 0) move(index - 1); else goTo((step - 1) as Step); }
   function reset() {
     clearTimeout(timer.current);
-    setProfile(emptyProfile()); setAnswers({}); setIndex(0); setResumed(false); setShared(false); setConfirmReset(false); setShowContact(false); goTo(1);
+    setProfile(emptyProfile()); setAnswers({}); setIndex(0); setResumed(false); setShared(false); setConfirmReset(false); setShowContact(false); setUnlocked(false); goTo(1);
     try { sessionStorage.removeItem(STORAGE_KEY); if (location.hash) history.replaceState(null, '', location.pathname + location.search); } catch {}
   }
 
@@ -114,16 +120,16 @@ export default function MaturiteTestClient({ sectorNotes }: { sectorNotes: Recor
             <QuestionStep key={question.id} question={question} size={profile.size} value={answers[question.id]} index={index} heading={legend} onAnswer={answer} />
             {showErrors && answers[question.id] === undefined && <p role="alert" className={s.errorSummary}>Choisissez la situation la plus proche de la vôtre, ou « Je ne sais pas ».</p>}
           </>}
-          {step === 3 && <Report profile={profile} answers={answers} result={result} sector={sectorNotes[profile.sector]} shared={shared} heading={heading} onReady={focusStep} onContact={() => setShowContact(true)} onRestart={reset} />}
+          {step === 3 && <Report profile={profile} answers={answers} result={result} sector={sectorNotes[profile.sector]} shared={shared} unlocked={unlocked} contact={contact} heading={heading} onReady={focusStep} onUnlocked={next => { setContact(next); setUnlocked(true); }} onContact={() => setShowContact(true)} onRestart={reset} />}
           {step !== 3 && <div className={`${s.panelNav} ${s.noPrint}`}>
             {step === 1 ? <span /> : <button type="button" className={s.secondary} onClick={back}><ArrowLeft size={16} aria-hidden="true" />Précédent</button>}
             <button type="button" className={s.primary} onClick={next}>{step === 1 ? 'Commencer les questions' : index < last ? 'Question suivante' : 'Voir mon résultat'}<ArrowRight size={18} aria-hidden="true" /></button>
           </div>}
         </div>
-        {step !== 3 && <p className={s.privacyNote}>Résultat immédiat, sans inscription. Vos coordonnées ne sont demandées que si vous souhaitez échanger avec nous.</p>}
+        {step !== 3 && <p className={s.privacyNote}>Score et lecture par dimension sans inscription. Votre plan d’action s’ouvre ensuite avec votre prénom et votre email.</p>}
       </div>
-      <MaturitePanel step={step} answers={answers} current={step === 2 ? question.dim : null} result={result} />
+      <MaturitePanel step={step} answers={answers} current={step === 2 ? question.dim : null} result={result} unlocked={unlocked || shared} />
     </div>
-    {showContact && <LeadModal profile={profile} answers={answers} result={result} onClose={() => setShowContact(false)} />}
+    {showContact && <LeadModal profile={profile} answers={answers} result={result} contact={contact} onSent={next => { setContact(next); setUnlocked(true); }} onClose={() => setShowContact(false)} />}
   </section>;
 }

@@ -5,24 +5,13 @@ import type { Answers, Profile } from '@/lib/maturite/questions';
 import { STAGES, type Result } from '@/lib/maturite/model';
 import { trackLead } from '@/lib/analytics';
 import { trackFb } from '@/lib/fbpixel';
+import { sendMaturite, type Contact } from './sendMaturite';
 import s from '@/components/roi/Calculator.module.css';
 
-type Form = { prenom: string; nom: string; email: string; telephone: string; entreprise: string; consentement: boolean };
-
-async function submit(form: Form, profile: Profile, answers: Answers): Promise<{ ok: boolean; error?: string }> {
-  try {
-    const response = await fetch('/api/maturite-lead/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
-      prenom: form.prenom, nom: form.nom, email: form.email, telephone: form.telephone, entreprise: form.entreprise,
-      consentement_rgpd: form.consentement, profil: profile, reponses: answers, source_url: location.origin + location.pathname,
-    }) });
-    const result = await response.json().catch(() => null);
-    return response.ok && result?.ok === true ? { ok: true } : { ok: false, error: typeof result?.error === 'string' ? result.error : 'Envoi impossible. Veuillez réessayer.' };
-  } catch { return { ok: false, error: 'Connexion impossible. Votre résultat reste disponible. Réessayez dans un instant.' }; }
-}
-
-export function MaturiteLeadModal({ onClose, profile, answers, result }: { onClose: () => void; profile: Profile; answers: Answers; result: Result }) {
+export function MaturiteLeadModal({ onClose, profile, answers, result, contact, onSent }: { onClose: () => void; profile: Profile; answers: Answers; result: Result; contact: Contact; onSent: (contact: Contact) => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
-  const [data, setData] = useState<Form>({ prenom: '', nom: '', email: '', telephone: '', entreprise: '', consentement: false });
+  const [data, setData] = useState<Contact>(contact);
+  const [consent, setConsent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
@@ -40,10 +29,10 @@ export function MaturiteLeadModal({ onClose, profile, answers, result }: { onClo
     if (sending.current) return;
     if (data.telephone.trim() && data.telephone.replace(/\D/g, '').length < 10) { setError('Vérifiez le numéro de téléphone : au moins 10 chiffres.'); return; }
     sending.current = true; setBusy(true); setError('');
-    const response = await submit(data, profile, answers);
+    const response = await sendMaturite('echange', data, consent, profile, answers);
     sending.current = false; setBusy(false);
     if (!response.ok) { setError(response.error || 'Envoi impossible. Réessayez dans un instant.'); return; }
-    setSent(true); trackLead('maturite'); trackFb('Lead', { content_name: 'Test de maturité IA' });
+    setSent(true); onSent(data); trackLead('maturite'); trackFb('Lead', { content_name: 'Test de maturité IA : échange' });
   }
   const summary = result.stage === null ? 'Votre résultat est un point de départ.' : `Votre résultat, stade « ${STAGES[result.stage].name} », est un point de départ.`;
   return <dialog ref={dialog} className={s.dialog} aria-labelledby="maturite-contact-title" aria-describedby="maturite-contact-description" onKeyDown={e => {
@@ -64,7 +53,7 @@ export function MaturiteLeadModal({ onClose, profile, answers, result }: { onClo
             ['email', 'Email professionnel', 'email', 'email', true], ['telephone', 'Téléphone', 'tel', 'tel', false],
           ] as const).map(([key, label, type, autoComplete, required]) => <div className={s.field} key={key}><label htmlFor={`maturite-contact-${key}`}>{label}{!required && <span className={s.optional}> (facultatif)</span>}</label><input id={`maturite-contact-${key}`} name={key} type={type} autoComplete={autoComplete} required={required} maxLength={key === 'email' ? 254 : key === 'telephone' ? 30 : 100} value={data[key]} onChange={e => setData(prev => ({ ...prev, [key]: e.target.value }))} disabled={busy} /></div>)}</div>
           <div className={s.field}><label htmlFor="maturite-contact-company">Entreprise ou cabinet</label><input id="maturite-contact-company" name="entreprise" autoComplete="organization" required maxLength={200} value={data.entreprise} onChange={e => setData(prev => ({ ...prev, entreprise: e.target.value }))} disabled={busy} /></div>
-          <label className={s.consent}><input type="checkbox" required checked={data.consentement} onChange={e => setData(prev => ({ ...prev, consentement: e.target.checked }))} disabled={busy} /><span>J’accepte qu’Althoce reçoive mes réponses au test et me recontacte à ce sujet. <a href="/confidentialite/" target="_blank" rel="noopener noreferrer">Utilisation de mes données</a>.</span></label>
+          <label className={s.consent}><input type="checkbox" required checked={consent} onChange={e => setConsent(e.target.checked)} disabled={busy} /><span>J’accepte qu’Althoce reçoive mes réponses au test et me recontacte à ce sujet. <a href="/confidentialite/" target="_blank" rel="noopener noreferrer">Utilisation de mes données</a>.</span></label>
           {error && <p role="alert" className={s.error}>{error}</p>}
           <button type="submit" className={s.primary} disabled={busy}>{busy ? 'Envoi en cours…' : 'Demander mon échange offert'}<ArrowUpRight size={18} aria-hidden="true" /></button>
           <p className={s.hint}>Votre résultat reste disponible, même sans envoyer ce formulaire.</p>

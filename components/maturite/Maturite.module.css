@@ -103,6 +103,28 @@
 .actions button { display:inline-flex; align-items:center; gap:8px; min-height:44px; border:0; background:none; color:#3f5d85; font-size:13px!important; }
 .actions button:hover { color:#1c52b9; }
 
+.subField { margin-top:12px; }
+.gate { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; align-items:start; margin-top:36px; padding:28px; border-radius:14px; background:#edf3ff; }
+.gateLabel { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:#2459bd; }
+.gate h3 { margin-top:10px; font-size:24px; font-weight:600; line-height:1.25; letter-spacing:-.03em; color:#16386e; }
+.gateList { margin:18px 0 0; padding:0; list-style:none; counter-reset:gate; border-bottom:1px solid #d3e0f5; }
+.gateList li { counter-increment:gate; display:flex; align-items:center; gap:12px; padding:11px 0; border-top:1px solid #d3e0f5; font-size:15px; font-weight:550; line-height:1.4; color:#1c2c44; }
+.gateList li::before { content:counter(gate); display:grid; place-items:center; width:24px; height:24px; border-radius:50%; background:#fff; color:#2459bd; font-size:12px; font-weight:600; flex-shrink:0; }
+.gateIntro > p { margin-top:14px!important; font-size:13px; line-height:1.6; color:#4f6482; }
+.gateForm { display:grid; gap:14px; padding:22px; border:1px solid #d7e4fb; border-radius:12px; background:#fff; }
+.gateForm > label { margin:2px 0; }
+.gateForm > button[type="submit"] { width:100%; }
+.gateForm > button[type="button"] { justify-self:center; }
+.offers { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:18px; }
+.offer { display:flex; flex-direction:column; gap:6px; padding:20px; border:1px solid #dfe6ef; border-radius:12px; background:#fff; color:#172439; text-decoration:none; transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1), border-color .15s; }
+.offer:hover { border-color:#9cb8e8; transform:translateY(-2px); box-shadow:0 12px 30px -16px rgba(20,40,80,.35); }
+.offer[data-primary="true"] { grid-column:1 / -1; border-color:#bcd0f5; background:#f4f8ff; }
+.offerTag { align-self:flex-start; padding:3px 10px; border-radius:999px; background:#2563eb; color:#fff; font-size:11px; font-weight:600; }
+.offer strong { font-size:17px; font-weight:600; line-height:1.35; letter-spacing:-.02em; }
+.offer[data-primary="true"] strong { font-size:20px; }
+.offer p { font-size:14px; line-height:1.6; color:#506380; }
+.offer small { font-size:12px; color:#5c6d85; }
+.offerLink { display:inline-flex; align-items:center; gap:6px; margin-top:6px; color:#2359b8; font-size:13px; font-weight:600; }
 .printOnly { display:none; }
 
 /* Panneau latéral */
@@ -136,6 +158,7 @@
 }
 @media(max-width:899px) {
   .scoreHero { grid-template-columns:minmax(0,1fr); gap:22px; }
+  .gate { grid-template-columns:minmax(0,1fr); gap:22px; }
   .strengths { grid-template-columns:minmax(0,1fr); }
 }
 @media(max-width:699px) {
@@ -150,17 +173,21 @@
 }
 @media(max-width:599px) {
   .scoreHero { padding:22px 18px; }
+  .gate { padding:22px 16px; }
+  .gateForm { padding:18px 14px; }
+  .offers { grid-template-columns:minmax(0,1fr); }
   .option { padding:14px; gap:12px; }
   .sector { padding:20px 16px; }
   .scale li { font-size:11px; }
   .dimTop strong small { display:block; margin-left:0; }
   .progress > span:first-child { display:none; }
 }
-@media(prefers-reduced-motion:reduce) { .progressTrack i, .option, .chip { transition:none!important; } .option:active { transform:none; } }
+@media(prefers-reduced-motion:reduce) { .progressTrack i, .option, .chip, .offer { transition:none!important; } .option:active, .offer:hover { transform:none; } }
 @media print {
   .afterTool, .sharedNotice { display:none!important; }
   .reportHeading h2::before { content:'Althoce · Test de maturité IA'; display:block; font-size:14px; font-weight:500; letter-spacing:0; margin-bottom:16px; color:#3f5e8a; }
-  .scoreHero, .signal, .sector, .priorities li, .dimList li, .stageNotes { break-inside:avoid; }
+  .scoreHero, .signal, .sector, .priorities li, .dimList li, .stageNotes, .offer { break-inside:avoid; }
+  .offerLink { display:none; }
   .block > h3 { break-after:avoid; }
   .printOnly { display:block!important; margin-top:24px!important; font-size:12px; color:#5e6c80; }
   .scoreHero, .dimBar, .dimBar i, .scale li, .signal, .radar { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
