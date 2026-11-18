@@ -4,6 +4,8 @@ import { ArrowRight, ArrowUpRight, Check, Link2, LockKeyhole, Printer, TriangleA
 import { DIMENSIONS, QUESTIONS, QUESTION_IDS, ROLES, SIZES, UNKNOWN_LABEL, nextOption, questionText, sectorLabel, type Answers, type DimensionId, type Profile } from '@/lib/maturite/questions';
 import { FREE_SIGNALS, MIN_ANSWERS, STAGES, encodeShare, freeDimensions, nextStage, type Result } from '@/lib/maturite/model';
 import { ACTION_TEXTS, DIMENSION_TEXTS, DISCUSSION_QUESTIONS, OFFER_TEXTS, SIGNAL_TEXTS, STAGE_TEXTS, STRENGTH_TEXTS, actionLink, monthPlan } from '@/lib/maturite/report-content';
+import { Logo } from '@/components/ui/brand/Logo';
+import { brand, contact as althoce } from '@/lib/brand-content';
 import { PlanGate, PlanGateDialog } from './MaturitePlanGate';
 import type { Contact } from './sendMaturite';
 import s from '@/components/roi/Calculator.module.css';
@@ -35,6 +37,10 @@ function Radar({ dims }: { dims: Result['dims'] }) {
   </svg>;
 }
 const ARTICLES: Record<DimensionId, string> = { cap: 'le cap', usages: 'les usages', cadre: 'le cadre', competences: 'les compétences', integration: 'l’intégration' };
+/** Logo et nom, tels qu’ils apparaissent dans la navigation du site. */
+function BrandMark() {
+  return <span className={m.brandMark}><Logo size={30} /><b>althoce<i>.</i></b></span>;
+}
 /** Quatre crans : où en est une réponse sur l’échelle de la question. */
 function Steps({ value }: { value: number }) {
   return <span className={m.steps} aria-hidden="true">{[0, 1, 2, 3].map(i => <i key={i} data-on={i <= value} />)}</span>;
@@ -90,7 +96,8 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
 
   return <div data-maturite-report>
     {open && <div className={m.cover}>
-      <span>Althoce · Test de maturité IA</span>
+      <div className={m.coverTop}><BrandMark /><p>{althoce.site}<br />{althoce.email}</p></div>
+      <span>Test de maturité IA</span>
       <strong>Résultat et plan d’action</strong>
       <p>{meta} · {today}</p>
     </div>}
@@ -118,7 +125,7 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
     </> : <div className={s.notice} role="status"><strong>Score non établi</strong>Vous avez répondu « Je ne sais pas » à {QUESTION_IDS.length - result.answered} questions sur {QUESTION_IDS.length}. Il en faut au moins {MIN_ANSWERS} renseignées, sur quatre dimensions, pour établir un score. C’est déjà un enseignement : faites préciser ces points par un associé ou un responsable d’équipe.</div>}
     {result.scored && result.unknown.length > 0 && <p className={s.hint}>Score établi sur {result.answered} réponses sur {QUESTION_IDS.length}. {result.unknown.length > 1 ? `Les ${result.unknown.length} questions sans réponse ne sont pas comptées : les faire préciser` : 'La question sans réponse n’est pas comptée : la faire préciser'} affinera le résultat.</p>}
 
-    {open && stage !== null && weakest && <section className={m.block} aria-labelledby="maturite-summary-title">
+    {open && stage !== null && weakest && <section className={`${m.block} ${m.keep}`} aria-labelledby="maturite-summary-title">
       <h3 id="maturite-summary-title">L’essentiel en trois messages</h3>
       <p className={m.blockLead}>À reprendre tel quel avec vos associés ou votre équipe.</p>
       <ol className={m.summary}>
@@ -276,7 +283,18 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
       <span>Premier échange de 30 minutes offert. Sans engagement.</span>
     </section>}
     {open && <>
-    <p className={m.printOnly}>Auto-évaluation réalisée le {today} sur althoce.com/test-maturite-ia/. Pour en parler avec Althoce : althoce.com/contact/. Premier échange de 30 minutes offert.</p>
+    {/* Coordonnées : toujours dans le PDF ; à l’écran pour qui a reçu le résultat par lien et n’a pas le bouton d’échange. */}
+    <section className={m.contactCard} data-screen={shared} aria-label="Contacter Althoce">
+      <div><BrandMark /><p>{brand.title}</p></div>
+      <div><strong>Parlons de votre résultat.</strong><p>Un premier échange de 30 minutes, offert et sans engagement, pour confronter ce résultat à votre réalité.</p></div>
+      <address>
+        <a href={`mailto:${althoce.email}`}>{althoce.email}</a>
+        <a href="/contact/">{althoce.site}/contact</a>
+        <span>{althoce.company} · {althoce.street}, {althoce.city}</span>
+        <span>{althoce.hours}</span>
+      </address>
+      <p className={`${m.printOnly} ${m.contactDate}`}>Auto-évaluation réalisée le {today} sur althoce.com/test-maturite-ia/.</p>
+    </section>
     <div className={`${m.actions} ${s.noPrint}`}>
       <button type="button" onClick={() => window.print()}><Printer size={16} aria-hidden="true" />Imprimer ou enregistrer en PDF</button>
       <button type="button" onClick={copyLink}><Link2 size={16} aria-hidden="true" />{copied === 'done' ? 'Lien copié' : 'Copier le lien du résultat'}</button>

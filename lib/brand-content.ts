@@ -7,3 +7,13 @@ export const brand = {
   shortDescription: 'Conseil, formation et intégration IA pour les professions réglementées et les entreprises à fortes exigences de confidentialité et de maîtrise des usages.',
   footer: 'Cabinet de conseil & intégration IA pour les professions réglementées et les entreprises à fortes exigences. Formation, usages encadrés et solutions sur mesure.',
 };
+
+/** Coordonnées publiées sur la page Contact. Une seule source pour les documents remis aux visiteurs. */
+export const contact = {
+  email: 'espoir@contact.althoce.com',
+  site: 'althoce.com',
+  company: 'ALTHOCE CONSEIL',
+  street: '5 rue Fénelon',
+  city: '33000 Bordeaux',
+  hours: 'Du lundi au vendredi, de 9 h à 18 h',
+};
