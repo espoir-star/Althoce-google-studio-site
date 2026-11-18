@@ -2,7 +2,7 @@
  * Test de maturité IA — calcul du résultat. Fonctions pures, sans accès réseau ni navigateur.
  * Utilisé à l’identique dans la page (résultat immédiat) et côté serveur (résumé joint à une demande de contact).
  */
-import { DIMENSIONS, QUESTIONS, QUESTION_IDS, ROLES, SECTOR_DETAIL_MAX, SECTOR_OPTIONS, SENSITIVE_SECTORS, SIZES, type Answer, type Answers, type DimensionId, type Profile, type QuestionId, type RoleId, type SizeId } from './questions';
+import { DIMENSIONS, QUESTIONS, QUESTION_IDS, ROLES, SECTOR_DETAIL_MAX, nextOption, SECTOR_OPTIONS, SENSITIVE_SECTORS, SIZES, type Answer, type Answers, type DimensionId, type Profile, type QuestionId, type RoleId, type SizeId } from './questions';
 
 export type Band = 'low' | 'mid' | 'high';
 export type Stage = 0 | 1 | 2 | 3;
@@ -92,6 +92,32 @@ export const FREE_SIGNALS = 1;
 export function freeDimensions(dims: Record<DimensionId, number | null>): DimensionId[] {
   const ranked = [...DIMENSION_IDS].sort((a, b) => (dims[b] ?? -1) - (dims[a] ?? -1) || DIMENSION_IDS.indexOf(a) - DIMENSION_IDS.indexOf(b)).slice(0, FREE_DIMENSIONS);
   return DIMENSION_IDS.filter(id => ranked.includes(id));
+}
+export type Lever = { id: QuestionId; from: number; to: number; gain: number };
+export const MAX_LEVERS = 3;
+/**
+ * Ce qui sépare du stade suivant : l’écart en points et les réponses dont l’évolution vers l’étape recommandée compte le plus.
+ * Le gain d’une réponse dépend du poids de sa dimension. On n’y propose jamais de relier ou d’automatiser
+ * tant que le cadre ou les usages sont faibles.
+ */
+export function nextStage(result: Result, answers: Answers): { target: Stage | null; gap: number; levers: Lever[]; gain: number } | null {
+  if (result.total === null || result.stage === null) return null;
+  const target = result.stage < 3 ? (result.stage + 1) as Stage : null;
+  const evaluated = DIMENSION_IDS.filter(id => result.dims[id] !== null);
+  const weight = evaluated.reduce((sum, id) => sum + result.weights[id], 0);
+  const premature = result.bands.cadre === 'low' || result.bands.usages === 'low';
+  const levers: Lever[] = [];
+  for (const question of QUESTIONS) {
+    const value = answers[question.id];
+    if (!isValidAnswer(value) || value < 0 || value >= 3 || result.dims[question.dim] === null) continue;
+    if (premature && (question.id === 'int2' || question.id === 'int3')) continue;
+    const answered = QUESTIONS.filter(item => item.dim === question.dim && isValidAnswer(answers[item.id]) && answers[item.id]! >= 0).length;
+    const to = nextOption(question, value);
+    levers.push({ id: question.id, from: value, to, gain: (to - value) * result.weights[question.dim] / weight * 100 / (3 * answered) });
+  }
+  levers.sort((a, b) => b.gain - a.gain || a.from - b.from || TIE_ORDER.indexOf(QUESTIONS.find(q => q.id === a.id)!.dim) - TIE_ORDER.indexOf(QUESTIONS.find(q => q.id === b.id)!.dim) || QUESTION_IDS.indexOf(a.id) - QUESTION_IDS.indexOf(b.id));
+  const top = levers.slice(0, MAX_LEVERS);
+  return { target, gap: (target === null ? 100 : STAGES[target].min) - result.total, levers: top, gain: Math.round(top.reduce((sum, lever) => sum + lever.gain, 0)) };
 }
 export const MAX_OFFERS = 3;
 export const MAX_SIGNALS = 3;

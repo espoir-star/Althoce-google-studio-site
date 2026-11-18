@@ -83,18 +83,111 @@ export const STRENGTH_TEXTS: Record<StrengthId, { title: string; text: string }>
 };
 
 export type ActionLink = { label: string; href: string };
-export const ACTION_TEXTS: Record<ActionId, { title: string; text: string; link: ActionLink; soloLink?: ActionLink; sensitiveLink?: ActionLink }> = {
-  premier_usage: { title: 'Tester un premier usage utile', text: 'Partir d’une tâche répétitive et peu risquée, sur des documents fictifs ou anonymisés, et noter le temps passé avant et après.', link: { label: 'Parcourir nos guides pratiques', href: '/guides/' } },
-  regles_donnees: { title: 'Poser le cadre d’usage', text: 'Trois règles suffisent pour commencer : les données exclues, les outils autorisés, la relecture attendue.', link: { label: 'Lire notre guide RGPD des outils d’IA', href: '/blog/chatgpt-claude-mistral-rgpd-guide-2026/' } },
-  outil_pro: { title: 'Choisir un outil professionnel adapté', text: 'Comparer les offres selon le contrat, l’hébergement et l’utilisation des données, puis en faire l’outil de référence.', link: { label: 'Lire notre guide RGPD des outils d’IA', href: '/blog/chatgpt-claude-mistral-rgpd-guide-2026/' }, sensitiveLink: { label: 'Choisir le niveau de protection de vos données', href: '/blog/ia-souveraine-donnees-sensibles-hds-secret-professionnel/' } },
-  validation: { title: 'Définir qui valide quoi', text: 'Pour chaque type de travail préparé avec l’IA, préciser les points à contrôler et la personne qui valide.', link: { label: 'Cadrer vos usages avec un diagnostic', href: '/services/audit-ia/' } },
-  formation_metier: { title: 'Former sur vos propres cas', text: 'Une journée de pratique sur des situations du métier, avec une méthode pour vérifier les réponses et protéger les données.', link: { label: 'Voir la Formation IA métier', href: '/services/formation-ia/ia-fondamentaux/' }, soloLink: { label: 'Voir le Coaching IA Solo', href: '/services/formation-ia/coaching-independant/' } },
-  priorites: { title: 'Choisir vos priorités', text: 'Lister les tâches candidates, estimer le temps passé et le risque, puis retenir trois usages à étudier.', link: { label: 'Voir le diagnostic IA', href: '/services/audit-ia/' } },
-  methodes: { title: 'Transformer les bons usages en méthodes', text: 'Décrire deux usages qui fonctionnent, les éprouver sur plusieurs dossiers et les ranger là où ils se retrouvent.', link: { label: 'Parcourir nos guides pratiques', href: '/guides/' } },
-  cas_metier: { title: 'Appliquer l’IA aux tâches du métier', text: 'Choisir deux tâches qui prennent du temps et construire, pour chacune, une façon de faire commune et vérifiable.', link: { label: 'Voir la Formation IA métier personnalisée', href: '/services/formation-ia/ia-avancee/' }, soloLink: { label: 'Voir le Coaching IA Solo', href: '/services/formation-ia/coaching-independant/' } },
-  mesure: { title: 'Mesurer ce que l’IA apporte', text: 'Estimer le temps consacré à deux tâches aujourd’hui, puis après quelques semaines d’usage.', link: { label: 'Estimer le temps à libérer', href: '/calculateur-roi/' } },
-  integration: { title: 'Relier l’IA à vos outils', text: 'Choisir une tâche à fort volume, vérifier les connexions disponibles et tester sur un périmètre réduit.', link: { label: 'Voir le déploiement d’agents IA', href: '/services/automatisation-ia/' } },
-  suivi: { title: 'Organiser le suivi dans la durée', text: 'Documenter chaque automatisation, désigner un responsable et prévoir une revue régulière.', link: { label: 'Voir le pilotage et la maintenance', href: '/services/pilotage-ia/' } },
+/**
+ * Fiche d’action : pourquoi, quatre étapes dans l’ordre, résultat attendu, délai indicatif, piège à éviter.
+ * Les deux premières étapes doivent pouvoir se faire en une semaine : le plan sur 30 jours s’appuie dessus.
+ * Les délais sont des ordres de grandeur, présentés comme tels.
+ */
+export type ActionSheet = { title: string; text: string; why: string; steps: readonly [string, string, string, string]; outcome: string; horizon: string; pitfall: string; link: ActionLink; soloLink?: ActionLink; sensitiveLink?: ActionLink };
+export const ACTION_TEXTS: Record<ActionId, ActionSheet> = {
+  premier_usage: {
+    title: 'Tester un premier usage utile', text: 'Partir d’une tâche répétitive et peu risquée, sur des documents fictifs ou anonymisés, et noter le temps passé avant et après.',
+    why: 'Un essai réel vaut mieux qu’un débat : il montre en quelques jours ce que l’IA fait bien et mal sur votre travail.',
+    steps: ['Choisir une tâche répétitive, peu risquée, qui revient chaque semaine.', 'Préparer trois exemples réels, rendus fictifs ou anonymisés.', 'Faire l’essai à deux, en notant le temps passé avec et sans l’IA.', 'Décider : on généralise, on ajuste ou on abandonne.'],
+    outcome: 'Un usage testé, avec un avant et un après mesurés.', horizon: 'Deux semaines, à raison d’une heure par semaine.', pitfall: 'Commencer par la tâche la plus complexe ou la plus sensible.',
+    link: { label: 'Parcourir nos guides pratiques', href: '/guides/' },
+  },
+  regles_donnees: {
+    title: 'Poser le cadre d’usage', text: 'Trois règles suffisent pour commencer : les données exclues, les outils autorisés, la relecture attendue.',
+    why: 'Tant que rien n’est écrit, chacun fixe sa propre limite, et la plus basse devient la règle de fait.',
+    steps: ['Lister les types de documents manipulés et marquer ceux qui ne doivent jamais sortir.', 'Écrire trois règles : les données exclues, les outils autorisés, la relecture attendue.', 'Les présenter en réunion, avec un exemple concret pour chacune.', 'Fixer une date de révision et la personne à qui poser une question.'],
+    outcome: 'Une page de règles connue de tous, datée et portée par la direction.', horizon: 'Une réunion pour décider, deux semaines pour diffuser.', pitfall: 'Une charte de dix pages que personne ne lit. Trois règles appliquées valent mieux.',
+    link: { label: 'Lire notre guide RGPD des outils d’IA', href: '/blog/chatgpt-claude-mistral-rgpd-guide-2026/' },
+  },
+  outil_pro: {
+    title: 'Choisir un outil professionnel adapté', text: 'Comparer les offres selon le contrat, l’hébergement et l’utilisation des données, puis en faire l’outil de référence.',
+    why: 'Un compte personnel ne vous donne aucune maîtrise sur ce que deviennent les données qui y sont déposées.',
+    steps: ['Recenser les outils réellement utilisés aujourd’hui, comptes personnels compris.', 'Comparer deux ou trois offres professionnelles : contrat, hébergement, conservation, usage des données pour l’entraînement.', 'Retenir un outil et l’ouvrir d’abord à un petit groupe.', 'Mettre fin aux usages sur comptes personnels une fois l’outil fourni.'],
+    outcome: 'Un outil de référence, fourni par la structure, dont les conditions sont connues.', horizon: 'Deux à quatre semaines, selon le nombre d’offres comparées.', pitfall: 'Choisir sur la seule notoriété, sans lire les conditions d’utilisation des données.',
+    link: { label: 'Lire notre guide RGPD des outils d’IA', href: '/blog/chatgpt-claude-mistral-rgpd-guide-2026/' }, sensitiveLink: { label: 'Choisir le niveau de protection de vos données', href: '/blog/ia-souveraine-donnees-sensibles-hds-secret-professionnel/' },
+  },
+  validation: {
+    title: 'Définir qui valide quoi', text: 'Pour chaque type de travail préparé avec l’IA, préciser les points à contrôler et la personne qui valide.',
+    why: 'L’IA prépare, mais la responsabilité du travail rendu reste la vôtre.',
+    steps: ['Lister les types de travaux préparés avec l’IA : notes, courriers, analyses, calculs.', 'Pour chacun, écrire les points à vérifier : sources, chiffres, cohérence avec le dossier.', 'Désigner qui valide avant envoi, selon le niveau de risque.', 'Garder une trace simple de la validation pour les travaux sensibles.'],
+    outcome: 'Une grille de contrôle par type de travail, connue de tous.', horizon: 'Une demi-journée de travail, puis un mois d’essai.', pitfall: 'Une relecture dite systématique, sans préciser quoi regarder : elle devient vite une formalité.',
+    link: { label: 'Cadrer vos usages avec un diagnostic', href: '/services/audit-ia/' },
+  },
+  formation_metier: {
+    title: 'Former sur vos propres cas', text: 'Une journée de pratique sur des situations du métier, avec une méthode pour vérifier les réponses et protéger les données.',
+    why: 'On retient ce qu’on a pratiqué sur son propre travail, pas ce qu’on a vu en démonstration.',
+    steps: ['Choisir trois situations réelles du métier à travailler pendant la formation.', 'Préparer des documents fictifs ou anonymisés pour s’exercer.', 'Se former en petit groupe, avec une méthode de vérification des réponses.', 'Faire un point un mois après : ce qui est utilisé, ce qui ne l’est pas.'],
+    outcome: 'Une pratique de l’IA sur les tâches du métier, et la capacité de vérifier ce qu’elle produit.', horizon: 'Une journée de formation, un point à un mois.', pitfall: 'Une présentation générale sans exercice : elle informe, elle ne change pas les pratiques.',
+    link: { label: 'Voir la Formation IA métier', href: '/services/formation-ia/ia-fondamentaux/' }, soloLink: { label: 'Voir le Coaching IA Solo', href: '/services/formation-ia/coaching-independant/' },
+  },
+  priorites: {
+    title: 'Choisir vos priorités', text: 'Lister les tâches candidates, estimer le temps passé et le risque, puis retenir trois usages à étudier.',
+    why: 'Sans tri, les efforts se portent sur ce qui est nouveau plutôt que sur ce qui pèse.',
+    steps: ['Lister dix tâches qui reviennent chaque semaine, avec le temps qu’elles prennent.', 'Noter pour chacune le risque en cas d’erreur et la sensibilité des données.', 'Retenir trois tâches : du temps significatif, un risque maîtrisable.', 'Désigner un responsable et un repère de suivi pour chacune.'],
+    outcome: 'Trois usages prioritaires, classés, avec un responsable.', horizon: 'Un atelier de deux heures avec les personnes concernées.', pitfall: 'Décider sans ceux qui font le travail : les vraies pertes de temps sont rarement celles qu’on imagine.',
+    link: { label: 'Voir le diagnostic IA', href: '/services/audit-ia/' },
+  },
+  methodes: {
+    title: 'Transformer les bons usages en méthodes', text: 'Décrire deux usages qui fonctionnent, les éprouver sur plusieurs dossiers et les ranger là où ils se retrouvent.',
+    why: 'Un usage qui reste dans une tête disparaît avec une absence ou un changement de poste.',
+    steps: ['Repérer deux usages qui fonctionnent, et ce qui les fait fonctionner.', 'Les décrire en une page : la demande type, les documents à fournir, les points à vérifier.', 'Les éprouver sur d’autres dossiers, puis corriger la description.', 'Les ranger à un endroit connu, et prévoir qui les tient à jour.'],
+    outcome: 'Deux méthodes écrites, réutilisables sans leur auteur.', horizon: 'Deux à trois semaines, une heure par méthode.', pitfall: 'Collectionner des demandes types sans contexte : sans les documents et les contrôles, elles ne se transmettent pas.',
+    link: { label: 'Parcourir nos guides pratiques', href: '/guides/' },
+  },
+  cas_metier: {
+    title: 'Appliquer l’IA aux tâches du métier', text: 'Choisir deux tâches qui prennent du temps et construire, pour chacune, une façon de faire commune et vérifiable.',
+    why: 'Reformuler un texte fait gagner des minutes. C’est dans les tâches du métier que se trouvent les heures.',
+    steps: ['Choisir deux tâches du métier qui demandent lecture, comparaison ou synthèse.', 'Décomposer chacune : ce que l’IA peut préparer, ce qui reste à l’expert.', 'Construire la façon de faire sur un dossier réel anonymisé.', 'Mesurer le temps et la qualité sur cinq dossiers avant de généraliser.'],
+    outcome: 'Deux tâches du métier préparées avec l’IA, selon une méthode commune.', horizon: 'Un mois, sur des dossiers en cours.', pitfall: 'Demander à l’IA de faire tout le travail : elle prépare, l’expert décide.',
+    link: { label: 'Voir la Formation IA métier personnalisée', href: '/services/formation-ia/ia-avancee/' }, soloLink: { label: 'Voir le Coaching IA Solo', href: '/services/formation-ia/coaching-independant/' },
+  },
+  mesure: {
+    title: 'Mesurer ce que l’IA apporte', text: 'Estimer le temps consacré à deux tâches aujourd’hui, puis après quelques semaines d’usage.',
+    why: 'Sans repère, impossible de savoir si un abonnement, une formation ou un projet en vaut la peine.',
+    steps: ['Choisir deux tâches où l’IA est déjà utilisée.', 'Estimer le temps qu’elles prenaient avant, et le noter.', 'Relever le temps réel pendant trois semaines, relecture comprise.', 'Comparer, puis décider de ce qui s’étend et de ce qui s’arrête.'],
+    outcome: 'Deux repères chiffrés, fondés sur votre propre activité.', horizon: 'Trois à quatre semaines de relevé.', pitfall: 'Oublier le temps de relecture : c’est lui qui sépare un gain réel d’une impression.',
+    link: { label: 'Estimer le temps à libérer', href: '/calculateur-roi/' },
+  },
+  integration: {
+    title: 'Relier l’IA à vos outils', text: 'Choisir une tâche à fort volume, vérifier les connexions disponibles et tester sur un périmètre réduit.',
+    why: 'Tant que l’IA travaille par copier-coller, une partie du temps gagné repart en manipulations.',
+    steps: ['Choisir une tâche à fort volume, stable, dont les règles sont connues.', 'Vérifier les connexions et les exports disponibles dans vos logiciels.', 'Définir les accès, les données autorisées et les points de validation.', 'Tester sur un périmètre réduit avant toute mise en service.'],
+    outcome: 'Un premier processus relié à vos outils, testé, avec ses contrôles.', horizon: 'Variable selon vos logiciels : il se précise après une étude de faisabilité.', pitfall: 'Automatiser un processus mal défini : on automatise aussi ses défauts.',
+    link: { label: 'Voir le déploiement d’agents IA', href: '/services/automatisation-ia/' },
+  },
+  suivi: {
+    title: 'Organiser le suivi dans la durée', text: 'Documenter chaque automatisation, désigner un responsable et prévoir une revue régulière.',
+    why: 'Les outils, les modèles et les contrats changent : ce qui est fiable aujourd’hui demande un entretien.',
+    steps: ['Recenser les assistants et les automatisations en service, avec leur responsable.', 'Documenter chacun : ce qu’il fait, ses accès, ses points de contrôle.', 'Prévoir une revue régulière des usages et des erreurs relevées.', 'Décider ce qui se passe quand un outil ou un contrat change.'],
+    outcome: 'Un inventaire à jour et une revue programmée.', horizon: 'Une journée pour l’inventaire, puis une revue par trimestre.', pitfall: 'Considérer qu’une automatisation qui tourne n’a plus besoin d’être regardée.',
+    link: { label: 'Voir le pilotage et la maintenance', href: '/services/pilotage-ia/' },
+  },
+};
+/**
+ * Les 30 premiers jours, semaine par semaine, à partir des trois priorités. Un rythme indicatif :
+ * la feuille de route à 90 jours reste un livrable de l’accompagnement.
+ */
+export function monthPlan(priorities: readonly ActionId[]): { week: number; title: string; items: string[] }[] {
+  const [first, second, third] = priorities.map(id => ACTION_TEXTS[id]);
+  return [
+    { week: 1, title: first.title, items: [first.steps[0], first.steps[1]] },
+    { week: 2, title: first.title, items: [first.steps[2], first.steps[3]] },
+    { week: 3, title: second.title, items: [second.steps[0], second.steps[1]] },
+    { week: 4, title: third.title, items: [third.steps[0], 'Faire le point : ce qui a changé, ce qui bloque, la suite à donner.'] },
+  ];
+}
+/** Une question par dimension, à poser en interne. La dimension la plus faible vient en premier dans le rapport. */
+export const DISCUSSION_QUESTIONS: Record<DimensionId, string> = {
+  cap: 'Qui décide des usages de l’IA chez vous, et avec quel temps pour s’en occuper ?',
+  usages: 'Quelles tâches du métier gagneraient le plus à être préparées par l’IA ?',
+  cadre: 'Quel document ne devrait jamais être déposé dans un outil d’IA, et est-ce connu de tous ?',
+  competences: 'Qui saurait montrer aux autres comment vérifier une réponse de l’IA ?',
+  integration: 'Quelle tâche demande encore le plus de copier-coller entre deux outils ?',
 };
 export function actionLink(action: ActionId, size: SizeId | '', sensitive: boolean): ActionLink {
   const item = ACTION_TEXTS[action];

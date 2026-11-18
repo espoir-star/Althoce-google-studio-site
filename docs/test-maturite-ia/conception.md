@@ -110,6 +110,31 @@ Le test propose toujours exactement trois priorités, dans cet ordre :
 
 « Relier l’IA à vos outils » et « Organiser le suivi » ne sont jamais proposés tant que le cadre ou les usages sont faibles.
 
+Chaque priorité est une **fiche d’action** : pourquoi elle compte, quatre étapes dans l’ordre, le résultat attendu, un délai indicatif et le piège à éviter. Les délais sont des ordres de grandeur, présentés comme tels.
+
+### Ce que contient le résultat complet
+
+La première version du plan tenait en trois pages et ne reflétait pas les réponses : le texte ne dépendait que de trois niveaux par dimension. Le résultat complet fait maintenant une dizaine de pages, et chaque partie se calcule à partir des réponses.
+
+| Partie | Contenu | D’où cela vient |
+|---|---|---|
+| L’essentiel en trois messages | Où vous en êtes ; ce qui tient et ce qui manque ; par où commencer | Stade, dimensions extrêmes, première priorité |
+| Cinq dimensions | Radar, score, lecture et prochain pas par dimension | Niveau de chaque dimension |
+| Ce qui vous sépare du stade suivant | Écart en points, et les trois réponses dont l’évolution compte le plus | Calcul sur les réponses et la pondération |
+| Ce que vos réponses révèlent | Signaux, premier pas pour chacun, points d’appui | Règles de la section précédente |
+| Vos trois priorités | Trois fiches d’action détaillées | Ordre des priorités |
+| Vos 30 premiers jours | Quatre semaines, construites sur les étapes des trois fiches | Fiches d’action |
+| L’accompagnement adapté | Une offre recommandée, deux autres proposées | Voir `exploitation-commerciale.md` |
+| Dans votre secteur | Trois usages : ce que prépare l’agent, ce qui reste validé par un humain ; guides et cas client | Pages secteurs |
+| Vos réponses, point par point | Pour les quinze sujets : la situation choisie et l’étape à viser | Réponses |
+| Cinq questions à vous poser en interne | Une par dimension, la plus fragile d’abord | Classement des dimensions |
+
+**L’étape à viser n’est pas toujours le cran suivant.** Pour dix questions, la deuxième situation décrit un état subi : un interdit sans solution, un savoir qui reste chez une personne, des comptes personnels. Depuis la première situation, l’étape recommandée est alors la troisième. Le champ `skipFirst` de `questions.ts` le déclare.
+
+**Le plan s’arrête à 30 jours.** La feuille de route à 90 jours est un livrable de la Formation IA Dirigeant & Associés.
+
+À l’écran, les fiches et le détail des réponses se replient pour ne pas noyer le lecteur. Dans le PDF, tout est déplié, et les liens restent cliquables.
+
 ## 5. Parcours
 
 1. **Profil** : secteur, rôle, taille. Trois champs, obligatoires. « Autre activité » ouvre un champ libre, obligatoire, pour préciser l’activité.
@@ -124,7 +149,7 @@ Le test en cours est conservé deux heures dans l’onglet, avec l’indication 
 ## 6. Ce qui est volontairement absent
 
 - **Pas de comparaison chiffrée** avec d’autres entreprises.
-- **Pas de feuille de route à 90 jours** : c’est un livrable de la Formation IA Dirigeant & Associés et de l’atelier Priorités IA. Le test s’arrête à trois priorités.
+- **Pas de feuille de route à 90 jours** : c’est un livrable de la Formation IA Dirigeant & Associés. Le test s’arrête à trois priorités et à un plan sur 30 jours.
 - **Pas d’email automatique annoncé** : le plan s’affiche à l’écran dès que l’email est saisi. Le lien du résultat est transmis avec le contact, pour qu’un envoi automatique puisse être branché dans n8n sans toucher au site.
 - **Aucun pourcentage, aucune promesse de conformité** dans les textes. Un test automatique le vérifie.
 

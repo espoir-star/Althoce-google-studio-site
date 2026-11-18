@@ -12,9 +12,9 @@ const contentUrl = dataUrl(compile('lib/maturite/report-content.ts'));
 const securityUrl = dataUrl(compile('lib/lead-security.ts'));
 const leadUrl = dataUrl(compile('lib/maturite/lead.ts').replace("'../lead-security'", JSON.stringify(securityUrl)).replace("'./questions'", JSON.stringify(questionsUrl)).replace("'./model'", JSON.stringify(modelUrl)).replace("'./report-content'", JSON.stringify(contentUrl)));
 
-const { DIMENSIONS, QUESTIONS, QUESTION_IDS, SECTOR_OPTIONS, SENSITIVE_SECTORS, SIZES, ROLES, questionText, sectorLabel } = await import(questionsUrl);
-const { STAGES, MIN_ANSWERS, computeResult, stageOf, bandOf, weightsFor, isComplete, isProfileComplete, encodeShare, decodeShare, restoreDraft, DRAFT_TTL, SIGNAL_ACTION, offerFor, freeDimensions, FREE_DIMENSIONS, FREE_SIGNALS } = await import(modelUrl);
-const { STAGE_TEXTS, DIMENSION_TEXTS, SIGNAL_TEXTS, STRENGTH_TEXTS, ACTION_TEXTS, OFFER_TEXTS, MATURITE_FAQ, actionLink } = await import(contentUrl);
+const { DIMENSIONS, QUESTIONS, QUESTION_IDS, SECTOR_OPTIONS, SENSITIVE_SECTORS, SIZES, ROLES, questionText, sectorLabel, nextOption } = await import(questionsUrl);
+const { STAGES, MIN_ANSWERS, computeResult, stageOf, bandOf, weightsFor, isComplete, isProfileComplete, encodeShare, decodeShare, restoreDraft, DRAFT_TTL, SIGNAL_ACTION, offerFor, freeDimensions, FREE_DIMENSIONS, FREE_SIGNALS, nextStage } = await import(modelUrl);
+const { STAGE_TEXTS, DIMENSION_TEXTS, SIGNAL_TEXTS, STRENGTH_TEXTS, ACTION_TEXTS, OFFER_TEXTS, MATURITE_FAQ, DISCUSSION_QUESTIONS, actionLink, monthPlan } = await import(contentUrl);
 const { deliverPayload, LeadError } = await import(securityUrl);
 const { buildMaturiteLead, commercialPriority, MATURITE_SOURCE } = await import(leadUrl);
 
@@ -28,6 +28,7 @@ assert.equal(DIMENSIONS.length, 5); assert.equal(QUESTIONS.length, 15); assert.e
 for (const dimension of DIMENSIONS) assert.equal(QUESTIONS.filter(q => q.dim === dimension.id).length, 3, `3 questions pour ${dimension.id}`);
 for (const question of QUESTIONS) {
   assert.equal(question.opts.length, 4); assert.ok(question.q.endsWith(' ?'), question.id);
+  assert.ok(question.topic && question.topic.length <= 30, `Sujet court attendu : ${question.id}`);
   if (question.solo) assert.equal(question.solo.opts.length, 4);
   for (const size of SIZES) { const shown = questionText(question, size.id); assert.equal(shown.opts.length, 4); assert.ok(shown.q.length > 10); }
   // Les indépendants ne lisent jamais « vos collaborateurs » ni « nous ».
@@ -126,6 +127,23 @@ for (let i = 0; i < 4000; i++) {
   const free = freeDimensions(r.dims), hidden = DIMENSIONS.map(d => d.id).filter(id => !free.includes(id));
   assert.equal(free.length, 3); assert.equal(hidden.length, 2);
   for (const shown of free) for (const masked of hidden) assert.ok((r.dims[shown] ?? -1) >= (r.dims[masked] ?? -1));
+  // Leviers vers le stade suivant : au plus trois, jamais d’automatisation prématurée, un écart cohérent avec le stade.
+  const step = nextStage(r, answers);
+  if (r.total === null) assert.equal(step, null);
+  else {
+    assert.ok(step.levers.length <= 3); assert.equal(new Set(step.levers.map(l => l.id)).size, step.levers.length);
+    for (const lever of step.levers) { assert.ok(lever.from >= 0 && lever.from <= 2 && answers[lever.id] === lever.from); assert.ok(lever.to > lever.from && lever.to <= 3); assert.ok(lever.gain > 0); }
+    if (r.bands.cadre === 'low' || r.bands.usages === 'low') assert.ok(!step.levers.some(l => l.id === 'int2' || l.id === 'int3'));
+    if (r.stage < 3) { assert.equal(step.target, r.stage + 1); assert.equal(step.gap, STAGES[step.target].min - r.total); assert.ok(step.gap > 0); }
+    else { assert.equal(step.target, null); assert.equal(step.gap, 100 - r.total); }
+    // Les leviers retenus sont ceux qui rapportent le plus.
+    for (let k = 1; k < step.levers.length; k++) assert.ok(step.levers[k - 1].gain >= step.levers[k].gain);
+  }
+  // Plan sur 30 jours : quatre semaines, construites sur les trois priorités, dans l’ordre.
+  const month = monthPlan(r.priorities);
+  assert.deepEqual(month.map(w => w.week), [1, 2, 3, 4]);
+  assert.deepEqual(month.map(w => w.title), [ACTION_TEXTS[r.priorities[0]].title, ACTION_TEXTS[r.priorities[0]].title, ACTION_TEXTS[r.priorities[1]].title, ACTION_TEXTS[r.priorities[2]].title]);
+  for (const week of month) assert.equal(week.items.length, 2);
   assert.ok(r.offers.length >= 1 && r.offers.length <= 3); assert.equal(new Set(r.offers).size, r.offers.length);
   for (const offer of r.offers) assert.ok(OFFER_TEXTS[offer], offer);
   if (p.size === 'solo' && (r.stage === null || r.stage <= 1)) assert.equal(r.offers[0], 'coaching_solo');
@@ -154,6 +172,29 @@ assert.equal(actionLink('formation_metier', 'solo', false).href, '/services/form
 assert.equal(actionLink('formation_metier', '10-49', true).href, '/services/formation-ia/ia-fondamentaux/');
 assert.notEqual(actionLink('outil_pro', '10-49', true).href, actionLink('outil_pro', '10-49', false).href);
 assert.equal(MATURITE_FAQ.length, 7);
+// Fiches d’action : chaque priorité est détaillée.
+for (const [id, sheet] of Object.entries(ACTION_TEXTS)) {
+  assert.equal(sheet.steps.length, 4, id); assert.equal(new Set(sheet.steps).size, 4, id);
+  for (const key of ['why', 'outcome', 'horizon', 'pitfall']) assert.ok(sheet[key].length > 20, `${id}.${key}`);
+}
+assert.deepEqual(Object.keys(DISCUSSION_QUESTIONS).sort(), DIMENSIONS.map(d => d.id).sort());
+for (const question of Object.values(DISCUSSION_QUESTIONS)) assert.ok(question.endsWith(' ?'));
+// Leviers : cas lisibles à la main.
+let step = nextStage(computeResult(profile, all(1)), all(1));
+assert.equal(step.target, 2); assert.equal(step.gap, 17); assert.equal(step.levers.length, 3); assert.equal(step.gain, 7);
+assert.ok(step.levers.every(l => l.from === 1 && l.to === 2));
+// L’étape recommandée ne passe jamais par un état subi : depuis l’absence de consigne, on vise l’anonymisation, pas l’interdit.
+const byId = Object.fromEntries(QUESTIONS.map(q => [q.id, q]));
+assert.equal(nextOption(byId.cad2, 0), 2); assert.equal(nextOption(byId.cad2, 1), 2); assert.equal(nextOption(byId.cad2, 2), 3);
+assert.equal(nextOption(byId.usa1, 0), 1); assert.equal(nextOption(byId.int1, 0), 2);
+for (const question of QUESTIONS) for (const value of [0, 1, 2]) { const next = nextOption(question, value); assert.ok(next > value && next <= 3); }
+step = nextStage(computeResult(profile, { ...all(1), cad2: 0 }), { ...all(1), cad2: 0 });
+assert.deepEqual([step.levers[0].id, step.levers[0].from, step.levers[0].to], ['cad2', 0, 2], 'Deux crans d’un coup comptent double');
+step = nextStage(computeResult(sensitiveProfile, all(1)), all(1));
+assert.deepEqual(step.levers.map(l => l.id), ['cad1', 'cad2', 'cad3'], 'En secteur sensible, le cadre rapporte le plus');
+step = nextStage(computeResult(profile, all(3)), all(3));
+assert.equal(step.target, null); assert.equal(step.gap, 0); assert.deepEqual(step.levers, []);
+assert.equal(nextStage(computeResult(profile, all(-1)), all(-1)), null);
 assert.equal(FREE_DIMENSIONS, 3); assert.equal(FREE_SIGNALS, 1);
 assert.deepEqual(freeDimensions({ cap: 50, usages: 44, cadre: 22, competences: 33, integration: 22 }), ['cap', 'usages', 'competences']);
 assert.deepEqual(freeDimensions({ cap: 0, usages: 0, cadre: 0, competences: 0, integration: 0 }), ['cap', 'usages', 'cadre'], 'À égalité, l’ordre du rapport');
@@ -172,7 +213,7 @@ assert.equal(offerFor('formation_metier', true), 'coaching_solo'); assert.equal(
 assert.equal(sectorLabel({ ...profile, sector: 'autre', sectorDetail: ' Cabinet d’architecture ' }), 'Cabinet d’architecture');
 assert.equal(sectorLabel({ ...profile, sector: 'autre' }), 'Autre activité'); assert.equal(sectorLabel({ ...profile, sector: 'droit', sectorDetail: 'ignoré' }), 'Droit & professions juridiques');
 // Aucune promesse chiffrée ni garantie de conformité dans les textes du test.
-const prose = JSON.stringify([STAGE_TEXTS, DIMENSION_TEXTS, SIGNAL_TEXTS, STRENGTH_TEXTS, ACTION_TEXTS, OFFER_TEXTS, QUESTIONS]);
+const prose = JSON.stringify([STAGE_TEXTS, DIMENSION_TEXTS, SIGNAL_TEXTS, STRENGTH_TEXTS, ACTION_TEXTS, OFFER_TEXTS, DISCUSSION_QUESTIONS, QUESTIONS]);
 assert.ok(!/\d+ ?%|garanti|conforme au RGPD|certifi/i.test(prose), 'Ni pourcentage inventé, ni garantie, ni certification');
 assert.ok(!/[\u{1F300}-\u{1FAFF}]/u.test(prose + JSON.stringify(MATURITE_FAQ)), 'Pas d’emoji');
 
@@ -256,4 +297,4 @@ try {
   response = await deliverPayload(request(lead), delivery); assert.equal(response.status, 502); assert.ok(!(await response.text()).includes('secret'));
 } finally { globalThis.fetch = originalFetch; }
 
-console.log('Maturity test checks passed: structure, sector alignment, scoring, unknown answers, signals, priorities (4,000 random profiles), texts and links, sharing, draft restore, recommended offers, plan and call requests, commercial priority and delivery. No external calls.');
+console.log('Maturity test checks passed: structure, sector alignment, scoring, unknown answers, signals, priorities (4,000 random profiles), texts and links, sharing, draft restore, recommended offers, plan and call requests, commercial priority and delivery, action sheets, next-stage levers and 30-day plan. No external calls.');

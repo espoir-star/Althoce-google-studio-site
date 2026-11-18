@@ -65,6 +65,22 @@ Vérifications ajoutées :
 
 Vérifications ajoutées : règle de choix des trois dimensions (`npm run test:maturite`, 4 000 profils) ; dans le navigateur, aucune fenêtre avant défilement, ouverture au défilement, pas de réouverture après fermeture, réouverture par le bouton, ouverture du plan depuis la fenêtre avec une réponse simulée.
 
+## Troisième complément (18 novembre) : un résultat complet plus fourni
+
+Le client jugeait le rendu trop léger. Le plan tenait en trois pages et demie et ne reflétait pas les réponses.
+
+Ajouts, tous dans la partie ouverte après la saisie de l’email : synthèse en trois messages, écart et leviers vers le stade suivant, fiches d’action détaillées pour les trois priorités, plan sur 30 jours, bloc secteur enrichi (usages, contrôle humain, guides, cas client), lecture des quinze réponses, cinq questions à se poser en interne, en-tête de document pour le PDF. L’aperçu libre ne change pas.
+
+Défaut repéré à la relecture du PDF et corrigé : pour dix questions, le cran suivant de l’échelle n’est pas une étape souhaitable (« c’est interdit, sans solution »). L’étape recommandée saute alors ce cran.
+
+Vérifications :
+
+- `npm run test:maturite` : fiches complètes pour les onze actions, étape recommandée par question, leviers et plan sur 30 jours contrôlés sur 4 000 profils, cas calculés à la main.
+- PDF produit avec Chrome sans interface et relu page par page : dix pages, tout déplié, étapes numérotées, neuf liens cliquables.
+- Navigateur : résultat complet sur ordinateur et mobile, sans débordement à 320 et 390 px ; score maximal, score non établi et aperçu verrouillé sans erreur ; première fiche ouverte, les autres repliées.
+
+Reste à faire par le client : relire les textes ajoutés, en particulier les onze fiches d’action et leurs délais indicatifs, qui sont des ordres de grandeur proposés et non des engagements.
+
 ## Limites de la validation
 
 - Aucune demande réelle envoyée : la réception dans l’outil commercial et la tolérance du flux n8n du contact aux champs supplémentaires restent à vérifier lors d’un premier envoi avec les coordonnées du client.

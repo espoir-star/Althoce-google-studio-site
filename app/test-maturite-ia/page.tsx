@@ -9,6 +9,7 @@ import { DIMENSIONS, SECTOR_OPTIONS, type DimensionId } from '@/lib/maturite/que
 import { STAGES } from '@/lib/maturite/model';
 import { MATURITE_FAQ } from '@/lib/maturite/report-content';
 import { sectorStories } from '@/lib/sectors-content';
+import { guides, guideUrl } from '@/lib/resources';
 import s from '@/components/roi/Calculator.module.css';
 import m from '@/components/maturite/Maturite.module.css';
 import b from '@/components/brand/Brand.module.css';
@@ -27,10 +28,17 @@ const schema = { '@context': 'https://schema.org', '@graph': [
   { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://althoce.com/' }, { '@type': 'ListItem', position: 2, name: 'Test de maturité IA', item: url }] },
   { '@type': 'FAQPage', mainEntity: MATURITE_FAQ.map(x => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
 ] };
-// Repères sectoriels repris des pages /secteurs/ : une seule source pour les exemples et les limites.
+// Repères sectoriels repris des pages /secteurs/ : une seule source pour les exemples, les limites, les guides et les cas clients.
 const sectorNotes: Record<string, SectorNote> = Object.fromEntries(SECTOR_OPTIONS.flatMap(option => {
   const story = sectorStories.find(item => item.slug === option.slug);
-  return story ? [[option.slug, { name: option.name, href: `/secteurs/${story.slug}/`, boundaries: story.boundaries, examples: story.scenarios.slice(0, 3).map(scenario => scenario.title) }]] : [];
+  if (!story) return [];
+  const note: SectorNote = {
+    name: option.name, href: `/secteurs/${story.slug}/`, boundaries: story.boundaries,
+    examples: story.scenarios.slice(0, 3).map(({ title, output, review }) => ({ title, output, review })),
+    guides: story.guides.flatMap(slug => { const guide = guides.find(item => item.slug === slug); return guide ? [{ title: guide.title, href: guideUrl(slug) }] : []; }).slice(0, 2),
+    ...(story.caseSlug && story.caseLabel ? { caseStudy: { label: story.caseLabel, href: `/cas-clients/${story.caseSlug}/` } } : {}),
+  };
+  return [[option.slug, note]];
 }));
 const icons: Record<DimensionId, typeof Compass> = { cap: Compass, usages: MessagesSquare, cadre: ShieldCheck, competences: GraduationCap, integration: Workflow };
 

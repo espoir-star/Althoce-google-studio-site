@@ -1,15 +1,21 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, Check, Link2, LockKeyhole, Printer, TriangleAlert } from 'lucide-react';
-import { DIMENSIONS, QUESTION_IDS, ROLES, SIZES, sectorLabel, type Answers, type DimensionId, type Profile } from '@/lib/maturite/questions';
-import { FREE_SIGNALS, MIN_ANSWERS, STAGES, encodeShare, freeDimensions, type Result } from '@/lib/maturite/model';
-import { ACTION_TEXTS, DIMENSION_TEXTS, OFFER_TEXTS, SIGNAL_TEXTS, STAGE_TEXTS, STRENGTH_TEXTS, actionLink } from '@/lib/maturite/report-content';
+import { ArrowRight, ArrowUpRight, Check, Link2, LockKeyhole, Printer, TriangleAlert } from 'lucide-react';
+import { DIMENSIONS, QUESTIONS, QUESTION_IDS, ROLES, SIZES, UNKNOWN_LABEL, nextOption, questionText, sectorLabel, type Answers, type DimensionId, type Profile } from '@/lib/maturite/questions';
+import { FREE_SIGNALS, MIN_ANSWERS, STAGES, encodeShare, freeDimensions, nextStage, type Result } from '@/lib/maturite/model';
+import { ACTION_TEXTS, DIMENSION_TEXTS, DISCUSSION_QUESTIONS, OFFER_TEXTS, SIGNAL_TEXTS, STAGE_TEXTS, STRENGTH_TEXTS, actionLink, monthPlan } from '@/lib/maturite/report-content';
 import { PlanGate, PlanGateDialog } from './MaturitePlanGate';
 import type { Contact } from './sendMaturite';
 import s from '@/components/roi/Calculator.module.css';
 import m from './Maturite.module.css';
 
-export type SectorNote = { name: string; href: string; boundaries: string; examples: string[] };
+/** Repères d’un secteur, repris de sa page : exemples d’usages, limites, guides et cas client. */
+export type SectorNote = {
+  name: string; href: string; boundaries: string;
+  examples: { title: string; output: string; review: string }[];
+  guides: { title: string; href: string }[];
+  caseStudy?: { label: string; href: string };
+};
 
 /** Radar à cinq axes. Décoratif : les mêmes valeurs sont lisibles dans la liste voisine. */
 function Radar({ dims }: { dims: Result['dims'] }) {
@@ -28,6 +34,11 @@ function Radar({ dims }: { dims: Result['dims'] }) {
     {DIMENSIONS.map((dimension, i) => { const [x, y] = point(i, 1.2); return <text key={dimension.id} x={x} y={y + 4} textAnchor={Math.abs(x - cx) < 8 ? 'middle' : x > cx ? 'start' : 'end'}>{dimension.name}</text>; })}
   </svg>;
 }
+const ARTICLES: Record<DimensionId, string> = { cap: 'le cap', usages: 'les usages', cadre: 'le cadre', competences: 'les compétences', integration: 'l’intégration' };
+/** Quatre crans : où en est une réponse sur l’échelle de la question. */
+function Steps({ value }: { value: number }) {
+  return <span className={m.steps} aria-hidden="true">{[0, 1, 2, 3].map(i => <i key={i} data-on={i <= value} />)}</span>;
+}
 
 export function Report({ profile, answers, result, sector, shared, unlocked, contact, heading, onReady, onUnlocked, onContact, onRestart }: {
   profile: Profile; answers: Answers; result: Result; sector?: SectorNote; shared: boolean; unlocked: boolean; contact: Contact;
@@ -38,7 +49,7 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(onReady, []);
   const sectorName = sectorLabel(profile);
-  // Le constat est libre. Le plan d’action s’affiche une fois ouvert, ou quand le résultat a été partagé par lien.
+  // L’aperçu est libre. Le résultat complet s’affiche une fois ouvert, ou quand il a été partagé par lien.
   const open = unlocked || shared;
   const sizeLabel = SIZES.find(size => size.id === profile.size)?.label;
   const roleLabel = ROLES.find(role => role.id === profile.role)?.label;
@@ -68,10 +79,24 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
     const link = `${location.origin}${location.pathname}#resultat=${encodeShare(profile, answers)}`;
     try { await navigator.clipboard.writeText(link); setCopied('done'); } catch { setCopied('failed'); }
   }
+
+  // Éléments du résultat complet.
+  const ranked = DIMENSIONS.filter(dimension => result.dims[dimension.id] !== null).sort((a, b) => result.dims[a.id]! - result.dims[b.id]!);
+  const weakest = ranked[0], strongest = ranked[ranked.length - 1];
+  const first = ACTION_TEXTS[result.priorities[0]];
+  const progress = nextStage(result, answers);
+  const today = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  const meta = [sectorName, sizeLabel, roleLabel].filter(Boolean).join(' · ');
+
   return <div data-maturite-report>
+    {open && <div className={m.cover}>
+      <span>Althoce · Test de maturité IA</span>
+      <strong>Résultat et plan d’action</strong>
+      <p>{meta} · {today}</p>
+    </div>}
     <header className={m.reportHeading}>
       <h2 ref={heading} tabIndex={-1}>Votre résultat</h2>
-      <p className={m.reportMeta}>{[sectorName, sizeLabel, roleLabel].filter(Boolean).join(' · ')}</p>
+      <p className={m.reportMeta}>{meta}</p>
     </header>
     {shared && <div className={m.sharedNotice}><span>Ce résultat vous a été partagé.</span><button type="button" className={s.textButton} onClick={onRestart}>Faire le test pour ma structure</button></div>}
 
@@ -92,6 +117,18 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
       </dl>
     </> : <div className={s.notice} role="status"><strong>Score non établi</strong>Vous avez répondu « Je ne sais pas » à {QUESTION_IDS.length - result.answered} questions sur {QUESTION_IDS.length}. Il en faut au moins {MIN_ANSWERS} renseignées, sur quatre dimensions, pour établir un score. C’est déjà un enseignement : faites préciser ces points par un associé ou un responsable d’équipe.</div>}
     {result.scored && result.unknown.length > 0 && <p className={s.hint}>Score établi sur {result.answered} réponses sur {QUESTION_IDS.length}. {result.unknown.length > 1 ? `Les ${result.unknown.length} questions sans réponse ne sont pas comptées : les faire préciser` : 'La question sans réponse n’est pas comptée : la faire préciser'} affinera le résultat.</p>}
+
+    {open && stage !== null && weakest && <section className={m.block} aria-labelledby="maturite-summary-title">
+      <h3 id="maturite-summary-title">L’essentiel en trois messages</h3>
+      <p className={m.blockLead}>À reprendre tel quel avec vos associés ou votre équipe.</p>
+      <ol className={m.summary}>
+        <li><strong>Où vous en êtes</strong><p>Stade {stage + 1} sur 4 : {STAGES[stage].name}. {STAGES[stage].tagline}</p></li>
+        <li><strong>Ce qui tient, ce qui manque</strong><p>{result.dims[strongest.id] === result.dims[weakest.id]
+          ? `Vos dimensions évaluées sont au même niveau (${result.dims[weakest.id]} sur 100) : aucune ne tire les autres.`
+          : `Votre point le plus solide : ${ARTICLES[strongest.id]} (${result.dims[strongest.id]} sur 100). Le plus fragile : ${ARTICLES[weakest.id]} (${result.dims[weakest.id]} sur 100). ${DIMENSION_TEXTS[weakest.id][result.bands[weakest.id]!].reading}`}</p></li>
+        <li><strong>Par où commencer</strong><p>{first.title}. {first.why}</p></li>
+      </ol>
+    </section>}
 
     {readable && <>
     <section className={m.block} aria-labelledby="maturite-dims-title">
@@ -114,6 +151,18 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
       {locked && <button type="button" className={`${s.secondary} ${m.unlock} ${s.noPrint}`} onClick={() => setGateOpen(true)}><LockKeyhole size={15} strokeWidth={2} aria-hidden="true" />Voir mes cinq dimensions</button>}
     </section>
 
+    {open && progress && progress.levers.length > 0 && <section className={m.block} aria-labelledby="maturite-levers-title">
+      <h3 id="maturite-levers-title">{progress.target !== null ? 'Ce qui vous sépare du stade suivant' : 'Ce qu’il reste à consolider'}</h3>
+      <p className={m.blockLead}>{progress.target !== null
+        ? `Il vous manque ${progress.gap} point${progress.gap > 1 ? 's' : ''} pour atteindre le stade ${progress.target + 1}, « ${STAGES[progress.target].name} ». Les évolutions qui comptent le plus :`
+        : 'Vous êtes au dernier stade. Les évolutions qui restent à votre portée :'}</p>
+      <ol className={m.levers}>{progress.levers.map(lever => { const question = QUESTIONS.find(item => item.id === lever.id)!, shown = questionText(question, profile.size); return <li key={lever.id}>
+        <strong>{question.topic}</strong>
+        <div className={m.leverMove}><p><small>Aujourd’hui</small>{shown.opts[lever.from]}</p><ArrowRight size={16} aria-hidden="true" /><p><small>Étape suivante</small>{shown.opts[lever.to]}</p></div>
+      </li>; })}</ol>
+      <p className={s.hint}>Ensemble, ces évolutions représentent environ {progress.gain} point{progress.gain > 1 ? 's' : ''}.{(result.bands.cadre === 'low' || result.bands.usages === 'low') ? ' Relier l’IA à vos outils viendra ensuite : le cadre et les usages passent d’abord.' : ''}</p>
+    </section>}
+
     <section className={m.block} aria-labelledby="maturite-signals-title">
       <h3 id="maturite-signals-title">Ce que vos réponses révèlent</h3>
       {signals.length > 0 ? <div className={m.signals}>{signals.map(id => { const item = SIGNAL_TEXTS[id]; return <article key={id} className={m.signal}>
@@ -130,10 +179,30 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
     {open && <>
     <section className={m.block} aria-labelledby="maturite-priorities-title">
       <h3 id="maturite-priorities-title">Vos trois priorités</h3>
-      <ol className={m.priorities}>{result.priorities.map(id => { const item = ACTION_TEXTS[id], link = actionLink(id, profile.size, result.sensitive); return <li key={id}><div>
-        <strong>{item.title}</strong><p>{item.text}</p>
-        <a className={m.inlineLink} href={link.href}>{link.label}<ArrowUpRight size={15} aria-hidden="true" /></a>
-      </div></li>; })}</ol>
+      <p className={m.blockLead}>Dans l’ordre. Chaque fiche se déplie : quatre étapes, le résultat attendu et le piège à éviter.</p>
+      <div className={m.sheets}>{result.priorities.map((id, i) => { const item = ACTION_TEXTS[id], link = actionLink(id, profile.size, result.sensitive); return <details key={id} className={m.sheet} open={i === 0}>
+        <summary><span className={m.sheetNumber} aria-hidden="true">{i + 1}</span><span><strong>{item.title}</strong><small>{item.text}</small></span><span className={m.sheetToggle} aria-hidden="true">+</span></summary>
+        <div>
+          <p className={m.sheetWhy}>{item.why}</p>
+          <ol className={m.sheetSteps}>{item.steps.map(step => <li key={step}>{step}</li>)}</ol>
+          <dl className={m.sheetFacts}>
+            <div><dt>Résultat attendu</dt><dd>{item.outcome}</dd></div>
+            <div><dt>Délai indicatif</dt><dd>{item.horizon}</dd></div>
+            <div><dt>Piège à éviter</dt><dd>{item.pitfall}</dd></div>
+          </dl>
+          <a className={m.inlineLink} href={link.href}>{link.label}<ArrowUpRight size={15} aria-hidden="true" /></a>
+        </div>
+      </details>; })}</div>
+    </section>
+
+    <section className={m.block} aria-labelledby="maturite-month-title">
+      <h3 id="maturite-month-title">Vos 30 premiers jours</h3>
+      <p className={m.blockLead}>Un rythme indicatif, à adapter à votre activité.</p>
+      <ol className={m.month}>{monthPlan(result.priorities).map(week => <li key={week.week}>
+        <small>Semaine {week.week}</small><strong>{week.title}</strong>
+        <ul>{week.items.map(item => <li key={item}>{item}</li>)}</ul>
+      </li>)}</ol>
+      <p className={s.hint}>Au-delà de ce premier mois, une feuille de route se construit avec vos équipes, vos outils et vos contraintes.</p>
     </section>
 
     <section className={m.block} aria-labelledby="maturite-offers-title">
@@ -151,10 +220,41 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
 
     {open && sector && <section className={m.sector} aria-labelledby="maturite-sector-title">
       <h3 id="maturite-sector-title">Dans votre secteur : {sector.name}</h3>
-      <p className={m.blockLead}>Trois exemples d’usages à étudier.</p>
-      <ul>{sector.examples.map(example => <li key={example}>{example}</li>)}</ul>
+      <p className={m.blockLead}>Trois usages à étudier, avec ce que prépare l’agent et ce qui reste entre vos mains.</p>
+      <ul className={m.sectorExamples}>{sector.examples.map(example => <li key={example.title}>
+        <strong>{example.title}</strong>
+        <p>{example.output}</p>
+        <p className={m.sectorReview}><b>Contrôle humain.</b> {example.review}</p>
+      </li>)}</ul>
       <p>{sector.boundaries}</p>
-      <a className={m.inlineLink} href={sector.href}>Voir les usages de l’IA dans votre secteur<ArrowUpRight size={15} aria-hidden="true" /></a>
+      <div className={m.sectorLinks}>
+        <a className={m.inlineLink} href={sector.href}>Voir les usages de l’IA dans votre secteur<ArrowUpRight size={15} aria-hidden="true" /></a>
+        {sector.caseStudy && <a className={m.inlineLink} href={sector.caseStudy.href}>{sector.caseStudy.label}<ArrowUpRight size={15} aria-hidden="true" /></a>}
+        {sector.guides.map(guide => <a key={guide.href} className={m.inlineLink} href={guide.href} target="_blank" rel="noopener noreferrer">Guide : {guide.title}<ArrowUpRight size={15} aria-hidden="true" /></a>)}
+      </div>
+    </section>}
+
+    {open && <details className={`${s.formula} ${m.answers}`}>
+      <summary>Vos réponses, point par point <span aria-hidden="true">+</span></summary>
+      <div>
+        <p className={s.hint}>Pour chaque sujet : votre situation aujourd’hui, et l’étape à viser ensuite.</p>
+        {DIMENSIONS.map(dimension => <section key={dimension.id} className={m.answerGroup} aria-label={dimension.name}>
+          <h4>{dimension.name}<small>{dimension.label}</small></h4>
+          <ul>{QUESTIONS.filter(question => question.dim === dimension.id).map(question => { const value = answers[question.id] ?? -1, shown = questionText(question, profile.size); return <li key={question.id}>
+            <div className={m.answerTop}><strong>{question.topic}</strong>{value >= 0 && <Steps value={value} />}</div>
+            <div className={m.answerMove}>
+              <p><small>Aujourd’hui</small>{value === -1 ? UNKNOWN_LABEL : shown.opts[value]}</p>
+              <p className={m.answerNext}><small>Étape suivante</small>{value === -1 ? 'À faire préciser en interne.' : value === 3 ? 'Vous êtes au cran le plus avancé sur ce point.' : shown.opts[nextOption(question, value)]}</p>
+            </div>
+          </li>; })}</ul>
+        </section>)}
+      </div>
+    </details>}
+
+    {open && readable && <section className={m.block} aria-labelledby="maturite-questions-title">
+      <h3 id="maturite-questions-title">Cinq questions à vous poser en interne</h3>
+      <p className={m.blockLead}>En commençant par vos dimensions les plus fragiles.</p>
+      <ol className={m.questions}>{[...ranked, ...DIMENSIONS.filter(dimension => result.dims[dimension.id] === null)].map(dimension => <li key={dimension.id}><small>{dimension.name}</small>{DISCUSSION_QUESTIONS[dimension.id]}</li>)}</ol>
     </section>}
 
     <details className={`${s.formula} ${m.method}`}>
@@ -176,7 +276,7 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
       <span>Premier échange de 30 minutes offert. Sans engagement.</span>
     </section>}
     {open && <>
-    <p className={m.printOnly}>Auto-évaluation réalisée le {new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })} sur althoce.com/test-maturite-ia/.</p>
+    <p className={m.printOnly}>Auto-évaluation réalisée le {today} sur althoce.com/test-maturite-ia/. Pour en parler avec Althoce : althoce.com/contact/. Premier échange de 30 minutes offert.</p>
     <div className={`${m.actions} ${s.noPrint}`}>
       <button type="button" onClick={() => window.print()}><Printer size={16} aria-hidden="true" />Imprimer ou enregistrer en PDF</button>
       <button type="button" onClick={copyLink}><Link2 size={16} aria-hidden="true" />{copied === 'done' ? 'Lien copié' : 'Copier le lien du résultat'}</button>

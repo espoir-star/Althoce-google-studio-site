@@ -30,7 +30,7 @@ Vous obtenez tout de suite, sans inscription :
 → une première lecture de vos dimensions
 → le principal déséquilibre relevé dans vos réponses
 
-Puis, avec votre email, le résultat complet et votre plan d’action : trois priorités dans l’ordre, avec le premier pas pour chacune.
+Puis, avec votre email, le résultat complet et votre plan d’action : trois priorités détaillées et vos 30 premiers jours, semaine par semaine.
 
 Et pas de « vous êtes au-dessus de 63 % des entreprises ». Nous n’affichons pas de comparaison tant que nous n’avons pas assez de réponses réelles pour qu’elle ait un sens.
 
