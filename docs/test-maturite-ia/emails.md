@@ -37,4 +37,6 @@ Pour tester dans n8n sans écrire dans la feuille : épingler une donnée sur le
 
 ## Base marketing et relances
 
-Les contacts du test ne sont pas encore versés dans la base marketing de capture-leads (listes Brevo, séquences, newsletter « ANNONCES — BASE ENVOYABLE »). Ce branchement demande une route d’entrée authentifiée dans capture-leads, une mention commerciale avec possibilité d’opposition sur le formulaire du test, et une séquence dédiée : voir la proposition du 18 novembre 2026.
+Décision du 18 novembre 2026 : les contacts du test **n’entrent pas dans la newsletter générale** (liste « ANNONCES — BASE ENVOYABLE ») ; ils auront leur propre liste Brevo, nourrie par des contenus dédiés qui mènent au rendez-vous. Ce travail est reporté : pour l’instant, le dispositif s’arrête à l’email avec le PDF.
+
+Pour le reprendre, passer par capture-leads (qui gère listes, séquences, statut marketing et désinscription) plutôt que par une écriture directe depuis n8n. Prérequis : une mention commerciale avec possibilité d’opposition sur le formulaire du test, la correspondance des secteurs du test avec les verticales marketing, une route d’entrée authentifiée et une séquence dédiée.
