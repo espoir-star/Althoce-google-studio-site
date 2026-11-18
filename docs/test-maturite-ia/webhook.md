@@ -70,12 +70,14 @@ Réponses (14 sur 15, auto-évaluation déclarative) :
 | `reponses` | Réponse à chaque question : 0 à 3, ou -1 pour « Je ne sais pas » |
 | `reponses_renseignees` | Nombre de réponses hors « Je ne sais pas » |
 | `consentement_rgpd` | Toujours `true` : la demande est refusée sinon |
+| `pdf_nom`, `pdf_base64` | Le résultat complet en PDF (nom du fichier, contenu encodé en base64, 60 à 120 Ko), joint par n8n à l’email du visiteur. Absents si le rendu a échoué : la demande part quand même |
 | `source_url` | Adresse de la page, sans paramètre ni fragment |
 
 ## Garanties
 
 - **Le résultat, la priorité commerciale et le lien sont recalculés côté serveur** à partir des réponses. Ce qu’envoie le navigateur pour ces champs est ignoré.
 - **Mêmes protections que les autres formulaires** : origine vérifiée, limite de débit, taille maximale, vérification anti-robot (BotID), consentement obligatoire. Une demande refusée n’atteint jamais la destination.
+- **Le PDF est construit côté serveur** (`lib/maturite/pdf.tsx`, `lib/maturite/lead-pdf.ts`) à partir du résultat recalculé. Son échec ne bloque jamais la demande.
 - **Aucun champ inattendu n’est transmis.**
 - La réponse faite au navigateur ne contient jamais le détail d’une erreur de la destination.
 

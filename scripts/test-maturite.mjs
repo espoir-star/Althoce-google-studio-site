@@ -297,6 +297,10 @@ try {
   assert.equal((await deliverPayload(request({ ...lead, consentement_rgpd: false }), delivery)).status, 400);
   assert.equal((await deliverPayload(request(lead, { origin: 'https://evil.example' }), delivery)).status, 403);
   assert.equal(calls.length, before, 'Une demande refusée n’atteint jamais la destination');
+  // Le complément (PDF) s’ajoute à la demande ; s’il échoue, la demande part quand même, sans lui.
+  await deliverPayload(request(lead), { ...delivery, enrich: async payload => ({ ...payload, pdf_base64: 'JVBERi0=' }) }); assert.equal(sent.pdf_base64, 'JVBERi0=');
+  response = await deliverPayload(request(lead), { ...delivery, enrich: async () => { throw new Error('rendu impossible'); } });
+  assert.equal(response.status, 200); assert.equal(sent.pdf_base64, undefined); assert.equal(sent.score, 33);
   globalThis.fetch = async () => new Response('secret amont', { status: 500 });
   response = await deliverPayload(request(lead), delivery); assert.equal(response.status, 502); assert.ok(!(await response.text()).includes('secret'));
 } finally { globalThis.fetch = originalFetch; }

@@ -22,16 +22,29 @@ const base = { prenom: 'Camille <b>', email: 'camille@example.com', consentement
 const plan = buildMaturiteLead({ ...base, demande: 'plan' });
 const echange = buildMaturiteLead({ ...base, demande: 'echange', nom: 'Martin', entreprise: 'Cabinet Martin', telephone: '06 12 34 56 78' });
 const unknown = buildMaturiteLead({ ...base, demande: 'plan', reponses: Object.fromEntries(Object.keys(share.answers).map(k => [k, -1])) });
-for (const [name, lead] of [['plan', plan], ['echange', echange], ['inconnu', unknown]]) {
+const BOOKING = 'https://calendar.app.google/JmhxjFqk2kybuFLR9';
+const withPdf = lead => ({ ...lead, pdf_nom: 'Althoce-test-maturite-IA-2026-11-18.pdf', pdf_base64: 'JVBERi0xLjMK' });
+for (const [name, lead] of [['plan', withPdf(plan)], ['echange', withPdf(echange)], ['inconnu', withPdf(unknown)], ['plan-sans-pdf', plan], ['echange-sans-pdf', echange]]) {
   const items = run(lead);
-  assert.equal(items.length, 2);
-  const [v, a] = items.map(i => i.json.brevo);
-  assert.equal(v.to[0].email, 'camille@example.com'); assert.equal(a.to[0].email, 'espoir@contact.althoce.com');
-  assert.equal(a.replyTo.email, 'camille@example.com'); assert.equal(v.sender.email, 'espoir@contact.althoce.com');
-  for (const mail of [v, a]) { assert.ok(!mail.htmlContent.includes('<b>'), 'échappement'); assert.ok(mail.htmlContent.includes(lead.lien_resultat.replace(/&/g, '&amp;'))); assert.ok(!/undefined|null|NaN/.test(mail.htmlContent + mail.textContent + mail.subject), name + ' : valeur vide affichée'); }
-  if (out) { writeFileSync(`${out}/email-${name}-visiteur.html`, v.htmlContent); writeFileSync(`${out}/email-${name}-alerte.html`, a.htmlContent); }
+  // Un seul email, au visiteur : plus d’alerte interne.
+  assert.equal(items.length, 1, name);
+  const mail = items[0].json.brevo;
+  assert.equal(mail.to[0].email, 'camille@example.com'); assert.equal(mail.sender.email, 'espoir@contact.althoce.com'); assert.equal(mail.replyTo.email, 'espoir@contact.althoce.com');
+  assert.ok(!mail.htmlContent.includes('<b>'), 'échappement');
+  assert.ok(mail.htmlContent.includes(BOOKING) && mail.textContent.includes(BOOKING), `${name} : lien de prise de rendez-vous`);
+  assert.ok(!/undefined|null|NaN/.test(mail.htmlContent + mail.textContent + mail.subject), name + ' : valeur vide affichée');
+  if (lead.pdf_base64) {
+    // Avec le PDF : la pièce jointe remplace le lien vers le site.
+    assert.deepEqual(mail.attachment, [{ name: lead.pdf_nom, content: lead.pdf_base64 }]);
+    assert.ok(!mail.htmlContent.includes('#resultat=') && !mail.textContent.includes('#resultat='), `${name} : pas de lien vers le résultat en ligne`);
+    assert.ok(/pièce jointe/.test(mail.htmlContent));
+  } else {
+    // Sans PDF (rendu en échec) : le lien vers le résultat en ligne le remplace.
+    assert.equal(mail.attachment, undefined); assert.ok(mail.htmlContent.includes(lead.lien_resultat), `${name} : lien de secours`);
+  }
+  if (out) writeFileSync(`${out}/email-${name}.html`, mail.htmlContent);
 }
 assert.throws(() => run({ ...plan, lien_resultat: 'https://evil.example/' }));
 // Un contact du formulaire classique ne déclenche aucun email.
 assert.deepEqual(run({ nom: 'Client', email: 'client@example.com', description: 'Demande' }), []);
-console.log('Maturity test emails passed: visitor and alert emails for plan, call request and unscored results, escaping, reply-to and link check. Nothing sent.');
+console.log('Maturity test emails passed: one visitor email per request (plan, call, unscored), PDF attached or link fallback, booking link, escaping, no internal alert. Nothing sent.');

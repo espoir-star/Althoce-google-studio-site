@@ -77,6 +77,8 @@ export function validateLead(body: Record<string, unknown>, kind: 'contact' | 'r
 export type LeadDelivery = {
   /** Valide la demande et renvoie uniquement les champs à transmettre. Lève une LeadError sinon. */
   validate: (body: Record<string, unknown>) => Record<string, unknown>;
+  /** Complète la demande validée avant l’envoi (pièce jointe, par exemple). Ne doit jamais faire échouer la demande. */
+  enrich?: (payload: Record<string, unknown>) => Promise<Record<string, unknown>>;
   /** Variables d’environnement de destination, par ordre de préférence. La première définie est utilisée. */
   endpoints: string[];
   /** Exige que la destination confirme la réception par `{ ok: true }`. */
@@ -96,7 +98,8 @@ export async function deliverPayload(req: Request, delivery: LeadDelivery, verif
   try {
     const body = await readLead(req);
     if (verifyHuman) await verifyHuman();
-    const payload = delivery.validate(body);
+    const validated = delivery.validate(body);
+    const payload = delivery.enrich ? await delivery.enrich(validated).catch(() => validated) : validated;
     const endpoint = delivery.endpoints.map(name => process.env[name]).find(Boolean);
     if (!endpoint || new URL(endpoint).protocol !== 'https:') throw new LeadError(503, 'Service momentanément indisponible.');
     const upstream = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(10000) });

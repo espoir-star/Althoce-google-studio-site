@@ -9,9 +9,10 @@
     "typecheck": "tsc --noEmit",
     "test:security": "node scripts/test-security.mjs",
     "test:roi": "node scripts/test-roi.mjs",
-    "test:maturite": "node scripts/test-maturite.mjs && node scripts/test-maturite-emails.mjs"
+    "test:maturite": "node scripts/test-maturite.mjs && node scripts/test-maturite-emails.mjs && node scripts/test-maturite-pdf.mjs"
   },
   "dependencies": {
+    "@react-pdf/renderer": "4.9.0",
     "botid": "^1.5.11",
     "framer-motion": "^12.29.2",
     "github-slugger": "^2.0.0",

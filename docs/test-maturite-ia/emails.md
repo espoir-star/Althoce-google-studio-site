@@ -1,18 +1,20 @@
-# Test de maturité IA — emails automatiques
+# Test de maturité IA — email au visiteur
 
-Ce que reçoivent le visiteur et Althoce à chaque contact du test, et comment c’est branché dans n8n.
+Ce que reçoit le visiteur après le test, et comment c’est branché dans n8n.
 
 ## Ce qui part
 
-| Demande | Email au visiteur | Alerte à Althoce |
-|---|---|---|
-| `plan` (plan d’action ouvert) | « Votre résultat au test de maturité IA » : stade, score, trois priorités, bouton vers le résultat complet, proposition d’échange | « [Test maturité A/B/C] Plan ouvert · Prénom · Secteur » |
-| `echange` (échange demandé) | « Votre demande d’échange est bien reçue » : rappel sous 24 heures ouvrées, bouton vers le résultat | « [Test maturité A/B/C] Échange demandé · Nom · Secteur » |
+| Demande | Email au visiteur |
+|---|---|
+| `plan` (plan d’action ouvert) | « Votre résultat au test de maturité IA » : stade, score, trois priorités, **résultat complet en PDF joint**, bouton « Choisir un créneau » pour un échange de 30 minutes |
+| `echange` (échange demandé) | « Votre demande d’échange est bien reçue » : rappel sous 24 heures ouvrées, bouton « Choisir un créneau », **résultat complet en PDF joint** |
 
 - **Expéditeur** : Espoir Mwami, `espoir@contact.althoce.com` (domaine authentifié dans Brevo). Une réponse du visiteur arrive dans cette boîte.
-- **Alerte** : envoyée à `espoir@contact.althoce.com`, avec la priorité commerciale, le profil, le résultat et le résumé complet. Répondre à l’alerte écrit directement au contact.
-- **Score non établi** (trop de « Je ne sais pas ») : l’email le dit et renvoie vers le résultat, sans afficher de stade.
-- Le site annonce l’email dans la demande de plan : « Vous recevez aussi le lien de votre résultat par email ». Si le branchement est coupé, retirer cette phrase de `components/maturite/MaturitePlanGate.tsx`.
+- **Le PDF** est construit par le site au moment de la demande (`lib/maturite/pdf.tsx`) : même contenu que le rapport affiché, avec le logo, le prénom et les coordonnées d’Althoce, 60 à 120 Ko. Il arrive dans n8n avec le contact (`pdf_nom`, `pdf_base64`, voir `webhook.md`).
+- **Si le PDF n’a pas pu être produit**, la demande part quand même et l’email remplace la pièce jointe par un lien vers le résultat en ligne.
+- **Prise de rendez-vous** : le même agenda que les séquences marketing (`https://calendar.app.google/JmhxjFqk2kybuFLR9`, défini dans capture-leads, `lib/sequences/links.ts`).
+- **Pas d’alerte interne** : les contacts du test se suivent dans la feuille « Althoce — Prospects » (colonne Source) et, à terme, dans la base marketing (voir plus bas).
+- Le site annonce l’email dans la demande de plan : « Vous le recevez aussi par email, en PDF ». Si le branchement est coupé, retirer cette phrase de `components/maturite/MaturitePlanGate.tsx`.
 
 ## Où c’est branché
 
@@ -20,21 +22,19 @@ Dans n8n, flux **« Site Althoce — Lead Contact Form → Google Sheets — v1 
 
 Deux nœuds sont ajoutés **après « Respond — Success 200 »** : ils ne tournent qu’une fois le contact enregistré dans la feuille et la réponse rendue au site. Un échec d’envoi ne peut donc ni bloquer ni faire échouer le formulaire ; il apparaît comme une exécution en erreur dans n8n.
 
-1. **Code « Test de maturité — préparer les emails »**, mode *Run Once for All Items* : copie de [`n8n/preparer-emails.js`](n8n/preparer-emails.js). Il relit les données du nœud « Webhook — Receive Lead » et ne produit rien si `source` n’est pas `test-maturite-ia` : les contacts du formulaire classique s’arrêtent là. Sinon, deux éléments : l’email au visiteur, puis l’alerte, au format de l’API Brevo.
+1. **Code « Test de maturité — préparer les emails »**, mode *Run Once for All Items* : copie de [`n8n/preparer-emails.js`](n8n/preparer-emails.js). Il relit les données du nœud « Webhook — Receive Lead » et ne produit rien si `source` n’est pas `test-maturite-ia` : les contacts du formulaire classique s’arrêtent là. Sinon, un élément : l’email au visiteur, au format de l’API Brevo, PDF compris.
 2. **HTTP Request « Test de maturité — envoyer avec Brevo »** : `POST https://api.brevo.com/v3/smtp/email`, identifiant n8n « Brevo account » (clé API Brevo), corps JSON `{{ JSON.stringify($json.brevo) }}`.
 
-Dans le nœud « Set — Normalize Lead », la colonne **Source** de la feuille vaut « Site Althoce — Test de maturité IA (plan ouvert) » ou « (échange demandé) » pour ces contacts, et toujours « Site Althoce — Formulaire contact » pour les autres.
+Dans le nœud « Set — Normalize Lead », la colonne **Source** de la feuille vaut « Site Althoce — Test de maturité IA (plan ouvert) » ou « (échange demandé) » pour ces contacts, et toujours « Site Althoce — Formulaire contact » pour les autres. Le PDF n’est pas écrit dans la feuille.
 
-Pour tester sans écrire dans la feuille : épingler une donnée sur le Webhook et une sortie factice sur « Google Sheets — Append Lead », exécuter le nœud d’envoi, puis retirer les deux épingles. Les emails partent réellement : utiliser sa propre adresse.
+## Modifier l’email ou le PDF
 
-## Modifier un email
+1. Modifier `docs/test-maturite-ia/n8n/preparer-emails.js` (email) ou `lib/maturite/pdf.tsx` (PDF).
+2. Vérifier : `npm run test:maturite` (aucun envoi). `node scripts/test-maturite-emails.mjs <dossier>` enregistre un aperçu HTML de chaque email ; `node scripts/test-maturite-pdf.mjs <dossier>` enregistre trois exemples de PDF. En développement, `/api/maturite-pdf-apercu/?r=<code de partage>` affiche le PDF d’un résultat.
+3. Pour l’email : recopier le code dans le nœud Code du flux n8n, puis publier le flux. Pour le PDF : fusionner sur `main`.
 
-1. Modifier `docs/test-maturite-ia/n8n/preparer-emails.js`.
-2. Vérifier : `npm run test:maturite` (aucun envoi). `node scripts/test-maturite-emails.mjs <dossier>` enregistre en plus un aperçu HTML de chaque email.
-3. Recopier le code dans le nœud Code du flux n8n, puis publier le flux.
+Pour tester dans n8n sans écrire dans la feuille : épingler une donnée sur le Webhook et une sortie factice sur « Google Sheets — Append Lead », exécuter le nœud d’envoi, puis retirer les deux épingles. Les emails partent réellement : utiliser sa propre adresse.
 
-Les champs utilisés sont décrits dans `webhook.md` : `prenom`, `email`, `demande`, `stade`, `stade_nom`, `score`, `priorites_titres`, `lien_resultat`, `priorite_commerciale`, `description`… Le code refuse un `lien_resultat` qui ne pointe pas vers `https://althoce.com/test-maturite-ia/`.
+## Base marketing et relances
 
-## Relances
-
-Les relances à J+3 et J+10 décrites dans `exploitation-commerciale.md` ne sont pas automatisées : elles dépendent de ce qui s’est passé entre-temps (rendez-vous pris ou non), que n8n ne sait pas. Elles restent manuelles, à partir de l’alerte.
+Les contacts du test ne sont pas encore versés dans la base marketing de capture-leads (listes Brevo, séquences, newsletter « ANNONCES — BASE ENVOYABLE »). Ce branchement demande une route d’entrée authentifiée dans capture-leads, une mention commerciale avec possibilité d’opposition sur le formulaire du test, et une séquence dédiée : voir la proposition du 18 novembre 2026.

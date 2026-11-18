@@ -12,7 +12,7 @@ import m from './Maturite.module.css';
 
 type GateProps = { profile: Profile; answers: Answers; result: Result; contact: Contact; onUnlocked: (contact: Contact) => void };
 
-/** Le constat est partiel sans email ; le plan d’action s’ouvre avec un prénom et un email. Affichage immédiat après l’envoi, et n8n envoie le lien du résultat par email (docs/test-maturite-ia/emails.md). */
+/** Le constat est partiel sans email ; le plan d’action s’ouvre avec un prénom et un email. Affichage immédiat après l’envoi, et n8n envoie le résultat complet en PDF par email (docs/test-maturite-ia/emails.md). */
 function GateForm({ profile, answers, contact, onUnlocked, prefix, children }: Omit<GateProps, 'result'> & { prefix: string; children?: React.ReactNode }) {
   const [data, setData] = useState<Contact>(contact);
   const [consent, setConsent] = useState(false);
@@ -46,7 +46,7 @@ function GateForm({ profile, answers, contact, onUnlocked, prefix, children }: O
 function Priorities({ result }: { result: Result }) {
   return <ol className={m.gateList}>{result.priorities.map(id => <li key={id}>{ACTION_TEXTS[id].title}</li>)}</ol>;
 }
-const contents = 'Vos cinq dimensions, tous les points relevés, le détail de chaque priorité, l’accompagnement adapté à votre situation et la version imprimable. Vous recevez aussi le lien de votre résultat par email.';
+const contents = 'Vos cinq dimensions, tous les points relevés, le détail de chaque priorité, l’accompagnement adapté à votre situation et la version imprimable. Vous le recevez aussi par email, en PDF.';
 
 /** Bloc en bas du résultat : toujours présent tant que le plan n’est pas ouvert. */
 export function PlanGate({ onContact, ...props }: GateProps & { onContact: () => void }) {
