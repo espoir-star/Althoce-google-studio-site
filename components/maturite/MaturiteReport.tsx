@@ -12,12 +12,8 @@ import s from '@/components/roi/Calculator.module.css';
 import m from './Maturite.module.css';
 
 /** Repères d’un secteur, repris de sa page : exemples d’usages, limites, guides et cas client. */
-export type SectorNote = {
-  name: string; href: string; boundaries: string;
-  examples: { title: string; output: string; review: string }[];
-  guides: { title: string; href: string }[];
-  caseStudy?: { label: string; href: string };
-};
+export type { SectorNote } from '@/lib/maturite/sector-notes';
+import type { SectorNote } from '@/lib/maturite/sector-notes';
 
 /** Radar à cinq axes. Décoratif : les mêmes valeurs sont lisibles dans la liste voisine. */
 function Radar({ dims }: { dims: Result['dims'] }) {

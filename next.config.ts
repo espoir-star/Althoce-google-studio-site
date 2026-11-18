@@ -21,7 +21,12 @@ const nextConfig: NextConfig = {
   // fichiers dans la fonction Vercel plutôt que dépendre du dossier de build.
   outputFileTracingIncludes: {
     "/sitemap.xml": ["./app/**/page.tsx"],
+    // Polices du PDF du test de maturité IA, lues sur disque au moment du rendu.
+    "/api/maturite-lead": ["./lib/maturite/fonts/*.ttf"],
+    "/api/maturite-pdf-apercu": ["./lib/maturite/fonts/*.ttf"],
   },
+  // Rendu PDF côté serveur : chargé tel quel par Node plutôt que regroupé par le bundler.
+  serverExternalPackages: ["@react-pdf/renderer"],
   async headers() {
     return [{ source: '/:path*', headers: [
       { key: 'X-Content-Type-Options', value: 'nosniff' },
