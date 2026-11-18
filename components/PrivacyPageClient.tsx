@@ -107,7 +107,7 @@ export default function PrivacyPageClient() {
 
             {/* Header */}
             <h1 className="priv-h1">Politique de confidentialité</h1>
-            <p className="priv-date">Dernière mise à jour&nbsp;: 16 novembre 2026</p>
+            <p className="priv-date">Dernière mise à jour&nbsp;: 18 novembre 2026</p>
 
             {/* Sommaire mobile */}
             <div className="priv-toc-mobile" id="priv-toc-mobile-wrap">
