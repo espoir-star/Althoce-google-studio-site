@@ -1,3 +1,4 @@
+/* Structure partagée par le calculateur ROI et le test de maturité IA (components/maturite). */
 .page { color:#172439; background:#f5f7fb; font-size:16px; line-height:1.65; }
 .page *, .dialog * { box-sizing:border-box; }
 .page h1, .page h2, .page h3, .page p { margin:0; }

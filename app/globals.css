@@ -451,9 +451,9 @@ h1, h2, h3 { letter-spacing: -0.03em; }
 @media print {
   nav,
   .no-print { display: none !important; }
-  body:has([data-roi-report]) footer,
-  body:has([data-roi-report]) [aria-label="Navigation principale"],
-  body:has([data-roi-report]) [aria-label="Préférences de confidentialité"] { display:none!important; }
+  body:has([data-roi-report], [data-maturite-report]) footer,
+  body:has([data-roi-report], [data-maturite-report]) [aria-label="Navigation principale"],
+  body:has([data-roi-report], [data-maturite-report]) [aria-label="Préférences de confidentialité"] { display:none!important; }
 }
 
 /* Range slider — reset + premium thumb */

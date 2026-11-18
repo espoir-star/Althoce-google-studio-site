@@ -74,20 +74,38 @@ export function validateLead(body: Record<string, unknown>, kind: 'contact' | 'r
   }
   return payload;
 }
-export async function deliverLead(req: Request, kind: 'contact' | 'roi', verifyHuman?: () => Promise<void>) {
+export type LeadDelivery = {
+  /** Valide la demande et renvoie uniquement les champs à transmettre. Lève une LeadError sinon. */
+  validate: (body: Record<string, unknown>) => Record<string, unknown>;
+  /** Variables d’environnement de destination, par ordre de préférence. La première définie est utilisée. */
+  endpoints: string[];
+  /** Exige que la destination confirme la réception par `{ ok: true }`. */
+  requireOk?: boolean;
+  success?: Record<string, unknown>;
+};
+export function deliverLead(req: Request, kind: 'contact' | 'roi', verifyHuman?: () => Promise<void>) {
+  return deliverPayload(req, {
+    validate: body => validateLead(body, kind),
+    endpoints: [kind === 'contact' ? 'N8N_LEAD_WEBHOOK_URL' : 'ROI_LEAD_WEBHOOK_URL'],
+    requireOk: kind === 'roi',
+    success: kind === 'contact' ? { success: true } : { ok: true },
+  }, verifyHuman);
+}
+/** Chaîne commune à toutes les demandes : origine, limite de débit, vérification humaine, validation, envoi. */
+export async function deliverPayload(req: Request, delivery: LeadDelivery, verifyHuman?: () => Promise<void>) {
   try {
     const body = await readLead(req);
     if (verifyHuman) await verifyHuman();
-    const payload = validateLead(body, kind);
-    const endpoint = process.env[kind === 'contact' ? 'N8N_LEAD_WEBHOOK_URL' : 'ROI_LEAD_WEBHOOK_URL'];
+    const payload = delivery.validate(body);
+    const endpoint = delivery.endpoints.map(name => process.env[name]).find(Boolean);
     if (!endpoint || new URL(endpoint).protocol !== 'https:') throw new LeadError(503, 'Service momentanément indisponible.');
     const upstream = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(10000) });
     if (!upstream.ok) throw new LeadError(502, 'Envoi impossible pour le moment. Veuillez réessayer.');
-    if (kind === 'roi') {
+    if (delivery.requireOk) {
       const result = await upstream.json().catch(() => null);
       if (!result || result.ok !== true) throw new LeadError(502, 'Envoi non confirmé. Veuillez réessayer.');
     } else { await upstream.body?.cancel(); }
-    return Response.json(kind === 'contact' ? { success: true } : { ok: true }, { headers: { 'Cache-Control': 'no-store' } });
+    return Response.json(delivery.success ?? { ok: true }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     const status = error instanceof LeadError ? error.status : 502;
     const message = error instanceof LeadError ? error.message : 'Service momentanément indisponible.';

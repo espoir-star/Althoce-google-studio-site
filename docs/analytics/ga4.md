@@ -13,7 +13,8 @@ Google Analytics se charge après acceptation de la bannière. Le retrait du con
 ## Événements
 
 - `page_view` : première page acceptée puis chaque changement de chemin, sans doublon de montage React.
-- `generate_lead` : uniquement après réponse positive de l'API, avec `lead_type` = `contact`, `roi` ou `guide`.
+- `generate_lead` : uniquement après réponse positive de l'API, avec `lead_type` = `contact`, `roi`, `guide`, `maturite_plan` (plan d’action ouvert dans le test de maturité IA) ou `maturite` (échange demandé depuis le test). Les deux derniers datent du 16 novembre 2026.
+- `maturite_resultat` : test de maturité IA terminé, avec `stade` de 1 à 4, ou 0 si le score n’est pas établi. Aucune réponse ni coordonnée. Sert à mesurer le taux d’achèvement et la répartition par stade.
 - `resource_slug` : identifiant public du guide, uniquement pour les demandes de guides.
 
 Aucun nom, email, téléphone, entreprise, budget ou message du formulaire n'est envoyé par ce code à GA4. Les paramètres et fragments des URL de page et du référent sont retirés. Cela exclut aussi les paramètres UTM des URL transmises. Aucune valeur financière n'est inventée.

@@ -87,6 +87,10 @@ const footerCols = [
         "href": "/blog/"
       },
       {
+        "l": "Test de maturité IA",
+        "href": "/test-maturite-ia/"
+      },
+      {
         "l": "Calculateur ROI",
         "href": "/calculateur-roi/"
       }
