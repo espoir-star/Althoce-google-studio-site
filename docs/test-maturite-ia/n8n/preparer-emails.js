@@ -1,5 +1,7 @@
 // n8n — nœud Code « Préparer les emails », mode « Run Once for All Items ».
-// Entrée : la sortie du Webhook du formulaire de contact, filtrée sur source = test-maturite-ia.
+// Placé après « Respond — Success 200 » : il ne tourne qu’une fois le contact enregistré et la réponse rendue au site.
+// Entrée : les données reçues par le nœud « Webhook — Receive Lead ». Les contacts qui ne viennent pas du test
+// (source ≠ test-maturite-ia) ne produisent rien : la branche s’arrête là pour le formulaire de contact.
 // Sortie : deux éléments, l’email au visiteur puis l’alerte à Althoce, chacun au format de l’API Brevo
 // (POST https://api.brevo.com/v3/smtp/email). Le nœud suivant envoie `{{ $json.brevo }}` tel quel.
 // Copie de référence : le code exécuté est celui du nœud dans n8n. Voir docs/test-maturite-ia/emails.md.
@@ -113,4 +115,5 @@ function build(lead) {
   ];
 }
 
-return $input.all().flatMap(item => build(item.json.body ?? item.json));
+const WEBHOOK = 'Webhook — Receive Lead';
+return $(WEBHOOK).all().map(item => item.json.body ?? {}).filter(lead => lead.source === 'test-maturite-ia').flatMap(build);

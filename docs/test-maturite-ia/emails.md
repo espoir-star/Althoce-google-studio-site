@@ -16,13 +16,16 @@ Ce que reçoivent le visiteur et Althoce à chaque contact du test, et comment c
 
 ## Où c’est branché
 
-Dans n8n, flux **« Site Althoce — Lead Contact Form → Google Sheets — v1 »**, qui reçoit déjà les contacts du site (`N8N_LEAD_WEBHOOK_URL`). Une branche est ajoutée après le Webhook, sans toucher au reste :
+Dans n8n, flux **« Site Althoce — Lead Contact Form → Google Sheets — v1 »**, qui reçoit déjà les contacts du site (`N8N_LEAD_WEBHOOK_URL`) : Webhook → Set — Normalize Lead → Google Sheets — Append Lead → Respond — Success 200 (ou Error 500).
 
-1. **IF « Test de maturité ? »** : `{{ $json.body.source }}` est égal à `test-maturite-ia`. Les contacts du formulaire classique s’arrêtent là.
-2. **Code « Préparer les emails »**, mode *Run Once for All Items* : le code est la copie de [`n8n/preparer-emails.js`](n8n/preparer-emails.js). Il produit deux éléments, l’email au visiteur puis l’alerte, au format de l’API Brevo.
-3. **HTTP Request « Envoyer avec Brevo »** : `POST https://api.brevo.com/v3/smtp/email`, authentification par l’identifiant Brevo de n8n, corps JSON `{{ $json.brevo }}`.
+Deux nœuds sont ajoutés **après « Respond — Success 200 »** : ils ne tournent qu’une fois le contact enregistré dans la feuille et la réponse rendue au site. Un échec d’envoi ne peut donc ni bloquer ni faire échouer le formulaire ; il apparaît comme une exécution en erreur dans n8n.
 
-L’enregistrement dans Google Sheets continue comme avant, pour les deux types de contacts.
+1. **Code « Test de maturité — préparer les emails »**, mode *Run Once for All Items* : copie de [`n8n/preparer-emails.js`](n8n/preparer-emails.js). Il relit les données du nœud « Webhook — Receive Lead » et ne produit rien si `source` n’est pas `test-maturite-ia` : les contacts du formulaire classique s’arrêtent là. Sinon, deux éléments : l’email au visiteur, puis l’alerte, au format de l’API Brevo.
+2. **HTTP Request « Test de maturité — envoyer avec Brevo »** : `POST https://api.brevo.com/v3/smtp/email`, identifiant n8n « Brevo account » (clé API Brevo), corps JSON `{{ JSON.stringify($json.brevo) }}`.
+
+Dans le nœud « Set — Normalize Lead », la colonne **Source** de la feuille vaut « Site Althoce — Test de maturité IA (plan ouvert) » ou « (échange demandé) » pour ces contacts, et toujours « Site Althoce — Formulaire contact » pour les autres.
+
+Pour tester sans écrire dans la feuille : épingler une donnée sur le Webhook et une sortie factice sur « Google Sheets — Append Lead », exécuter le nœud d’envoi, puis retirer les deux épingles. Les emails partent réellement : utiliser sa propre adresse.
 
 ## Modifier un email
 

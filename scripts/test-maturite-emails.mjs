@@ -16,7 +16,7 @@ const l = dataUrl(compile('lib/maturite/lead.ts').replace("'../lead-security'", 
 const { buildMaturiteLead } = await import(l);
 const { decodeShare } = await import(m);
 const code = readFileSync(root + 'docs/test-maturite-ia/n8n/preparer-emails.js', 'utf8');
-const run = body => new Function('$input', code)({ all: () => [{ json: { headers: {}, body } }] });
+const run = body => new Function('$', code)(name => { assert.equal(name, 'Webhook — Receive Lead'); return { all: () => [{ json: { headers: {}, body } }] }; });
 const share = decodeShare('1.comptabilite.2.0.121111110101x21');
 const base = { prenom: 'Camille <b>', email: 'camille@example.com', consentement_rgpd: true, profil: share.profile, reponses: share.answers, source_url: 'https://althoce.com/test-maturite-ia/' };
 const plan = buildMaturiteLead({ ...base, demande: 'plan' });
@@ -32,4 +32,6 @@ for (const [name, lead] of [['plan', plan], ['echange', echange], ['inconnu', un
   if (out) { writeFileSync(`${out}/email-${name}-visiteur.html`, v.htmlContent); writeFileSync(`${out}/email-${name}-alerte.html`, a.htmlContent); }
 }
 assert.throws(() => run({ ...plan, lien_resultat: 'https://evil.example/' }));
+// Un contact du formulaire classique ne déclenche aucun email.
+assert.deepEqual(run({ nom: 'Client', email: 'client@example.com', description: 'Demande' }), []);
 console.log('Maturity test emails passed: visitor and alert emails for plan, call request and unscored results, escaping, reply-to and link check. Nothing sent.');
