@@ -246,6 +246,10 @@ assert.ok(payload.lien_resultat.startsWith('https://althoce.com/test-maturite-ia
 assert.deepEqual(decodeShare(payload.lien_resultat.split('#resultat=')[1]), { profile: sensitiveProfile, answers: all(1) });
 assert.ok(payload.description.includes(payload.lien_resultat));
 assert.equal(payload.offre_recommandee, OFFER_TEXTS[computeResult(sensitiveProfile, all(1)).offers[0]].title); assert.ok(payload.description.includes(payload.offre_recommandee));
+// Les priorités et les signaux arrivent aussi en clair, pour l’email automatique.
+assert.equal(payload.priorites_titres.length, 3); assert.deepEqual(payload.priorites_titres, payload.priorites.map(id => ACTION_TEXTS[id].title));
+assert.deepEqual(payload.signaux_titres, payload.signaux.map(id => SIGNAL_TEXTS[id].title));
+assert.deepEqual(buildMaturiteLead({ ...plan, reponses: Object.fromEntries(Object.keys(all(1)).map(id => [id, -1])) }).priorites_titres, []);
 // Ouverture du plan : prénom et email suffisent ; l’entreprise absente ne bloque pas le contrat du contact.
 const planPayload = buildMaturiteLead(plan);
 assert.equal(planPayload.demande, 'plan'); assert.equal(planPayload.nom, 'Test'); assert.equal(planPayload.entreprise, 'Non précisée'); assert.equal(planPayload.nom_famille, '');

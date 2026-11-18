@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit",
     "test:security": "node scripts/test-security.mjs",
     "test:roi": "node scripts/test-roi.mjs",
-    "test:maturite": "node scripts/test-maturite.mjs"
+    "test:maturite": "node scripts/test-maturite.mjs && node scripts/test-maturite-emails.mjs"
   },
   "dependencies": {
     "botid": "^1.5.11",

@@ -64,6 +64,7 @@ Réponses (14 sur 15, auto-évaluation déclarative) :
 | `stade`, `stade_nom` | 1 à 4 et son nom, ou `null` |
 | `dimensions` | Score de chaque dimension, `null` si non évaluée |
 | `signaux`, `priorites` | Identifiants des signaux relevés et des trois priorités |
+| `signaux_titres`, `priorites_titres` | Les mêmes, en clair, dans le même ordre. `priorites_titres` est vide si le résultat n’est pas exploitable |
 | `offre_recommandee`, `offres_proposees` | Accompagnement recommandé par le test, puis la liste complète proposée (trois au plus) |
 | `lien_resultat` | Adresse qui rouvre le résultat complet tel que le visiteur l’a vu. À utiliser dans un email automatique |
 | `reponses` | Réponse à chaque question : 0 à 3, ou -1 pour « Je ne sais pas » |
