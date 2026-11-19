@@ -177,7 +177,7 @@ export function Report({ profile, answers, result, sector, shared, unlocked, con
       {result.strengths.length > 0 && <ul className={m.strengths} aria-label="Vos points d’appui">{result.strengths.map(id => <li key={id}><Check size={16} strokeWidth={2.5} aria-hidden="true" /><div><strong>{STRENGTH_TEXTS[id].title}</strong><span>{STRENGTH_TEXTS[id].text}</span></div></li>)}</ul>}
     </section>
 
-    {!open && <PlanGate profile={profile} answers={answers} result={result} contact={contact} onUnlocked={onUnlocked} onContact={onContact} />}
+    {!open && <PlanGate profile={profile} answers={answers} result={result} contact={contact} onUnlocked={onUnlocked} />}
     {locked && gateOpen && <PlanGateDialog profile={profile} answers={answers} result={result} contact={contact} onUnlocked={onUnlocked} onClose={() => setGateOpen(false)} />}
     {open && <>
     <section className={m.block} aria-labelledby="maturite-priorities-title">

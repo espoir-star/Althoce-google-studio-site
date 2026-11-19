@@ -27,9 +27,10 @@ function text(value: unknown, max: number, required: boolean): string {
  * Ordre de traitement proposé à l’équipe commerciale : A (à appeler sous 24 h), B (dans la semaine), C (suivi par email).
  * Une aide au tri, fondée sur des faits déclarés. Voir docs/test-maturite-ia/exploitation-commerciale.md.
  */
-export function commercialPriority(demande: Demande, profile: Profile, result: Result): { grade: 'A' | 'B' | 'C'; reasons: string[] } {
+export function commercialPriority(demande: Demande, profile: Profile, result: Result, rappel = false): { grade: 'A' | 'B' | 'C'; reasons: string[] } {
   let points = 0; const reasons: string[] = [];
   if (demande === 'echange') { points += 3; reasons.push('demande un échange'); }
+  else if (rappel) { points += 3; reasons.push('demande à être rappelé'); }
   if (profile.role === 'dirigeant') { points += 2; reasons.push('dirigeant ou associé'); }
   else if (profile.role === 'direction') { points += 1; reasons.push('membre de la direction'); }
   if (profile.size === '10-49') { points += 1; reasons.push('10 à 49 personnes'); }
@@ -44,7 +45,10 @@ export function buildMaturiteLead(body: Record<string, unknown>): Record<string,
   if (demande !== 'plan' && demande !== 'echange') throw new LeadError(400, 'Demande invalide.');
   const full = demande === 'echange';
   const prenom = text(body.prenom, 100, true), nom = text(body.nom, 100, full), entreprise = text(body.entreprise, 200, full);
-  const email = text(body.email, 254, true), telephone = text(body.telephone, 30, false);
+  // Demande de plan : rappel par un expert (téléphone obligatoire) et opposition aux communications, tous deux explicites.
+  if (!full && (typeof body.rappel !== 'boolean' || typeof body.opposition_marketing !== 'boolean')) throw new LeadError(400, 'Veuillez vérifier les champs du formulaire.');
+  const rappel = !full && body.rappel === true;
+  const email = text(body.email, 254, true), telephone = text(body.telephone, 30, rappel);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new LeadError(400, 'Email invalide.');
   if (telephone && telephone.replace(/\D/g, '').length < 10) throw new LeadError(400, 'Numéro de téléphone invalide.');
   if (body.consentement_rgpd !== true) throw new LeadError(400, 'Consentement requis.');
@@ -78,7 +82,7 @@ export function buildMaturiteLead(body: Record<string, unknown>): Record<string,
   const sectorName = SECTOR_OPTIONS.find(option => option.slug === profile.sector)!.name;
   const sizeItem = SIZES.find(item => item.id === profile.size)!;
   const roleLabel = ROLES.find(item => item.id === profile.role)!.label;
-  const priority = commercialPriority(demande, profile, result);
+  const priority = commercialPriority(demande, profile, result, rappel);
   const offers = result.offers.map(id => OFFER_TEXTS[id].title);
   const link = `${MATURITE_URL}#resultat=${encodeShare(profile, answers)}`;
   const readable = Object.values(result.dims).some(value => value !== null);
@@ -89,7 +93,7 @@ export function buildMaturiteLead(body: Record<string, unknown>): Record<string,
     return `- ${shown.q} ${value === -1 ? UNKNOWN_LABEL : shown.opts[value]}`;
   });
   const description = [
-    full ? 'Demande d’échange depuis le test de maturité IA.' : 'Plan d’action ouvert depuis le test de maturité IA (pas de demande d’échange à ce stade).',
+    full ? 'Demande d’échange depuis le test de maturité IA.' : rappel ? `Demande de rappel par un expert depuis le test de maturité IA (téléphone : ${telephone}).` : 'Plan d’action ouvert depuis le test de maturité IA, sans demande de rappel.',
     `Priorité commerciale : ${priority.grade}${priority.reasons.length ? ` (${priority.reasons.join(', ')})` : ''}.`,
     `Score : ${result.total === null ? 'non établi (trop de réponses « Je ne sais pas »)' : `${result.total}/100`} · Stade ${stageLabel}.`,
     `Profil : ${sectorLabel(profile)}${profile.sectorDetail ? ' (autre activité)' : ''} · ${sizeItem.label} · ${roleLabel}.`,
@@ -107,7 +111,9 @@ export function buildMaturiteLead(body: Record<string, unknown>): Record<string,
     nom: [prenom, nom].filter(Boolean).join(' '), entreprise: entreprise || 'Non précisée', email, telephone, taille: sizeItem.contactLabel, budget: '', description,
     // Champs structurés propres au test.
     source: MATURITE_SOURCE, demande, priorite_commerciale: priority.grade, priorite_raisons: priority.reasons,
-    prenom, nom_famille: nom, secteur: sectorName, secteur_slug: profile.sector, secteur_personnalise: profile.sectorDetail ?? '', taille_test: sizeItem.label, role: roleLabel,
+    // Rappel : Althoce rappelle le visiteur. Sinon, sans opposition, il rejoint la base marketing (capture-leads).
+    rappel: full || rappel, opposition_marketing: full ? false : body.opposition_marketing === true,
+    prenom, nom_famille: nom, secteur: sectorName, secteur_slug: profile.sector, secteur_personnalise: profile.sectorDetail ?? '', taille_test: sizeItem.label, taille_code: profile.size, role: roleLabel,
     score: result.total, stade: result.stage === null ? null : result.stage + 1, stade_nom: result.stage === null ? null : STAGES[result.stage].name,
     dimensions: result.dims, signaux: result.signals, signaux_titres: result.signals.map(id => SIGNAL_TEXTS[id].title),
     priorites: result.priorities, priorites_titres: readable ? result.priorities.map(id => ACTION_TEXTS[id].title) : [],

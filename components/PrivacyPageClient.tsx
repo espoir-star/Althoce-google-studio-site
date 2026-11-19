@@ -107,7 +107,7 @@ export default function PrivacyPageClient() {
 
             {/* Header */}
             <h1 className="priv-h1">Politique de confidentialité</h1>
-            <p className="priv-date">Dernière mise à jour&nbsp;: 18 novembre 2026</p>
+            <p className="priv-date">Dernière mise à jour&nbsp;: 19 novembre 2026</p>
 
             {/* Sommaire mobile */}
             <div className="priv-toc-mobile" id="priv-toc-mobile-wrap">
@@ -158,7 +158,7 @@ export default function PrivacyPageClient() {
                   </thead>
                   <tbody>
                     <tr><td>Formulaire de contact</td><td>Nom, prénom, email pro, téléphone (optionnel), société, sujet</td><td>Répondre à votre demande, qualifier votre besoin, organiser les 30 min offertes.</td></tr>
-                    <tr><td>Test de maturité IA (plan d'action ou demande d'échange)</td><td>Prénom et email pro pour le plan d'action ; nom, société et téléphone (optionnel) pour une demande d'échange ; secteur, taille, rôle, réponses au test et résultat</td><td>Vous donner accès à votre plan d'action, vous recontacter à ce sujet et préparer l'échange demandé. Tant que vous n'ouvrez pas votre plan et ne demandez pas d'échange, vos réponses restent dans votre navigateur et ne nous sont pas transmises.</td></tr>
+                    <tr><td>Test de maturité IA (plan d'action, rappel ou demande d'échange)</td><td>Prénom et email pro pour le plan d'action ; téléphone si vous demandez à être rappelé ; nom, société et téléphone (optionnel) pour une demande d'échange ; secteur, taille, rôle, réponses au test et résultat</td><td>Vous donner accès à votre plan d'action et vous l'envoyer par email (PDF), vous rappeler ou préparer l'échange si vous le demandez. Si vous ne demandez pas à être rappelé et ne vous y opposez pas, vous adresser des conseils, actualités IA et invitations liés à votre métier (désinscription à chaque envoi). Tant que vous n'ouvrez pas votre plan et ne demandez pas d'échange, vos réponses restent dans votre navigateur et ne nous sont pas transmises.</td></tr>
                     <tr><td>Prise de rendez-vous</td><td>Nom, prénom, email, créneau, sujet</td><td>Programmer le rendez-vous, envoyer la confirmation et le lien visio.</td></tr>
                     <tr><td>Newsletter (si applicable)</td><td>Email</td><td>Publications éditoriales. Désabonnement à chaque envoi.</td></tr>
                     <tr><td>Cookies analytiques</td><td>IP anonymisée, navigateur, pages, durée</td><td>Mesurer l'audience, améliorer l'expérience. Soumis à consentement.</td></tr>
@@ -216,6 +216,7 @@ export default function PrivacyPageClient() {
                   <li><strong>Le personnel autorisé d'ALTHOCE CONSEIL</strong>, dans la stricte limite de leurs fonctions.</li>
                   <li><strong>Vercel Inc.</strong> — hébergement du Site et protection anti-bot des formulaires avec BotID (États-Unis, voir sec. 06 ci-dessous).</li>
                   <li><strong>Cal.com</strong> — outil de prise de rendez-vous. DPA disponible sur demande.</li>
+                  <li><strong>Brevo (Sendinblue SAS, France)</strong> — envoi des emails liés à vos demandes et des communications professionnelles, gestion des désinscriptions.</li>
                   <li><strong>Les autorités administratives ou judiciaires</strong> sur réquisition légale.</li>
                 </ul>
                 <p>Chaque sous-traitant est sélectionné sur des critères de conformité RGPD (DPA signé, garanties techniques appropriées).</p>

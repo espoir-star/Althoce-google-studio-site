@@ -233,7 +233,7 @@ for (const raw of [null, '', '{', draft({ version: 2 }), draft({ profile: { ...p
 
 // 9. Contacts : contrat du formulaire de contact, résultat recalculé côté serveur, deux demandes distinctes.
 const lead = { demande: 'echange', prenom: 'Test', nom: 'Exemple', email: 'test@example.com', telephone: '', entreprise: 'Cabinet Exemple', consentement_rgpd: true, profil: sensitiveProfile, reponses: all(1), source_url: 'https://althoce.com/test-maturite-ia/?utm=x#resultat=1' };
-const plan = { demande: 'plan', prenom: 'Test', email: 'test@example.com', consentement_rgpd: true, profil: sensitiveProfile, reponses: all(1) };
+const plan = { demande: 'plan', prenom: 'Test', email: 'test@example.com', consentement_rgpd: true, profil: sensitiveProfile, reponses: all(1), rappel: false, opposition_marketing: false };
 const payload = buildMaturiteLead({ ...lead, score: 99, stade: 4, injected: 'discard', description: 'falsifié', priorite_commerciale: 'A', lien_resultat: 'https://evil.example' });
 for (const key of ['nom', 'entreprise', 'email', 'telephone', 'taille', 'budget', 'description']) assert.equal(typeof payload[key], 'string', key);
 assert.equal(payload.nom, 'Test Exemple'); assert.equal(payload.taille, '10 à 49 personnes'); assert.equal(payload.source, MATURITE_SOURCE); assert.equal(payload.demande, 'echange');
@@ -254,6 +254,16 @@ assert.deepEqual(buildMaturiteLead({ ...plan, reponses: Object.fromEntries(Objec
 const planPayload = buildMaturiteLead(plan);
 assert.equal(planPayload.demande, 'plan'); assert.equal(planPayload.nom, 'Test'); assert.equal(planPayload.entreprise, 'Non précisée'); assert.equal(planPayload.nom_famille, '');
 assert.ok(planPayload.description.startsWith('Plan d’action ouvert')); assert.equal(buildMaturiteLead({ ...plan, entreprise: 'Cabinet Exemple' }).entreprise, 'Cabinet Exemple');
+// Rappel par un expert : un choix explicite ; le téléphone est alors obligatoire. Sans rappel, le téléphone n’est pas transmis.
+assert.equal(planPayload.rappel, false); assert.equal(planPayload.opposition_marketing, false); assert.equal(payload.rappel, true, 'Une demande d’échange vaut demande de rappel');
+for (const missing of ['rappel', 'opposition_marketing']) { const { [missing]: _, ...rest } = plan; assert.throws(() => buildMaturiteLead(rest), /vérifier/, `${missing} absent`); }
+assert.throws(() => buildMaturiteLead({ ...plan, rappel: 'oui' }), /vérifier/);
+assert.throws(() => buildMaturiteLead({ ...plan, rappel: true }), /vérifier/, 'Rappel sans téléphone');
+assert.throws(() => buildMaturiteLead({ ...plan, rappel: true, telephone: '0612' }), /téléphone/i);
+const callback = buildMaturiteLead({ ...plan, rappel: true, telephone: '06 12 34 56 78' });
+assert.equal(callback.rappel, true); assert.equal(callback.telephone, '06 12 34 56 78'); assert.ok(callback.description.startsWith('Demande de rappel par un expert') && callback.description.includes('06 12 34 56 78'));
+assert.ok(callback.priorite_raisons.includes('demande à être rappelé')); assert.equal(callback.priorite_commerciale, 'A');
+assert.equal(buildMaturiteLead({ ...plan, opposition_marketing: true }).opposition_marketing, true);
 // Priorité commerciale : une aide au tri, fondée sur la demande, le rôle, la taille, le secteur et les risques relevés.
 assert.equal(payload.priorite_commerciale, 'A'); assert.equal(planPayload.priorite_commerciale, 'B');
 assert.equal(buildMaturiteLead({ ...plan, profil: { sector: 'commerce-distribution', size: 'solo', role: 'collaborateur' }, reponses: all(3) }).priorite_commerciale, 'C');
