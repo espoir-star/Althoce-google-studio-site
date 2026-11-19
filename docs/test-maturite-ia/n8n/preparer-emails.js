@@ -2,11 +2,14 @@
 // Placé après « Respond — Success 200 » : il ne tourne qu’une fois le contact enregistré et la réponse rendue au site.
 // Entrée : les données reçues par le nœud « Webhook — Receive Lead ». Les contacts qui ne viennent pas du test
 // (source ≠ test-maturite-ia) ne produisent rien : la branche s’arrête là pour le formulaire de contact.
-// Sortie : un élément, l’email au visiteur, au format de l’API Brevo (POST https://api.brevo.com/v3/smtp/email), avec le
-// résultat complet en PDF joint (champ `pdf_base64` envoyé par le site). Le nœud suivant envoie `{{ $json.brevo }}` tel quel.
+// Sortie, au format de l’API Brevo (POST https://api.brevo.com/v3/smtp/email), avec le résultat complet en PDF joint
+// (champ `pdf_base64` envoyé par le site) : l’email au visiteur, puis, s’il demande à être rappelé (`rappel`), l’alerte à
+// Althoce avec ses coordonnées. Le nœud suivant envoie `{{ $json.brevo }}` tel quel.
 // Copie de référence : le code exécuté est celui du nœud dans n8n. Voir docs/test-maturite-ia/emails.md.
 
 const SENDER = { name: 'Espoir Mwami', email: 'espoir@contact.althoce.com' };
+// Destinataire des demandes de rappel.
+const ALERT_TO = { name: 'Althoce', email: 'espoir@contact.althoce.com' };
 // Prise de rendez-vous : le même agenda que les séquences marketing (capture-leads, lib/sequences/links.ts).
 const BOOKING = 'https://calendar.app.google/JmhxjFqk2kybuFLR9';
 const LOGO = 'https://althoce.com/favicons/apple-touch-icon.png';
@@ -16,6 +19,9 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;
 function build(lead) {
   const prenom = String(lead.prenom ?? '').trim();
   const plan = lead.demande === 'plan';
+  // Demande de plan avec rappel (téléphone saisi) ou demande d’échange : Althoce recontacte le visiteur.
+  const callback = lead.rappel === true;
+  const phone = String(lead.telephone ?? '').trim();
   const link = String(lead.lien_resultat ?? '');
   if (!/^https:\/\/althoce\.com\/test-maturite-ia\/#resultat=/.test(link)) throw new Error('Lien de résultat absent ou inattendu.');
   const priorities = Array.isArray(lead.priorites_titres) ? lead.priorites_titres : [];
@@ -23,7 +29,7 @@ function build(lead) {
   // Le PDF est joint quand le site a pu le produire ; sinon, l’email renvoie vers le résultat en ligne.
   const pdf = typeof lead.pdf_base64 === 'string' && lead.pdf_base64.length > 0;
 
-  function layout(preheader, inner) {
+  function layout(preheader, inner, internal = false) {
     return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Althoce</title></head>
   <body style="margin:0;padding:0;background:#f4f4f5;">
   <div style="display:none;max-height:0;overflow:hidden;">${esc(preheader)}</div>
@@ -37,7 +43,7 @@ function build(lead) {
   </table>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;"><tr><td style="padding:16px 32px;font:12px/1.6 Arial,Helvetica,sans-serif;color:${MUTED};">
   ALTHOCE CONSEIL · 5 rue Fénelon, 33000 Bordeaux · <a href="https://althoce.com/" style="color:${MUTED};">althoce.com</a><br>
-  Vous recevez cet email à la suite de votre demande sur althoce.com/test-maturite-ia/. <a href="https://althoce.com/confidentialite/" style="color:${MUTED};">Utilisation de vos données</a>.
+  ${internal ? 'Alerte interne : demande de rappel depuis le test de maturité IA.' : `Vous recevez cet email à la suite de votre demande sur althoce.com/test-maturite-ia/. <a href="https://althoce.com/confidentialite/" style="color:${MUTED};">Utilisation de vos données</a>.`}
   </td></tr></table>
   </td></tr></table></body></html>`;
   }
@@ -69,15 +75,20 @@ function build(lead) {
   <p style="margin:0;">Merci d’avoir pris le temps de faire le test de maturité IA. ${pdf ? 'Vous trouverez en pièce jointe votre résultat complet et votre plan d’action, au format PDF.' : 'Votre résultat complet et votre plan d’action restent accessibles en ligne.'}</p>
   ${resultBox}${prioritiesBlock}
   <p style="margin:16px 0 0;">${pdf ? 'Le document détaille chaque priorité en quatre étapes, avec un rythme pour vos 30 premiers jours. Vous pouvez le transmettre tel quel à vos associés ou à vos responsables d’équipe.' : `Chaque priorité y est détaillée en quatre étapes, avec un rythme pour vos 30 premiers jours : ${textLink(link, 'revoir mon résultat complet')}.`}</p>
-  <p style="margin:16px 0 0;">Pour confronter ce résultat à votre réalité, je vous propose un premier échange de 30 minutes, offert et sans engagement.</p>
+  ${callback
+    ? `<p style="margin:16px 0 0;">Vous avez demandé à être rappelé : un expert Althoce vous appelle sous 24 heures ouvrées${phone ? ` au ${esc(phone)}` : ''}. Si vous préférez fixer vous-même le moment, choisissez un créneau :</p>
+  ${button(BOOKING, 'Choisir un créneau')}`
+    : `<p style="margin:16px 0 0;">Pour confronter ce résultat à votre réalité, je vous propose un premier échange de 30 minutes, offert et sans engagement.</p>
   ${button(BOOKING, 'Choisir un créneau')}
-  <p style="margin:0;">Vous pouvez aussi répondre directement à cet email.</p>
+  <p style="margin:0;">Vous pouvez aussi répondre directement à cet email.</p>`}
   ${signature}`,
         text: [`Bonjour ${prenom},`, '', `Merci d’avoir pris le temps de faire le test de maturité IA. ${pdf ? 'Vous trouverez en pièce jointe votre résultat complet et votre plan d’action, au format PDF.' : `Votre résultat complet et votre plan d’action : ${link}`}`, '',
           staged ? `Stade ${lead.stade} sur 4 : ${lead.stade_nom} (${lead.score}/100)` : 'Score non établi : trop de réponses « Je ne sais pas ».',
           ...(priorities.length ? ['', 'Vos trois priorités :', ...priorities.map((title, i) => `${i + 1}. ${title}`)] : []), '',
-          'Pour confronter ce résultat à votre réalité, je vous propose un premier échange de 30 minutes, offert et sans engagement.',
-          `Choisir un créneau : ${BOOKING}`, 'Vous pouvez aussi répondre directement à cet email.', '', ...signatureText].join('\n'),
+          ...(callback
+            ? [`Vous avez demandé à être rappelé : un expert Althoce vous appelle sous 24 heures ouvrées${phone ? ` au ${phone}` : ''}.`, `Si vous préférez fixer vous-même le moment : ${BOOKING}`]
+            : ['Pour confronter ce résultat à votre réalité, je vous propose un premier échange de 30 minutes, offert et sans engagement.', `Choisir un créneau : ${BOOKING}`, 'Vous pouvez aussi répondre directement à cet email.']),
+          '', ...signatureText].join('\n'),
       }
     : {
         subject: 'Votre demande d’échange est bien reçue',
@@ -93,12 +104,39 @@ function build(lead) {
           pdf ? 'Votre résultat complet est en pièce jointe, au format PDF.' : `Votre résultat complet : ${link}`, '', ...signatureText].join('\n'),
       };
 
-  return [{ json: { role: 'visiteur', brevo: {
+  const attachment = pdf ? { attachment: [{ name: String(lead.pdf_nom || 'Althoce-test-maturite-IA.pdf'), content: lead.pdf_base64 }] } : {};
+  const items = [{ json: { role: 'visiteur', brevo: {
     sender: SENDER, to: [{ email: lead.email, name: prenom || undefined }], replyTo: SENDER,
     subject: visitor.subject, htmlContent: layout(visitor.preheader, visitor.html), textContent: visitor.text,
-    ...(pdf ? { attachment: [{ name: String(lead.pdf_nom || 'Althoce-test-maturite-IA.pdf'), content: lead.pdf_base64 }] } : {}),
-    tags: ['test-maturite-ia', plan ? 'plan' : 'echange'],
+    ...attachment, tags: ['test-maturite-ia', plan ? (callback ? 'rappel' : 'plan') : 'echange'],
   } } }];
+  if (!callback) return items;
+
+  // Alerte à Althoce : seulement pour les demandes de rappel ou d’échange.
+  const secteur = lead.secteur_personnalise ? `${lead.secteur} (${lead.secteur_personnalise})` : lead.secteur;
+  const lines = [
+    ['Demande', plan ? 'Rappel par un expert, depuis le plan d’action' : 'Échange demandé'],
+    ['Téléphone', phone || 'non renseigné'],
+    ['Contact', `${lead.nom} · ${lead.email}`],
+    ['Entreprise', lead.entreprise],
+    ['Profil', `${secteur} · ${lead.taille_test} · ${lead.role}`],
+    ['Résultat', staged ? `${lead.score}/100 · stade ${lead.stade} (${lead.stade_nom})` : 'non établi'],
+    ['Priorité', `${lead.priorite_commerciale} (${(lead.priorite_raisons ?? []).join(', ') || 'aucun critère'})`],
+    ['Accompagnement', lead.offre_recommandee],
+  ];
+  const phoneLink = phone ? `<a href="tel:${esc(phone.replace(/[^+\d]/g, ''))}" style="color:${BLUE};font-weight:700;text-decoration:none;">${esc(phone)}</a>` : 'non renseigné';
+  items.push({ json: { role: 'alerte', brevo: {
+    sender: SENDER, to: [ALERT_TO], replyTo: { email: lead.email, name: String(lead.nom ?? '') || undefined },
+    subject: `[Rappel ${lead.priorite_commerciale}] ${lead.nom}${phone ? ` · ${phone}` : ''} · ${lead.secteur}`,
+    htmlContent: layout(`${lead.nom} demande à être rappelé.`, `<p style="margin:0 0 16px;"><strong>${esc(lead.nom)}</strong> demande à être recontacté pour parler de son résultat au test de maturité IA. Rappel promis sous 24 heures ouvrées.</p>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font:14px/1.5 Arial,Helvetica,sans-serif;">${lines.map(([k, v]) => `<tr><td style="padding:6px 12px 6px 0;color:${MUTED};vertical-align:top;white-space:nowrap;">${esc(k)}</td><td style="padding:6px 0;">${k === 'Téléphone' ? phoneLink : esc(v)}</td></tr>`).join('')}</table>
+  <p style="margin:16px 0 8px;font-weight:700;">Résumé complet</p>
+  <pre style="white-space:pre-wrap;font:13px/1.5 Menlo,Consolas,monospace;background:${SOFT};border-radius:12px;padding:16px;margin:0;">${esc(lead.description)}</pre>
+  <p style="margin:16px 0 0;color:${MUTED};font-size:13px;">${pdf ? 'Son résultat complet est en pièce jointe. ' : ''}Répondre à cet email écrit directement au contact.</p>`, true),
+    textContent: `${lead.nom} demande à être rappelé (sous 24 heures ouvrées).\n\n${lines.map(([k, v]) => `${k} : ${v}`).join('\n')}\n\n${lead.description}`,
+    ...attachment, tags: ['test-maturite-ia', 'alerte-rappel'],
+  } } });
+  return items;
 }
 
 const WEBHOOK = 'Webhook — Receive Lead';

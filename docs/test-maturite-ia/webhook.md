@@ -2,7 +2,7 @@
 
 Ce que reçoit l’outil commercial depuis le test. Deux demandes passent par la même route :
 
-- `plan` : le visiteur ouvre son plan d’action avec son prénom et son email ;
+- `plan` : le visiteur ouvre son plan d’action avec son prénom et son email. Il indique s’il veut être rappelé par un expert (`rappel`, téléphone alors obligatoire) et peut s’opposer aux communications d’Althoce (`opposition_marketing`) ;
 - `echange` : il clique sur « Parler de mon résultat » et envoie ses coordonnées complètes.
 
 Un même visiteur peut envoyer les deux, dans cet ordre : rapprochez-les par l’email. Le traitement commercial est décrit dans `exploitation-commerciale.md`.
@@ -27,7 +27,7 @@ Pour traiter ces demandes à part (étiquette, séquence d’emails, tableau de 
 | `nom` | Prénom et nom ; le prénom seul pour une demande `plan` |
 | `entreprise` | Entreprise ou cabinet ; « Non précisée » pour une demande `plan`, qui ne demande que le prénom et l’email |
 | `email` | Email professionnel |
-| `telephone` | Facultatif, vide si non renseigné |
+| `telephone` | Obligatoire pour une demande de plan avec rappel ; facultatif pour un échange ; vide sinon |
 | `taille` | Tranche au format du formulaire de contact (« 10 à 49 personnes ») |
 | `budget` | Toujours vide |
 | `description` | Résumé lisible du test, moins de 5 000 caractères |
@@ -55,11 +55,14 @@ Réponses (14 sur 15, auto-évaluation déclarative) :
 |---|---|
 | `source` | Toujours `test-maturite-ia` : permet de filtrer ces demandes dans le flux commun |
 | `demande` | `plan` ou `echange` |
+| `rappel` | `true` si le visiteur veut être recontacté : demande de plan avec rappel, ou demande d’échange. n8n prévient alors Althoce par email |
+| `opposition_marketing` | `true` si le visiteur s’oppose aux communications d’Althoce. Toujours `false` pour un échange, dont le formulaire ne propose pas ces communications |
 | `priorite_commerciale`, `priorite_raisons` | A, B ou C, et les critères qui l’expliquent |
 | `prenom`, `nom_famille` | Prénom et nom séparés ; le nom est vide pour une demande `plan` |
 | `secteur`, `secteur_slug` | Intitulé et identifiant du secteur |
 | `secteur_personnalise` | Précision saisie quand le secteur est « Autre activité » (obligatoire dans ce cas), vide sinon |
 | `taille_test`, `role` | Tranche et rôle tels qu’affichés dans le test |
+| `taille_code` | Code de la tranche : `solo`, `2-9`, `10-49`, `50-199` ou `200+` |
 | `score` | 0 à 100, ou `null` si le score n’est pas établi |
 | `stade`, `stade_nom` | 1 à 4 et son nom, ou `null` |
 | `dimensions` | Score de chaque dimension, `null` si non évaluée |
