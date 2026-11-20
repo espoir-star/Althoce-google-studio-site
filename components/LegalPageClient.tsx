@@ -23,9 +23,12 @@ const sections = [
             <tr><td>Date d&apos;immatriculation</td><td>{legal.registeredDateLabel}</td></tr>
             <tr><td>N° de TVA intracommunautaire</td><td>{legal.vat}</td></tr>
             <tr><td>Siège social</td><td>{legal.street}, {legal.postalCode} {legal.city}, France</td></tr>
+            <tr><td>Président</td><td>{legal.director}</td></tr>
             <tr><td>Email</td><td><a href={`mailto:${contact.email}`}>{contact.email}</a></td></tr>
           </tbody>
         </table>
+        <p>Activité lancée en {legal.activitySince} par {legal.director}, sous le statut de micro-entreprise&nbsp;; la société {legal.name} (SAS) est immatriculée depuis le {legal.registeredDateLabel}.</p>
+        <p>Ces informations peuvent être vérifiées sur l&apos;<a href={legal.directoryUrl} target="_blank" rel="noopener noreferrer">Annuaire des entreprises</a> de l&apos;État.</p>
       </>
     ),
   },

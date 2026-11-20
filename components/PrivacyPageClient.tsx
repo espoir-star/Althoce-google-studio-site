@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { legal } from '@/lib/organization';
 
 const AC = '#2563eb';
 
@@ -107,7 +108,7 @@ export default function PrivacyPageClient() {
 
             {/* Header */}
             <h1 className="priv-h1">Politique de confidentialité</h1>
-            <p className="priv-date">Dernière mise à jour&nbsp;: 19 novembre 2026</p>
+            <p className="priv-date">Dernière mise à jour&nbsp;: 20 novembre 2026</p>
 
             {/* Sommaire mobile */}
             <div className="priv-toc-mobile" id="priv-toc-mobile-wrap">
@@ -139,9 +140,11 @@ export default function PrivacyPageClient() {
               <h2 className="priv-h2"><span style={{ fontSize: 12, fontWeight: 800, color: AC, textTransform: 'uppercase', letterSpacing: '.1em', marginRight: 2 }}>01</span>Responsable de traitement</h2>
               <div className="priv-body">
                 <p>Le responsable de traitement de vos données personnelles est&nbsp;:</p>
-                <p><strong>ALTHOCE CONSEIL</strong>, société par actions simplifiée (SAS)<br />
-                Siège social&nbsp;: 5 rue Fénelon, 33000 Bordeaux, France<br />
-                SIREN&nbsp;: 999 696 404<br />
+                <p><strong>{legal.name}</strong>, société par actions simplifiée (SAS), immatriculée au RCS de {legal.rcs}<br />
+                Siège social&nbsp;: {legal.street}, {legal.postalCode} {legal.city}, France<br />
+                SIREN&nbsp;: {legal.siren}<br />
+                SIRET&nbsp;: {legal.siret}<br />
+                Représentée par {legal.director}, président<br />
                 Email&nbsp;: <a href="mailto:espoir@contact.althoce.com">espoir@contact.althoce.com</a></p>
                 <p>ALTHOCE CONSEIL n'a pas désigné de Délégué à la Protection des Données (DPO) obligatoire, compte tenu de son effectif et de l'absence de traitement à grande échelle de données sensibles. Les demandes RGPD sont traitées à l'adresse&nbsp;: <a href="mailto:espoir@contact.althoce.com">espoir@contact.althoce.com</a>.</p>
               </div>
@@ -326,7 +329,7 @@ export default function PrivacyPageClient() {
               <div className="priv-body">
                 <p>Pour toute question relative à la présente politique ou à un traitement spécifique de vos données personnelles&nbsp;:</p>
                 <p><strong>Email</strong>&nbsp;: <a href="mailto:espoir@contact.althoce.com">espoir@contact.althoce.com</a><br />
-                <strong>Adresse</strong>&nbsp;: ALTHOCE CONSEIL — Service Données personnelles, 5 rue Fénelon, 33000 Bordeaux, France</p>
+                <strong>Adresse</strong>&nbsp;: {legal.name}, Service Données personnelles, {legal.street}, {legal.postalCode} {legal.city}, France</p>
                 <h3 className="priv-h3">Droit de réclamation</h3>
                 <p>Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la <strong>Commission Nationale de l'Informatique et des Libertés (CNIL)</strong>&nbsp;:</p>
                 <p>3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07<br />
