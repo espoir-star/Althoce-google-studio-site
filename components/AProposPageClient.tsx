@@ -4,6 +4,8 @@ import { ArrowUpRight, ArrowRight, Check } from 'lucide-react';
 import { PhotoHero, TextLink, FaqSection } from './brand/Sections';
 import { homeMethod } from '@/lib/home-content';
 import { aboutFaqs } from '@/lib/cabinet-content';
+import { founder, legal } from '@/lib/organization';
+import { LinkedInIcon } from './ui/brand/SocialIcons';
 import office from '@/public/images/home/collaboration-bureau.webp';
 import work from '@/public/images/home/collaboration-bureau.webp';
 import b from './brand/Brand.module.css';
@@ -19,12 +21,37 @@ export default function AProposPageClient() {
         <div className={s.originCopy}>
           <h2 id="histoire-title">Tout commence<br />par <span>vous écouter.</span></h2>
           <p>Un dossier confidentiel. Une décision à préparer. Une équipe qui manque de temps.</p>
-          <p>Né à Bordeaux en 2025, Althoce part de là : votre quotidien. Puis nous choisissons ensemble où l’IA peut vraiment vous aider.</p>
+          <p>Né à Bordeaux, Althoce part de là : votre quotidien. Puis nous choisissons ensemble où l’IA peut vraiment vous aider.</p>
           <TextLink href="/services/">Trouver votre point de départ</TextLink>
         </div>
         <div className={s.listeningScene}>
           <div className={s.listeningPhoto}><Image src={work} alt="Deux collègues prennent le temps de travailler ensemble sur un sujet." fill sizes="(max-width: 900px) 90vw, 560px" placeholder="blur" /></div>
           <div className={s.questionNote}><span aria-hidden="true">“</span><p>Qu’est-ce qui vous<br />prend trop de temps ?</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section className={`${b.section} ${s.founder}`} aria-labelledby="fondateur-title">
+      <div className={`${b.container} ${s.founderGrid}`}>
+        <div className={s.founderPhoto}><Image src={founder.photo} alt={`${founder.name}, fondateur d’Althoce.`} fill sizes="(max-width: 900px) 90vw, 440px" /></div>
+        <div className={s.founderCopy}>
+          <span className={s.founderLabel}>Le fondateur</span>
+          <h2 id="fondateur-title">{founder.name}.<br /><span>À l’origine d’Althoce.</span></h2>
+          <p>Althoce a été fondé par {founder.name}, formé en data et en machine learning, avec une équipe d’ingénieurs IA passionnés, prêts à vous accompagner au quotidien.</p>
+          <a className={s.founderLink} href={founder.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${founder.name} sur LinkedIn`}><LinkedInIcon size={18} />Le profil LinkedIn de {founder.name}<ArrowUpRight size={18} aria-hidden="true" /></a>
+          <div className={s.identity} aria-labelledby="identite-title">
+            <h3 id="identite-title">Fiche d’identité</h3>
+            <p>Activité lancée en {legal.activitySince}, sous le statut de micro-entreprise ; la société Althoce Conseil (SAS) est immatriculée depuis {legal.registeredLabel}.</p>
+            <dl>
+              <div><dt>Dénomination</dt><dd>{legal.name}</dd></div>
+              <div><dt>Forme</dt><dd>{legal.form}</dd></div>
+              <div><dt>SIREN</dt><dd>{legal.siren}</dd></div>
+              <div><dt>Immatriculation</dt><dd>{legal.registeredDateLabel}, RCS {legal.rcs}</dd></div>
+              <div><dt>Siège</dt><dd>{legal.street}, {legal.postalCode} {legal.city}</dd></div>
+              <div><dt>Président</dt><dd>{legal.director}</dd></div>
+            </dl>
+            <a href={legal.directoryUrl} target="_blank" rel="noopener noreferrer">Vérifier sur l’Annuaire des entreprises<ArrowUpRight size={16} aria-hidden="true" /></a>
+          </div>
         </div>
       </div>
     </section>

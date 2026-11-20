@@ -1,4 +1,5 @@
 import { brand } from '@/lib/brand-content';
+import { organizationJsonLd } from '@/lib/organization';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -59,38 +60,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${geist.variable} ${geistMono.variable} scroll-smooth scroll-pt-28`}>
       <head>
-        {/* Organization — présent sur toutes les pages */}
+        {/* Organization : une seule définition (lib/organization.ts), présente sur toutes les pages */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "@id": "https://althoce.com/#organization",
-              "name": "Althoce",
-              "url": "https://althoce.com/",
-              "description": brand.shortDescription,
-              "foundingDate": "2024",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "5 RUE FENELON",
-                "addressLocality": "Bordeaux",
-                "postalCode": "33000",
-                "addressCountry": "FR"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "email": "contact@althoce.com",
-                "contactType": "customer service",
-                "availableLanguage": "French"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "France"
-              },
-              "sameAs": []
-            })
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
       <body className="bg-white text-ink font-sans min-h-screen selection:bg-accent/20 selection:text-accent">

@@ -9,6 +9,26 @@
 .questionNote { position: absolute; bottom: 0; left: -20px; background: #fff; padding: 24px 36px 28px; box-shadow: 0 14px 55px #132c511a; transform: rotate(-3deg); }
 .questionNote > span { position: absolute; left: 16px; top: 2px; color: #2563eb; font-size: 52px; font-family: Georgia,serif; line-height: 1; }
 .questionNote p { color: #163764; font-size: 23px; line-height: 1.35; letter-spacing: -.025em; }
+.founder { padding-top: 0; }
+.founderGrid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 80px; align-items: start; }
+.founderPhoto { position: relative; aspect-ratio: 1; border-radius: 72px 4px 4px 4px; overflow: hidden; background: #eaf1fc; }
+.founderPhoto img { object-fit: cover; object-position: 50% 30%; }
+.founderLabel { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: #2459bd; text-transform: uppercase; }
+.founderCopy h2 { font-size: clamp(34px,3.6vw,52px); margin-top: 12px; }
+.founderCopy > p { max-width: 520px; margin-top: 24px; }
+.founderLink { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; margin-top: 20px; font-size: 14px; font-weight: 600; color: #2459bd; border-bottom: 1px solid #b9cdf0; }
+.founderLink:hover { border-color: #2459bd; }
+.identity { margin-top: 40px; padding: 28px 30px; border: 1px solid #dce4f0; border-radius: 4px 28px 4px 4px; background: #f8fafe; }
+.identity h3 { font-size: 18px; letter-spacing: -.01em; }
+.identity > p { font-size: 15px; margin-top: 10px; max-width: 560px; }
+.identity dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px 28px; margin: 20px 0 0; }
+.identity dl div { min-width: 0; }
+.identity dt { font-size: 12px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: #5c6d85; }
+.identity dd { margin: 2px 0 0; font-size: 15px; color: #10213a; overflow-wrap: anywhere; }
+.identity a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 14px; font-size: 14px; color: #2459bd; }
+.identity a:hover { text-decoration: underline; }
+@media(max-width:900px) { .founderGrid { grid-template-columns: minmax(0,1fr); gap: 36px; } .founderPhoto { max-width: 420px; } }
+@media(max-width:600px) { .identity { padding: 22px 20px; } .identity dl { grid-template-columns: minmax(0,1fr); } .founderCopy h2 { font-size: 34px; } }
 .transformation { background: #143b86; color: white; padding-top: 76px; overflow: hidden; }
 .trainingGrid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 54px; align-items: center; }
 .trainingCopy { padding-bottom: 42px; }

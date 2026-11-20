@@ -2,6 +2,7 @@ import { brand } from '@/lib/brand-content';
 import type { Metadata } from 'next';
 import HomePageClient from '@/components/HomePageClient';
 import Footer from '@/components/Footer';
+import { organizationNode } from '@/lib/organization';
 import { homeFaqs, homeOffers } from '@/lib/home-content';
 
 export const metadata: Metadata = {
@@ -49,15 +50,9 @@ const professionalServiceSchema = {
   "url": "https://althoce.com/",
   "description": brand.shortDescription,
   "image": "https://althoce.com/og-default.png",
-  "telephone": "",
-  "email": "contact@althoce.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "5 RUE FENELON",
-    "addressLocality": "Bordeaux",
-    "postalCode": "33000",
-    "addressCountry": "FR"
-  },
+  "email": organizationNode.email,
+  "address": organizationNode.address,
+  "provider": { "@id": "https://althoce.com/#organization" },
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": 44.8378,

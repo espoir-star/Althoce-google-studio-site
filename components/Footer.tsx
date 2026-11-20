@@ -7,6 +7,8 @@ import React from 'react';
 import Image from 'next/image';
 import { Logo } from '@/components/ui/brand/Logo';
 import { cities } from '@/lib/data';
+import { socialProfiles } from '@/lib/organization';
+import { SocialIcon } from '@/components/ui/brand/SocialIcons';
 
 const footerCols = [
   {
@@ -127,6 +129,9 @@ export default function Footer({ showCta = true, positioning = 'cabinet' }: { sh
     <footer>
       <style>{`
         footer a:focus-visible { outline: 2px solid #a9caff; outline-offset: 4px; border-radius: 3px; }
+        .footer-social{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;padding:0;list-style:none}
+        .footer-social a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #bbd5f72e;border-radius:999px;color:#c2cfe2;transition:color .15s,border-color .15s,background .15s}
+        .footer-social a:hover{color:#fff;border-color:#bbd5f766;background:#ffffff0f}
         .footer-local-links{border-top:1px solid #bbd5f72e;padding:28px 0}
         .footer-local-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
         .footer-local-grid details{border:1px solid #bbd5f72e;border-radius:8px;padding:0 20px}
@@ -156,6 +161,15 @@ export default function Footer({ showCta = true, positioning = 'cabinet' }: { sh
                 {brand.footer}
               </p>
               <p style={{ fontSize: 13, color: '#a9bdd9' }}>Bordeaux, partout en France</p>
+              <ul className="footer-social" aria-label="Althoce sur les réseaux sociaux">
+                {socialProfiles.map((profile) => (
+                  <li key={profile.id}>
+                    <a href={profile.href} target="_blank" rel="noopener noreferrer" aria-label={`Althoce sur ${profile.label}`} title={`Althoce sur ${profile.label}`}>
+                      <SocialIcon id={profile.id} size={18} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {footerCols.map((col) => (

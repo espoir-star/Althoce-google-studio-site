@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import { legal } from '@/lib/organization';
+import { contact } from '@/lib/brand-content';
 
 const AC = '#2563eb';
 
@@ -10,14 +12,18 @@ const sections = [
     title: 'Éditeur',
     content: (
       <>
-        <p>Le Site est édité par <strong>ALTHOCE CONSEIL</strong>, société par actions simplifiée (SAS), dont le siège social est situé au 5 rue Fénelon, 33000 Bordeaux, France.</p>
+        <p>Le Site est édité par <strong>{legal.name}</strong>, société par actions simplifiée (SAS), dont le siège social est situé au {legal.street}, {legal.postalCode} {legal.city}, France.</p>
         <table>
           <tbody>
-            <tr><td>Forme juridique</td><td>Société par Actions Simplifiée (SAS)</td></tr>
-            <tr><td>SIREN</td><td>999 696 404</td></tr>
-            <tr><td>RCS</td><td>Bordeaux</td></tr>
-<tr><td>Adresse postale</td><td>5 rue Fénelon, 33000 Bordeaux, France</td></tr>
-            <tr><td>Email</td><td><a href="mailto:espoir@contact.althoce.com">espoir@contact.althoce.com</a></td></tr>
+            <tr><td>Dénomination</td><td>{legal.name}</td></tr>
+            <tr><td>Forme juridique</td><td>Société par actions simplifiée (SAS)</td></tr>
+            <tr><td>SIREN</td><td>{legal.siren}</td></tr>
+            <tr><td>SIRET (siège)</td><td>{legal.siret}</td></tr>
+            <tr><td>RCS</td><td>{legal.rcs}</td></tr>
+            <tr><td>Date d&apos;immatriculation</td><td>{legal.registeredDateLabel}</td></tr>
+            <tr><td>N° de TVA intracommunautaire</td><td>{legal.vat}</td></tr>
+            <tr><td>Siège social</td><td>{legal.street}, {legal.postalCode} {legal.city}, France</td></tr>
+            <tr><td>Email</td><td><a href={`mailto:${contact.email}`}>{contact.email}</a></td></tr>
           </tbody>
         </table>
       </>
@@ -28,7 +34,7 @@ const sections = [
     title: 'Direction de la publication',
     content: (
       <>
-        <p>Le directeur de la publication du Site est <strong>Mwami Espoir</strong>, en sa qualité de président d'ALTHOCE CONSEIL.</p>
+        <p>Le directeur de la publication du Site est <strong>{legal.director}</strong>, en sa qualité de président d'{legal.name}.</p>
         <p>Pour toute demande relative au contenu éditorial du Site, vous pouvez nous contacter à l'adresse suivante&nbsp;: <a href="mailto:espoir@contact.althoce.com">espoir@contact.althoce.com</a>.</p>
       </>
     ),
