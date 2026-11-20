@@ -187,7 +187,7 @@ export default function LegalPageClient() {
 
           {/* Header */}
           <h1 className="legal-h1">Mentions légales</h1>
-          <p className="legal-date">Dernière mise à jour&nbsp;: 16 mai 2026</p>
+          <p className="legal-date">Dernière mise à jour&nbsp;: 20 novembre 2026</p>
 
           {/* Intro */}
           <div className="legal-intro">
