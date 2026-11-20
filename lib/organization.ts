@@ -36,15 +36,17 @@ export const founder = {
 } as const;
 
 /**
- * Profils officiels, tels que fournis par Althoce (paramètres de suivi retirés). Affichés dans le pied de page
- * et repris dans `sameAs` : le site et le JSON-LD utilisent exactement les mêmes adresses.
+ * Profils officiels fournis par Althoce, paramètres de suivi retirés. Les liens de partage Facebook
+ * (facebook.com/share/14yrgLKv7rb) et Google (share.google/2orAPa0f74Bw5LkvP) sont remplacés par l'adresse
+ * finale vers laquelle ils redirigent, vérifiée le 20 novembre 2026. Affichés dans le pied de page et repris
+ * dans `sameAs` : le site et le JSON-LD utilisent exactement les mêmes adresses.
  */
 export const socialProfiles = [
   { id: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/althoce/' },
   { id: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/althoceconseil/' },
-  { id: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/share/14yrgLKv7rb/' },
+  { id: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/Althoce' },
   { id: 'tiktok', label: 'TikTok', href: 'https://www.tiktok.com/@althoce' },
-  { id: 'google', label: 'Google', href: 'https://share.google/2orAPa0f74Bw5LkvP' },
+  { id: 'google', label: 'Google', href: 'https://www.google.com/search?kgmid=/g/11vcrb33kn' },
 ] as const;
 export type SocialProfileId = (typeof socialProfiles)[number]['id'];
 
