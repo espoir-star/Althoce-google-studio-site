@@ -1,4 +1,5 @@
 import { aboutFaqs } from '@/lib/cabinet-content';
+import { organizationNode } from '@/lib/organization';
 import type { Metadata } from 'next';
 import AProposPageClient from '@/components/AProposPageClient';
 import Footer from '@/components/Footer';
@@ -6,7 +7,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: "L'histoire et la culture d'Althoce",
   description: "Althoce, cabinet de conseil et intégration IA : formation, usages encadrés et automatisation pour les professions réglementées et les entreprises exigeantes.",
-  keywords: "qui est Althoce, équipe Althoce, histoire Althoce, culture Althoce, agence IA Bordeaux histoire, Althoce origine",
+  keywords: "qui est Althoce, fondateur Althoce, Espoir Mwami, histoire Althoce, culture Althoce, agence IA Bordeaux histoire, Althoce origine",
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://althoce.com/a-propos/' },
   openGraph: {
@@ -29,24 +30,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://althoce.com/#organization",
-      "name": "Althoce",
-      "legalName": "ALTHOCE CONSEIL",
-      "url": "https://althoce.com/",
-      "logo": "https://althoce.com/logo.svg",
-      "description": "Cabinet de conseil et intégration IA d’origine bordelaise, Althoce accompagne les professions réglementées et les entreprises à fortes exigences partout en France.",
-      "foundingDate": "2025",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "5 rue Fénelon",
-        "addressLocality": "Bordeaux",
-        "postalCode": "33000",
-        "addressCountry": "FR",
-      },
-      "areaServed": { "@type": "Country", "name": "France" },
-    },
+    organizationNode,
     {
       "@type": "WebPage",
       "@id": "https://althoce.com/a-propos/#webpage",

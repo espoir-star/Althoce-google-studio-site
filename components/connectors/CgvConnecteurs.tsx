@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { CONNECTOR_BOOKING_URL } from '@/lib/connectors-content';
+import { legal } from '@/lib/organization';
 import b from '../brand/Brand.module.css';
 import s from './Connectors.module.css';
 
@@ -8,7 +9,7 @@ import s from './Connectors.module.css';
  * Faits de l'offre : lib/connectors-content.ts. Société : mentions légales du site.
  * Toute modification de l'offre (prix, essai, résiliation) doit être reportée ici.
  */
-export const CGV_UPDATED = '26 octobre 2026';
+export const CGV_UPDATED = '20 novembre 2026';
 
 const mail = <a href="mailto:espoir@contact.althoce.com">espoir@contact.althoce.com</a>;
 
@@ -19,7 +20,7 @@ const articles: { id: string; title: string; body: ReactNode }[] = [
     <p>L’offre remise au Client à la suite du rendez-vous (nombre de comptes, logiciels, prix) forme les conditions particulières. Elle complète les CGV et prévaut sur elles en cas de différence.</p>
   </> },
   { id: 'vendeur', title: 'Vendeur', body: <>
-    <p>ALTHOCE CONSEIL, société par actions simplifiée (SAS), immatriculée au RCS de Bordeaux sous le numéro SIREN 999 696 404, dont le siège est situé 5 rue Fénelon, 33000 Bordeaux, France. Contact : {mail}.</p>
+    <p>{legal.name}, société par actions simplifiée (SAS), immatriculée au RCS de {legal.rcs} sous le numéro SIREN {legal.siren}, dont le siège est situé {legal.street}, {legal.postalCode} {legal.city}, France. Numéro de TVA intracommunautaire : {legal.vat}. Représentée par {legal.director}, président. Contact : {mail}.</p>
   </> },
   { id: 'service', title: 'Description du Service', body: <>
     <p>Le Service est un connecteur MCP qui relie les dossiers Pennylane du Client à l’intelligence artificielle de son choix : Claude, ChatGPT ou une autre IA compatible MCP.</p>

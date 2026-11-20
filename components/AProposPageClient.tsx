@@ -4,8 +4,9 @@ import { ArrowUpRight, ArrowRight, Check } from 'lucide-react';
 import { PhotoHero, TextLink, FaqSection } from './brand/Sections';
 import { homeMethod } from '@/lib/home-content';
 import { aboutFaqs } from '@/lib/cabinet-content';
+import { founder } from '@/lib/organization';
+import { LinkedInIcon } from './ui/brand/SocialIcons';
 import office from '@/public/images/home/collaboration-bureau.webp';
-import work from '@/public/images/home/collaboration-bureau.webp';
 import b from './brand/Brand.module.css';
 import s from './AboutStory.module.css';
 
@@ -13,21 +14,6 @@ export default function AProposPageClient() {
   return <main className={b.page}>
     <PhotoHero label="À propos" title={<>Un cabinet IA.<br /><span>Des personnes engagées.</span></>} description="Althoce est un cabinet de conseil et d’intégration IA. Nous accompagnons les professions réglementées et les entreprises dont les données, les décisions et les processus demandent un cadre exigeant." image={office} alt="Deux professionnels échangent sur un projet dans un bureau."><TextLink href="/contact/">Faisons connaissance</TextLink></PhotoHero>
     <TrustStrip className={b.container} />
-
-    <section className={`${b.section} ${s.origin}`} aria-labelledby="histoire-title">
-      <div className={`${b.container} ${s.originGrid}`}>
-        <div className={s.originCopy}>
-          <h2 id="histoire-title">Tout commence<br />par <span>vous écouter.</span></h2>
-          <p>Un dossier confidentiel. Une décision à préparer. Une équipe qui manque de temps.</p>
-          <p>Né à Bordeaux en 2025, Althoce part de là : votre quotidien. Puis nous choisissons ensemble où l’IA peut vraiment vous aider.</p>
-          <TextLink href="/services/">Trouver votre point de départ</TextLink>
-        </div>
-        <div className={s.listeningScene}>
-          <div className={s.listeningPhoto}><Image src={work} alt="Deux collègues prennent le temps de travailler ensemble sur un sujet." fill sizes="(max-width: 900px) 90vw, 560px" placeholder="blur" /></div>
-          <div className={s.questionNote}><span aria-hidden="true">“</span><p>Qu’est-ce qui vous<br />prend trop de temps ?</p></div>
-        </div>
-      </div>
-    </section>
 
     <section className={s.transformation} aria-labelledby="equipes-title">
       <div className={`${b.container} ${s.trainingGrid}`}>
@@ -76,6 +62,18 @@ export default function AProposPageClient() {
         </div>
       </div>
       <div className={`${b.container} ${s.recognition}`}><Image src="/logos/Althoce-Activateur-francenum.png" alt="Althoce, Activateur France Num" width={66} height={60} /><p>Engagés dans la transformation<br />numérique des entreprises.</p><a href="https://www.francenum.gouv.fr/activateurs/althoce-conseil" target="_blank" rel="noopener noreferrer">Activateur France Num<ArrowUpRight size={18} aria-hidden="true" /></a></div>
+    </section>
+
+    <section className={`${b.section} ${s.founder}`} aria-labelledby="fondateur-title">
+      <div className={`${b.container} ${s.founderGrid}`}>
+        <div className={s.founderPhoto}><Image src={founder.photo} alt={`${founder.name}, fondateur d’Althoce.`} fill sizes="(max-width: 900px) 90vw, 440px" /></div>
+        <div className={s.founderCopy}>
+          <span className={s.founderLabel}>Le fondateur</span>
+          <h2 id="fondateur-title">{founder.name}.<br /><span>À l’origine d’Althoce.</span></h2>
+          <p>Althoce a été fondé par {founder.name}, formé en data et en machine learning, avec une équipe d’ingénieurs IA passionnés, prêts à vous accompagner au quotidien.</p>
+          <a className={s.founderLink} href={founder.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${founder.name} sur LinkedIn`}><LinkedInIcon size={18} />Le profil LinkedIn de {founder.name}<ArrowUpRight size={18} aria-hidden="true" /></a>
+        </div>
+      </div>
     </section>
     <FaqSection id="faq-cabinet" title="Quelques repères sur Althoce." description="Le cabinet, les personnes et la suite." items={aboutFaqs} />
   </main>;

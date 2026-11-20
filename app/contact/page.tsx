@@ -1,6 +1,7 @@
 import { contactFaqs } from '@/lib/cabinet-content';
 import type { Metadata } from 'next';
 import ContactPageClient from '@/components/ContactPageClient';
+import { organizationNode } from '@/lib/organization';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
@@ -36,38 +37,7 @@ const jsonLd = {
       "url": "https://althoce.com/contact/",
       "mainEntity": { "@id": "https://althoce.com/#organization" },
     },
-    {
-      "@type": "Organization",
-      "@id": "https://althoce.com/#organization",
-      "name": "Althoce",
-      "legalName": "ALTHOCE CONSEIL",
-      "url": "https://althoce.com/",
-      "logo": "https://althoce.com/logo.svg",
-      "email": "espoir@contact.althoce.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "5 rue Fénelon",
-        "addressLocality": "Bordeaux",
-        "postalCode": "33000",
-        "addressCountry": "FR",
-      },
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "contactType": "Sales",
-          "email": "espoir@contact.althoce.com",
-          "areaServed": "FR",
-          "availableLanguage": "French",
-        },
-        {
-          "@type": "ContactPoint",
-          "contactType": "Customer Service",
-          "email": "espoir@contact.althoce.com",
-          "areaServed": "FR",
-          "availableLanguage": "French",
-        },
-      ],
-    },
+    organizationNode,
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
