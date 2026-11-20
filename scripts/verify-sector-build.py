@@ -46,8 +46,25 @@ xml=ET.fromstring((root/'sitemap.xml.body').read_text());urls=[e.text for e in x
 if len(urls)!=len(set(urls)):errors.append(('sitemap','duplicates'))
 for url in selected:
     if 'https://althoce.com'+url not in urls:errors.append((url,'absent sitemap'))
-assert len([u for u in selected if u.startswith('/formation-ia-')])==19
-assert len([u for u in selected if u.startswith('/secteurs/')])==8
-assert len(capture)==9
-print(json.dumps({'pages_checked':len(selected),'training_cities':19,'sector_pages_including_hub':8,'unique_capture_links':len(capture),'sitemap_urls':len(urls),'errors':errors},ensure_ascii=False,indent=2))
+
+# Expected pages and links come from the sources, so the check follows the catalogue
+# when a sector, a training city or a guide is added or removed.
+def source(path): return Path(path).read_text(encoding='utf-8')
+def compare(label,expected,built):
+    if not expected:errors.append((label,'nothing found in the sources: check the parsing'))
+    for item in sorted(expected-built):errors.append((label,'declared but not built',item))
+    for item in sorted(built-expected):errors.append((label,'built but not declared',item))
+# A sector story starts with its slug, immediately followed by its name.
+sector_slugs=[slug for path in ('lib/sectors-content.ts','lib/sector-additions.ts') for slug in re.findall(r'''slug: ?["']([a-z0-9-]+)["'],\s*name:''',source(path))]
+if len(sector_slugs)!=len(set(sector_slugs)):errors.append(('sectors','duplicate slug in the sources'))
+sectors=set(sector_slugs)
+compare('sectors',{'/secteurs/'}|{f'/secteurs/{slug}/' for slug in sectors},{u for u in selected if u.startswith('/secteurs/')})
+cities={f'/{page.parent.name}/' for page in Path('app').glob('formation-ia-*/page.tsx')}
+compare('training cities',cities,{u for u in selected if u.startswith('/formation-ia-')})
+resources=source('lib/resources.ts')
+base=re.search(r'''captureBase ?= ?["']([^"']+)["']''',resources)
+guides=set(re.findall(r'''\{\s*slug: ?["']([a-z0-9-]+)["']''',resources))
+if not base:errors.append(('guides','captureBase not found in lib/resources.ts'))
+else:compare('guide capture links',{f'{base.group(1)}/r/{slug}' for slug in guides},capture)
+print(json.dumps({'pages_checked':len(selected),'training_cities':len(cities),'sectors':len(sectors),'sector_pages_including_hub':len(sectors)+1,'unique_capture_links':len(capture),'sitemap_urls':len(urls),'errors':errors},ensure_ascii=False,indent=2))
 raise SystemExit(bool(errors))
