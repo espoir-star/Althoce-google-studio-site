@@ -1,0 +1,58 @@
+/* Pages Formation Claude, ChatGPT et Copilot : compléments au gabarit Formation.module.css */
+.heroActions { display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:26px; }
+.heroActions a { margin-top:0!important; }
+.secondary { display:inline-flex;align-items:center;min-height:44px;color:#2459bd;font-size:15px;font-weight:600;text-decoration:underline!important;text-underline-offset:5px; }
+.secondary:hover { color:#163d8c; }
+
+.audiences { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px; }
+.audiences article { padding:30px;border:1px solid #dce5f2;border-radius:12px;background:#fff; }
+.audiences h3 { font-size:20px; }
+.audiences p { margin-top:12px!important;font-size:15px; }
+
+.levels { list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px; }
+.levels>li { display:flex;flex-direction:column;padding:32px;border:1px solid #dce5f2;border-radius:12px 42px 12px 12px;background:#fff; }
+.levelTag { align-self:flex-start;padding:6px 12px;border-radius:999px;background:#eaf1fc;color:#2459bd;font-size:12px;font-weight:600;line-height:1.4; }
+.levels h3 { font-size:26px;margin-top:18px; }
+.levels>li>p { margin-top:12px!important;font-size:15px; }
+.skills { list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px; }
+.skills li { display:flex;gap:12px;font-size:15px;line-height:1.6;color:#33404f; }
+.skills svg { flex-shrink:0;margin-top:3px;color:#2563eb; }
+.levelFacts { margin:26px 0 22px;padding-top:20px;border-top:1px solid #dce5f2;display:grid;gap:14px; }
+.levelFacts dt { font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:#5c6d85; }
+.levelFacts dd { margin:4px 0 0;font-size:14px;line-height:1.65;color:#33404f; }
+.levelLink { display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;margin-top:auto;padding-top:18px;border-top:1px solid #dce5f2;color:#2459bd;font-size:15px;font-weight:600; }
+.levelLink:hover { text-decoration:underline!important;text-underline-offset:4px; }
+.levels>li:nth-child(3) { background:#183e89;border-color:#183e89; }
+.levels>li:nth-child(3) .levelTag { background:#ffffff1f;color:#dce8ff; }
+.levels>li:nth-child(3) h3 { color:#fff; }
+.levels>li:nth-child(3) p,.levels>li:nth-child(3) .skills li,.levels>li:nth-child(3) dd { color:#dce8ff; }
+.levels>li:nth-child(3) .skills svg,.levels>li:nth-child(3) dt { color:#a6c5fa; }
+.levels>li:nth-child(3) .levelFacts,.levels>li:nth-child(3) .levelLink { border-color:#ffffff33; }
+.levels>li:nth-child(3) .levelLink { color:#fff; }
+
+.cases { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px; }
+.cases article { padding:30px;border:1px solid #dce5f2;border-radius:12px;background:linear-gradient(120deg,#edf3ff,#f6f8fc); }
+.caseMeta { display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font-size:13px;color:#536b91; }
+.feature { padding:4px 10px;border:1px solid #cfddf3;border-radius:999px;background:#fff;color:#2459bd;font-size:12px;font-weight:600; }
+.cases h3 { font-size:21px;margin-top:16px; }
+.cases p { margin-top:10px!important;font-size:15px; }
+
+.dataList { list-style:none;padding:0;margin:20px 0 0; }
+.dataList li { display:flex;gap:14px;padding:14px 0;border-top:1px solid #dce4ef;font-size:15px;line-height:1.65;color:#33404f; }
+.dataList li:first-child { border-top:0; }
+.dataList svg { flex-shrink:0;margin-top:4px;color:#2563eb; }
+
+.compare { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px; }
+.compare>a,.compare>div { display:flex;flex-direction:column;padding:30px;border:1px solid #dce5f2;border-radius:12px;background:#fff;color:#101318; }
+.compare>a { transition:border-color .2s,box-shadow .2s; }
+.compare>a:hover { border-color:#9bb9ed;box-shadow:0 18px 45px -28px #214d9666; }
+.compare h3 { font-size:24px; }
+.compare p { margin-top:12px!important;font-size:15px; }
+.compare>.current { background:#f4f7fc;border-color:#9bb9ed; }
+.here { align-self:flex-start;margin-bottom:14px;padding:4px 10px;border-radius:999px;background:#2563eb;color:#fff;font-size:12px;font-weight:600; }
+.compareLink { display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:22px;color:#2459bd;font-size:15px;font-weight:600; }
+
+@media(max-width:1200px) { .levels { gap:18px; }.levels>li { padding:26px; }.levels h3 { font-size:23px; } }
+@media(max-width:1000px) { .levels,.audiences,.compare { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:700px) { .cases { grid-template-columns:minmax(0,1fr); }.levels>li,.audiences article,.cases article,.compare>a,.compare>div { padding:24px; }.levels h3 { font-size:23px; } }
+@media(prefers-reduced-motion:reduce) { .compare>a { transition:none; } }
