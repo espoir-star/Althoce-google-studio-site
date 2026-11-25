@@ -6,7 +6,7 @@ import { fondamentaux, buildFormationJsonLd } from '@/lib/formations';
 export const metadata: Metadata = {
   title: fondamentaux.metaTitle,
   description: fondamentaux.metaDescription,
-  keywords: ['formation IA fondamentaux', 'formation IA générative', 'formation ChatGPT entreprise', 'formation Claude', 'formation prompting', 'formation IA débutant', 'RGPD IA Act formation'],
+  keywords: ['formation IA fondamentaux', 'formation IA générative', 'formation prompting', 'formation IA débutant', 'RGPD IA Act formation'],
   openGraph: {
     title: `${fondamentaux.metaTitle} | Althoce`,
     description: fondamentaux.metaDescription,

@@ -62,6 +62,18 @@ const footerCols = [
       {
         "l": "Coaching IA Solo",
         "href": "/services/formation-ia/coaching-independant/"
+      },
+      {
+        "l": "Formation Claude",
+        "href": "/services/formation-ia/claude/"
+      },
+      {
+        "l": "Formation ChatGPT",
+        "href": "/services/formation-ia/chatgpt/"
+      },
+      {
+        "l": "Formation Copilot",
+        "href": "/services/formation-ia/copilot/"
       }
     ]
   },

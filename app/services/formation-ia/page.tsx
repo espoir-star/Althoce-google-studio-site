@@ -1,6 +1,7 @@
 import { formationCards } from '@/lib/formation-catalogue';
 import {TrainingCityLinks} from '@/components/formation-cities/FormationCityPage';
 import { formationFaq } from '@/lib/formations';
+import { toolTrainings } from '@/lib/formations-outils';
 import type { Metadata } from 'next';
 import FormationIAPageClient from '@/components/FormationIAPageClient';
 import Footer from '@/components/Footer';
@@ -8,7 +9,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Formation IA pour entreprise',
   description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, Dirigeant & Associés et coaching Solo.",
-  keywords: ['formation IA entreprise', 'formation intelligence artificielle', 'formation IA générative', 'formation ChatGPT entreprise', 'formation Claude IA', 'formation IA finançable OPCO', 'formation prompting'],
+  keywords: ['formation IA entreprise', 'formation intelligence artificielle', 'formation IA générative', 'formation IA finançable OPCO', 'formation prompting'],
   openGraph: {
     title: 'Formation IA pour entreprise | Althoce',
     description: "Formations IA pour professions réglementées et entreprises exigeantes : parcours métier, personnalisés, Dirigeant & Associés et coaching Solo.",
@@ -55,7 +56,7 @@ const jsonLd = {
     {
       "@type": "ItemList",
       "name": "Formations IA Althoce",
-      "itemListElement": formationCards.map((f,i)=>({"@type":"ListItem",position:i+1,name:f.title,url:`https://althoce.com/services/formation-ia/${f.slug}/`}))
+      "itemListElement": [...formationCards.map(f=>({name:f.title,slug:f.slug})),...toolTrainings.map(t=>({name:t.title,slug:t.slug}))].map((f,i)=>({"@type":"ListItem",position:i+1,name:f.name,url:`https://althoce.com/services/formation-ia/${f.slug}/`}))
     },
     {
       "@type": "BreadcrumbList",
