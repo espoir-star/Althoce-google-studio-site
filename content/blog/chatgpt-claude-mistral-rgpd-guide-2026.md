@@ -103,4 +103,6 @@ Avant le pilote, désigne un responsable, fixe les données interdites, teste le
 
 Pour structurer cette démarche, pars d’un [audit des usages IA](/services/audit-ia/), puis prépare une [formation adaptée aux équipes](/services/formation-ia/).
 
+Si ton cabinet a déjà retenu son outil, nos parcours [formation Claude, de la prise en main à Claude Code](/services/formation-ia/claude/) et [formation ChatGPT en entreprise, des GPTs à Codex](/services/formation-ia/chatgpt/) reprennent ces réflexes de confidentialité sur tes cas métier.
+
 Tu veux cadrer ta comparaison ? [Contacte Althoce](/contact/).
