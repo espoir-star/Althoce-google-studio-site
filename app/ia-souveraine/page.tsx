@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import CentralePage from '@/components/centrale/CentralePage';
 import Footer from '@/components/Footer';
-import { centrale, centraleFaqs } from '@/lib/centrale-content';
+import { centrale, centraleFaqs, centraleVideo } from '@/lib/centrale-content';
 
 export const metadata: Metadata = {
   title: { absolute: centrale.title },
@@ -17,6 +17,19 @@ const schema = {
     { '@type': 'Service', '@id': `${centrale.url}#service`, name: centrale.name, url: centrale.url, description: centrale.description, serviceType: 'Installation et accompagnement d’une plateforme d’agents IA sur mesure', provider: { '@id': 'https://althoce.com/#organization' }, areaServed: { '@type': 'Country', name: 'France' } },
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://althoce.com/' }, { '@type': 'ListItem', position: 2, name: 'La Centrale', item: centrale.url }] },
     { '@type': 'FAQPage', mainEntity: centraleFaqs.map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })) },
+    ...(centraleVideo.youtubeId ? [{
+      '@type': 'VideoObject',
+      '@id': `${centrale.url}#video`,
+      name: centraleVideo.title,
+      description: centraleVideo.description,
+      thumbnailUrl: `https://althoce.com${centraleVideo.poster}`,
+      ...(centraleVideo.uploadDate ? { uploadDate: centraleVideo.uploadDate } : {}),
+      duration: centraleVideo.duration,
+      embedUrl: `https://www.youtube.com/embed/${centraleVideo.youtubeId}`,
+      contentUrl: `https://www.youtube.com/watch?v=${centraleVideo.youtubeId}`,
+      inLanguage: 'fr-FR',
+      publisher: { '@id': 'https://althoce.com/#organization' },
+    }] : []),
   ],
 };
 

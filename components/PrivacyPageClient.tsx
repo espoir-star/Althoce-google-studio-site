@@ -108,7 +108,7 @@ export default function PrivacyPageClient() {
 
             {/* Header */}
             <h1 className="priv-h1">Politique de confidentialité</h1>
-            <p className="priv-date">Dernière mise à jour&nbsp;: 20 novembre 2026</p>
+            <p className="priv-date">Dernière mise à jour&nbsp;: 28 novembre 2026</p>
 
             {/* Sommaire mobile */}
             <div className="priv-toc-mobile" id="priv-toc-mobile-wrap">
@@ -230,7 +230,7 @@ export default function PrivacyPageClient() {
             <section id="transferts" className="priv-section">
               <h2 className="priv-h2"><span style={{ fontSize: 12, fontWeight: 800, color: AC, textTransform: 'uppercase', letterSpacing: '.1em', marginRight: 2 }}>06</span>Transferts hors Union européenne</h2>
               <div className="priv-body">
-                <h3 className="priv-h3">6.1 — Le site althoce.com (périmètre Vercel)</h3>
+                <h3 className="priv-h3">6.1 Le site althoce.com (périmètre Vercel)</h3>
                 <p>Le Site est hébergé par <strong>Vercel Inc.</strong> (États-Unis). Certaines données techniques (logs, données de session, formulaires de contact) peuvent être traitées sur des serveurs situés hors Union européenne.</p>
                 <p>Encadrement juridique de ces transferts&nbsp;:</p>
                 <ul>
@@ -238,7 +238,7 @@ export default function PrivacyPageClient() {
                   <li>Les <strong>clauses contractuelles types (CCT)</strong> de la Commission européenne sont incluses dans notre accord avec Vercel.</li>
                   <li>Vercel met en œuvre des mesures de sécurité complémentaires (chiffrement en transit et au repos, contrôle d'accès, journalisation).</li>
                 </ul>
-                <h3 className="priv-h3">6.2 — Déploiements IA pour nos clients sous contrat (périmètre UE)</h3>
+                <h3 className="priv-h3">6.2 Déploiements IA pour nos clients sous contrat (périmètre UE)</h3>
                 <p>Les systèmes IA et agents que nous déployons pour le compte de nos clients sont hébergés <strong>en Union européenne par défaut</strong>&nbsp;:</p>
                 <ul>
                   <li><strong>Modèles IA</strong>&nbsp;: Mistral hébergé en France via OVH (Roubaix, Strasbourg, Gravelines) et Scaleway (Paris, Amsterdam).</li>
@@ -256,14 +256,16 @@ export default function PrivacyPageClient() {
               <h2 className="priv-h2"><span style={{ fontSize: 12, fontWeight: 800, color: AC, textTransform: 'uppercase', letterSpacing: '.1em', marginRight: 2 }}>07</span>Cookies et traceurs</h2>
               <div className="priv-body">
                 <p>Lors de votre navigation sur le Site, nous utilisons différents types de cookies, soumis à des règles distinctes selon leur finalité.</p>
-                <h3 className="priv-h3">7.1 — Cookies strictement nécessaires (pas de consentement requis)</h3>
+                <h3 className="priv-h3">7.1 Cookies strictement nécessaires (pas de consentement requis)</h3>
                 <p>Indispensables au fonctionnement du Site. Ne stockent aucune information personnelle à des fins de tracking. Exemples&nbsp;: maintien de session, fonctionnement des formulaires, sécurité anti-CSRF. <strong>Durée</strong>&nbsp;: durée de session ou 6 mois maximum.</p>
                 <p>La protection anti-bot des formulaires repose sur Vercel BotID. Elle analyse des informations techniques de la requête et du navigateur pour distinguer les envois automatisés des demandes humaines. Cette vérification sert à sécuriser les formulaires et fonctionne indépendamment du consentement aux cookies publicitaires.</p>
-                <h3 className="priv-h3">7.2 — Cookies analytiques (consentement requis)</h3>
+                <h3 className="priv-h3">7.2 Cookies analytiques (consentement requis)</h3>
                 <p>Mesurent l'audience et les parcours utilisateurs. Ne sont déposés qu'après votre consentement explicite via la bannière cookies. <strong>Durée</strong>&nbsp;: 13 mois maximum (recommandation CNIL). Données traitées&nbsp;: IP anonymisée, pages consultées, durée de visite, type de navigateur.</p>
-                <h3 className="priv-h3">7.3 — Cookies de publicité ciblée (consentement requis)</h3>
+                <h3 className="priv-h3">7.3 Cookies de publicité ciblée (consentement requis)</h3>
                 <p>Avec votre accord, le Site utilise Google Analytics 4 pour mesurer les visites et les formulaires envoyés avec succès, ainsi que le pixel Meta pour mesurer les demandes issues de nos campagnes. Ces outils sont chargés uniquement après acceptation dans la bannière cookies. Les noms, adresses email, numéros de téléphone et messages des formulaires ne sont pas transmis à Google Analytics. Vous pouvez retirer votre accord à tout moment avec le bouton « Gérer les cookies ».</p>
-                <h3 className="priv-h3">7.4 — Gestion de votre consentement</h3>
+                <h3 className="priv-h3">7.4 Vidéos YouTube</h3>
+                <p>Certaines pages présentent une vidéo hébergée sur YouTube (Google). Le lecteur, servi depuis le domaine youtube-nocookie.com, ne se charge que lorsque vous lancez la lecture : aucune donnée n'est envoyée à YouTube avant ce clic. Une fois la lecture lancée, YouTube peut déposer des cookies et traiter des données de navigation selon sa propre politique de confidentialité.</p>
+                <h3 className="priv-h3">7.5 Gestion de votre consentement</h3>
                 <p>Vous pouvez à tout moment modifier vos préférences cookies via la bannière cookies (accessible en bas de chaque page) ou via les paramètres de votre navigateur. Refuser les cookies analytiques n'altère pas le fonctionnement du Site.</p>
               </div>
             </section>

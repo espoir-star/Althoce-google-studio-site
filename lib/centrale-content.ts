@@ -11,6 +11,21 @@ export const centrale = {
   contactHref: '/contact/',
 };
 
+/**
+ * Film de présentation de La Centrale (studio vidéo : livrables/la-centrale-v4-youtube.mp4, 78,5 s),
+ * hébergé sur la chaîne YouTube @Althoce. Tant que `youtubeId` est vide, la section vidéo ne s'affiche pas.
+ */
+export const centraleVideo = {
+  youtubeId: '',
+  /** Date de mise en ligne sur YouTube (AAAA-MM-JJ), pour les données structurées. */
+  uploadDate: '',
+  title: 'La Centrale by Althoce : vos agents IA, chez vous, sur une seule plateforme',
+  description: 'En un peu plus d’une minute : vos agents IA réunis sur une seule plateforme, reliés à vos outils, avec des accès par collaborateur, des actions tracées et des données qui restent chez vous.',
+  poster: '/images/centrale/presentation-video.webp',
+  duration: 'PT1M18S',
+  durationLabel: '1 min 18',
+};
+
 export type CentraleUseCase = {
   slug: string;
   title: string;

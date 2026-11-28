@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, CheckCheck, Cloud, FileStack, Fingerprint, Layers3, LockKeyhole, MessageSquare, Network, Plug, Server, Settings2, ShieldCheck, SlidersHorizontal, Users } from 'lucide-react';
 import { Breadcrumb, FaqSection, MethodSection, PreAuditCTA } from '@/components/brand/Sections';
-import { centrale, centraleFaqs, centraleMethod, centraleSectors, centraleUses } from '@/lib/centrale-content';
+import { centrale, centraleFaqs, centraleMethod, centraleSectors, centraleUses, centraleVideo } from '@/lib/centrale-content';
+import CentraleVideo from './CentraleVideo';
+import v from './CentraleVideo.module.css';
 import CentraleUseCases from './CentraleUseCases';
 import collaboration from '@/public/images/home/collaboration-bureau.webp';
 import atelier from '@/public/images/home/atelier-equipes.webp';
@@ -30,11 +32,17 @@ export default function CentralePage() {
     <section className={s.hero} aria-labelledby="centrale-title"><div className={b.container}>
       <Breadcrumb label="La Centrale" />
       <div className={s.heroGrid}>
-        <div className={s.heroCopy}><p className={s.signature}>La Centrale <span>by Althoce</span></p><h1 id="centrale-title">Vos agents IA, <br />chez vous, <br /><span>sur une seule plateforme.</span></h1><p className={s.intro}>La Centrale relie vos outils pour préparer les dossiers, les analyses et les réponses qui occupent vos équipes. <strong>Althoce construit votre plateforme sur mesure, l’installe en France ou sur vos serveurs et forme vos collaborateurs.</strong></p><ul className={s.heroPromises}><li><Check size={15} aria-hidden="true" />Sur mesure</li><li><Check size={15} aria-hidden="true" />Reliée à vos outils</li><li><Check size={15} aria-hidden="true" />Évolutive</li></ul><div className={s.heroActions}><a href={centrale.contactHref} className={b.primary}>Prendre rendez-vous<ArrowUpRight size={18} aria-hidden="true" /></a><a href="#centrale-usages" className={s.exploreLink}>Explorer les usages<ArrowDown size={16} aria-hidden="true" /></a></div><p className={s.heroNote}>Un premier échange pour cadrer votre projet.</p></div>
+        <div className={s.heroCopy}><p className={s.signature}>La Centrale <span>by Althoce</span></p><h1 id="centrale-title">Vos agents IA, <br />chez vous, <br /><span>sur une seule plateforme.</span></h1><p className={s.intro}>La Centrale relie vos outils pour préparer les dossiers, les analyses et les réponses qui occupent vos équipes. <strong>Althoce construit votre plateforme sur mesure, l’installe en France ou sur vos serveurs et forme vos collaborateurs.</strong></p><ul className={s.heroPromises}><li><Check size={15} aria-hidden="true" />Sur mesure</li><li><Check size={15} aria-hidden="true" />Reliée à vos outils</li><li><Check size={15} aria-hidden="true" />Évolutive</li></ul><div className={s.heroActions}><a href={centrale.contactHref} className={b.primary}>Prendre rendez-vous<ArrowUpRight size={18} aria-hidden="true" /></a>{centraleVideo.youtubeId ? <a href="#video-centrale" className={s.exploreLink}>Voir la vidéo · {centraleVideo.durationLabel}<ArrowDown size={16} aria-hidden="true" /></a> : <a href="#centrale-usages" className={s.exploreLink}>Explorer les usages<ArrowDown size={16} aria-hidden="true" /></a>}</div><p className={s.heroNote}>Un premier échange pour cadrer votre projet.</p></div>
         <PlatformDiagram />
       </div>
 
     </div></section>
+
+    {centraleVideo.youtubeId && <section id="video-centrale" className={b.section} aria-labelledby="centrale-video-title"><div className={b.container}>
+      <div className={s.sectionHeading}><h2 id="centrale-video-title">La Centrale <br /><span>en un peu plus d’une minute.</span></h2><p>{centraleVideo.description.replace('En un peu plus d’une minute : v', 'V')}</p></div>
+      <CentraleVideo />
+      <p className={v.note}>La vidéo est hébergée sur YouTube. Le lecteur ne se charge que si vous lancez la lecture, et peut alors déposer des cookies. <a href="/confidentialite/#cookies">En savoir plus</a></p>
+    </div></section>}
 
     <section className={b.section} aria-labelledby="centrale-lien-title"><div className={b.container}>
       <div className={s.sectionHeading}><h2 id="centrale-lien-title">Vos outils sont là. <br /><span>Il manque le lien.</span></h2><p>Préparer un dossier ou une réponse demande souvent de passer d’un logiciel à l’autre. La Centrale relie les informations utiles pour que vos agents préparent ce travail avec vos règles.</p></div>
