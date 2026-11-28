@@ -17,7 +17,7 @@ export default function CentralePage() {
     <section className={s.hero} aria-labelledby="centrale-title"><div className={b.container}>
       <Breadcrumb label="La Centrale" />
       <div className={s.heroGrid}>
-        <div className={s.heroCopy}><p className={s.signature}>La Centrale <span>by Althoce</span></p><h1 id="centrale-title">Vos agents IA, <br />chez vous, <br /><span>sur une seule plateforme.</span></h1><p className={s.intro}>La Centrale relie vos outils pour préparer les dossiers, les analyses et les réponses qui occupent vos équipes. <strong>Althoce construit votre plateforme sur mesure, l’installe en France ou sur vos serveurs et forme vos collaborateurs.</strong></p></div>
+        <div className={s.heroCopy}><p className={s.signature}>La Centrale <span>by Althoce</span></p><h1 id="centrale-title">Vos agents IA, <br />chez vous, <br /><span>sur une seule plateforme.</span></h1><p className={s.intro}>La Centrale relie vos outils pour préparer les dossiers, les analyses et les réponses qui occupent vos équipes.</p></div>
         <div className={v.heroVideo}><CentraleVideo /></div>
         <div className={s.heroCta}><ul className={s.heroPromises}><li><Check size={15} aria-hidden="true" />Sur mesure</li><li><Check size={15} aria-hidden="true" />Reliée à vos outils</li><li><Check size={15} aria-hidden="true" />Évolutive</li></ul><div className={s.heroActions}><a href={centrale.contactHref} className={b.primary}>Prendre rendez-vous<ArrowUpRight size={18} aria-hidden="true" /></a><a href="#centrale-usages" className={s.exploreLink}>Explorer les usages<ArrowDown size={16} aria-hidden="true" /></a></div><p className={s.heroNote}>Un premier échange pour cadrer votre projet.</p></div>
       </div>
