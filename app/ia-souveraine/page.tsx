@@ -26,7 +26,7 @@ const schema = {
       ...(centraleVideo.uploadDate ? { uploadDate: centraleVideo.uploadDate } : {}),
       duration: centraleVideo.duration,
       embedUrl: `https://www.youtube.com/embed/${centraleVideo.youtubeId}`,
-      contentUrl: `https://www.youtube.com/watch?v=${centraleVideo.youtubeId}`,
+      contentUrl: `https://althoce.com${centraleVideo.src}`,
       inLanguage: 'fr-FR',
       publisher: { '@id': 'https://althoce.com/#organization' },
     }] : []),

@@ -12,10 +12,12 @@ export const centrale = {
 };
 
 /**
- * Film de présentation de La Centrale (studio vidéo : livrables/la-centrale-v4-youtube.mp4, 78,5 s),
- * hébergé sur la chaîne YouTube @Althoce. Affiché dans la première section de /ia-souveraine/ (https://youtu.be/sO4NaREZk6E).
+ * Film de présentation de La Centrale (studio vidéo : livrables/la-centrale-v4-youtube.mp4, 78,5 s).
+ * Sur le site : version web hébergée par althoce.com (1600 x 900, 30 i/s, 3,2 Mo), lue automatiquement sans le son
+ * dans la première section de /ia-souveraine/. La même vidéo est publiée sur la chaîne YouTube @Althoce.
  */
 export const centraleVideo = {
+  src: '/videos/la-centrale-presentation.mp4',
   youtubeId: 'sO4NaREZk6E',
   /** Date de mise en ligne sur YouTube (AAAA-MM-JJ), pour les données structurées. */
   uploadDate: '2026-11-28',

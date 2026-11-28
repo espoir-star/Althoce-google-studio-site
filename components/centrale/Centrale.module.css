@@ -1,8 +1,9 @@
 .page { overflow: clip; }
 .hero { padding: 104px 0 64px; background: radial-gradient(ellipse at 85% 15%, #dfebff 0, transparent 52%), linear-gradient(180deg, #fbfcff, #f4f7fc); }
-.heroGrid { display: grid; grid-template-columns: .95fr 1.1fr; gap: 64px; align-items: center; }
+.heroGrid { display: grid; grid-template-columns: .95fr 1.1fr; grid-template-areas: "text video" "cta video"; column-gap: 64px; align-items: center; }
 .heroGrid > * { min-width: 0; }
-.heroCopy { padding-block: 12px 34px; }
+.heroCopy { grid-area: text; align-self: end; padding-top: 12px; }
+.heroCta { grid-area: cta; align-self: start; padding-bottom: 34px; }
 .page .signature { color: #183d71; font-size: 18px; font-weight: 650; margin-bottom: 24px; letter-spacing: -.025em; }
 .signature span { color: #526680; font-size: 13px; font-weight: 450; margin-left: 6px; letter-spacing: 0; }
 .page .hero h1 { font-size: clamp(40px, 4vw, 58px); line-height: 1.08; }
@@ -94,6 +95,8 @@
 @media (max-width: 900px) {
   .hero { padding-top: 88px; }
   .heroGrid, .controlGrid, .sectorsLayout { grid-template-columns: minmax(0, 1fr); }
+  .heroGrid { grid-template-areas: "text" "video" "cta"; row-gap: 32px; }
+  .heroCta { padding-bottom: 0; }
   .heroCopy { padding-bottom: 0; }
   .page .hero h1 { font-size: clamp(40px, 6.5vw, 60px); }
   .hero h1 br:nth-of-type(1) { display: none; }
