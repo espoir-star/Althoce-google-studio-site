@@ -13,12 +13,12 @@ export const centrale = {
 
 /**
  * Film de présentation de La Centrale (studio vidéo : livrables/la-centrale-v4-youtube.mp4, 78,5 s),
- * hébergé sur la chaîne YouTube @Althoce. Tant que `youtubeId` est vide, la section vidéo ne s'affiche pas.
+ * hébergé sur la chaîne YouTube @Althoce. Affiché dans la première section de /ia-souveraine/ (https://youtu.be/sO4NaREZk6E).
  */
 export const centraleVideo = {
-  youtubeId: '',
+  youtubeId: 'sO4NaREZk6E',
   /** Date de mise en ligne sur YouTube (AAAA-MM-JJ), pour les données structurées. */
-  uploadDate: '',
+  uploadDate: '2026-11-28',
   title: 'La Centrale by Althoce : vos agents IA, chez vous, sur une seule plateforme',
   description: 'En un peu plus d’une minute : vos agents IA réunis sur une seule plateforme, reliés à vos outils, avec des accès par collaborateur, des actions tracées et des données qui restent chez vous.',
   poster: '/images/centrale/presentation-video.webp',
